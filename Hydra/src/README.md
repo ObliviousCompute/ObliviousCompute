@@ -6,6 +6,12 @@ Hydra demonstrates **distributed correctness through deterministic selection and
 
 This is a **research demo**, not a product.
 
+## Quick Visual Demo
+
+A short screen capture showing five Hydra nodes converging via erasure.
+
+[▶ Watch the demo video](./Video/Hydra%20Live%20Demo.mp4)
+
 ---
 
 ## What This Demo Demonstrates
