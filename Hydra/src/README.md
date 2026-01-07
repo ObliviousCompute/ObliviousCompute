@@ -132,10 +132,10 @@ These are distinct sockets and work correctly.
 
 - **Left / Right Arrow** — Select target head  
 - **Up / Down Arrow** — Select amount  
-- **Enter** — Submit transaction (“feed”)  
+- **Enter** — Submit transaction (“FEED”)  
 - **H** — Force resynchronization (HUNGER)  
-- **Ctrl+X** — Soft reboot (sever head)  
-- **Ctrl+C** — Exit  
+- **Ctrl+X** — Soft reboot (Sever Head)  
+- **Ctrl+C** — Exit  (Cauterize)
 
 A node will **never allow you to target itself**.
 
