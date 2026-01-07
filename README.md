@@ -28,14 +28,18 @@ Correctness is defined operationally as **what survives**, not how it was reache
 This repository separates **theory** from **instantiation**.
 
 ```text
-oblivious-compute/
-├── README.md
-├── whitepaper/
-│   └── Oblivious_Compute_Primitive.pdf
-├── hydra/
-│   ├── README.md
-│   ├── whitepaper/
-│   │   └── Hydra_Oblivious_Compute_Instantiation.pdf
-│   ├── src/
-│   └── demo/
-└── docs/
+Oblivious Compute
+├── README.md                    
+├── LICENSE
+├── NOTICE
+├── Whitepaper/
+│   └── Oblivious Compute Primitive.pdf
+└── Hydra/
+    ├── README.md                  
+    ├── Whitepaper/
+    │   └── Hydra Proofs.pdf
+    └── src/
+        ├── README.md             
+        ├── hydra-demo.py          
+        └── hydra-skeleton.py      
+
