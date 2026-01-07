@@ -1,25 +1,21 @@
 # Hydra Demo — Truth Through Erasure
 
-This repository contains a **runnable demonstration of Hydra Proofs**, a minimal instantiation of the *Oblivious Compute* primitive.
+This repository contains a **runnable demonstration of Hydra Proofs**, a concrete instantiation of the **Oblivious Compute (OC)** primitive.
 
-Hydra demonstrates **distributed convergence through deterministic selection and total erasure**, without:
+Hydra demonstrates **distributed correctness through deterministic selection and erasure**, rather than agreement, coordination, or historical replay.
 
-- consensus protocols  
-- message ordering  
-- logs or replay  
-- coordination rounds  
-- time or sequence numbers  
-
-This is a **research demo**, not a production system.
+This is a **research demo**, not a product.
 
 ---
 
-## What This Demo Does
+## What This Demo Demonstrates
 
-- Runs multiple Hydra nodes (A–E) as independent processes  
-- Nodes exchange **full candidate states** over UDP  
-- When states collide, **one survives and all others are erased**  
-- Correctness emerges through elimination, not agreement  
+- Multiple Hydra nodes (A–E) run as independent processes
+- Nodes exchange **full candidate states** over UDP
+- Conflicting states are allowed to coexist briefly
+- A deterministic rule selects **one surviving state**
+- All losing states are **fully erased**
+- The surviving state *is* the truth
 
 Divergence is expected.  
 Convergence happens by overwrite.
@@ -30,18 +26,18 @@ Convergence happens by overwrite.
 
 ### Operating System
 
-- ✅ **Linux**
-- ✅ **macOS**
-- ❌ **Windows (not supported)**
+- ✅ Linux  
+- ✅ macOS  
+- ❌ Windows (not supported)
 
-This demo uses:
+This demo relies on low-level terminal control:
 
 - `termios`
 - `tty`
-- raw terminal control
+- raw stdin handling
 
-These APIs **do not exist on Windows**.  
-WSL is *not* guaranteed to work correctly.
+These APIs are not available on Windows.  
+WSL is **not guaranteed** to work correctly.
 
 ---
 
@@ -50,7 +46,6 @@ WSL is *not* guaranteed to work correctly.
 - **Python 3.10 or higher required**
 
 Reason:
-
 - Uses modern type syntax (`|`, `Dict[str, Any]`)
 - No backward-compatibility shims are provided
 
@@ -68,13 +63,20 @@ Each Hydra node runs in its **own terminal window**.
 
 You will run **five processes**, one per head:
 
-- A, B, C, D, E
+- A
+- B
+- C
+- D
+- E
 
-All nodes must be on **different UDP ports**.
+Each node binds to a UDP port.
+
+- Ports must be **unique per machine**
+- Port numbers **may be the same across different machines**
 
 ---
 
-### Example Setup (Single Machine)
+### Example: Single Machine (Localhost)
 
 Open **five terminals**, then run:
 
@@ -108,7 +110,21 @@ python3 Hydra-ready.py --id E --port 5005 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004
 ```
 
-You may also run nodes across **multiple machines** by replacing `127.0.0.1` with LAN IP addresses.
+---
+
+### Running Across Multiple Machines (LAN)
+
+You may also run nodes across **multiple machines** by replacing `127.0.0.1`
+with LAN IP addresses.
+
+Each node binds to a local UDP port.  
+Port numbers may be the **same across different machines**, but must be **unique per machine**.
+
+Example:
+- `192.168.1.101:5001`
+- `192.168.1.102:5001`
+
+These are distinct sockets and work correctly.
 
 ---
 
@@ -116,10 +132,10 @@ You may also run nodes across **multiple machines** by replacing `127.0.0.1` wit
 
 - **Left / Right Arrow** — Select target head  
 - **Up / Down Arrow** — Select amount  
-- **Enter** — Submit transaction (“FEED”)  
-- **H** — Force resync (HUNGER)  
-- **Ctrl+X** — Soft reboot (Sever Head)  
-- **Ctrl+C** — Exit (Cauterize)
+- **Enter** — Submit transaction (“feed”)  
+- **H** — Force resynchronization (HUNGER)  
+- **Ctrl+X** — Soft reboot (sever head)  
+- **Ctrl+C** — Exit  
 
 A node will **never allow you to target itself**.
 
@@ -130,7 +146,7 @@ A node will **never allow you to target itself**.
 - This demo uses **UDP**
 - Packet loss is expected under heavy load
 - Wi-Fi saturation can induce temporary divergence
-- The system recovers via erasure and resync  
+- The system recovers through overwrite and erasure
 
 This behavior is **intentional** and part of the demonstration.
 
@@ -141,9 +157,9 @@ This behavior is **intentional** and part of the demonstration.
 This demo intentionally provides **no guarantees** of:
 
 - persistence  
-- security hardening  
-- fairness  
 - auditability  
+- fairness  
+- security hardening  
 - Byzantine fault tolerance beyond erasure  
 
 If a state survives, it is the truth.  
@@ -155,12 +171,13 @@ If it loses, it disappears completely.
 
 This repository may include a **Hydra skeleton**:
 
-- Non-executable  
-- Illustrative only  
-- Shows the core selection-and-erasure logic  
+- Non-executable
+- Illustrative only
+- Shows the core selection-and-erasure logic
 
-The skeleton is **not** a reference implementation.  
-`Hydra.py` is the runnable demo.
+The skeleton is **not** a reference implementation.
+
+`Hydra-ready.py` is the runnable demo.
 
 ---
 
