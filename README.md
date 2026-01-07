@@ -7,7 +7,18 @@ Instead of passing messages in chains or preserving logs, OC allows multiple can
 OC is a primitive, not a product.
 
 ---
+## Start here
 
+If you want to see the idea running live, start with the Hydra demo:
+
+→ [`Hydra/`](./Hydra)
+
+It includes:
+- a short screen capture of the system running
+- instructions to run five nodes locally
+- a concrete instantiation of the oblivious compute primitive
+
+---
 ## What Problem Does OC Address?
 
 Most distributed systems assume correctness requires memory:
@@ -28,7 +39,7 @@ Correctness is defined operationally as **what survives**, not how it was reache
 This repository separates **theory** from **instantiation**.
 
 ```text
-Oblivious_Compute
+ObliviousCompute
 ├── README.md
 ├── LICENSE
 ├── NOTICE
