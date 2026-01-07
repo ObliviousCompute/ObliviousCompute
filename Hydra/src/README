@@ -1,0 +1,174 @@
+# Hydra Demo — Truth Through Erasure
+
+This repository contains a **runnable demonstration of Hydra Proofs**, a minimal instantiation of the *Oblivious Compute* primitive.
+
+Hydra demonstrates **distributed convergence through deterministic selection and total erasure**, without:
+
+- consensus protocols  
+- message ordering  
+- logs or replay  
+- coordination rounds  
+- time or sequence numbers  
+
+This is a **research demo**, not a production system.
+
+---
+
+## What This Demo Does
+
+- Runs multiple Hydra nodes (A–E) as independent processes  
+- Nodes exchange **full candidate states** over UDP  
+- When states collide, **one survives and all others are erased**  
+- Correctness emerges through elimination, not agreement  
+
+Divergence is expected.  
+Convergence happens by overwrite.
+
+---
+
+## Requirements
+
+### Operating System
+
+- ✅ **Linux**
+- ✅ **macOS**
+- ❌ **Windows (not supported)**
+
+This demo uses:
+
+- `termios`
+- `tty`
+- raw terminal control
+
+These APIs **do not exist on Windows**.  
+WSL is *not* guaranteed to work correctly.
+
+---
+
+### Python Version
+
+- **Python 3.10 or higher required**
+
+Reason:
+
+- Uses modern type syntax (`|`, `Dict[str, Any]`)
+- No backward-compatibility shims are provided
+
+Check your version:
+
+```bash
+python3 --version
+```
+
+---
+
+## Running the Demo (5 Nodes)
+
+Each Hydra node runs in its **own terminal window**.
+
+You will run **five processes**, one per head:
+
+- A, B, C, D, E
+
+All nodes must be on **different UDP ports**.
+
+---
+
+### Example Setup (Single Machine)
+
+Open **five terminals**, then run:
+
+#### Terminal 1 — Head A
+```bash
+python3 Hydra-ready.py --id A --port 5001 --peers \
+127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004 127.0.0.1:5005
+```
+
+#### Terminal 2 — Head B
+```bash
+python3 Hydra-ready.py --id B --port 5002 --peers \
+127.0.0.1:5001 127.0.0.1:5003 127.0.0.1:5004 127.0.0.1:5005
+```
+
+#### Terminal 3 — Head C
+```bash
+python3 Hydra-ready.py --id C --port 5003 --peers \
+127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5004 127.0.0.1:5005
+```
+
+#### Terminal 4 — Head D
+```bash
+python3 Hydra-ready.py --id D --port 5004 --peers \
+127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5005
+```
+
+#### Terminal 5 — Head E
+```bash
+python3 Hydra-ready.py --id E --port 5005 --peers \
+127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004
+```
+
+You may also run nodes across **multiple machines** by replacing `127.0.0.1` with LAN IP addresses.
+
+---
+
+## Controls
+
+- **Left / Right Arrow** — Select target head  
+- **Up / Down Arrow** — Select amount  
+- **Enter** — Submit transaction (“FEED”)  
+- **H** — Force resync (HUNGER)  
+- **Ctrl+X** — Soft reboot (Sever Head)  
+- **Ctrl+C** — Exit (Cauterize)
+
+A node will **never allow you to target itself**.
+
+---
+
+## Notes on Stability
+
+- This demo uses **UDP**
+- Packet loss is expected under heavy load
+- Wi-Fi saturation can induce temporary divergence
+- The system recovers via erasure and resync  
+
+This behavior is **intentional** and part of the demonstration.
+
+---
+
+## Important Warnings
+
+This demo intentionally provides **no guarantees** of:
+
+- persistence  
+- security hardening  
+- fairness  
+- auditability  
+- Byzantine fault tolerance beyond erasure  
+
+If a state survives, it is the truth.  
+If it loses, it disappears completely.
+
+---
+
+## Skeleton vs Demo
+
+This repository may include a **Hydra skeleton**:
+
+- Non-executable  
+- Illustrative only  
+- Shows the core selection-and-erasure logic  
+
+The skeleton is **not** a reference implementation.  
+`Hydra.py` is the runnable demo.
+
+---
+
+## License & Intent
+
+Hydra Proofs are published as a **public technical disclosure**.
+
+This demo exists to show that **oblivious convergence is possible**.
+
+If it fails, it fails cleanly.  
+If it works, it demonstrates a new computational primitive.
