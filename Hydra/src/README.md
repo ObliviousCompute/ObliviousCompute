@@ -10,7 +10,7 @@ This is a **research demo**, not a product.
 
 A short screen capture showing five Hydra nodes converging via erasure.
 
-[▶ Watch the demo video](./Video/hydra-demo.mp4)
+[▶ Watch the demo video](../Video/hydra-demo.mp4)
 
 ---
 
