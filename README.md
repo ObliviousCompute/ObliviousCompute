@@ -54,8 +54,7 @@ ObliviousCompute
 |       ├── Fleash_and_Bone.py
 |       ├── Hydra.py
 |       ├── HydraPlexus.py
-|       ├── Lore.pdf
-|       └── README.md
+|       └── Lore.pdf      
 ├── Whitepaper/
 |   └── Oblivious-Compute-Primitive.pdf
 ├── Forward-Compute.pdf
