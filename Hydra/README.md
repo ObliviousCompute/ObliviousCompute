@@ -65,7 +65,7 @@ python3 --version
 
 ## Download
 
-Download all three Python files from src into a single directory.
+Download all three Python files from [`src/`](./src/)  into a single directory.
 
 Navagate to that directory in a terminal.
 
