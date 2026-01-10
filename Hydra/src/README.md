@@ -63,9 +63,17 @@ python3 --version
 
 ---
 
-## Running the Demo (5 Nodes)
+## Download
+
+Download all three Python files into a single directory.
+
+Navagate to the directory in a terminal.
 
 Each Hydra node runs in its **own terminal window**.
+
+---
+
+## Running the Demo (5 Nodes)
 
 You will run **five processes**, one per head:
 
@@ -88,31 +96,31 @@ Open **five terminals**, then run:
 
 #### Terminal 1 — Head A
 ```bash
-python3 Hydra-ready.py --id A --port 5001 --peers \
+python3 Hydra.py --id A --port 5001 --peers \
 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004 127.0.0.1:5005
 ```
 
 #### Terminal 2 — Head B
 ```bash
-python3 Hydra-ready.py --id B --port 5002 --peers \
+python3 Hydra.py --id B --port 5002 --peers \
 127.0.0.1:5001 127.0.0.1:5003 127.0.0.1:5004 127.0.0.1:5005
 ```
 
 #### Terminal 3 — Head C
 ```bash
-python3 Hydra-ready.py --id C --port 5003 --peers \
+python3 Hydra.py --id C --port 5003 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5004 127.0.0.1:5005
 ```
 
 #### Terminal 4 — Head D
 ```bash
-python3 Hydra-ready.py --id D --port 5004 --peers \
+python3 Hydra.py --id D --port 5004 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5005
 ```
 
 #### Terminal 5 — Head E
 ```bash
-python3 Hydra-ready.py --id E --port 5005 --peers \
+python3 Hydra.py --id E --port 5005 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004
 ```
 
@@ -139,7 +147,6 @@ These are distinct sockets and work correctly.
 - **Left / Right Arrow** — Select target head  
 - **Up / Down Arrow** — Select amount  
 - **Enter** — Submit transaction (“FEED”)  
-- **H** — Force resynchronization (HUNGER)  
 - **Ctrl+X** — Soft reboot (Sever Head)  
 - **Ctrl+C** — Exit  (Cauterize)
 
@@ -170,20 +177,6 @@ This demo intentionally provides **no guarantees** of:
 
 If a state survives, it is the truth.  
 If it loses, it disappears completely.
-
----
-
-## Skeleton vs Demo
-
-This repository may include a **Hydra skeleton**:
-
-- Non-executable
-- Illustrative only
-- Shows the core selection-and-erasure logic
-
-The skeleton is **not** a reference implementation.
-
-`Hydra-ready.py` is the runnable demo.
 
 ---
 
