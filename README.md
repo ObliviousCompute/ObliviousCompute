@@ -52,7 +52,7 @@ ObliviousCompute
 |   |   ├── Fleash_and_Bone.py
 |   |   ├── Hydra.py
 |   |   ├── HydraPlexus.py
-|   |   └── Lore.pdf
+|   |   └── Lore.md
 |   └── README.md      
 ├── Whitepaper/
 |   └── Oblivious-Compute-Primitive.pdf
