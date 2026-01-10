@@ -9,14 +9,14 @@ OC is a primitive, not a product.
 ---
 ## Start here
 
-This repository includes a short write-up [Forward-Compute.pdf](Forward-Compute.pdf) that explains the forward-compute model used by Hydra and the Oblivious Heart.
+This repository includes a short write-up, [Forward-Compute.pdf](Forward-Compute.pdf), explaining the forward-compute model used by Hydra and the Oblivious Heart.
 
-After reading Forward Compute, academic types may want to start here → The [`Heart/`](./Heart) directory contains The Oblivious Heart—the Hydraplexus in its bare, testable form.
+If you want the law without ceremony, start here → the [`heart/`](./heart/) directory contains **The Oblivious Heart**—the Hydraplexus stripped to its bare, testable form, along with its primary smoke test and skeleton.
 
-Anyone else will probably want to go here of you want to check out the fun [`Hydra/`](./Hydra) demo.
+If you just want to see it move, go here → the [`Hydra/`](./Hydra/) demo.
 
+Both paths are concrete instantiations of the same oblivious compute primitive.
 
-- Both links demonstrate a concrete instantiations of the oblivious compute primitive.
 
 ---
 ## What Problem Does OC Address?
