@@ -49,10 +49,10 @@ ObliviousCompute
 |   ├── Video/
 |   │   └── hydra-demo.mp4
 |   ├── src/
-|   |   ├── Fleash_and_Bone.py
 |   |   ├── Hydra.py
-|   |   ├── HydraPlexus.py
-|   |   └── Lore.md
+|   |   ├── Plexus.py
+|   |   ├── Lore.py
+|   |   └── Shell.md
 |   └── README.md      
 ├── Whitepaper/
 |   └── Oblivious-Compute-Primitive.pdf
