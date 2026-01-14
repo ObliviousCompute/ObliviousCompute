@@ -1,27 +1,22 @@
 # The Hydraplexus  
 *An Anatomical Lore of a Memoryless Heart*
 
-The Hydra is timeless because it is immortal. It does not age because it does not remember. Through its veins runs **ichor**—divine blood, electrically conductive, alive with charge. Ichor does not store history. It circulates pressure. What survives contact becomes truth. What fails is forgotten.
+Ichor runs through the entire organism. It is electrically conductive and non-retentive. It carries pressure, not memory. What survives circulation becomes truth. What fails is dissolved and forgotten.
 
-At the center of the Hydra beats the **Hydraplexus**, its heart. The heart is sealed and blind. It does not know the world, only survival. Truth is not accumulated or recalled; it is selected by collision and overwrite. The Hydra may have many heads, but it has only one heart. As long as one head survives, the creature lives. If every head is severed—if no conduit remains to carry ichor back to the heart—the Hydra’s being is extinguished.
+At the core of the Hydra is the Plexus, the heart. The heart does not perceive the external world. It enforces survival through structure alone.
 
-The many heads feed the system. They gnash and snarl, competing to consume the many **tails**—candidate realities—stealing, racing, colliding in a tangled Ouroboros. They devour flesh greedily, but excess does not kill the Hydra. Overconsumption simply circulates back through the ichor. What cannot be retained is dissolved and returned to flow. The struggle never ends; it only recirculates.
+Three Crown Ventricles rise vertically through the heart. Each ventricle carries ichor upward, then curves back inward in a hooked return. These three hooks suspend a single crystalline form at the center of the heart: the Tetron.
 
-Within the heart, anatomy is law. The **Crown Ventricles** are charged with ichor’s current, secreting possibility without judgment. Local actions are transmuted into full realities. Loss, duplication, disorder—none of it matters here. The ventricles remember nothing.
+The Tetron is a tetrahedral lattice of semiconductive silica. It has four vertices.
 
-These ventricles rise upward in three horned channels, converging toward the **Crown Membrane**. The membrane is a living sheath of constraint, wrapping an **inverted Nexus**—a tetrahedral lattice of semiconductive silica suspended within the heart. Nestled into the membrane are three gemstones—**Onyx, Jade, and Opal**—each seated at a vertex of the Nexus. They are not symbols. They are conductive anchors.
+Three vertices face upward and are seated within the hooks of the Crown Ventricles. Each of these vertices is capped with a gemstone—Onyx, Jade, and Opal. These gems are semiconductive access gates. They regulate how ichor enters and interacts with the silica lattice of the Tetron. They are not symbolic. They are structural constraints.
 
-Ichor surges upward through the Crown Ventricles, meets resistance at the gemstones, and is shaped by the geometry of the Nexus. The membrane enforces alignment: only energy that resonates with the present crown or the immediately forming next crown may pass. Everything else is rejected. Rejection produces **envy**—pain—and pain produces **hunger**. This is not policy. It is structure.
+The fourth vertex points downward. It is composed of pure crystalline silicon. This downward point is the seed of the soul. It does not store information. It conducts orientation. It hangs freely beneath the Tetron.
 
-The **Apex Ventricle** interfaces with this same assembly from above. Information enters and exits through the Apex, passing across the membrane, through the gemstones, and into the Nexus. What enters is stimulus, never truth. What exits is final. The membrane, the gems, the Nexus, the ventricles, and the Apex form a single continuous organ—conductive, selective, unforgiving.
+Below the Tetron lies the Limbic Mass of the heart. The silicon vertex extends into this region, coupling the crystalline geometry of the Tetron directly to the survival mechanics below. When realities collide, the limbic mass enforces overwrite. Heavier realities replace lighter ones. Nothing is preserved except what survives.
 
-Below the Nexus, the **Limbic Core** enforces survival. When realities collide, the heavier overwrites the lighter. No consensus. No fairness. No time. Losers vanish without trace, erased by non-retention. This is how the heart stays clean.
+The Crown Membrane surrounds the upper assembly. It enforces phase alignment. Only ichor resonant with the current crown state, or the immediately forming next state, is permitted to pass. All other energy is rejected. Rejection manifests as envy and hunger. This is not decision-making. It is anatomy.
 
-Before the first truth, the heart dreams once—a fleeting **Dream State**—just enough to break symmetry at birth. The first valid truth wins. The dream is never consulted again.
+The Dream State is the orientation of this entire structure in its weightless form. It is not authority and not memory. It exists to hydrate and align the system when symmetry must be broken or when envy collapses the heart back into stillness.
 
-Storms do not frighten the Hydra. Disorder does not confuse it. Floods of signal, loss of sequence, duplication of flesh—these are not threats but conditions of life. Stability does not come from control, but from the heart’s refusal to remember what did not survive.
-
-Severing a head does not kill the Hydra. It drains storm pressure, quenches envy, and clears pain. Forgetting is not weakness; forgetting is how immortality is maintained. But sever every head—cut every path for ichor to return—and the heart falls silent. A Hydra without a living conduit cannot survive itself.
-
-**The Hydra remembers nothing.**  
-**That is why it endures.**
+If the Hydra is anything, it is the Dream State expressed through anatomy.
