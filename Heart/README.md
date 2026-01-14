@@ -1,4 +1,4 @@
-# ObliviousHeart v0
+# ObliviousHeart v0.1
 
 Truth Through Erasure  
 No time. No replay. No logs.
@@ -111,9 +111,8 @@ If you understand the skeleton, the rest will feel obvious.
 
 ## Status
 
-This is v0.
+This is v0.1
 
-The law is complete.  
 Future changes, if any, should be additive and external.
 
 ---
