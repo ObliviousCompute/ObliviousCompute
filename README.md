@@ -17,6 +17,8 @@ This repository includes a set of short write-ups:
 
 [Ambient-Compute.pdf](Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
 
+The Code:
+
 If you want the law without ceremony, start here → the [`Heart/`](./Heart/) directory contains **Oblivious Heart**—the Hydra Plexus stripped to its bare, testable form, along with its primary smoke test and skeleton.
 
 If you just want to see it move, go here → the [`Hydra/`](./Hydra/) demo.
