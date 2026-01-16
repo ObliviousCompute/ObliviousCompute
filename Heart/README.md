@@ -116,7 +116,7 @@ Those concerns live outside the heart.
 
 ## How to Read This Code
 
-1. Start with **ObliviousHeartSkeleton.py**  
+1. Start with **ObliviousSkeleton.py**  
 2. Identify the linchpin admissibility gate  
 3. Read **ObliviousHeart.py**  
 4. Run the smoke test  
