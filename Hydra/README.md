@@ -16,15 +16,7 @@ A short screen capture showing five Hydra nodes converging via erasure.
 
 ## What This Demo Demonstrates
 
-- Multiple Hydra nodes (A–E) run as independent processes
-- Nodes exchange **full candidate states** over UDP
-- Conflicting states are allowed to coexist briefly
-- A deterministic rule selects **one surviving state**
-- All losing states are **fully erased**
-- The surviving state *is* the truth
-
-Divergence is expected.  
-Convergence happens by overwrite.
+This demo runs multiple Hydra nodes as independent processes and shows how computers can drop out, reboot, and rejoin a network while staying in sync without coordination overhead. Nodes exchange full candidate states over UDP, allow temporary divergence, and deterministically converge by overwrite. There is no leader, no ordering requirement, no replay log, and no recovery of losing states. When a process is killed, it disappears. When it restarts, it instantly hydrates the current truth. Nothing panics. Nothing waits. The system simply keeps the present state and erases everything else.
 
 ---
 
