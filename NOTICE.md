@@ -12,7 +12,7 @@ Portions of the concepts described in this repository are the subject of **pendi
 This notice is provided for transparency and does not alter or supersede the terms of the license under which this software is distributed.
 
 All source code in this repository is licensed under the **Apache License, Version 2.0**.  
-See the [`LICENSE/`](./LICENSE/) file for full terms.
+See the [`LICENSE/`](./LICENSE) file for full terms.
 
 This repository is published as a **defensive and academic disclosure** of a computation primitive. 
 It is not a finished protocol, standard, or commercial product. 
