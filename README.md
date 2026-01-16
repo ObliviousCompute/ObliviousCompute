@@ -11,11 +11,11 @@ OC is a primitive, not a product.
 
 This repository includes a set of short write-ups:
 
-[Oblivious-Compute.pdf](./Whitepaper/Oblivious-Compute.pdf) describes the core compute primitive itself.
+[Oblivious-Compute.pdf](./Fragments/Oblivious-Compute.pdf) describes the core compute primitive itself.
 
-[Forward-Compute.pdf](Forward-Compute.pdf) explains the forward-compute model used by Hydra and the Oblivious Heart.
+[Forward-Compute.pdf](./Fragments/Forward-Compute.pdf) explains the forward-compute model used by Hydra and the Oblivious Heart.
 
-[Ambient-Compute.pdf](Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
+[Ambient-Compute.pdf](./Fragmnets/Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
 
 The Code:
 
@@ -55,7 +55,7 @@ ObliviousCompute
 |   └── README.md
 ├── Hydra/
 |   ├── Video/
-|   │   └── hydra-demo.mp4
+|   │   └── Demo.mp4
 |   ├── src/
 |   |   ├── Lore.md
 |   |   ├── hydra.py
