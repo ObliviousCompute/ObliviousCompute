@@ -94,25 +94,25 @@ python3 Hydra.py --id A --port 5001 --peers \
 
 #### Terminal 2 — Head B
 ```bash
-python3 Hydra.py --id B --port 5002 --peers \
+python3 hydra.py --id B --port 5002 --peers \
 127.0.0.1:5001 127.0.0.1:5003 127.0.0.1:5004 127.0.0.1:5005
 ```
 
 #### Terminal 3 — Head C
 ```bash
-python3 Hydra.py --id C --port 5003 --peers \
+python3 hydra.py --id C --port 5003 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5004 127.0.0.1:5005
 ```
 
 #### Terminal 4 — Head D
 ```bash
-python3 Hydra.py --id D --port 5004 --peers \
+python3 hydra.py --id D --port 5004 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5005
 ```
 
 #### Terminal 5 — Head E
 ```bash
-python3 Hydra.py --id E --port 5005 --peers \
+python3 hydra.py --id E --port 5005 --peers \
 127.0.0.1:5001 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004
 ```
 
