@@ -19,7 +19,7 @@ This repository includes a set of short write-ups:
 
 The Code:
 
-If you want the law without ceremony, start here → the [`Heart/`](./Heart/) directory contains **Oblivious Heart**—the Hydra Plexus stripped to its bare, testable form, along with its primary smoke test and skeleton.
+If you want the law without ceremony, start here → the [`Heart/`](./Heart/) directory contains **Oblivious Heart(4.5kB)**—the Hydra **Plexus(5.7kB)** code stripped to its bare, testable form, along with its primary smoke test and skeleton.
 
 If you just want to see it move, go here → the [`Hydra/`](./Hydra/) demo.
 
