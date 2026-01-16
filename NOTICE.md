@@ -6,7 +6,7 @@ Copyright © 2026
 All rights reserved.
 
 This repository documents **Oblivious Compute (OC)**, a foundational distributed computation primitive, 
-along with reference material and an example instantiation (Hydra).
+along with reference material and example instantiations (Hydra and ObliviousHeart).
 
 Portions of the concepts described in this repository are the subject of **pending patent applications**. 
 This notice is provided for transparency and does not alter or supersede the terms of the license under which this software is distributed.
