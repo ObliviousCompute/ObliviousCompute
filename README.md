@@ -15,7 +15,7 @@ This repository includes a set of short write-ups:
 
 [Forward-Compute.pdf](./Fragments/Forward-Compute.pdf) explains the forward-compute model used by Hydra and the Oblivious Heart.
 
-[Ambient-Compute.pdf](./Fragmnets/Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
+[Ambient-Compute.pdf](./Fragments/Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
 
 The Code:
 
