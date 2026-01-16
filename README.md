@@ -48,24 +48,22 @@ This repository separates **theory** from **instantiation**.
 
 ```text
 ObliviousCompute
+├── Fragments/
+|   ├── Ambient-Compute.pdf
+|   ├── Forward-Compute.pdf
+|   └── Oblivious-Compute.pdf
 ├── Heart/
 |   ├── ObliviousHeart.py
 |   ├── ObliviousSkeleton.py
 |   ├── ObliviousSmokeTest.py
 |   └── README.md
 ├── Hydra/
-|   ├── Video/
-|   │   └── Demo.mp4
-|   ├── src/
-|   |   ├── Lore.md
-|   |   ├── hydra.py
-|   |   ├── plexus.py
-|   |   └── shell.md
-|   └── README.md      
-├── Whitepaper/
-|   └── Oblivious-Compute.pdf
-├── Ambient-Compute.pdf
-├── Forward-Compute.pdf
+|   ├── Demo.mp4
+|   ├── Lore.md
+|   ├── README.md
+|   ├── hydra.py
+|   ├── plexus.py
+|   └── shell.md     
 ├── LICENSE
 ├── NOTICE
 └── README.md
