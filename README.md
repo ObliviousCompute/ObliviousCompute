@@ -59,7 +59,7 @@ ObliviousCompute
 |   └── README.md
 ├── Hydra/
 |   ├── Demo.mp4
-|   ├── Lore.md
+|   ├── Lore.pdf
 |   ├── README.md
 |   ├── hydra.py
 |   ├── plexus.py
