@@ -88,7 +88,7 @@ Open **five terminals**, then run:
 
 #### Terminal 1 — Head A
 ```bash
-python3 Hydra.py --id A --port 5001 --peers \
+python3 hydra.py --id A --port 5001 --peers \
 127.0.0.1:5002 127.0.0.1:5003 127.0.0.1:5004 127.0.0.1:5005
 ```
 
