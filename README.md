@@ -57,8 +57,7 @@ This repository separates **theory** from **instantiation**.
 ```text
 ObliviousCompute
 ├── Byzantium
-|   ├──Screenshots
-|   ├──ByzantiumDEMO.py
+|   ├──Byzantium.py
 |   └──README.md
 ├── Fragments/
 |   ├── Ambient-Compute.pdf
