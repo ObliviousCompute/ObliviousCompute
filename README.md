@@ -28,9 +28,9 @@ If you just want to see it move, go here → the [`Hydra/`](./Hydra/) demo.
 Both paths are concrete instantiations of the same oblivious compute primitive.
 
 **Note:**  
-This repository also includes a **playable UI demo** for the upcoming **Oblivious Compute encryption stack**, located in [`Byzantium/`](./Byzantium).
+This repository also includes a **2-24 Player Terminal Network Game** for the **Oblivious Compute encryption stack**, located in [`Byzantium/`](./Byzantium).
 
-The interface is deliberately expressive; the underlying primitive is deliberately small. What you see there is the interaction layer wrapped around a minimal, ceremony-free core. It’s unfinished by design — a sketch of how the system *feels*, not a claim about how it ultimately ships.
+The interface is deliberately expressive; the underlying primitive is deliberately small. What you see there is the interaction layer wrapped around a minimal, UI layout
 
 If you’re curious, run it. If not, ignore it.
 
