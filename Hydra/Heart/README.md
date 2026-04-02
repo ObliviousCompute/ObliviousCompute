@@ -1,4 +1,4 @@
-# ObliviousHeart v0.1  
+# Heart v0.1  
 **Truth Through Erasure**  
 _No time. No replay. No logs._
 
@@ -8,7 +8,7 @@ _No time. No replay. No logs._
 
 This folder contains the canonical heart of the **Oblivious Compute** primitive.
 
-The Oblivious Heart defines a minimal, deterministic law for how state survives in a
+The Heart defines a minimal, deterministic law for how state survives in a
 distributed system **without relying on time, history, logs, or replay protection**.
 There are no clocks, no sequence numbers, and no stored past—only a rule for what
 survives **now**.
@@ -19,9 +19,9 @@ If you are looking for the law itself, you are in the right place.
 
 ## Files
 
-### ObliviousHeart.py — *The Law*
+### Heart.py — *The Law*
 
-This is the full, readable, auditable implementation of the Oblivious Heart.
+This is the full, readable, auditable implementation of the Heart.
 
 It implements:
 
@@ -37,7 +37,7 @@ This file is intended to be:
 
 ---
 
-### ObliviousSkeleton.py — *The Essence*
+### Skeleton.py — *The Essence*
 
 This file is a non-executable skeleton of the law.
 
@@ -51,7 +51,7 @@ If you want to understand the system in under a minute, read this file first.
 
 ---
 
-### ObliviousSmokeTest.py — *The Witness*
+### SmokeTest.py — *The Witness*
 
 This is a runnable smoke test that demonstrates the law in action.
 
@@ -65,7 +65,7 @@ Running it shows, in one execution:
 
 The smoke test intentionally does **not** assume convergence under arbitrary,
 independently shuffled delivery orders. That property requires a dominance or
-tie-breaking rule, which the Oblivious Heart deliberately does not include.
+tie-breaking rule, which the Heart deliberately does not include.
 
 ---
 
@@ -76,7 +76,7 @@ From the folder containing the heart files, run the smoke test directly with Pyt
 The program will print a short declaration of what is being demonstrated, followed
 by a summary of the invariants that were proven.
 
-If the program exits cleanly and reports success, the ObliviousHeart invariants hold.
+If the program exits cleanly and reports success, the Heart invariants hold.
 
 ---
 
@@ -116,9 +116,9 @@ Those concerns live outside the heart.
 
 ## How to Read This Code
 
-1. Start with **ObliviousSkeleton.py**  
+1. Start with **Skeleton.py**  
 2. Identify the linchpin admissibility gate  
-3. Read **ObliviousHeart.py**  
+3. Read **Heart.py**  
 4. Run the smoke test  
 
 If you understand the skeleton, the rest will feel obvious.
