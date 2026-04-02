@@ -1,77 +1,173 @@
 # Byzantium
 ---
 
-![Title screen](Screenshots/SS1.png)
+A terminal-based system for forward-only state convergence.
 
 ---
 
 ## What This Is
 
-- A **single-file terminal demo**
+- A **distributed terminal system**
+- A **deterministic state machine**
 - A **rules + interaction sandbox**
-- A **UI lens** into a system built around overwrite, residue, and consequence
+- A **live networked simulation**
 
-This demo intentionally favors:
-- legibility
-- determinism
-- minimal input
-- visible pressure
+Byzantium favors:
 
-It does **not** implement cryptographic validation, networking, or persistence.  
-Those live in the broader *ObliviousCompute* project and will be integrated later.
+- legibility  
+- determinism  
+- minimal input  
+- visible pressure  
 
----
+There is no history log.  
+No rollback.  
+No undo.
 
-![Clear feed and Monuments](Screenshots/SS3.png)
+State is continuously **refined in place**.
 
 ---
 
 ## What This Is Not
 
-- Not a finished protocol
-- Not a multiplayer system
-- Not cryptographically secure (yet)
-- Not a consensus engine
+- Not a finished protocol  
+- Not production-ready  
+- Not hardened networking  
+- Not secure transport (yet)  
 
-Think of this as **wrapping paper**, not the gift.
+Think of this as:
 
----
-
-![Text feed](Screenshots/SS2.png)
+> a working system under tension — not a polished product.
 
 ---
 
-## Running the Demo
+## Running
 
 ### Requirements
 
 - Python **3.9+**
-- A UNIX-like terminal environment
+- A UNIX-like terminal
 
-### Supported Platforms
+### Supported
 
-- macOS ✅
-- Linux ✅
+- macOS ✅  
+- Linux ✅  
 
 ### Not Supported
 
 - Windows ❌  
 
-(Sorry — not sorry. This demo relies on terminal behavior and ANSI handling that Windows does not provide cleanly.)
+Sorry — but also not sorry.
+
+This system relies on terminal behavior and ANSI handling that Windows still manages to make painful.  
+If you really want it, you can fight your way through WSL.
 
 ---
 
-## License
+### Install dependencies
 
-This project is released under the terms of the license included in this repository.
-
-Please review the [`LICENSE`](../LICENSE) file before reusing, modifying, or redistributing any part of this code.
+```bash
+pip install cryptography wcwidth
+```
 
 ---
 
 ### Run
 
-From the `Byzantium/` directory:
+From the project directory:
 
 ```bash
-python3 ByzantiumDEMO.py 
+python3 Gateway.py
+```
+
+Follow the in-terminal prompts to:
+
+- choose mode (Siege or Campaign)  
+- set your gateway (port)  
+- define your identity  
+- set genesis size  
+
+Then the system initializes and the board emerges.
+
+---
+
+## How It Works (Brief)
+
+- Players (“souls”) join a shared state  
+- A deterministic genesis builds the board  
+- Actions are expressed as **glyphs**  
+- Glyphs are:
+  - validated  
+  - applied  
+  - propagated  
+
+If a mutation is valid, it becomes reality.  
+If not, it disappears.
+
+No forks.  
+No reconciliation.  
+No second chances.
+
+---
+
+## Core Modules
+
+- `Gateway.py` — entrypoint + title/menu  
+- `Vault.py` — key generation + signing  
+- `Dream.py` — state mutation + propagation  
+- `Crypt.py` — networking layer  
+- `Sanctum.py` — deterministic genesis  
+- `Field.py` — validation + invariants  
+- `Forge.py` — shared structures  
+- `Citadel.py` — UI intent + control  
+- `Spire.py` — terminal renderer  
+
+---
+
+## Networking
+
+Two modes:
+
+- **Siege** — local multi-terminal (same machine)  
+- **Campaign** — LAN multiplayer  
+
+Ports and configuration are handled inside the menu.
+
+---
+
+## ⚠️ Security Notice
+
+Byzantium uses **Ed25519 signing** for validating actions.
+
+However:
+
+- The networking layer currently uses **XOR-based obfuscation**
+- This is **not secure encryption**
+- Messages can be intercepted or inspected
+
+This is intentional for now.
+
+The system prioritizes **state integrity over transport security**.
+
+If you care about that layer, replace it with:
+
+- a proper KDF  
+- authenticated encryption (AES-GCM / ChaCha20-Poly1305)  
+- real peer validation  
+
+---
+
+## Design
+
+- No history  
+- No rollback  
+- No central authority  
+
+Only:
+
+> the current shape of state.
+
+---
+
+## License
+
+See the `LICENSE` file for details.
