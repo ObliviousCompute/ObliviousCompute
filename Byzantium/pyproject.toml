@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Byzantium"
+name = "Byzantium-Game"
 version = "0.1.0"
 description = "Terminal entrypoint for Byzantium"
 dependencies = [
