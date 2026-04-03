@@ -1,5 +1,6 @@
 # Byzantium
 ---
+![Byzantium Demo](../Relics/Test.gif)
 
 A terminal-based system for forward-only state convergence.
 
