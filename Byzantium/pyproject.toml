@@ -6,6 +6,9 @@ build-backend = "setuptools.build_meta"
 name = "Byzantium"
 version = "0.1.0"
 description = "Terminal entrypoint for Byzantium"
+dependencies = [
+    "cryptography",
+]
 
 [project.scripts]
 Byzantium = "Byzantium:main"
