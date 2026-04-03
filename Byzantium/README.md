@@ -167,6 +167,13 @@ Only:
 > the current shape of state.
 
 ---
+```bash
+# Install (requires pipx)
+pipx install "git+https://github.com/obliviousCompute/ObliviousCompute.git#subdirectory=Byzantium"
+
+# Run
+Byzantium
+```
 
 ## License
 
