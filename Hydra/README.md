@@ -8,6 +8,20 @@ This is a **research demo**, not a product.
 
 ---
 
+## Quick Note
+
+There’s also a `heart/` directory if you want to see the core system run **without any setup**.
+
+- No UDP  
+- No multiple terminals  
+- Just a simple smoke test  
+
+If you just want to see it work, run that first.
+
+Execute the SmokeTest.py in he same directory as Heart.py with Python.
+
+---
+
 ## What This Demo Demonstrates
 
 This demo runs multiple Hydra nodes as independent processes and shows how computers can drop out, reboot, and rejoin a network while staying in sync without coordination overhead. Nodes exchange full candidate states over UDP, allow temporary divergence, and deterministically converge by overwrite. There is no leader, no ordering requirement, no replay log, and no recovery of losing states. When a process is killed, it disappears. When it restarts, it instantly hydrates the current truth. Nothing panics. Nothing waits. The system simply keeps the present state and erases everything else.
