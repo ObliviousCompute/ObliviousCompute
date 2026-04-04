@@ -112,7 +112,7 @@ This allows the board to converge without logs, history, or replay.
 
 <img src="../Relics/TreeGlyph.png"/>
 
-> ↑↑↑...The upper part of the stack runs on State, and the lower stack runs on glyphs*...↑↑↑
+> *The upper part of the stack runs on State, and the lower stack runs on glyphs*
 
 ---
 
