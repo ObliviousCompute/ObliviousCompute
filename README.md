@@ -46,7 +46,7 @@ A stripped-down, hyper-legible expression of the invariant.
 
 Play Byzantium.  
 Run Hydra.  
-Read Skeleton.
+Study Skeleton.
 
 > OC doesn’t need to be explained—it can be observed.
 
