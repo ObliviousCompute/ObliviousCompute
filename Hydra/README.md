@@ -14,6 +14,10 @@ This demo runs multiple Hydra nodes as independent processes and shows how compu
 
 ---
 
+<img src="../Relics/ChompChomp.gif"/>
+
+---
+
 ## Requirements
 
 ### Operating System
