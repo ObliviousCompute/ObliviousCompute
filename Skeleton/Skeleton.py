@@ -1,29 +1,3 @@
-# ============================================== #
-# Skeleton v1.0 — Truth Through Erasure
-# No time. No replay. No logs.
-# ============================================== #
-
-# ============================================== #
-# BRAID SEQUENCE (NOT TIME)
-# ============================================== #
-# Rock, Paper, Scissors is NOT a clock.
-# It is NOT time. It is NOT ordering.
-#
-# It is a braid sequence.
-#
-# ROCK → PAPER → SCISSORS → ROCK
-#
-# Each position yields to the next.
-#
-# Past     → already accepted
-# Present  → currently held
-# Future   → next admissible
-#
-# The system does not move through time.
-# It waits for the next admissible position.
-# All change happens at that boundary.
-# ============================================== #
-
 
 ROCK, PAPER, SCISSORS = 1, 2, 3
 
