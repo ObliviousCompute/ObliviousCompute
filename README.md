@@ -9,8 +9,6 @@ Everything else is erased.
 
 If you want to wrap your head around the primitive, read the [Admissibility](./Admissibility.md) document.
 
-**OC is a primitive, not a product.**
-
 ---
 
 ## The Code
