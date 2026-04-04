@@ -1,4 +1,4 @@
- # Oblivious Computation and the Admissibility Braid
+# Oblivious Computation and the Admissibility Braid
 
 ---
 
@@ -19,7 +19,7 @@ A single croak carries across the pond. When a frog speaks, it does not pass a f
 
 Modern systems behave like frogs forced to stay on the log.
 
-They maintain logs—ordered histories of events. They replicate them, replay them, reconcile them—attempting to reconstruct what happened so they can decide what is true now.
+They maintain logs—ordered histories of events. They replicate, replay, and reconcile them—attempting to reconstruct what happened so they can decide what is true now.
 
 Computers on logs are not so different from frogs on a log.
 
@@ -43,7 +43,7 @@ There is no past to reconstruct, and no future to predict. There is only a curre
 
 Each state admits itself and one successor. Nothing else.
 
-This structure forms a braid—a closed system of admissible transitions.
+This structure is a braid—a closed system of admissible transitions.
 
 ---
 
@@ -51,7 +51,7 @@ This structure forms a braid—a closed system of admissible transitions.
 
 All computation occurs at the boundary between a valid state and its admissible continuations.
 
-This boundary is defined by a finite set of constraints, yet may be traversed indefinitely.
+This boundary is defined by a finite set of constraints, yet can be traversed indefinitely.
 
 A system may remain poised at a valid state for any duration—microseconds or millennia—without affecting correctness.
 
@@ -171,14 +171,6 @@ Admissibility-based coordination offers a different approach: rather than recons
 Computation remains confined to the boundary of admissibility, reducing the need for historical reconstruction and minimizing the surface for incoherence.
 
 In this sense, admissibility does not compete with quantum models—it complements them, providing a structural framework for coordinating state evolution without reliance on time or sequence.
-
----
-
-By constraining admissible transitions, systems can align without requiring shared history.
-
-Each participant evaluates only what is currently valid and what is admissibly next.
-
-The result is a lightweight form of synchronization, driven entirely by local invariants.
 
 ---
 
