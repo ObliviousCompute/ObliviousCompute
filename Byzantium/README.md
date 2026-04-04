@@ -103,48 +103,9 @@ No second chances.
 
 ---
 
-## Core Modules
+## Architecture
 
-<table>
-  <tr>
-    <td valign="top">
 
-- `Gateway.py` — entrypoint + title/menu  
-- `Vault.py` — key generation + signing  
-- `Dream.py` — state mutation + propagation  
-- `Crypt.py` — networking layer  
-- `Sanctum.py` — deterministic genesis  
-- `Field.py` — validation + invariants  
-- `Forge.py` — shared structures  
-- `Citadel.py` — UI intent + control  
-- `Spire.py` — terminal renderer  
-
-    </td>
-    <td valign="top">
-    <pre>
-      
-         ┌[GateWay]┐
-         ↑    ↓    ↓
-         ├─[Spire]─┤
-         ↑    ↑    ↓
-         ├[Citadel]┤
-         ↑    ↑    ↓
-      {Forge} | (Vault)
-              ↑    ↓
-       ┌─ ←(Dream)←┘←┐
-       ↓      ↑      ↑
-       | ┌─ → ┴ ← ─┐ |
-       ↓ ↑ {Field} ↑ ↑
-       | └(Sanctum)┘ |
-       ↓      ↑      ↑
-       └─ →(Crypt)→ ─┘
-             ↓ ↑
-           *.*.*.* 
-</pre>
-
-    </td>
-  </tr>
-</table>
 
 ---
 
