@@ -20,9 +20,7 @@ Start with the surface, then move inward:
 ### Byzantium
 A live, networked terminal system built on OC.
 
-This is the primitive made visible—a shared projection where interaction directly reshapes state.
-
-→ [`Byzantium/`](./Byzantium)
+[`Byzantium`](./Byzantium) is the primitive made visible—a shared projection where interaction directly reshapes state.
 
 *(the 10-minute flight)*
 
@@ -31,9 +29,7 @@ This is the primitive made visible—a shared projection where interaction direc
 ### Hydra
 A minimal distributed demonstration of the same primitive.
 
-Hydra shows how state moves and collapses across a small network without logs or coordination.
-
-→ [`Hydra/`](./Hydra)
+[`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or coordination.
 
 *(the 1-minute flight)*
 
@@ -42,9 +38,7 @@ Hydra shows how state moves and collapses across a small network without logs or
 ### Skeleton
 A stripped-down, hyper-legible expression of the invariant.
 
-No abstraction, no narrative—just the structure that makes the system lawful.
-
-→ [`Skeleton/`](./Skeleton)
+[`Skeleton`](./Skeleton) is structure that makes the system lawful. No abstraction, no narrative.
 
 *(the lift diagram)*
 
