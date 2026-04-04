@@ -29,7 +29,7 @@ A live, networked terminal system built on OC.
 ### Hydra
 A minimal distributed demonstration of the same primitive.
 
-[`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or coordination.
+[`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
 
 *(the 1-minute flight)*
 
@@ -52,7 +52,7 @@ Read Skeleton.
 
 ---
 
-## What Problem Does OC Address?
+## What OC Removes
 
 Most distributed systems assume correctness requires memory:
 
@@ -67,6 +67,6 @@ Oblivious Compute removes the requirement to remember the past.
 
 Correctness is defined operationally as:
 
-> what survives
+> What survives  
 
-Not how it was reached.
+>Not how it was reached
