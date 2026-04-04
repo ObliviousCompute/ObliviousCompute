@@ -5,7 +5,7 @@ A distributed terminal system where the interface *is* the program.
 ---
 
 <p align="center">
-  <img src="../Relics/bring-the-chips.gif" width="600"/>
+  <img src=".../Relics/bring-the-chips.gif" width="600"/>
 </p>
 
 ---
