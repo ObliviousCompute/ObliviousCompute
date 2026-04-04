@@ -1,10 +1,10 @@
 # Oblivious Compute (OC)
 
-Oblivious Compute (OC) is a distributed computation primitive that determines correctness through **selection and erasure** rather than agreement and historical coordination.
+Oblivious Compute (OC) is a distributed computation primitive that determines correctness through **admissibility and erasure** rather than agreement and historical coordination.
 
-Instead of preserving logs, ordering messages, or reconstructing the past, OC allows multiple candidate states to briefly exist and then **deterministically collapses them into a single surviving state**.
+Instead of preserving logs, ordering messages, or reconstructing the past, OC allows multiple candidate states to briefly exist and then admits only one.
 
-The surviving state is truth.  
+The admitted state is truth.  
 Everything else is erased.
 
 OC is a primitive, not a product.
