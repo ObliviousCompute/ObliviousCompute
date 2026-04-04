@@ -46,8 +46,8 @@ Byzantium runs in two modes.
 **Siege Mode** is local—multiple terminals on the same machine. *(a controlled sandbox)*  
 **Campaign Mode** runs across a LAN, allowing multiple machines to share the same projection.
 
->  All nodes must use the same gateway (port) and skeleton key to join the same projection. Default gateway: 9000.  
-> *Tip: or just spam Enter to drop straight into a board*.
+>  *All nodes must use the same gateway (port) and same skeleton key to join the same projection. Default gateway: 9000*.  
+>  Tip: *or just spam Enter to drop straight into a board*.
 
 ---
 
