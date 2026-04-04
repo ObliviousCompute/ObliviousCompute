@@ -39,6 +39,16 @@ You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
 
 ---
 
+## 🌐 Networking
+
+Byzantium runs in two modes.
+
+**Siege Mode** is local—multiple terminals on the same machine. *(a controlled sandbox)*  
+**Campaign Mode** runs across a LAN, allowing multiple machines to share the same projection.
+> *Tip: or just spam Enter to drop straight into a board.*
+
+---
+
 ## ♟️ The Board ♟️
 
 At the center of Byzantium is a **24-cell board**.
@@ -114,15 +124,6 @@ This allows the board to converge without logs, history, or replay.
 <img src="../Relics/TreeGlyph.png" width="600"/>
 
 > *The upper part of the stack runs on State, and the lower stack runs on Glyphs*
-
----
-
-## 🌐 Networking
-
-Byzantium runs in two modes.
-
-**Siege** is local—multiple terminals on the same machine.  
-**Campaign** runs across a LAN, allowing multiple machines to participate in the same projection.
 
 ---
 
