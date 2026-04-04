@@ -122,7 +122,6 @@ No second chances.
     </td>
     <td valign="top">
     <pre> 
-      
          ┌[GateWay]┐
          ↑    ↓    ↓
          ├─[Spire]─┤
@@ -139,8 +138,7 @@ No second chances.
        ↓      ↑      ↑
        └─ →(Crypt)→ ─┘
              ↓ ↑
-           *.*.*.*
-  
+           *.*.*.* 
 </pre>
 
     </td>
