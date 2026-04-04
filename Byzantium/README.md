@@ -44,7 +44,7 @@ The system is exactly what you see.
 ## Install
 
 ```bash
-pipx install byzantium-game
+pipx install Byzantium-Game
 Byzantium
 ```
 
@@ -154,4 +154,6 @@ Only:
 
 ## License
 
-See the `LICENSE` file for details.
+This project is released under the terms of the [LICENSE](../LICENSE).
+
+Use it, study it, modify it — just respect the terms outlined there.
