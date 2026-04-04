@@ -47,7 +47,7 @@ Byzantium runs in two modes.
 **Campaign Mode** runs across a LAN, allowing multiple machines to share the same projection.
 
 >  *All nodes must use the same gateway (port) and same skeleton key to join the same projection. Default gateway: 9000*.  
->  Tip: *or just spam Enter to drop straight into a board*.
+>  *Tip: just spam Enter to drop straight into a board*.
 
 ---
 
