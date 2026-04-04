@@ -1,4 +1,3 @@
-
 ROCK, PAPER, SCISSORS = 1, 2, 3
 
 NEXT = {
@@ -7,23 +6,20 @@ NEXT = {
     SCISSORS: ROCK,
 }
 
-
-def isDream(packet):
+def isState(packet):
     return (
-        packet.get("isDream")
+        packet.get("isState")
         or packet.get("isSnap")
-        or packet.get("isSeed")
+        or packet.get("isIntent")
     )
-
 
 def inWindow(incoming, current):
     return incoming in (current, NEXT[current])
 
-
 def ingest(state, packet):
 
-    # Dream → rehydrate only
-    if isDream(packet):
+    # State → rehydrate only
+    if isState(packet):
         if packet.get("tallies") and packet["tallies"] != state["tallies"]:
             state["tallies"] = dict(packet["tallies"])
         state["envy"] = False
@@ -33,12 +29,10 @@ def ingest(state, packet):
     incoming = packet["sequence"]
 
     # ========== LINCHPIN ========== #
-        ↓    ↓    ↓    ↓    ↓    ↓            
     if not inWindow(incoming, current):
         intents = ([] if state["envy"] else ["ENVY"])
         state["envy"] = True
-        return state, intents + ["Sync"]       
-        ↑    ↑    ↑    ↑    ↑    ↑     
+        return state, intents + ["Sync"]
     # ========== LINCHPIN ========== #
 
     state["envy"] = False
