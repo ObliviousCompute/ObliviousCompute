@@ -110,7 +110,7 @@ This allows the board to converge without logs, history, or replay.
 
 ## Architecture
 
-<img src="../Relics/TreeGlyph.png"/>
+<img src="../Relics/TreeGlyph.png" width=600/>
 
 > *The upper part of the stack runs on State, and the lower stack runs on Glyphs*
 
