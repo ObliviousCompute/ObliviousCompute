@@ -1,6 +1,6 @@
 # Byzantium
 
-A distributed terminal system where the interface *is* the program.
+**A shared projection where actions become reality.**
 
 ---
 
@@ -12,26 +12,28 @@ A distributed terminal system where the interface *is* the program.
 
 ## What This Is
 
-- A **distributed terminal system**
-- A **deterministic state machine**
-- A **rules + interaction sandbox**
-- A **live networked simulation**
+Byzantium is a **shared projection**.
 
-Byzantium favors:
+The system exists entirely on the surface you’re looking at. There’s no hidden layer, no stored history, no backend keeping score. What you see is the system—continuously reshaped by the people inside it.
 
-- legibility  
-- determinism  
-- minimal input  
-- visible pressure  
+You don’t play *on* it. You play *with* it.
 
-There is no history log.  
-No rollback.  
-No undo.
+It’s like a group of people holding up a card table. As long as someone is still holding it, the table exists—and the game continues. Let go, and it disappears.
 
-State is continuously **refined in place**.
+---
 
-There is no “behind the scenes.”  
-The system is exactly what you see.
+## The Board
+
+At the center of Byzantium is a **24-cell board**.
+
+Those 24 cells are the state.
+
+Everything you see between the menu and the input line—the 6×4 grid—is the system itself. There is nothing behind it. The system doesn’t synchronize logs or events. It synchronizes this board.
+
+When participants agree on those 24 cells, the result behaves like a single structure perceived from multiple places.
+
+> You’re not looking at a representation of the system.  
+> You’re looking at the system.
 
 ---
 
@@ -41,69 +43,72 @@ The system is exactly what you see.
 
 ---
 
-## Install
-
-```bash
-pipx install Byzantium-Game
-Byzantium
-```
-
-Requires:
-
-- Python **3.9+**
-- A UNIX-like terminal
-
-Supported:
-
-- macOS ✅  
-- Linux ✅  
-
-Not Supported:
-
-- Windows ❌  
-
----
-
 ## What You're Seeing
 
-- Messages are part of state — not logs  
-- Value ("salt") moves through interaction  
-- Incentives shape behavior  
-- Every action mutates the shared surface  
+Messages aren’t logs—they’re part of state. Value (“salt”) moves through interaction, and incentives shape behavior in real time.
 
-If a mutation is valid, it becomes reality.  
-If not, it disappears.
+Every action attempts to reshape the board. If the change is valid, it becomes reality. If it isn’t, it disappears.
 
-No forks.  
-No reconciliation.  
-No second chances.
+There are no forks. No reconciliation. No second chances.
+
+> History is replaced by admissibility.
 
 ---
 
-## What This Is Not
+## Presence & Rejoining
 
-- Not a finished protocol  
-- Not production-ready  
-- Not hardened networking  
-- Not secure transport (yet)  
+You can leave at any time and come back later—seconds, minutes, or hours.
 
-> a working system under tension — not a polished product
+As long as at least one participant is still connected, the projection persists.
+
+When you return with the same identity, nothing is replayed and nothing is reconstructed. You simply accept the current valid state—in a single step.
+
+It’s like stepping back up to the card table. You don’t ask what happened while you were gone. You just look down—and the game is already in progress.
+
+> You don’t reconnect to the past.  
+> You reconnect to the present.
+
+---
+
+## Ashfall (Text Feed)
+
+The text feed isn’t a global log. Each node keeps a small rolling cache of recent messages—just enough to give context.
+
+This means different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
+
+> What you read is local.  
+> What you see is real.
+
+---
+
+## Install
+
+To run Byzantium, install it with:
+
+```bash
+pipx install Byzantium-Game  
+Byzantium
+```
+You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
+
+It currently runs on macOS and Linux. Windows is not supported.
 
 ---
 
 ## How It Works (Brief)
 
-- Players (“souls”) join a shared state  
-- A deterministic genesis builds the board  
-- Actions are expressed as **glyphs**  
-- Glyphs are:
-  - validated  
-  - applied  
-  - propagated  
+Players (“souls”) enter a shared state. A deterministic genesis builds the board, and every interaction is expressed as a glyph—validated, applied, and propagated across the network.
+
+Each part of the system only accepts what already exists or one valid next state. Anything else is ignored completely.
+
+This allows the board to converge without logs, history, or replay.
+
+> If it can’t exist next, it doesn’t exist at all.
 
 ---
 
 ## Architecture
+
 <p align="center">
   <img src="../Relics/TreeGlyph.png"/>
 </p>
@@ -112,23 +117,18 @@ No second chances.
 
 ## Networking
 
-Two modes:
+Byzantium runs in two modes.
 
-- **Siege** — local multi-terminal (same machine)  
-- **Campaign** — LAN multiplayer  
+**Siege** is local—multiple terminals on the same machine.  
+**Campaign** runs across a LAN, allowing multiple machines to participate in the same projection.
 
 ---
 
 ## ⚠️ Security Notice
 
-Byzantium uses **Ed25519 signing** for validating actions.
+Byzantium uses Ed25519 signing to validate actions.
 
-However:
-
-- networking uses **XOR-based obfuscation**
-- this is **not secure encryption**
-
-This is intentional.
+However, networking currently relies on simple XOR-based obfuscation. This is not secure encryption—and it’s not meant to be.
 
 The system prioritizes **state integrity over transport security**.
 
@@ -140,11 +140,19 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
+## What This Is Not
+
+This isn’t a finished protocol or a production-ready system. The networking isn’t hardened, and the transport layer isn’t secure.
+
+This is a working system under tension—not a polished product.
+
+---
+
 ## Design
 
-- No history  
-- No rollback  
-- No central authority  
+No history.  
+No rollback.  
+No central authority.
 
 Only:
 
@@ -152,8 +160,18 @@ Only:
 
 ---
 
+## A Note
+
+If Hydra was a one-minute flight, this is closer to ten.
+
+It’s not smooth. It’s not comfortable.
+
+But it flies.
+
+---
+
 ## License
 
 This project is released under the terms of the [LICENSE](../LICENSE).
 
-Use it, study it, modify it — just respect the terms outlined there.
+Use it, study it, modify it—just respect the terms outlined there.
