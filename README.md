@@ -2,14 +2,65 @@
 
 Oblivious Compute (OC) is a distributed computation primitive that determines correctness through **selection and erasure** rather than agreement and historical coordination.
 
-Instead of passing messages in chains or preserving logs, OC allows multiple candidate states to exist briefly and then **deterministically collapses them to a single surviving state**. The surviving state is the truth; all others are erased and leave no trace.
+Instead of preserving logs, ordering messages, or reconstructing the past, OC allows multiple candidate states to briefly exist and then **deterministically collapses them into a single surviving state**.
+
+The surviving state is truth.  
+Everything else is erased.
 
 OC is a primitive, not a product.
 
 ---
-## Start here
 
-This repository includes a set of short write-ups:
+## The Code
+
+Oblivious Compute is best understood by interacting with it.
+
+Start with the surface, then move inward:
+
+### Byzantium
+A live, networked terminal system built on OC.
+
+This is the primitive made visible—a shared projection where interaction directly reshapes state.
+
+→ [`Byzantium/`](./Byzantium)
+
+*(the 10-minute flight)*
+
+---
+
+### Hydra
+A minimal distributed demonstration of the same primitive.
+
+Hydra shows how state moves and collapses across a small network without logs or coordination.
+
+→ [`Hydra/`](./Hydra)
+
+*(the 1-minute flight)*
+
+---
+
+### Skeleton
+A stripped-down, hyper-legible expression of the invariant.
+
+No abstraction, no narrative—just the structure that makes the system lawful.
+
+→ [`Skeleton/`](./Skeleton)
+
+*(the lift diagram)*
+
+---
+
+Run Byzantium.  
+Watch Hydra.  
+Read Skeleton.
+
+> OC doesn’t need to be explained—it can be observed.
+
+---
+
+## Fragments
+
+This repository includes a set of short write-ups exploring the ideas behind OC.
 
 [Oblivious-Compute.pdf](./Fragments/Oblivious-Compute.pdf) describes the core compute primitive itself.
 
@@ -17,63 +68,23 @@ This repository includes a set of short write-ups:
 
 [Ambient-Compute.pdf](./Fragments/Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
 
-## The Code
-
-The entire oblivious compute primitive fits in a few kilobytes: **Oblivious Heart (~4.5 KB)** defines the core invariant, and the **Hydra Plexus (~5.7 KB)** expresses that same invariant in a networked swarm context.
-
-If you want the law without ceremony, start here → the [`Heart/`](./Heart/) directory. Read the code and run the smoke test.
-
-If you just want to see it move, go here → the [`Hydra/`](./Hydra/) demo.
-
-Both paths are concrete instantiations of the same oblivious compute primitive.
-
-**Note:**  
-This repository also includes a **2-24 Player Terminal Network Game** for the **Oblivious Compute encryption stack**, located in [`Byzantium/`](./Byzantium).
-
-The interface is deliberately expressive; the underlying primitive is deliberately small. What you see there is the interaction layer wrapped around a minimal, UI layout
-
-If you’re curious, run it. If not, ignore it.
-
 ---
+
 ## What Problem Does OC Address?
 
 Most distributed systems assume correctness requires memory:
-- message ordering
-- logs and replay
-- consensus and reconciliation
-- long-lived historical state
 
-These assumptions make systems heavy and complex.
+- message ordering  
+- logs and replay  
+- consensus and reconciliation  
+- long-lived historical state  
 
-Oblivious Compute removes the requirement to remember the past.  
-Correctness is defined operationally as **what survives**, not how it was reached.
+These assumptions introduce complexity, latency, and coordination overhead.
 
----
+Oblivious Compute removes the requirement to remember the past.
 
-## Repository Structure
+Correctness is defined operationally as:
 
-This repository separates **theory** from **instantiation**.
+> what survives
 
-```text
-ObliviousCompute
-├── Byzantium
-|   ├──Byzantium.py
-|   └──README.md
-├── Fragments/
-|   ├── Ambient-Compute.pdf
-|   ├── Forward-Compute.pdf
-|   └── Oblivious-Compute.pdf
-├── Heart/
-|   ├── ObliviousHeart.py
-|   ├── ObliviousSkeleton.py
-|   ├── ObliviousSmokeTest.py
-|   └── README.md
-├── Hydra/
-|   ├── README.md
-|   ├── hydra.py
-|   ├── plexus.py
-|   └── shell.py     
-├── LICENSE
-├── NOTICE
-└── README.md
-
+Not how it was reached.
