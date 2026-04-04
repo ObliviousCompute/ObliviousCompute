@@ -8,7 +8,7 @@
 
 ---
 
-## What This Is
+## 🧠 What This Is
 
 Byzantium is a **shared projection**.
 
@@ -20,7 +20,7 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ---
 
-## The Board
+## 🎲 The Board ♟️
 
 At the center of Byzantium is a **24-cell board**.
 
@@ -41,7 +41,7 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 ---
 
-## What You're Seeing
+## 🔍 What You're Seeing
 
 Messages aren’t logs—they’re part of state. Value (“salt”) moves through interaction, and incentives shape behavior in real time.
 
@@ -53,7 +53,7 @@ There are no forks. No reconciliation. No second chances.
 
 ---
 
-## Presence & Rejoining
+## 🧩 Presence & Rejoining
 
 You can leave at any time and come back later—seconds, minutes, or hours.
 
@@ -68,7 +68,7 @@ It’s like stepping back up to the card table. You don’t ask what happened wh
 
 ---
 
-## Ashfall (Text Feed)
+## 🔥 Ashfall (Text Feed)
 
 The text feed isn’t a global log. Each node keeps a small rolling cache of recent messages—just enough to give context.
 
@@ -78,7 +78,7 @@ This means different participants may see slightly different recent text. The fe
 
 ---
 
-## Install
+## ⬇️ Install
 
 To run Byzantium, install it with:
 
@@ -96,7 +96,7 @@ You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
 
 ---
 
-## How It Works (Brief)
+## ⚙️ How It Works (Brief)
 
 Players (“souls”) enter a shared state. A deterministic genesis builds the board, and every interaction is expressed as a glyph—validated, applied, and propagated across the network.
 
@@ -108,7 +108,7 @@ This allows the board to converge without logs, history, or replay.
 
 ---
 
-## Architecture
+## 🏛️ Architecture
 
 <img src="../Relics/TreeGlyph.png" width=600/>
 
@@ -116,7 +116,7 @@ This allows the board to converge without logs, history, or replay.
 
 ---
 
-## Networking
+## 🌐 Networking
 
 Byzantium runs in two modes.
 
@@ -125,7 +125,7 @@ Byzantium runs in two modes.
 
 ---
 
-## ⚠️ Security Notice
+## 🔐 Security Notice
 
 Byzantium uses Ed25519 signing to validate actions.
 
@@ -139,7 +139,7 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-## What This Is Not
+## 🤔 What This Is Not
 
 This isn’t a finished protocol or a production-ready system. The networking isn’t hardened, and the transport layer isn’t secure.
 
@@ -147,7 +147,7 @@ This is a working system under tension—not a polished product.
 
 ---
 
-## Design
+## 🧬 Design
 
 Truth Through Erasure
 No Time.  
@@ -160,9 +160,9 @@ Only:
 
 ---
 
-## A Note
+## 🪶 A Note
 
-If Hydra was the one-minute flight, this is closer to the ten-minute flight.
+If the Hydra Demo was the one-minute flight, this is closer to the ten-minute flight.
 
 It’s not smooth. It’s not comfortable.
 
