@@ -36,7 +36,7 @@ When participants agree on those 24 cells, the result behaves like a single stru
 ---
 
 <img src="../Relics/DoubleTrouble.gif"/>
-*Fun fact:↑↑this GIF is about 3× the size of the entire Byzantium runtime↑↑↑.*
+_Fun fact:↑↑this GIF is about 3× the size of the entire Byzantium runtime↑↑↑._
 
 ---
 
