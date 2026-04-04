@@ -7,6 +7,8 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 The admitted state is truth.  
 Everything else is erased.
 
+If you want to wrap your head around the primitive, read the [Admissibility](./Admissibility.md) document.
+
 **OC is a primitive, not a product.**
 
 ---
@@ -49,18 +51,6 @@ Watch Hydra.
 Read Skeleton.
 
 > OC doesn’t need to be explained—it can be observed.
-
----
-
-## Fragments
-
-This repository includes a set of short write-ups exploring the ideas behind OC.
-
-[Oblivious-Compute.pdf](./Fragments/Oblivious-Compute.pdf) describes the core compute primitive itself.
-
-[Forward-Compute.pdf](./Fragments/Forward-Compute.pdf) explains the forward-compute model used by Hydra and the Oblivious Heart.
-
-[Ambient-Compute.pdf](./Fragments/Ambient-Compute.pdf) questions whether consensus and history are foundational at all.
 
 ---
 
