@@ -74,8 +74,7 @@ The text feed isn’t a global log. Each node keeps a small rolling cache of rec
 
 This means different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
 
-> What you read is local.  
-> What you see is real.
+> The feed drifts. The board converges.
 
 ---
 
@@ -148,13 +147,14 @@ This is a working system under tension—not a polished product.
 
 ## Design
 
-No history.  
-No rollback.  
-No central authority.
+Truth Through Erasure
+No Time.  
+No History.  
+No logs.
 
 Only:
 
-> the current shape of state
+> the current admissible shape of state
 
 ---
 
