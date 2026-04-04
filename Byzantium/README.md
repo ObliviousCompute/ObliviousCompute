@@ -121,14 +121,15 @@ No second chances.
 
     </td>
     <td valign="top">
-    <pre> 
+    <pre>
+      
          ┌[GateWay]┐
          ↑    ↓    ↓
          ├─[Spire]─┤
          ↑    ↑    ↓
          ├[Citadel]┤
          ↑    ↑    ↓
-      {Forge} | (Vault)
+      {Forge} | (Vault)   
               ↑    ↓
        ┌─ ←(Dream)←┘←┐
        ↓      ↑      ↑
