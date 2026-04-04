@@ -4,9 +4,7 @@
 
 ---
 
-<p align="center">
   <img src="../Relics/BringTheChips.gif"/>
-</p>
 
 ---
 
