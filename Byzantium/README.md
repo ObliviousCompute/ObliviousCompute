@@ -129,7 +129,7 @@ No second chances.
          ↑    ↑    ↓
          ├[Citadel]┤
          ↑    ↑    ↓
-      {Forge} | (Vault)   
+      {Forge} | (Vault)
               ↑    ↓
        ┌─ ←(Dream)←┘←┐
        ↓      ↑      ↑
