@@ -1,8 +1,12 @@
 # Byzantium
----
-![Byzantium Demo](../Relics/Test.gif)
 
-A terminal-based system for forward-only state convergence.
+A distributed terminal system where the interface *is* the program.
+
+---
+
+<p align="center">
+  <img src="../Relics/bring-the-chips.gif" width="600"/>
+</p>
 
 ---
 
@@ -26,6 +30,54 @@ No undo.
 
 State is continuously **refined in place**.
 
+There is no “behind the scenes.”  
+The system is exactly what you see.
+
+---
+
+<p align="center">
+  <img src="../Relics/double-it.gif" width="600"/>
+</p>
+
+---
+
+## Install
+
+```bash
+pipx install byzantium-game
+Byzantium
+```
+
+Requires:
+
+- Python **3.9+**
+- A UNIX-like terminal
+
+Supported:
+
+- macOS ✅  
+- Linux ✅  
+
+Not Supported:
+
+- Windows ❌  
+
+---
+
+## What You're Seeing
+
+- Messages are part of state — not logs  
+- Value ("salt") moves through interaction  
+- Incentives shape behavior  
+- Every action mutates the shared surface  
+
+If a mutation is valid, it becomes reality.  
+If not, it disappears.
+
+No forks.  
+No reconciliation.  
+No second chances.
+
 ---
 
 ## What This Is Not
@@ -35,59 +87,7 @@ State is continuously **refined in place**.
 - Not hardened networking  
 - Not secure transport (yet)  
 
-Think of this as:
-
-> a working system under tension — not a polished product.
-
----
-
-## Running
-
-### Requirements
-
-- Python **3.9+**
-- A UNIX-like terminal
-
-### Supported
-
-- macOS ✅  
-- Linux ✅  
-
-### Not Supported
-
-- Windows ❌  
-
-Sorry — but also not sorry.
-
-This system relies on terminal behavior and ANSI handling that Windows still manages to make painful.  
-If you really want it, you can fight your way through WSL.
-
----
-
-### Install dependencies
-
-```bash
-pip install cryptography wcwidth
-```
-
----
-
-### Run
-
-From the project directory:
-
-```bash
-python3 Gateway.py
-```
-
-Follow the in-terminal prompts to:
-
-- choose mode (Siege or Campaign)  
-- set your gateway (port)  
-- define your identity  
-- set genesis size  
-
-Then the system initializes and the board emerges.
+> a working system under tension — not a polished product
 
 ---
 
@@ -101,16 +101,13 @@ Then the system initializes and the board emerges.
   - applied  
   - propagated  
 
-If a mutation is valid, it becomes reality.  
-If not, it disappears.
-
-No forks.  
-No reconciliation.  
-No second chances.
-
 ---
 
 ## Core Modules
+
+<table>
+  <tr>
+    <td valign="top">
 
 - `Gateway.py` — entrypoint + title/menu  
 - `Vault.py` — key generation + signing  
@@ -122,6 +119,32 @@ No second chances.
 - `Citadel.py` — UI intent + control  
 - `Spire.py` — terminal renderer  
 
+    </td>
+    <td valign="top">
+
+<pre>
+╭[Gateway]╮
+  ↑   ↓   ↓
+╰─[Spire]─╯
+  ↑   ↑   ↓
+╭[Citadel]╮
+  ↑   ↑   ↓
+{Forge} │ (Vault)
+     ↑   ↓
+← (Dream) →
+     ↑
+  {Field}
+ (Sanctum)
+     ↑
+  (Crypt)
+     ↓
+  * * * *
+</pre>
+
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## Networking
@@ -131,8 +154,6 @@ Two modes:
 - **Siege** — local multi-terminal (same machine)  
 - **Campaign** — LAN multiplayer  
 
-Ports and configuration are handled inside the menu.
-
 ---
 
 ## ⚠️ Security Notice
@@ -141,19 +162,18 @@ Byzantium uses **Ed25519 signing** for validating actions.
 
 However:
 
-- The networking layer currently uses **XOR-based obfuscation**
-- This is **not secure encryption**
-- Messages can be intercepted or inspected
+- networking uses **XOR-based obfuscation**
+- this is **not secure encryption**
 
-This is intentional for now.
+This is intentional.
 
 The system prioritizes **state integrity over transport security**.
 
-If you care about that layer, replace it with:
+---
 
-- a proper KDF  
-- authenticated encryption (AES-GCM / ChaCha20-Poly1305)  
-- real peer validation  
+<p align="center">
+  <img src="../Relics/collecting-souls.gif" width="600"/>
+</p>
 
 ---
 
@@ -165,16 +185,9 @@ If you care about that layer, replace it with:
 
 Only:
 
-> the current shape of state.
+> the current shape of state
 
 ---
-```bash
-# Install (requires pipx)
-pipx install "git+https://github.com/obliviousCompute/ObliviousCompute.git#subdirectory=Byzantium"
-
-# Run
-Byzantium
-```
 
 ## License
 
