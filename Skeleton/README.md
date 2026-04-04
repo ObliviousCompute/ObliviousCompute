@@ -1,4 +1,4 @@
-# Skeleton
+# 💀Skeleton
 
 A minimal, fully legible expression of the Oblivious Compute invariant.
 
