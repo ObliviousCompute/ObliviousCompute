@@ -21,8 +21,6 @@ Modern systems behave like frogs forced to stay on the log.
 
 They maintain logs—ordered histories of events. They replicate them, replay them, reconcile them—attempting to reconstruct what happened so they can decide what is true now.
 
-But the resemblance is hard to ignore.
-
 Computers on logs are not so different from frogs on a log.
 
 And yet, like frogs, computers are capable of more.
@@ -37,7 +35,7 @@ Consider the smallest non-trivial system: three states in a cycle.
 
 Rock → Paper → Scissors → Rock.
 
-It is tempting to think of this as past, present, and next.
+It is tempting to think of this as *past*, *present*, and *waiting*.
 
 This intuition is useful—but only briefly.
 
@@ -155,6 +153,24 @@ Devices that are present, but not mutually visible.
 
 These are not failures of connectivity.  
 They are failures of coordination.
+
+By constraining admissible transitions, systems can align without requiring shared history.
+
+Each participant evaluates only what is currently valid and what is admissibly next.
+
+The result is a lightweight form of synchronization, driven entirely by local invariants.
+
+---
+
+This model extends naturally beyond classical systems.
+
+In quantum computing, maintaining coherence across distributed or entangled states is constrained not only by noise, but by the difficulty of coordinating valid transitions without introducing inconsistency.
+
+Admissibility-based coordination offers a different approach: rather than reconstructing prior states or enforcing global agreement, systems evolve only through locally valid transitions.
+
+Computation remains confined to the boundary of admissibility, reducing the need for historical reconstruction and minimizing the surface for incoherence.
+
+In this sense, admissibility does not compete with quantum models—it complements them, providing a structural framework for coordinating state evolution without reliance on time or sequence.
 
 ---
 
