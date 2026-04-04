@@ -162,7 +162,7 @@ Only:
 
 ## A Note
 
-If Hydra was a one-minute flight, this is closer to ten.
+If Hydra was the one-minute flight, this is closer to the ten-minute flight.
 
 It’s not smooth. It’s not comfortable.
 
