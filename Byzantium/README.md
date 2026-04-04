@@ -36,7 +36,7 @@ The system is exactly what you see.
 ---
 
 <p align="center">
-  <img src="../Relics/double-it.gif" width="600"/>
+  <img src="../Relics/DoubleTrouble.gif"/>
 </p>
 
 ---
@@ -104,9 +104,9 @@ No second chances.
 ---
 
 ## Architecture
-
-
-
+<p align="center">
+  <img src="../Relics/TreeGlyph.png"/>
+</p>
 ---
 
 ## Networking
@@ -134,7 +134,7 @@ The system prioritizes **state integrity over transport security**.
 ---
 
 <p align="center">
-  <img src="../Relics/collecting-souls.gif" width="600"/>
+  <img src="../Relics/CollectingSouls.gif"/>
 </p>
 
 ---
