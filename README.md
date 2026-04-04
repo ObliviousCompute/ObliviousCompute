@@ -68,5 +68,4 @@ Oblivious Compute removes the requirement to remember the past.
 Correctness is defined operationally as:
 
 > What survives  
-
 >Not how it was reached
