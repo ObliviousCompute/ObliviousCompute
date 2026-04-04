@@ -16,7 +16,7 @@ The system exists entirely on the surface you’re looking at. There’s no hidd
 
 You don’t play *on* it. You play *with* it.
 
-It’s like a group of people holding up a card table. As long as someone is still holding it, the table exists—and the game continues. Let go, and it disappears.
+It’s like a group of people holding up a card table. As long as someone is still holding it, the table exists—and the game continues. Once everyone lets go, it disappears.
 
 ---
 
@@ -36,7 +36,7 @@ When participants agree on those 24 cells, the result behaves like a single stru
 ---
 
 <img src="../Relics/DoubleTrouble.gif"/>
-  ↑↑↑ Fun fact: This GIF is over 3× the size of the entire Byzantium runtime ↑↑↑
+> ↑↑↑ Fun fact: This GIF is over 3× the size of the entire Byzantium runtime ↑↑↑
 
 ---
 
@@ -88,7 +88,11 @@ Byzantium
 ```
 You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
 
-It currently runs on macOS and Linux. Windows is not supported.
+### Operating Systems Support
+
+- ✅ Linux  
+- ✅ macOS  
+- ❌ Windows (Sorry, but not sorry)
 
 ---
 
