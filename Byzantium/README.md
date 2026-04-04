@@ -4,7 +4,7 @@
 
 ---
 
-  <img src="../Relics/BringTheChips.gif"/>
+<img src="../Relics/BringTheChips.gif"/>
 
 ---
 
@@ -35,9 +35,7 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 ---
 
-<p align="center">
-  <img src="../Relics/DoubleTrouble.gif"/>
-</p>
+<img src="../Relics/DoubleTrouble.gif"/>
 
 ---
 
@@ -107,9 +105,7 @@ This allows the board to converge without logs, history, or replay.
 
 ## Architecture
 
-<p align="center">
-  <img src="../Relics/TreeGlyph.png"/>
-</p>
+<img src="../Relics/TreeGlyph.png"/>
 
 ---
 
@@ -132,9 +128,7 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-<p align="center">
-  <img src="../Relics/CollectingSouls.gif"/>
-</p>
+<img src="../Relics/CollectingSouls.gif"/>
 
 ---
 
