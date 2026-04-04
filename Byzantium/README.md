@@ -20,7 +20,26 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ---
 
-## 🎲 The Board ♟️
+## ⬇️ Install
+
+To run Byzantium, install it with:
+
+```bash
+pipx install Byzantium-Game  
+Byzantium
+```
+
+You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
+
+### Operating System Support
+
+- ✅ Linux  
+- ✅ macOS  
+- ❌ Windows (sorry, but not sorry)
+
+---
+
+## ♟️ The Board ♟️
 
 At the center of Byzantium is a **24-cell board**.
 
@@ -53,6 +72,16 @@ There are no forks. No reconciliation. No second chances.
 
 ---
 
+## 🔥 Ashfall (Text Feed)
+
+The text feed isn’t a global log. Each node keeps a small rolling cache of recent messages—just enough to give context.
+
+This means different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
+
+> The feed drifts. The board converges.
+
+---
+
 ## 🧩 Presence & Rejoining
 
 You can leave at any time and come back later—seconds, minutes, or hours.
@@ -65,34 +94,6 @@ It’s like stepping back up to the card table. You don’t ask what happened wh
 
 > You don’t reconnect to the past.  
 > You reconnect to the present.
-
----
-
-## 🔥 Ashfall (Text Feed)
-
-The text feed isn’t a global log. Each node keeps a small rolling cache of recent messages—just enough to give context.
-
-This means different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
-
-> The feed drifts. The board converges.
-
----
-
-## ⬇️ Install
-
-To run Byzantium, install it with:
-
-```bash
-pipx install Byzantium-Game  
-Byzantium
-```
-You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
-
-### Operating Systems Support
-
-- ✅ Linux  
-- ✅ macOS  
-- ❌ Windows (Sorry, but not sorry)
 
 ---
 
@@ -110,7 +111,7 @@ This allows the board to converge without logs, history, or replay.
 
 ## 🏛️ Architecture
 
-<img src="../Relics/TreeGlyph.png" width=600/>
+<img src="../Relics/TreeGlyph.png" width="600"/>
 
 > *The upper part of the stack runs on State, and the lower stack runs on Glyphs*
 
@@ -149,20 +150,21 @@ This is a working system under tension—not a polished product.
 
 ## 🧬 Design
 
-Truth Through Erasure
-No Time.  
-No History.  
+An admissibility-governed state.
+
+No time.  
+No history.  
 No logs.
 
 Only:
 
-> the current admissible shape of state
+> Truth through erasure.
 
 ---
 
 ## 🪶 A Note
 
-If the Hydra Demo was the one-minute flight, this is closer to the ten-minute flight.
+If the Hydra demo was the one-minute flight, this is closer to the ten-minute flight.
 
 It’s not smooth. It’s not comfortable.
 
