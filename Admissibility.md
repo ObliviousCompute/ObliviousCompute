@@ -83,7 +83,7 @@ Time does not participate in this evaluation. It is external to it.
 
 Computation does not unfold through time, but across admissible states.
 
-The braid defines the structure of this boundary.
+The braid defines the geometry of this boundary.
 
 This boundary is the locus of computation.
 
@@ -103,6 +103,12 @@ No history is required to determine validity.
 By refining these invariants, the admissibility space can be shaped with increasing precision.
 
 The tighter the invariants, the sharper the boundary—and the more precise the computation.
+
+Invariants define admissibility—but what they define is not a rule set.
+
+They define a geometry.
+
+This geometry is itself invariant.
 
 ---
 
