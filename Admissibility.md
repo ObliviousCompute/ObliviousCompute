@@ -164,54 +164,55 @@ It is a minimal structure for aligning distributed state through local constrain
 In this model, systems do not attempt to agree on a global history.  
 They do not reconstruct or replay events.
 
-Instead, each participant maintains a current state and accepts only those updates that fall within its admissible boundary.
+Each participant maintains only a current state,  
+and accepts only what is admissible.
 
 Coordination emerges from this constraint alone.
 
 ---
 
-This approach is particularly well-suited to environments where systems must remain loosely synchronized without the overhead of ordering, logging, or reconciliation.
+This approach is well-suited to environments where systems must remain loosely synchronized without ordering, logging, or reconciliation.
 
-Consider common coordination problems:
+Many failures of modern systems are not failures of connectivity,  
+but failures of coordination.
 
-Devices failing to appear on a network due to slight timing inconsistencies.  
-Systems repeatedly attempting to reconcile mismatched state.  
+Devices that cannot discover one another.  
+Systems that endlessly attempt to reconcile mismatched state.  
+Components that are present, but not mutually visible.
 
-A printer that cannot be discovered.  
-A thermostat and a refrigerator that fail to align.  
-Devices that are present, but not mutually visible.
+These are not failures of communication.
 
-These are not failures of connectivity.  
-They are failures of coordination.
-
-By constraining admissible transitions, systems can align without requiring shared history.
-
-Each participant evaluates only what is currently valid and what is admissibly next.
-
-The result is a lightweight form of synchronization, driven entirely by local invariants.
+They are failures of admissibility.
 
 ---
 
-This model extends naturally beyond classical systems.
+By constraining admissible transitions, systems align without shared history.
 
-In quantum computing, maintaining coherence across distributed or entangled states is constrained not only by noise, but by the difficulty of coordinating valid transitions without introducing inconsistency.
+Each participant evaluates only what is valid now,  
+and what is admissibly next.
 
-Admissibility-based coordination offers a different approach: rather than reconstructing prior states or enforcing global agreement, systems evolve only through locally valid transitions.
-
-Computation remains confined to the boundary of admissibility, reducing the need for historical reconstruction and minimizing the surface for incoherence.
-
-In this sense, admissibility does not compete with quantum models—it complements them, providing a structural framework for coordinating state evolution without reliance on time or sequence.
+The result is a lightweight form of synchronization,  
+driven entirely by local invariants.
 
 ---
 
-Admissibility does not require agreement.  
-It requires coordination within a shared coordinate space.
+This model extends beyond classical systems.
+
+In quantum contexts, maintaining coherence across distributed or entangled states is constrained not only by noise,  
+but by the difficulty of coordinating valid transitions without inconsistency.
+
+Admissibility-based coordination offers a different approach:
+
+Systems evolve only through locally valid transitions,  
+without reconstructing prior states or enforcing global agreement.
+
+Computation remains confined to the boundary of admissibility.
 
 ---
 
-In cooperative environments, this structure is sufficient.
+Admissibility does not require agreement.
 
-In adversarial environments, the same structure can be enforced through cryptographic binding—ensuring that only admissible transitions can be constructed and verified.
+It requires coordination within a shared geometry of state.
 
 ---
 
