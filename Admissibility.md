@@ -215,6 +215,37 @@ In adversarial environments, the same structure can be enforced through cryptogr
 
 ---
 
+## Axioms of Admissible Computation
+
+1. **State Primacy**  
+   A system is defined entirely by its current state.
+
+2. **Admissibility Equivalence**  
+   A state is valid if and only if it satisfies the system’s invariants.
+
+3. **History Independence**  
+   The validity of a state is independent of the sequence of transitions that produced it.
+
+4. **Admissible Progression**  
+   Forward progression occurs only through admissible states.  
+   States that are not admissible produce no effect.
+
+5. **Erasure Semantics**  
+   Inadmissible states are not stored, processed, or reconciled.  
+   They are treated as non-existent.
+
+6. **Geometric Realization**  
+   The set of admissible states forms a constrained structure.  
+   This structure defines the geometry within which all valid computation occurs.
+
+---
+
+Correctness in such systems is not derived from history, agreement, or reconstruction.
+
+It emerges from admissibility within a constrained geometry of state.
+
+---
+
 ## Appendix
 
 ### Notation
