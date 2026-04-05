@@ -49,6 +49,8 @@ If not, it is not part of the game.
 A turn, then, is a cycle:  
 a transition between admissible geometric states.
 
+Reality is filtered by shape, not by choice.
+
 ---
 
 ## A Minimal Cycle
@@ -96,7 +98,7 @@ The boundary is shaped by invariants—constraints that determine which transiti
 A system maintains a current state.  
 Only a limited set of next states are admissible.  
 A transition is accepted only if it falls within this admissible set.  
-Transitions outside this set are rejected and trigger resynchronization.  
+Transitions outside this set are not admissible.  
 
 No history is required to determine validity.
 
