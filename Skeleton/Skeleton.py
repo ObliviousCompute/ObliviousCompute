@@ -28,12 +28,12 @@ def ingest(state, packet):
     current = state["sequence"]
     incoming = packet["sequence"]
 
-    # ========== LINCHPIN ========== #
+    # =========== LINCHPIN =========== #
     if not inWindow(incoming, current):
+    # ================================ #
         intents = ([] if state["envy"] else ["ENVY"])
         state["envy"] = True
         return state, intents + ["Sync"]
-    # ========== LINCHPIN ========== #
 
     state["envy"] = False
 
