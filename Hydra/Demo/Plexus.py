@@ -160,7 +160,9 @@ class plexus:
         exp = crown_next(cur)
 
         # Envy gate
+        # ========= LINCHPIN ========= #
         if inc_crown not in (cur, exp):
+        # ========= LINCHPIN ========= #
             if not self.envy:
                 self.envy = True
                 intents.append(Intent("ENVY", {
