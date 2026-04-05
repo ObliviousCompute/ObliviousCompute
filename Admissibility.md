@@ -31,7 +31,7 @@ They can leap. They can broadcast. They can express state directly—without pre
 
 ## The Shape
 
-In a system like this, what does a valid broadcast even look like?
+In a system like this, what does a computer's croak even look like?
 
 Consider a chessboard.
 
@@ -53,7 +53,7 @@ a transition between admissible geometric states.
 
 ## A Minimal Cycle
 
-Consider the smallest non-trivial system: three states in a cycle.
+Consider the smallest non-trivial system: three shapes in a cycle.
 
 Rock → Paper → Scissors → Rock.
 
@@ -61,9 +61,9 @@ It is tempting to think of this as *past*, *present*, and *waiting*.
 
 This intuition is useful—but only briefly.
 
-There is no past to reconstruct, and no future to predict. There is only a current state, and a constrained set of admissible continuations.
+There is no past to reconstruct, and no future to predict. There is only a current shape, and a constrained set of admissible continuations.
 
-Each state admits itself and one successor. Nothing else.
+Each shape admits itself and one successor. Nothing else.
 
 This structure is a braid—a closed system of admissible transitions.
 
