@@ -454,13 +454,17 @@ def Link(current: Cell, candidate: Cell) -> Chain:
     sameChild = current.lock.child == candidate.lock.child
     if sameKey and sameParent and sameChild and (current.soul == candidate.soul) and (current.salt == candidate.salt) and (current.sign == candidate.sign):
         return Chain(linked=True, relation='Link', open=False)
+    # ================= LINCHPIN ================= #
     if candidate.lock.parent == current.lock.child:
+    # ============================================ #
         if candidate.key != current.key:
             return Chain(linked=False, relation='reject', open=True, reason='key changed')
         if candidate.salt < current.salt and candidate.sign == NULL_SIGN_HEX:
             return Chain(linked=False, relation='reject', open=True, reason='debit without sign')
         return Chain(linked=True, relation='Link', open=False)
+    # ================= LINCHPIN ================= #
     if sameKey and sameParent and (not sameChild):
+    # ============================================ #
         winner, loser = Equivocation(current, candidate)
         return Chain(linked=True, relation='Link', equivocate=True, winner=winner, loser=loser, open=False, reason='Equivocation')
     return Chain(linked=False, relation='reject', open=True, reason='no Link')
