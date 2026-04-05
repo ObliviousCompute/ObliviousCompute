@@ -29,6 +29,28 @@ They can leap. They can broadcast. They can express state directly—without pre
 
 ---
 
+## The Shape
+
+In a system like this, what does a valid broadcast even look like?
+
+Consider a chessboard.
+
+Each piece carries its own invariants.  
+A rook moves in straight lines.  
+A bishop moves diagonally.  
+A knight moves in its own pattern.  
+
+These invariants define what is admissible.
+
+A proposed position is accepted only if every piece satisfies its invariants.
+
+If not, it is not part of the game.
+
+A turn, then, is a cycle:  
+a transition between admissible geometric states.
+
+---
+
 ## A Minimal Cycle
 
 Consider the smallest non-trivial system: three states in a cycle.
