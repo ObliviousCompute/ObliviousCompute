@@ -81,8 +81,8 @@ class Gateway:
     def bootfromtitle(self) -> object:
         self.buildstate()
         self.cache.gatejam = False
-        self.cache.win_screen = False
-        self.cache.exit_screen = False
+        self.cache.win = False
+        self.cache.exit = False
         self.cache.pending_request = None
         try:
             self.core.vault = Vault.Vault(state=self.state, citadel=self.core.citadel)
@@ -104,29 +104,29 @@ class Gateway:
         kind, val = tok
         if kind == 'CTRL_C':
             return (self.cache, state, True)
-        if getattr(self.cache, 'exit_screen', False):
+        if getattr(self.cache, 'exit', False):
             return (self.cache, state, True)
-        if getattr(self.cache, 'win_screen', False):
+        if getattr(self.cache, 'win', False):
             if kind in ('ENTER', 'CTRL_C') or kind == 'CH':
-                self.cache.win_screen = False
-                self.cache.exit_screen = True
+                self.cache.win = False
+                self.cache.exit = True
             return (self.cache, state, False)
         if getattr(self.cache, 'gatejam', False):
             self.cache.gatejam = False
-            self.cache.exit_screen = True
+            self.cache.exit = True
             return (self.cache, state, False)
         if getattr(self.cache, 'waiting', False):
             if kind == 'CH' and val == ' ':
                 self.cache.waiting = False
                 self.cache.waiting_frame = 0
-                self.cache.exit_screen = True
+                self.cache.exit = True
                 return (self.cache, state, False)
             return (self.cache, state, False)
         if self.cache.focus == Focus.TITLE:
             return _handle_title_gateway(self, self.cache, state, kind, val)
         cache, state, should_quit = Citadel._dispatch_token(self.cache, state, tok)
         if should_quit:
-            self.cache.exit_screen = True
+            self.cache.exit = True
             return (self.cache, state, False)
         return (cache, state, should_quit)
 
@@ -142,18 +142,20 @@ class Gateway:
         if surfaced is None:
             return state
         if _is_victory(surfaced):
-            self.cache.win_screen = True
+            self.cache.win = True
         return surfaced
 
     def render(self, state: object) -> str:
-        if getattr(self.cache, 'exit_screen', False):
+        if getattr(self.cache, 'exit', False):
             return renderexit(self.cache)
-        if getattr(self.cache, 'win_screen', False):
+        if getattr(self.cache, 'win', False):
             return renderwin(self.cache)
         if getattr(self.cache, 'gatejam', False):
             return rendergatejam(self.cache)
         if getattr(self.cache, 'waiting', False):
             return renderwaiting(self.cache)
+        if getattr(self.cache, 'focus', None) == Focus.TITLE:
+            return rendertitle(self.cache)
         return Spire.render(self.cache, state)
 
 def parseports() -> Optional[int]:
@@ -185,12 +187,12 @@ def _ensure_state(cache: UiCache) -> None:
         cache.waiting_frame = 0
     if not hasattr(cache, 'waiting_started'):
         cache.waiting_started = 0.0
-    if not hasattr(cache, 'exit_screen'):
-        cache.exit_screen = False
+    if not hasattr(cache, 'exit'):
+        cache.exit = False
     if not hasattr(cache, 'gatejam'):
         cache.gatejam = False
-    if not hasattr(cache, 'win_screen'):
-        cache.win_screen = False
+    if not hasattr(cache, 'win'):
+        cache.win = False
     for key, default in FIELD_DEFAULTS.items():
         if not hasattr(cache, key):
             setattr(cache, key, default)
@@ -317,30 +319,35 @@ def _is_victory(state: object) -> bool:
     return all((total == 250000 for total in totals))
 
 def _screen_palette(cache: UiCache) -> Dict[str, str]:
-    raw_phase = getattr(cache, 'flame_phase', None)
-    try:
-        phase = int(raw_phase) if raw_phase is not None else 0
-    except Exception:
-        phase = 0
-    phase += int(time.monotonic() * 8.0)
-    flame = Spire.FLICKER1 if phase % 2 else Spire.FLICKER2
-    return {'ash': Spire.ASH, 'flame': flame, 'flare': flame, 'reset': Spire.RESET}
+    pal = Forge.palette(cache)
+    return {
+        'ash': pal['ash'],
+        'salt': pal['salt'],
+        'flicker1': pal['flicker1'],
+        'flicker2': pal['flicker2'],
+        'reset': pal['reset'],
+    }
 
 def renderframe(cache: UiCache, label: str, value: str='', subtitle: str='') -> str:
     pal = _screen_palette(cache)
     label = str(label or '')
     subtitle = str(subtitle or '')
     value = str(value or '')[:8]
-    if value:
-        left = pal['flame'] + ':' + pal['reset']
-        right = pal['flame'] + ':' + pal['reset']
-        body = f"{left}{Spire.WHITE}{value}{pal['reset']}{right}"
+    if label == 'Who Are You':
+        left = pal['flicker1'] + ':' + pal['reset']
+        right = pal['flicker2'] + ':' + pal['reset']
+        body = f"{left}{Forge.SALT}{value}{pal['reset']}{right}"
     else:
-        body = ''
-    lines: List[str] = [Spire.ASH + Spire.HLINE + Spire.RESET, Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm(Spire.ASH + '.' + Spire.RESET), Spire.centerTerm(Spire.ASH + '.' + Spire.RESET + pal['flame'] + '+' + pal['reset'] + Spire.ASH + '.' + Spire.RESET), Spire.centerTerm(Spire.ASH + '.   .   .   .' + Spire.RESET), Spire.centerTerm(Spire.ASH + pal['flame'] + '+' + pal['reset'] + ' BYZANTIUM ' + pal['reset'] + pal['flame'] + '+' + pal['reset']), Spire.centerTerm(Spire.ASH + '·   · ·   · ·   ·' + Spire.RESET), Spire.centerTerm(Spire.ASH + '·' + Spire.RESET + pal['flare'] + '+' + pal['reset'] + Spire.ASH + '·' + Spire.RESET), Spire.centerTerm(Spire.ASH + '·' + Spire.RESET), Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm(Spire.ASH + label + Spire.RESET)]
+        if value:
+            left = pal['flicker1'] + ':' + pal['reset']
+            right = pal['flicker2'] + ':' + pal['reset']
+            body = f"{left}{Forge.SALT}{value}{pal['reset']}{right}"
+        else:
+            body = ''
+    lines: List[str] = [Forge.ASH + '=' * Forge.TERM_W + Forge.RESET, Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm(Forge.ASH + '.' + Forge.RESET), Spire.centerTerm(Forge.ASH + '.' + Forge.RESET + pal['flicker1'] + '+' + pal['reset'] + Forge.ASH + '.' + Forge.RESET), Spire.centerTerm(Forge.ASH + '.   .   .   .' + Forge.RESET), Spire.centerTerm(Forge.ASH + pal['flicker1'] + '+' + pal['reset'] + ' BYZANTIUM ' + pal['reset'] + pal['flicker1'] + '+' + pal['reset']), Spire.centerTerm(Forge.ASH + '·   · ·   · ·   ·' + Forge.RESET), Spire.centerTerm(Forge.ASH + '·' + Forge.RESET + pal['flicker2'] + '+' + pal['reset'] + Forge.ASH + '·' + Forge.RESET), Spire.centerTerm(Forge.ASH + '·' + Forge.RESET), Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm(Forge.ASH + label + Forge.RESET)]
     if subtitle:
         lines.append(Spire.centerTerm(''))
-        lines.append(Spire.centerTerm(Spire.ASH + subtitle + Spire.RESET))
+        lines.append(Spire.centerTerm(Forge.ASH + subtitle + Forge.RESET))
     else:
         lines.append(Spire.centerTerm(''))
     if body:
@@ -412,7 +419,7 @@ def _handle_title_gateway(gateway: Gateway, cache: UiCache, state: object, kind:
         cache.cursor_pos = len(_field_value(cache, 'gate'))
     if kind == 'ENTER':
         if _active_field(cache) == 'mode' and _field_value(cache, 'mode') == 'Exit':
-            cache.exit_screen = True
+            cache.exit = True
             return (cache, state, False)
         if _active_field(cache) == 'genesis':
             return (cache, gateway.bootfromtitle(), False)

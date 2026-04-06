@@ -199,6 +199,16 @@ class Vault:
         out = Field.Text(text=str(rawtext or '')[:textmaxlen])
         return out
 
+    def taggedtext(self, glyph: Glyph) -> str:
+        kind = str(glyph.kind or '').strip().lower()
+        rawtext = str(glyph.text or '')
+        if not kind:
+            return rawtext[:textmaxlen]
+        prefix = f'{kind}|'
+        if rawtext.lower().startswith(prefix):
+            return rawtext[:textmaxlen]
+        return f'{prefix}{rawtext}'[:textmaxlen]
+
     def texthash(self, textbody: Field.Text) -> str:
         out = Field.TextHash(textbody)
         return out
@@ -252,7 +262,7 @@ class Vault:
     def lawfulsalt(self, glyph: Glyph) -> Field.SaltGlyph:
         pairs = self.normalizepairs(glyph.pairs)
         self.assertglyphshape(glyph, pairs)
-        textbody = self.textbody(glyph.text)
+        textbody = self.textbody(self.taggedtext(glyph))
         texthash = self.texthash(textbody)
         saltbody = self.saltbody(pairs)
         salthash = self.salthash(saltbody)

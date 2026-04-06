@@ -6,16 +6,12 @@ import Citadel
 import Crypt
 import Field
 
-KIND_PURGE = 'PURGE'
-KIND_DREAM = 'DREAM'
-KIND_SALT = 'SALT'
+PurgeGlyph = 'PURGE'
+DreamGlyph = 'DREAM'
+SaltGlyph = 'SALT'
 MONUMENT_SLOTS = 3
 MONUMENT_NAME_W = 8
-MONUMENT_RE = re.compile('^(.{0,8})\s+([+-]?[\d,]+):\s*(.*)$')
-
-def _short(value: Any, n: int=12) -> str:
-    text = str(value)
-    return text if len(text) <= n else text[:n]
+MONUMENT_RE = re.compile(r'^(.{0,8})\s+([+-]?[\d,]+):\s*(.*)$')
 
 def _seat(state: Field.State, key: str) -> int | None:
     key = str(key or '').strip()
@@ -72,6 +68,22 @@ def _monumentline(name: Any, total: int, text: Any) -> str:
     score = f'{int(total):+,}'
     body = _monumentclean(text)
     return f'{_monumentname(name)} {score}:{body}' if body else f'{_monumentname(name)} {score}:'
+
+def _ashkind(text: Any) -> str:
+    raw = str(text or '')
+    head, sep, _ = raw.partition('|')
+    return head.strip().upper() if sep else ''
+
+def _ashbroadcasttotal(glyph: Field.SaltGlyph, viewer: str, sender: str, kind: str) -> int:
+    legs = tuple(getattr(glyph, 'saltbody', ()) or ())
+    if viewer == sender:
+        return sum((int(getattr(leg, 'salt', 0) or 0) for leg in legs))
+    direct = sum((int(getattr(leg, 'salt', 0) or 0) for leg in legs if str(getattr(leg, 'key', '') or '').strip() == viewer))
+    if direct > 0:
+        return direct
+    if kind == 'DEFECT':
+        return max((int(getattr(leg, 'salt', 0) or 0) for leg in legs), default=0)
+    return 0
 
 @dataclass
 class Box:
@@ -232,15 +244,14 @@ class Dream:
         sender = str(glyph.key or '').strip()
         if not viewer or not sender:
             return None
-        if viewer == sender:
-            total = sum((int(leg.salt) for leg in glyph.saltbody))
-        else:
-            total = sum((int(leg.salt) for leg in glyph.saltbody if str(leg.key or '').strip() == viewer))
+        text = str(getattr(getattr(glyph, 'textbody', None), 'text', '') or '')
+        actionkind = _ashkind(text)
+        total = _ashbroadcasttotal(glyph, viewer, sender, actionkind)
         if viewer != sender and total <= 0:
             return None
         sendercell = Field.FindCell(self.state, sender)
         sendername = str(sendercell.soul or '') if sendercell is not None else str(self.state.self[0] or '')
-        payload = {'sender': sendername or sender, 'kind': KIND_SALT, 'text': glyph.textbody.text, 'total': int(total)}
+        payload = {'sender': sendername or sender, 'kind': SaltGlyph, 'text': text, 'total': int(total)}
         self.box.ashfall = payload
         return payload
 
@@ -332,24 +343,24 @@ class Dream:
         return out
 
     def purgeflare(self) -> dict[str, Any]:
-        return {'kind': KIND_PURGE, 'key': self.selfkey()}
+        return {'kind': PurgeGlyph, 'key': self.selfkey()}
 
     def mutate(self, glyph: Any, source: str=''):
         kind = self.kind(glyph)
-        if kind == KIND_PURGE:
+        if kind == PurgeGlyph:
             mutated = self.mutatepurge(glyph, source=source)
-        elif kind == KIND_DREAM:
+        elif kind == DreamGlyph:
             mutated = self.mutatedream(glyph, source=source)
         else:
             mutated = self.mutatesalt(glyph, source=source)
         if mutated:
             self.changed = True
-            if kind == KIND_SALT:
+            if kind == SaltGlyph:
                 self.ashfall(glyph)
             echo = True
-            if kind == KIND_PURGE:
+            if kind == PurgeGlyph:
                 echo = False
-            elif source == 'crypt' and kind == KIND_DREAM:
+            elif source == 'crypt' and kind == DreamGlyph:
                 echo = False
             if echo:
                 self.forward(glyph)
@@ -415,7 +426,7 @@ class Dream:
             if defect:
                 nextstate = self.defectswap(nextstate, glyph)
             nextstate = self.updatemonument(nextstate, glyph)
-        except Exception:
+        except Exception as exc:
             return False
         changed = self.commit(nextstate)
         if not changed or self.state is None:
@@ -430,7 +441,7 @@ class Dream:
             raise TypeError('Dream.mutatedream expects Field.State')
         try:
             nextstate, chains = Field.MutateState(self.state, glyph)
-        except Exception:
+        except Exception as exc:
             return False
         changed = self.commit(nextstate)
         if not changed or self.state is None:
@@ -473,6 +484,8 @@ class Dream:
             return True
         if nextstate == self.state:
             return False
+        before = self.state.saltTotal
+        after = nextstate.saltTotal
         self.state = nextstate
         return True
 
@@ -495,9 +508,9 @@ class Dream:
 
     def packet(self, glyph: Any) -> Any:
         kind = self.kind(glyph)
-        if kind == KIND_DREAM:
+        if kind == DreamGlyph:
             return self.boxdream(glyph)
-        if kind == KIND_SALT:
+        if kind == SaltGlyph:
             return self.boxsalt(glyph)
         if isinstance(glyph, dict):
             return dict(glyph)
@@ -507,20 +520,23 @@ class Dream:
 
     def kind(self, glyph: Any) -> str:
         if isinstance(glyph, str):
-            return KIND_PURGE
+            out = PurgeGlyph
+            return out
         if isinstance(glyph, Field.State):
-            return KIND_DREAM
+            out = DreamGlyph
+            return out
         if isinstance(glyph, Field.SaltGlyph):
-            return KIND_SALT
+            out = SaltGlyph
+            return out
         if isinstance(glyph, dict):
             kind = str(glyph.get('kind', '') or '').strip().upper()
             if kind:
                 return kind
             if 'cells' in glyph:
-                return KIND_DREAM
+                return DreamGlyph
             if 'saltbody' in glyph and 'lockbody' in glyph and ('textbody' in glyph):
-                return KIND_SALT
-        return KIND_SALT
+                return SaltGlyph
+        return SaltGlyph
 
     def boxsalt(self, glyph: Field.SaltGlyph) -> dict[str, Any]:
         return {'key': glyph.key, 'saltbody': [self.boxleg(leg) for leg in glyph.saltbody], 'lockbody': self.boxlock(glyph.lockbody), 'textbody': {'text': glyph.textbody.text}, 'salthash': glyph.salthash, 'lockhash': glyph.lockhash, 'texthash': glyph.texthash, 'sign': glyph.sign, 'locksign': glyph.locksign}
@@ -539,7 +555,7 @@ class Dream:
 
     def boxdream(self, state: Field.State) -> dict[str, Any]:
         scrubbed = Field.Scrub(state)
-        return {'kind': KIND_DREAM, 'self': [scrubbed.self[0], scrubbed.self[1]], 'monument': list(scrubbed.monument), 'cells': [self.boxcell(cell) for cell in scrubbed.cells]}
+        return {'kind': DreamGlyph, 'self': [scrubbed.self[0], scrubbed.self[1]], 'monument': list(scrubbed.monument), 'cells': [self.boxcell(cell) for cell in scrubbed.cells]}
 
 dream = Dream()
 _DREAM = dream

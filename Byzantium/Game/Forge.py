@@ -82,6 +82,37 @@ MSG_MAX = geometry.msg
 COST_W = geometry.cost
 ANSI_RE = re.compile('\\x1b\\[[0-9;]*m')
 
+
+RESET = '\x1b[0m'
+ASH = '\x1b[90m'
+WHITE = '\x1b[97m'
+SALT = WHITE
+EMBER = '\x1b[38;5;130m'
+FLICKER1 = '\x1b[38;5;208m'
+FLICKER2 = '\x1b[38;5;214m'
+
+def flickerPair(phase: int) -> Tuple[str, str]:
+    return (FLICKER1, FLICKER2) if int(phase or 0) % 2 else (FLICKER2, FLICKER1)
+
+def palette(cache: Any=None) -> Dict[str, str]:
+    raw_phase = getattr(cache, 'flame_phase', None) if cache is not None else None
+    try:
+        phase = int(raw_phase) if raw_phase is not None else 0
+    except Exception:
+        phase = 0
+    phase += int(__import__('time').monotonic() * 8.0)
+    flicker1, flicker2 = flickerPair(phase)
+    return {
+        'reset': RESET,
+        'ash': ASH,
+        'white': WHITE,
+        'salt': SALT,
+        'ember': EMBER,
+        'flicker1': flicker1,
+        'flicker2': flicker2,
+    }
+
+
 @dataclass(frozen=True)
 class Cell:
     soul: str = ''
@@ -266,6 +297,14 @@ def clipTerm(text: str, *, term: int=TERM_W) -> str:
 
 def centerTerm(text: str, *, term: int=TERM_W) -> str:
     return centerw(text, term)
+
+
+def frameTextScreen(lines: List[str], *, fill: int=23, term: int=TERM_W, inner: int=INNER_W) -> str:
+    body = [clipTerm(str(line or ''), term=inner) for line in list(lines or ())]
+    while len(body) < int(fill):
+        body.append('')
+    body.append(clipTerm(ASH + '=' * term + RESET, term=inner))
+    return '\n'.join((' ' + padw(clipw(line, inner), inner) + ' ' for line in body)) + RESET
 
 def cleanDraft(text: object) -> str:
     return str(text or '').replace('\r', ' ').replace('\n', ' ')
@@ -512,4 +551,4 @@ def pairs(state: Any, qs: Iterable[int], total: int) -> Tuple[Tuple[str, int], .
         found = key(picked[0])
         return () if not found else ((found, int(total)),)
     return geometry.split(int(total), picked, by=amount)
-__all__ = ['geometry', 'Geometry', 'Cell', 'State', 'Q', 'Intent', 'UiCache', 'Focus', 'Action', 'MENU', 'ACTION', 'BOARD_COLS', 'BOARD_ROWS', 'CELL_COUNT', 'TERM_W', 'FRAME_PAD', 'INNER_W', 'NAME_W', 'MSG_MAX', 'COST_W', 'ANSI_RE', 'makeCell', 'makeSelf', 'makeState', 'vislen', 'clipw', 'centerw', 'padw', 'clipTerm', 'centerTerm', 'cleanDraft', 'msgNorm', 'fmtSpineCost', 'parseMonument', 'monumentAnchorCol', 'key', 'reserve', 'amount', 'id6', 'currentLock', 'selfKey', 'selfSoul', 'qByKey', 'Qof', 'resolveRank', 'keyAt', 'actionPreview', 'actionDesc', 'actionFloor', 'actionSpineLabel', 'actionNeedsTarget', 'actionHasArmPhase', 'defectViable', 'moveBoard', 'targets', 'purgeViable', 'purgeTarget', 'purgeFlavor', 'pairs']
+__all__ = ['geometry', 'Geometry', 'Cell', 'State', 'Q', 'Intent', 'UiCache', 'Focus', 'Action', 'MENU', 'ACTION', 'BOARD_COLS', 'BOARD_ROWS', 'CELL_COUNT', 'TERM_W', 'FRAME_PAD', 'INNER_W', 'NAME_W', 'MSG_MAX', 'COST_W', 'ANSI_RE', 'RESET', 'ASH', 'WHITE', 'SALT', 'EMBER', 'FLICKER1', 'FLICKER2', 'flickerPair', 'palette', 'makeCell', 'makeSelf', 'makeState', 'vislen', 'clipw', 'centerw', 'padw', 'clipTerm', 'centerTerm', 'frameTextScreen', 'cleanDraft', 'msgNorm', 'fmtSpineCost', 'parseMonument', 'monumentAnchorCol', 'key', 'reserve', 'amount', 'id6', 'currentLock', 'selfKey', 'selfSoul', 'qByKey', 'Qof', 'resolveRank', 'keyAt', 'actionPreview', 'actionDesc', 'actionFloor', 'actionSpineLabel', 'actionNeedsTarget', 'actionHasArmPhase', 'defectViable', 'moveBoard', 'targets', 'purgeViable', 'purgeTarget', 'purgeFlavor', 'pairs']

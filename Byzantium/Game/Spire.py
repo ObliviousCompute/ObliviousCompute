@@ -9,9 +9,6 @@ BODY_FILL_LINES = 23
 PACK_RACE_THRESH_DEFAULT = 25000
 HLINE = '=' * TERM_W
 LORE_VIEW_LINES = 18
-CHAN_FLAME = 'FLAME'
-CHAN_EMBER = 'EMBER'
-CHAN_ASH = 'ASH'
 RESET = '\x1b[0m'
 ASH = '\x1b[90m'
 WHITE = '\x1b[97m'
@@ -28,7 +25,7 @@ def _append_paragraph(lines: List[str], text: str, *, width: int=INNER_W, color:
         for ln in wrapped:
             lines.append(clipTerm((color or '') + ln + (RESET if color else '')))
 
-def flame_pair(phase: int) -> tuple[str, str]:
+def flickerPair(phase: int) -> tuple[str, str]:
     return (FLICKER1, FLICKER2) if phase % 2 else (FLICKER2, FLICKER1)
 
 def palette(cache: UiCache) -> Dict[str, str]:
@@ -38,11 +35,8 @@ def palette(cache: UiCache) -> Dict[str, str]:
     except Exception:
         phase = 0
     phase += int(time.monotonic() * 8.0)
-    f1, f2 = flame_pair(phase)
-    return {'reset': RESET, 'ash': ASH, 'white': WHITE, 'ember': EMBER, 'flame': f1, 'flare': f2, 'salt': ''}
-
-def chan_color(pal: Dict[str, str], chan: str) -> str:
-    return pal['flame'] if chan == CHAN_FLAME else pal['ember'] if chan == CHAN_EMBER else pal['ash']
+    flicker1, flicker2 = flickerPair(phase)
+    return {'reset': RESET, 'ash': ASH, 'white': WHITE, 'ember': EMBER, 'flicker1': flicker1, 'flicker2': flicker2, 'salt': WHITE}
 
 def _intent(cache: UiCache):
     intent = getattr(cache, 'intent', None)
@@ -172,7 +166,7 @@ def _ctx(cache: UiCache, state: object) -> Dict[str, object]:
     return {'action': action, 'focus': focus, 'me': me, 'city': _city(cache), 'target': _target(cache, state), 'floor': floor, 'label': label}
 
 def build_banner(pal: Dict[str, str], title: str='BYZANTIUM') -> List[str]:
-    return [pal['flare'] + '+    ' + RESET, pal['flare'] + '•  •  · ' + pal['ash'] + ')══{≡≡≡≡≡≡≡≡>     ' + pal['flare'] + '+  ' + pal['white'] + title + RESET + pal['flame'] + '  +     ' + pal['ash'] + '<≡≡≡≡≡≡≡≡}══( ' + pal['flame'] + '·  •  •    ' + RESET, pal['flame'] + '+    ' + RESET]
+    return [pal['flicker2'] + '+    ' + RESET, pal['flicker2'] + '•  •  · ' + pal['ash'] + ')══{≡≡≡≡≡≡≡≡>     ' + pal['flicker2'] + '+  ' + pal['white'] + title + RESET + pal['flicker1'] + '  +     ' + pal['ash'] + '<≡≡≡≡≡≡≡≡}══( ' + pal['flicker1'] + '·  •  •    ' + RESET, pal['flicker1'] + '+    ' + RESET]
 
 def _frame_lines(lines: List[str]) -> str:
     return '\n'.join((' ' + padw(clipw(line, INNER_W), INNER_W) + ' ' for line in lines)) + RESET
@@ -233,10 +227,10 @@ def render_title_screen(cache: UiCache) -> str:
         body = ''
     else:
         label = pal['ash'] + label + RESET
-        left = pal['flame'] + ':' + RESET
-        right = pal['flame'] + ':' + RESET
+        left = pal['flicker1'] + ':' + RESET
+        right = pal['flicker2'] + ':' + RESET
         body = f'{left}{WHITE}{value}{RESET}{right}' if value else f'{left}{right}'
-    lines: List[str] = [ASH + HLINE + RESET, centerTerm(''), centerTerm(''), centerTerm(ASH + '.' + RESET), centerTerm(ASH + '.' + RESET + pal['flame'] + '+' + RESET + ASH + '.' + RESET), centerTerm(ASH + '.   .   .   .' + RESET), centerTerm(ASH + pal['flame'] + '+' + RESET + ' BYZANTIUM ' + RESET + pal['flame'] + '+' + RESET), centerTerm(ASH + '·   · ·   · ·   ·' + RESET), centerTerm(ASH + '·' + RESET + pal['flare'] + '+' + RESET + ASH + '·' + RESET), centerTerm(ASH + '·' + RESET), centerTerm(''), centerTerm(''), centerTerm(label), centerTerm('')]
+    lines: List[str] = [ASH + HLINE + RESET, centerTerm(''), centerTerm(''), centerTerm(ASH + '.' + RESET), centerTerm(ASH + '.' + RESET + pal['flicker1'] + '+' + RESET + ASH + '.' + RESET), centerTerm(ASH + '.   .   .   .' + RESET), centerTerm(ASH + pal['flicker1'] + '+' + RESET + ' BYZANTIUM ' + RESET + pal['flicker1'] + '+' + RESET), centerTerm(ASH + '·   · ·   · ·   ·' + RESET), centerTerm(ASH + '·' + RESET + pal['flicker2'] + '+' + RESET + ASH + '·' + RESET), centerTerm(ASH + '·' + RESET), centerTerm(''), centerTerm(''), centerTerm(label), centerTerm('')]
     if waiting:
         lines.extend([centerTerm(''), centerTerm(''), centerTerm('')])
     else:
@@ -263,7 +257,7 @@ def render_lore_screen(cache: UiCache) -> str:
     except Exception:
         pass
     window = lore[offset:offset + visible]
-    lines: List[str] = [ASH + HLINE + RESET, centerTerm(ASH + '' + RESET), centerTerm(pal['flame'] + '·  •  •  ' + WHITE + Action.LORE.value + RESET + pal['flare'] + '  •  •  ·'), centerTerm(ASH + '' + RESET)]
+    lines: List[str] = [ASH + HLINE + RESET, centerTerm(ASH + '' + RESET), centerTerm(pal['flicker1'] + '·  •  •  ' + WHITE + Action.LORE.value + RESET + pal['flicker2'] + '  •  •  ·'), centerTerm(ASH + '' + RESET)]
     for ln in window:
         lines.append(clipTerm(ASH + ln + RESET if ln else ''))
     lines.append(clipTerm(''))
@@ -271,11 +265,8 @@ def render_lore_screen(cache: UiCache) -> str:
 
 def render_menu(cache: UiCache, pal: Dict[str, str]) -> List[str]:
     leader = (getattr(cache, 'local_name', '') or '').ljust(NAME_W)[:NAME_W]
-    chunks = [(pal['flare'] if i == cache.menuQ else pal['ash']) + act.value + RESET for i, act in enumerate(MENU)]
-    return [clipTerm(pal['ash'] + HLINE + RESET), clipTerm(f"{pal['flame']}{leader}{RESET} {pal['flame']}>>>{RESET} " + ' • '.join(chunks)), clipTerm(pal['ash'] + HLINE + RESET)]
-
-def render_debug(cache: UiCache) -> Optional[List[str]]:
-    return None
+    chunks = [(pal['flicker2'] if i == cache.menuQ else pal['ash']) + act.value + RESET for i, act in enumerate(MENU)]
+    return [clipTerm(pal['ash'] + HLINE + RESET), clipTerm(f"{pal['flicker1']}{leader}{RESET} {pal['flicker1']}>>>{RESET} " + ' • '.join(chunks)), clipTerm(pal['ash'] + HLINE + RESET)]
 
 def format_monument_line(line: object) -> str:
     raw = str(line or '')
@@ -283,14 +274,17 @@ def format_monument_line(line: object) -> str:
         return ''
     head, score, body = Forge.parseMonument(raw, name=NAME_W)
     name = str(head or '').ljust(NAME_W)[:NAME_W]
-    if score is None:
+    kind, tail = _ash_split_text(str(body or ''))
+    kind = str(kind or '').strip().upper()
+    if kind == 'DEFECT':
+        score_field = 'Defected'.rjust(Forge.COST_W)[:Forge.COST_W]
+    elif score is None:
         score_field = ''.rjust(Forge.COST_W)
     else:
         try:
             score_field = Forge.fmtSpineCost(int(str(score).replace(',', '')), width=Forge.COST_W, signed=True)
         except Exception:
             score_field = str(score).rjust(Forge.COST_W)[:Forge.COST_W]
-    tail = str(body or '')
     return f'{name} {score_field}:{tail}' if score is not None or tail else ''
 
 def render_banner(cache: UiCache, pal: Dict[str, str], monuments: List[str], debug_lines: Optional[List[str]]) -> List[str]:
@@ -334,22 +328,22 @@ def render_board(cache: UiCache, state: object, pal: Dict[str, str]) -> List[str
             plus_at = num.find('+')
             salt = num[:plus_at] + plus_col + '+' + RESET + num[plus_at + 1:]
         if action == Action.WRATH and focus in (Focus.TABLE_LOCK, Focus.SPINE):
-            name_col = pal['flame']
+            name_col = pal['flicker1']
         elif focus == Focus.TABLE_MOVE and idx == city or (action in (Action.WHISPER, Action.PURGE) and focus == Focus.SPINE and (idx == (target if target is not None else -1))):
-            name_col = pal['flame']
+            name_col = pal['flicker1']
         elif action == Action.RALLY and focus in (Focus.TABLE_LOCK, Focus.SPINE):
-            name_col = pal['flame'] if me >= 0 and idx // BOARD_ROWS == me // BOARD_ROWS else pal['ash']
+            name_col = pal['flicker1'] if me >= 0 and idx // BOARD_ROWS == me // BOARD_ROWS else pal['ash']
         elif action == Action.DEFECT and focus == Focus.TABLE_MOVE:
-            name_col = pal['flame'] if idx == me else pal['ember'] if me >= 0 and _defect_viable(state, me, idx) else pal['ash']
+            name_col = pal['flicker1'] if idx == me else pal['ember'] if me >= 0 and _defect_viable(state, me, idx) else pal['ash']
         elif action == Action.DEFECT and focus == Focus.SPINE:
             if idx == me:
-                name_col = pal['flame']
+                name_col = pal['flicker1']
             elif idx == (target if target is not None else -1):
-                name_col = pal['flame']
+                name_col = pal['flicker1']
             else:
                 name_col = pal['ash']
         elif me >= 0 and idx == me:
-            name_col = pal['flame'] if idx % BOARD_ROWS == 0 else pal.get('salt', '')
+            name_col = pal['flicker1'] if idx % BOARD_ROWS == 0 else pal.get('salt', '')
         elif idx % BOARD_ROWS == 0:
             name_col = pal['ember']
         else:
@@ -364,7 +358,7 @@ def render_board(cache: UiCache, state: object, pal: Dict[str, str]) -> List[str
 
 def _arm_or_compose_line(label: str, cost: int, draft: str, *, armed: bool, pal: Dict[str, str]) -> str:
     ash = pal['ash']
-    flame = pal['flame']
+    flame = pal['flicker1']
     reset = pal['reset']
     name_fixed = str(label or '').ljust(NAME_W)[:NAME_W]
     cost_s = Forge.fmtSpineCost(cost)
@@ -418,8 +412,31 @@ def _ash_amount_total(raw: str) -> int:
     except Exception:
         return 0
 
+def _ash_split_text(raw: str) -> tuple[str, str]:
+    text = str(raw or '')
+    head, sep, tail = text.partition('|')
+    kind = head.strip().upper() if sep else ''
+    return kind, tail if sep else text
+
 def _ash_payload_color(pal: Dict[str, str], mine: bool) -> str:
     return pal['ash'] if mine else pal['white']
+
+def _ash_is_broadcast(kind: str) -> bool:
+    return kind in ('WRATH', 'DEFECT')
+
+def _ash_tag_color(pal: Dict[str, str], mine: bool, kind: str, amount_total: int=0) -> str:
+    if mine:
+        return pal['ash']
+    if kind == 'WRATH':
+        return pal['flicker1']
+    if kind == 'RALLY':
+        return pal['ember']
+    if kind == 'DEFECT':
+        return pal['flicker1'] if amount_total in (2000, 10000) else pal['ember']
+    return pal['white']
+
+def _ash_tag_text(raw: str, kind: str) -> str:
+    return 'Defected' if kind == 'DEFECT' else raw
 
 def _render_ash_entry(cache: UiCache, pal: Dict[str, str], chan: str, line: object) -> str:
     s = str(line or '')
@@ -433,9 +450,17 @@ def _render_ash_entry(cache: UiCache, pal: Dict[str, str], chan: str, line: obje
     name = s[:NAME_W]
     gap = s[NAME_W:cut]
     amount = s[cut:colon]
-    text = s[colon + 1:] if colon < len(s) else ''
+    rawtext = s[colon + 1:] if colon < len(s) else ''
+    kind_text, text = _ash_split_text(rawtext)
+    kind_chan = str(chan or '').strip().upper()
+    kind = kind_text or kind_chan
     payload = _ash_payload_color(pal, is_mine)
-    return clipTerm(pal['ash'] + name + RESET + gap + payload + amount + RESET + pal['ash'] + ':' + RESET + payload + text + RESET)
+    amount_total = _ash_amount_total(amount)
+    tag = _ash_tag_color(pal, is_mine, kind, amount_total)
+    ash_tag = _ash_tag_text(amount, kind)
+    if _ash_is_broadcast(kind) and not is_mine:
+        payload = pal['white']
+    return clipTerm(pal['ash'] + name + RESET + gap + tag + ash_tag + RESET + pal['ash'] + ':' + RESET + payload + text + RESET)
 
 
 
@@ -497,7 +522,7 @@ def _team_totals_bottom_bar(state: object, *, width: int, pal: Dict[str, str], t
             return f"{pal['ash']}{s}{RESET}{pal['ash']}"
         tied = sum((1 for v, _ in pairs if v == val)) >= 2
         if tied:
-            return f"{pal['flame']}{s}{RESET}{pal['ash']}"
+            return f"{pal['flicker1']}{s}{RESET}{pal['ash']}"
         if team_id in hot_ember:
             return f"{pal['ember']}{s}{RESET}{pal['ash']}"
         return f"{pal['ash']}{s}{RESET}{pal['ash']}"
@@ -544,4 +569,4 @@ def render_screen(cache: UiCache, state: object) -> str:
 
 def render(cache: UiCache, state: object, ctx: Optional[object]=None) -> str:
     return render_screen(cache, state)
-__all__ = ['palette', 'build_banner', 'build_spine_lines', 'render_title_screen', 'lore_lines', 'render_lore_screen', 'render_menu', 'render_banner', 'render_board', 'render_ash', 'render_totals', 'render_debug', 'render_screen', 'render']
+__all__ = ['palette', 'flickerPair', 'build_banner', 'build_spine_lines', 'render_title_screen', 'lore_lines', 'render_lore_screen', 'render_menu', 'render_banner', 'render_board', 'render_ash', 'render_totals', 'render_debug', 'render_screen', 'render']
