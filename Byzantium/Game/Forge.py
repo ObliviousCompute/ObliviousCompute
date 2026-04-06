@@ -153,6 +153,8 @@ class UiCache:
     menuQ: int = 0
     stateQ: int = 0
     targetQ: Optional[int] = None
+    stateKey: str = ''
+    targetKey: str = ''
     salt: int = 1
     text: str = ''
     visible_feed_count: int = 0
@@ -361,6 +363,18 @@ def selfKey(state: Any) -> str:
 def selfSoul(state: Any) -> str:
     return makeSelf(getattr(state, 'self', None))[0]
 
+
+
+def qByKey(state: Any, raw: Any) -> Optional[int]:
+    needle = str(raw or '').strip()
+    if not needle:
+        return None
+    cells = list(getattr(state, 'cells', []) or [])
+    for i, cell in enumerate(cells):
+        if key(cell) == needle:
+            return i
+    return None
+
 def Qof(state: Any) -> Optional[int]:
     cells = list(getattr(state, 'cells', []) or [])
     mine = selfKey(state)
@@ -498,4 +512,4 @@ def pairs(state: Any, qs: Iterable[int], total: int) -> Tuple[Tuple[str, int], .
         found = key(picked[0])
         return () if not found else ((found, int(total)),)
     return geometry.split(int(total), picked, by=amount)
-__all__ = ['geometry', 'Geometry', 'Cell', 'State', 'Q', 'Intent', 'UiCache', 'Focus', 'Action', 'MENU', 'ACTION', 'BOARD_COLS', 'BOARD_ROWS', 'CELL_COUNT', 'TERM_W', 'FRAME_PAD', 'INNER_W', 'NAME_W', 'MSG_MAX', 'COST_W', 'ANSI_RE', 'makeCell', 'makeSelf', 'makeState', 'vislen', 'clipw', 'centerw', 'padw', 'clipTerm', 'centerTerm', 'cleanDraft', 'msgNorm', 'fmtSpineCost', 'parseMonument', 'monumentAnchorCol', 'key', 'reserve', 'amount', 'id6', 'currentLock', 'selfKey', 'selfSoul', 'Qof', 'resolveRank', 'keyAt', 'actionPreview', 'actionDesc', 'actionFloor', 'actionSpineLabel', 'actionNeedsTarget', 'actionHasArmPhase', 'defectViable', 'moveBoard', 'targets', 'purgeViable', 'purgeTarget', 'purgeFlavor', 'pairs']
+__all__ = ['geometry', 'Geometry', 'Cell', 'State', 'Q', 'Intent', 'UiCache', 'Focus', 'Action', 'MENU', 'ACTION', 'BOARD_COLS', 'BOARD_ROWS', 'CELL_COUNT', 'TERM_W', 'FRAME_PAD', 'INNER_W', 'NAME_W', 'MSG_MAX', 'COST_W', 'ANSI_RE', 'makeCell', 'makeSelf', 'makeState', 'vislen', 'clipw', 'centerw', 'padw', 'clipTerm', 'centerTerm', 'cleanDraft', 'msgNorm', 'fmtSpineCost', 'parseMonument', 'monumentAnchorCol', 'key', 'reserve', 'amount', 'id6', 'currentLock', 'selfKey', 'selfSoul', 'qByKey', 'Qof', 'resolveRank', 'keyAt', 'actionPreview', 'actionDesc', 'actionFloor', 'actionSpineLabel', 'actionNeedsTarget', 'actionHasArmPhase', 'defectViable', 'moveBoard', 'targets', 'purgeViable', 'purgeTarget', 'purgeFlavor', 'pairs']

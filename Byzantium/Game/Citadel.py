@@ -22,13 +22,7 @@ class Relay:
             cache.visible_feed_count = len(cache.feed)
         if cache is not None and self._state is not None:
             try:
-                cache.state = self._state
-                cache.monuments = list(getattr(self._state, 'monument', ()) or ())
-                cache.pending_request = ''
-                cache.intent.Q.self = Forge.Qof(self._state)
-                if getattr(self._state, 'cells', ()):
-                    cache.focus = Focus.MENU
-                cache.syncIntent()
+                _surface_cache(cache, self._state)
             except Exception:
                 pass
         return cache
@@ -42,13 +36,7 @@ class Relay:
             pass
         if self.cache is not None:
             try:
-                self.cache.state = value
-                self.cache.pending_request = ''
-                self.cache.monuments = list(getattr(value, 'monument', ()) or ())
-                self.cache.intent.Q.self = Forge.Qof(value)
-                if getattr(value, 'cells', ()):
-                    self.cache.focus = Focus.MENU
-                self.cache.syncIntent()
+                _surface_cache(self.cache, value)
                 if self.ash is None:
                     self.ash = []
                 self.cache.ash = list(self.ash)
@@ -148,6 +136,103 @@ def _pubkey_at(state: Any, q: int) -> str:
         return _cell_key(cells[int(q)])
     return ''
 
+def _q_by_key(state: Any, raw: Any) -> Optional[int]:
+    if hasattr(Forge, 'qByKey'):
+        found = Forge.qByKey(state, raw)
+        return None if found is None else int(found)
+    needle = str(raw or '').strip()
+    if not needle:
+        return None
+    cells = list(getattr(state, 'cells', []) or [])
+    for i, cell in enumerate(cells):
+        if _cell_key(cell) == needle:
+            return i
+    return None
+
+def _bind_state_key(cache: UiCache, state: Any, q: Optional[int]=None) -> Optional[int]:
+    q0 = q
+    if q0 is None:
+        q0 = getattr(cache, 'stateQ', 0)
+    key = _pubkey_at(state, int(q0))
+    cache.stateKey = key
+    return None if q0 is None else int(q0)
+
+def _bind_target_key(cache: UiCache, state: Any, q: Optional[int]=None) -> Optional[int]:
+    if q is None:
+        cache.targetKey = ''
+        cache.targetQ = None
+        return None
+    q0 = int(q)
+    cache.targetQ = q0
+    cache.targetKey = _pubkey_at(state, q0)
+    return q0
+
+def _rebind_focus(cache: UiCache, state: Any) -> None:
+    cells = list(getattr(state, 'cells', []) or [])
+    n = len(cells)
+    if n <= 0:
+        cache.stateQ = 0
+        cache.targetQ = None
+        cache.stateKey = ''
+        cache.targetKey = ''
+        return
+    me = selfQorzero(state) % geometry.cells
+    current = action(cache)
+    stateq = _q_by_key(state, getattr(cache, 'stateKey', ''))
+    targetq = _q_by_key(state, getattr(cache, 'targetKey', ''))
+    if current in (Action.RALLY, Action.WRATH):
+        cache.stateQ = me
+        cache.stateKey = _pubkey_at(state, me)
+        cache.targetQ = None
+        cache.targetKey = ''
+        return
+    if current in (Action.WHISPER, Action.PURGE):
+        if targetq is None and stateq is not None:
+            targetq = stateq
+        if targetq is None or targetq == me:
+            fallback = int(getattr(cache, 'stateQ', me) or me) % n
+            if fallback == me:
+                fallback = (me + 1) % n
+            targetq = fallback
+        cache.stateQ = int(targetq)
+        cache.stateKey = _pubkey_at(state, cache.stateQ)
+        cache.targetQ = int(targetq) if targetq != me else None
+        cache.targetKey = _pubkey_at(state, cache.targetQ) if cache.targetQ is not None else ''
+        return
+    if current == Action.DEFECT:
+        if targetq is None and stateq is not None and stateq != me:
+            targetq = stateq
+        if targetq is not None and not _defect_viable(state, me, targetq):
+            targetq = _first_defect(state, me, targetq)
+        if targetq is None or targetq == me:
+            start = int(getattr(cache, 'stateQ', me) or me) % n
+            if start == me:
+                start = (me + 1) % n
+            targetq = _first_defect(state, me, start)
+        cache.stateQ = me if targetq is None else int(targetq)
+        cache.stateKey = _pubkey_at(state, cache.stateQ)
+        cache.targetQ = None if targetq is None else int(targetq)
+        cache.targetKey = _pubkey_at(state, cache.targetQ) if cache.targetQ is not None else ''
+        return
+    if stateq is None:
+        stateq = me
+    cache.stateQ = int(stateq)
+    cache.stateKey = _pubkey_at(state, cache.stateQ)
+    if targetq is None:
+        cache.targetQ = None
+        cache.targetKey = ''
+    else:
+        cache.targetQ = int(targetq)
+        cache.targetKey = _pubkey_at(state, cache.targetQ)
+
+def _surface_cache(cache: UiCache, state: Any) -> None:
+    cache.state = state
+    cache.pending_request = ''
+    cache.monuments = list(getattr(state, 'monument', ()) or ())
+    cache.intent.Q.self = Forge.Qof(state)
+    _rebind_focus(cache, state)
+    cache.syncIntent()
+
 def _defect_viable(state: Any, mine: int, target: int) -> bool:
     if hasattr(Forge, 'defectViable'):
         return bool(Forge.defectViable(state, int(mine), int(target)))
@@ -169,6 +254,7 @@ def sync(cache: UiCache, state: Any) -> Any:
     cache.intent.focus = cache.focus
     cache.intent.action = action(cache)
     cache.intent.Q.self = Forge.Qof(state)
+    _rebind_focus(cache, state)
     cache.intent.Q.city = int(getattr(cache, 'stateQ', 0) or 0)
     cache.intent.Q.target = getattr(cache, 'targetQ', None)
     cache.intent.amount = max(0, int(getattr(cache, 'salt', 0) or 0))
@@ -184,7 +270,9 @@ def reset(cache: UiCache) -> None:
     cache.focus = Focus.MENU
     cache.menuQ = 0
     cache.stateQ = int(cache.intent.Q.self or 0)
+    cache.stateKey = _pubkey_at(cache.state, cache.stateQ) if getattr(cache, 'state', None) is not None else ''
     cache.targetQ = None
+    cache.targetKey = ''
     cache.salt = 1
     cache.text = ''
     cache.syncIntent()
@@ -195,6 +283,7 @@ def selfQorzero(state: Any) -> int:
 
 def moveboard(cache: UiCache, arrow: str, current: Action, state: Any) -> None:
     cache.stateQ = Forge.moveBoard(state, getattr(cache, 'stateQ', 0), arrow, current)
+    cache.stateKey = _pubkey_at(state, cache.stateQ)
     cache.syncIntent()
 
 def floor(current: Action, state: Any) -> int:
@@ -266,6 +355,7 @@ def submit(cache: UiCache, state: Any, current: Action) -> None:
     mine = selfQorzero(state)
     total = int(getattr(cache, 'salt', 0) or 0)
     text = str(getattr(cache, 'text', '') or '')
+    _rebind_focus(cache, state)
     target = getattr(cache, 'targetQ', None)
     try:
         intent = cache.syncIntent()
@@ -301,7 +391,9 @@ def handlemenu(cache: UiCache, state: Any, kind: str, value: Optional[str]):
         mine = selfQorzero(state) % geometry.cells
         start = (mine + 1) % geometry.cells
         cache.stateQ = start
+        cache.stateKey = _pubkey_at(state, start)
         cache.targetQ = None
+        cache.targetKey = ''
         cache.text = ''
         cache.syncIntent()
         return (cache, state, False)
@@ -320,6 +412,10 @@ def handlemenu(cache: UiCache, state: Any, kind: str, value: Optional[str]):
         cache.focus = Focus.TABLE_LOCK
         cache.salt = floor(current, state)
         cache.text = ''
+        cache.stateQ = selfQorzero(state) % geometry.cells
+        cache.stateKey = _pubkey_at(state, cache.stateQ)
+        cache.targetQ = None
+        cache.targetKey = ''
         cache.syncIntent()
         return (cache, state, False)
     if current == Action.WHISPER:
@@ -327,6 +423,7 @@ def handlemenu(cache: UiCache, state: Any, kind: str, value: Optional[str]):
         cache.salt = 1
         cache.text = ''
         cache.stateQ = (selfQorzero(state) + 1) % geometry.cells
+        cache.stateKey = _pubkey_at(state, cache.stateQ)
         cache.syncIntent()
         return (cache, state, False)
     if current == Action.DEFECT:
@@ -338,6 +435,7 @@ def handlemenu(cache: UiCache, state: Any, kind: str, value: Optional[str]):
             start = (mine + 1) % geometry.cells
         target = _first_defect(state, mine, start)
         cache.stateQ = mine if target is None else target
+        cache.stateKey = _pubkey_at(state, cache.stateQ)
         cache.syncIntent()
         return (cache, state, False)
     return (cache, state, False)
@@ -353,7 +451,7 @@ def handletablemove(cache: UiCache, state: Any, kind: str, value: Optional[str])
         mine = selfQorzero(state) % geometry.cells
         if int(cache.stateQ) == mine:
             cache.stateQ = (mine + 1) % geometry.cells
-        cache.targetQ = int(cache.stateQ)
+        _bind_target_key(cache, state, int(cache.stateQ))
         cache.focus = Focus.SPINE
         cache.syncIntent()
         return (cache, state, False)
@@ -364,7 +462,7 @@ def handletablemove(cache: UiCache, state: Any, kind: str, value: Optional[str])
             say(cache, 'ASH', 'invalid target')
             reset(cache)
             return (cache, state, False)
-        cache.targetQ = target
+        _bind_target_key(cache, state, target)
         submit(cache, state, current)
         return (cache, state, False)
     if current == Action.DEFECT:
@@ -374,7 +472,7 @@ def handletablemove(cache: UiCache, state: Any, kind: str, value: Optional[str])
             say(cache, 'ASH', 'invalid target')
             reset(cache)
             return (cache, state, False)
-        cache.targetQ = target
+        _bind_target_key(cache, state, target)
         cache.focus = Focus.SPINE
         cache.text = ''
         cache.syncIntent()

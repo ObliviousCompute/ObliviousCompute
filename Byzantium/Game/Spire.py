@@ -76,12 +76,24 @@ def _city(cache: UiCache) -> int:
         raw = getattr(cache, 'stateQ', 0)
     return int(raw or 0)
 
-def _target(cache: UiCache) -> Optional[int]:
+def _q_by_key(state: object, raw: object) -> Optional[int]:
+    try:
+        found = Forge.qByKey(state, raw)
+    except Exception:
+        found = None
+    return None if found is None else int(found)
+
+def _target(cache: UiCache, state: object) -> Optional[int]:
     intent = _intent(cache)
     q = getattr(intent, 'Q', None)
     raw = getattr(q, 'target', None) if q is not None else None
     if raw is None:
         raw = getattr(cache, 'targetQ', None)
+    key = str(getattr(cache, 'targetKey', '') or '').strip()
+    if key:
+        found = _q_by_key(state, key)
+        if found is not None:
+            return found
     return None if raw is None else int(raw)
 
 def _amount(cache: UiCache) -> int:
@@ -157,7 +169,7 @@ def _ctx(cache: UiCache, state: object) -> Dict[str, object]:
     rank = None if me < 0 else me + 1
     floor = Forge.actionFloor(action, rank=rank, Q=None if me < 0 else me)
     label = Forge.actionSpineLabel(action, rank=rank, Q=None if me < 0 else me)
-    return {'action': action, 'focus': focus, 'me': me, 'city': _city(cache), 'target': _target(cache), 'floor': floor, 'label': label}
+    return {'action': action, 'focus': focus, 'me': me, 'city': _city(cache), 'target': _target(cache, state), 'floor': floor, 'label': label}
 
 def build_banner(pal: Dict[str, str], title: str='BYZANTIUM') -> List[str]:
     return [pal['flare'] + '+    ' + RESET, pal['flare'] + '•  •  · ' + pal['ash'] + ')══{≡≡≡≡≡≡≡≡>     ' + pal['flare'] + '+  ' + pal['white'] + title + RESET + pal['flame'] + '  +     ' + pal['ash'] + '<≡≡≡≡≡≡≡≡}══( ' + pal['flame'] + '·  •  •    ' + RESET, pal['flame'] + '+    ' + RESET]
@@ -425,6 +437,11 @@ def _render_ash_entry(cache: UiCache, pal: Dict[str, str], chan: str, line: obje
     payload = _ash_payload_color(pal, is_mine)
     return clipTerm(pal['ash'] + name + RESET + gap + payload + amount + RESET + pal['ash'] + ':' + RESET + payload + text + RESET)
 
+
+
+def _render_ash_placeholder(pal: Dict[str, str]) -> str:
+    return clipTerm(centerTerm(pal['ash'] + 'all that remains is ash...' + RESET))
+
 def render_ash(cache: UiCache, state: object, pal: Dict[str, str], anchor_col: int) -> List[str]:
     lines = list(build_spine_lines(cache, state, pal=pal, anchor_col=anchor_col))
     ash = list(getattr(cache, 'ash', []) or [])
@@ -434,9 +451,24 @@ def render_ash(cache: UiCache, state: object, pal: Dict[str, str], anchor_col: i
     else:
         feed = list(getattr(cache, 'feed', []) or [])
         vis = min(int(getattr(cache, 'visible_feed_count', 0)), len(feed))
+
     start = max(0, len(feed) - vis)
-    for chan, line in reversed(feed[start:]):
-        lines.append(_render_ash_entry(cache, pal, chan, line))
+    rendered = [_render_ash_entry(cache, pal, chan, line) for chan, line in reversed(feed[start:])]
+    max_rows = 7
+
+    if len(rendered) <= 3:
+        placeholder_row = 3 + len(rendered)
+        for row in range(max_rows):
+            if row < len(rendered):
+                lines.append(rendered[row])
+            elif row == placeholder_row:
+                lines.append(_render_ash_placeholder(pal))
+            else:
+                lines.append(clipTerm(''))
+        return lines
+
+    for row in range(max_rows):
+        lines.append(rendered[row] if row < len(rendered) else clipTerm(''))
     return lines
 
 def _team_totals_bottom_bar(state: object, *, width: int, pal: Dict[str, str], thresh: int=PACK_RACE_THRESH_DEFAULT) -> str:
