@@ -63,7 +63,7 @@ Everything else follows from it.
 
 - **Byzantium** → the interactive surface  
 - **Hydra** → the distributed behavior  
-- **Skeleton** → the invariant itself  
+- **Skeleton** → the primitive itself  
 
 ---
 
