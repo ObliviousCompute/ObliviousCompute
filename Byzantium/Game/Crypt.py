@@ -185,7 +185,6 @@ class Crypt:
     def bindcampaign(self) -> socket.socket:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         try:
             sock.bind(('', self.gate))
         except OSError:
@@ -267,10 +266,15 @@ class Crypt:
                 return
         else:
             return
-        digest = self.packethash(packet)
-        if self.veil.seen(digest):
-            return
-        self.veil.remember(digest)
+        skipdedupe = False
+        if header == HEADER_GLYPH and kind == KIND_PURGE:
+            size = len(raw)
+            skipdedupe = 95 <= size <= 115
+        if not skipdedupe:
+            digest = self.packethash(packet)
+            if self.veil.seen(digest):
+                return
+            self.veil.remember(digest)
         if header == HEADER_SOULS:
             self.SoulSqueeze(packet, addr)
             return
@@ -381,11 +385,13 @@ class Crypt:
     def emit(self, packet: Dict[str, Any]):
         raw = self.encrypt(packet)
         peers = self.peers()
+        burst = 3 if self.headerof(packet) == HEADER_GLYPH else 1
         for host, port in peers:
-            try:
-                self.sock.sendto(raw, (host, port))
-            except Exception as exc:
-                pass
+            for _ in range(burst):
+                try:
+                    self.sock.sendto(raw, (host, port))
+                except Exception as exc:
+                    pass
 
     def buildstate(self) -> Baton:
         souls = tuple(self.complete) if self.genesisdone else tuple(self.normalizeSouls(self.souls))
