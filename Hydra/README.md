@@ -86,13 +86,7 @@ These are distinct sockets and work correctly.
 
 ---
 
-<img src="../Relics/Alpha.jpg"/>
-
-> Sniff.Snort..RAWR...bye
-
----
-
-## License & Intent
+## Intent
 
 Hydra Proofs are published as a **public technical disclosure**.
 
@@ -100,3 +94,16 @@ This demo exists to show that **oblivious convergence is possible**.
 
 If it fails, it fails cleanly.  
 If it works, it demonstrates a new computational primitive.
+
+<img src="../Relics/Alpha.jpg"/>
+
+> Sniff.Snort..RAWR...bye
+
+---
+
+## License
+
+This project is released under the terms of the [LICENSE](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
+
