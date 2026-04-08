@@ -32,7 +32,6 @@ def inWindow(incoming, current):
 
 def ingest(state, packet):
 
-    # State → rehydrate only
     if isState(packet):
         if packet.get("tallies") and packet["tallies"] != state["tallies"]:
             state["tallies"] = dict(packet["tallies"])
