@@ -1,6 +1,6 @@
 # 💀 Skeleton
 
-A minimal, fully legible expression of the Oblivious Compute invariant.
+A minimal, fully legible expression of the Oblivious Compute primitive.
 
 No architecture.  
 No interface.  
@@ -81,14 +81,6 @@ It only answers one question:
 
 If yes, it becomes the current state.  
 If not, it is erased.
-
----
-
-## Relation to the Repo
-
-- **Byzantium** → the interactive surface  
-- **Hydra** → the distributed behavior  
-- **Skeleton** → the primitive itself  
 
 ---
 
