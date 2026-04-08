@@ -90,7 +90,7 @@ These are distinct sockets and work correctly.
 
 The Hydra Demo has been published as a **public technical disclosure**.
 
-This demo exists to show that **oblivious convergence through an admissability gate is possible**.
+This demo exists to show that oblivious convergence through an admissability gate is possible.
 
 If it fails, it fails cleanly.  
 If it works, it demonstrates a new computational primitive.
