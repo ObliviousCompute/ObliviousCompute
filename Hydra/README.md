@@ -88,6 +88,8 @@ These are distinct sockets and work correctly.
 
 <img src="../Relics/Alpha.jpg"/>
 
+> Sniff.Snort..RAWR...bye
+
 ---
 
 ## License & Intent
