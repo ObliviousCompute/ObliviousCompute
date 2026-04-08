@@ -40,7 +40,7 @@ The minimal distributed demonstration of the same primitive.
 ## Skeleton
 Pure, hyper-legible expression of the primitive.
 
-[`Skeleton`](./Skeleton) is structure that makes the system lawful. No abstraction, no narrative.
+[`Skeleton`](./Skeleton) is the structure that makes the system lawful. No abstraction, no narrative.
 
 > *(the lift diagram)*
 
