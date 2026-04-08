@@ -66,7 +66,7 @@ Study Skeleton.
 
 ---
 
-## What Survives Is The Shape
+## What Survives Is the Shape
 
 Oblivious Compute does not carry the past forward.
 
