@@ -1,4 +1,4 @@
-# 💀Skeleton
+# 💀 Skeleton
 
 A minimal, fully legible expression of the Oblivious Compute invariant.
 
@@ -10,42 +10,6 @@ Just the rule that determines what is allowed to exist.
 
 ---
 
-## What This Is
-
-Skeleton is the simplest possible form of the system.
-
-It does not simulate behavior.  
-It does not coordinate across nodes.  
-
-It only answers one question:
-
-> Is this state admissible?
-
-If yes, it becomes the current state.  
-If not, it is erased.
-
----
-
-## 🧬 Admissibility Braid
-
-State does not progress through time.
-
-It progresses through admissibility.
-
-Each position permits only two possibilities:
-- itself  
-- or a single valid next position  
-
-Anything else is not processed and produces no effect.
-
-The system does not remember the past.  
-It does not reconstruct history.  
-
-It only accepts what is admissible now.
-
----
-
-## Code
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
@@ -101,6 +65,22 @@ def ingest(state, packet):
 
     return state, intents
 ```
+
+---
+
+## What This Is
+
+Skeleton is the simplest possible form of the system.
+
+It does not simulate behavior.  
+It does not coordinate across nodes.  
+
+It only answers one question:
+
+> Is this state admissible?
+
+If yes, it becomes the current state.  
+If not, it is erased.
 
 ---
 
