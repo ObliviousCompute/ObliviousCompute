@@ -12,7 +12,7 @@ If you want to wrap your head around the primitive, read the [Admissibility](./A
 ---
 
 ## Byzantium
-A live, networked terminal game for up to 24 players.
+Is a live, networked terminal game for up to 24 players.
 
 [`Byzantium`](./Byzantium) is the primary expression of Oblivious Compute—a shared projection where multiple participants interact with a single, continuously evolving state.
 
@@ -29,7 +29,7 @@ Just a live board, shaped in real time by the people inside it.
 ---
 
 ## Hydra
-A minimal distributed demonstration of the same primitive.
+The minimal distributed demonstration of the same primitive.
 
 [`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
 
@@ -38,7 +38,7 @@ A minimal distributed demonstration of the same primitive.
 ---
 
 ## Skeleton
-A stripped-down, hyper-legible expression of the invariant.
+Pure, hyper-legible expression of the primitive.
 
 [`Skeleton`](./Skeleton) is structure that makes the system lawful. No abstraction, no narrative.
 
