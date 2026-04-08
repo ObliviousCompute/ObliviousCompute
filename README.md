@@ -1,6 +1,6 @@
 # Oblivious Compute (OC)
 
-**Oblivious Compute (OC)** is a distributed computation primitive that determines correctness through **admissibility and erasure** rather than agreement and historical coordination.
+**Oblivious Compute (OC)** is an open-source distributed computation primitive that determines correctness through **admissibility and erasure** rather than agreement and historical coordination.
 
 Instead of preserving logs, ordering messages, or reconstructing the past, **OC** allows multiple candidate states to briefly exist and then admits only one.
 
@@ -69,3 +69,11 @@ The system does not remember how it arrived.
 It only admits what can exist next.
 
 Everything else falls away.
+
+---
+
+## License
+
+This project is released under the terms of the [LICENSE](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
