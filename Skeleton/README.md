@@ -9,7 +9,7 @@ No abstraction.
 Just the rule that determines what is allowed to exist.
 
 ---
-## IFF It Fits, It Ships
+## 📦 IFF It Fits, It Ships
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
