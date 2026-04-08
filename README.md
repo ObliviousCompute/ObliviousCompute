@@ -11,6 +11,18 @@ If you want to wrap your head around the primitive, read the [Admissibility](./A
 
 ---
 
+## The Stack
+
+Oblivious Compute is expressed across three layers:
+
+- **Skeleton** — the primitive. The rule that determines what is allowed to exist.
+- **Hydra** — the demonstration. Multiple nodes applying the rule and converging.
+- **Byzantium** — the system. A full environment built around the rule.
+
+Each layer is the same idea, expressed at a different scale.
+
+---
+
 ## Byzantium
 Is a live, networked terminal game for up to 24 players.
 
