@@ -10,7 +10,6 @@ There is no leader and no history—only convergence.
 
 <img src="../Relics/ChompChomp.gif"/>
 
-
 ---
 
 ## Running the Demo
@@ -84,6 +83,10 @@ These are distinct sockets and work correctly.
 - ✅ Linux  
 - ✅ macOS  
 - ❌ Windows (not supported)
+
+---
+
+<img src="../Relics/Alpha.jpg"/>
 
 ---
 
