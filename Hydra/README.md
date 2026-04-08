@@ -1,14 +1,10 @@
 # 🐍 Hydra
 
-A distributed expression of the Oblivious Compute system.
+Hydra is a distributed expression of the Oblivious Compute system. It is not a coordinated network, 
+but a field of independent nodes sharing a single admissible state. Each node emits and each node observes, 
+and what persists is simply what the network accepts. 
 
-Multiple instances.  
-Shared state.  
-No coordination layer.
-
-Each node emits.  
-Each node observes.  
-State converges.
+There is no leader and no history—only convergence.
 
 ---
 
@@ -17,22 +13,19 @@ State converges.
 
 ---
 
-## Download
-
-Download all three Python files into a single directory.
-
-Navagate to that directory in a terminal.
-
-Each Hydra node runs in its **own terminal window**.
-
----
-
 ## Running the Demo
 
-You will run **up to 5 processes**
+Download the Hydra files into a single directory.
 
-- Ports must be **unique per machine**
-- Port numbers **may be the same across different machines**
+Open multiple terminal windows in that directory.
+Each terminal represents a node.
+
+Run Hydra in each terminal with a unique port and a shared peer set.
+
+- Ports must be unique per machine  
+- Ports may be the same across different machines  
+
+Start with 3–5 nodes.
 
 ---
 
