@@ -12,7 +12,7 @@ There is no leader and no history—only convergence.
 
 ---
 
-## Running the Demo
+## ⚙️ Running the Demo
 
 Download the Hydra files into a single directory.
 
