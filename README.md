@@ -50,11 +50,11 @@ Play Byzantium.
 Run Hydra.  
 Study Skeleton.
 
-> OC doesn’t need to be explained—it can be observed.
+> OC can be observed.
 
 ---
 
-## What Remains
+## What Survives Is The Shape.
 
 Oblivious Compute does not carry the past forward.
 
@@ -69,5 +69,3 @@ The system does not remember how it arrived.
 It only admits what can exist next.
 
 Everything else falls away.
-
-> What survives is the shape.
