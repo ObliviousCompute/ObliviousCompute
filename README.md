@@ -11,36 +11,38 @@ If you want to wrap your head around the primitive, read the [Admissibility](./A
 
 ---
 
-## The Code
+## Byzantium
+A live, networked terminal game for up to 24 players.
 
-Oblivious Compute is best understood by interacting with it.
+[`Byzantium`](./Byzantium) is the primary expression of Oblivious Compute—a shared projection where multiple participants interact with a single, continuously evolving state.
 
-Start with the surface, then move inward:
+Connect multiple terminals on the same machine or across a network and you’re immediately inside the same system.
 
-### Byzantium
-A live, networked terminal system built on OC.
+No servers.  
+No history.  
+No replay.
 
-[`Byzantium`](./Byzantium) is the primitive made visible—a shared projection where interaction directly reshapes state.
+Just a live board, shaped in real time by the people inside it.
 
-*(the 10-minute flight)*
+> *(the 10-minute flight)*
 
 ---
 
-### Hydra
+## Hydra
 A minimal distributed demonstration of the same primitive.
 
 [`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
 
-*(the 1-minute flight)*
+> *(the 1-minute flight)*
 
 ---
 
-### Skeleton
+## Skeleton
 A stripped-down, hyper-legible expression of the invariant.
 
 [`Skeleton`](./Skeleton) is structure that makes the system lawful. No abstraction, no narrative.
 
-*(the lift diagram)*
+> *(the lift diagram)*
 
 ---
 
@@ -52,20 +54,20 @@ Study Skeleton.
 
 ---
 
-## What OC Removes
+## What Remains
 
-Most distributed systems assume correctness requires memory:
+Oblivious Compute does not carry the past forward.
 
-- message ordering  
-- logs and replay  
-- consensus and reconciliation  
-- long-lived historical state  
+There are no logs to replay.  
+No messages to order.  
+No history to reconcile.
 
-These assumptions introduce complexity, latency, and coordination overhead.
+Multiple states may appear—  
+only one persists.
 
-Oblivious Compute removes the requirement to remember the past.
+The system does not remember how it arrived.  
+It only admits what can exist next.
 
-Correctness is defined operationally as:
+Everything else falls away.
 
-> What survives  
->Not how it was reached
+> What survives is the shape.
