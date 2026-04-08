@@ -45,17 +45,7 @@ It only accepts what is admissible now.
 
 ---
 
-## How to Read It
-
-Start here:
-
-```python
-if not inWindow(incoming, current):
-```
-
-That condition defines the boundary of admissibility.
-
-Everything else follows from it.
+## Code
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
