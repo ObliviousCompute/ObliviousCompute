@@ -6,22 +6,22 @@ import threading
 import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+
 import Dream
 import Sanctum
 import Field
-import os
-import traceback
+
 NAME_MAX = 8
+
 MODE_SIEGE = 'Siege'
-MODE_CAMPAIGN = 'campaign'
+MODE_CAMPAIGN = 'Campaign'
+
 HEADER_SOULS = 'SOULS'
 HEADER_GLYPH = 'GLYPH'
+
 KIND_PURGE = 'PURGE'
-KIND_WHISPER = 'WHISPER'
-KIND_RALLY = 'RALLY'
-KIND_WRATH = 'WRATH'
-KIND_DEFECT = 'DEFECT'
 KIND_DREAM = 'DREAM'
+
 VEIL_PURGE = 'PURGE'
 VEIL_SOULS = 'SOULS'
 VEIL_GLYPH = 'GLYPH'
@@ -49,7 +49,11 @@ class Baton:
     genesis: int = 1
 
     def box(self) -> Dict[str, Any]:
-        return {'self': self.self.box(), 'souls': [soul.box() for soul in self.souls], 'genesis': int(self.genesis)}
+        return {
+            'self': self.self.box(),
+            'souls': [soul.box() for soul in self.souls],
+            'genesis': int(self.genesis),
+        }
 
 @dataclass
 class Veil:
@@ -95,29 +99,56 @@ class Crypt:
     def __init__(self, state: Any=None, sanctum: Any=None, port: int=9000, dream: Any=None):
         self.sanctum = sanctum
         self.dream = self.wakedream(dream)
-        self.mode = self.coercemode(state)
-        self.skeleton = self.coerceskeleton(state)
-        self.genesisnumber = self.coercegenesis(state)
-        self.gate = self.coercegate(state, port)
-        self.self = self.coerceself(state)
-        self.souls = self.coercesouls(getattr(state, 'souls', []) if not isinstance(state, dict) else state.get('souls', []))
+
+        if isinstance(state, dict):
+            mode = str(state.get('mode', MODE_SIEGE) or MODE_SIEGE).strip()
+            skeleton = str(state.get('skeleton', '') or '')
+            genesis = int(state.get('genesis', 1) or 1)
+            gate = int(state.get('gate', state.get('port', port)) or port)
+            nested = state.get('self', state)
+            selfcard = Self(
+                soul=self.mustname(nested.get('soul', '')),
+                key=self.mustkey(nested.get('key', nested.get('pubkey', ''))),
+            )
+            rawsouls = state.get('souls', [])
+        else:
+            mode = str(getattr(state, 'mode', MODE_SIEGE) or MODE_SIEGE).strip()
+            skeleton = str(getattr(state, 'skeleton', '') or '')
+            genesis = int(getattr(state, 'genesis', 1) or 1)
+            gate = int(getattr(state, 'gate', getattr(state, 'port', port)) or port)
+            nested = getattr(state, 'self', state)
+            selfcard = Self(
+                soul=self.mustname(getattr(nested, 'soul', '')),
+                key=self.mustkey(getattr(nested, 'key', getattr(nested, 'pubkey', ''))),
+            )
+            rawsouls = getattr(state, 'souls', [])
+
+        self.mode = mode if mode in (MODE_SIEGE, MODE_CAMPAIGN) else MODE_SIEGE
+        self.skeleton = skeleton
+        self.genesisnumber = max(1, genesis)
+        self.gate = gate
+        self.self = selfcard
+        self.souls = self.normalizeSouls(rawsouls)
+
         self.veil = Veil()
         self.genesisdone = False
         self.complete: Tuple[Soul, ...] = ()
         self.state = Baton(self=self.self, souls=tuple(), genesis=int(self.genesisnumber))
         self.glyph = None
+
         self.bindhost = ''
         self.bindport: Optional[int] = None
         self.sock = self.bindtransport()
         self.sock.setblocking(False)
+
         self.live = False
         self.thread: Optional[threading.Thread] = None
         self.listensleep = 0.02
-        self.souls = self.normalizeSouls(self.souls)
+
         self.state = self.buildstate()
         self.start()
         self.emitSouls()
-        self.Genesis()
+        self.Genesis(state)
 
     def start(self):
         if self.live:
@@ -133,8 +164,9 @@ class Crypt:
         while self.live:
             try:
                 self.poll()
-            except Exception:
+            except Exception as exc:
                 pass
+            
             time.sleep(self.listensleep)
 
     def wake(self):
@@ -164,8 +196,7 @@ class Crypt:
 
     def bindsiege(self) -> socket.socket:
         last_error: Optional[Exception] = None
-        seats = self.seatports()
-        for port in seats:
+        for port in self.seatports():
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             try:
                 sock.bind(('127.0.0.1', port))
@@ -178,9 +209,7 @@ class Crypt:
                     sock.close()
                 except Exception:
                     pass
-            finally:
-                pass
-        raise RuntimeError(f'No clean siege seat available in reserved range {seats}. Start the next node on a free reserved port or widen the Genesis range.') from last_error
+        raise RuntimeError(f'No clean siege seat available in reserved range {self.seatports()}.') from last_error
 
     def bindcampaign(self) -> socket.socket:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -194,16 +223,10 @@ class Crypt:
         return sock
 
     def seatports(self) -> List[int]:
-        count = max(1, int(self.genesisnumber or 1))
-        return [self.gate + i for i in range(count)]
+        return [self.gate + i for i in range(max(1, int(self.genesisnumber or 1)))]
 
     def siegepeers(self) -> List[Tuple[str, int]]:
-        peers = []
-        for port in self.seatports():
-            if self.bindport is not None and int(port) == int(self.bindport):
-                continue
-            peers.append(('127.0.0.1', port))
-        return peers
+        return [('127.0.0.1', port) for port in self.seatports() if int(port) != int(self.bindport or -1)]
 
     def campaignpeers(self) -> List[Tuple[str, int]]:
         return [(self.broadcasttarget(), self.gate)]
@@ -216,8 +239,7 @@ class Crypt:
         return []
 
     def broadcasttarget(self) -> str:
-        ip = self.localip()
-        parts = ip.split('.')
+        parts = self.localip().split('.')
         if len(parts) == 4:
             parts[-1] = '255'
             return '.'.join(parts)
@@ -239,7 +261,7 @@ class Crypt:
                 raw, addr = self.sock.recvfrom(65535)
             except BlockingIOError:
                 break
-            except Exception:
+            except Exception as exc:
                 break
             try:
                 self.receive(raw, addr)
@@ -247,46 +269,62 @@ class Crypt:
                 continue
 
     def receive(self, raw: bytes, addr: Tuple[str, int]):
-        if not self.veil.accepts(raw, VEIL_GLYPH):
+        accepted = self.veil.accepts(raw, VEIL_GLYPH)
+        if not accepted:
             return
         self.Cryptkeeper(raw, addr)
 
     def Cryptkeeper(self, raw: bytes, addr: Tuple[str, int]):
-        packet = self.decrypt(raw)
+        try:
+            packet = self.decrypt(raw)
+        except Exception as exc:
+            raise
         header = self.headerof(packet)
+
         if header == HEADER_SOULS:
-            if not self.veil.accepts(raw, VEIL_SOULS):
+            accepted = self.veil.accepts(raw, VEIL_SOULS)
+            if not accepted:
                 return
         elif header == HEADER_GLYPH:
             kind = self.kindof(packet)
             if kind == KIND_PURGE:
-                if not self.veil.accepts(raw, VEIL_PURGE):
+                accepted = self.veil.accepts(raw, VEIL_PURGE)
+                if not accepted:
                     return
-            elif not self.veil.accepts(raw, VEIL_GLYPH):
-                return
+            elif True:
+                accepted = self.veil.accepts(raw, VEIL_GLYPH)
+                if not accepted:
+                    return
         else:
             return
-        skipdedupe = False
-        if header == HEADER_GLYPH and kind == KIND_PURGE:
-            size = len(raw)
-            skipdedupe = 95 <= size <= 115
+
+        skipdedupe = 100 <= len(raw) <= 125
         if not skipdedupe:
             digest = self.packethash(packet)
-            if self.veil.seen(digest):
+            seen = self.veil.seen(digest)
+            if seen:
                 return
             self.veil.remember(digest)
+
         if header == HEADER_SOULS:
             self.SoulSqueeze(packet, addr)
             return
+
         self.routeGlyph(packet, addr)
 
     def SoulSqueeze(self, packet: Dict[str, Any], addr: Tuple[str, int]):
+        incomingpacket = self.packetSouls(packet.get('souls', []))
+
         if self.genesisdone:
-            self.emitCompleteSouls()
+            mine = tuple(self.complete or tuple(self.normalizeSouls(self.souls)))
+            incominghash = self.packetRosterhash(incomingpacket)
+            myhash = self.packetRosterhash(mine)
+            if incominghash != myhash:
+                self.emitCompleteSouls()
             return
-        incoming = packet.get('souls', [])
+
         before = self.rosterhash(self.souls)
-        merged = self.normalizeSouls(list(self.souls) + list(incoming or []))
+        merged = self.normalizeSouls(list(self.souls) + list(incomingpacket or []))
         after = self.rosterhash(merged)
         if after != before:
             self.souls = merged
@@ -297,28 +335,75 @@ class Crypt:
     def normalizeSouls(self, values: Iterable[Any]) -> List[Soul]:
         cards: Dict[str, Soul] = {}
         for value in list(values or []):
-            soul = self.coercesoul(value)
-            if not self.acceptsoulcard(soul):
+            soul = self.soulcard(value)
+            if soul is None:
                 continue
-            cards[soul.key] = Soul(soul=soul.soul, key=soul.key)
+            cards[soul.key] = soul
         if self.acceptself(self.self):
             cards[self.self.key] = Soul(soul=self.self.soul, key=self.self.key)
         return sorted(cards.values(), key=lambda soul: soul.key)
 
+    def soulcard(self, value: Any) -> Optional[Soul]:
+        if isinstance(value, Soul):
+            return value
+        if isinstance(value, dict):
+            try:
+                return Soul(
+                    soul=self.mustname(value.get('soul', '')),
+                    key=self.mustkey(value.get('key', value.get('pubkey', ''))),
+                )
+            except Exception:
+                return None
+        try:
+            return Soul(
+                soul=self.mustname(getattr(value, 'soul', '')),
+                key=self.mustkey(getattr(value, 'key', getattr(value, 'pubkey', ''))),
+            )
+        except Exception:
+            return None
+
+    def packetSouls(self, values: Iterable[Any]) -> List[Soul]:
+        cards: Dict[str, Soul] = {}
+        for value in list(values or []):
+            soul = self.soulcard(value)
+            if soul is None:
+                continue
+            cards[soul.key] = soul
+        return sorted(cards.values(), key=lambda soul: soul.key)
+
+
     def Genesis(self, state: Any=None):
         if state is not None:
-            self.self = self.coerceself(state)
-            self.souls = self.normalizeSouls(list(self.souls) + list(self.coercesouls(getattr(state, 'souls', []) if not isinstance(state, dict) else state.get('souls', []))))
-            self.genesisnumber = self.coercegenesis(state)
+            if isinstance(state, dict):
+                nested = state.get('self', state)
+                self.self = Self(
+                    soul=self.mustname(nested.get('soul', '')),
+                    key=self.mustkey(nested.get('key', nested.get('pubkey', ''))),
+                )
+                self.souls = self.normalizeSouls(list(self.souls) + list(state.get('souls', [])))
+                self.genesisnumber = max(1, int(state.get('genesis', 1) or 1))
+            else:
+                nested = getattr(state, 'self', state)
+                self.self = Self(
+                    soul=self.mustname(getattr(nested, 'soul', '')),
+                    key=self.mustkey(getattr(nested, 'key', getattr(nested, 'pubkey', ''))),
+                )
+                self.souls = self.normalizeSouls(list(self.souls) + list(getattr(state, 'souls', [])))
+                self.genesisnumber = max(1, int(getattr(state, 'genesis', 1) or 1))
             self.state = self.buildstate()
+
         if self.genesisdone:
             return self.state
-        if len(self.souls) < max(1, int(self.genesisnumber or 1)):
+        need = max(1, int(self.genesisnumber or 1))
+        have = len(self.souls)
+        if have < need:
             return self.state
+
         self.genesisdone = True
         self.complete = tuple(self.normalizeSouls(self.souls))
         self.state = self.buildstate()
         self.emitCompleteSouls()
+
         sanctum = self.wakesanctum()
         if hasattr(sanctum, 'genesis'):
             return sanctum.genesis(self.state)
@@ -328,26 +413,69 @@ class Crypt:
 
     def unboxglyph(self, payload: Dict[str, Any]) -> Any:
         kind = str(payload.get('kind', '') or '').strip().upper()
+
+        if kind == KIND_PURGE:
+            return {'kind': KIND_PURGE, 'key': self.mustkey(payload.get('key', ''))}
+
         if kind == KIND_DREAM:
             selfraw = payload.get('self', ['', '']) or ['', '']
-            if isinstance(selfraw, dict):
-                selfpair = (str(selfraw.get('soul', '') or ''), str(selfraw.get('key', selfraw.get('pubkey', '')) or '').strip())
-            else:
-                selfpair = (str(selfraw[0] if len(selfraw) > 0 else '' or ''), str(selfraw[1] if len(selfraw) > 1 else '' or '').strip())
+            if not isinstance(selfraw, list) or len(selfraw) != 2:
+                raise TypeError('dream self must be two-item list')
+
+            dreamsoul = str(selfraw[0] or '')
+            dreamkey = str(selfraw[1] or '')
+            if not (dreamsoul == '' and dreamkey == ''):
+                raise ValueError('dream self must be blank pair')
+
             cells = []
             for item in tuple(payload.get('cells', ()) or ()):
                 purge = dict(item.get('purge', {}) or {})
                 lock = dict(item.get('lock', {}) or {})
-                cells.append(Field.Cell(soul=str(item.get('soul', '') or ''), key=str(item.get('key', '') or '').strip(), salt=int(item.get('salt', 0) or 0), purge=Field.Purge(chainbit=int(purge.get('chainbit', 0) or 0), lockbit=int(purge.get('lockbit', 0) or 0)), lock=Field.Lock(parent=str(lock.get('parent', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX), child=str(lock.get('child', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX)), sign=str(item.get('sign', Field.NULL_SIGN_HEX) or Field.NULL_SIGN_HEX)))
-            return Field.State(cells=tuple(cells), self=selfpair, monument=tuple(payload.get('monument', ()) or ()))
-        if 'saltbody' not in payload or 'lockbody' not in payload or 'textbody' not in payload:
-            return payload
-        saltbody = tuple((Field.Salt(key=str(item.get('key', '') or ''), salt=int(item.get('salt', 0) or 0)) for item in tuple(payload.get('saltbody', ()) or ())))
+                cells.append(Field.Cell(
+                    soul=self.mustname(item.get('soul', '')),
+                    key=self.mustkey(item.get('key', '')),
+                    salt=int(item.get('salt', 0) or 0),
+                    purge=Field.Purge(
+                        chainbit=int(purge.get('chainbit', 0) or 0),
+                        lockbit=int(purge.get('lockbit', 0) or 0),
+                    ),
+                    lock=Field.Lock(
+                        parent=self.musthash(lock.get('parent', Field.ZERO_HASH_HEX)),
+                        child=self.musthash(lock.get('child', Field.ZERO_HASH_HEX)),
+                    ),
+                    sign=self.mustsign(item.get('sign', Field.NULL_SIGN_HEX)),
+                ))
+
+            return Field.State(
+                cells=tuple(cells),
+                self=('', ''),
+                monument=tuple(str(x or '') for x in (payload.get('monument', ()) or ())),
+            )
+
+        saltbody = []
+        for item in tuple(payload.get('saltbody', ()) or ()):
+            saltbody.append(Field.Salt(
+                key=self.mustkey(item.get('key', '')),
+                salt=int(item.get('salt', 0) or 0),
+            ))
+
         lockraw = dict(payload.get('lockbody', {}) or {})
-        lockbody = Field.Lock(parent=str(lockraw.get('parent', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX), child=str(lockraw.get('child', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX))
         textraw = dict(payload.get('textbody', {}) or {})
-        textbody = Field.Text(text=str(textraw.get('text', '') or ''))
-        return Field.SaltGlyph(key=str(payload.get('key', '') or ''), saltbody=saltbody, lockbody=lockbody, textbody=textbody, salthash=str(payload.get('salthash', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX), lockhash=str(payload.get('lockhash', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX), texthash=str(payload.get('texthash', Field.ZERO_HASH_HEX) or Field.ZERO_HASH_HEX), sign=str(payload.get('sign', Field.NULL_SIGN_HEX) or Field.NULL_SIGN_HEX), locksign=str(payload.get('locksign', Field.NULL_SIGN_HEX) or Field.NULL_SIGN_HEX))
+
+        return Field.SaltGlyph(
+            key=self.mustkey(payload.get('key', '')),
+            saltbody=tuple(saltbody),
+            lockbody=Field.Lock(
+                parent=self.musthash(lockraw.get('parent', Field.ZERO_HASH_HEX)),
+                child=self.musthash(lockraw.get('child', Field.ZERO_HASH_HEX)),
+            ),
+            textbody=Field.Text(text=str(textraw.get('text', '') or '')),
+            salthash=self.musthash(payload.get('salthash', Field.ZERO_HASH_HEX)),
+            lockhash=self.musthash(payload.get('lockhash', Field.ZERO_HASH_HEX)),
+            texthash=self.musthash(payload.get('texthash', Field.ZERO_HASH_HEX)),
+            sign=self.mustsign(payload.get('sign', Field.NULL_SIGN_HEX)),
+            locksign=self.mustsign(payload.get('locksign', Field.NULL_SIGN_HEX)),
+        )
 
     def routeGlyph(self, packet: Dict[str, Any], addr: Tuple[str, int]):
         if not self.genesisdone:
@@ -356,26 +484,27 @@ class Crypt:
         payload.pop('header', None)
         payload = self.unboxglyph(payload)
         self.glyph = payload
+
         lane = getattr(getattr(self.dream, 'box', None), 'crypt', None)
         if lane is not None and hasattr(lane, 'glyph'):
             lane.glyph = payload
             if hasattr(self.dream, 'wake'):
                 self.dream.wake()
             return
+
         if hasattr(self.dream, 'box'):
             self.dream.box.crypt = payload
             if hasattr(self.dream, 'wake'):
                 self.dream.wake()
-        else:
-            pass
 
     def emitSouls(self):
-        payload = {'header': HEADER_SOULS, 'souls': [soul.box() for soul in self.normalizeSouls(self.souls)]}
-        self.emit(payload)
+        packet = {'header': HEADER_SOULS, 'souls': [soul.box() for soul in self.normalizeSouls(self.souls)]}
+        self.emit(packet)
 
     def emitCompleteSouls(self):
-        payload = {'header': HEADER_SOULS, 'souls': [soul.box() for soul in self.complete or tuple(self.normalizeSouls(self.souls))]}
-        self.emit(payload)
+        souls = self.complete or tuple(self.normalizeSouls(self.souls))
+        packet = {'header': HEADER_SOULS, 'souls': [soul.box() for soul in souls]}
+        self.emit(packet)
 
     def emitGlyph(self, glyph: Dict[str, Any]):
         payload = {'header': HEADER_GLYPH}
@@ -384,10 +513,10 @@ class Crypt:
 
     def emit(self, packet: Dict[str, Any]):
         raw = self.encrypt(packet)
+        burst = 3
         peers = self.peers()
-        burst = 3 if self.headerof(packet) == HEADER_GLYPH else 1
         for host, port in peers:
-            for _ in range(burst):
+            for shot in range(burst):
                 try:
                     self.sock.sendto(raw, (host, port))
                 except Exception as exc:
@@ -427,81 +556,48 @@ class Crypt:
         body = json.dumps([soul.box() for soul in self.normalizeSouls(souls)], sort_keys=True, separators=(',', ':'), default=str)
         return hashlib.sha256(body.encode('utf-8')).hexdigest()
 
+    def packetRosterhash(self, souls: Iterable[Any]) -> str:
+        body = json.dumps([soul.box() for soul in self.packetSouls(souls)], sort_keys=True, separators=(',', ':'), default=str)
+        return hashlib.sha256(body.encode('utf-8')).hexdigest()
+
+
     def encrypt(self, packet: Dict[str, Any]) -> bytes:
         body = json.dumps(packet, sort_keys=True, separators=(',', ':'), default=str)
         data = body.encode('utf-8')
         mask = hashlib.sha256(self.skeleton.encode('utf-8')).digest()
-        return bytes((byte ^ mask[i % len(mask)] for i, byte in enumerate(data)))
+        raw = bytes((byte ^ mask[i % len(mask)] for i, byte in enumerate(data)))
+        return raw
 
     def decrypt(self, raw: bytes) -> Dict[str, Any]:
         mask = hashlib.sha256(self.skeleton.encode('utf-8')).digest()
         data = bytes((byte ^ mask[i % len(mask)] for i, byte in enumerate(raw)))
-        return json.loads(data.decode('utf-8'))
+        packet = json.loads(data.decode('utf-8'))
+        if not isinstance(packet, dict):
+            raise TypeError('packet must decode to dict')
+        return packet
 
-    def coercemode(self, value: Any) -> str:
-        if isinstance(value, dict):
-            raw = value.get('mode', MODE_SIEGE)
-        else:
-            raw = getattr(value, 'mode', MODE_SIEGE)
-        text = str(raw or MODE_SIEGE).strip().lower()
-        return text if text in (MODE_SIEGE, MODE_CAMPAIGN) else MODE_SIEGE
+    def mustname(self, value: Any) -> str:
+        text = str(value or '').strip()
+        if not (0 < len(text) <= NAME_MAX):
+            raise ValueError('invalid soul name')
+        return text
 
-    def coerceskeleton(self, value: Any) -> str:
-        if isinstance(value, dict):
-            return str(value.get('skeleton', '') or '')
-        return str(getattr(value, 'skeleton', '') or '')
+    def mustkey(self, value: Any) -> str:
+        text = str(value or '').strip()
+        if len(text) != 64:
+            raise ValueError('invalid key length')
+        bytes.fromhex(text)
+        return text
 
-    def coercegenesis(self, value: Any) -> int:
-        if isinstance(value, dict):
-            raw = value.get('genesis', 1)
-        else:
-            raw = getattr(value, 'genesis', 1)
-        try:
-            return max(1, int(raw or 1))
-        except Exception:
-            return 1
+    def musthash(self, value: Any) -> str:
+        return self.mustkey(value)
 
-    def coercegate(self, value: Any, fallback: int) -> int:
-        if isinstance(value, dict):
-            raw = value.get('gate', value.get('port', fallback))
-        else:
-            raw = getattr(value, 'gate', getattr(value, 'port', fallback))
-        try:
-            return int(raw or fallback)
-        except Exception:
-            return int(fallback)
-
-    def coerceself(self, value: Any) -> Self:
-        if isinstance(value, dict):
-            if 'self' in value:
-                return self.coerceself(value.get('self'))
-            return Self(soul=self.cleansoul(value.get('soul', '')), key=self.cleankey(value.get('key', value.get('pubkey', ''))))
-        if isinstance(value, Self):
-            return Self(soul=value.soul, key=value.key)
-        if isinstance(value, (list, tuple)) and len(value) >= 2:
-            return Self(soul=self.cleansoul(value[0]), key=self.cleankey(value[1]))
-        if hasattr(value, 'self'):
-            return self.coerceself(getattr(value, 'self'))
-        return Self(soul=self.cleansoul(getattr(value, 'soul', '')), key=self.cleankey(getattr(value, 'key', getattr(value, 'pubkey', ''))))
-
-    def coercesouls(self, values: Iterable[Any]) -> List[Soul]:
-        out: List[Soul] = []
-        for value in list(values or []):
-            soul = self.coercesoul(value)
-            if self.acceptsoulcard(soul):
-                out.append(soul)
-        else:
-            pass
-        return out
-
-    def coercesoul(self, value: Any) -> Soul:
-        if isinstance(value, Soul):
-            return Soul(soul=value.soul, key=value.key)
-        if isinstance(value, dict):
-            return Soul(soul=self.cleansoul(value.get('soul', '')), key=self.cleankey(value.get('key', value.get('pubkey', ''))))
-        if isinstance(value, (list, tuple)) and len(value) >= 2:
-            return Soul(soul=self.cleansoul(value[0]), key=self.cleankey(value[1]))
-        return Soul(soul=self.cleansoul(getattr(value, 'soul', '')), key=self.cleankey(getattr(value, 'key', getattr(value, 'pubkey', ''))))
+    def mustsign(self, value: Any) -> str:
+        text = str(value or '').strip()
+        if len(text) != 128:
+            raise ValueError('invalid sign length')
+        bytes.fromhex(text)
+        return text
 
     def acceptsoulname(self, value: str) -> bool:
         return isinstance(value, str) and 0 < len(value) <= NAME_MAX
@@ -521,9 +617,10 @@ class Crypt:
     def acceptsoulcard(self, value: Soul) -> bool:
         return self.acceptsoulname(value.soul) and self.acceptkey(value.key)
 
-    def cleansoul(self, value: Any) -> str:
-        return str(value or '').strip()[:NAME_MAX]
-
-    def cleankey(self, value: Any) -> str:
-        return str(value or '').strip()
-__all__ = ['Crypt', 'Self', 'Soul', 'Baton', 'Veil', 'MODE_SIEGE', 'MODE_CAMPAIGN', 'HEADER_SOULS', 'HEADER_GLYPH', 'KIND_PURGE', 'KIND_WHISPER', 'KIND_RALLY', 'KIND_WRATH', 'KIND_DEFECT', 'KIND_DREAM', 'VEIL_PURGE', 'VEIL_SOULS', 'VEIL_GLYPH']
+__all__ = [
+    'Crypt', 'Self', 'Soul', 'Baton', 'Veil',
+    'MODE_SIEGE', 'MODE_CAMPAIGN',
+    'HEADER_SOULS', 'HEADER_GLYPH',
+    'KIND_PURGE', 'KIND_DREAM',
+    'VEIL_PURGE', 'VEIL_SOULS', 'VEIL_GLYPH',
+]

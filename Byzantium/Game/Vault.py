@@ -20,7 +20,7 @@ defaultskeleton = 'skeleton'
 defaultsecret = 'password'
 defaultsoul = 'SATOSHI'
 defaultgenesis = 1
-textmaxlen = 59
+textmaxlen = 68
 expectedspendcounts = {WHISPER: 1, RALLY: 5, WRATH: 23, DEFECT: 6}
 
 @dataclass
@@ -204,10 +204,10 @@ class Vault:
         rawtext = str(glyph.text or '')
         if not kind:
             return rawtext[:textmaxlen]
-        prefix = f'{kind}|'
-        if rawtext.lower().startswith(prefix):
+        suffix = f'|{kind}'
+        if rawtext.lower().endswith(suffix):
             return rawtext[:textmaxlen]
-        return f'{prefix}{rawtext}'[:textmaxlen]
+        return f'{rawtext}{suffix}'[:textmaxlen]
 
     def texthash(self, textbody: Field.Text) -> str:
         out = Field.TextHash(textbody)

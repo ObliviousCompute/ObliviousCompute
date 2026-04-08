@@ -63,13 +63,21 @@ class Relay:
         if not isinstance(value, dict):
             return None
         sender = str(value.get('sender', '') or '').strip()
-        kind = str(value.get('kind', '') or '').strip().upper()
+        actionkind = str(value.get('actionkind', '') or value.get('kind', '') or '').strip().upper()
         text = str(value.get('text', '') or '')
+        rawtext = str(value.get('rawtext', '') or '')
         total = int(value.get('total', 0) or 0)
         name = sender.ljust(Forge.NAME_W)[:Forge.NAME_W]
-        left = 'DEFECTED' if kind == 'DEFECT' else Forge.fmtSpineCost(total, width=Forge.COST_W, signed=True)
-        line = f'{name} {left}:{text}'.rstrip()
-        entry = (kind or 'ASH', line)
+        left = 'Defected' if actionkind == 'DEFECT' else Forge.fmtSpineCost(total, width=Forge.COST_W, signed=True)
+        entry = {
+            'kind': actionkind or 'ASH',
+            'sender': sender,
+            'name': name,
+            'left': left,
+            'text': text,
+            'rawtext': rawtext,
+            'total': total,
+        }
         self.ash.append(entry)
         self.ash = self.ash[-7:]
         if self.cache is not None:

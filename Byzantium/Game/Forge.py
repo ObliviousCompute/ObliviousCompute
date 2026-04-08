@@ -16,7 +16,7 @@ class Geometry:
     framePad: int = 1
     inner: int = term - framePad * 2
     name: int = 8
-    msg: int = 59
+    msg: int = 60
     cost: int = 8
 
     @classmethod

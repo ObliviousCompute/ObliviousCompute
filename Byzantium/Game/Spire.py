@@ -414,9 +414,10 @@ def _ash_amount_total(raw: str) -> int:
 
 def _ash_split_text(raw: str) -> tuple[str, str]:
     text = str(raw or '')
-    head, sep, tail = text.partition('|')
-    kind = head.strip().upper() if sep else ''
-    return kind, tail if sep else text
+    body, sep, kind = text.rpartition('|')
+    if sep:
+        return kind.strip().upper(), body
+    return '', text
 
 def _ash_payload_color(pal: Dict[str, str], mine: bool) -> str:
     return pal['ash'] if mine else pal['white']
@@ -438,29 +439,54 @@ def _ash_tag_color(pal: Dict[str, str], mine: bool, kind: str, amount_total: int
 def _ash_tag_text(raw: str, kind: str) -> str:
     return 'Defected' if kind == 'DEFECT' else raw
 
-def _render_ash_entry(cache: UiCache, pal: Dict[str, str], chan: str, line: object) -> str:
-    s = str(line or '')
-    sender = s[:NAME_W].strip()
+def _render_ash_entry(cache: UiCache, pal: Dict[str, str], entry: object) -> str:
     mine = str(getattr(cache, 'local_name', '') or '').strip()
+
+    if isinstance(entry, dict):
+        kind = str(entry.get('kind', '') or '').strip().upper()
+        sender = str(entry.get('sender', '') or '').strip()
+        name = str(entry.get('name', '') or sender).ljust(NAME_W)[:NAME_W]
+        amount_text = str(entry.get('left', '') or '')
+        text = str(entry.get('text', '') or '')
+        amount_total = int(entry.get('total', 0) or 0)
+    else:
+        chan = ''
+        line = ''
+        if isinstance(entry, tuple) and len(entry) >= 2:
+            chan, line = entry[0], entry[1]
+        s = str(line or '')
+        sender = s[:NAME_W].strip()
+        name = s[:NAME_W].ljust(NAME_W)[:NAME_W]
+        cut = min(len(s), NAME_W + 1)
+        colon = s.find(':', cut)
+        if colon < 0:
+            colon = len(s)
+        amount_text = s[cut:colon].strip()
+        rawtext = s[colon + 1:] if colon < len(s) else ''
+        kind_text, body = _ash_split_text(rawtext)
+        kind = kind_text or str(chan or '').strip().upper()
+        text = body if kind_text else rawtext
+        amount_total = _ash_amount_total(amount_text)
+
     is_mine = bool(sender) and sender == mine
-    cut = min(len(s), NAME_W + 1)
-    colon = s.find(':', cut)
-    if colon < 0:
-        colon = len(s)
-    name = s[:NAME_W]
-    gap = s[NAME_W:cut]
-    amount = s[cut:colon]
-    rawtext = s[colon + 1:] if colon < len(s) else ''
-    kind_text, text = _ash_split_text(rawtext)
-    kind_chan = str(chan or '').strip().upper()
-    kind = kind_text or kind_chan
     payload = _ash_payload_color(pal, is_mine)
-    amount_total = _ash_amount_total(amount)
     tag = _ash_tag_color(pal, is_mine, kind, amount_total)
-    ash_tag = _ash_tag_text(amount, kind)
+    left = _ash_tag_text(amount_text, kind)
     if _ash_is_broadcast(kind) and not is_mine:
         payload = pal['white']
-    return clipTerm(pal['ash'] + name + RESET + gap + tag + ash_tag + RESET + pal['ash'] + ':' + RESET + payload + text + RESET)
+
+    name_slot = str(name).ljust(NAME_W)[:NAME_W]
+    left_slot = str(left).rjust(Forge.COST_W)[:Forge.COST_W]
+    body_slot = str(text or '').replace('\r', ' ').replace('\n', ' ')
+    body_slot = body_slot[:Forge.MSG_MAX]
+
+    return (
+        pal['ash'] + name_slot + RESET +
+        pal['ash'] + ' ' + RESET +
+        tag + left_slot + RESET +
+        pal['ash'] + ':' + RESET +
+        payload + body_slot + RESET
+    )
 
 
 
@@ -478,7 +504,7 @@ def render_ash(cache: UiCache, state: object, pal: Dict[str, str], anchor_col: i
         vis = min(int(getattr(cache, 'visible_feed_count', 0)), len(feed))
 
     start = max(0, len(feed) - vis)
-    rendered = [_render_ash_entry(cache, pal, chan, line) for chan, line in reversed(feed[start:])]
+    rendered = [_render_ash_entry(cache, pal, entry) for entry in reversed(feed[start:])]
     max_rows = 7
 
     if len(rendered) <= 3:

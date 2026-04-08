@@ -54,8 +54,15 @@ def _monumentscore(line: Any) -> int:
     _head, score, _body = _monumentparse(line)
     return abs(int(score or 0))
 
-def _monumentclean(text: Any, n: int=59) -> str:
-    body = str(text or '').replace('\r', ' ').replace('\n', ' ').strip()
+def _ashsplit(text: Any) -> tuple[str, str]:
+    raw = str(text or '').replace('\r', ' ').replace('\n', ' ').strip()
+    body, sep, kind = raw.rpartition('|')
+    if sep:
+        return (kind.strip().upper(), body.strip())
+    return ('', raw)
+
+def _monumentclean(text: Any, n: int=60) -> str:
+    _kind, body = _ashsplit(text)
     return body[:n]
 
 def _monumentname(name: Any) -> str:
@@ -70,9 +77,8 @@ def _monumentline(name: Any, total: int, text: Any) -> str:
     return f'{_monumentname(name)} {score}:{body}' if body else f'{_monumentname(name)} {score}:'
 
 def _ashkind(text: Any) -> str:
-    raw = str(text or '')
-    head, sep, _ = raw.partition('|')
-    return head.strip().upper() if sep else ''
+    kind, _body = _ashsplit(text)
+    return kind
 
 def _ashbroadcasttotal(glyph: Field.SaltGlyph, viewer: str, sender: str, kind: str) -> int:
     legs = tuple(getattr(glyph, 'saltbody', ()) or ())
@@ -125,8 +131,6 @@ class Dream:
         self.crypt = Crypt.Crypt(state=state)
         Crypt.crypt = self.crypt
         Crypt._CRYPT = self.crypt
-        if hasattr(self.crypt, 'Genesis'):
-            return self.crypt.Genesis(state)
         return self.crypt
 
     def wake(self):
@@ -244,14 +248,21 @@ class Dream:
         sender = str(glyph.key or '').strip()
         if not viewer or not sender:
             return None
-        text = str(getattr(getattr(glyph, 'textbody', None), 'text', '') or '')
-        actionkind = _ashkind(text)
+        rawtext = str(getattr(getattr(glyph, 'textbody', None), 'text', '') or '')
+        actionkind, body = _ashsplit(rawtext)
         total = _ashbroadcasttotal(glyph, viewer, sender, actionkind)
         if viewer != sender and total <= 0:
             return None
         sendercell = Field.FindCell(self.state, sender)
         sendername = str(sendercell.soul or '') if sendercell is not None else str(self.state.self[0] or '')
-        payload = {'sender': sendername or sender, 'kind': SaltGlyph, 'text': text, 'total': int(total)}
+        payload = {
+            'sender': sendername or sender,
+            'kind': SaltGlyph,
+            'actionkind': actionkind,
+            'text': body[:60],
+            'rawtext': rawtext,
+            'total': int(total),
+        }
         self.box.ashfall = payload
         return payload
 
@@ -452,8 +463,9 @@ class Dream:
     def mutatepurge(self, glyph: Any, source: str='') -> bool:
         if self.state is None:
             return False
-        key = self.purgekey(glyph)
+
         if source == 'vault':
+            key = self.purgekey(glyph)
             if key and key == self.selfkey():
                 nextstate = self._scrubpurge(self.state)
                 changed = self.commit(nextstate)
@@ -465,16 +477,16 @@ class Dream:
             flare = self.purgeflare()
             self.forward(flare)
             return changed or True
+
         if source == 'crypt':
-            if key and key == self.selfkey():
-                return False
             if self.pristine(self.state):
                 return False
-            dream = self.scrub(self.state)
-            if dream is None:
+            key = self.purgekey(glyph)
+            if key and key == self.selfkey():
                 return False
-            self.forward(dream)
+            self.forward(self.scrub(self.state))
             return True
+
         return False
 
     def commit(self, nextstate: Field.State) -> bool:
