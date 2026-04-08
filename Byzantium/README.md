@@ -1,4 +1,4 @@
-# Byzantium
+# ⚔️ Byzantium ⚔️
 
 **A shared projection where actions become reality.**
 
