@@ -1,55 +1,19 @@
-# Hydra Demo — Truth Through Erasure
+# 🐍 Hydra
 
-This repository contains a **runnable demonstration of Hydra Proofs**, a concrete instantiation of the **Oblivious Compute (OC)** primitive.
+A distributed expression of the Oblivious Compute system.
 
-Hydra demonstrates **distributed correctness through deterministic selection and erasure**, rather than agreement, coordination, or historical replay.
+Multiple instances.  
+Shared state.  
+No coordination layer.
 
-This is a **research demo**, not a product.
-
----
-
-## What This Demo Demonstrates
-
-This demo runs multiple Hydra nodes as independent processes and shows how computers can drop out, reboot, and rejoin a network while staying in sync without coordination overhead. Nodes exchange full candidate states over UDP, allow temporary divergence, and deterministically converge by overwrite. There is no leader, no ordering requirement, no replay log, and no recovery of losing states. When a process is killed, it disappears. When it restarts, it instantly hydrates the current truth. Nothing panics. Nothing waits. The system simply keeps the present state and erases everything else.
+Each node emits.  
+Each node observes.  
+State converges.
 
 ---
 
 <img src="../Relics/ChompChomp.gif"/>
 
----
-
-## Requirements
-
-### Operating System
-
-- ✅ Linux  
-- ✅ macOS  
-- ❌ Windows (not supported)
-
-This demo relies on low-level terminal control:
-
-- `termios`
-- `tty`
-- raw stdin handling
-
-These APIs are not available on Windows.  
-WSL is **not guaranteed** to work correctly.
-
----
-
-### Python Version
-
-- **Python 3.10 or higher required**
-
-Reason:
-- Uses modern type syntax (`Dict[str, Any]`)
-- No backward-compatibility shims are provided
-
-Check your version:
-
-```bash
-python3 --version
-```
 
 ---
 
@@ -63,26 +27,16 @@ Each Hydra node runs in its **own terminal window**.
 
 ---
 
-## Running the Demo (5 Nodes)
+## Running the Demo
 
-You will run **five processes**, one per head:
-
-- A
-- B
-- C
-- D
-- E
-
-Each node binds to a UDP port.
+You will run **up to 5 processes**
 
 - Ports must be **unique per machine**
 - Port numbers **may be the same across different machines**
 
 ---
 
-### Example: Single Machine (Localhost)
-
-Open **five terminals**, then run:
+### Single Machine (Localhost)
 
 #### Terminal 1 — Head A
 ```bash
@@ -116,7 +70,7 @@ python3 Hydra.py --id E --port 5005 --peers \
 
 ---
 
-### Running Across Multiple Machines (LAN)
+### Multiple Machines (LAN)
 
 You may also run nodes across **multiple machines** by replacing `127.0.0.1`
 with LAN IP addresses.
@@ -132,41 +86,11 @@ These are distinct sockets and work correctly.
 
 ---
 
-## Controls
+### Operating System
 
-- **Left / Right Arrow** — Select target head  
-- **Up / Down Arrow** — Select amount  
-- **Enter** — Submit transaction (“FEED”)  
-- **Ctrl+X** — Soft reboot (Sever Head)  
-- **Ctrl+C** — Exit  (Cauterize)
-
-A node will **never allow you to target itself**.
-
----
-
-## Notes on Stability
-
-- This demo uses **UDP**
-- Packet loss is expected under heavy load
-- Wi-Fi saturation can induce temporary divergence
-- The system recovers through overwrite and erasure
-
-This behavior is **intentional** and part of the demonstration.
-
----
-
-## Important Warnings
-
-This demo intentionally provides **no guarantees** of:
-
-- persistence  
-- auditability  
-- fairness  
-- security hardening  
-- Byzantine fault tolerance beyond erasure  
-
-If a state survives, it is the truth.  
-If it loses, it disappears completely.
+- ✅ Linux  
+- ✅ macOS  
+- ❌ Windows (not supported)
 
 ---
 
