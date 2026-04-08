@@ -36,7 +36,7 @@ def ingest(state, packet):
     if isState(packet):
         if packet.get("tallies") and packet["tallies"] != state["tallies"]:
             state["tallies"] = dict(packet["tallies"])
-        state["envy"] = False
+        state["desync"] = False
         return state, []
 
     current = state["sequence"]
@@ -45,11 +45,11 @@ def ingest(state, packet):
     # =========== LINCHPIN =========== #
     if not inWindow(incoming, current):
     # ================================ #
-        intents = ([] if state["envy"] else ["ENVY"])
-        state["envy"] = True
-        return state, intents + ["Sync"]
+        intents = ([] if state["desync"] else ["REJECT"])
+        state["desync"] = True
+        return state, intents + ["ACCEPT"]
 
-    state["envy"] = False
+    state["desync"] = False
 
     if packet["tallies"] == state["tallies"]:
         return state, []
@@ -61,7 +61,7 @@ def ingest(state, packet):
     intents = ["PROPAGATE"]
 
     if incoming == NEXT[current]:
-        intents.append("Sync")
+        intents.append("ACCEPT")
 
     return state, intents
 ```
