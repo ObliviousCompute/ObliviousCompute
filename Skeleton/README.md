@@ -68,20 +68,24 @@ def ingest(state, packet):
 
 ---
 
-## What This Is
+## Constraint
 
-Skeleton is the simplest possible form of the system.
+This primitive assumes no access to history.
 
-It does not simulate behavior.  
-It does not coordinate across nodes.  
+There are no logs to replay.  
+No ordering to reconstruct.  
+No prior state to consult.
 
-It only answers one question:
+All decisions are made against the present state only.
 
-> Is this state admissible?
+When combined with historical systems, this reduces to validation logic.
 
-If yes, it becomes the current state.  
-If not, it is erased.
+When history is removed, it becomes the system itself.
 
 ---
 
-> Only what is admissible remains.
+## License
+
+This project is released under the terms of the [LICENSE](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
