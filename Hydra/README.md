@@ -95,7 +95,7 @@ This demo exists to show that oblivious convergence through an admissability gat
 If it fails, it fails cleanly.  
 If it works, it demonstrates a new computational primitive.
 
-<img src="../Relics/Alpha.jpg"/>
+<img src="../Relics/Alpha.png"/>
 
 > Sniff.Snort..RAWR...bye
 
