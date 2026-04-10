@@ -127,21 +127,12 @@ class Gateway:
             return (self.Cache, statevalue, True)
         if getattr(self.Cache, 'exit', False):
             return (self.Cache, statevalue, True)
-        if getattr(self.Cache, 'win', False):
-            if kind in ('Enter', 'Interrupt') or kind == 'Character':
-                self.Cache.win = False
-                self.Cache.exit = True
-            return (self.Cache, statevalue, False)
-        if getattr(self.Cache, 'gatejam', False):
+        if getattr(self.Cache, 'win', False) or getattr(self.Cache, 'gatejam', False) or getattr(self.Cache, 'waiting', False):
+            self.Cache.win = False
             self.Cache.gatejam = False
+            self.Cache.waiting = False
+            self.Cache.waitingframe = 0
             self.Cache.exit = True
-            return (self.Cache, statevalue, False)
-        if getattr(self.Cache, 'waiting', False):
-            if kind == 'Character' and value == ' ':
-                self.Cache.waiting = False
-                self.Cache.waitingframe = 0
-                self.Cache.exit = True
-                return (self.Cache, statevalue, False)
             return (self.Cache, statevalue, False)
         if self.Cache.focus == Focus.Title:
             return HandlePortcullis(self, self.Cache, statevalue, kind, value)
@@ -412,8 +403,9 @@ def PortcullisEngaged(cache: Cache) -> str:
     ]
     index = max(0, min(len(fields) - 1, int(getattr(cache, 'titleselect', 0) or 0)))
     label, key, default = fields[index]
-    value = FieldValue(cache, key) or default
-    if key == 'soul' and not str(value or ''):
+    rawvalue = FieldValue(cache, key)
+    value = rawvalue or default
+    if key in ('soul', 'skeleton', 'secret', 'gate') and not str(rawvalue or ''):
         return EnterPortcullis(cache, label, value='', showfield=True)
     return EnterPortcullis(cache, label, value=value)
 
@@ -427,7 +419,7 @@ def PortcullisJammed(cache: Cache) -> str:
 
 
 def PortcullisExit(cache: Cache) -> str:
-    return EnterPortcullis(cache, f'Umm..Ok{EllipsisRight(cache)}', subtitle='Maybe Go Touch Some Grass')
+    return EnterPortcullis(cache, f"{EllipsisLeft(cache)}I'll Hold The State{EllipsisRight(cache)}", subtitle=f"Maybe Go Touch Some Grass Now")
 
 
 def PortcullisVictory(cache: Cache) -> str:

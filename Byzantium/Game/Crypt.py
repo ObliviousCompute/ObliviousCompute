@@ -311,6 +311,8 @@ class Crypt:
 
     def SoulSqueeze(self, packet: dict[str, Any], addr: tuple[str, int]):
         incomingpacket = self.PacketSouls(packet.get('souls', []))
+        need = max(1, int(self.genesisnumber or 1))
+        incomingkeys = {soul.key for soul in incomingpacket}
 
         if self.genesisdone:
             mine = tuple(self.complete or tuple(self.SoulSet(self.souls)))
@@ -318,6 +320,20 @@ class Crypt:
             myhash = self.PacketRosterHash(mine)
             if incominghash != myhash:
                 self.EmitCompleteSouls()
+            return
+
+        if len(incomingpacket) >= need and self.self.key not in incomingkeys:
+            locked = tuple(incomingpacket[:need])
+            self.souls = list(locked)
+            self.complete = locked
+            self.genesisdone = True
+            self.state = self.BuildState()
+
+            sanctum = self.WakeSanctum()
+            if hasattr(sanctum, 'Genesis'):
+                sanctum.Genesis(self.state)
+            elif hasattr(sanctum, 'genesis'):
+                sanctum.genesis(self.state)
             return
 
         before = self.RosterHash(self.souls)

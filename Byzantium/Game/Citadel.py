@@ -406,7 +406,6 @@ def MoveTable(cache: Cache, state: Any, kind: str, value: Optional[str]):
         mine = SelfQ(state) % geometry.cells
         target = int(cache.stateq) % geometry.cells
         if mine == target or not Forge.PurgeViable(state, mine, target):
-            Say(cache, 'ash', 'invalid target')
             ResetIntent(cache)
             return (cache, state, False)
         BindTarget(cache, state, target)
@@ -416,7 +415,6 @@ def MoveTable(cache: Cache, state: Any, kind: str, value: Optional[str]):
         mine = SelfQ(state) % geometry.cells
         target = int(cache.stateq) % geometry.cells
         if not Forge.DefectViable(state, mine, target):
-            Say(cache, 'ash', 'invalid target')
             ResetIntent(cache)
             return (cache, state, False)
         BindTarget(cache, state, target)
