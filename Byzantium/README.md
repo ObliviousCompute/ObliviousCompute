@@ -139,7 +139,7 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-<img src="../Relics/CollectingSouls.gif"/>
+<img src="../Relics/CollectingSouls.mp4"/>
 
 ---
 
