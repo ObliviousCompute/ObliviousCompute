@@ -104,6 +104,24 @@ def SelectedName(cache: Cache, state: object) -> str:
     return ''
 
 
+def Possessive(name: str) -> str:
+    text = str(name or '').strip()
+    if not text:
+        return ''
+    if text.lower().endswith('s'):
+        return text + "'"
+    return text + "'s"
+
+
+def PurgePreview(cache: Cache, state: object) -> str:
+    me = StateSelf(state)
+    city = ActiveState(cache)
+    if me >= 0 and city == me:
+        return 'Purge All Locksets'
+    name = SelectedName(cache, state) or 'Target'
+    return f'Purge {Possessive(name)} Lockset'
+
+
 def StateView(cache: Cache, state: object) -> Dict[str, object]:
     action = StateAction(cache)
     focus = StateFocus(cache)
@@ -131,35 +149,31 @@ def BuildBanner(lux: Dict[str, str], title: str = 'BYZANTIUM') -> List[str]:
 
 def LoreLines() -> List[str]:
     return [
-        '   The state persists through equilibrium, not control. Every front is',
-        '   connected, and every imbalance is felt across the whole. There is no',
-        '   isolated failure here, only shifts in pressure that must be carried.',
-        '',
         '   There is no return to a previous state. No correction, no reconciliation.',
         '   Only continuation under strain. What settles becomes structure. What',
         '   moves becomes the next imbalance.',
         '',
         '   This is not a fixed system. It is a shared dream held under tension,',
-        '   a pattern that persists through adjustment. At times it feels stable',
-        '   At times it feels like a shared nightmare. Both are the same.',
+        '   a pattern that persists through adjustment. At times it feels stable,',
+        '   at times it feels like a shared nightmare. Both are the same.',
         '',
         '   Positions are not assigned. They are maintained. A general holds only',
         '   as long as he can bear what gathers beneath him. Captains decide long',
         '   before the ranks ever change whether he is worth his salt.',
         '',
-        '   There are always those who reach beyond what they can hold. Pressure',
-        '   builds where it should not, and weight is taken before it is earned.',
-        '   This is not an exception. It is expected.',
+        '   In Byzantium equivocation is rare, but if a man speaks with two tongues,',
+        '   both will be heard. State does not decide what was true. It absorbs',
+        '   the burden and maintains continuity.',
+        '', 
+        '   The dream resolves when no front exceeds another.', 
+        '   All debts must be settled.',
         '',
-        '   Equivocation is not rare. A man may speak with two tongues, and both',
-        '   will be heard. The state does not decide which was true. It',
-        '   absorbs the burden and maintains continuity.',
-        '',
-        '   A man is only as good as his word. In Byzantium, every word is a',
-        '   promise and every promise is honored, whether intended or not.',
-        '',
-        '   All debt must settle,',
-        '   Consensus was never trust.',
+        '   Thus,',
+        '', 
+        '   We are souls in roles that shape the whole',
+        '   We may push, but we may never pull',
+        '   When we take beyond our share, the chain is culled',
+        ''
     ] + [''] * 3
 
 
@@ -250,6 +264,8 @@ def RenderBanner(cache: Cache, monuments: List[str]) -> List[str]:
 def BoardNameColor(lux: Dict[str, str], action: Action, focus: Focus, me: int, idx: int, city: int, target: Optional[int], state: object) -> str:
     if action == Action.Wrath and focus in (Focus.TableLock, Focus.Spine):
         return lux['Flicker1']
+    if action == Action.Purge and focus == Focus.TableMove and idx == city:
+        return lux['Flicker6']
     if (focus == Focus.TableMove and idx == city) or (action in (Action.Whisper, Action.Purge) and focus == Focus.Spine and idx == (target if target is not None else -1)):
         return lux['Flicker2']
     if action == Action.Rally and focus in (Focus.TableLock, Focus.Spine):
@@ -350,8 +366,7 @@ def BuildSpine(cache: Cache, state: object, *, lux: Optional[Dict[str, str]] = N
         line = Compose('DEFECT', floor, StateText(cache), armed=focus == Focus.TableMove, lux=lux)
         return [line, white + Forge.Hline + reset]
     if action == Action.Purge and focus == Focus.TableMove:
-        name = SelectedName(cache, state) or 'PURGE'
-        return [ash + CenterTerm(str(name).strip() or 'PURGE') + reset, white + Forge.Hline + reset]
+        return [ash + CenterTerm(PurgePreview(cache, state)) + reset, white + Forge.Hline + reset]
     return [ash + Description(action, anchorcol, state=state) + reset, white + Forge.Hline + reset]
 
 

@@ -171,7 +171,7 @@ def RebindFocus(cache: Cache, state: Any) -> None:
         BindTarget(cache, state, None)
         return
 
-    if current in (Action.Whisper, Action.Purge):
+    if current == Action.Whisper:
         if targetq is None and stateq is not None:
             targetq = stateq
         if targetq is None or targetq == mine:
@@ -180,6 +180,13 @@ def RebindFocus(cache: Cache, state: Any) -> None:
                 targetq = (mine + 1) % count
         BindState(cache, state, int(targetq))
         BindTarget(cache, state, None if int(targetq) == mine else int(targetq))
+        return
+
+    if current == Action.Purge:
+        if stateq is None:
+            stateq = mine
+        BindState(cache, state, int(stateq))
+        BindTarget(cache, state, int(stateq))
         return
 
     if current == Action.Defect:
@@ -240,8 +247,13 @@ def ResetIntent(cache: Cache) -> None:
 
 
 def MoveBoard(cache: Cache, state: Any, arrow: str, current: Action) -> None:
-    cache.stateq = Forge.MoveTable(state, getattr(cache, 'stateq', 0), arrow, current)
+    if current == Action.Purge:
+        cache.stateq = Forge.geometry.Move(getattr(cache, 'stateq', 0), arrow)
+    else:
+        cache.stateq = Forge.MoveTable(state, getattr(cache, 'stateq', 0), arrow, current)
     cache.statekey = KeyxQ(state, cache.stateq)
+    cache.targetq = int(cache.stateq)
+    cache.targetkey = KeyxQ(state, cache.targetq)
     cache.SyncIntent()
 
 
@@ -342,8 +354,7 @@ def MoveMenu(cache: Cache, state: Any, kind: str, value: Optional[str]):
     if current == Action.Purge:
         cache.focus = Focus.TableMove
         mine = SelfQ(state) % geometry.cells
-        start = (mine + 1) % geometry.cells
-        BindState(cache, state, start)
+        BindState(cache, state, mine)
         BindTarget(cache, state, None)
         cache.text = ''
         cache.SyncIntent()
@@ -405,7 +416,7 @@ def MoveTable(cache: Cache, state: Any, kind: str, value: Optional[str]):
     if current == Action.Purge:
         mine = SelfQ(state) % geometry.cells
         target = int(cache.stateq) % geometry.cells
-        if mine == target or not Forge.PurgeViable(state, mine, target):
+        if mine != target and not Forge.PurgeViable(state, mine, target):
             ResetIntent(cache)
             return (cache, state, False)
         BindTarget(cache, state, target)

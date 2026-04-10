@@ -105,7 +105,7 @@ def Crucible(cache: Any = None) -> Dict[str, str]:
     flicker3 = FlickerCycle((Flame, Flame, Flare), phase)
     flicker4 = FlickerCycle((Flare, Flare, Flame, Ember), phase)
     flicker5 = FlickerCycle((Ember, Ember, Ember, Flame, Flame, Flare), phase)
-    flicker6 = FlickerCycle((Ash, Ember, Ember), phase)
+    flicker6 = FlickerCycle((Ash, Ember, Ember, Flare, Ember, Ember), phase)
 
     return {
         'Ash': Ash,
