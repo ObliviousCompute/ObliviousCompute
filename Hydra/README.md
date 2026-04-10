@@ -96,7 +96,6 @@ If it fails, it fails cleanly.
 If it works, it demonstrates a new computational primitive.
 
 <img src="../Relics/Alpha.png" width="300"/>
-
 > Sniff.Snort..RAWR...bye
 
 ---
