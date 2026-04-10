@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import os
 import sys
 import termios
@@ -7,26 +8,46 @@ import tty
 from dataclasses import dataclass
 from select import select
 from typing import Dict, List, Optional
+
 import Citadel
 import Forge
 import Spire
 import Vault
-from Forge import Focus, UiCache
-FPS: float = 55.0
-WAITING_DOT_FRAMES: int = int(FPS)
-DEFAULT_MODE = 'Campaign'
-DEFAULT_SKELETON = 'Skeleton'
-DEFAULT_SECRET = 'Password'
-DEFAULT_GATE = '9000'
-DEFAULT_GENESIS = '1'
-DEFAULT_SOUL = 'Satoshi'
-MAX_FIELD_LEN = 8
-MODE_OPTIONS: List[str] = ['Campaign', 'Siege', 'Exit']
-TITLE_FIELDS: List[str] = ['mode', 'gate', 'skeleton', 'soul', 'secret', 'genesis']
-FIELD_DEFAULTS: Dict[str, str] = {'mode': DEFAULT_MODE, 'gate': DEFAULT_GATE, 'skeleton': DEFAULT_SKELETON, 'soul': '', 'secret': DEFAULT_SECRET, 'genesis': DEFAULT_GENESIS}
-FIELD_LIMITS: Dict[str, int] = {'mode': 8, 'gate': 6, 'skeleton': MAX_FIELD_LEN, 'soul': MAX_FIELD_LEN, 'secret': MAX_FIELD_LEN, 'genesis': 2}
-EDITABLE_FIELDS = {'gate', 'skeleton', 'soul', 'secret', 'genesis'}
-STEPPED_FIELDS = {'mode', 'gate', 'genesis'}
+from Forge import Cache, Focus
+
+InitCache = Citadel.InitCache
+DispatchToken = Citadel.Dispatch
+InputBuffer = Citadel.InputBuffer
+
+Fps: float = 55.0
+WaitingDots: int = int(Fps)
+DefaultMode = 'Campaign'
+DefaultSkeleton = 'Skeleton'
+DefaultSecret = 'Password'
+DefaultGate = '9000'
+DefaultGenesis = '1'
+DefaultSoul = 'Satoshi'
+MaxFields = 8
+Options: List[str] = ['Campaign', 'Siege', 'Exit']
+TitleFields: List[str] = ['mode', 'gate', 'skeleton', 'soul', 'secret', 'genesis']
+FieldDefaults: Dict[str, str] = {
+    'mode': DefaultMode,
+    'gate': DefaultGate,
+    'skeleton': DefaultSkeleton,
+    'soul': '',
+    'secret': DefaultSecret,
+    'genesis': DefaultGenesis,
+}
+FieldLimits: Dict[str, int] = {
+    'mode': 8,
+    'gate': 6,
+    'skeleton': MaxFields,
+    'soul': MaxFields,
+    'secret': MaxFields,
+    'genesis': 2,
+}
+EditFields = {'gate', 'skeleton', 'soul', 'secret', 'genesis'}
+
 
 @dataclass
 class State:
@@ -37,128 +58,129 @@ class State:
     secret: str
     genesis: int
 
+
 @dataclass
 class PlaceholderState:
     cells: tuple = ()
     reserve: int = 0
 
-def empty_state() -> PlaceholderState:
+
+def EmptyState() -> PlaceholderState:
     return PlaceholderState()
 
+
 class Core:
-
     def __init__(self) -> None:
-        self.spire = Spire
-        self.citadel = getattr(Citadel, '_CITADEL', Citadel)
-        self.vault = None
+        self.Spire = Spire
+        self.Citadel = Citadel.Citadel
+        self.Vault = None
 
-    def intent(self, value):
-        if self.vault is None:
+    def Intent(self, value):
+        if self.Vault is None:
             return None
-        return self.vault.glyph(value)
+        return self.Vault.Intent(value)
+
 
 class Gateway:
-
     def __init__(self) -> None:
-        self.core = Core()
-        self.state: Optional[State] = None
-        self.listenport = parseports()
-        self.runtime = empty_state()
-        self.cache = Citadel._init_cache(self.runtime)
-        _ensure_state(self.cache)
-        self.cache.mode = DEFAULT_MODE
-        self.cache.title_step = 0
-        self.cache.title_idx = 0
-        self.cache.cursor_pos = len(DEFAULT_MODE)
-        if self.listenport is not None:
-            self.cache.gate = str(self.listenport)
-        Citadel.core = self.core
+        self.Core = Core()
+        self.State: Optional[State] = None
+        self.ListenPort = ParsePorts()
+        self.Runtime = EmptyState()
+        self.Cache = InitCache(self.Runtime)
+        EnsureState(self.Cache)
+        self.Cache.mode = DefaultMode
+        self.Cache.titlestep = 0
+        self.Cache.titleselect = 0
+        self.Cache.cursorposition = len(DefaultMode)
+        if self.ListenPort is not None:
+            self.Cache.gate = str(self.ListenPort)
+        Citadel.BindCore(self.Core)
 
-    def buildstate(self) -> State:
-        self.state = _build_state(self.cache)
-        return self.state
+    def BuildState(self) -> State:
+        self.State = BuildState(self.Cache)
+        return self.State
 
-    def bootfromtitle(self) -> object:
-        self.buildstate()
-        self.cache.gatejam = False
-        self.cache.win = False
-        self.cache.exit = False
-        self.cache.pending_request = None
+    def Boot(self) -> object:
+        self.BuildState()
+        self.Cache.gatejam = False
+        self.Cache.win = False
+        self.Cache.exit = False
+        self.Cache.activerequest = None
+        self.Cache.waitingframe = 0
         try:
-            self.core.vault = Vault.Vault(state=self.state, citadel=self.core.citadel)
+            self.Core.Vault = Vault.Vault(state=self.State, citadel=self.Core.Citadel)
         except Exception:
-            self.core.vault = None
-            self.cache.waiting = False
-            self.cache.waiting_frame = 0
-            self.cache.gatejam = True
-            self.cache.gate = str(getattr(self.state, 'gate', self.cache.gate) or self.cache.gate)
-            return self.runtime
-        Citadel.core = self.core
-        self.cache.city_idx = 0
-        self.cache.waiting = True
-        self.cache.waiting_frame = 0
-        self.cache.waiting_started = time.monotonic()
-        return empty_state()
+            self.Core.Vault = None
+            self.Cache.waiting = False
+            self.Cache.gatejam = True
+            self.Cache.gate = str(getattr(self.State, 'gate', self.Cache.gate) or self.Cache.gate)
+            return self.Runtime
+        Citadel.BindCore(self.Core)
+        self.Cache.waiting = True
+        self.Cache.waitingstarted = time.monotonic()
+        return EmptyState()
 
-    def dispatch(self, state: object, tok):
-        kind, val = tok
-        if kind == 'CTRL_C':
-            return (self.cache, state, True)
-        if getattr(self.cache, 'exit', False):
-            return (self.cache, state, True)
-        if getattr(self.cache, 'win', False):
-            if kind in ('ENTER', 'CTRL_C') or kind == 'CH':
-                self.cache.win = False
-                self.cache.exit = True
-            return (self.cache, state, False)
-        if getattr(self.cache, 'gatejam', False):
-            self.cache.gatejam = False
-            self.cache.exit = True
-            return (self.cache, state, False)
-        if getattr(self.cache, 'waiting', False):
-            if kind == 'CH' and val == ' ':
-                self.cache.waiting = False
-                self.cache.waiting_frame = 0
-                self.cache.exit = True
-                return (self.cache, state, False)
-            return (self.cache, state, False)
-        if self.cache.focus == Focus.TITLE:
-            return _handle_title_gateway(self, self.cache, state, kind, val)
-        cache, state, should_quit = Citadel._dispatch_token(self.cache, state, tok)
-        if should_quit:
-            self.cache.exit = True
-            return (self.cache, state, False)
-        return (cache, state, should_quit)
+    def Dispatch(self, statevalue: object, token):
+        kind, value = token
+        if kind == 'Interrupt':
+            return (self.Cache, statevalue, True)
+        if getattr(self.Cache, 'exit', False):
+            return (self.Cache, statevalue, True)
+        if getattr(self.Cache, 'win', False):
+            if kind in ('Enter', 'Interrupt') or kind == 'Character':
+                self.Cache.win = False
+                self.Cache.exit = True
+            return (self.Cache, statevalue, False)
+        if getattr(self.Cache, 'gatejam', False):
+            self.Cache.gatejam = False
+            self.Cache.exit = True
+            return (self.Cache, statevalue, False)
+        if getattr(self.Cache, 'waiting', False):
+            if kind == 'Character' and value == ' ':
+                self.Cache.waiting = False
+                self.Cache.waitingframe = 0
+                self.Cache.exit = True
+                return (self.Cache, statevalue, False)
+            return (self.Cache, statevalue, False)
+        if self.Cache.focus == Focus.Title:
+            return HandlePortcullis(self, self.Cache, statevalue, kind, value)
+        cachevalue, statevalue, shouldquit = DispatchToken(self.Cache, statevalue, token)
+        if shouldquit:
+            self.Cache.exit = True
+            return (self.Cache, statevalue, False)
+        return (cachevalue, statevalue, shouldquit)
 
-    def currentrenderstate(self, state: object) -> object:
-        surfaced = getattr(self.cache, 'state', None)
-        if getattr(self.cache, 'waiting', False):
-            self.cache.waiting_frame = int(getattr(self.cache, 'waiting_frame', 0) or 0) + 1
-            if _state_is_ready(surfaced):
-                self.cache.waiting = False
-                self.cache.focus = Focus.MENU
-                if hasattr(self.cache, 'syncIntent'):
-                    self.cache.syncIntent()
+    def RenderState(self, statevalue: object) -> object:
+        self.Cache.waitingframe = int(getattr(self.Cache, 'waitingframe', 0) or 0) + 1
+        surfaced = getattr(self.Cache, 'state', None)
+        if getattr(self.Cache, 'waiting', False):
+            if StateReady(surfaced):
+                self.Cache.waiting = False
+                self.Cache.focus = Focus.Menu
+                if hasattr(self.Cache, 'SyncIntent'):
+                    self.Cache.SyncIntent()
         if surfaced is None:
-            return state
-        if _is_victory(surfaced):
-            self.cache.win = True
+            return statevalue
+        if Victory(surfaced):
+            self.Cache.win = True
         return surfaced
 
-    def render(self, state: object) -> str:
-        if getattr(self.cache, 'exit', False):
-            return renderexit(self.cache)
-        if getattr(self.cache, 'win', False):
-            return renderwin(self.cache)
-        if getattr(self.cache, 'gatejam', False):
-            return rendergatejam(self.cache)
-        if getattr(self.cache, 'waiting', False):
-            return renderwaiting(self.cache)
-        if getattr(self.cache, 'focus', None) == Focus.TITLE:
-            return rendertitle(self.cache)
-        return Spire.render(self.cache, state)
+    def Render(self, statevalue: object) -> str:
+        if getattr(self.Cache, 'exit', False):
+            return PortcullisExit(self.Cache)
+        if getattr(self.Cache, 'win', False):
+            return PortcullisVictory(self.Cache)
+        if getattr(self.Cache, 'gatejam', False):
+            return PortcullisJammed(self.Cache)
+        if getattr(self.Cache, 'waiting', False):
+            return PortcullisHold(self.Cache)
+        if getattr(self.Cache, 'focus', None) == Focus.Title:
+            return PortcullisEngaged(self.Cache)
+        return Spire.Render(self.Cache, statevalue)
 
-def parseports() -> Optional[int]:
+
+def ParsePorts() -> Optional[int]:
     listenport: Optional[int] = None
     try:
         if len(sys.argv) >= 2:
@@ -167,329 +189,372 @@ def parseports() -> Optional[int]:
         listenport = None
     return listenport
 
-def _safe_int(text: object, fallback: int) -> int:
+
+def SafeInt(text: object, fallback: int) -> int:
     try:
-        s = str(text or '').strip()
-        return int(s) if s else int(fallback)
+        raw = str(text or '').strip()
+        return int(raw) if raw else int(fallback)
     except Exception:
         return int(fallback)
 
-def _ensure_state(cache: UiCache) -> None:
-    if not hasattr(cache, 'title_step'):
-        cache.title_step = 0
-    if not hasattr(cache, 'title_idx'):
-        cache.title_idx = int(getattr(cache, 'title_step', 0) or 0)
-    if not hasattr(cache, 'cursor_pos'):
-        cache.cursor_pos = 0
+
+def EnsureState(cache: Cache) -> None:
+    if not hasattr(cache, 'titlestep'):
+        cache.titlestep = 0
+    if not hasattr(cache, 'titleselect'):
+        cache.titleselect = int(getattr(cache, 'titlestep', 0) or 0)
+    if not hasattr(cache, 'cursorposition'):
+        cache.cursorposition = 0
     if not hasattr(cache, 'waiting'):
         cache.waiting = False
-    if not hasattr(cache, 'waiting_frame'):
-        cache.waiting_frame = 0
-    if not hasattr(cache, 'waiting_started'):
-        cache.waiting_started = 0.0
+    if not hasattr(cache, 'waitingframe'):
+        cache.waitingframe = 0
+    if not hasattr(cache, 'waitingstarted'):
+        cache.waitingstarted = 0.0
     if not hasattr(cache, 'exit'):
         cache.exit = False
     if not hasattr(cache, 'gatejam'):
         cache.gatejam = False
     if not hasattr(cache, 'win'):
         cache.win = False
-    for key, default in FIELD_DEFAULTS.items():
+    for key, default in FieldDefaults.items():
         if not hasattr(cache, key):
             setattr(cache, key, default)
-    raw_mode = str(getattr(cache, 'mode', DEFAULT_MODE) or DEFAULT_MODE).strip()
-    cache.mode = raw_mode if raw_mode in MODE_OPTIONS else DEFAULT_MODE
-    cache.local_name = str(getattr(cache, 'soul', '') or '')
-    raw_gate = str(getattr(cache, 'gate', FIELD_DEFAULTS['gate']) or '')
-    cache.gate = ''.join((ch for ch in raw_gate if ch.isdigit()))[:FIELD_LIMITS['gate']]
-    raw_genesis = str(getattr(cache, 'genesis', FIELD_DEFAULTS['genesis']) or '')
-    cache.genesis = ''.join((ch for ch in raw_genesis if ch.isdigit()))[:FIELD_LIMITS['genesis']]
-    step_raw = getattr(cache, 'title_idx', getattr(cache, 'title_step', 0))
-    step = max(0, min(len(TITLE_FIELDS) - 1, int(step_raw or 0)))
-    cache.title_step = step
-    cache.title_idx = step
-    field = TITLE_FIELDS[step]
-    value = str(getattr(cache, field, FIELD_DEFAULTS[field]) or '')
-    cache.cursor_pos = max(0, min(len(value), int(getattr(cache, 'cursor_pos', len(value)) or 0)))
+    rawmode = str(getattr(cache, 'mode', DefaultMode) or DefaultMode).strip()
+    cache.mode = rawmode if rawmode in Options else DefaultMode
+    cache.name = str(getattr(cache, 'soul', '') or '')
+    rawgate = str(getattr(cache, 'gate', FieldDefaults['gate']) or '')
+    cache.gate = ''.join((character for character in rawgate if character.isdigit()))[:FieldLimits['gate']]
+    rawgenesis = str(getattr(cache, 'genesis', FieldDefaults['genesis']) or '')
+    cache.genesis = ''.join((character for character in rawgenesis if character.isdigit()))[:FieldLimits['genesis']]
+    stepraw = getattr(cache, 'titleselect', getattr(cache, 'titlestep', 0))
+    step = max(0, min(len(TitleFields) - 1, int(stepraw or 0)))
+    cache.titlestep = step
+    cache.titleselect = step
+    field = TitleFields[step]
+    value = str(getattr(cache, field, FieldDefaults[field]) or '')
+    cursorvalue = int(getattr(cache, 'cursorposition', len(value)) or 0)
+    cache.cursorposition = max(0, min(len(value), cursorvalue))
 
-def _active_field(cache: UiCache) -> str:
-    _ensure_state(cache)
-    return TITLE_FIELDS[int(getattr(cache, 'title_step', 0) or 0)]
 
-def _field_value(cache: UiCache, field: str) -> str:
-    _ensure_state(cache)
-    return str(getattr(cache, field, FIELD_DEFAULTS[field]) or '')
+def PortcullisField(cache: Cache) -> str:
+    EnsureState(cache)
+    return TitleFields[int(getattr(cache, 'titlestep', 0) or 0)]
 
-def _set_field_value(cache: UiCache, field: str, value: str) -> None:
-    limit = int(FIELD_LIMITS.get(field, MAX_FIELD_LEN))
+
+def FieldValue(cache: Cache, field: str) -> str:
+    EnsureState(cache)
+    return str(getattr(cache, field, FieldDefaults[field]) or '')
+
+
+def SetFieldValue(cache: Cache, field: str, value: str) -> None:
+    limit = int(FieldLimits.get(field, MaxFields))
     value = str(value or '')[:limit]
     if field in ('gate', 'genesis'):
-        value = ''.join((ch for ch in value if ch.isdigit()))
+        value = ''.join((character for character in value if character.isdigit()))
     if field == 'mode':
-        value = str(value or DEFAULT_MODE).strip()
-        value = value if value in MODE_OPTIONS else DEFAULT_MODE
+        value = str(value or DefaultMode).strip()
+        value = value if value in Options else DefaultMode
     setattr(cache, field, value)
     if field == 'soul':
-        cache.local_name = value
+        cache.name = value
 
-def _move_field(cache: UiCache, delta: int) -> None:
-    _ensure_state(cache)
-    step = int(getattr(cache, 'title_idx', getattr(cache, 'title_step', 0)) or 0) + int(delta)
-    step = max(0, min(len(TITLE_FIELDS) - 1, step))
-    cache.title_step = step
-    cache.title_idx = step
-    field = TITLE_FIELDS[step]
-    cache.cursor_pos = len(_field_value(cache, field))
 
-def _edit_insert(cache: UiCache, ch: str) -> None:
-    field = _active_field(cache)
-    if field not in EDITABLE_FIELDS:
+def ShiftField(cache: Cache, delta: int) -> None:
+    EnsureState(cache)
+    step = int(getattr(cache, 'titleselect', getattr(cache, 'titlestep', 0)) or 0) + int(delta)
+    step = max(0, min(len(TitleFields) - 1, step))
+    cache.titlestep = step
+    cache.titleselect = step
+    field = TitleFields[step]
+    cache.cursorposition = len(FieldValue(cache, field))
+
+
+def Insert(cache: Cache, character: str) -> None:
+    field = PortcullisField(cache)
+    if field not in EditFields:
         return
-    value = _field_value(cache, field)
-    limit = int(FIELD_LIMITS.get(field, MAX_FIELD_LEN))
+    value = FieldValue(cache, field)
+    limit = int(FieldLimits.get(field, MaxFields))
     if len(value) >= limit:
         return
-    if field in ('gate', 'genesis') and (not ch.isdigit()):
+    if field in ('gate', 'genesis') and (not character.isdigit()):
         return
-    pos = int(getattr(cache, 'cursor_pos', len(value)) or 0)
-    pos = max(0, min(len(value), pos))
-    new_value = value[:pos] + ch + value[pos:]
-    _set_field_value(cache, field, new_value)
-    cache.cursor_pos = min(len(_field_value(cache, field)), pos + 1)
+    position = int(getattr(cache, 'cursorposition', len(value)) or 0)
+    position = max(0, min(len(value), position))
+    newvalue = value[:position] + character + value[position:]
+    SetFieldValue(cache, field, newvalue)
+    cache.cursorposition = min(len(FieldValue(cache, field)), position + 1)
 
-def _edit_backspace(cache: UiCache) -> None:
-    field = _active_field(cache)
-    if field not in EDITABLE_FIELDS:
-        return
-    value = _field_value(cache, field)
-    pos = int(getattr(cache, 'cursor_pos', len(value)) or 0)
-    if pos <= 0 or not value:
-        return
-    new_value = value[:pos - 1] + value[pos:]
-    _set_field_value(cache, field, new_value)
-    cache.cursor_pos = max(0, pos - 1)
 
-def _toggle_mode(cache: UiCache, delta: int) -> None:
-    current = str(_field_value(cache, 'mode') or DEFAULT_MODE)
+def Backspace(cache: Cache) -> None:
+    field = PortcullisField(cache)
+    if field not in EditFields:
+        return
+    value = FieldValue(cache, field)
+    position = int(getattr(cache, 'cursorposition', len(value)) or 0)
+    if position <= 0 or not value:
+        return
+    newvalue = value[:position - 1] + value[position:]
+    SetFieldValue(cache, field, newvalue)
+    cache.cursorposition = max(0, position - 1)
+
+
+def ToggleMode(cache: Cache, delta: int) -> None:
+    current = str(FieldValue(cache, 'mode') or DefaultMode)
     try:
-        idx = MODE_OPTIONS.index(current)
+        index = Options.index(current)
     except ValueError:
-        idx = 0
-    idx = (idx + int(delta)) % len(MODE_OPTIONS)
-    _set_field_value(cache, 'mode', MODE_OPTIONS[idx])
-    cache.cursor_pos = len(_field_value(cache, 'mode'))
+        index = 0
+    index = (index + int(delta)) % len(Options)
+    SetFieldValue(cache, 'mode', Options[index])
+    cache.cursorposition = len(FieldValue(cache, 'mode'))
 
-def _build_state(cache: UiCache) -> State:
-    _ensure_state(cache)
-    mode = _field_value(cache, 'mode') or DEFAULT_MODE
-    raw_gate = _field_value(cache, 'gate')
-    gate_num = _safe_int(raw_gate, int(DEFAULT_GATE)) if raw_gate else int(DEFAULT_GATE)
-    if gate_num < 1024 or gate_num > 65535:
-        gate_num = int(DEFAULT_GATE)
-    gate = str(gate_num)
-    skeleton = _field_value(cache, 'skeleton') or DEFAULT_SKELETON
-    soul = _field_value(cache, 'soul') or DEFAULT_SOUL
-    secret = _field_value(cache, 'secret') or DEFAULT_SECRET
-    raw_genesis = _field_value(cache, 'genesis')
-    genesis = max(1, min(24, _safe_int(raw_genesis or DEFAULT_GENESIS, 1)))
-    _set_field_value(cache, 'mode', mode)
-    _set_field_value(cache, 'gate', gate)
-    _set_field_value(cache, 'skeleton', skeleton)
-    _set_field_value(cache, 'soul', soul)
-    _set_field_value(cache, 'secret', secret)
-    _set_field_value(cache, 'genesis', str(genesis))
-    cache.local_name = soul
+
+def BuildState(cache: Cache) -> State:
+    EnsureState(cache)
+    mode = FieldValue(cache, 'mode') or DefaultMode
+    rawgate = FieldValue(cache, 'gate')
+    gatenumber = SafeInt(rawgate, int(DefaultGate)) if rawgate else int(DefaultGate)
+    if gatenumber < 1024 or gatenumber > 65535:
+        gatenumber = int(DefaultGate)
+    gate = str(gatenumber)
+    skeleton = FieldValue(cache, 'skeleton') or DefaultSkeleton
+    soul = FieldValue(cache, 'soul') or DefaultSoul
+    secret = FieldValue(cache, 'secret') or DefaultSecret
+    rawgenesis = FieldValue(cache, 'genesis')
+    genesis = max(1, min(24, SafeInt(rawgenesis or DefaultGenesis, 1)))
+    SetFieldValue(cache, 'mode', mode)
+    SetFieldValue(cache, 'gate', gate)
+    SetFieldValue(cache, 'skeleton', skeleton)
+    SetFieldValue(cache, 'soul', soul)
+    SetFieldValue(cache, 'secret', secret)
+    SetFieldValue(cache, 'genesis', str(genesis))
+    cache.name = soul
     return State(mode=mode, gate=gate, skeleton=skeleton, soul=soul, secret=secret, genesis=genesis)
 
-def _state_is_ready(state: object) -> bool:
-    cells = getattr(state, 'cells', None)
-    if cells is None:
-        return False
-    try:
-        return len(cells) > 0
-    except Exception:
-        return False
 
-def _is_victory(state: object) -> bool:
-    cells = list(getattr(state, 'cells', []) or [])
+def StateReady(statevalue: object) -> bool:
+    cells = getattr(statevalue, 'cells', None)
+    return bool(cells)
+
+
+def Victory(statevalue: object) -> bool:
+    cells = list(getattr(statevalue, 'cells', []) or [])
     if len(cells) < 24:
         return False
     totals = [0, 0, 0, 0]
-    for i, cell in enumerate(cells[:24]):
-        totals[i // 6] += int(Forge.amount(cell))
+    for index, cell in enumerate(cells[:24]):
+        totals[index // 6] += int(Forge.Amount(cell))
     return all((total == 250000 for total in totals))
 
-def _screen_palette(cache: UiCache) -> Dict[str, str]:
-    pal = Forge.palette(cache)
-    return {
-        'ash': pal['ash'],
-        'salt': pal['salt'],
-        'flicker1': pal['flicker1'],
-        'flicker2': pal['flicker2'],
-        'reset': pal['reset'],
-    }
 
-def renderframe(cache: UiCache, label: str, value: str='', subtitle: str='') -> str:
-    pal = _screen_palette(cache)
-    label = str(label or '')
-    subtitle = str(subtitle or '')
-    value = str(value or '')[:8]
-    if label == 'Who Are You':
-        left = pal['flicker1'] + ':' + pal['reset']
-        right = pal['flicker2'] + ':' + pal['reset']
-        body = f"{left}{Forge.SALT}{value}{pal['reset']}{right}"
-    else:
-        if value:
-            left = pal['flicker1'] + ':' + pal['reset']
-            right = pal['flicker2'] + ':' + pal['reset']
-            body = f"{left}{Forge.SALT}{value}{pal['reset']}{right}"
-        else:
-            body = ''
-    lines: List[str] = [Forge.ASH + '=' * Forge.TERM_W + Forge.RESET, Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm(Forge.ASH + '.' + Forge.RESET), Spire.centerTerm(Forge.ASH + '.' + Forge.RESET + pal['flicker1'] + '+' + pal['reset'] + Forge.ASH + '.' + Forge.RESET), Spire.centerTerm(Forge.ASH + '.   .   .   .' + Forge.RESET), Spire.centerTerm(Forge.ASH + pal['flicker1'] + '+' + pal['reset'] + ' BYZANTIUM ' + pal['reset'] + pal['flicker1'] + '+' + pal['reset']), Spire.centerTerm(Forge.ASH + '·   · ·   · ·   ·' + Forge.RESET), Spire.centerTerm(Forge.ASH + '·' + Forge.RESET + pal['flicker2'] + '+' + pal['reset'] + Forge.ASH + '·' + Forge.RESET), Spire.centerTerm(Forge.ASH + '·' + Forge.RESET), Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm(Forge.ASH + label + Forge.RESET)]
+def BuildPortcullis(cache: Cache, label: str, value: str = '', subtitle: str = '', *, titletext: str = 'BYZANTIUM', showfield: bool = False) -> List[str]:
+    lux = Forge.Crucible(cache)
+    lines: List[str] = [lux['Ash'] + Forge.Hline + lux['Reset']]
+    lines.extend(Forge.MastLines(lux, title=titletext))
+    lines.append(Forge.CenterTerm(''))
+    lines.append(Forge.CenterTerm(''))
+    lines.append(Forge.CenterTerm(lux['Ash'] + str(label or '') + lux['Reset']))
     if subtitle:
-        lines.append(Spire.centerTerm(''))
-        lines.append(Spire.centerTerm(Forge.ASH + subtitle + Forge.RESET))
+        lines.append(Forge.CenterTerm(''))
+        lines.append(Forge.CenterTerm(lux['Ash'] + str(subtitle or '') + lux['Reset']))
     else:
-        lines.append(Spire.centerTerm(''))
-    if body:
-        lines.extend([Spire.centerTerm(''), Spire.centerTerm(body), Spire.centerTerm('')])
+        lines.append(Forge.CenterTerm(''))
+    if showfield or str(value or ''):
+        lines.extend([Forge.CenterTerm(''), Forge.CenterTerm(Forge.ValueField(lux, value)), Forge.CenterTerm('')])
     else:
-        lines.extend([Spire.centerTerm(''), Spire.centerTerm(''), Spire.centerTerm('')])
-    return Spire._frame_text_screen(lines)
+        lines.extend([Forge.CenterTerm(''), Forge.CenterTerm(''), Forge.CenterTerm('')])
+    return lines
 
-def rendertitle(cache: UiCache) -> str:
-    _ensure_state(cache)
-    fields = [('Choose Your Arena', 'mode', 'Campaign'), ('Which Gateway', 'gate', '9000'), ('Skeleton Key', 'skeleton', 'Skeleton'), ('Who Are You', 'soul', ''), ('Tell Me A Secret', 'secret', 'Password'), ('How Many Souls', 'genesis', '1')]
-    idx = max(0, min(len(fields) - 1, int(getattr(cache, 'title_idx', 0) or 0)))
-    label, key, default = fields[idx]
-    value = _field_value(cache, key) or default
-    return renderframe(cache, label, value)
 
-def renderwaiting(cache: UiCache) -> str:
-    return renderframe(cache, _waiting_line(cache), '')
+def EnterPortcullis(cache: Cache, label: str, value: str = '', subtitle: str = '', *, titletext: str = 'BYZANTIUM', showfield: bool = False) -> str:
+    return Forge.FrameTextScreen(BuildPortcullis(cache, label, value=value, subtitle=subtitle, titletext=titletext, showfield=showfield))
 
-def rendergatejam(cache: UiCache) -> str:
-    return renderframe(cache, 'Open...Sesame!!!', '', 'This Gate Is Jammed...')
 
-def renderexit(cache: UiCache) -> str:
-    return renderframe(cache, 'Uhh..Ok', '', 'Maybe Go Touch Some Grass')
+def Left(text: str, width: int) -> str:
+    return str(text or '').rjust(int(width or 0))
 
-def renderwin(cache: UiCache) -> str:
-    return renderframe(cache, 'Oh WOW...You Did It?', '')
 
-def _waiting_line(cache: UiCache) -> str:
-    frame = int(getattr(cache, 'waiting_frame', 0) or 0)
-    phase = frame // max(1, WAITING_DOT_FRAMES) % 4
-    dots = '.' * phase
-    return f'{dots}Collecting Souls{dots}' if dots else 'Collecting Souls'
+def Right(text: str, width: int) -> str:
+    return str(text or '').ljust(int(width or 0))
 
-def _drain_stdin(fd: int) -> List[str]:
+
+def Ellipsis(cache: Cache, width: int = 3) -> str:
+    frame = int(getattr(cache, 'waitingframe', 0) or 0)
+    phase = (frame // max(1, WaitingDots)) % (int(width) + 1)
+    return '.' * phase
+
+
+def EllipsisLeft(cache: Cache, width: int = 3) -> str:
+    return Left(Ellipsis(cache, width), width)
+
+
+def EllipsisRight(cache: Cache, width: int = 3) -> str:
+    return Right(Ellipsis(cache, width), width)
+
+
+def Excitement(cache: Cache, width: int = 3) -> str:
+    frame = int(getattr(cache, 'waitingframe', 0) or 0)
+    phase = (frame // max(1, WaitingDots)) % (int(width) + 1)
+    return Right('!' * phase, width)
+
+
+def PortcullisEngaged(cache: Cache) -> str:
+    EnsureState(cache)
+    fields = [
+        ('Choose Your Arena', 'mode', 'Campaign'),
+        ('Which Gateway', 'gate', '9000'),
+        ('Skeleton Key', 'skeleton', 'Skeleton'),
+        ('Who Are You', 'soul', ''),
+        ('Tell Me A Secret', 'secret', 'Password'),
+        ('How Many Souls', 'genesis', '1'),
+    ]
+    index = max(0, min(len(fields) - 1, int(getattr(cache, 'titleselect', 0) or 0)))
+    label, key, default = fields[index]
+    value = FieldValue(cache, key) or default
+    if key == 'soul' and not str(value or ''):
+        return EnterPortcullis(cache, label, value='', showfield=True)
+    return EnterPortcullis(cache, label, value=value)
+
+
+def PortcullisHold(cache: Cache) -> str:
+    return EnterPortcullis(cache, CollectingSouls(cache))
+
+
+def PortcullisJammed(cache: Cache) -> str:
+    return EnterPortcullis(cache, 'Open..Sesame!!', subtitle=f'{EllipsisLeft(cache)}This Gate Is Jammed{EllipsisRight(cache)}')
+
+
+def PortcullisExit(cache: Cache) -> str:
+    return EnterPortcullis(cache, f'Umm..Ok{EllipsisRight(cache)}', subtitle='Maybe Go Touch Some Grass')
+
+
+def PortcullisVictory(cache: Cache) -> str:
+    return EnterPortcullis(cache, f'Wow{Excitement(cache)}', subtitle='Did You Do It??')
+
+
+def CollectingSouls(cache: Cache) -> str:
+    return f'{EllipsisLeft(cache)}Collecting Souls{EllipsisRight(cache)}'
+
+
+def DrainStdin(filedescriptor: int) -> List[str]:
     chunks: List[str] = []
     while True:
-        r, _w, _e = select([fd], [], [], 0)
-        if not r:
+        ready, write, error = select([filedescriptor], [], [], 0)
+        if not ready:
             break
         try:
-            b = os.read(fd, 4096)
+            block = os.read(filedescriptor, 4096)
         except BlockingIOError:
             break
-        if not b:
+        if not block:
             break
-        chunks.append(b.decode('latin1', 'ignore'))
+        chunks.append(block.decode('latin1', 'ignore'))
     return chunks
 
-def _handle_title_gateway(gateway: Gateway, cache: UiCache, state: object, kind: str, val: Optional[str]) -> tuple[UiCache, object, bool]:
-    _ensure_state(cache)
-    field = _active_field(cache)
 
-    def _step_genesis(delta: int) -> None:
-        raw = _field_value(cache, 'genesis')
-        cur = _safe_int(raw, 1) if raw else 1
-        _set_field_value(cache, 'genesis', str(max(1, min(24, cur + int(delta)))))
-        cache.cursor_pos = len(_field_value(cache, 'genesis'))
+def HandlePortcullis(gatewayvalue: Gateway, cache: Cache, statevalue: object, kind: str, value: Optional[str]):
+    EnsureState(cache)
+    field = PortcullisField(cache)
 
-    def _step_gate(delta: int) -> None:
-        raw = _field_value(cache, 'gate')
-        cur = _safe_int(raw, int(DEFAULT_GATE)) if raw else int(DEFAULT_GATE)
-        nxt = cur + int(delta)
-        if nxt < 0:
-            nxt = 0
-        if nxt > 65535:
-            nxt = 65535
-        _set_field_value(cache, 'gate', str(nxt))
-        cache.cursor_pos = len(_field_value(cache, 'gate'))
-    if kind == 'ENTER':
-        if _active_field(cache) == 'mode' and _field_value(cache, 'mode') == 'Exit':
+    def StepGenesis(delta: int) -> None:
+        raw = FieldValue(cache, 'genesis')
+        current = SafeInt(raw, 1) if raw else 1
+        SetFieldValue(cache, 'genesis', str(max(1, min(24, current + int(delta)))))
+        cache.cursorposition = len(FieldValue(cache, 'genesis'))
+
+    def StepGate(delta: int) -> None:
+        raw = FieldValue(cache, 'gate')
+        current = SafeInt(raw, int(DefaultGate)) if raw else int(DefaultGate)
+        nextvalue = current + int(delta)
+        if nextvalue < 0:
+            nextvalue = 0
+        if nextvalue > 65535:
+            nextvalue = 65535
+        SetFieldValue(cache, 'gate', str(nextvalue))
+        cache.cursorposition = len(FieldValue(cache, 'gate'))
+
+    if kind == 'Enter':
+        if PortcullisField(cache) == 'mode' and FieldValue(cache, 'mode') == 'Exit':
             cache.exit = True
-            return (cache, state, False)
-        if _active_field(cache) == 'genesis':
-            return (cache, gateway.bootfromtitle(), False)
-        _move_field(cache, +1)
-        return (cache, state, False)
-    if kind in ('LEFT', 'RIGHT'):
-        _move_field(cache, -1 if kind == 'LEFT' else +1)
-        return (cache, state, False)
-    if kind in ('UP', 'DOWN', 'ARROW', 'SHIFT_ARROW'):
-        arrow = val
-        if kind == 'UP':
+            return (cache, statevalue, False)
+        if PortcullisField(cache) == 'genesis':
+            return (cache, gatewayvalue.Boot(), False)
+        ShiftField(cache, +1)
+        return (cache, statevalue, False)
+    if kind in ('Left', 'Right'):
+        ShiftField(cache, -1 if kind == 'Left' else +1)
+        return (cache, statevalue, False)
+    if kind in ('Up', 'Down', 'Arrow', 'PortBump'):
+        arrow = value
+        if kind == 'Up':
             arrow = 'A'
-        elif kind == 'DOWN':
+        elif kind == 'Down':
             arrow = 'B'
-        if kind in ('ARROW', 'SHIFT_ARROW') and arrow in ('C', 'D'):
-            _move_field(cache, +1 if arrow == 'C' else -1)
-            return (cache, state, False)
+        if kind in ('Arrow', 'PortBump') and arrow in ('C', 'D'):
+            ShiftField(cache, +1 if arrow == 'C' else -1)
+            return (cache, statevalue, False)
         delta = +1 if arrow == 'A' else -1 if arrow == 'B' else 0
         if field == 'mode' and delta:
-            _toggle_mode(cache, -delta)
-            return (cache, state, False)
+            ToggleMode(cache, -delta)
+            return (cache, statevalue, False)
         if field == 'genesis' and delta:
-            _step_genesis(delta)
-            return (cache, state, False)
+            StepGenesis(delta)
+            return (cache, statevalue, False)
         if field == 'gate' and delta:
-            step = 100 if kind == 'SHIFT_ARROW' else 1
-            _step_gate(step if delta > 0 else -step)
-            return (cache, state, False)
-    if kind == 'BS':
-        _edit_backspace(cache)
-        return (cache, state, False)
-    if kind == 'CH' and val and val.isprintable() and (val != '\t'):
-        _edit_insert(cache, val)
-        return (cache, state, False)
-    return (cache, state, False)
+            step = 100 if kind == 'PortBump' else 1
+            StepGate(step if delta > 0 else -step)
+            return (cache, statevalue, False)
+    if kind == 'Backspace':
+        Backspace(cache)
+        return (cache, statevalue, False)
+    if kind == 'Character' and value and value.isprintable() and (value != '\t'):
+        Insert(cache, value)
+        return (cache, statevalue, False)
+    return (cache, statevalue, False)
+
 
 def main() -> None:
-    gateway = Gateway()
-    fd = sys.stdin.fileno()
-    old_attr = termios.tcgetattr(fd)
-    tty.setcbreak(fd)
-    state = gateway.runtime
-    buf = ''
+    gatewayvalue = Gateway()
+    filedescriptor = sys.stdin.fileno()
+    basicterminal = termios.tcgetattr(filedescriptor)
+    tty.setcbreak(filedescriptor)
+    statevalue = gatewayvalue.Runtime
+    buffer = ''
     try:
         while True:
-            chunks = _drain_stdin(fd)
+            chunks = DrainStdin(filedescriptor)
             if chunks:
-                buf += ''.join(chunks)
-                toks, buf = Citadel._parse_keys_buffered(buf)
-                for tok in toks:
-                    gateway.cache, state, should_quit = gateway.dispatch(state, tok)
-                    if should_quit:
+                buffer += ''.join(chunks)
+                tokens, buffer = InputBuffer(buffer)
+                for token in tokens:
+                    gatewayvalue.Cache, statevalue, shouldquit = gatewayvalue.Dispatch(statevalue, token)
+                    if shouldquit:
                         sys.stdout.write('\x1b[H\x1b[2J\x1b[0m')
                         sys.stdout.flush()
                         return
             try:
-                state = gateway.currentrenderstate(state)
-            except Exception:
-                pass
+                statevalue = gatewayvalue.RenderState(statevalue)
+            except Exception as exceptionvalue:
+                frame = EnterPortcullis(getattr(gatewayvalue, 'Cache', Cache(feed=[], name='')), 'RenderState', subtitle=str(exceptionvalue)[:60])
+                sys.stdout.write('\x1b[H\x1b[2J')
+                sys.stdout.write(frame)
+                sys.stdout.flush()
+                time.sleep(1.0 / Fps)
+                continue
             try:
-                frame = gateway.render(state)
-            except Exception:
-                frame = ''
+                frame = gatewayvalue.Render(statevalue)
+            except Exception as exceptionvalue:
+                frame = EnterPortcullis(getattr(gatewayvalue, 'Cache', Cache(feed=[], name='')), 'Gateway Render', subtitle=str(exceptionvalue)[:60])
             if frame:
                 sys.stdout.write('\x1b[H\x1b[2J')
                 sys.stdout.write(frame)
                 sys.stdout.flush()
-            time.sleep(1.0 / FPS)
+            time.sleep(1.0 / Fps)
     finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_attr)
-__all__ = ['State', 'PlaceholderState', 'Core', 'Gateway', 'empty_state', 'parseports', 'renderframe', 'rendertitle', 'renderwaiting', 'rendergatejam', 'renderexit', 'renderwin', 'main']
+        termios.tcsetattr(filedescriptor, termios.TCSADRAIN, basicterminal)
+
+
 if __name__ == '__main__':
     main()

@@ -1,115 +1,125 @@
 from __future__ import annotations
+
 from dataclasses import dataclass, field
 from enum import Enum
 import re
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+import time
+from typing import Any, Dict, List, Optional, Sequence, Tuple
+
 try:
     from wcwidth import wcwidth as wc
 except Exception:
     wc = None
+
 
 class Geometry:
     cols: int = 4
     rows: int = 6
     cells: int = cols * rows
     term: int = 80
-    framePad: int = 1
-    inner: int = term - framePad * 2
+    framepad: int = 1
+    inner: int = term - framepad * 2
     name: int = 8
     msg: int = 60
     cost: int = 8
 
     @classmethod
-    def file(cls, q: int) -> int:
+    def File(cls, q: int) -> int:
         return int(q) // cls.rows
 
     @classmethod
-    def rank(cls, q: int) -> int:
+    def Rank(cls, q: int) -> int:
         return int(q) % cls.rows
 
     @classmethod
-    def general(cls, q: int) -> bool:
-        return cls.rank(q) == 0
+    def General(cls, q: int) -> bool:
+        return cls.Rank(q) == 0
 
     @classmethod
-    def wrap(cls, q: int, delta: int, *, count: Optional[int]=None) -> int:
-        n = cls.cells if count is None else max(0, int(count))
-        if n <= 0:
-            return 0
-        return (int(q) + int(delta)) % n
-
-    @classmethod
-    def move(cls, q: int, arrow: str) -> int:
-        row = cls.rank(q)
-        col = cls.file(q)
+    def Move(cls, q: int, arrow: str) -> int:
+        row = cls.Rank(q)
+        col = cls.File(q)
         if arrow == 'A':
-            row, col = ((row - 1) % cls.rows, col)
+            row = (row - 1) % cls.rows
         elif arrow == 'B':
-            row, col = ((row + 1) % cls.rows, col)
+            row = (row + 1) % cls.rows
         elif arrow == 'D':
-            row, col = (row, (col - 1) % cls.cols)
+            col = (col - 1) % cls.cols
         elif arrow == 'C':
-            row, col = (row, (col + 1) % cls.cols)
+            col = (col + 1) % cls.cols
         return col * cls.rows + row
 
     @classmethod
-    def split(cls, total: int, cells: Sequence[Any], *, by=None) -> Tuple[Tuple[str, int], ...]:
+    def Split(cls, total: int, cells: Sequence[Any], *, by=None) -> Tuple[Tuple[str, int], ...]:
         total = max(0, int(total or 0))
-        cells = [cell for cell in cells if str(key(cell) or '').strip()]
-        n = len(cells)
-        if total <= 0 or n <= 0:
+        live = [cell for cell in cells if Key(cell)]
+        count = len(live)
+        if total <= 0 or count <= 0:
             return ()
-        if by is None:
-            by = amount
-        ordered = sorted(cells, key=by)
-        base = total // n
-        rem = total % n
+        ordered = sorted(live, key=Amount if by is None else by)
+        base = total // count
+        rem = total % count
         out: List[Tuple[str, int]] = []
         for i, cell in enumerate(ordered):
             share = base + (1 if i < rem else 0)
             if share > 0:
-                out.append((key(cell), share))
+                out.append((Key(cell), share))
         return tuple(out)
+
+
 geometry = Geometry
-BOARD_COLS = geometry.cols
-BOARD_ROWS = geometry.rows
-CELL_COUNT = geometry.cells
-TERM_W = geometry.term
-FRAME_PAD = geometry.framePad
-INNER_W = geometry.inner
-NAME_W = geometry.name
-MSG_MAX = geometry.msg
-COST_W = geometry.cost
-ANSI_RE = re.compile('\\x1b\\[[0-9;]*m')
+Columns = geometry.cols
+Rows = geometry.rows
+TerminalWidth = geometry.term
+InnerWidth = geometry.inner
+NameWidth = geometry.name
+MessageMax = geometry.msg
+SaltWidth = geometry.cost
+Hline = '=' * TerminalWidth
+BodyFillLines = 23
+AnsiRe = re.compile(r'\x1b\[[0-9;]*m')
+
+Reset = '\x1b[0m'
+Ash = '\x1b[90m'
+Salt = '\x1b[97m'
+Ember = '\x1b[38;5;130m'
+Flame = '\x1b[38;5;208m'
+Flare = '\x1b[38;5;214m'
 
 
-RESET = '\x1b[0m'
-ASH = '\x1b[90m'
-WHITE = '\x1b[97m'
-SALT = WHITE
-EMBER = '\x1b[38;5;130m'
-FLICKER1 = '\x1b[38;5;208m'
-FLICKER2 = '\x1b[38;5;214m'
+def FlickerCycle(sequence: Tuple[str, ...], phase: int) -> str:
+    if not sequence:
+        return Ash
+    return sequence[int(phase or 0) % len(sequence)]
 
-def flickerPair(phase: int) -> Tuple[str, str]:
-    return (FLICKER1, FLICKER2) if int(phase or 0) % 2 else (FLICKER2, FLICKER1)
 
-def palette(cache: Any=None) -> Dict[str, str]:
-    raw_phase = getattr(cache, 'flame_phase', None) if cache is not None else None
+def Crucible(cache: Any = None) -> Dict[str, str]:
+    raw = getattr(cache, 'flamephase', None) if cache is not None else None
     try:
-        phase = int(raw_phase) if raw_phase is not None else 0
+        phase = int(raw) if raw is not None else 0
     except Exception:
         phase = 0
-    phase += int(__import__('time').monotonic() * 8.0)
-    flicker1, flicker2 = flickerPair(phase)
+    phase += int(time.monotonic() * 8.0)
+    flicker1 = FlickerCycle((Flame, Flare), phase)
+    flicker2 = FlickerCycle((Flare, Flame), phase)
+    flicker3 = FlickerCycle((Flame, Flame, Flare), phase)
+    flicker4 = FlickerCycle((Flare, Flare, Flame, Ember), phase)
+    flicker5 = FlickerCycle((Ember, Ember, Ember, Flame, Flame, Flare), phase)
+    flicker6 = FlickerCycle((Ash, Ember, Ember), phase)
+
     return {
-        'reset': RESET,
-        'ash': ASH,
-        'white': WHITE,
-        'salt': SALT,
-        'ember': EMBER,
-        'flicker1': flicker1,
-        'flicker2': flicker2,
+        'Ash': Ash,
+        'Salt': Salt,
+        'Ember': Ember,
+        'Flame': Flame,
+        'Flare': Flare,
+        'Flicker1': flicker1,
+        'Flicker2': flicker2,
+        'Flicker3': flicker3,
+        'Flicker4': flicker4,
+        'Flicker5': flicker5,
+        'Flicker6': flicker6,
+        'Reset': Reset,
     }
 
 
@@ -118,13 +128,10 @@ class Cell:
     soul: str = ''
     key: str = ''
     salt: int = 0
-    reserve: int = 0
     purge: Any = None
     lock: Any = None
     sign: Any = None
-    lockset: Any = None
-    debit: Any = None
-    credit: Any = None
+
 
 @dataclass(frozen=True)
 class State:
@@ -132,115 +139,151 @@ class State:
     self: Tuple[str, str] = ('', '')
     monument: Tuple[str, ...] = ()
 
+
 @dataclass
 class Q:
     self: Optional[int] = None
     target: Optional[int] = None
     city: int = 0
 
+
 class Focus(str, Enum):
-    TITLE = 'TITLE'
-    MENU = 'MENU'
-    TABLE_MOVE = 'TABLE_MOVE'
-    TABLE_LOCK = 'TABLE_LOCK'
-    SPINE = 'SPINE'
+    Title = 'title'
+    Menu = 'menu'
+    TableMove = 'tablemove'
+    TableLock = 'tablelock'
+    Spine = 'spine'
+
 
 class Action(str, Enum):
-    PURGE = 'PURGE'
-    WHISPER = 'WHISPER'
-    RALLY = 'RALLY'
-    WRATH = 'WRATH'
-    DEFECT = 'DEFECT'
-    MONUMENT = 'MONUMENT'
-    LORE = 'LORE'
-    EXIT = 'EXIT'
-MENU: List[Action] = [Action.WHISPER, Action.RALLY, Action.WRATH, Action.DEFECT, Action.PURGE, Action.MONUMENT, Action.LORE, Action.EXIT]
+    Purge = 'purge'
+    Whisper = 'whisper'
+    Rally = 'rally'
+    Wrath = 'wrath'
+    Defect = 'defect'
+    Monument = 'monument'
+    Lore = 'lore'
+    Exit = 'exit'
+
+
+Menu: List[Action] = [
+    Action.Whisper,
+    Action.Rally,
+    Action.Wrath,
+    Action.Defect,
+    Action.Purge,
+    Action.Monument,
+    Action.Lore,
+    Action.Exit,
+]
+
 
 @dataclass
 class Intent:
-    focus: Focus = Focus.MENU
-    action: Action = Action.PURGE
-    Q: Q = field(default_factory=Q)
+    focus: Focus = Focus.Menu
+    action: Action = Action.Purge
+    q: Q = field(default_factory=Q)
     amount: int = 1
     text: str = ''
-    kind: str = 'PURGE'
+    kind: str = 'purge'
     pairs: Tuple[Tuple[str, int], ...] = ()
     lock: Any = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.amount = max(0, int(self.amount or 0))
-        self.text = cleanDraft(self.text)
-        self.kind = str(self.kind or getattr(self.action, 'value', self.action) or '').upper()
-        self.pairs = tuple(((str(k or '').strip(), int(v or 0)) for k, v in tuple(self.pairs or ())))
+        self.text = CleanDraft(self.text)
+        self.kind = str(self.kind or getattr(self.action, 'value', self.action) or '').lower()
+        self.pairs = tuple((str(k or '').strip(), int(v or 0)) for k, v in tuple(self.pairs or ()))
+
 
 @dataclass
-class UiCache:
+class Cache:
     feed: list
-    local_name: str
+    name: str
     monuments: Optional[list] = None
     state: Optional[Any] = None
     intent: Intent = field(default_factory=Intent)
-    focus: Focus = Focus.MENU
-    menuQ: int = 0
-    stateQ: int = 0
-    targetQ: Optional[int] = None
-    stateKey: str = ''
-    targetKey: str = ''
+    focus: Focus = Focus.Menu
+    menuq: int = 0
+    stateq: int = 0
+    targetq: Optional[int] = None
+    statekey: str = ''
+    targetkey: str = ''
     salt: int = 1
     text: str = ''
-    visible_feed_count: int = 0
-    flame_phase: int = 0
-    flame_fed: bool = False
-    pending_request: Optional[str] = None
-    show_banner: bool = True
-    show_lore: bool = False
-    show_debug: bool = False
-    lore_offset: int = 0
+    feedcount: int = 0
+    flamephase: int = 0
+    flamefed: bool = False
+    activerequest: Optional[str] = None
+    banner: bool = True
+    lore: bool = False
+    showdebug: bool = False
+    lorescroll: int = 0
     mode: str = 'Siege'
     gate: str = '9000'
     skeleton: str = 'Skeleton'
     secret: str = 'Password'
     genesis: str = '1'
     soul: str = ''
-    title_idx: int = 0
+    titleselect: int = 0
 
-    def syncIntent(self) -> Intent:
+    def SyncIntent(self) -> Intent:
         self.intent.focus = self.focus
-        self.intent.action = MENU[self.menuQ % len(MENU)]
-        self.intent.Q.city = int(self.stateQ or 0)
-        self.intent.Q.target = self.targetQ
+        self.intent.action = Menu[self.menuq % len(Menu)]
+        self.intent.q.city = int(self.stateq or 0)
+        self.intent.q.target = self.targetq
         self.intent.amount = max(0, int(self.salt or 0))
-        self.intent.text = cleanDraft(self.text)
-        self.intent.kind = str(getattr(self.intent.action, 'value', self.intent.action) or '').upper()
+        self.intent.text = CleanDraft(self.text)
+        self.intent.kind = str(getattr(self.intent.action, 'value', self.intent.action) or '').lower()
         return self.intent
-ACTION: Dict[Action, Dict[str, object]] = {Action.WHISPER: {'floor': 1, 'desc': 'send salt + a private message', 'preview': "You Didn't Hear This From Me", 'label': 'WHISPER', 'needsTarget': True, 'arm': False}, Action.RALLY: {'floor': 100, 'desc': 'spend salt on your column', 'preview': 'You Got To Pump It Up', 'label': 'COHORT', 'needsTarget': False, 'arm': True}, Action.WRATH: {'floor': 1000, 'desc': 'spend salt on everyone', 'preview': 'Show No Mercy', 'label': 'LEGION', 'needsTarget': False, 'arm': True}, Action.DEFECT: {'floor': 0, 'desc': 'rank-dependent cost to swap seats', 'preview': 'Friends Are Friends Until The End', 'label': None, 'needsTarget': True, 'arm': False}, Action.PURGE: {'floor': 0, 'desc': '', 'preview': 'Restore Formation', 'label': None, 'needsTarget': True, 'arm': False}, Action.MONUMENT: {'floor': 0, 'desc': '', 'preview': 'Memory Set In Stone', 'label': None, 'needsTarget': False, 'arm': False}, Action.LORE: {'floor': 0, 'desc': '', 'preview': 'HisStory', 'label': None, 'needsTarget': False, 'arm': False}, Action.EXIT: {'floor': 0, 'desc': '', 'preview': 'Abandon Post', 'label': None, 'needsTarget': False, 'arm': False}}
 
-def makeCell(raw: Any) -> Cell:
+
+ActionMap: Dict[Action, Dict[str, object]] = {
+    Action.Whisper: {'floor': 1, 'desc': 'send salt + a private message', 'preview': "You Didn't Hear This From Me", 'label': 'WHISPER'},
+    Action.Rally: {'floor': 100, 'desc': 'spend salt on your column', 'preview': 'You Got To Pump It Up', 'label': 'COHORT'},
+    Action.Wrath: {'floor': 1000, 'desc': 'spend salt on everyone', 'preview': 'Show No Mercy', 'label': 'LEGION'},
+    Action.Defect: {'floor': 0, 'desc': 'rank-dependent cost to swap seats', 'preview': 'Friends Are Friends Until The End', 'label': None},
+    Action.Purge: {'floor': 0, 'desc': '', 'preview': 'Restore Formation', 'label': None},
+    Action.Monument: {'floor': 0, 'desc': '', 'preview': 'Memory Set In Stone', 'label': None},
+    Action.Lore: {'floor': 0, 'desc': '', 'preview': 'HisStory', 'label': None},
+    Action.Exit: {'floor': 0, 'desc': '', 'preview': 'Abandon Post', 'label': None},
+}
+
+
+def MakeCell(raw: Any) -> Cell:
     if isinstance(raw, Cell):
         return raw
-    reserve0 = getattr(raw, 'reserve', None)
-    salt0 = getattr(raw, 'salt', 0)
-    return Cell(soul=str(getattr(raw, 'soul', '') or ''), key=str(getattr(raw, 'key', getattr(raw, 'pubkey', '')) or ''), salt=int(salt0 or 0), reserve=int((reserve0 if reserve0 is not None else salt0) or 0), purge=getattr(raw, 'purge', None), lock=getattr(raw, 'lock', None), sign=getattr(raw, 'sign', None), lockset=getattr(raw, 'lockset', None), debit=getattr(raw, 'debit', None), credit=getattr(raw, 'credit', None))
+    return Cell(
+        soul=str(getattr(raw, 'soul', getattr(raw, 'Soul', '')) or ''),
+        key=str(getattr(raw, 'key', '') or ''),
+        salt=int(getattr(raw, 'salt', 0) or 0),
+        purge=getattr(raw, 'purge', None),
+        lock=getattr(raw, 'lock', None),
+        sign=getattr(raw, 'sign', None),
+    )
 
-def makeSelf(raw: Any) -> Tuple[str, str]:
+
+def MakeSelf(raw: Any) -> Tuple[str, str]:
     if raw is None:
         return ('', '')
     if isinstance(raw, (tuple, list)) and len(raw) >= 2:
         return (str(raw[0] or ''), str(raw[1] or '').strip())
     if isinstance(raw, dict):
-        return (str(raw.get('soul', '') or ''), str(raw.get('key', raw.get('pubkey', '')) or '').strip())
-    return (str(getattr(raw, 'soul', '') or ''), str(getattr(raw, 'key', getattr(raw, 'pubkey', '')) or '').strip())
+        return (str(raw.get('soul', '') or ''), str(raw.get('key', '') or '').strip())
+    return (str(getattr(raw, 'soul', '') or ''), str(getattr(raw, 'key', '') or '').strip())
 
-def makeState(raw: Any, selfRaw: Any=None) -> State:
-    if isinstance(raw, State) and selfRaw is None:
+
+def MakeState(raw: Any, selfraw: Any = None) -> State:
+    if isinstance(raw, State) and selfraw is None:
         return raw
-    cells = tuple((makeCell(cell) for cell in getattr(raw, 'cells', ()) or ()))
-    me = makeSelf(selfRaw if selfRaw is not None else getattr(raw, 'self', None))
+    cells = tuple(MakeCell(cell) for cell in getattr(raw, 'cells', ()) or ())
+    me = MakeSelf(selfraw if selfraw is not None else getattr(raw, 'self', None))
     monument = tuple(getattr(raw, 'monument', ()) or ())
     return State(cells=cells, self=me, monument=monument)
 
-def vislen(text: str) -> int:
-    raw = ANSI_RE.sub('', str(text or ''))
+
+def VisLen(text: str) -> int:
+    raw = AnsiRe.sub('', str(text or ''))
     if wc is None:
         return len(raw)
     total = 0
@@ -250,14 +293,15 @@ def vislen(text: str) -> int:
             total += width
     return total
 
-def clipw(text: str, width: int) -> str:
+
+def ClipWidth(text: str, width: int) -> str:
     text = str(text or '')
     width = max(0, int(width or 0))
     out: List[str] = []
     seen = 0
     i = 0
     while i < len(text):
-        if text[i] == '\x1b' and i + 1 < len(text) and (text[i + 1] == '['):
+        if text[i] == '\x1b' and i + 1 < len(text) and text[i + 1] == '[':
             j = i + 2
             while j < len(text) and text[j] != 'm':
                 j += 1
@@ -278,277 +322,244 @@ def clipw(text: str, width: int) -> str:
         i += 1
     return ''.join(out)
 
-def centerw(text: str, width: int) -> str:
+
+def CenterWidth(text: str, width: int) -> str:
     text = str(text or '')
-    seen = vislen(text)
+    seen = VisLen(text)
     if seen >= width:
-        return clipw(text, width)
+        return ClipWidth(text, width)
     return ' ' * ((int(width) - seen) // 2) + text
 
-def padw(text: str, width: int) -> str:
+
+def PadWidth(text: str, width: int) -> str:
     text = str(text or '')
-    seen = vislen(text)
+    seen = VisLen(text)
     if seen >= width:
-        return clipw(text, width)
+        return ClipWidth(text, width)
     return text + ' ' * (int(width) - seen)
 
-def clipTerm(text: str, *, term: int=TERM_W) -> str:
-    return clipw(text, term)
 
-def centerTerm(text: str, *, term: int=TERM_W) -> str:
-    return centerw(text, term)
+def ClipTerm(text: str, *, term: int = TerminalWidth) -> str:
+    return ClipWidth(text, term)
 
 
-def frameTextScreen(lines: List[str], *, fill: int=23, term: int=TERM_W, inner: int=INNER_W) -> str:
-    body = [clipTerm(str(line or ''), term=inner) for line in list(lines or ())]
+def CenterTerm(text: str, *, term: int = TerminalWidth) -> str:
+    return CenterWidth(text, term)
+
+
+def FrameLines(lines: List[str], *, inner: int = InnerWidth) -> str:
+    return '\n'.join(' ' + PadWidth(ClipWidth(line, inner), inner) + ' ' for line in lines) + Reset
+
+
+def MastLines(lux: Dict[str, str], title: str = 'BYZANTIUM') -> List[str]:
+    return [
+        CenterTerm(''),
+        CenterTerm(''),
+        CenterTerm(lux['Ash'] + '.' + lux['Reset']),
+        CenterTerm(lux['Ash'] + '.' + lux['Reset'] + lux['Flicker1'] + '+' + lux['Reset'] + lux['Ash'] + '.' + lux['Reset']),
+        CenterTerm(lux['Ash'] + '.   .   .   .' + lux['Reset']),
+        CenterTerm(lux['Ash'] + lux['Flicker2'] + '+' + lux['Reset'] + f' {title} ' + lux['Reset'] + lux['Flicker3'] + '+' + lux['Reset']),
+        CenterTerm(lux['Ash'] + '·   · ·   · ·   ·' + lux['Reset']),
+        CenterTerm(lux['Ash'] + '·' + lux['Reset'] + lux['Flicker4'] + '+' + lux['Reset'] + lux['Ash'] + '·' + lux['Reset']),
+        CenterTerm(lux['Ash'] + '·' + lux['Reset']),
+    ]
+
+
+def ValueField(lux: Dict[str, str], value: str = '') -> str:
+    value = str(value or '')[:8]
+    left = lux['Flicker1'] + ':' + lux['Reset']
+    right = lux['Flicker2'] + ':' + lux['Reset']
+    if not value:
+        return left + right
+    return left + lux['Salt'] + value + lux['Reset'] + right
+
+
+def FrameTextScreen(lines: List[str], *, fill: int = BodyFillLines, term: int = TerminalWidth, inner: int = InnerWidth) -> str:
+    body = [ClipTerm(str(line or ''), term=inner) for line in list(lines or ())]
     while len(body) < int(fill):
         body.append('')
-    body.append(clipTerm(ASH + '=' * term + RESET, term=inner))
-    return '\n'.join((' ' + padw(clipw(line, inner), inner) + ' ' for line in body)) + RESET
+    body.append(ClipTerm(Ash + '=' * term + Reset, term=inner))
+    return FrameLines(body, inner=inner)
 
-def cleanDraft(text: object) -> str:
+
+def CleanDraft(text: object) -> str:
     return str(text or '').replace('\r', ' ').replace('\n', ' ')
 
-def msgNorm(text: str, *, maxLen: int=MSG_MAX) -> str:
-    return cleanDraft(text).strip()[:max(0, int(maxLen))]
 
-def fmtSpineCost(cost: int, *, width: int=COST_W, signed: bool=True) -> str:
+def MessageNorm(text: str, *, maxlen: int = MessageMax) -> str:
+    return CleanDraft(text).strip()[:max(0, int(maxlen))]
+
+
+def SpineCost(cost: int, *, width: int = SaltWidth, signed: bool = True) -> str:
     value = int(cost or 0)
     text = f'{value:+,}' if signed else f'{value:,}'
-    if signed and (not text.startswith(('+', '-'))):
+    if signed and not text.startswith(('+', '-')):
         text = '+' + text
     return text.rjust(int(width or 0))
 
-def parseMonument(line: str, *, name: int=NAME_W):
+
+def ParseMonument(line: str, *, name: int = NameWidth):
     if len(line) < 10:
         return (None, None, line)
     head = line[:name].strip()
     tail = line[name:].strip()
-    match = re.match('^([+-]?[\\d,]+):\\s*(.*)', tail)
+    match = re.match(r'^([+-]?[\d,]+):\s*(.*)', tail)
     return (head, match.group(1), match.group(2)) if match else (head, None, tail)
 
-def monumentAnchorCol(monuments: List[str], anchor: str, *, name: int=NAME_W) -> int:
-    parsed = [parseMonument(m, name=name) for m in monuments]
+
+def MonumentAnchorCol(monuments: List[str], anchor: str, *, name: int = NameWidth) -> int:
+    parsed = [ParseMonument(m, name=name) for m in monuments]
     for head, score, _ in parsed:
         if head == anchor and score is not None:
             return len(f'{head.ljust(name)[:name]} {score}')
     widths = [len(f'{head.ljust(name)[:name]} {score}') for head, score, _ in parsed if head is not None]
     return max(widths, default=0)
 
-def key(raw: Any) -> str:
+
+def Key(raw: Any) -> str:
     if raw is None:
         return ''
     value = getattr(raw, 'key', None)
-    if value is None:
-        value = getattr(raw, 'pubkey', None)
     if value is None and isinstance(raw, dict):
-        value = raw.get('key', raw.get('pubkey', ''))
+        value = raw.get('key', '')
     if isinstance(value, (bytes, bytearray)):
         return bytes(value).hex()
     return str(value or '').strip()
 
-def reserve(cell: Any) -> int:
-    value = getattr(cell, 'reserve', None)
-    if value is None:
-        value = getattr(cell, 'salt', 0)
-    return int(value or 0)
 
-def amount(cell: Any) -> int:
-    return reserve(cell)
-
-def id6(raw: Any) -> str:
-    text = key(raw) if not isinstance(raw, str) else str(raw).strip()
-    if not text:
-        return ''
-    if len(text) == 64:
-        try:
-            bytes.fromhex(text)
-            return text[:16]
-        except Exception:
-            pass
-    return text[:NAME_W]
-
-def currentLock(cellstate: Any, *, key0: Any=None, idx: Optional[int]=None) -> str:
-    cells = list(getattr(cellstate, 'cells', []) or [])
-    if idx is not None and 0 <= int(idx) < len(cells):
-        cell = cells[int(idx)]
-    else:
-        found = str(key0 or '').strip()
-        cell = None
-        for candidate in cells:
-            if key(candidate) == found:
-                cell = candidate
-                break
-    if cell is None:
-        return ''
-    lock = getattr(cell, 'lock', None)
-    if lock is not None:
-        child = getattr(lock, 'child', None)
-        if child is not None:
-            return str(child or '')
-    lockset = getattr(cell, 'lockset', None)
-    if lockset is None:
-        return ''
-    child = getattr(lockset, 'child_lock', None)
-    if child is None:
-        child = getattr(lockset, 'child_dream_lock', None)
-    if child is None:
-        child = getattr(lockset, 'cell_lock', None)
-    return str(child or '')
-
-def selfKey(state: Any) -> str:
-    return makeSelf(getattr(state, 'self', None))[1]
-
-def selfSoul(state: Any) -> str:
-    return makeSelf(getattr(state, 'self', None))[0]
+def Amount(cell: Any) -> int:
+    return int(getattr(cell, 'salt', 0) or 0)
 
 
+def SelfKey(state: Any) -> str:
+    return MakeSelf(getattr(state, 'self', None))[1]
 
-def qByKey(state: Any, raw: Any) -> Optional[int]:
+
+def QxKey(state: Any, raw: Any) -> Optional[int]:
     needle = str(raw or '').strip()
     if not needle:
         return None
     cells = list(getattr(state, 'cells', []) or [])
     for i, cell in enumerate(cells):
-        if key(cell) == needle:
+        if Key(cell) == needle:
             return i
     return None
 
-def Qof(state: Any) -> Optional[int]:
-    cells = list(getattr(state, 'cells', []) or [])
-    mine = selfKey(state)
-    if not cells or not mine:
-        return None
-    for i, cell in enumerate(cells):
-        if key(cell) == mine:
-            return i
-    return None
 
-def resolveRank(state: Any) -> Optional[int]:
-    q = Qof(state)
+def SelfQ(state: Any) -> Optional[int]:
+    mine = SelfKey(state)
+    return None if not mine else QxKey(state, mine)
+
+
+def ResolveRank(state: Any) -> Optional[int]:
+    q = SelfQ(state)
     return None if q is None else q + 1
 
-def keyAt(state: Any, q: int) -> str:
+
+def KeyxQ(state: Any, q: int) -> str:
     cells = list(getattr(state, 'cells', []) or [])
-    return key(cells[int(q)]) if 0 <= int(q) < len(cells) else ''
+    return Key(cells[int(q)]) if 0 <= int(q) < len(cells) else ''
 
-def actionPreview(action: Action) -> str:
-    return str(ACTION.get(action, {}).get('preview', action.value))
 
-def actionDesc(action: Action) -> str:
-    return str(ACTION.get(action, {}).get('desc', ''))
+def ActionPreview(action: Action) -> str:
+    return str(ActionMap.get(action, {}).get('preview', action.value))
 
-def actionFloor(action: Action, *, rank: Optional[int]=None, q: Optional[int]=None, Q: Optional[int]=None) -> int:
-    seat_q = q if q is not None else Q
-    if action == Action.DEFECT:
-        seat = seat_q if seat_q is not None else None if rank is None else int(rank) - 1
+
+def ActionDesc(action: Action) -> str:
+    return str(ActionMap.get(action, {}).get('desc', ''))
+
+
+def ActionFloor(action: Action, *, rank: Optional[int] = None, q: Optional[int] = None, city: Optional[int] = None) -> int:
+    seat = q if q is not None else city
+    if action == Action.Defect:
+        if seat is None:
+            seat = None if rank is None else int(rank) - 1
         if seat is None:
             return 1000
-        return 10000 if geometry.general(seat) else 1000
-    try:
-        return int(ACTION.get(action, {}).get('floor', 0) or 0)
-    except Exception:
-        return 0
+        return 10000 if geometry.General(seat) else 1000
+    return int(ActionMap.get(action, {}).get('floor', 0) or 0)
 
-def actionSpineLabel(action: Action, *, rank: Optional[int]=None, q: Optional[int]=None, Q: Optional[int]=None) -> Optional[str]:
-    label = ACTION.get(action, {}).get('label')
+
+def ActionSpineLabel(action: Action, *, rank: Optional[int] = None, q: Optional[int] = None, city: Optional[int] = None) -> Optional[str]:
+    label = ActionMap.get(action, {}).get('label')
     if label:
         return str(label)
-    if action == Action.DEFECT:
-        return 'MYRIAD' if actionFloor(action, rank=rank, q=q, Q=Q) >= 10000 else 'COHORT'
+    if action == Action.Defect:
+        return 'MYRIAD' if ActionFloor(action, rank=rank, q=q, city=city) >= 10000 else 'COHORT'
     return None
 
-def actionNeedsTarget(action: Action) -> bool:
-    return bool(ACTION.get(action, {}).get('needsTarget', False))
 
-def actionHasArmPhase(action: Action) -> bool:
-    return bool(ACTION.get(action, {}).get('arm', False))
-
-def defectViable(state: Any, mine: int, target: int) -> bool:
+def DefectViable(state: Any, mine: int, target: int) -> bool:
     if target == mine:
         return False
     cells = list(getattr(state, 'cells', []) or [])
     if not (0 <= mine < len(cells) and 0 <= target < len(cells)):
         return False
-    return amount(cells[target]) < amount(cells[mine]) and geometry.file(target) != geometry.file(mine)
+    return Amount(cells[target]) < Amount(cells[mine]) and geometry.File(target) != geometry.File(mine)
 
-def moveBoard(state: Any, city: int, arrow: str, current: Action) -> int:
+
+def MoveTable(state: Any, city: int, arrow: str, current: Action) -> int:
     old = int(city or 0) % geometry.cells
-    mine = 0 if Qof(state) is None else int(Qof(state)) % geometry.cells
-    if current == Action.DEFECT:
-        row = geometry.rank(old)
-        col = geometry.file(old)
+    me = SelfQ(state)
+    mine = 0 if me is None else int(me) % geometry.cells
+    if current == Action.Defect:
+        row = geometry.Rank(old)
+        col = geometry.File(old)
         if arrow in ('C', 'D'):
             step = 1 if arrow == 'C' else -1
             for hop in range(1, geometry.cols + 1):
                 q = (col + step * hop) % geometry.cols * geometry.rows + row
-                if defectViable(state, mine, q):
+                if DefectViable(state, mine, q):
                     return q
             return old
         if arrow in ('A', 'B'):
             step = -1 if arrow == 'A' else 1
             for hop in range(1, geometry.rows + 1):
                 q = col * geometry.rows + (row + step * hop) % geometry.rows
-                if defectViable(state, mine, q):
+                if DefectViable(state, mine, q):
                     return q
             return old
         return old
-    cand = geometry.move(old, arrow)
-    if current in (Action.WHISPER, Action.PURGE) and cand == mine:
+    cand = geometry.Move(old, arrow)
+    if current in (Action.Whisper, Action.Purge) and cand == mine:
         q = cand
         for _ in range(geometry.cells - 1):
-            q = geometry.move(q, arrow)
+            q = geometry.Move(q, arrow)
             if q != mine:
                 return q
     return cand
 
-def targets(state: Any, mine: int, current: Action, target: Optional[int]) -> Tuple[int, ...]:
+
+def Targets(state: Any, mine: int, current: Action, target: Optional[int]) -> Tuple[int, ...]:
     cells = list(getattr(state, 'cells', []) or [])
-    if current == Action.WHISPER:
+    if current in (Action.Whisper, Action.Purge):
         return () if target is None else (int(target),)
-    if current == Action.DEFECT:
-        myfile = geometry.file(int(mine))
-        return tuple((q for q, _cell in enumerate(cells) if q != int(mine) and geometry.file(q) == myfile))
-    if current == Action.PURGE:
-        return () if target is None else (int(target),)
-    if current == Action.RALLY:
-        myfile = geometry.file(int(mine))
-        return tuple((q for q, _cell in enumerate(cells) if q != int(mine) and geometry.file(q) == myfile))
-    if current == Action.WRATH:
-        return tuple((q for q, _cell in enumerate(cells) if q != int(mine)))
+    if current == Action.Defect:
+        myfile = geometry.File(int(mine))
+        return tuple(q for q, _cell in enumerate(cells) if q != int(mine) and geometry.File(q) == myfile)
+    if current == Action.Rally:
+        myfile = geometry.File(int(mine))
+        return tuple(q for q, _cell in enumerate(cells) if q != int(mine) and geometry.File(q) == myfile)
+    if current == Action.Wrath:
+        return tuple(q for q, _cell in enumerate(cells) if q != int(mine))
     return ()
 
-def purgeViable(state: Any, mine: int, target: Optional[int]) -> bool:
+
+def PurgeViable(state: Any, mine: int, target: Optional[int]) -> bool:
     cells = list(getattr(state, 'cells', []) or [])
     if target is None:
         return False
     q = int(target)
-    if not 0 <= q < len(cells):
-        return False
-    if q == int(mine):
-        return False
-    return bool(key(cells[q]))
+    return 0 <= q < len(cells) and q != int(mine) and bool(Key(cells[q]))
 
-def purgeTarget(state: Any, q: Optional[int]) -> str:
-    if q is None:
-        return ''
-    return keyAt(state, int(q))
 
-def purgeFlavor() -> str:
+def PurgeTarget(state: Any, q: Optional[int]) -> str:
+    return '' if q is None else KeyxQ(state, int(q))
+
+
+def PurgeFlavor() -> str:
     return 'Friends are friends until the end.'
 
-def defecttargetkey(state: Any, q: Optional[int]) -> str:
-    if q is None:
-        return ''
-    return keyAt(state, int(q))
 
-def pairs(state: Any, qs: Iterable[int], total: int) -> Tuple[Tuple[str, int], ...]:
-    cells = list(getattr(state, 'cells', []) or [])
-    picked = [cells[int(q)] for q in qs if 0 <= int(q) < len(cells)]
-    if not picked or total <= 0:
-        return ()
-    if len(picked) == 1:
-        found = key(picked[0])
-        return () if not found else ((found, int(total)),)
-    return geometry.split(int(total), picked, by=amount)
-__all__ = ['geometry', 'Geometry', 'Cell', 'State', 'Q', 'Intent', 'UiCache', 'Focus', 'Action', 'MENU', 'ACTION', 'BOARD_COLS', 'BOARD_ROWS', 'CELL_COUNT', 'TERM_W', 'FRAME_PAD', 'INNER_W', 'NAME_W', 'MSG_MAX', 'COST_W', 'ANSI_RE', 'RESET', 'ASH', 'WHITE', 'SALT', 'EMBER', 'FLICKER1', 'FLICKER2', 'flickerPair', 'palette', 'makeCell', 'makeSelf', 'makeState', 'vislen', 'clipw', 'centerw', 'padw', 'clipTerm', 'centerTerm', 'frameTextScreen', 'cleanDraft', 'msgNorm', 'fmtSpineCost', 'parseMonument', 'monumentAnchorCol', 'key', 'reserve', 'amount', 'id6', 'currentLock', 'selfKey', 'selfSoul', 'qByKey', 'Qof', 'resolveRank', 'keyAt', 'actionPreview', 'actionDesc', 'actionFloor', 'actionSpineLabel', 'actionNeedsTarget', 'actionHasArmPhase', 'defectViable', 'moveBoard', 'targets', 'purgeViable', 'purgeTarget', 'purgeFlavor', 'pairs']
+def DefectTargetKey(state: Any, q: Optional[int]) -> str:
+    return '' if q is None else KeyxQ(state, int(q))

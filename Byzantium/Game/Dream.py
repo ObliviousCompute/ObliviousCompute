@@ -1,19 +1,22 @@
 from __future__ import annotations
+
 from dataclasses import dataclass, replace
 import re
 from typing import Any
+
 import Citadel
 import Crypt
 import Field
 
-PurgeGlyph = 'PURGE'
-DreamGlyph = 'DREAM'
-SaltGlyph = 'SALT'
-MONUMENT_SLOTS = 3
-MONUMENT_NAME_W = 8
-MONUMENT_RE = re.compile(r'^(.{0,8})\s+([+-]?[\d,]+):\s*(.*)$')
+PurgeGlyph = 'purge'
+DreamGlyph = 'dream'
+SaltGlyph = 'salt'
+MonumentSlots = 3
+MonumentNameWidth = 8
+MonumentPattern = re.compile(r'^(.{0,8})\s+([+-]?[\d,]+):\s*(.*)$')
 
-def _seat(state: Field.State, key: str) -> int | None:
+
+def Seat(state: Field.State, key: str) -> int | None:
     key = str(key or '').strip()
     if not key:
         return None
@@ -22,74 +25,86 @@ def _seat(state: Field.State, key: str) -> int | None:
             return q
     return None
 
-def _samefile(a: int, b: int) -> bool:
-    return int(a) // Field.SEATS_PER_FILE == int(b) // Field.SEATS_PER_FILE
 
-def _defectshape(glyph: Field.SaltGlyph) -> bool:
+def SameFile(a: int, b: int) -> bool:
+    return int(a) // Field.SeatsPerFile == int(b) // Field.SeatsPerFile
+
+
+def DefectShape(glyph: Field.SaltGlyph) -> bool:
     return len(tuple(glyph.saltbody or ())) == 6
 
-def _defectparts(glyph: Field.SaltGlyph) -> tuple[tuple[Field.Salt, ...], Field.Salt | None]:
+
+def DefectParts(glyph: Field.SaltGlyph) -> tuple[tuple[Field.Salt, ...], Field.Salt | None]:
     legs = tuple(glyph.saltbody or ())
     if len(legs) != 6:
         return (legs, None)
     return (legs[:-1], legs[-1])
 
-def _monumentparse(line: Any) -> tuple[str, int | None, str]:
+
+def MonumentParse(line: Any) -> tuple[str, int | None, str]:
     text = str(line or '').rstrip()
-    match = MONUMENT_RE.match(text)
+    match = MonumentPattern.match(text)
     if not match:
-        head = text[:MONUMENT_NAME_W].strip()
-        tail = text[MONUMENT_NAME_W:].strip() if len(text) > MONUMENT_NAME_W else ''
+        head = text[:MonumentNameWidth].strip()
+        tail = text[MonumentNameWidth:].strip() if len(text) > MonumentNameWidth else ''
         return (head, None, tail or text)
     head = str(match.group(1) or '').strip()
-    score_text = str(match.group(2) or '').replace(',', '').strip()
+    scoretext = str(match.group(2) or '').replace(',', '').strip()
     body = str(match.group(3) or '')
     try:
-        score = int(score_text)
+        score = int(scoretext)
     except Exception:
         score = None
     return (head, score, body)
 
-def _monumentscore(line: Any) -> int:
-    _head, score, _body = _monumentparse(line)
+
+def MonumentScore(line: Any) -> int:
+    head, score, body = MonumentParse(line)
     return abs(int(score or 0))
 
-def _ashsplit(text: Any) -> tuple[str, str]:
+
+def AshSplit(text: Any) -> tuple[str, str]:
     raw = str(text or '').replace('\r', ' ').replace('\n', ' ').strip()
     body, sep, kind = raw.rpartition('|')
     if sep:
-        return (kind.strip().upper(), body.strip())
+        return (kind.strip().lower(), body.strip())
     return ('', raw)
 
-def _monumentclean(text: Any, n: int=60) -> str:
-    _kind, body = _ashsplit(text)
+
+def MonumentClean(text: Any, n: int = 60) -> str:
+    kind, body = AshSplit(text)
     return body[:n]
 
-def _monumentname(name: Any) -> str:
+
+def MonumentName(name: Any) -> str:
     raw = str(name or '').strip()
     if not raw:
         return 'UNKNOWN'
-    return raw[:MONUMENT_NAME_W].ljust(MONUMENT_NAME_W)
+    return raw[:MonumentNameWidth].ljust(MonumentNameWidth)
 
-def _monumentline(name: Any, total: int, text: Any) -> str:
+
+def MonumentLine(name: Any, total: int, text: Any) -> str:
     score = f'{int(total):+,}'
-    body = _monumentclean(text)
-    return f'{_monumentname(name)} {score}:{body}' if body else f'{_monumentname(name)} {score}:'
+    body = MonumentClean(text)
+    return f'{MonumentName(name)} {score}:{body}' if body else f'{MonumentName(name)} {score}:'
 
-def _ashkind(text: Any) -> str:
-    kind, _body = _ashsplit(text)
+
+def AshKind(text: Any) -> str:
+    kind, body = AshSplit(text)
     return kind
 
-def _ashbroadcasttotal(glyph: Field.SaltGlyph, viewer: str, sender: str, kind: str) -> int:
+
+def AshBroadcastTotal(glyph: Field.SaltGlyph, viewer: str, sender: str, kind: str) -> int:
     legs = tuple(getattr(glyph, 'saltbody', ()) or ())
     if viewer == sender:
         return sum((int(getattr(leg, 'salt', 0) or 0) for leg in legs))
     direct = sum((int(getattr(leg, 'salt', 0) or 0) for leg in legs if str(getattr(leg, 'key', '') or '').strip() == viewer))
     if direct > 0:
         return direct
-    if kind == 'DEFECT':
+    if kind == 'defect':
         return max((int(getattr(leg, 'salt', 0) or 0) for leg in legs), default=0)
     return 0
+
 
 @dataclass
 class Box:
@@ -97,9 +112,10 @@ class Box:
     crypt: Any = None
     ashfall: Any = None
 
+
 class Dream:
 
-    def __init__(self, citadel: Any=None, crypt: Any=None):
+    def __init__(self, citadel: Any = None, crypt: Any = None):
         self.box = Box()
         self.state: Field.State | None = None
         self.citadel = citadel
@@ -108,20 +124,16 @@ class Dream:
         self.changed = False
         self.bootflare = False
 
-    def wakecitadel(self):
+    def WakeCitadel(self):
         if self.citadel is not None:
             return self.citadel
-        self.citadel = Citadel.citadel
+        self.citadel = Citadel.Citadel
         return self.citadel
 
-    def wakecrypt(self):
+    def WakeCrypt(self):
         if self.crypt is not None:
             return self.crypt
         live = getattr(Crypt, 'crypt', None)
-        if live is not None:
-            self.crypt = live
-            return self.crypt
-        live = getattr(Crypt, '_CRYPT', None)
         if live is not None:
             self.crypt = live
             return self.crypt
@@ -130,24 +142,23 @@ class Dream:
     def Genesis(self, state: Any):
         self.crypt = Crypt.Crypt(state=state)
         Crypt.crypt = self.crypt
-        Crypt._CRYPT = self.crypt
         return self.crypt
 
-    def wake(self):
+    def Wake(self):
         self.changed = False
-        self.routevault()
-        self.routecrypt()
+        self.RouteVault()
+        self.RouteCrypt()
         if self.changed:
-            self.publish()
+            self.Publish()
         return self.state
 
-    def awake(self):
-        return self.wake()
+    def Awake(self):
+        return self.Wake()
 
-    def route(self):
-        return self.wake()
+    def Route(self):
+        return self.Wake()
 
-    def monumentname(self, key: str) -> str:
+    def MonumentName(self, key: str) -> str:
         key = str(key or '').strip()
         if self.state is not None:
             cell = Field.FindCell(self.state, key)
@@ -162,86 +173,86 @@ class Dream:
                 return selfsoul
         return key or 'UNKNOWN'
 
-    def monumenttotal(self, glyph: Field.SaltGlyph) -> int:
+    def MonumentTotal(self, glyph: Field.SaltGlyph) -> int:
         return sum((int(getattr(leg, 'salt', 0) or 0) for leg in tuple(glyph.saltbody or ())))
 
-    def monumentline(self, glyph: Field.SaltGlyph) -> str:
-        return _monumentline(self.monumentname(glyph.key), self.monumenttotal(glyph), glyph.textbody.text)
+    def MonumentEntry(self, glyph: Field.SaltGlyph) -> str:
+        return MonumentLine(self.MonumentName(glyph.key), self.MonumentTotal(glyph), glyph.textbody.text)
 
-    def updatemonument(self, state: Field.State, glyph: Field.SaltGlyph) -> Field.State:
-        candidate = self.monumentline(glyph)
+    def UpdateMonument(self, state: Field.State, glyph: Field.SaltGlyph) -> Field.State:
+        candidate = self.MonumentEntry(glyph)
         entries = [str(line) for line in tuple(getattr(state, 'monument', ()) or ()) if str(line or '').strip()]
-        _head, score, _body = _monumentparse(candidate)
+        head, score, body = MonumentParse(candidate)
         if score is None or score <= 0:
             return state
         pool = list(entries)
         if candidate not in pool:
             pool.append(candidate)
-        ranked = sorted(pool, key=lambda line: (_monumentscore(line), str(line)), reverse=True)[:MONUMENT_SLOTS]
+        ranked = sorted(pool, key=lambda line: (MonumentScore(line), str(line)), reverse=True)[:MonumentSlots]
         monument = tuple(ranked)
         if monument == tuple(getattr(state, 'monument', ()) or ()):
             return state
         return Field.State(cells=state.cells, self=state.self, monument=monument)
 
-    def acceptstate(self, state: Any, *, publish: bool=True):
+    def AcceptState(self, state: Any, *, publish: bool = True):
         if not isinstance(state, Field.State):
-            raise TypeError('Dream.acceptstate expects Field.State')
+            raise TypeError('Dream.AcceptState expects Field.State')
         firstreal = self.state is None and bool(getattr(state, 'cells', ()) or ())
         self.state = state
         if firstreal and (not self.bootflare):
             self.bootflare = True
-            flare = self.purgeflare()
-            self.forward(flare)
+            flare = self.PurgeFlare()
+            self.Forward(flare)
         if publish:
-            self.publish()
+            self.Publish()
         return self.state
 
-    def publish(self):
+    def Publish(self):
         if self.state is None:
             return None
-        citadel = self.wakecitadel()
-        citadel.state = self.state
+        citadel = self.WakeCitadel()
+        citadel.State = self.state
         if self.box.ashfall is not None:
             try:
-                citadel.ashfall(self.box.ashfall)
+                citadel.Ashfall(self.box.ashfall)
             except Exception:
                 pass
             self.box.ashfall = None
         return self.state
 
-    def scrub(self, state: Field.State | None=None) -> Field.State | None:
+    def Scrub(self, state: Field.State | None = None) -> Field.State | None:
         body = self.state if state is None else state
         if body is None:
             return None
         return Field.Scrub(body)
 
-    def routevault(self):
+    def RouteVault(self):
         glyph = self.box.vault
         if glyph is None:
             return self.state
         self.box.vault = None
         if self.state is None:
             if isinstance(glyph, Field.State):
-                self.acceptstate(glyph, publish=True)
+                self.AcceptState(glyph, publish=True)
                 return self.state
-            raise TypeError('Dream.routevault expected Field.State during bootstrap')
-        self.mutate(glyph, source='vault')
+            raise TypeError('Dream.RouteVault expected Field.State during bootstrap')
+        self.Mutate(glyph, source='vault')
         return self.state
 
-    def routecrypt(self):
+    def RouteCrypt(self):
         glyph = self.box.crypt
         if glyph is None:
             return self.state
         self.box.crypt = None
         if self.state is None:
             if isinstance(glyph, Field.State):
-                self.acceptstate(glyph, publish=True)
+                self.AcceptState(glyph, publish=True)
                 return self.state
-            raise TypeError('Dream.routecrypt expected Field.State during bootstrap')
-        self.mutate(glyph, source='crypt')
+            raise TypeError('Dream.RouteCrypt expected Field.State during bootstrap')
+        self.Mutate(glyph, source='crypt')
         return self.state
 
-    def ashfall(self, glyph: Field.SaltGlyph) -> Any:
+    def Ashfall(self, glyph: Field.SaltGlyph) -> Any:
         if self.state is None:
             return None
         viewer = str(self.state.self[1] or '').strip()
@@ -249,8 +260,8 @@ class Dream:
         if not viewer or not sender:
             return None
         rawtext = str(getattr(getattr(glyph, 'textbody', None), 'text', '') or '')
-        actionkind, body = _ashsplit(rawtext)
-        total = _ashbroadcasttotal(glyph, viewer, sender, actionkind)
+        action, body = AshSplit(rawtext)
+        total = AshBroadcastTotal(glyph, viewer, sender, action)
         if viewer != sender and total <= 0:
             return None
         sendercell = Field.FindCell(self.state, sender)
@@ -258,7 +269,7 @@ class Dream:
         payload = {
             'sender': sendername or sender,
             'kind': SaltGlyph,
-            'actionkind': actionkind,
+            'action': action,
             'text': body[:60],
             'rawtext': rawtext,
             'total': int(total),
@@ -266,140 +277,140 @@ class Dream:
         self.box.ashfall = payload
         return payload
 
-    def selfkey(self) -> str:
+    def SelfKey(self) -> str:
         if self.state is None:
             return ''
         return str(self.state.self[1] or '').strip()
 
-    def purgekey(self, glyph: Any) -> str:
+    def PurgeKey(self, glyph: Any) -> str:
         if isinstance(glyph, dict):
             return str(glyph.get('key', '') or '').strip()
         return str(getattr(glyph, 'key', '') or '').strip()
 
-    def pristine(self, state: Field.State | None=None) -> bool:
+    def Pristine(self, state: Field.State | None = None) -> bool:
         body = self.state if state is None else state
         if body is None:
             return True
         return len(tuple(getattr(body, 'monument', ()) or ())) == 0
 
-    def _withchainbit(self, cell: Field.Cell, chainbit: int) -> Field.Cell:
+    def WithChainbit(self, cell: Field.Cell, chainbit: int) -> Field.Cell:
         cb = 1 if int(chainbit) else 0
         lb = 1 if int(cell.purge.lockbit) or cb else 0
         return replace(cell, purge=Field.Purge(chainbit=cb, lockbit=lb))
 
-    def _latchonly(self, cell: Field.Cell) -> Field.Cell:
+    def LatchOnly(self, cell: Field.Cell) -> Field.Cell:
         return replace(cell, purge=Field.Purge(chainbit=0, lockbit=1))
 
-    def _clearpurge(self, cell: Field.Cell) -> Field.Cell:
+    def ClearPurge(self, cell: Field.Cell) -> Field.Cell:
         return replace(cell, purge=Field.Purge(chainbit=0, lockbit=0))
 
-    def _activechain(self, cell: Field.Cell, chain: Field.Chain) -> int:
+    def ActiveChain(self, cell: Field.Cell, chain: Field.Chain) -> int:
         child = str(getattr(cell.lock, 'child', '') or '').strip()
-        return 1 if chain.linked and child not in ('', Field.ZERO_HASH_HEX) else 0
+        return 1 if chain.linked and child not in ('', Field.ZeroHashHex) else 0
 
-    def _idempotentsalt(self, current: Field.Cell | None, glyph: Field.SaltGlyph) -> bool:
+    def IdempotentSalt(self, current: Field.Cell | None, glyph: Field.SaltGlyph) -> bool:
         if current is None:
             return False
-        same_parent = str(current.lock.parent or '') == str(glyph.lockbody.parent or '')
-        same_child = str(current.lock.child or '') == str(glyph.lockbody.child or '')
-        same_sign = str(current.sign or '') == str(glyph.locksign or '')
-        return bool(same_parent and same_child and same_sign)
+        sameparent = str(current.lock.parent or '') == str(glyph.lockbody.parent or '')
+        samechild = str(current.lock.child or '') == str(glyph.lockbody.child or '')
+        samesign = str(current.sign or '') == str(glyph.locksign or '')
+        return bool(sameparent and samechild and samesign)
 
-    def _stampchainsalt(self, state: Field.State, glyph: Field.SaltGlyph, chains: tuple[Field.Chain, ...]) -> Field.State:
+    def StampChainSalt(self, state: Field.State, glyph: Field.SaltGlyph, chains: tuple[Field.Chain, ...]) -> Field.State:
         cells = {cell.key: cell for cell in state.cells}
         signer = str(glyph.key or '').strip()
         if signer and signer in cells and (len(chains) >= 1):
-            cells[signer] = self._withchainbit(cells[signer], 1 if chains[0].linked else 0)
+            cells[signer] = self.WithChainbit(cells[signer], 1 if chains[0].linked else 0)
         seen = set()
-        credit_keys = []
+        creditkeys = []
         for leg in glyph.saltbody:
             key = str(getattr(leg, 'key', '') or '').strip()
             if not key or key == signer or key in seen:
                 continue
             seen.add(key)
-            credit_keys.append(key)
-        for idx, key in enumerate(credit_keys, start=1):
-            if key in cells and idx < len(chains):
-                cells[key] = self._withchainbit(cells[key], 1) if chains[idx].linked else self._withchainbit(cells[key], 0)
+            creditkeys.append(key)
+        for index, key in enumerate(creditkeys, start=1):
+            if key in cells and index < len(chains):
+                cells[key] = self.WithChainbit(cells[key], 1) if chains[index].linked else self.WithChainbit(cells[key], 0)
         stamped = Field.State(cells=tuple((cells[cell.key] for cell in state.cells)), self=state.self, monument=state.monument)
         return stamped
 
-    def _stampchaindream(self, state: Field.State, chains: tuple[Field.Chain, ...]) -> Field.State:
+    def StampChainDream(self, state: Field.State, chains: tuple[Field.Chain, ...]) -> Field.State:
         if len(chains) != len(state.cells):
             return state
         cells = []
         for cell, chain in zip(state.cells, chains):
             if chain.linked:
-                active = self._activechain(cell, chain)
-                cells.append(self._withchainbit(cell, 1) if active else self._latchonly(cell))
+                active = self.ActiveChain(cell, chain)
+                cells.append(self.WithChainbit(cell, 1) if active else self.LatchOnly(cell))
             else:
-                cells.append(self._withchainbit(cell, 0))
+                cells.append(self.WithChainbit(cell, 0))
         stamped = Field.State(cells=tuple(cells), self=state.self, monument=state.monument)
         return stamped
 
-    def _applypurgekey(self, state: Field.State, key: str) -> Field.State:
+    def ApplyPurgeKey(self, state: Field.State, key: str) -> Field.State:
         key = str(key or '').strip()
         if not key:
             return state
         target = Field.FindCell(state, key)
         if target is None:
             return state
-        cleared = self._clearpurge(target)
+        cleared = self.ClearPurge(target)
         nextstate = Field.ReplaceCell(state, cleared)
         return nextstate
 
-    def _scrubpurge(self, state: Field.State) -> Field.State:
+    def ScrubPurge(self, state: Field.State) -> Field.State:
         cleared = tuple((replace(cell, purge=Field.Purge(chainbit=0, lockbit=0)) for cell in state.cells))
         out = Field.State(cells=cleared, self=state.self, monument=state.monument)
         return out
 
-    def purgeflare(self) -> dict[str, Any]:
-        return {'kind': PurgeGlyph, 'key': self.selfkey()}
+    def PurgeFlare(self) -> dict[str, Any]:
+        return {'kind': PurgeGlyph, 'key': self.SelfKey()}
 
-    def mutate(self, glyph: Any, source: str=''):
-        kind = self.kind(glyph)
+    def Mutate(self, glyph: Any, source: str = ''):
+        kind = self.Kind(glyph)
         if kind == PurgeGlyph:
-            mutated = self.mutatepurge(glyph, source=source)
+            mutated = self.MutatePurge(glyph, source=source)
         elif kind == DreamGlyph:
-            mutated = self.mutatedream(glyph, source=source)
+            mutated = self.MutateDream(glyph, source=source)
         else:
-            mutated = self.mutatesalt(glyph, source=source)
+            mutated = self.MutateSalt(glyph, source=source)
         if mutated:
             self.changed = True
             if kind == SaltGlyph:
-                self.ashfall(glyph)
+                self.Ashfall(glyph)
             echo = True
             if kind == PurgeGlyph:
                 echo = False
             elif source == 'crypt' and kind == DreamGlyph:
                 echo = False
             if echo:
-                self.forward(glyph)
+                self.Forward(glyph)
         return mutated
 
-    def defectviable(self, state: Field.State, glyph: Field.SaltGlyph) -> bool:
-        spend, victim = _defectparts(glyph)
+    def DefectViable(self, state: Field.State, glyph: Field.SaltGlyph) -> bool:
+        spend, victim = DefectParts(glyph)
         if victim is None:
             return False
-        signerq = _seat(state, glyph.key)
-        victimq = _seat(state, victim.key)
+        signerq = Seat(state, glyph.key)
+        victimq = Seat(state, victim.key)
         if signerq is None or victimq is None:
             return False
         if signerq == victimq:
             return False
-        if _samefile(signerq, victimq):
+        if SameFile(signerq, victimq):
             return False
         signer = state.cells[signerq]
         target = state.cells[victimq]
         if int(target.salt) >= int(signer.salt):
             return False
         total = sum((int(leg.salt) for leg in spend))
-        floor = 10000 if signerq % Field.SEATS_PER_FILE == 0 else 1000
+        floor = 10000 if signerq % Field.SeatsPerFile == 0 else 1000
         if total != floor:
             return False
         if any((int(leg.salt) <= 0 for leg in spend)):
             return False
-        filekeys = {cell.key for i, cell in enumerate(state.cells) if i != signerq and _samefile(i, signerq)}
+        filekeys = {cell.key for index, cell in enumerate(state.cells) if index != signerq and SameFile(index, signerq)}
         spendkeys = {str(leg.key or '').strip() for leg in spend}
         if spendkeys != filekeys:
             return False
@@ -407,12 +418,12 @@ class Dream:
             return False
         return True
 
-    def defectswap(self, state: Field.State, glyph: Field.SaltGlyph) -> Field.State:
-        _spend, victim = _defectparts(glyph)
+    def DefectSwap(self, state: Field.State, glyph: Field.SaltGlyph) -> Field.State:
+        spend, victim = DefectParts(glyph)
         if victim is None:
             return state
-        signerq = _seat(state, glyph.key)
-        victimq = _seat(state, victim.key)
+        signerq = Seat(state, glyph.key)
+        victimq = Seat(state, victim.key)
         if signerq is None or victimq is None:
             return state
         cells = list(state.cells)
@@ -420,154 +431,175 @@ class Dream:
         out = Field.State(cells=tuple(cells), self=state.self, monument=state.monument)
         return out
 
-    def mutatesalt(self, glyph: Any, source: str='') -> bool:
+    def MutateSalt(self, glyph: Any, source: str = '') -> bool:
         if self.state is None:
             return False
         if not isinstance(glyph, Field.SaltGlyph):
-            raise TypeError('Dream.mutatesalt expects Field.SaltGlyph')
-        defect = _defectshape(glyph)
+            raise TypeError('Dream.MutateSalt expects Field.SaltGlyph')
+        defect = DefectShape(glyph)
         try:
             Field.VerifySalt(glyph)
             current = Field.FindCell(self.state, glyph.key)
-            if defect and (not self.defectviable(self.state, glyph)):
+            if defect and (not self.DefectViable(self.state, glyph)):
                 return False
-            if source == 'crypt' and self._idempotentsalt(current, glyph):
+            if source == 'crypt' and self.IdempotentSalt(current, glyph):
                 return False
             nextstate, chains = Field.MutateReceipt(self.state, glyph)
             if defect:
-                nextstate = self.defectswap(nextstate, glyph)
-            nextstate = self.updatemonument(nextstate, glyph)
-        except Exception as exc:
+                nextstate = self.DefectSwap(nextstate, glyph)
+            nextstate = self.UpdateMonument(nextstate, glyph)
+        except Exception:
             return False
-        changed = self.commit(nextstate)
+        changed = self.Commit(nextstate)
         if not changed or self.state is None:
             return False
-        self.state = self._stampchainsalt(self.state, glyph, chains)
+        self.state = self.StampChainSalt(self.state, glyph, chains)
         return True
 
-    def mutatedream(self, glyph: Any, source: str='') -> bool:
+    def MutateDream(self, glyph: Any, source: str = '') -> bool:
         if self.state is None:
             return False
         if not isinstance(glyph, Field.State):
-            raise TypeError('Dream.mutatedream expects Field.State')
+            raise TypeError('Dream.MutateDream expects Field.State')
         try:
             nextstate, chains = Field.MutateState(self.state, glyph)
-        except Exception as exc:
+        except Exception:
             return False
-        changed = self.commit(nextstate)
+        changed = self.Commit(nextstate)
         if not changed or self.state is None:
             return False
-        self.state = self._stampchaindream(self.state, chains)
+        self.state = self.StampChainDream(self.state, chains)
         return True
 
-    def mutatepurge(self, glyph: Any, source: str='') -> bool:
+    def MutatePurge(self, glyph: Any, source: str = '') -> bool:
         if self.state is None:
             return False
-
         if source == 'vault':
-            key = self.purgekey(glyph)
-            if key and key == self.selfkey():
-                nextstate = self._scrubpurge(self.state)
-                changed = self.commit(nextstate)
-                flare = self.purgeflare()
-                self.forward(flare)
+            key = self.PurgeKey(glyph)
+            if key and key == self.SelfKey():
+                nextstate = self.ScrubPurge(self.state)
+                changed = self.Commit(nextstate)
+                flare = self.PurgeFlare()
+                self.Forward(flare)
                 return changed or True
-            nextstate = self._applypurgekey(self.state, key)
-            changed = self.commit(nextstate)
-            flare = self.purgeflare()
-            self.forward(flare)
+            nextstate = self.ApplyPurgeKey(self.state, key)
+            changed = self.Commit(nextstate)
+            flare = self.PurgeFlare()
+            self.Forward(flare)
             return changed or True
-
         if source == 'crypt':
-            if self.pristine(self.state):
+            if self.Pristine(self.state):
                 return False
-            key = self.purgekey(glyph)
-            if key and key == self.selfkey():
+            key = self.PurgeKey(glyph)
+            if key and key == self.SelfKey():
                 return False
-            self.forward(self.scrub(self.state))
+            self.Forward(self.Scrub(self.state))
             return True
-
         return False
 
-    def commit(self, nextstate: Field.State) -> bool:
+    def Commit(self, nextstate: Field.State) -> bool:
         nextstate = Field.Stasis(nextstate)
         if self.state is None:
             self.state = nextstate
             return True
         if nextstate == self.state:
             return False
-        before = self.state.saltTotal
-        after = nextstate.saltTotal
+        before = self.state.SaltTotal
+        after = nextstate.SaltTotal
         self.state = nextstate
         return True
 
-    def forward(self, glyph: Any):
+    def Forward(self, glyph: Any):
         self.glyph = glyph
-        crypt = self.wakecrypt()
+        crypt = self.WakeCrypt()
         if crypt is None:
             return glyph
-        packet = self.packet(glyph)
+        packet = self.Packet(glyph)
         try:
             crypt.glyph = packet
         except Exception:
             pass
-        if hasattr(crypt, 'emitGlyph'):
+        if hasattr(crypt, 'EmitGlyph'):
+            try:
+                crypt.EmitGlyph(packet)
+            except Exception:
+                pass
+        elif hasattr(crypt, 'emitGlyph'):
             try:
                 crypt.emitGlyph(packet)
             except Exception:
                 pass
         return packet
 
-    def packet(self, glyph: Any) -> Any:
-        kind = self.kind(glyph)
+    def Packet(self, glyph: Any) -> Any:
+        kind = self.Kind(glyph)
         if kind == DreamGlyph:
-            return self.boxdream(glyph)
+            return self.BoxDream(glyph)
         if kind == SaltGlyph:
-            return self.boxsalt(glyph)
+            return self.BoxSalt(glyph)
         if isinstance(glyph, dict):
             return dict(glyph)
         if isinstance(glyph, str):
             return str(glyph)
         return glyph
 
-    def kind(self, glyph: Any) -> str:
+    def Kind(self, glyph: Any) -> str:
         if isinstance(glyph, str):
-            out = PurgeGlyph
-            return out
+            return PurgeGlyph
         if isinstance(glyph, Field.State):
-            out = DreamGlyph
-            return out
+            return DreamGlyph
         if isinstance(glyph, Field.SaltGlyph):
-            out = SaltGlyph
-            return out
+            return SaltGlyph
         if isinstance(glyph, dict):
-            kind = str(glyph.get('kind', '') or '').strip().upper()
+            kind = str(glyph.get('kind', '') or '').strip().lower()
             if kind:
                 return kind
             if 'cells' in glyph:
                 return DreamGlyph
-            if 'saltbody' in glyph and 'lockbody' in glyph and ('textbody' in glyph):
+            if 'saltbody' in glyph and 'lockbody' in glyph and 'textbody' in glyph:
                 return SaltGlyph
         return SaltGlyph
 
-    def boxsalt(self, glyph: Field.SaltGlyph) -> dict[str, Any]:
-        return {'key': glyph.key, 'saltbody': [self.boxleg(leg) for leg in glyph.saltbody], 'lockbody': self.boxlock(glyph.lockbody), 'textbody': {'text': glyph.textbody.text}, 'salthash': glyph.salthash, 'lockhash': glyph.lockhash, 'texthash': glyph.texthash, 'sign': glyph.sign, 'locksign': glyph.locksign}
+    def BoxSalt(self, glyph: Field.SaltGlyph) -> dict[str, Any]:
+        return {
+            'key': glyph.key,
+            'saltbody': [self.BoxLeg(leg) for leg in glyph.saltbody],
+            'lockbody': self.BoxLock(glyph.lockbody),
+            'textbody': {'text': glyph.textbody.text},
+            'salthash': glyph.salthash,
+            'lockhash': glyph.lockhash,
+            'texthash': glyph.texthash,
+            'sign': glyph.sign,
+            'locksign': glyph.locksign,
+        }
 
-    def boxleg(self, leg: Field.Salt) -> dict[str, Any]:
+    def BoxLeg(self, leg: Field.Salt) -> dict[str, Any]:
         return {'key': leg.key, 'salt': leg.salt}
 
-    def boxlock(self, lock: Field.Lock) -> dict[str, Any]:
+    def BoxLock(self, lock: Field.Lock) -> dict[str, Any]:
         return {'parent': lock.parent, 'child': lock.child}
 
-    def boxpurge(self, purge: Field.Purge) -> dict[str, Any]:
+    def BoxPurge(self, purge: Field.Purge) -> dict[str, Any]:
         return {'chainbit': purge.chainbit, 'lockbit': purge.lockbit}
 
-    def boxcell(self, cell: Field.Cell) -> dict[str, Any]:
-        return {'soul': cell.soul, 'key': cell.key, 'salt': cell.salt, 'purge': self.boxpurge(cell.purge), 'lock': self.boxlock(cell.lock), 'sign': cell.sign}
+    def BoxCell(self, cell: Field.Cell) -> dict[str, Any]:
+        return {
+            'soul': cell.soul,
+            'key': cell.key,
+            'salt': cell.salt,
+            'purge': self.BoxPurge(cell.purge),
+            'lock': self.BoxLock(cell.lock),
+            'sign': cell.sign,
+        }
 
-    def boxdream(self, state: Field.State) -> dict[str, Any]:
+    def BoxDream(self, state: Field.State) -> dict[str, Any]:
         scrubbed = Field.Scrub(state)
-        return {'kind': DreamGlyph, 'self': [scrubbed.self[0], scrubbed.self[1]], 'monument': list(scrubbed.monument), 'cells': [self.boxcell(cell) for cell in scrubbed.cells]}
+        return {
+            'kind': DreamGlyph,
+            'self': [scrubbed.self[0], scrubbed.self[1]],
+            'monument': list(scrubbed.monument),
+            'cells': [self.BoxCell(cell) for cell in scrubbed.cells],
+        }
+
 
 dream = Dream()
-_DREAM = dream
