@@ -21,16 +21,8 @@ Oblivious Compute is expressed across four layers:
 
 - [`Skeleton`](./Skeleton) — the primitive. The rule that determines what is allowed to exist.
 - [`Hydra`](./Hydra) — the demonstration. Multiple nodes applying the rule and converging.
-- [`Byzantium`](./Byzantium) — the system. A full environment built around the rule. *(testing)*
-- [`Mowsie`](./Mowsie) — the application. A real-world system built on the primitive. *(building)*
-
-[`Skeleton`](./Skeleton) - the primitive.
-
-[`Hydra`](./Hydra) - the demonstration.
-
-[`Byzantium`](./Byzantium) - the system. *(in testing)*
- 
-[`Mowsie`](./Mowsie) - the application. *(building)*
+- [`Byzantium`](./Byzantium) — the system. A full environment built around the rule. **(testing)**
+- [`Mowsie`](./Mowsie) — the application. A real-world system built on the primitive. **(building)**
 
 *Each layer is the same idea, expressed at a different scale—from pure rule to real-world application.*
 
