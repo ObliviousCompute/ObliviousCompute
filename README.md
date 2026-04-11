@@ -74,10 +74,9 @@ It only admits what can exist next.
 
 Everything else falls away.
 
-
-> *Play Byzantium*       
-> *Study Skeleton*  
-> *Run Hydra*  
+*Play Byzantium*       
+*Study Skeleton*  
+*Run Hydra*  
 
 ---
 
