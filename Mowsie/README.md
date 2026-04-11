@@ -37,7 +37,7 @@ You just receive value.
 
 Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
 
-Mowsie removes all of that and replaces it with a shared, verifiable state that anyone in the room can observe.
+Mowsie removes all of that and replaces it with a shared, verifiable state — a cache visible to everyone inside it.
 
 ---
 
