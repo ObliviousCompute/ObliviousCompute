@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import select
 import socket
 import threading
-import time
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Optional
 
@@ -146,11 +146,10 @@ class Crypt:
         self.bindhost = ''
         self.bindport: Optional[int] = None
         self.sock = self.BindTransport()
-        self.sock.setblocking(False)
+        self.sock.setblocking(True)
 
         self.live = False
         self.thread: Optional[threading.Thread] = None
-        self.listensleep = 0.02
 
         self.state = self.BuildState()
         self.Start()
@@ -164,16 +163,30 @@ class Crypt:
         self.thread = threading.Thread(target=self.Listen, name='CryptListen', daemon=True)
         self.thread.start()
 
-    def Stop(self):
+    def Sleep(self):
         self.live = False
+        try:
+            self.sock.close()
+        except Exception:
+            pass
+        thread = self.thread
+        if thread is not None and thread.is_alive() and threading.current_thread() is not thread:
+            thread.join(timeout=0.2)
+        self.thread = None
 
     def Listen(self):
         while self.live:
             try:
+                raw, addr = self.Summon()
+            except OSError:
+                break
+            except Exception:
+                continue
+            try:
+                self.Receive(raw, addr)
                 self.Poll()
             except Exception:
-                pass
-            time.sleep(self.listensleep)
+                continue
 
     def Wake(self):
         self.Tick()
@@ -186,12 +199,8 @@ class Crypt:
         self.Poll()
         return self.state
 
-    def Close(self):
-        self.live = False
-        try:
-            self.sock.close()
-        except Exception:
-            pass
+    def Summon(self):
+        return self.sock.recvfrom(65535)
 
     def BindTransport(self) -> socket.socket:
         if self.mode == ModeSiege:
@@ -262,10 +271,18 @@ class Crypt:
             return '127.0.0.1'
 
     def Poll(self):
-        while True:
+        while self.live:
+            try:
+                ready, _, _ = select.select([self.sock], [], [], 0.0)
+            except OSError:
+                break
+            except Exception:
+                break
+            if not ready:
+                break
             try:
                 raw, addr = self.sock.recvfrom(65535)
-            except BlockingIOError:
+            except OSError:
                 break
             except Exception:
                 break
@@ -330,10 +347,7 @@ class Crypt:
             self.state = self.BuildState()
 
             sanctum = self.WakeSanctum()
-            if hasattr(sanctum, 'Genesis'):
-                sanctum.Genesis(self.state)
-            elif hasattr(sanctum, 'genesis'):
-                sanctum.genesis(self.state)
+            sanctum.Genesis(self.state)
             return
 
         before = self.RosterHash(self.souls)
@@ -417,11 +431,7 @@ class Crypt:
         self.EmitCompleteSouls()
 
         sanctum = self.WakeSanctum()
-        if hasattr(sanctum, 'Genesis'):
-            return sanctum.Genesis(self.state)
-        if hasattr(sanctum, 'genesis'):
-            return sanctum.genesis(self.state)
-        return self.state
+        return sanctum.Genesis(self.state)
 
     def UnboxGlyph(self, payload: dict[str, Any]) -> Any:
         kind = str(payload.get('kind', '') or '').strip().lower()
@@ -504,18 +514,12 @@ class Crypt:
         lane = getattr(getattr(self.dream, 'box', None), 'crypt', None)
         if lane is not None and hasattr(lane, 'glyph'):
             lane.glyph = payload
-            if hasattr(self.dream, 'Wake'):
-                self.dream.Wake()
-            elif hasattr(self.dream, 'wake'):
-                self.dream.wake()
+            self.dream.Wake()
             return
 
         if hasattr(self.dream, 'box'):
             self.dream.box.crypt = payload
-            if hasattr(self.dream, 'Wake'):
-                self.dream.Wake()
-            elif hasattr(self.dream, 'wake'):
-                self.dream.wake()
+            self.dream.Wake()
 
     def EmitSouls(self):
         packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in self.SoulSet(self.souls)]}

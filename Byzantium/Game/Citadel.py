@@ -43,6 +43,9 @@ class Relay:
     def Intent(self, value: Any) -> Any:
         return Send(value)
 
+    def Sleep(self) -> Any:
+        return Sleep()
+
     def Ashfall(self, value: Any) -> Any:
         if self.ash is None:
             self.ash = []
@@ -261,10 +264,14 @@ def Sender() -> Optional[Callable[[Any], Any]]:
     live = Core
     if live is None:
         return None
-    fn = getattr(live, 'Intent', None)
-    if callable(fn):
-        return fn
-    return None
+    return getattr(live, 'Intent', None)
+
+
+def Sleeper() -> Optional[Callable[[], Any]]:
+    live = Core
+    if live is None:
+        return None
+    return getattr(live, 'Sleep', None)
 
 
 def Send(value: Any) -> Any:
@@ -275,11 +282,21 @@ def Send(value: Any) -> Any:
         'lock': getattr(value, 'lock', None),
         'key': str(getattr(value, 'key', '') or '').strip(),
     }
-    fn = Sender()
-    if fn is None:
+    sender = Sender()
+    if sender is None:
         return None
     try:
-        return fn(payload)
+        return sender(payload)
+    except Exception:
+        return None
+
+
+def Sleep() -> Any:
+    sleeper = Sleeper()
+    if sleeper is None:
+        return None
+    try:
+        return sleeper()
     except Exception:
         return None
 
@@ -350,6 +367,7 @@ def MoveMenu(cache: Cache, state: Any, kind: str, value: Optional[str]):
     if kind != 'Enter':
         return (cache, state, False)
     if current == Action.Exit:
+        Sleep()
         return (cache, state, True)
     if current == Action.Purge:
         cache.focus = Focus.TableMove
@@ -482,6 +500,7 @@ def EditSpine(cache: Cache, state: Any, kind: str, value: Optional[str]):
 def DispatchCore(cache: Cache, state: Any, token: Tuple[str, Optional[str]]):
     kind, value = token
     if kind == 'Interrupt':
+        Sleep()
         return (cache, state, True)
     if bool(getattr(cache, 'lore', False)):
         if kind == 'Arrow':
@@ -581,10 +600,10 @@ def BindCache(cache: Any) -> Any:
     return Citadel.BindCache(cache)
 
 
-def BindCore(coreobj: Any) -> Any:
+def BindCore(core: Any) -> Any:
     global Core
-    Core = coreobj
-    return coreobj
+    Core = core
+    return core
 
 
 def State(value: Any = None) -> Any:

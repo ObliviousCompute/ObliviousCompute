@@ -140,9 +140,15 @@ class Dream:
         return None
 
     def Genesis(self, state: Any):
-        self.crypt = Crypt.Crypt(state=state)
+        self.crypt = Crypt.Crypt(state=state, dream=self)
         Crypt.crypt = self.crypt
         return self.crypt
+
+    def Sleep(self):
+        crypt = self.WakeCrypt()
+        if crypt is None:
+            return None
+        return crypt.Sleep()
 
     def Wake(self):
         self.changed = False
@@ -504,8 +510,6 @@ class Dream:
             return True
         if nextstate == self.state:
             return False
-        before = self.state.SaltTotal
-        after = nextstate.SaltTotal
         self.state = nextstate
         return True
 
@@ -519,16 +523,10 @@ class Dream:
             crypt.glyph = packet
         except Exception:
             pass
-        if hasattr(crypt, 'EmitGlyph'):
-            try:
-                crypt.EmitGlyph(packet)
-            except Exception:
-                pass
-        elif hasattr(crypt, 'emitGlyph'):
-            try:
-                crypt.emitGlyph(packet)
-            except Exception:
-                pass
+        try:
+            crypt.EmitGlyph(packet)
+        except Exception:
+            pass
         return packet
 
     def Packet(self, glyph: Any) -> Any:

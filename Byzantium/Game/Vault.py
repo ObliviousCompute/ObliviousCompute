@@ -223,19 +223,16 @@ class Vault:
         self.Genesis(self.state)
 
     def Wake(self):
-        child = self.dream
-        if child and hasattr(child, 'Wake'):
-            return child.Wake()
-        return child
+        return self.dream.Wake()
+
+    def Sleep(self):
+        return self.dream.Sleep()
 
     def WakeDream(self, dream: object | None, *, citadel: object | None = None) -> object:
         if dream is None:
             return Dream.Dream(citadel=citadel)
         if isinstance(dream, type):
-            try:
-                return dream(citadel=citadel)
-            except TypeError:
-                return dream()
+            return dream(citadel=citadel)
         return dream
 
     def SyncState(self, state: State) -> State:
@@ -260,21 +257,13 @@ class Vault:
         ).hex()
         lawfulstate = replace(rawstate, secret='', key=self.publickeyhex)
         self.SyncState(lawfulstate)
-        if hasattr(self.dream, 'Genesis'):
-            return self.dream.Genesis(self.state)
-        self.SendState()
-        self.Wake()
-        return self.state
+        return self.dream.Genesis(self.state)
 
     def SendState(self) -> Any:
-        if not hasattr(self.dream, 'box'):
-            raise AttributeError('Dream must expose box')
         self.dream.box.vault = self.state
         return self.dream.box.vault
 
     def Emit(self, payload: Any) -> Any:
-        if not hasattr(self.dream, 'box'):
-            raise AttributeError('Dream must expose box')
         self.dream.box.vault = payload
         return self.dream.box.vault
 

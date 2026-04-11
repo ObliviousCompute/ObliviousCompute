@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import Enum
 import re
-import time
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 try:
@@ -85,6 +84,7 @@ Salt = '\x1b[97m'
 Ember = '\x1b[38;5;130m'
 Flame = '\x1b[38;5;208m'
 Flare = '\x1b[38;5;214m'
+Fps = 60.0
 
 
 def FlickerCycle(sequence: Tuple[str, ...], phase: int) -> str:
@@ -93,13 +93,37 @@ def FlickerCycle(sequence: Tuple[str, ...], phase: int) -> str:
     return sequence[int(phase or 0) % len(sequence)]
 
 
-def Crucible(cache: Any = None) -> Dict[str, str]:
-    raw = getattr(cache, 'flamephase', None) if cache is not None else None
+def Tic(cache: Any = None) -> int:
+    rawframe = getattr(cache, 'frame', None) if cache is not None else None
     try:
-        phase = int(raw) if raw is not None else 0
+        return int(rawframe) if rawframe is not None else 0
     except Exception:
-        phase = 0
-    phase += int(time.monotonic() * 8.0)
+        return 0
+
+
+def Automata(cache: Any = None) -> Dict[str, int]:
+    frame = Tic(cache)
+    rawphase = getattr(cache, 'flamephase', None) if cache is not None else None
+    try:
+        phasebase = int(rawphase) if rawphase is not None else 0
+    except Exception:
+        phasebase = 0
+    return {
+        'Tic': frame,
+        'Flicker': phasebase + (frame // 8),
+        'Dots': frame,
+        'Bang': frame,
+        'Fps': int(Fps),
+    }
+
+
+def Pace() -> float:
+    return 1.0 / Fps
+
+
+def Crucible(cache: Any = None) -> Dict[str, str]:
+    automata = Automata(cache)
+    phase = int(automata['Flicker'])
     flicker1 = FlickerCycle((Flame, Flare), phase)
     flicker2 = FlickerCycle((Flare, Flame), phase)
     flicker3 = FlickerCycle((Flame, Flame, Flare), phase)
@@ -214,6 +238,7 @@ class Cache:
     feedcount: int = 0
     flamephase: int = 0
     flamefed: bool = False
+    frame: int = 0
     activerequest: Optional[str] = None
     banner: bool = True
     lore: bool = False

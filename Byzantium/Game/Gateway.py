@@ -19,8 +19,7 @@ InitCache = Citadel.InitCache
 DispatchToken = Citadel.Dispatch
 InputBuffer = Citadel.InputBuffer
 
-Fps: float = 55.0
-WaitingDots: int = int(Fps)
+Fps: float = Forge.Fps
 DefaultMode = 'Campaign'
 DefaultSkeleton = 'Skeleton'
 DefaultSecret = 'Password'
@@ -80,6 +79,11 @@ class Core:
             return None
         return self.Vault.Intent(value)
 
+    def Sleep(self):
+        if self.Vault is None:
+            return None
+        return self.Vault.Sleep()
+
 
 class Gateway:
     def __init__(self) -> None:
@@ -101,13 +105,15 @@ class Gateway:
         self.State = BuildState(self.Cache)
         return self.State
 
+    def Sleep(self):
+        return self.Core.Sleep()
+
     def Boot(self) -> object:
         self.BuildState()
         self.Cache.gatejam = False
         self.Cache.win = False
         self.Cache.exit = False
         self.Cache.activerequest = None
-        self.Cache.waitingframe = 0
         try:
             self.Core.Vault = Vault.Vault(state=self.State, citadel=self.Core.Citadel)
         except Exception:
@@ -124,6 +130,7 @@ class Gateway:
     def Dispatch(self, statevalue: object, token):
         kind, value = token
         if kind == 'Interrupt':
+            self.Sleep()
             return (self.Cache, statevalue, True)
         if getattr(self.Cache, 'exit', False):
             return (self.Cache, statevalue, True)
@@ -131,7 +138,6 @@ class Gateway:
             self.Cache.win = False
             self.Cache.gatejam = False
             self.Cache.waiting = False
-            self.Cache.waitingframe = 0
             self.Cache.exit = True
             return (self.Cache, statevalue, False)
         if self.Cache.focus == Focus.Title:
@@ -143,14 +149,12 @@ class Gateway:
         return (cachevalue, statevalue, shouldquit)
 
     def RenderState(self, statevalue: object) -> object:
-        self.Cache.waitingframe = int(getattr(self.Cache, 'waitingframe', 0) or 0) + 1
         surfaced = getattr(self.Cache, 'state', None)
         if getattr(self.Cache, 'waiting', False):
             if StateReady(surfaced):
                 self.Cache.waiting = False
                 self.Cache.focus = Focus.Menu
-                if hasattr(self.Cache, 'SyncIntent'):
-                    self.Cache.SyncIntent()
+                self.Cache.SyncIntent()
         if surfaced is None:
             return statevalue
         if Victory(surfaced):
@@ -198,8 +202,6 @@ def EnsureState(cache: Cache) -> None:
         cache.cursorposition = 0
     if not hasattr(cache, 'waiting'):
         cache.waiting = False
-    if not hasattr(cache, 'waitingframe'):
-        cache.waitingframe = 0
     if not hasattr(cache, 'waitingstarted'):
         cache.waitingstarted = 0.0
     if not hasattr(cache, 'exit'):
@@ -371,10 +373,15 @@ def Right(text: str, width: int) -> str:
     return str(text or '').ljust(int(width or 0))
 
 
+def WaitingPhase(cache: Cache, width: int = 3) -> int:
+    automata = Forge.Automata(cache)
+    dots = int(automata.get('Dots', 0) or 0)
+    span = max(1, int(Fps))
+    return (dots // span) % (int(width) + 1)
+
+
 def Ellipsis(cache: Cache, width: int = 3) -> str:
-    frame = int(getattr(cache, 'waitingframe', 0) or 0)
-    phase = (frame // max(1, WaitingDots)) % (int(width) + 1)
-    return '.' * phase
+    return '.' * WaitingPhase(cache, width)
 
 
 def EllipsisLeft(cache: Cache, width: int = 3) -> str:
@@ -386,9 +393,7 @@ def EllipsisRight(cache: Cache, width: int = 3) -> str:
 
 
 def Excitement(cache: Cache, width: int = 3) -> str:
-    frame = int(getattr(cache, 'waitingframe', 0) or 0)
-    phase = (frame // max(1, WaitingDots)) % (int(width) + 1)
-    return Right('!' * phase, width)
+    return Right('!' * WaitingPhase(cache, width), width)
 
 
 def PortcullisEngaged(cache: Cache) -> str:
@@ -419,7 +424,7 @@ def PortcullisJammed(cache: Cache) -> str:
 
 
 def PortcullisExit(cache: Cache) -> str:
-    return EnterPortcullis(cache, f"{EllipsisLeft(cache)}I'll Hold The State{EllipsisRight(cache)}", subtitle=f"Maybe Go Touch Some Grass Now")
+    return EnterPortcullis(cache, f"{EllipsisLeft(cache)}I'll Hold The State{EllipsisRight(cache)}", subtitle='Maybe Go Touch Some Grass Now')
 
 
 def PortcullisVictory(cache: Cache) -> str:
@@ -469,6 +474,7 @@ def HandlePortcullis(gatewayvalue: Gateway, cache: Cache, statevalue: object, ki
 
     if kind == 'Enter':
         if PortcullisField(cache) == 'mode' and FieldValue(cache, 'mode') == 'Exit':
+            gatewayvalue.Sleep()
             cache.exit = True
             return (cache, statevalue, False)
         if PortcullisField(cache) == 'genesis':
@@ -516,6 +522,7 @@ def main() -> None:
     buffer = ''
     try:
         while True:
+            gatewayvalue.Cache.frame = int(getattr(gatewayvalue.Cache, 'frame', 0) or 0) + 1
             chunks = DrainStdin(filedescriptor)
             if chunks:
                 buffer += ''.join(chunks)
@@ -533,7 +540,7 @@ def main() -> None:
                 sys.stdout.write('\x1b[H\x1b[2J')
                 sys.stdout.write(frame)
                 sys.stdout.flush()
-                time.sleep(1.0 / Fps)
+                time.sleep(Forge.Pace())
                 continue
             try:
                 frame = gatewayvalue.Render(statevalue)
@@ -543,8 +550,9 @@ def main() -> None:
                 sys.stdout.write('\x1b[H\x1b[2J')
                 sys.stdout.write(frame)
                 sys.stdout.flush()
-            time.sleep(1.0 / Fps)
+            time.sleep(Forge.Pace())
     finally:
+        gatewayvalue.Sleep()
         termios.tcsetattr(filedescriptor, termios.TCSADRAIN, basicterminal)
 
 

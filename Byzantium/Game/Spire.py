@@ -14,10 +14,7 @@ LoreCount = 18
 def StateIntent(cache: Cache):
     intent = getattr(cache, 'intent', None)
     if intent is None:
-        try:
-            return cache.SyncIntent()
-        except Exception:
-            return None
+        return cache.SyncIntent()
     return intent
 
 
@@ -83,7 +80,7 @@ def StateSelf(state: object) -> int:
 
 
 def Label(cell: object, *, melabel: str = '', isstateself: bool = False) -> str:
-    soul = str(getattr(cell, 'soul', getattr(cell, 'Soul', '')) or '').strip()
+    soul = str(getattr(cell, 'soul', '') or '').strip()
     if soul:
         return soul
     if isstateself and melabel:
@@ -98,7 +95,7 @@ def SelectedName(cache: Cache, state: object) -> str:
     if me >= 0 and city == me:
         return str(getattr(cache, 'name', '') or '')
     if 0 <= city < len(cells):
-        soul = str(getattr(cells[city], 'soul', getattr(cells[city], 'Soul', '')) or '').strip()
+        soul = str(getattr(cells[city], 'soul', '') or '').strip()
         if soul:
             return soul
     return ''
@@ -164,12 +161,12 @@ def LoreLines() -> List[str]:
         '   In Byzantium equivocation is rare, but if a man speaks with two tongues,',
         '   both will be heard. State does not decide what was true. It absorbs',
         '   the burden and maintains continuity.',
-        '', 
-        '   The dream resolves when no front exceeds another.', 
+        '',
+        '   The dream resolves when no front exceeds another.',
         '   All debts must be settled.',
         '',
         '   Thus,',
-        '', 
+        '',
         '   We are souls in roles that shape the whole',
         '   We may push, but we may never pull',
         '   When we take beyond our share, the chain is culled',
