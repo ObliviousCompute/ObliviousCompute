@@ -117,13 +117,13 @@ From download to receiving value in under one minute.
 
 ## 📡 Contact
 
-obliviouscompute@yahoo.com
+If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
 
 ---
 
-<h2><img src="../Relics/BTC.png" width="25"/>  Donate</h2> 
+<h2><img src="../Relics/BTC.png" width="25"/>  Support</h2> 
 
-**bc1qc69hm4smfvp4q2xwrn95926ljztxahe0q7fa8x**
+> **bc1qc69hm4smfvp4q2xwrn95926ljztxahe0q7fa8x**
 
 ---
 
