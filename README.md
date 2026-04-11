@@ -19,17 +19,15 @@ If you want to see where this is going, or what’s being built next, take a loo
 
 Oblivious Compute is expressed across four layers:
 
-- **Skeleton** — the primitive.  
-  [`Skeleton`](./Skeleton) *(the lift diagram)*
 
-- **Hydra** — the demonstration.  
-  [`Hydra`](./Hydra) *(the 1-minute flight)*
+[`Skeleton`](./Skeleton) - the primitive.
 
-- **Byzantium** — the system.  
-  [`Byzantium`](./Byzantium) *(the 10-minute flight · testing)*
+[`Hydra`](./Hydra) - the demonstration.
 
-- **Mowsie** — the application.  
-  [`Mowsie`](./Mowsie) *(the 1-hour flight · building)*
+[`Byzantium`](./Byzantium) - the system.*(in testing)*
+ 
+[`Mowsie`](./Mowsie) - the application.*(building)*
+
 
 *Each layer is the same idea, expressed at a different scale—from pure rule to real-world application.*
 
