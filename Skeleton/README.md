@@ -67,7 +67,7 @@ def ingest(state, packet):
 
 ---
 
-## Constraint
+## 🕸️ Constraint
 
 This primitive assumes no access to history.
 
@@ -83,7 +83,7 @@ When history is removed, it becomes the system itself.
 
 ---
 
-## License
+## 📜 License
 
 This project is released under the terms of the [`LICENSE`](../LICENSE).
 
