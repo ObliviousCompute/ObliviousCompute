@@ -105,7 +105,7 @@ It only admits what can exist next.
 
 ---
 
-## License
+## 📜 License
 
 This project is released under the terms of the [`LICENSE`](../LICENSE).
 
