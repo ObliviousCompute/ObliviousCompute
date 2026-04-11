@@ -2,10 +2,8 @@
 
 Mowsie is the first real application of Oblivious Compute.
 
-If you want to go deeper:
-
-[Genesis](./Genesis.md) — how a system comes into existence  
-[Attack Surface](./AttackSurface.md) — why this structure is different  
+Read the [Genesis](./Genesis.md) document to understand how a system would come into existence  
+Check this out if you are interested in the profile of the [Attack Surface](./AttackSurface.md)   
 
 ---
 
