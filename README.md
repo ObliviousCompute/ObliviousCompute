@@ -7,9 +7,11 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else is erased.*
 
+If you want to experience it, start with [`Byzantium`](./Byzantium).
+
 If you want to wrap your head around the primitive, read the [Admissibility](./Admissibility.md) document.
 
-If you want to experience it, start with [`Byzantium`](./Byzantium).
+If you want to see where this is going, or what’s being built next, take a look at [`Mowsie`](./Mowsie).
 
 ---
 
@@ -17,10 +19,17 @@ If you want to experience it, start with [`Byzantium`](./Byzantium).
 
 Oblivious Compute is expressed across four layers:
 
-- [`Skeleton`](./Skeleton) — the primitive. The rule that determines what is allowed to exist.
-- [`Hydra`](./Hydra) — the demonstration. Multiple nodes applying the rule and converging.
-- [`Byzantium`](./Byzantium) — the system. A full environment built around the rule.
-- [`Mowsie`](./Mowsie) — the application. A real-world system built on the primitive.
+- **Skeleton** — the primitive.  
+  [`Skeleton`](./Skeleton) *(the lift diagram)*
+
+- **Hydra** — the demonstration.  
+  [`Hydra`](./Hydra) *(the 1-minute flight)*
+
+- **Byzantium** — the system.  
+  [`Byzantium`](./Byzantium) *(the 10-minute flight · testing)*
+
+- **Mowsie** — the application.  
+  [`Mowsie`](./Mowsie) *(the 1-hour flight · building)*
 
 *Each layer is the same idea, expressed at a different scale—from pure rule to real-world application.*
 
