@@ -11,7 +11,7 @@ If you want to experience it, start with [`Byzantium`](./Byzantium).
 
 If you want to wrap your head around the primitive, read the [`Admissibility`](./Admissibility.md) document.
 
-If you want to see where this is going, [`Mowsie`](./Mowsie) is the next implementation..
+If you want to see where this is going, [`Mowsie`](./Mowsie) is the next implementation.
 
 ---
 
