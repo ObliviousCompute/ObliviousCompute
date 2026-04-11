@@ -1,9 +1,9 @@
 # 🐁 Mowsie
 
-Mowsie is the first real application of Oblivious Compute.
+Mowsie is the first real-world application of Oblivious Compute.
 
 Start with [`Genesis`](./Genesis.md) to see how salt comes into existence.  
-Then explore the [`Attack Surface`](./AttackSurface.md) to understand why it holds.  
+After that, check out the [`Attack Surface`](./AttackSurface.md) document to see how it holds up.  
 
 ---
 
