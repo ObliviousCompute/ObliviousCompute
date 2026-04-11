@@ -123,7 +123,7 @@ obliviouscompute@yahoo.com
 
 ---
 
-<img src="../Relics/BTC.png" width="100"/>
+<img src="../Relics/BTC.png" width="25"/>
 
 > bc1qc69hm4smfvp4q2xwrn95926ljztxahe0q7fa8x
 
