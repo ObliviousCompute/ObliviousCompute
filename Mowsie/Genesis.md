@@ -4,77 +4,103 @@ Genesis is the moment a system comes into existence, and it happens almost insta
 
 ---
 
-## Joining
+## The First Moment
 
-You walk into a shop or studio and they tell you they are using Mowsie.
+Someone walks into your shop and you say, “we’re using Mowsie.”
 
-You go to the website, download the app, and open it for the first time. The app defaults to **Join**, and the camera opens immediately so you can scan the room’s QR code.
+They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within seconds you send them value.
 
-After scanning, you enter a name and a password, which deterministically generates your public and private key pair. Within a few seconds, your wallet is created and a QR code appears on your screen.
+Their balance updates immediately, and they are now part of your system.
 
-Someone at the shop scans your QR code and sends you salt. Your balance updates immediately, without waiting, syncing, or confirmation.
+This is the end state.
 
-You now exist inside the system.
-
----
-
-## From Zero
-
-There are no accounts to register, no emails to verify, and no approvals to wait for.
-
-You did not sign up for anything. You simply appeared as a valid participant the moment your wallet was created and funded.
-
-From zero to receiving value takes less than a minute.
+Genesis is how you get there.
 
 ---
 
-## Spending
+## Creating a System
 
-You hand someone $20 and they send you 20 salt in return. Later, you spend salt to receive goods or services, and the balance updates instantly again.
+You open the app and select **Genesis**.
 
-There is no delay between action and result, and no external system keeping track of who owes what.
+You enter the name of your shop, the name of your monetary system, and the total amount of salt you want in circulation. You then enter your name and password, which deterministically generates your key pair and defines the initial state.
 
-Value moves at the same speed as the interaction itself.
+In a single step, your system is created.
 
----
+You are placed directly into a wallet interface with a balance. There is no admin panel, no setup process, and no backend to configure.
 
-## Forming a System
-
-The same app also allows a vendor to create a system by selecting **Genesis** instead of Join.
-
-The vendor enters the name of their studio, the name of their monetary system, and the total amount of salt they want in circulation. They then enter their name and password, which generates the key pair and defines the initial state.
-
-In a single step, the system is created with a fixed supply of value.
+The system exists the moment you finish.
 
 ---
 
 ## The First State
 
-The total amount of salt defined at genesis becomes the invariant of the system and cannot be changed.
+The amount of salt you define becomes the invariant of the system.
 
-This value is not stored in a database or enforced by a central authority. It exists as a property of the shared state that every participant validates independently.
+It cannot be changed, inflated, or silently modified. It exists as a property of the shared state, and every participant who joins will validate it independently.
 
-From that moment forward, all valid transactions must preserve this invariant.
+From that moment forward, all valid transactions must preserve this constraint.
 
 ---
 
-## The First Transfer
+## Extending the State
 
-The vendor shows their QR code and another device scans it, initiating the first transfer of salt.
+You show your QR code to another device and initiate the first transfer of salt.
 
-That transfer creates the first additional leaf in the state, and the system now has more than one participant.
+That transfer creates the next participant in the system and extends the state beyond a single wallet.
 
-From that point forward, any participant who holds salt can transfer it to someone else, expanding the system naturally.
+From that point forward, anyone who holds salt can transfer it to someone else, and the system grows naturally through use.
+
+There is no registration process.
+
+The system expands by sending value.
+
+---
+
+## Joining
+
+A new participant opens the app and selects **Join**.
+
+They scan your QR code, enter a name and password, and immediately generate a wallet tied to your system.
+
+A QR code appears on their screen, and you scan it to send them salt.
+
+Their balance updates instantly.
+
+They now exist inside the system.
+
+---
+
+## From Zero
+
+There are no accounts to create, no emails to verify, and no approvals required.
+
+A participant does not sign up.
+
+They appear the moment they receive value.
+
+From nothing to a funded wallet takes less than a minute.
+
+---
+
+## Spending
+
+A customer hands over $20 and receives 20 salt.
+
+Later, they spend salt to receive goods or services, and the balance updates instantly again.
+
+There is no delay between action and result, and no external system keeping track of balances.
+
+Value moves at the same speed as the interaction.
 
 ---
 
 ## Contagion
 
-The system grows through use rather than registration.
+Every new participant enters the system by receiving value.
 
-Every new participant enters by receiving value, and every transfer extends the shared state to include another active identity.
+Every transfer extends the shared state and brings another identity into it.
 
-There is no onboarding process beyond the act of receiving salt.
+The system grows through use, not through registration or coordination.
 
 ---
 
@@ -82,14 +108,20 @@ There is no onboarding process beyond the act of receiving salt.
 
 There is no waiting period after a transaction is created.
 
-A valid transaction is admitted immediately, and all nodes observing it update their state deterministically.
+A valid transaction is admitted immediately, and every observing node updates its state deterministically.
 
-Finality is not deferred or probabilistic. It happens at the moment of admission.
+Finality is not deferred or probabilistic.
+
+It happens at the moment of admission.
 
 ---
 
 ## Summary
 
-Genesis creates the system, Join allows entry, and transfer extends the state.
+Genesis creates the system.
 
-Everything else is a consequence of those three actions.
+Transfer extends it.
+
+Join happens automatically as value is received.
+
+Everything else is a consequence of those actions.
