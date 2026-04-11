@@ -38,7 +38,7 @@ A transaction is either admitted immediately or discarded.
 
 ## Invariant Enforcement
 
-Each room defines a fixed total supply of salt at genesis.
+Each Cache defines a fixed total supply of salt at genesis.
 
 This invariant is public and constant.
 
