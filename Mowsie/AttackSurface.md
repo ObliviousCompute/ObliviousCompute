@@ -19,7 +19,7 @@ A leaf represents an account: a public key, a lock commitment, and a balance of 
 At small scale, the system is extremely light.
 
 A network of **1,000 users** produces a state on the order of ~150–200 KB.  
-A typical transaction is ~300 bytes.  
+A typical transaction is ~240 bytes on its own, and about ~300 bytes when it includes a **60-character text field**.  
 State updates propagate in *milliseconds*.
 
 There is **no historical replay**, no chain growth, and no storage accumulation.
