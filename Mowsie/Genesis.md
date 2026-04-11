@@ -20,15 +20,21 @@ Genesis is how you get there.
 
 ## Creating a System
 
-You open the app and select **Genesis**.
+When you open the app, it defaults to **Join**.
 
-You enter the name of your shop, the name of your monetary system, and the total amount of salt you want in circulation. You then enter your name and password, which deterministically generates your key pair and defines the initial state.
+This is the normal path. It assumes you are entering an existing system.
+
+If, instead, you want to create your own currency and mint salt, select **Genesis**.
+
+Next enter the name of your shop, the name of your system, and the total amount of salt you want in circulation. You then enter your name and password, which generates your key pair and defines the initial state.
 
 In a single step, your system is created.
 
-You are placed directly into a wallet interface with a balance. There is no admin panel, no setup process, and no backend to configure.
+You are placed directly into the same wallet interface that every participant uses. There is no admin panel, no setup flow, and no backend to configure.
 
-The system exists the moment you finish.
+From that point forward, your system behaves like any other.
+
+The only difference is that you created it.
 
 ---
 
