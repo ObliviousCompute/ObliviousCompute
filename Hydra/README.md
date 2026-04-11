@@ -101,7 +101,7 @@ If it works, it demonstrates a new computational primitive.
 
 ---
 
-## License
+## 📜 License
 
 This project is released under the terms of the [`LICENSE`](../LICENSE).
 
