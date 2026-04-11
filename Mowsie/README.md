@@ -7,7 +7,7 @@ Then explore the [Attack Surface](./AttackSurface.md) to understand why it holds
 
 ---
 
-##💡 The Idea
+## 💡 The Idea
 
 Can **Mowsie** replace punch cards, gift cards, and local loyalty systems with shared state.
 
@@ -19,7 +19,7 @@ Just thier state.
 
 ---
 
-##✨ How It Feels
+## ✨ How It Feels
 
 Imagine a little shop or studio.
 
@@ -35,7 +35,7 @@ You just receive value.
 
 ---
 
-##🗑️ What This Replaces
+## 🗑️ What This Replaces
 
 Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
 
@@ -43,7 +43,7 @@ Mowsie removes all of that and replaces it with a shared, verifiable state that 
 
 ---
 
-##🧬 What Mowsie Is
+## 🧬 What Mowsie Is
 
 Each vendor creates a *Cache* with a fixed supply of value.
 
@@ -55,7 +55,7 @@ Everything that follows must obey it.
 
 ---
 
-##🧂 Salt
+## 🧂 Salt
 
 Salt is the unit of value in Mowsie.
 
@@ -65,7 +65,7 @@ It is a blank canvas. Vendors decide what it means — points, credits, passes. 
 
 ---
 
-##🛍️ A Real Example
+## 🛍️ A Real Example
 
 A coffee shop creates thier cache with one million salt.
 
@@ -77,7 +77,7 @@ There is only shared state.
 
 ---
 
-##🌐 How This Exists
+## 🌐 How This Exists
 
 Mowsie is built from primitives already demonstrated in [`Byzantium`](./Byzantium).
 
@@ -97,7 +97,7 @@ They just let the system be seen.
 
 ---
 
-##🧠 Why This Is Different
+## 🧠 Why This Is Different
 
 There is no history. No ordering. No consensus. No fees.
 
@@ -107,7 +107,7 @@ Even if an attacker succeeds, they can only delay visibility. They cannot change
 
 ---
 
-##🛠️ What We’re Building
+## 🛠️ What We’re Building
 
 We are defining the leaf structure, Merkleizing the state, building the mobile client, and implementing Lantern nodes.
 
@@ -117,7 +117,7 @@ From download to receiving value in under one minute.
 
 ---
 
-##📡 Contact
+## 📡 Contact
 
 obliviouscompute@yahoo.com
 
