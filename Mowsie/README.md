@@ -2,24 +2,26 @@
 
 Mowsie is the first real application of Oblivious Compute.
 
-Read the [Genesis](./Genesis.md) document to understand how a system would come into existence  
-Check this out if you are interested in the profile of the [Attack Surface](./AttackSurface.md)   
+Start with [Genesis](./Genesis.md) to see how salt comes into existence.  
+Then explore the [Attack Surface](./AttackSurface.md) to understand why it holds.  
 
 ---
 
-## The Idea
+##💡 The Idea
 
-Mowsie replaces punch cards, gift cards, and local loyalty systems with shared state.
+Can **Mowsie** replace punch cards, gift cards, and local loyalty systems with shared state.
+
+Users wont need-
 
 No accounts. No fees. No backend.
 
-Just state.
+Just thier state.
 
 ---
 
-## How It Feels
+##✨ How It Feels
 
-Imagine a boba shop, a coffee stand, or a dance studio.
+Imagine a little shop or studio.
 
 You walk in. You scan a QR code. You type a name.
 
@@ -33,39 +35,39 @@ You just receive value.
 
 ---
 
-## What This Replaces
+##🗑️ What This Replaces
 
-Punch cards get lost. Gift cards are siloed. Loyalty apps depend on databases that must be trusted and maintained.
+Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
 
 Mowsie removes all of that and replaces it with a shared, verifiable state that anyone in the room can observe.
 
 ---
 
-## What Mowsie Is
+##🧬 What Mowsie Is
 
-Each vendor creates a room with a fixed supply of value.
+Each vendor creates a *Cache* with a fixed supply of value.
 
 That supply does not change. It cannot be inflated or silently modified.
 
-Once it exists, it becomes the law of that room.
+Once it exists, it becomes the law of that cache.
 
 Everything that follows must obey it.
 
 ---
 
-## Salt
+##🧂 Salt
 
 Salt is the unit of value in Mowsie.
 
 It is finite, transferable, and cryptographically secured.
 
-It is a blank canvas. Vendors decide what it means. Points, credits, passes — it’s all salt underneath.
+It is a blank canvas. Vendors decide what it means — points, credits, passes. They can call it whatever they want, but underneath, it is always salt.
 
 ---
 
-## A Real Example
+##🛍️ A Real Example
 
-A coffee shop creates a room with one million salt.
+A coffee shop creates thier cache with one million salt.
 
 Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
 
@@ -75,9 +77,9 @@ There is only shared state.
 
 ---
 
-## How This Exists
+##🌐 How This Exists
 
-Mowsie is built from primitives already demonstrated in Byzantium.
+Mowsie is built from primitives already demonstrated in [`Byzantium`](./Byzantium).
 
 Cells become accounts. Salt becomes value. Whisper becomes transaction. Dream becomes state. Crypt becomes transport.
 
@@ -95,17 +97,17 @@ They just let the system be seen.
 
 ---
 
-## Why This Is Different
+##🧠 Why This Is Different
 
 There is no history. No ordering. No consensus. No fees.
 
 Invalid state does not propagate. It fails immediately.
 
-Even when an attacker succeeds, they can only delay visibility. They cannot change truth.
+Even if an attacker succeeds, they can only delay visibility. They cannot change truth.
 
 ---
 
-## What We’re Building
+##🛠️ What We’re Building
 
 We are defining the leaf structure, Merkleizing the state, building the mobile client, and implementing Lantern nodes.
 
@@ -115,15 +117,15 @@ From download to receiving value in under one minute.
 
 ---
 
-## Contact
+##📡 Contact
 
 obliviouscompute@yahoo.com
 
 ---
 
-## Support
+<img src="../Relics/Alpha.png" width="100"/>
 
-[bitcoin address here]
+> bc1qc69hm4smfvp4q2xwrn95926ljztxahe0q7fa8x
 
 ---
 
