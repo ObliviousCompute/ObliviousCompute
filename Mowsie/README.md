@@ -2,8 +2,8 @@
 
 Mowsie is the first real application of Oblivious Compute.
 
-Start with [Genesis](./Genesis.md) to see how salt comes into existence.  
-Then explore the [Attack Surface](./AttackSurface.md) to understand why it holds.  
+Start with [`Genesis`](./Genesis.md) to see how salt comes into existence.  
+Then explore the [`Attack Surface`](./AttackSurface.md) to understand why it holds.  
 
 ---
 
@@ -128,3 +128,12 @@ obliviouscompute@yahoo.com
 Mowsie replaces punch cards with shared state.
 
 It is the wooden nickel of the 21st century.
+
+---
+
+## License
+
+This project is released under the terms of the [`LICENSE`](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
+
