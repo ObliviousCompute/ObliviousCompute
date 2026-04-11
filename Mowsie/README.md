@@ -133,7 +133,7 @@ It is the wooden nickel of the 21st century.
 
 ---
 
-## License
+## 📜 License
 
 This project is released under the terms of the [`LICENSE`](../LICENSE).
 
