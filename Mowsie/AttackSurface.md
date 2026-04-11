@@ -128,7 +128,7 @@ Their role is limited to visibility.
 
 Because packets are small (~300 bytes) and uniform, Lanterns can cheaply filter malformed or irrelevant traffic.
 
-A Lantern can be run on low-power hardware (~2W) with minimal cost, supporting thousands of users.
+A Lantern can be run on low-power hardware (Pi Zero 2W) with minimal cost, supporting thousands of users.
 
 ---
 
