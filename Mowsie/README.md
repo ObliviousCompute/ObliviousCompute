@@ -2,228 +2,132 @@
 
 Mowsie is the first real application of Oblivious Compute.
 
-It replaces punch cards, gift cards, and local loyalty systems with shared state.
+If you want to go deeper:
 
-No accounts.  
-No fees.  
-No backend.  
+[Genesis](./Genesis.md) — how a system comes into existence  
+[Attack Surface](./AttackSurface.md) — why this structure is different  
+
+---
+
+## The Idea
+
+Mowsie replaces punch cards, gift cards, and local loyalty systems with shared state.
+
+No accounts. No fees. No backend.
 
 Just state.
 
 ---
 
-## 🌍 The Idea
+## How It Feels
 
-Imagine a boba shop.
+Imagine a boba shop, a coffee stand, or a dance studio.
 
-You walk in.  
-You scan a QR code.  
-You type a name.  
+You walk in. You scan a QR code. You type a name.
 
 Within seconds, you have a wallet.
 
-The cashier sends you 10 points.
+The cashier sends you value. Your balance updates instantly.
 
-Your balance updates instantly.
+No waiting. No syncing. No confirmation window.
 
-No waiting.  
-No syncing.  
-No confirmation.
-
-You just received value.
+You just receive value.
 
 ---
 
-## 🔥 What This Replaces
+## What This Replaces
 
-- Punch cards  
-- Gift cards  
-- Loyalty apps  
-- Prepaid balances  
+Punch cards get lost. Gift cards are siloed. Loyalty apps depend on databases that must be trusted and maintained.
 
-All of these systems are:
-
-- fragmented  
-- forgeable  
-- manually reconciled  
-- dependent on backend infrastructure  
-
-Mowsie replaces them with:
-
-> **shared, verifiable, local state**
+Mowsie removes all of that and replaces it with a shared, verifiable state that anyone in the room can observe.
 
 ---
 
-## 🧬 What Mowsie Is
+## What Mowsie Is
 
-Mowsie is a system of local value.
+Each vendor creates a room with a fixed supply of value.
 
-Each location (a shop, a studio, a vendor) creates its own "room":
+That supply does not change. It cannot be inflated or silently modified.
 
-- fixed supply of value (salt)  
-- no inflation  
-- no hidden changes  
-- no central authority  
+Once it exists, it becomes the law of that room.
 
-Once created, the system runs itself.
+Everything that follows must obey it.
 
 ---
 
-## 🧂 Salt
+## Salt
 
 Salt is the unit of value in Mowsie.
 
-It is:
+It is finite, transferable, and cryptographically secured.
 
-- finite  
-- transferable  
-- cryptographically secured  
-- locally meaningful  
-
-Salt is a blank canvas.
-
-Each vendor defines what it means:
-
-- "points"  
-- "credits"  
-- "passes"  
-- "tokens"  
-
-Under the hood, it’s all salt.
+It is a blank canvas. Vendors decide what it means. Points, credits, passes — it’s all salt underneath.
 
 ---
 
-## ☕ A Real Example
+## A Real Example
 
-A coffee shop creates a room with 1,000,000 salt.
+A coffee shop creates a room with one million salt.
 
-They load cashier phones with float.
+Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
 
-Customer walks in:
+There is no backend tracking balances.
 
-1. Scans QR code  
-2. Creates wallet  
-3. Pays $10  
-4. Receives 10 salt  
-
-Later:
-
-- buys coffee → spends salt  
-- earns rewards → receives salt  
-
-No backend.  
-No reconciliation.  
-No fees.
+There is only shared state.
 
 ---
 
-## ⚡ Why This Works
+## How This Exists
 
-Everything required already exists.
+Mowsie is built from primitives already demonstrated in Byzantium.
 
-Mowsie is built from the primitives demonstrated in Byzantium:
+Cells become accounts. Salt becomes value. Whisper becomes transaction. Dream becomes state. Crypt becomes transport.
 
-- Cells → accounts  
-- Salt → value  
-- Whisper → transaction  
-- Dream → state  
-- Crypt → transport  
-
-This is not a new system.
-
-It is a reconfiguration of an existing one.
+Nothing new is required. This is a reconfiguration.
 
 ---
 
-## 🕯️ Lanterns
+## 🔥 Lanterns
 
-Mowsie uses Lantern nodes.
+Lantern nodes provide visibility.
 
-Lanterns:
+They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
 
-- relay packets  
-- do not decide truth  
-- do not store history  
-- do not control the system  
-
-They provide visibility.
-
-That’s all.
+They just let the system be seen.
 
 ---
 
-## 🚀 What We’re Building
+## Why This Is Different
 
-Over the next six months:
+There is no history. No ordering. No consensus. No fees.
 
-- Define the leaf structure (accounts)
-- Merkleize the Dream state
-- Build the Mowsie mobile client (APK)
-- Implement Lantern nodes
-- Define packet formats for real-world use
+Invalid state does not propagate. It fails immediately.
 
-The goal:
-
-> **From install → to receiving value → in under one minute**
+Even when an attacker succeeds, they can only delay visibility. They cannot change truth.
 
 ---
 
-## 🛡️ Why This Is Different
+## What We’re Building
 
-Most systems rely on:
+We are defining the leaf structure, Merkleizing the state, building the mobile client, and implementing Lantern nodes.
 
-- history  
-- ordering  
-- consensus  
-- fees  
+The goal is simple.
 
-Mowsie does not.
-
-- No history → no replay  
-- No ordering → no mempool  
-- No consensus → no validators  
-- No fees → no pricing layer  
-
-> Invalid state does not propagate.  
-> It fails admission.
+From download to receiving value in under one minute.
 
 ---
 
-## 📖 Learn More
+## Contact
 
-- [Genesis](./Genesis.md)  
-- [Attack Surface](./AttackSurface.md)  
-
----
-
-## 🤝 Call to Arms
-
-We are building this now.
-
-If you want to:
-
-- build  
-- test  
-- break  
-- question  
-
-Get involved.
+obliviouscompute@yahoo.com
 
 ---
 
-## 📬 Contact
-
-[your email here]
-
----
-
-## ₿ Support
+## Support
 
 [bitcoin address here]
 
 ---
-
-## 🧠 Final Thought
 
 Mowsie replaces punch cards with shared state.
 
