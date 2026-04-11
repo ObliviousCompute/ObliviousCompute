@@ -9,13 +9,11 @@ Then explore the [Attack Surface](./AttackSurface.md) to understand why it holds
 
 ## 💡 The Idea
 
-Can **Mowsie** replace punch cards, gift cards, and local loyalty systems with shared state.
+Can Mowsie replace punch cards, gift cards, and loyalty systems with shared state?
 
-Users wont need-
+What if accounts, fees, and backends just… disappeared?
 
-No accounts. No fees. No backend.
-
-Just thier state.
+What remains is a name, a password, and value that moves instantly.
 
 ---
 
