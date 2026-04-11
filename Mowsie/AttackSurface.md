@@ -28,15 +28,9 @@ There is no historical replay, no chain growth, and no storage accumulation.
 
 Every transaction is a monoid.
 
-It must:
+It must preserve the total salt invariant, carry a valid signature, and mutate only the sender’s lock set. If any of these fail, the transaction is rejected.
 
-- preserve the total salt invariant  
-- carry a valid signature  
-- mutate only the sender’s lock set  
-
-If any of these fail, the transaction is rejected.
-
-There is no mempool. No ordering. No “pending” state.
+There is no mempool, no ordering, and no pending state.
 
 A transaction is either admitted immediately or discarded.
 
@@ -51,6 +45,36 @@ This invariant is public and constant.
 Any state that violates it is incompatible and rejected by every honest node.
 
 Inflation does not spread. It creates a separate, incompatible system.
+
+---
+
+## Equivocation
+
+Equivocation does not create forks.
+
+It collapses.
+
+If an attacker produces two transactions from the same parent lock:
+
+- same parent  
+- different child  
+- both valid signatures  
+
+The network observes both.
+
+Each node deterministically evaluates the competing children and collapses the lock set to a dominant outcome. Both transactions are recorded, but only one resulting state survives.
+
+There is no ambiguity, no fork choice rule, and no delayed resolution.
+
+Equivocation becomes visible behavior, not hidden manipulation.
+
+An attacker attempting equivocation is not breaking the system.
+
+They are performing a constrained, observable double-spend attempt that resolves immediately under deterministic rules.
+
+The network does not debate it.
+
+It collapses it.
 
 ---
 
@@ -72,13 +96,9 @@ This creates a direct cost to participation. Attackers cannot create arbitrary i
 
 All participants, honest or malicious, are constrained to lawful state transitions.
 
-An attacker can only submit transactions that:
+An attacker can only submit transactions that are properly signed, preserve the invariant, and fit within the structure of the system.
 
-- are properly signed  
-- preserve the invariant  
-- fit within the structure of the system  
-
-They cannot inject arbitrary data. They cannot mutate state outside of these rules.
+They cannot inject arbitrary data or mutate state outside of these rules.
 
 This drastically reduces the expressive power of an attack.
 
@@ -108,9 +128,7 @@ Their role is limited to visibility.
 
 Because packets are small (~300 bytes) and uniform, Lanterns can cheaply filter malformed or irrelevant traffic.
 
-A Lantern can be run on low-power hardware (~2W) with minimal cost.
-
-At this scale, supporting thousands of users is economically trivial.
+A Lantern can be run on low-power hardware (~2W) with minimal cost, supporting thousands of users.
 
 ---
 
@@ -120,7 +138,7 @@ All packets conform to a strict structure.
 
 They are small, uniform, and bounded.
 
-An attacker cannot arbitrarily expand payload size or introduce complex data structures. Any attack must exist within the same constrained packet shape as a normal transaction.
+An attacker cannot arbitrarily expand payload size or introduce complex data. Any attack must exist within the same constrained packet shape as a normal transaction.
 
 This limits the surface area for exploitation.
 
@@ -130,11 +148,7 @@ This limits the surface area for exploitation.
 
 The strongest remaining attack is delaying visibility.
 
-An attacker may attempt to:
-
-- disrupt network access  
-- isolate a user from Lanterns  
-- delay propagation of valid state  
+An attacker may attempt to disrupt network access, isolate a user from Lanterns, or delay propagation of valid state.
 
 However, this does not corrupt the system.
 
@@ -154,26 +168,15 @@ State transitions require valid signatures.
 
 Forging a transaction reduces to forging a valid signature, which is computationally infeasible under standard assumptions.
 
-This is the same class of hardness used in modern cryptographic systems.
-
 ---
 
 ## Summary
 
 Mowsie reduces its attack surface by removing entire classes of problems.
 
-There is no:
+There is no historical replay, no ordering manipulation, no consensus failure, and no fee market exploitation.
 
-- historical replay  
-- ordering manipulation  
-- consensus failure  
-- fee market exploitation  
-
-What remains is a system where:
-
-- invalid state is rejected locally  
-- valid state propagates naturally  
-- attackers are constrained to lawful behavior  
+What remains is a system where invalid state is rejected locally, valid state propagates naturally, and attackers are constrained to lawful behavior.
 
 Truth is not negotiated.
 
