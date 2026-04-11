@@ -58,14 +58,6 @@ Pure, hyper-legible expression of the primitive.
 
 ---
 
-Play Byzantium.  
-Run Hydra.  
-Study Skeleton.
-
-> OC can be observed.
-
----
-
 ## What Survives Is the Shape
 
 Oblivious Compute does not carry the past forward.
@@ -81,6 +73,11 @@ The system does not remember how it arrived.
 It only admits what can exist next.
 
 Everything else falls away.
+
+
+> *Play Byzantium*    
+> *Run Hydra*    
+> *Study Skeleton*  
 
 ---
 
