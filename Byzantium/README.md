@@ -145,9 +145,13 @@ The system prioritizes **state integrity over transport security**.
 
 ## 🤔 What This Is Not
 
-This isn’t a finished protocol or a production-ready system. The networking isn’t hardened, and the transport layer isn’t secure.
+This is not a production-hardened protocol.
 
-This is a working system under tension—not a polished product.
+The networking layer is not secured, and the transport layer remains minimal.
+
+What you’re seeing is the primitive itself—working, observable, and resolving in real time.
+
+This is a system under tension, not a polished product.
 
 ---
 
