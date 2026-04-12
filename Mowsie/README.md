@@ -77,7 +77,7 @@ There is only shared state.
 
 ## 🌐 How This Exists
 
-Mowsie is built from primitives already demonstrated in [`Byzantium`](./Byzantium).
+Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium).
 
 Cells become accounts. Salt becomes value. Whisper becomes transaction. Dream becomes state. Crypt becomes transport.
 
