@@ -7,9 +7,9 @@ After that, check out the [`Attack Surface`](./AttackSurface.md) analysis to see
 
 ---
 
-## 💡 The Idea
+## 🧀 The Idea
 
-Can Mowsie replace punch cards, gift cards, and loyalty systems with shared state?
+Could Mowsie replace punch cards, gift cards, and loyalty systems with shared state?
 
 What if accounts, fees, and backends just… disappeared?
 
@@ -41,7 +41,7 @@ Mowsie removes all of that and replaces it with a shared, verifiable state — a
 
 ---
 
-## 🧬 What Mowsie Is
+## ⚖️ What Mowsie Is
 
 Each vendor creates a *Cache* with a fixed supply of value.
 
