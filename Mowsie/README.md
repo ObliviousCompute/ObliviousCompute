@@ -85,7 +85,7 @@ Nothing new is required. This is a reconfiguration.
 
 ---
 
-## 🔥 Lanterns
+## 🏮 Lanterns
 
 Lantern nodes provide visibility.
 
