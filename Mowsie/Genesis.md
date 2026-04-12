@@ -126,7 +126,7 @@ Finality is not deferred or probabilistic.
 
 **Genesis** creates the system.
 
-**Transfer** extends it.
+**Transfers** extend it.
 
 **Join** happens automatically as value is received.
 
