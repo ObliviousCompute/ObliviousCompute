@@ -63,7 +63,7 @@ It is a blank canvas. Vendors decide what it means — points, credits, passes. 
 
 ---
 
-## 🧋 A Real Example
+## ☕ A Real Example
 
 A coffee shop creates thier cache with one million salt.
 
