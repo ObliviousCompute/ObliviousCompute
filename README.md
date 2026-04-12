@@ -1,6 +1,6 @@
 # Oblivious Compute (OC)
 
-`[Oblivious Compute`](Github.com/ObliviousCompute/ObliviousCompute/Tree/Main) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.
+[`Oblivious Compute`](./tree) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.
 State ≡ State.
 
 Instead of preserving logs, ordering messages, or reconstructing the past, **OC** allows multiple candidate states to briefly exist and then admits only one.
