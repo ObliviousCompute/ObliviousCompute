@@ -145,13 +145,13 @@ The system prioritizes **state integrity over transport security**.
 
 ## 🤔 What This Is Not
 
-This is not a production-hardened protocol.
+This is not a traditional system, and it does not behave like one.
 
-The networking layer is not secured, and the transport layer remains minimal.
+There is no history, no ordering, no replay.  
+There is no coordinated agreement.
 
-What you’re seeing is the primitive itself—working, observable, and resolving in real time.
-
-This is a system under tension, not a polished product.
+This is not a hardened protocol.  
+This is not a finished product.
 
 ---
 
