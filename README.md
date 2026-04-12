@@ -1,12 +1,12 @@
 # Oblivious Compute (OC)
 
 [`Oblivious Compute`](https://github.com/ObliviousCompute/ObliviousCompute) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.
-State ≡ State.
+**State ≡ State**.
 
 Instead of preserving logs, ordering messages, or reconstructing the past, **OC** allows multiple candidate states to briefly exist and then admits only one.
 
 **The admitted state is truth.**  
-*Everything else is erased.*
+*Everything else falls into oblivion.*
 
 If you want to experience it, start with [`Byzantium`](./Byzantium).
 
