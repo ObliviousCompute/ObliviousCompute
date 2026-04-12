@@ -145,27 +145,24 @@ The system prioritizes **state integrity over transport security**.
 
 ## 🤔 What This Is Not
 
-This is not a traditional system, and it does not behave like one.
+Not a traditional system.
 
-There is no history, no ordering, no replay.  
-There is no coordinated agreement.
+No history. No ordering. No replay.  
+No coordinated agreement.
 
-This is not a hardened protocol.  
-This is not a finished product.
+Not a hardened protocol.  
+Not a finished product.
 
 ---
 
 ## 🧬 Design
 
-An admissibility-governed state.
+An **admissibility-governed state**.
 
-No time.  
-No history.  
-No logs.
+Agreement is not negotiated.  
+It resolves to what can exist.
 
-Only:
-
-> Truth through erasure.
+There is only **truth through erasure**.
 
 ---
 
