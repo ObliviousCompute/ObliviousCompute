@@ -28,7 +28,7 @@ Start with 3–5 nodes.
 
 ---
 
-### Single Machine (Localhost)
+### 💻 Single Machine (Localhost)
 
 #### Terminal 1 — Head A
 ```bash
@@ -62,7 +62,7 @@ python3 Hydra.py --id E --port 5005 --peers \
 
 ---
 
-### Multiple Machines (LAN)
+### 💻 Multiple Machines (LAN)
 
 You may also run nodes across **multiple machines** by replacing `127.0.0.1`
 with LAN IP addresses.
@@ -78,7 +78,7 @@ These are distinct sockets and work correctly.
 
 ---
 
-### Operating System
+### 🐧 Operating System
 
 - ✅ Linux  
 - ✅ macOS  
@@ -86,7 +86,7 @@ These are distinct sockets and work correctly.
 
 ---
 
-## Intent
+## 🎯 Intent
 
 The Hydra Demo has been published as a **public technical disclosure**.
 
