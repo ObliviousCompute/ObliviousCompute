@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 import re
+import threading
 from typing import Any
 
 import Citadel
@@ -123,6 +124,9 @@ class Dream:
         self.glyph: Any = None
         self.changed = False
         self.bootflare = False
+        self.Sleepwalk = threading.Lock()
+        self.Dreaming = False
+        self.Snooze = False
 
     def WakeCitadel(self):
         if self.citadel is not None:
@@ -150,12 +154,35 @@ class Dream:
             return None
         return crypt.Sleep()
 
+    def Empty(self) -> bool:
+        return self.box.vault is None and self.box.crypt is None
+
     def Wake(self):
-        self.changed = False
-        self.RouteVault()
-        self.RouteCrypt()
-        if self.changed:
-            self.Publish()
+        with self.Sleepwalk:
+            if self.Dreaming:
+                self.Snooze = True
+                return self.state
+            self.Dreaming = True
+            self.Snooze = False
+
+        try:
+            while True:
+                self.changed = False
+                self.RouteVault()
+                self.RouteCrypt()
+                if self.changed:
+                    self.Publish()
+
+                with self.Sleepwalk:
+                    more = self.Snooze or not self.Empty()
+                    self.Snooze = False
+                    if not more:
+                        self.Dreaming = False
+                        break
+        except Exception:
+            with self.Sleepwalk:
+                self.Dreaming = False
+            raise
         return self.state
 
     def Awake(self):

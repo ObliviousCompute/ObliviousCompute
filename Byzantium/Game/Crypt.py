@@ -292,9 +292,20 @@ class Crypt:
                 continue
 
     def Receive(self, raw: bytes, addr: tuple[str, int]):
+        if self.CampaignSelf(addr):
+            return
         if not self.veil.Accepts(raw, VeilGlyph):
             return
         self.Cryptkeeper(raw, addr)
+
+    def CampaignSelf(self, addr: tuple[str, int]) -> bool:
+        if self.mode != ModeCampaign:
+            return False
+        host, port = addr
+        if int(port) != int(self.bindport or -1):
+            return False
+        local = self.LocalIp()
+        return host in (local, '127.0.0.1', '0.0.0.0')
 
     def Cryptkeeper(self, raw: bytes, addr: tuple[str, int]):
         packet = self.Decrypt(raw)
@@ -326,17 +337,16 @@ class Crypt:
 
         self.RouteGlyph(packet, addr)
 
+    def SoulFlare(self):
+        self.EmitCompleteSouls()
+
     def SoulSqueeze(self, packet: dict[str, Any], addr: tuple[str, int]):
-        incomingpacket = self.PacketSouls(packet.get('souls', []))
+        incomingpacket = self.SoulPack(packet.get('souls', []))
         need = max(1, int(self.genesisnumber or 1))
         incomingkeys = {soul.key for soul in incomingpacket}
 
         if self.genesisdone:
-            mine = tuple(self.complete or tuple(self.SoulSet(self.souls)))
-            incominghash = self.PacketRosterHash(incomingpacket)
-            myhash = self.PacketRosterHash(mine)
-            if incominghash != myhash:
-                self.EmitCompleteSouls()
+            self.SoulFlare()
             return
 
         if len(incomingpacket) >= need and self.self.key not in incomingkeys:
@@ -389,7 +399,7 @@ class Crypt:
         except Exception:
             return None
 
-    def PacketSouls(self, values: Iterable[Any]) -> list[Soul]:
+    def SoulPack(self, values: Iterable[Any]) -> list[Soul]:
         cards: dict[str, Soul] = {}
         for value in list(values or []):
             soul = self.SoulShape(value)
@@ -581,7 +591,7 @@ class Crypt:
         return hashlib.sha256(body.encode('utf-8')).hexdigest()
 
     def PacketRosterHash(self, souls: Iterable[Any]) -> str:
-        body = json.dumps([soul.Box() for soul in self.PacketSouls(souls)], sort_keys=True, separators=(',', ':'), default=str)
+        body = json.dumps([soul.Box() for soul in self.SoulPack(souls)], sort_keys=True, separators=(',', ':'), default=str)
         return hashlib.sha256(body.encode('utf-8')).hexdigest()
 
     def Encrypt(self, packet: dict[str, Any]) -> bytes:
