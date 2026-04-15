@@ -183,6 +183,13 @@ class Dream:
             with self.Sleepwalk:
                 self.Dreaming = False
             raise
+        finally:
+            crypt = self.WakeCrypt()
+            if crypt is not None:
+                try:
+                    crypt.Wake()
+                except Exception:
+                    pass
         return self.state
 
     def Awake(self):
@@ -225,7 +232,7 @@ class Dream:
         monument = tuple(ranked)
         if monument == tuple(getattr(state, 'monument', ()) or ()):
             return state
-        return Field.State(cells=state.cells, self=state.self, monument=monument)
+        return Field.State(cells=state.cells, self=state.self, monument=monument, pristine=state.pristine)
 
     def AcceptState(self, state: Any, *, publish: bool = True):
         if not isinstance(state, Field.State):
@@ -279,6 +286,8 @@ class Dream:
         self.box.crypt = None
         if self.state is None:
             if isinstance(glyph, Field.State):
+                if int(getattr(glyph, 'pristine', 1) or 0) != 0:
+                    glyph = replace(glyph, pristine=0)
                 self.AcceptState(glyph, publish=True)
                 return self.state
             raise TypeError('Dream.RouteCrypt expected Field.State during bootstrap')
@@ -324,7 +333,7 @@ class Dream:
         body = self.state if state is None else state
         if body is None:
             return True
-        return len(tuple(getattr(body, 'monument', ()) or ())) == 0
+        return int(getattr(body, 'pristine', 1) or 0) == 1
 
     def WithChainbit(self, cell: Field.Cell, chainbit: int) -> Field.Cell:
         cb = 1 if int(chainbit) else 0
@@ -365,7 +374,7 @@ class Dream:
         for index, key in enumerate(creditkeys, start=1):
             if key in cells and index < len(chains):
                 cells[key] = self.WithChainbit(cells[key], 1) if chains[index].linked else self.WithChainbit(cells[key], 0)
-        stamped = Field.State(cells=tuple((cells[cell.key] for cell in state.cells)), self=state.self, monument=state.monument)
+        stamped = Field.State(cells=tuple((cells[cell.key] for cell in state.cells)), self=state.self, monument=state.monument, pristine=state.pristine)
         return stamped
 
     def StampChainDream(self, state: Field.State, chains: tuple[Field.Chain, ...]) -> Field.State:
@@ -378,7 +387,7 @@ class Dream:
                 cells.append(self.WithChainbit(cell, 1) if active else self.LatchOnly(cell))
             else:
                 cells.append(self.WithChainbit(cell, 0))
-        stamped = Field.State(cells=tuple(cells), self=state.self, monument=state.monument)
+        stamped = Field.State(cells=tuple(cells), self=state.self, monument=state.monument, pristine=state.pristine)
         return stamped
 
     def ApplyPurgeKey(self, state: Field.State, key: str) -> Field.State:
@@ -394,7 +403,7 @@ class Dream:
 
     def ScrubPurge(self, state: Field.State) -> Field.State:
         cleared = tuple((replace(cell, purge=Field.Purge(chainbit=0, lockbit=0)) for cell in state.cells))
-        out = Field.State(cells=cleared, self=state.self, monument=state.monument)
+        out = Field.State(cells=cleared, self=state.self, monument=state.monument, pristine=state.pristine)
         return out
 
     def PurgeFlare(self) -> dict[str, Any]:
@@ -461,7 +470,7 @@ class Dream:
             return state
         cells = list(state.cells)
         cells[signerq], cells[victimq] = (cells[victimq], cells[signerq])
-        out = Field.State(cells=tuple(cells), self=state.self, monument=state.monument)
+        out = Field.State(cells=tuple(cells), self=state.self, monument=state.monument, pristine=state.pristine)
         return out
 
     def MutateSalt(self, glyph: Any, source: str = '') -> bool:
@@ -523,6 +532,9 @@ class Dream:
         if source == 'crypt':
             if self.Pristine(self.state):
                 return False
+            monument = tuple(getattr(self.state, 'monument', ()) or ())
+            if len(monument) == 0:
+                return False
             key = self.PurgeKey(glyph)
             if key and key == self.SelfKey():
                 return False
@@ -537,6 +549,8 @@ class Dream:
             return True
         if nextstate == self.state:
             return False
+        if int(getattr(nextstate, 'pristine', 1) or 0) != 0:
+            nextstate = replace(nextstate, pristine=0)
         self.state = nextstate
         return True
 
@@ -623,6 +637,7 @@ class Dream:
             'kind': DreamGlyph,
             'self': [scrubbed.self[0], scrubbed.self[1]],
             'monument': list(scrubbed.monument),
+            'pristine': int(getattr(scrubbed, 'pristine', 1) or 0),
             'cells': [self.BoxCell(cell) for cell in scrubbed.cells],
         }
 

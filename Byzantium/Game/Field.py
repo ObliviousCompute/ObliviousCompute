@@ -61,6 +61,10 @@ class Clean:
     def monument() -> Tuple[str, ...]:
         return tuple()
 
+    @staticmethod
+    def pristine() -> int:
+        return 1
+
 @dataclass(frozen=True)
 class Cell:
     soul: str
@@ -86,6 +90,7 @@ class State:
     cells: Tuple[Cell, ...]
     self: Tuple[str, str] = field(default_factory=Clean.self)
     monument: Tuple[str, ...] = field(default_factory=Clean.monument)
+    pristine: int = field(default_factory=Clean.pristine)
 
     def __post_init__(self) -> None:
         if len(self.cells) != SeatCount:
@@ -94,6 +99,7 @@ class State:
             VerifyCell(cell)
         VerifySelf(self.self)
         VerifyMonument(self.monument)
+        VerifyBit(self.pristine, fieldname='state.pristine')
 
     @property
     def SaltTotal(self) -> int:
@@ -164,6 +170,7 @@ def VerifyState(state: State, *, expectedkeys: Optional[Iterable[str]]=None, exp
         raise ValueError(f'state must contain exactly {SeatCount} seats')
     VerifySelf(state.self)
     VerifyMonument(state.monument)
+    VerifyBit(state.pristine, fieldname='state.pristine')
     keys = []
     for cell in state.cells:
         VerifyCell(cell)
@@ -322,6 +329,13 @@ def VerifyNonNegative(value: int, *, fieldname: str='value') -> bool:
         raise TypeError(f'{fieldname} must be an integer')
     if value < 0:
         raise ValueError(f'{fieldname} must be non-negative')
+    return True
+
+def VerifyBit(value: int, *, fieldname: str='bit') -> bool:
+    if not isinstance(value, int):
+        raise TypeError(f'{fieldname} must be an integer')
+    if value not in (0, 1):
+        raise ValueError(f'{fieldname} must be 0 or 1')
     return True
 
 def VerifySign(key: str, digest: str, sign: str, *, allownull: bool=False) -> bool:
@@ -507,7 +521,7 @@ def MutateReceipt(state: State, glyph: SaltGlyph) -> Tuple[State, Tuple[Chain, .
         replacements[key] = targetcandidate
         chains.append(Chain(linked=True, relation='Link', open=False, reason='credit'))
     nextcells = tuple((replacements.get(cell.key, cell) for cell in state.cells))
-    nextstate = State(cells=nextcells, self=state.self, monument=state.monument)
+    nextstate = State(cells=nextcells, self=state.self, monument=state.monument, pristine=state.pristine)
     VerifyState(nextstate, expectedkeys=FindKeys(state))
     return (nextstate, tuple(chains))
 
@@ -534,7 +548,7 @@ def Assimilate(local: State, incoming: State) -> Tuple[State, Tuple[Chain, ...]]
             cells.append(CloseCell(chosen))
         else:
             cells.append(OpenCell(current))
-    nextstate = State(cells=tuple(cells), self=local.self, monument=incoming.monument)
+    nextstate = State(cells=tuple(cells), self=local.self, monument=incoming.monument, pristine=incoming.pristine)
     VerifyState(nextstate, expectedkeys=keys)
     return (nextstate, tuple(chains))
 
@@ -555,7 +569,7 @@ def CloseCell(cell: Cell) -> Cell:
 
 def Scrub(state: State) -> State:
     VerifyState(state)
-    return State(cells=tuple((replace(cell, purge=Clean.purge()) for cell in state.cells)), self=Clean.self(), monument=tuple(state.monument))
+    return State(cells=tuple((replace(cell, purge=Clean.purge()) for cell in state.cells)), self=Clean.self(), monument=tuple(state.monument), pristine=state.pristine)
 
 def ScrubPurge(state: State) -> State:
     return Scrub(state)
@@ -565,7 +579,7 @@ def Stasis(state: State) -> State:
     ordered = []
     for filenumber in range(1, FileCount + 1):
         ordered.extend(SortFile(FileCells(state, filenumber)))
-    return State(cells=tuple(ordered), self=state.self, monument=state.monument)
+    return State(cells=tuple(ordered), self=state.self, monument=state.monument, pristine=state.pristine)
 
 def FindKeys(state: State) -> Tuple[str, ...]:
     VerifyState(state)
@@ -592,4 +606,4 @@ def ReplaceCell(state: State, replacement: Cell) -> State:
             cells.append(cell)
     if not found:
         raise ValueError('replacement key not found in state')
-    return State(cells=tuple(cells), self=state.self, monument=state.monument)
+    return State(cells=tuple(cells), self=state.self, monument=state.monument, pristine=state.pristine)

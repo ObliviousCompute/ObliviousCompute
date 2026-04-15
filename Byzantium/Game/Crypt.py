@@ -142,6 +142,9 @@ class Crypt:
         self.complete: tuple[Soul, ...] = ()
         self.state = Baton(self=self.self, souls=tuple(), genesis=int(self.genesisnumber))
         self.glyph = None
+        self.Grind = None
+        self.Grindlock = threading.Lock()
+        self.Zzz = False
 
         self.bindhost = ''
         self.bindport: Optional[int] = None
@@ -184,23 +187,70 @@ class Crypt:
                 continue
             try:
                 self.Receive(raw, addr)
-                self.Poll()
+                self.GrindSocket()
+                self.Wake()
             except Exception:
                 continue
 
     def Wake(self):
-        self.Tick()
+        with self.Grindlock:
+            if self.Zzz:
+                return self.state
+            if self.Grind is None:
+                return self.state
+            if bool(getattr(self.dream, 'Dreaming', False)):
+                return self.state
+            payload = self.Grind
+            self.Grind = None
+            self.Zzz = True
+        self.glyph = payload
+        try:
+            if hasattr(self.dream, 'box'):
+                self.dream.box.crypt = payload
+                self.dream.Wake()
+        except Exception:
+            with self.Grindlock:
+                if self.Grind is None:
+                    self.Grind = payload
+                self.Zzz = False
+            raise
+        with self.Grindlock:
+            self.Zzz = False
+            more = self.Grind is not None
+        if more and not bool(getattr(self.dream, 'Dreaming', False)):
+            return self.Wake()
         return self.state
 
     def Awake(self):
         return self.Wake()
 
     def Tick(self):
-        self.Poll()
-        return self.state
+        return self.Wake()
 
     def Summon(self):
         return self.sock.recvfrom(65535)
+
+    def GrindSocket(self):
+        while self.live:
+            try:
+                ready, writeable, broken = select.select([self.sock], [], [], 0.0)
+            except OSError:
+                break
+            except Exception:
+                break
+            if not ready:
+                break
+            try:
+                raw, addr = self.Summon()
+            except OSError:
+                break
+            except Exception:
+                break
+            try:
+                self.Receive(raw, addr)
+            except Exception:
+                continue
+        return self.state
 
     def BindTransport(self) -> socket.socket:
         if self.mode == ModeSiege:
@@ -271,25 +321,7 @@ class Crypt:
             return '127.0.0.1'
 
     def Poll(self):
-        while self.live:
-            try:
-                ready, _, _ = select.select([self.sock], [], [], 0.0)
-            except OSError:
-                break
-            except Exception:
-                break
-            if not ready:
-                break
-            try:
-                raw, addr = self.sock.recvfrom(65535)
-            except OSError:
-                break
-            except Exception:
-                break
-            try:
-                self.Receive(raw, addr)
-            except Exception:
-                continue
+        return self.GrindSocket()
 
     def Receive(self, raw: bytes, addr: tuple[str, int]):
         if self.CampaignSelf(addr):
@@ -484,6 +516,7 @@ class Crypt:
                 cells=tuple(cells),
                 self=('', ''),
                 monument=tuple(str(item or '') for item in (payload.get('monument', ()) or ())),
+                pristine=int(payload.get('pristine', 1) or 0),
             )
 
         saltbody = []
@@ -519,42 +552,37 @@ class Crypt:
         payload = dict(packet)
         payload.pop('header', None)
         payload = self.UnboxGlyph(payload)
+        with self.Grindlock:
+            self.Grind = payload
         self.glyph = payload
-
-        lane = getattr(getattr(self.dream, 'box', None), 'crypt', None)
-        if lane is not None and hasattr(lane, 'glyph'):
-            lane.glyph = payload
-            self.dream.Wake()
-            return
-
-        if hasattr(self.dream, 'box'):
-            self.dream.box.crypt = payload
-            self.dream.Wake()
 
     def EmitSouls(self):
         packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in self.SoulSet(self.souls)]}
-        self.Emit(packet)
+        self.Cast(packet)
 
     def EmitCompleteSouls(self):
         souls = self.complete or tuple(self.SoulSet(self.souls))
         packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in souls]}
-        self.Emit(packet)
+        self.Cast(packet)
 
     def EmitGlyph(self, glyph: dict[str, Any]):
         payload = {'header': HeaderGlyph}
         payload.update(dict(glyph or {}))
         self.Emit(payload)
 
-    def Emit(self, packet: dict[str, Any]):
+    def Cast(self, packet: dict[str, Any]):
         raw = self.Encrypt(packet)
         burst = 3
         peers = self.Peers()
         for host, port in peers:
-            for _shot in range(burst):
+            for shot in range(burst):
                 try:
                     self.sock.sendto(raw, (host, port))
                 except Exception:
                     pass
+
+    def Emit(self, packet: dict[str, Any]):
+        return self.Cast(packet)
 
     def BuildState(self) -> Baton:
         souls = tuple(self.complete) if self.genesisdone else tuple(self.SoulSet(self.souls))

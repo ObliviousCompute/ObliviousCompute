@@ -323,5 +323,10 @@ def State(cryptstate: Any) -> Field.State:
         generalsalts=generalsalts,
         captainsalts=captainsalts,
     )
-    finalstate = Field.State(self=genesis.myself or Field.Clean.self(), monument=(), cells=cells)
+    finalstate = Field.State(
+        self=genesis.myself or Field.Clean.self(),
+        monument=(),
+        pristine=1,
+        cells=cells,
+    )
     return finalstate
