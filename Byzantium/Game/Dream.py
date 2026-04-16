@@ -155,7 +155,10 @@ class Dream:
         return crypt.Sleep()
 
     def Empty(self) -> bool:
-        return self.box.vault is None and self.box.crypt is None
+        vaultempty = self.box.vault is None
+        cryptlane = self.box.crypt
+        cryptempty = cryptlane is None or (isinstance(cryptlane, list) and len(cryptlane) == 0)
+        return vaultempty and cryptempty
 
     def Wake(self):
         with self.Sleepwalk:
@@ -280,10 +283,19 @@ class Dream:
         return self.state
 
     def RouteCrypt(self):
-        glyph = self.box.crypt
-        if glyph is None:
+        lane = self.box.crypt
+        if lane is None:
             return self.state
-        self.box.crypt = None
+        if isinstance(lane, list):
+            if len(lane) == 0:
+                self.box.crypt = None
+                return self.state
+            glyph = lane.pop(0)
+            if len(lane) == 0:
+                self.box.crypt = None
+        else:
+            glyph = lane
+            self.box.crypt = None
         if self.state is None:
             if isinstance(glyph, Field.State):
                 if int(getattr(glyph, 'pristine', 1) or 0) != 0:

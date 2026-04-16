@@ -135,16 +135,16 @@ class Crypt:
         self.genesisnumber = max(1, genesis)
         self.gate = gate
         self.self = selfcard
-        self.souls = self.SoulSet(rawsouls)
+        self.souls = self.SoulPack(rawsouls) or self.SoulPack(()) or []
 
         self.veil = Veil()
         self.genesisdone = False
         self.complete: tuple[Soul, ...] = ()
         self.state = Baton(self=self.self, souls=tuple(), genesis=int(self.genesisnumber))
         self.glyph = None
-        self.Grind = None
-        self.Grindlock = threading.Lock()
-        self.Zzz = False
+        self.Reap = []
+        self.Reaping = False
+        self.ReapLock = threading.Lock()
 
         self.bindhost = ''
         self.bindport: Optional[int] = None
@@ -193,39 +193,34 @@ class Crypt:
                 continue
 
     def Wake(self):
-        with self.Grindlock:
-            if self.Zzz:
+        with self.ReapLock:
+            if not self.Reaping or not self.Reap:
                 return self.state
-            if self.Grind is None:
-                return self.state
-            if bool(getattr(self.dream, 'Dreaming', False)):
-                return self.state
-            payload = self.Grind
-            self.Grind = None
-            self.Zzz = True
-        self.glyph = payload
+
+            batch = list(self.Reap)
+            self.Reap = []
+            self.Reaping = False
+
         try:
             if hasattr(self.dream, 'box'):
-                self.dream.box.crypt = payload
+                lane = getattr(self.dream.box, 'crypt', None)
+                if lane is None:
+                    self.dream.box.crypt = list(batch)
+                elif isinstance(lane, list):
+                    lane.extend(batch)
+                else:
+                    self.dream.box.crypt = [lane] + list(batch)
                 self.dream.Wake()
         except Exception:
-            with self.Grindlock:
-                if self.Grind is None:
-                    self.Grind = payload
-                self.Zzz = False
+            with self.ReapLock:
+                if not self.Reaping:
+                    self.Reaping = True
+                    self.Reap = []
+                self.Reap = list(batch) + list(self.Reap)
             raise
-        with self.Grindlock:
-            self.Zzz = False
-            more = self.Grind is not None
-        if more and not bool(getattr(self.dream, 'Dreaming', False)):
-            return self.Wake()
+
         return self.state
 
-    def Awake(self):
-        return self.Wake()
-
-    def Tick(self):
-        return self.Wake()
 
     def Summon(self):
         return self.sock.recvfrom(65535)
@@ -233,7 +228,7 @@ class Crypt:
     def GrindSocket(self):
         while self.live:
             try:
-                ready, writeable, broken = select.select([self.sock], [], [], 0.0)
+                ready, _writeable, _broken = select.select([self.sock], [], [], 0.0)
             except OSError:
                 break
             except Exception:
@@ -370,47 +365,53 @@ class Crypt:
         self.RouteGlyph(packet, addr)
 
     def SoulFlare(self):
-        self.EmitCompleteSouls()
+        self.EmitSouls()
 
     def SoulSqueeze(self, packet: dict[str, Any], addr: tuple[str, int]):
-        incomingpacket = self.SoulPack(packet.get('souls', []))
-        need = max(1, int(self.genesisnumber or 1))
-        incomingkeys = {soul.key for soul in incomingpacket}
-
         if self.genesisdone:
-            self.SoulFlare()
-            return
+            incomingsouls = self.SoulSnap(packet.get('souls', []))
+            if incomingsouls is None:
+                return self.state
+            completesouls = tuple(self.complete or ())
+            self.SoulSwap(incomingsouls, completesouls)
+            return self.state
 
-        if len(incomingpacket) >= need and self.self.key not in incomingkeys:
-            locked = tuple(incomingpacket[:need])
-            self.souls = list(locked)
-            self.complete = locked
-            self.genesisdone = True
-            self.state = self.BuildState()
+        incomingsouls = self.SoulPack(packet.get('souls', []))
+        if incomingsouls is None:
+            return self.state
 
-            sanctum = self.WakeSanctum()
-            sanctum.Genesis(self.state)
-            return
+        beforekeys = self.SoulKeys(self.souls)
+        merged = self.SoulPack(list(self.souls) + list(incomingsouls))
+        if merged is None:
+            return self.state
+        afterkeys = self.SoulKeys(merged)
 
-        before = self.RosterHash(self.souls)
-        merged = self.SoulSet(list(self.souls) + list(incomingpacket or []))
-        after = self.RosterHash(merged)
-        if after != before:
+        if afterkeys != beforekeys:
             self.souls = merged
             self.state = self.BuildState()
-            self.EmitSouls()
-        self.Genesis()
+            self.SoulFlare()
 
-    def SoulSet(self, values: Iterable[Any]) -> list[Soul]:
-        cards: dict[str, Soul] = {}
-        for value in list(values or []):
-            soul = self.SoulShape(value)
-            if soul is None:
-                continue
-            cards[soul.key] = soul
-        if self.AcceptSelf(self.self):
-            cards[self.self.key] = Soul(soul=self.self.soul, key=self.self.key)
-        return sorted(cards.values(), key=lambda soul: soul.key)
+        self.Genesis(merged)
+        return self.state
+
+    def SoulSwap(self, incomingsouls: Iterable[Any], completesouls: Iterable[Any]):
+        incomingsouls = self.SoulSnap(incomingsouls)
+        completesouls = self.SoulSnap(completesouls)
+        if incomingsouls is None or completesouls is None:
+            return self.state
+
+        incomingkeys = self.SoulKeys(incomingsouls)
+        completekeys = self.SoulKeys(completesouls)
+
+        if not incomingkeys:
+            return self.state
+        if not incomingkeys.issubset(completekeys):
+            return self.state
+        if len(incomingkeys) >= len(completekeys):
+            return self.state
+
+        self.EmitCompleteSouls()
+        return self.state
 
     def SoulShape(self, value: Any) -> Optional[Soul]:
         if isinstance(value, Soul):
@@ -431,14 +432,40 @@ class Crypt:
         except Exception:
             return None
 
-    def SoulPack(self, values: Iterable[Any]) -> list[Soul]:
+    def SoulPack(self, values: Iterable[Any]) -> Optional[list[Soul]]:
         cards: dict[str, Soul] = {}
         for value in list(values or []):
             soul = self.SoulShape(value)
             if soul is None:
                 continue
             cards[soul.key] = soul
-        return sorted(cards.values(), key=lambda soul: soul.key)
+        if self.AcceptSelf(self.self) and self.self.key not in cards:
+            cards[self.self.key] = Soul(soul=self.self.soul, key=self.self.key)
+        souls = sorted(cards.values(), key=lambda soul: soul.key)
+        if len(souls) > max(1, int(self.genesisnumber or 1)):
+            return None
+        return souls
+
+    def SoulSnap(self, values: Iterable[Any]) -> Optional[list[Soul]]:
+        cards: dict[str, Soul] = {}
+        for value in list(values or []):
+            soul = self.SoulShape(value)
+            if soul is None:
+                continue
+            cards[soul.key] = soul
+        souls = sorted(cards.values(), key=lambda soul: soul.key)
+        if len(souls) > max(1, int(self.genesisnumber or 1)):
+            return None
+        return souls
+
+    def SoulKeys(self, souls: Iterable[Any]) -> set[str]:
+        keys: set[str] = set()
+        for soul in list(souls or []):
+            shaped = self.SoulShape(soul)
+            if shaped is None:
+                continue
+            keys.add(shaped.key)
+        return keys
 
     def Genesis(self, state: Any = None):
         if state is not None:
@@ -448,16 +475,24 @@ class Crypt:
                     soul=self.MustName(nested.get('soul', '')),
                     key=self.MustKey(nested.get('key', nested.get('pubkey', ''))),
                 )
-                self.souls = self.SoulSet(list(self.souls) + list(state.get('souls', [])))
                 self.genesisnumber = max(1, int(state.get('genesis', 1) or 1))
+                merged = self.SoulPack(list(self.souls) + list(state.get('souls', [])))
+                if merged is not None:
+                    self.souls = merged
+            elif self.AcceptSoulIterable(state):
+                merged = self.SoulPack(state)
+                if merged is not None:
+                    self.souls = merged
             else:
                 nested = getattr(state, 'self', state)
                 self.self = Self(
                     soul=self.MustName(getattr(nested, 'soul', '')),
                     key=self.MustKey(getattr(nested, 'key', getattr(nested, 'pubkey', ''))),
                 )
-                self.souls = self.SoulSet(list(self.souls) + list(getattr(state, 'souls', [])))
                 self.genesisnumber = max(1, int(getattr(state, 'genesis', 1) or 1))
+                merged = self.SoulPack(list(self.souls) + list(getattr(state, 'souls', [])))
+                if merged is not None:
+                    self.souls = merged
             self.state = self.BuildState()
 
         if self.genesisdone:
@@ -468,12 +503,20 @@ class Crypt:
             return self.state
 
         self.genesisdone = True
-        self.complete = tuple(self.SoulSet(self.souls))
+        self.complete = tuple(self.souls)
         self.state = self.BuildState()
         self.EmitCompleteSouls()
 
         sanctum = self.WakeSanctum()
         return sanctum.Genesis(self.state)
+
+    def AcceptSoulIterable(self, value: Any) -> bool:
+        if not isinstance(value, (list, tuple)):
+            return False
+        for item in value:
+            if self.SoulShape(item) is None:
+                return False
+        return True
 
     def UnboxGlyph(self, payload: dict[str, Any]) -> Any:
         kind = str(payload.get('kind', '') or '').strip().lower()
@@ -552,40 +595,43 @@ class Crypt:
         payload = dict(packet)
         payload.pop('header', None)
         payload = self.UnboxGlyph(payload)
-        with self.Grindlock:
-            self.Grind = payload
+        with self.ReapLock:
+            if not self.Reaping:
+                self.Reaping = True
+                self.Reap = []
+            self.Reap.append(payload)
         self.glyph = payload
 
     def EmitSouls(self):
-        packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in self.SoulSet(self.souls)]}
-        self.Cast(packet)
+        packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in self.souls]}
+        self.Emit(packet)
 
     def EmitCompleteSouls(self):
-        souls = self.complete or tuple(self.SoulSet(self.souls))
+        souls = self.complete or tuple(self.souls)
         packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in souls]}
-        self.Cast(packet)
+        self.Emit(packet)
 
     def EmitGlyph(self, glyph: dict[str, Any]):
         payload = {'header': HeaderGlyph}
         payload.update(dict(glyph or {}))
         self.Emit(payload)
 
-    def Cast(self, packet: dict[str, Any]):
+    def Emit(self, packet: dict[str, Any]):
         raw = self.Encrypt(packet)
         burst = 3
         peers = self.Peers()
         for host, port in peers:
-            for shot in range(burst):
+            for _shot in range(burst):
                 try:
                     self.sock.sendto(raw, (host, port))
                 except Exception:
                     pass
 
-    def Emit(self, packet: dict[str, Any]):
-        return self.Cast(packet)
+    def Cast(self, packet: dict[str, Any]):
+        return self.Emit(packet)
 
     def BuildState(self) -> Baton:
-        souls = tuple(self.complete) if self.genesisdone else tuple(self.SoulSet(self.souls))
+        souls = tuple(self.complete) if self.genesisdone else tuple(self.souls)
         return Baton(self=Self(soul=self.self.soul, key=self.self.key), souls=souls, genesis=int(self.genesisnumber))
 
     def WakeSanctum(self):
@@ -614,13 +660,6 @@ class Crypt:
         body = json.dumps(packet, sort_keys=True, separators=(',', ':'), default=str)
         return hashlib.sha256(body.encode('utf-8')).hexdigest()
 
-    def RosterHash(self, souls: Iterable[Any]) -> str:
-        body = json.dumps([soul.Box() for soul in self.SoulSet(souls)], sort_keys=True, separators=(',', ':'), default=str)
-        return hashlib.sha256(body.encode('utf-8')).hexdigest()
-
-    def PacketRosterHash(self, souls: Iterable[Any]) -> str:
-        body = json.dumps([soul.Box() for soul in self.SoulPack(souls)], sort_keys=True, separators=(',', ':'), default=str)
-        return hashlib.sha256(body.encode('utf-8')).hexdigest()
 
     def Encrypt(self, packet: dict[str, Any]) -> bytes:
         body = json.dumps(packet, sort_keys=True, separators=(',', ':'), default=str)
