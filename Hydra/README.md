@@ -1,8 +1,10 @@
 # 🐍 Hydra
 
-Hydra is a distributed expression of the Oblivious Compute system. It is not a coordinated network, 
-but a field of independent nodes sharing a single admissible state. Each node emits and each node observes, 
-and what persists is simply what the network accepts. 
+In Hydra, the state is fluid. Nodes can leave, rejoin, and rehydrate instantly with no ceremony. Move between a den and a swamp, across machines or terminals.
+
+As long as your head is unique and you share the same depth, your node will simply snap to what is. What holds is what remains.
+
+Hydra is a distributed expression of the Oblivious Compute system. It is not a coordinated network, but a field of independent nodes sharing a single admissible state. Each node emits and each node observes, and what persists is simply what the network accepts.
 
 There is no leader and no history—only convergence.
 
