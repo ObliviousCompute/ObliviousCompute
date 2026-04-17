@@ -29,7 +29,7 @@ To run Hydra, install it with:
 pipx install Hydra-Braid  
 Hydra
 ```
-You’ll need **Python 3.9 or newer** and a UNIX-like terminal environment.
+You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
