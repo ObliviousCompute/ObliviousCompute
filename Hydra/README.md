@@ -8,26 +8,26 @@
 
 ## 🪵 Swamp Thing
 
-In Hydra, the state is fluid. Nodes can leave, rejoin, and rehydrate instantly with no ceremony. Move between a den or a swamp, across machines or terminals.
+In **Hydra**, the state is *fluid*. Nodes can leave, rejoin, and rehydrate instantly with **no ceremony**. Move between a **den** or a **swamp**, across machines or terminals.
 
 <img src="../Relics/Awake.gif"/>
 
-As long as your head is unique and you share the same depth, your node will simply snap to what is. What holds is what remains.
+As long as your **head is unique** and you share the same **depth**, your node will simply **snap to what is**. *What holds is what remains.*
 
-Hydra is a distributed expression of the Oblivious Compute system. It is not a coordinated network, but a field of independent nodes sharing a single admissible state. Each node emits and each node observes, and what persists is simply what the network accepts.
+Hydra is a distributed expression of the **Oblivious Compute system**. It is not a coordinated network, but a field of independent nodes sharing a single **admissible state**. Each node emits and each node observes, and what persists is simply what the network accepts.
 
-There is no leader and no history—only convergence.
+**There is no leader and no history—only convergence.**
 
 ---
 
 ## ⬇️ Install
 
 To run Hydra, install it with:
-
+```bash
 pipx install Hydra-Braid  
 Hydra
-
-You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
+```
+You’ll need **Python 3.9 or newer** and a UNIX-like terminal environment.
 
 ---
 
@@ -35,7 +35,7 @@ You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
 
 - ✅ Linux  
 - ✅ macOS  
-- ❌ Windows (sorry, but not sorry)
+- ❌ Windows *(sorry, but not sorry)*
 
 ---
 
@@ -44,26 +44,26 @@ You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
 Hydra runs in two modes.
 
 **Den** is local—multiple terminals on the same machine. *(sandbox)*  
-**Swamp** runs across a LAN, allowing multiple machines to share the same Braid.
+**Swamp** runs across a LAN, allowing multiple machines to share the same **Braid**.
 
-> *All nodes must use the same depth (port), and the same number of mutated heads to join the same braid.*  
+> *All nodes must use the same depth (port), and the same number of mutated heads.*  
 > *Each node must use a unique head.*
 
 <img src="../Relics/Spam.gif"/>
 
-> *Run Hydra in a swamp if you want to use it as a packet collider*.  
-> *Push state with multiple machines and see what holds*.
+> *Run Hydra in a swamp if you want to use it as a packet collider.*  
+> *Push state with multiple machines and see what holds.*
 
 ---
 
-🎯 Intent
+🎯 **Intent**
 
 The Hydra Demo has been published as a **public technical disclosure**.
 
-This demo exists to show that oblivious convergence through an admissability gate is possible.
+This demo exists to show that **oblivious convergence through an admissability gate** is possible.
 
 If it fails, it fails cleanly.  
-If it works, it demonstrates a new computational primitive.
+If it works, it demonstrates a **new computational primitive**.
 
 <img src="../Relics/Alpha.png" width="300"/>
 
@@ -73,7 +73,6 @@ If it works, it demonstrates a new computational primitive.
 
 ## 📜 License
 
-This project is released under the terms of the [`LICENSE`](../LICENSE).
+This project is released under the terms of the [LICENSE](../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
-
