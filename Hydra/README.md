@@ -15,7 +15,7 @@ There is no leader and no history—only convergence.
 ## ⚙️ Running the Demo
 
 
-<img src="../Awake/Spam.gif"/>
+<img src="../Relics/Awake.gif"/>
 
 ---
 
@@ -38,7 +38,7 @@ If it works, it demonstrates a new computational primitive.
 
 <img src="../Relics/Alpha.png" width="300"/>
 
-<img src="../Relics/Bye.gif"/>
+<img src="../Relics/Bye.gif" width="400"/>
 
 ---
 
