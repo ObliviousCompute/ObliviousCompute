@@ -4,11 +4,13 @@
 
 ---
 
+<img src="../Relics/Awake.gif"/>
+
+---
+
 ## 🪵 Swamp Thing
 
 In **Hydra**, the state is *fluid*. Nodes can leave, rejoin, and rehydrate instantly with **no ceremony**. Move between a **den** or a **swamp**, across machines or terminals.
-
-<img src="../Relics/Awake.gif"/>
 
 As long as your **head is unique** and you share the same **depth**, your node will simply **snap to what is**. *What holds is what remains.*
 
