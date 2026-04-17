@@ -3,7 +3,7 @@
 Mowsie is the first real-world application of Oblivious Compute.
 
 Start with [`Genesis`](./Genesis.md) to see how salt comes into existence.  
-After that, check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.  
+After that, check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.
 
 ---
 
@@ -21,15 +21,21 @@ What remains is a name, a password, and value that moves instantly.
 
 Imagine a little shop or studio.
 
-You walk in. You scan a QR code. You type a name.
+You walk in. You scan a QR code or select a cache you’ve already scanned.
 
-Within seconds, you have a wallet.
+You enter a name and password.
 
-The cashier sends you value. Your balance updates instantly.
+Your stash appears instantly — always the same for that name, password, and cache.
 
-No waiting. No syncing. No confirmation window.
+Within about a second, the state catches up.
 
-You just receive value.
+If your stash holds value, it’s already waiting for you in the state.
+
+No accounts. No setup. No flows.
+
+You don’t create anything.
+
+You just open your stash.
 
 ---
 
@@ -37,13 +43,13 @@ You just receive value.
 
 Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
 
-Mowsie removes all of that and replaces it with a shared, verifiable state — a cache visible to everyone inside it.
+Mowsie replaces loyalty systems with shared state — a cache where stashes appear only when they hold value.
 
 ---
 
 ## ⚖️ What Mowsie Is
 
-Each vendor creates a *Cache* with a fixed supply of value.
+Each vendor creates a cache with a fixed supply of value.
 
 That supply does not change. It cannot be inflated or silently modified.
 
@@ -53,21 +59,60 @@ Everything that follows must obey it.
 
 ---
 
+## 🗝️ Stashes
+
+A stash is not stored or created.
+
+It is deterministically derived from three things:
+
+The cache.  
+A name.  
+A password.
+
+The same inputs will always resolve to the same stash.
+
+If a stash holds salt, it exists in shared state.  
+If it does not, it exists only as a possibility until funded.
+
+---
+
 ## 🧂 Salt
 
 Salt is the unit of value in Mowsie.
 
 It is finite, transferable, and cryptographically secured.
 
-It is a blank canvas. Vendors decide what it means — points, credits, passes. They can call it whatever they want, but underneath, it is always salt.
+It is a blank canvas. Vendors decide what it means — points, credits, passes.
+
+They can call it whatever they want, but underneath, it is always salt.
+
+---
+
+## 💬 Messages
+
+Transactions can carry a short message, up to 60 characters.
+
+Sometimes it’s something simple — a coffee, a class, a double cheeseburger. Sometimes it’s nothing at all.
+
+When value moves, a message can move with it. It might act like a receipt, or just a note between two people. It doesn’t have to be anything more than that.
+
+Everything inside a cache is encrypted. From the outside, it’s just motion — packets moving, nothing readable. From the inside, it resolves into something meaningful.
+
+And sometimes, it’s not about the value at all.
+
+Two people — or a small group — can share a cache and use it however they want.
 
 ---
 
 ## ☕ A Real Example
 
-A coffee shop creates thier cache with one million salt.
+A coffee shop creates their cache with one million salt.
 
 Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
+
+A returning customer selects the same cache, enters their name and password, and their stash resolves again.
+
+If it holds value, it appears. If not, it remains empty until funded.
 
 There is no backend tracking balances.
 
@@ -79,9 +124,11 @@ There is only shared state.
 
 Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium).
 
-Cells become accounts. Salt becomes value. Whisper becomes transaction. Dream becomes state. Crypt becomes transport.
+Cells become accounts. Salt becomes value. Whispers becomes transactions. Dream becomes state. Crypt becomes transport.
 
-Nothing new is required. This is a reconfiguration.
+Nothing new is happening here.
+
+This is the simplest transaction possible — now routed over the internet.
 
 ---
 
@@ -111,7 +158,7 @@ We are defining the leaf structure, Merkleizing the state, building the mobile c
 
 The goal is simple.
 
-From download to receiving value in under one minute.
+From download to opening your own private stash and receiving value in under one minute.
 
 ---
 
@@ -121,14 +168,13 @@ If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
 
 ---
 
-<h2><img src="../Relics/BTC.png" width="25"/>  Support</h2> 
+<h2><img src="../Relics/BTC.png" width="25"/> Support</h2>
 
 > **bc1qc69hm4smfvp4q2xwrn95926ljztxahe0q7fa8x**
 
 ---
 
-Mowsie replaces punch cards with shared state.
-
+Mowsie replaces loyalty systems with shared state.  
 It is the wooden nickel of the 21st century.
 
 ---
@@ -138,4 +184,3 @@ It is the wooden nickel of the 21st century.
 This project is released under the terms of the [`LICENSE`](../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
-
