@@ -1,14 +1,22 @@
 # 🐍 Hydra
 
-In Hydra, the state is fluid. Nodes can leave, rejoin, and rehydrate instantly with no ceremony. Move between a den and a swamp, across machines or terminals.
+---
+
+**Hands-on network toy where packets collide and the state crystallizes.**
+
+---
+
+## Swamp Thing
+
+In Hydra, the state is fluid. Nodes can leave, rejoin, and rehydrate instantly with no ceremony. Move between a den or a swamp, across machines or terminals.
+
+<img src="../Relics/Awake.gif"/>
 
 As long as your head is unique and you share the same depth, your node will simply snap to what is. What holds is what remains.
 
 Hydra is a distributed expression of the Oblivious Compute system. It is not a coordinated network, but a field of independent nodes sharing a single admissible state. Each node emits and each node observes, and what persists is simply what the network accepts.
 
 There is no leader and no history—only convergence.
-
-<img src="../Relics/Awake.gif"/>
 
 ---
 
