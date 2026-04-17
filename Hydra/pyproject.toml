@@ -1,6 +1,6 @@
 [project]
 name = "Hydra-Braid"
-version = "1.0.3"
+version = "1.0.4"
 description = "Terminal entrypoint for Hydra"
 
 [project.scripts]

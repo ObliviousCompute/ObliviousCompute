@@ -28,15 +28,12 @@ Options = {
 RosterCache: Set[str] = set()
 AwakeInterval = 0.75
 
-
 def BuildDen(heads: List[str], depth: int, head: str) -> Tuple[int, List[Tuple[str, int]]]:
     ports = {item: depth + index for index, item in enumerate(heads)}
     return ports[head], [("127.0.0.1", ports[item]) for item in heads if item != head]
 
-
 def BuildSwamp(heads: List[str], depth: int, head: str) -> Tuple[int, List[Tuple[str, int]]]:
     return depth, [("255.255.255.255", depth)]
-
 
 def ExitScreen() -> None:
     filedescriptor = sys.stdin.fileno()
@@ -69,7 +66,6 @@ def ExitScreen() -> None:
         Clear()
         sys.stdout.write(ShowCursor)
         sys.stdout.flush()
-
 
 def HydraShell() -> Dict[str, str]:
     state = {"environment": "Den", "depth": "12321", "mutation": "3", "head": "A"}
@@ -271,7 +267,6 @@ def HydraShell() -> Dict[str, str]:
         sys.stdout.write(ShowCursor)
         sys.stdout.flush()
 
-
 def Main() -> None:
     try:
         state = HydraShell()
@@ -282,7 +277,6 @@ def Main() -> None:
         RunBody(heart=Plexus(head=head, heads=heads), head=head, port=port, peers=peers, heads=heads)
     except ExitSignal:
         ExitScreen()
-
 
 if __name__ == "__main__":
     Main()

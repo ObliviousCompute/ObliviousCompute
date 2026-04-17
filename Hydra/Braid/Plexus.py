@@ -1,44 +1,21 @@
-
-# ============================================
-# Plexus (Heart)
-# ============================================
-
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Literal
 
-
-# =========================
-# Crown Membrane
-# =========================
-
 Gems = {1: "Onyx", 2: "Jade", 3: "Opal"}
-
 
 def GemName(g: int) -> str:
     return Gems.get(int(g or 1), "G?")
 
-
 def CrownNext(c: int) -> int:
     return 1 if int(c) >= 3 else int(c) + 1
 
-
-# =========================
-# Intent
-# =========================
-
 IntentType = Literal["Propagate", "RequestSync", "Envy"]
-
 
 @dataclass(frozen=True)
 class Intent:
     type: IntentType
     payload: Dict[str, Any]
-
-
-# =========================
-# Tetron
-# =========================
 
 @dataclass
 class Tetron:
@@ -50,33 +27,20 @@ class Tetron:
             "is_dream": True,
         }
 
-
-# =========================
-# Plexus State
-# =========================
-
 @dataclass
 class PlexusState:
     tallies: Dict[str, int]
     crown: int
     head: Optional[str] = None
 
-
-# =========================
-# Plexus
-# =========================
-
 class Plexus:
-
     def __init__(self, head: str, heads: List[str]) -> None:
-
         self.head = str(head)
         self.heads = list(heads)
 
         tallies = {h: 10 for h in self.heads}
 
         self.tetron = Tetron(tallies=dict(tallies))
-
         self.state = PlexusState(
             tallies=dict(tallies),
             crown=1,
@@ -85,10 +49,6 @@ class Plexus:
 
         self.tail: Optional[Dict[str, Any]] = None
         self.envy: bool = False
-
-    # =========================
-    # Echo
-    # =========================
 
     def Snapshot(self) -> Dict[str, Any]:
         return {
@@ -101,18 +61,10 @@ class Plexus:
     def Emotions(self) -> Dict[str, Any]:
         return {"envy": bool(self.envy)}
 
-    # =========================
-    # Dream
-    # =========================
-
     def DreamState(self) -> Dict[str, Any]:
         d = self.tetron.Snapshot()
         d["crown"] = int(self.state.crown)
         return d
-
-    # =========================
-    # Envy
-    # =========================
 
     def EnvyReanchor(self) -> Dict[str, Any]:
         return {
@@ -129,20 +81,14 @@ class Plexus:
     def TalliesTotal(self, tallies: Dict[str, Any]) -> int:
         return sum(int(value or 0) for value in dict(tallies or {}).values())
 
-    def TotalValid(self, tallies: Dict[str, Any]) -> bool:
+    def ValidTotal(self, tallies: Dict[str, Any]) -> bool:
         return self.TalliesTotal(tallies) == self.ExpectedTotal()
 
-    # =========================
-    # Proposal
-    # =========================
-
     def Propose(self, tohead: str, amount: int) -> Dict[str, Any]:
-
         if self.envy:
             return self.EnvyReanchor()
 
         tallies = dict(self.state.tallies)
-
         tallies[self.head] = tallies.get(self.head, 0) - int(amount)
         tallies[tohead] = tallies.get(tohead, 0) + int(amount)
 
@@ -152,19 +98,15 @@ class Plexus:
             "crown": CrownNext(self.state.crown),
         }
 
-    # =========================
-    # Ingest
-    # =========================
-
     def Ingest(self, tailin: Dict[str, Any]) -> List[Intent]:
-
         intents: List[Intent] = []
 
         if tailin.get("is_dream"):
-
             dreamtallies = dict(tailin.get("tallies", {}) or {})
 
-            if dreamtallies and not self.TotalValid(dreamtallies):
+            # ================= LINCHPIN ================= #
+            if dreamtallies and not self.ValidTotal(dreamtallies):
+            # ============================================ #
                 if not self.envy:
                     self.envy = True
                     intents.append(Intent("Envy", {
@@ -177,7 +119,6 @@ class Plexus:
                     "gem": GemName(self.state.crown),
                     "needtail": True,
                 }))
-
                 return intents
 
             if dreamtallies and dreamtallies != self.state.tallies:
@@ -189,14 +130,15 @@ class Plexus:
 
             return intents
 
-        inctallies = dict(tailin.get("tallies", {}))
+        incomingtallies = dict(tailin.get("tallies", {}))
         inccrown = int(tailin.get("crown", self.state.crown))
 
         cur = int(self.state.crown)
         exp = CrownNext(cur)
 
+        # ================= LINCHPIN ================= #
         if inccrown not in (cur, exp):
-
+        # ============================================ #
             if not self.envy:
                 self.envy = True
                 intents.append(Intent("Envy", {
@@ -208,16 +150,16 @@ class Plexus:
                 "crown": cur,
                 "gem": GemName(cur),
             }))
-
             return intents
 
-        if not self.TotalValid(inctallies):
-
+        # ================= LINCHPIN ================= #
+        if not self.ValidTotal(incomingtallies):
+        # ============================================ #
             if not self.envy:
                 self.envy = True
                 intents.append(Intent("Envy", {
                     "expectedtotal": self.ExpectedTotal(),
-                    "incomingtotal": self.TalliesTotal(inctallies),
+                    "incomingtotal": self.TalliesTotal(incomingtallies),
                 }))
 
             intents.append(Intent("RequestSync", {
@@ -225,21 +167,19 @@ class Plexus:
                 "gem": GemName(cur),
                 "needtail": True,
             }))
-
             return intents
 
         if self.envy:
             self.envy = False
 
-        if inctallies == self.state.tallies:
+        if incomingtallies == self.state.tallies:
             return intents
 
-        self.state.tallies = dict(inctallies)
+        self.state.tallies = dict(incomingtallies)
         self.state.crown = inccrown
         self.state.head = str(tailin.get("head", "")) or None
 
-        self.tetron.tallies = dict(inctallies)
-
+        self.tetron.tallies = dict(incomingtallies)
         self.tail = dict(tailin)
 
         intents.append(Intent("Propagate", {"tail": dict(self.tail)}))

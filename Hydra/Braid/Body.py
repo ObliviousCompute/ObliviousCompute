@@ -13,7 +13,6 @@ from typing import Any, Dict, List, Optional, Protocol, Tuple, Union
 from .Plexus import GemName, Intent
 from .Pulse import CursorLeft, Flicker1, Flicker2, Flicker3, Flicker4, Green, HideCursor, PadLine, ReadKey, Reset, ShowCursor, Step, Teal
 
-
 class Heart(Protocol):
     head: str
     heads: List[str]
@@ -25,7 +24,6 @@ class Heart(Protocol):
     def Ingest(self, tailin: Dict[str, Any]) -> List[Intent]: ...
     def Propose(self, tohead: str, amount: int) -> Dict[str, Any]: ...
     def DreamState(self) -> Dict[str, Any]: ...
-
 
 PrintLock = threading.Lock()
 SeenMax = 4096
@@ -48,7 +46,6 @@ WelcomeLines = [
     "",
 ]
 
-
 class ExitSignal(Exception):
     pass
 
@@ -58,7 +55,6 @@ def FirstTarget(head: str, heads: List[str]) -> str:
         if item != head:
             return item
     return heads[0]
-
 
 def NextTarget(head: str, heads: List[str], targethead: str, direction: int) -> str:
     if not heads:
@@ -70,7 +66,6 @@ def NextTarget(head: str, heads: List[str], targethead: str, direction: int) -> 
         if candidate != head or len(heads) == 1:
             return candidate
     return targethead
-
 
 @dataclass
 class Body:
@@ -213,7 +208,6 @@ class Body:
                     self.SendHunger(crown, needtail=True)
         self.RenderStatus()
 
-
 class Receiver(threading.Thread):
     def __init__(self, body: Body):
         super().__init__(daemon=True)
@@ -230,7 +224,6 @@ class Receiver(threading.Thread):
                     self.body.IngestMessage(message, addr)
             except Exception:
                 continue
-
 
 def ReadCommand(body: Body) -> Command:
     body.EnsureTarget()
@@ -278,7 +271,6 @@ def ReadCommand(body: Body) -> Command:
             body.RenderStatus()
     finally:
         termios.tcsetattr(filedescriptor, termios.TCSADRAIN, original)
-
 
 def RunBody(*, heart: Heart, head: str, port: int, peers: List[Tuple[str, int]], heads: List[str]) -> None:
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
