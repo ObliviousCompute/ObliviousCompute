@@ -91,7 +91,7 @@ class Body:
         self.targethead = NextTarget(self.head, self.heads, self.targethead, direction)
 
     def TailItems(self, tallies: Dict[str, Any]) -> str:
-        return f"{Reset}{Green}.{Reset}".join(
+        return f"{Reset}{Green}:{Reset}".join(
             f"{Teal}{item}{Reset}{(Flicker3() if index % 2 == 0 else Flicker4())}{tallies.get(item, 'x')}{Reset}"
             for index, item in enumerate(self.heads)
         )
