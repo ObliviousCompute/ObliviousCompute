@@ -17,6 +17,22 @@ What remains is a name, a password, and value that moves instantly.
 
 ---
 
+## 🧬 What Mowsie Is
+
+Mowsie is a shared state that moves value.
+
+It’s so small that even with around a hundred people, a single state is about the size of a small emoji.
+
+Think of it like a tiny surface where value simply shifts from one place to another.
+
+That’s the surface nodes share.
+
+A transaction is a small set of instructions that rearranges the surface.
+
+**Sending value is simply changing the state's surface.**
+
+---
+
 ## ✨ How It Feels
 
 Imagine a little shop or studio.
@@ -39,40 +55,29 @@ You just open your stash.
 
 ---
 
+## ☕ A Real Example
+
+A coffee shop creates their cache with one million salt.
+
+Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
+
+A returning customer selects the same cache, enters their name and password, and their stash resolves again.
+
+If it holds value, it appears. If not, it remains empty until funded.
+
+There is no backend tracking balances.
+
+There is only shared state.
+
+---
+
 ## 🗑️ What This Replaces
 
 Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
 
-Mowsie replaces loyalty systems with shared state — a cache where stashes appear only when they hold value.
+At their core, they’re all just ways of coordinating value within a group.
 
----
-
-## ⚖️ What Mowsie Is
-
-Each vendor creates a cache with a fixed supply of value.
-
-That supply does not change. It cannot be inflated or silently modified.
-
-Once it exists, it becomes the law of that cache.
-
-Everything that follows must obey it.
-
----
-
-## 🗝️ Stashes
-
-A stash is not stored or created.
-
-It is deterministically derived from three things:
-
-The cache.  
-A name.  
-A password.
-
-The same inputs will always resolve to the same stash.
-
-If a stash holds salt, it exists in shared state.  
-If it does not, it exists only as a possibility until funded.
+Each group could simply share the same surface.
 
 ---
 
@@ -82,9 +87,27 @@ Salt is the unit of value in Mowsie.
 
 It is finite, transferable, and cryptographically secured.
 
-It is a blank canvas. Vendors decide what it means — points, credits, passes.
+It is a blank canvas. People decide what it means — messages, points, credits, passes.
 
 They can call it whatever they want, but underneath, it is always salt.
+
+---
+
+## 🗝️ Caches & Stashes
+
+A cache is the shared state — a small domain that contains the surface where value lives and moves.
+
+Think of it like a tiny map.
+
+A stash is a specific spot on that map.
+
+That spot is always there, but it only becomes visible when it holds value.
+
+Your name and password act like a secret location on the map — a pin only you can find.
+
+Enter them again, and the same spot opens every time.
+
+Value moves within a cache by shifting between these spots.
 
 ---
 
@@ -104,19 +127,13 @@ Two people — or a small group — can share a cache and use it however they wa
 
 ---
 
-## ☕ A Real Example
+## 🏮 Lanterns
 
-A coffee shop creates their cache with one million salt.
+Lantern nodes provide visibility.
 
-Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
+They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
 
-A returning customer selects the same cache, enters their name and password, and their stash resolves again.
-
-If it holds value, it appears. If not, it remains empty until funded.
-
-There is no backend tracking balances.
-
-There is only shared state.
+They just let the system be seen.
 
 ---
 
@@ -129,16 +146,6 @@ Cells become accounts. Salt becomes value. Whispers becomes transactions. Dream 
 Nothing new is happening here.
 
 This is the simplest transaction possible — now routed over the internet.
-
----
-
-## 🏮 Lanterns
-
-Lantern nodes provide visibility.
-
-They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
-
-They just let the system be seen.
 
 ---
 
