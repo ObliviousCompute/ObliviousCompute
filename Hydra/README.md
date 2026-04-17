@@ -12,22 +12,40 @@ There is no leader and no history—only convergence.
 
 ---
 
-## ⚙️ Running the Demo
+## ⬇️ Install
 
+To run Hydra, install it with:
+
+pipx install Hydra-Braid  
+Hydra
+
+You’ll need Python 3.9 or newer and a UNIX-like terminal environment.
+
+---
+
+## 🐧 Operating System Support
+
+- ✅ Linux  
+- ✅ macOS  
+- ❌ Windows (sorry, but not sorry)
+
+---
+
+## 🌐 Networking
+
+Hydra runs in two modes.
+
+**Den** is local—multiple terminals on the same machine. *(sandbox)*  
+**Swamp** runs across a LAN, allowing multiple machines to share the same Braid.
+
+> *All nodes must use the same depth (port), and the same number of mutated heads to join the same braid.*  
+> *Each node must use a unique head.*
 
 <img src="../Relics/Awake.gif"/>
 
 ---
 
-### 🐧 Operating System
-
-- ✅ Linux  
-- ✅ macOS  
-- ❌ Windows (not supported)
-
----
-
-## 🎯 Intent
+🎯 Intent
 
 The Hydra Demo has been published as a **public technical disclosure**.
 
