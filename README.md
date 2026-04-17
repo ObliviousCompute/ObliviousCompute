@@ -9,9 +9,9 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else falls into oblivion.*
 
-If you want to experience it, start with [`Byzantium`](./Byzantium).
+Start with [`Byzantium`](./Byzantium) if you want to experience shared state
 
-If you want to wrap your head around the primitive, read the [`Admissibility`](./Admissibility.md) document.
+To wrap your head around the primitive, read the [`Admissibility`](./Admissibility.md) document.
 
 If you want to see where this is going, [`Mowsie`](./Mowsie) is the next implementation.
 
@@ -21,7 +21,7 @@ If you want to see where this is going, [`Mowsie`](./Mowsie) is the next impleme
 
 Oblivious Compute is expressed across four layers:
 
-- [`Skeleton`](./Skeleton) — the primitive. The rule that determines what is allowed to exist.
+- [`Skeleton`](./Skeleton) — the primitive. The rule that determines what can exist.
 - [`Hydra`](./Hydra) — the demonstration. Multiple nodes applying the rule and converging.
 - [`Byzantium`](./Byzantium) — the system. A full environment built around the rule. **(testing)**
 - [`Mowsie`](./Mowsie) — the application. A real-world system built on the primitive. **(building)**
@@ -36,8 +36,7 @@ Pure, *hyper-legible* expression of the primitive.
 
 [`Skeleton`](./Skeleton) is the structure that makes the system lawful.
 
-No abstraction.  
-No narrative.
+**The structure is the explanation.**
 
 > *(the lift diagram)*
 
@@ -48,6 +47,8 @@ No narrative.
 The minimal distributed demonstration of the same primitive.
 
 [`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
+
+A single admissibility gate, expressed in under a thousand lines.
 
 > *(the 1-minute flight)*
 
