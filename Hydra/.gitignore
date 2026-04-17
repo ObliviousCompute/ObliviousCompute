@@ -1,0 +1,41 @@
+# 🐍 Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 🧪 Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# 📦 Packaging leftovers
+pip-wheel-metadata/
+*.egg
+
+# 🧰 Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# 🧠 pipx / local installs (just in case)
+.python-version
+
+# 📝 Logs / temp
+*.log
+*.tmp
+
+# 🖥️ OS junk
+.DS_Store
+Thumbs.db
+
+# 🧑‍💻 Editor / IDE
+.vscode/
+.idea/
+
+# 🔐 Secrets (important if you're using PyPI tokens)
+.pypirc
+.env
+.env.*
