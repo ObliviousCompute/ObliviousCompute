@@ -6,9 +6,7 @@ and what persists is simply what the network accepts.
 
 There is no leader and no history—only convergence.
 
----
-
-<img src="../Relics/Spam.gif"/>
+<img src="../Relics/Awake.gif"/>
 
 ---
 
@@ -41,7 +39,10 @@ Hydra runs in two modes.
 > *All nodes must use the same depth (port), and the same number of mutated heads to join the same braid.*  
 > *Each node must use a unique head.*
 
-<img src="../Relics/Awake.gif"/>
+<img src="../Relics/Spam.gif"/>
+
+> *Run Hydra in a swamp if you want to use it as a packet collider*.  
+> *Push state with multiple machines and see what holds*.
 
 ---
 
