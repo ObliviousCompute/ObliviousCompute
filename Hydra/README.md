@@ -1,7 +1,5 @@
 # 🐍 Hydra
 
----
-
 **Hands-on network toy where packets collide and the state crystallizes.**
 
 ---
