@@ -65,7 +65,7 @@ This demo exists to show that **oblivious convergence through an admissability g
 If it fails, it fails cleanly.  
 If it works, it demonstrates a **new computational primitive**.
 
-<img src="../Relics/Alpha.png" width="300"/>
+<img src="../Relics/Alpha.png" width="400"/>
 
 <img src="../Relics/Bye.gif" width="400"/>
 
