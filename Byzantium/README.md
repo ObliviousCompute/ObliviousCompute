@@ -160,9 +160,7 @@ This is not a hardened protocol or a finished product.
 
 This is a game built on an **admissibility-governed state**.
 
-The state resolves to what can exist.
-
-Only **truth through erasure** remains.
+The state resolves to what can exist, and **only what exists persists.**
 
 ---
 
