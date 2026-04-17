@@ -1,4 +1,4 @@
-# 🐍 Hydra
+# 🐍 Hydra 🐍
 
 **Hands-on network toy where packets collide and state flows.**
 
