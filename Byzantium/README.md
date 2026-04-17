@@ -59,7 +59,7 @@ At the center of Byzantium is a **24-cell board**.
 
 Those 24 cells are the state.
 
-Everything you see between the menu and the input line—the 6×4 grid—is the system itself. There is nothing behind it. The system doesn’t synchronize logs or events. It synchronizes this board.
+Everything you see between the menu and the input line—the 6x4 grid—is the system itself. There is nothing behind it. The system doesn’t synchronize logs or events. It synchronizes this board.
 
 When participants agree on those 24 cells, the result behaves like a single structure perceived from multiple places.
 
