@@ -7,9 +7,9 @@ import tty
 from select import select
 from typing import Dict, List, Optional, Set, Tuple
 
-from Plexus import Plexus
-from Body import ExitSignal, RunBody
-from Pulse import AwakeField, Clear, ExitLine, HideCursor, Index, Now, Phase, ReadKey, RenderCentered, RenderField, ShowCursor
+from .Plexus import Plexus
+from .Body import ExitSignal, RunBody
+from .Pulse import AwakeField, Clear, ExitLine, HideCursor, Index, Now, Phase, ReadKey, RenderCentered, RenderField, ShowCursor
 
 BaseHeads = ["A", "B", "C", "D", "E"]
 Fields = ["environment", "depth", "mutation", "head", "awakening"]

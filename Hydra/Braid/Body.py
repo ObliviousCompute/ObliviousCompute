@@ -10,8 +10,8 @@ from dataclasses import dataclass, field
 from select import select
 from typing import Any, Dict, List, Optional, Protocol, Tuple, Union
 
-from Plexus import GemName, Intent
-from Pulse import CursorLeft, Flicker1, Flicker2, Flicker3, Flicker4, Green, HideCursor, PadLine, ReadKey, Reset, ShowCursor, Step, Teal
+from .Plexus import GemName, Intent
+from .Pulse import CursorLeft, Flicker1, Flicker2, Flicker3, Flicker4, Green, HideCursor, PadLine, ReadKey, Reset, ShowCursor, Step, Teal
 
 
 class Heart(Protocol):

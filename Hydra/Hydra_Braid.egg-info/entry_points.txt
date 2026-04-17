@@ -1,0 +1,2 @@
+[console_scripts]
+Hydra = Mutate:main
