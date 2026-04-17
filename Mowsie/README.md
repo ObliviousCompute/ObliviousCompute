@@ -1,4 +1,4 @@
-# 🐁 Mowsie
+# 🐁 Mowsie 🐁
 
 Mowsie is the first real-world application of Oblivious Compute.
 
