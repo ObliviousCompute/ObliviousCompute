@@ -6,7 +6,7 @@
 
 ---
 
-## Swamp Thing
+## 🪵 Swamp Thing
 
 In Hydra, the state is fluid. Nodes can leave, rejoin, and rehydrate instantly with no ceremony. Move between a den or a swamp, across machines or terminals.
 
