@@ -57,7 +57,7 @@ You just open your stash.
 
 ## ☕ A Real Example
 
-A coffee shop creates their cache with one million salt.
+A coffee shop creates a cache with an initial supply of salt.
 
 Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
 
@@ -77,7 +77,7 @@ Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases
 
 At their core, they’re all just ways of coordinating value within a group.
 
-When groups share the same surface, coordination becomes simple.
+When groups share the same surface, coordination is simple.
 
 ---
 
@@ -91,7 +91,7 @@ Nothing new is happening here.
 
 At its core, it is the simplest transaction possible — now routed over the internet.
 
-Coordination happens without global consensus or unnecessary energy overhead.
+Coordination happens without global consensus or energy overhead.
 
 ---
 
@@ -103,7 +103,7 @@ Coordination happens without global consensus or unnecessary energy overhead.
 >  
 > **Stashes** exist within **caches**.  
 >  
-> **Salt** moves and can carry **messages**.  
+> **Salt** moves and carries **messages**.  
 >  
 > The system is made visible by **lanterns**.
 
@@ -145,7 +145,7 @@ Transactions can carry a short message, up to 60 characters.
 
 Sometimes it’s something simple — a coffee, a class, a double cheeseburger. Sometimes it’s nothing at all.
 
-When value moves, a message can move with it. It might act like a receipt, or just a note between two people. It doesn’t have to be anything more than that.
+When value moves, it can carry a message — a receipt, or just a note between two people.
 
 Everything inside a cache is encrypted. From the outside, it’s just motion — packets moving, nothing readable. From the inside, it resolves into something meaningful.
 
@@ -169,7 +169,7 @@ They just let the system be seen.
 
 Each cache defines a specific shape for what can exist within it.
 
-Only stashes that match that shape can exist.
+Only stashes that match that shape exist.
 
 This is not a blockchain.
 
@@ -187,7 +187,7 @@ In a sense, every cache is its own tiny currency.
 
 We are defining the leaf structure, Merkleizing the state, building the mobile client, and implementing Lantern nodes.
 
-The goal is simple.
+The goal is clear.
 
 From download to opening your own private stash and receiving value in under one minute.
 
