@@ -18,7 +18,7 @@ Genesis adds one extra step: defining the total amount of salt in circulation.
 
 You enter your name and password, and with a single extra step, your system is created.
 
-All of the salt you defined is placed into your stash. At that moment, you are the entire system.
+All of the salt you defined is placed into your stash. **At that moment, you are the entire system.**
 
 When someone scans your QR code and you send the first transfer, your system becomes shared and behaves like any other.
 
@@ -48,8 +48,7 @@ You scan their new QR code and send them value.
 
 Their balance updates instantly.
 
-They now 
-exist inside your system.
+They now **exist inside your system**.
 
 **Every transfer extends the system.**
 
@@ -63,7 +62,7 @@ Someone walks into your shop and you say, *“Hey, we’re using Mowsie—give i
 
 They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within less than a minute you send them **value**.
 
-Their balance updates in less than a second, and they are now funded and part of your system.
+Their balance updates in less than a second, and they are now **funded** and part of your system.
 
 ---
 
