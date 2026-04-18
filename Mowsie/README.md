@@ -109,7 +109,7 @@ Coordination happens without global consensus or energy overhead.
 
 ---
 
-### 🧂 Salt
+## 🧂 Salt
 
 > Salt is the unit of value in Mowsie.
 > 
@@ -119,7 +119,7 @@ Coordination happens without global consensus or energy overhead.
 > 
 > They can call it whatever they want, but underneath, it is always salt.
 
-### 🗝️ Caches & Stashes
+## 🗝️ Caches & Stashes
 
 > A cache is the shared state — a small domain that contains the surface where value lives and moves.
 > 
@@ -135,7 +135,7 @@ Coordination happens without global consensus or energy overhead.
 > 
 > Value moves within a cache by shifting between these spots.  
 
-### 💬 Messages
+## 💬 Messages
 
 > Transactions can carry a short message, up to 60 characters.
 > 
@@ -145,7 +145,7 @@ Coordination happens without global consensus or energy overhead.
 > 
 > People can share a cache and use it however they want.  
 
-### 🏮 Lanterns
+## 🏮 Lanterns
 
 > Lantern nodes provide visibility.
 > 
