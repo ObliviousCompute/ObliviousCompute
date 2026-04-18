@@ -195,7 +195,7 @@ Lantern nodes are even lighter, targeting **potato-class hardware** — devices 
 
 The system does not rely on specialized infrastructure.
 
-It is open-source and built to run anywhere.
+***It is open-source and built to run anywhere.**
 
 ---
 
@@ -211,8 +211,8 @@ It is open-source and built to run anywhere.
 
 ---
 
-Mowsie replaces loyalty systems with shared state.  
-It is the wooden nickel of the 21st century.
+**Mowsie replaces loyalty systems with shared state.**  
+**It is the wooden nickel of the 21st century.**
 
 ---
 
