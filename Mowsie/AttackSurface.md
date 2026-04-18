@@ -20,6 +20,8 @@ Every change to the system is a transaction.
 
 A valid transaction preserves the total amount of salt, is properly signed, and only modifies the sender’s state. It must also fit within the structure of the system.
 
+In technical terms, transactions form a **monoid** — they combine cleanly in a single **atomic transition** and always produce a valid next state.
+
 If any of these conditions fail, the transaction is rejected immediately.
 
 There is no pending state, no ordering, and no delay. A transaction is either admitted or discarded.
@@ -46,15 +48,13 @@ If a transaction is not funded, it is rejected immediately.
 
 There is no fork, no ambiguity, and no delay.
 
-**Only valid state survives.**
-
 ---
 
 ## The Shape of the System
 
-Only valid, funded state exists.
+If a stash holds no salt, it disappears the next time state is shared.
 
-If a stash holds no salt, it disappears the next time state is shared. The system retains only economically active participants.
+The system retains only economically active participants.
 
 Every element of state must be well-formed. Keys must belong to the system, signatures must verify, and balances must preserve the total supply.
 
@@ -68,33 +68,29 @@ The system does not repair invalid state.
 
 ## Adversarial Behavior
 
-Sybil and Byzantine behavior reduce to the same constraint: an attacker can only submit state.
+Whether an attacker is Sybil or Byzantine, the constraint is the same.
 
-They may create many identities or attempt malicious transitions, but every action must still follow the system’s rules.
+They can only submit state.
 
-In practice, this reduces most attacks to repeatedly submitting malformed or incompatible state.
+The most likely way to attack the system is through visibility — attempting to isolate a user, delay updates, or control what state they see.
 
-It is seen, evaluated, and discarded.
+During such an attack, an attacker may spam malformed or incomplete state.
 
-**Invalid state does not persist.**
+However, state is not accepted blindly.
 
----
-
-## Visibility Attacks
-
-The remaining attack surface is not correctness, but visibility.
-
-An attacker may attempt to isolate a user, delay updates, or control what state they see. This includes eclipse and delay attacks.
-
-The goal is to convince a user to accept incomplete or incorrect state.
-
-However, state is not accepted blindly. Each participant expects to see their own value reflected in the system.
+Each participant expects to see their own value reflected in the system.
 
 If it is missing, the state is rejected and refreshed.
 
-Incorrect or delayed state does not propagate.
+Nodes do not form trust relationships with one another. They broadcast toward shared visibility surfaces — **Lanterns**.
 
-**It is replaced.**
+This makes eclipse-style attacks significantly harder to achieve, and multiple Lanterns can bypass any single point of interference.
+
+As soon as visibility is restored, the correct state reasserts itself.
+
+The attacker is not followed — they are bypassed.
+
+**Invalid state does not persist.**
 
 ---
 
