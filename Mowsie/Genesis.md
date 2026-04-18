@@ -6,19 +6,21 @@
 
 ## The Beginning
 
-When you open the app, it defaults to **Join**.
+When you open the app, it asks for the name of a cache.
 
-This is the normal path. It assumes you are entering an existing system.
+You can enter one manually or scan a QR code.
 
-If you want to create your own system, select **Genesis**.
+Manual entry will surface caches you’ve already joined. This is the normal path — you enter a system and select **Join**.
 
-Enter the name of your system. Define the total amount of salt in circulation. Then enter your name and password.
+If you want to create your own system, enter a new name and select **Genesis** instead.
 
-In a single step, your system is created.
+Genesis adds one extra step: defining the total amount of salt in circulation.
 
-**This creates your identity and the starting state.**
+You enter your name and password, and with a single extra step, your system is created.
 
-All of the salt you define is placed into your stash. From that point forward, your system behaves like any other.
+All of the salt you defined is placed into your stash. At that moment, you are the entire system.
+
+When someone scans your QR code and you send the first transfer, your system becomes shared and behaves like any other.
 
 **The only difference is that you created it.**
 
@@ -50,15 +52,15 @@ There is no registration process.
 
 ## Joining
 
-A new participant opens the app and selects **Join**.
+A new participant opens the app, scans your QR code, and selects **Join**.
 
-They scan your QR code, enter a name and password, and immediately open a stash tied to your system.
+They can save your QR code under a name.
 
-You send them salt.
+They enter a name and password to open a stash tied to your system.
 
-Their balance updates instantly.
+You scan their new QR code and send them value.
 
-They now **exist inside the system**.
+They now **exist inside your system**.
 
 ---
 
@@ -68,23 +70,11 @@ They now **exist inside the system**.
 
 Someone walks into your shop and you say, *“Hey, we’re using Mowsie—give it a try.”*
 
-They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within seconds you send them **value**.
+They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within less than a minute you send them **value**.
 
 Their balance updates instantly, and they are now part of your system.
 
 **This is what Genesis creates.**
-
----
-
-## From Zero
-
-There are no accounts to create, no emails to verify, and no approvals required.
-
-A participant does not sign up.
-
-They appear the moment they receive value.
-
-From nothing to a funded stash takes less than a minute.
 
 ---
 
@@ -97,6 +87,18 @@ Later, they spend salt to receive goods or services, and the balance updates ins
 There is no delay between action and result, and no external system keeping track of balances.
 
 **Value moves at the same speed as the interaction.**
+
+---
+
+## From Zero
+
+There are no accounts to create, no emails to verify, and no approvals required.
+
+A participant does not sign up.
+
+They appear the moment they receive value.
+
+From nothing to a funded stash takes less than a minute.
 
 ---
 
@@ -118,7 +120,7 @@ A valid transaction is admitted immediately, and every observing node updates it
 
 Finality is not deferred or probabilistic.
 
-**It happens at the moment of admission.**
+**It happens in less than a second from the moment of admission.**
 
 ---
 
