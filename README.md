@@ -13,7 +13,7 @@ Start with [`Byzantium`](./Byzantium) if you want to experience shared state
 
 To wrap your head around the primitive, read the [`Admissibility`](./Admissibility.md) document.
 
-If you want to see where this is going, [`Mowsie`](./Mowsie) is the next implementation.
+If you want to see where this is going, [`Mowsie`](./Mowsie/README.md) is the next implementation.
 
 ---
 
