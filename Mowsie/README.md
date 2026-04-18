@@ -119,7 +119,7 @@ It is a blank canvas. People decide what it means — messages, points, credits,
 
 They can call it whatever they want, but underneath, it is always salt.
 
----
+<hr style="border: none; border-top: 1px solid #ccc; opacity: 0.4;">
 
 ### 🗝️ Caches & Stashes
 
@@ -137,7 +137,7 @@ Enter them again, and the same spot opens every time.
 
 Value moves within a cache by shifting between these spots.
 
----
+<hr style="border: none; border-top: 1px solid #ccc; opacity: 0.4;">
 
 ### 💬 Messages
 
@@ -149,7 +149,7 @@ Everything inside a cache is encrypted — meaningless from the outside, meaning
 
 People can share a cache and use it however they want.
 
----
+<hr style="border: none; border-top: 1px solid #ccc; opacity: 0.4;">
 
 ### 🏮 Lanterns
 
