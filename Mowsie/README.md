@@ -189,7 +189,7 @@ We are defining the leaf structure, Merkleizing the state, building the mobile c
 
 The goal is clear.
 
-From download to opening your own private stash and receiving value in under one minute.
+Creating a value system should be as simple as sending an email — opening a private stash to receive value in under one minute, with sub-second transaction finality.
 
 ---
 
