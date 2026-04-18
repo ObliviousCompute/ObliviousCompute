@@ -195,7 +195,7 @@ Lantern nodes are even lighter, targeting **potato-class hardware** — devices 
 
 The system does not rely on specialized infrastructure.
 
-***It is open-source and built to run anywhere.**
+**It is open-source and built to run anywhere.**
 
 ---
 
