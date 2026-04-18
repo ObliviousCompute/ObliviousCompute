@@ -21,10 +21,10 @@ If you want to see where this is going, [`Mowsie`](./Mowsie/README.md) is the ne
 
 Oblivious Compute is expressed across four layers:
 
-- [`Skeleton`](./Skeleton) — the primitive. The rule that determines what can exist.
+- [`Skeleton`](./Skeleton/README.md) — the primitive. The rule that determines what can exist.
 - [`Hydra`](./Hydra) — the demonstration. Multiple nodes applying the rule and converging.
 - [`Byzantium`](./Byzantium) — the system. A full environment built around the rule. **(testing)**
-- [`Mowsie`](./Mowsie) — the application. A real-world system built on the primitive. **(building)**
+- [`Mowsie`](./Mowsie/README.md) — the application. A real-world system built on the primitive. **(building)**
 
 *Each layer is the same idea, expressed at a different scale—from pure rule to real-world application.*
 
@@ -34,7 +34,7 @@ Oblivious Compute is expressed across four layers:
 
 Pure, *hyper-legible* expression of the primitive.
 
-[`Skeleton`](./Skeleton) is the structure that makes the system lawful.
+[`Skeleton`](./Skeleton/README.md) is the structure that makes the system lawful.
 
 **The structure is the explanation.**
 
@@ -76,7 +76,7 @@ Just a live board, shaped in real time by the people inside it.
 
 The first real-world application of Oblivious Compute.
 
-[`Mowsie`](./Mowsie) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
+[`Mowsie`](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
 
 Users don’t create accounts.  
 *They receive value.*
