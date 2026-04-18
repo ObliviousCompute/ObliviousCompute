@@ -77,7 +77,21 @@ Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases
 
 At their core, they’re all just ways of coordinating value within a group.
 
-Each group could simply share the same surface.
+When groups share the same surface, coordination becomes simple.
+
+---
+
+## ♻️ How This Exists
+
+Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium).
+
+Cells become accounts. Salt becomes value. Whispers become transactions. Dream becomes state. Crypt becomes transport.
+
+Nothing new is happening here.
+
+At its core, it is the simplest transaction possible — now routed over the internet.
+
+Coordination happens without global consensus or unnecessary energy overhead.
 
 ---
 
@@ -151,25 +165,21 @@ They just let the system be seen.
 
 ---
 
-## 🌐 How This Exists
-
-Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium).
-
-Cells become accounts. Salt becomes value. Whispers becomes transactions. Dream becomes state. Crypt becomes transport.
-
-Nothing new is happening here.
-
-This is the simplest transaction possible — now routed over the internet.
-
----
-
 ## 🧠 Why This Is Different
 
-There is no history. No ordering. No consensus. No fees.
+Each cache defines a specific shape for what can exist within it.
 
-Invalid state does not propagate. It fails immediately.
+Only stashes that match that shape can exist.
 
-Even if an attacker succeeds, they can only delay visibility. They cannot change truth.
+This is not a blockchain.
+
+If anything, it’s closer to a “lockchain.”
+
+This isn’t one global system.
+
+It’s many small systems — independent, self-contained, and created as needed.
+
+In a sense, every cache is its own tiny currency.
 
 ---
 
