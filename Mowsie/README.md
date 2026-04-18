@@ -185,6 +185,20 @@ Creating a value system should be as simple as sending an email — opening a pr
 
 ---
 
+## 🥔 Hardware Targets 🍞
+
+Mowsie is designed to run on everyday devices.
+
+Wallets are expected to operate on **toaster-class phones** — older mobile hardware like a Galaxy S7.
+
+Lantern nodes are even lighter, targeting **potato-class hardware** — devices like a Raspberry Pi Zero 2.
+
+The system does not rely on specialized infrastructure.
+
+It is open-source and built to run anywhere.
+
+---
+
 ## 📡 Contact
 
 > If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
