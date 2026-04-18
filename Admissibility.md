@@ -196,20 +196,6 @@ driven entirely by local invariants.
 
 ---
 
-This model extends beyond classical systems.
-
-In quantum contexts, maintaining coherence across distributed or entangled states is constrained not only by noise,  
-but by the difficulty of coordinating valid transitions without inconsistency.
-
-Admissibility-based coordination offers a different approach:
-
-Systems evolve only through locally valid transitions,  
-without reconstructing prior states or enforcing global agreement.
-
-Computation remains confined to the boundary of admissibility.
-
----
-
 Admissibility does not require agreement.
 
 It requires coordination within a shared geometry of state.
