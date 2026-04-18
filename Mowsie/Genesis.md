@@ -72,9 +72,7 @@ Someone walks into your shop and you say, *“Hey, we’re using Mowsie—give i
 
 They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within less than a minute you send them **value**.
 
-Their balance updates instantly, and they are now part of your system.
-
-**This is what Genesis creates.**
+Their balance updates in less than a second, and they are now part of your system.
 
 ---
 
