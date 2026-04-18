@@ -191,7 +191,7 @@ Mowsie is designed to run on everyday devices.
 
 Wallets are expected to operate on **toaster-class phones** — older mobile hardware like a Galaxy S7.
 
-Lantern nodes are even lighter, targeting **potato-class hardware** — devices like a Raspberry Pi Zero 2.
+Lantern nodes are even lighter, targeting **potato-class hardware** — devices like a Raspberry Pi Zero 2w.
 
 The system does not rely on specialized infrastructure.
 
