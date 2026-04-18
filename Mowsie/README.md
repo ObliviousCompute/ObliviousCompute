@@ -111,50 +111,47 @@ Coordination happens without global consensus or energy overhead.
 
 ### 🧂 Salt
 
-Salt is the unit of value in Mowsie.
+> Salt is the unit of value in Mowsie.
 
-It is finite, transferable, and cryptographically secured.
+> It is finite, transferable, and cryptographically secured.
 
-It is a blank canvas. People decide what it means — messages, points, credits, passes.
+> It is a blank canvas. People decide what it means — messages, points, credits, passes.
 
-They can call it whatever they want, but underneath, it is always salt.
-
+> They can call it whatever they want, but underneath, it is always salt.
 
 ### 🗝️ Caches & Stashes
 
-A cache is the shared state — a small domain that contains the surface where value lives and moves.
+> A cache is the shared state — a small domain that contains the surface where value lives and moves.
 
-Think of it like a tiny map.
+> Think of it like a tiny map.
 
-A stash is a specific spot on that map.
+> A stash is a specific spot on that map.
 
-That spot is always there, but it only becomes visible when it holds value.
+> That spot is always there, but it only becomes visible when it holds value.
 
-Your name and password act like a secret location on the map — a pin only you can find.
+> Your name and password act like a secret location on the map — a pin only you can find.
 
-Enter them again, and the same spot opens every time.
+> Enter them again, and the same spot opens every time.
 
-Value moves within a cache by shifting between these spots.
-
+> Value moves within a cache by shifting between these spots.
 
 ### 💬 Messages
 
-Transactions can carry a short message, up to 60 characters.
+> Transactions can carry a short message, up to 60 characters.
 
-Sometimes it’s a receipt — a coffee, a class, a double cheeseburger. Sometimes it’s just a note between two people.
+> Sometimes it’s a receipt — a coffee, a class, a double cheeseburger. Sometimes it’s just a note between two people.
 
-Everything inside a cache is encrypted — meaningless from the outside, meaningful from within.
+> Everything inside a cache is encrypted — meaningless from the outside, meaningful from within.
 
-People can share a cache and use it however they want.
-
+> People can share a cache and use it however they want.
 
 ### 🏮 Lanterns
 
-Lantern nodes provide visibility.
+> Lantern nodes provide visibility.
 
-They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
+> They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
 
-They just let the system be seen.
+> They just let the system be seen.
 
 ---
 
