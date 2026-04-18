@@ -10,7 +10,7 @@ When you open the app, it asks for the name of a cache.
 
 You can enter one manually or scan a QR code.
 
-Manual entry will surface caches you’ve already joined. This is the normal path — you enter a system and select **Join**.
+Manual entry will surface caches you’ve already joined. This is the normal path — choose a cache and select **Join**.
 
 If you want to create your own system, enter a new name and select **Genesis** instead.
 
