@@ -4,7 +4,7 @@
 
 ---
 
-## The First Moment
+## The Beginning
 
 When you open the app, it defaults to **Join**.
 
