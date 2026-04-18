@@ -72,53 +72,23 @@ Someone walks into your shop and you say, *“Hey, we’re using Mowsie—give i
 
 They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within less than a minute you send them **value**.
 
-Their balance updates in less than a second, and they are now part of your system.
+Their balance updates in less than a second, and they are now funded and part of your system.
 
 ---
 
-## Spending
-
-A customer hands over $20 and receives **20 salt**.
-
-Later, they spend salt to receive goods or services, and the balance updates instantly.
-
-There is no delay between action and result, and no external system keeping track of balances.
-
-**Value moves at the same speed as the interaction.**
-
----
-
-## From Zero
+## Once It Begins
 
 There are no accounts to create, no emails to verify, and no approvals required.
 
-A participant does not sign up.
+A participant appears the moment they receive value.
 
-They appear the moment they receive value.
-
-From nothing to a funded stash takes less than a minute.
-
----
-
-## Growth
-
-Every new participant enters the system by receiving value.
+Balances update in less than a second, and every valid transfer is immediately reflected across the system.
 
 Every transfer extends the shared state and brings another identity into it.
 
 The system grows through use, not through registration or coordination.
 
----
-
-## Finality
-
-There is no waiting period after a transaction is created.
-
-A valid transaction is admitted immediately, and every observing node updates its state deterministically.
-
-Finality is not deferred or probabilistic.
-
-**It happens in less than a second from the moment of admission.**
+**Value moves at the same speed as the interaction.**
 
 ---
 
