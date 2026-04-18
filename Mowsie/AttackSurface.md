@@ -1,6 +1,8 @@
 # Attack Surface
 
-*What can go wrong — and why it doesn’t.*
+**What can go wrong — and why it doesn’t.**
+
+---
 
 Mowsie does not secure itself through **consensus**, **history**, or **ordering**.
 
