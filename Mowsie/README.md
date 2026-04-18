@@ -143,15 +143,11 @@ Value moves within a cache by shifting between these spots.
 
 Transactions can carry a short message, up to 60 characters.
 
-Sometimes it’s something simple — a coffee, a class, a double cheeseburger. Sometimes it’s nothing at all.
+Sometimes it’s a receipt — a coffee, a class, a double cheeseburger. Sometimes it’s just a note between two people.
 
-When value moves, it can carry a message — a receipt, or just a note between two people.
+Everything inside a cache is encrypted — meaningless from the outside, meaningful from within.
 
-Everything inside a cache is encrypted. From the outside, it’s just motion — packets moving, nothing readable. From the inside, it resolves into something meaningful.
-
-And sometimes, it’s not about the value at all.
-
-Two people — or a small group — can share a cache and use it however they want.
+People can share a cache and use it however they want.
 
 ---
 
