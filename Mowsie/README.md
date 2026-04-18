@@ -187,7 +187,7 @@ Creating a value system should be as simple as sending an email — opening a pr
 
 ## 📡 Contact
 
-If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
+> If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
 
 ---
 
