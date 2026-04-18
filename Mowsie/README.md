@@ -1,6 +1,6 @@
 # 🐁 Mowsie 🐁
 
-Mowsie is the first real-world application of Oblivious Compute.
+Mowsie is the first real-world application of [`Oblivious Compute`](../README.md).
 
 Start with [`Genesis`](./Genesis.md) to see how salt comes into existence.  
 After that, check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.
@@ -83,7 +83,7 @@ When groups share the same surface, coordination is simple.
 
 ## ♻️ How This Exists
 
-Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium).
+Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium/README.md).
 
 Cells become accounts. Salt becomes value. Whispers become transactions. Dream becomes state. Crypt becomes transport.
 
