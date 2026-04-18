@@ -2,7 +2,7 @@
 
 Mowsie is the first real-world application of [`Oblivious Compute`](../README.md).
 
-Start with [`Genesis`](./Genesis.md) to see how salt comes into existence.  
+Follow up with [`Genesis`](./Genesis.md) to see how salt comes into existence.  
 After that, check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.
 
 ---
