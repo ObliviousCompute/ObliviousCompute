@@ -12,15 +12,13 @@ This is the normal path. It assumes you are entering an existing system.
 
 If you want to create your own system, select **Genesis**.
 
-Enter the name of your shop, the name of your system, and the total amount of salt you want in circulation. Then enter your name and password.
+Enter the name of your system. Define the total amount of salt in circulation. Then enter your name and password.
 
 In a single step, your system is created.
 
 **This creates your identity and the starting state.**
 
-You are placed directly into the same interface that every participant uses. There is no admin panel, no setup flow, and no backend to configure.
-
-From that point forward, your system behaves like any other.
+All of the salt you define is placed into your stash. From that point forward, your system behaves like any other.
 
 **The only difference is that you created it.**
 
