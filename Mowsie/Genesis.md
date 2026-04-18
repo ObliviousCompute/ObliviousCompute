@@ -26,13 +26,13 @@ When someone scans your QR code and you send the first transfer, your system bec
 
 ---
 
-## The First State
+## The One Rule
 
 The amount of salt you define becomes a fixed property of the system.
 
-It cannot be changed or inflated.
+It is part of the system’s identity and cannot be changed or inflated.
 
-Every valid transaction must preserve it.
+**Every valid transaction must preserve it.**
 
 ---
 
@@ -48,7 +48,8 @@ You scan their new QR code and send them value.
 
 Their balance updates instantly.
 
-They now **exist inside your system**.
+They now 
+exist inside your system.
 
 **Every transfer extends the system.**
 
