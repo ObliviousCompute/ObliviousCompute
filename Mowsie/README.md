@@ -97,6 +97,8 @@ Coordination happens without global consensus or energy overhead.
 
 ## 🧩 The Pieces of Mowsie
 
+*If you want to understand how it works under the hood, this is the model.*
+
 > Value is called **salt**.  
 >  
 > **Salt** lives inside **stashes**.  
