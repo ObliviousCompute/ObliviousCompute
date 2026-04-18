@@ -1,6 +1,6 @@
 # Genesis
 
-**Genesis** is the moment a system comes into existence.
+**The moment a system comes into existence.**
 
 ---
 
@@ -30,37 +30,27 @@ When someone scans your QR code and you send the first transfer, your system bec
 
 The amount of salt you define becomes a fixed property of the system.
 
-It cannot be changed, inflated, or silently modified. It exists as part of the shared state, and every participant who joins will validate it independently.
+It cannot be changed or inflated.
 
-From that moment forward, all valid transactions must preserve it.
-
----
-
-## Extending the State
-
-You show your QR code to another device and initiate the first transfer of **salt**.
-
-That transfer brings the next participant into the system and extends it beyond a single stash.
-
-From that point forward, anyone who holds salt can transfer it to someone else, and the system grows naturally through use.
-
-There is no registration process.
-
-**The system expands by sending value.**
+Every valid transaction must preserve it.
 
 ---
 
 ## Joining
 
-A new participant opens the app, scans your QR code, and selects **Join**.
+You show your QR code to another device.
 
-They can save your QR code under a name.
+They scan it, select **Join**, and can save it under a name.
 
 They enter a name and password to open a stash tied to your system.
 
 You scan their new QR code and send them value.
 
+Their balance updates instantly.
+
 They now **exist inside your system**.
+
+**Every transfer extends the system.**
 
 ---
 
