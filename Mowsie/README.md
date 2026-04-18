@@ -81,7 +81,21 @@ Each group could simply share the same surface.
 
 ---
 
-## 🧂 Salt
+## 🧩 The Pieces of Mowsie
+
+> Value is called **salt**.  
+>  
+> **Salt** lives inside **stashes**.  
+>  
+> **Stashes** exist within **caches**.  
+>  
+> **Salt** moves and can carry **messages**.  
+>  
+> The system is made visible by **lanterns**.
+
+---
+
+### 🧂 Salt
 
 Salt is the unit of value in Mowsie.
 
@@ -93,7 +107,7 @@ They can call it whatever they want, but underneath, it is always salt.
 
 ---
 
-## 🗝️ Caches & Stashes
+### 🗝️ Caches & Stashes
 
 A cache is the shared state — a small domain that contains the surface where value lives and moves.
 
@@ -111,7 +125,7 @@ Value moves within a cache by shifting between these spots.
 
 ---
 
-## 💬 Messages
+### 💬 Messages
 
 Transactions can carry a short message, up to 60 characters.
 
@@ -127,7 +141,7 @@ Two people — or a small group — can share a cache and use it however they wa
 
 ---
 
-## 🏮 Lanterns
+### 🏮 Lanterns
 
 Lantern nodes provide visibility.
 
