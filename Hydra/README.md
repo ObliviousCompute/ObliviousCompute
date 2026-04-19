@@ -54,8 +54,7 @@ Hydra runs in two modes.
 > *All nodes must use the same depth (port), and the same number of mutated heads.*  
 
 <img src="../Relics/Chomp.gif"/>
-
-> *To use Hydra as a packet collider, run it in a Swamp.*  
+  
 > *Push state with multiple machines and see what holds.*
 
 ---
