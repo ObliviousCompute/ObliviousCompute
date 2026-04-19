@@ -102,7 +102,7 @@ It’s like stepping back up to the card table. You don’t ask what happened wh
 
 ---
 
-## ⚙️ How It Works (Brief)
+## ⚙️ How It Works
 
 Players (“souls”) enter a shared state. A deterministic genesis builds the board, and every interaction is expressed as a glyph—validated, applied, and propagated across the network.
 
