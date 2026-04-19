@@ -11,15 +11,15 @@ Then check out the [`Attack Surface`](./AttackSurface.md) analysis to see how *i
 
 ## 🧬 What This Is
 
-*Imagine* a **shared state** that *moves value*.
+*Imagine* a **shared state** that moves value.
 
 It’s so small that even with around a hundred people, a single state is about the size of a *small emoji*.
 
-Think of it like a *tiny surface* where value simply *shifts* from one place to another.
+Think of it like a *tiny surface* where value simply shifts from one place to another.
 
 That’s the **surface** nodes share.
 
-A **transaction** is a small set of instructions that *rearranges the surface*.
+A **transaction** is a small set of instructions that rearranges the surface.
 
 **Sending value is simply changing the state's surface.**
 
@@ -29,9 +29,9 @@ A **transaction** is a small set of instructions that *rearranges the surface*.
 
 Could this replace *punch cards*, *gift cards*, and *loyalty systems* with **shared state**?
 
-What if *accounts*, *fees*, and *backends* just… *disappeared*?
+What if *accounts*, *fees*, and *backends* just... disappeared?
 
-What remains is a **name**, a **password**, and **value** that moves *instantly*.
+What remains is a **name**, a **password**, and **value** that moves instantly.
 
 ---
 
@@ -43,11 +43,11 @@ You walk in. You scan a QR code or select a cache you’ve already scanned.
 
 You enter a **name** and **password**.
 
-Your **stash** appears *instantly* — always the same for that name, password, and cache.
+Your **stash** appears instantly — always the same for that name, password, and cache.
 
 Within about a second, the **state catches up**.
 
-If your stash holds **value**, it’s already *waiting for you* in the state.
+If your stash holds **value**, it’s already waiting for you in the state.
 
 *No accounts. No setup. No flows.*
 
@@ -61,13 +61,13 @@ You just **open your stash**.
 
 A coffee shop creates a **cache** with an initial supply of **salt**.
 
-Cashiers start the day with *float*. Customers exchange *dollars* for **salt**. Later, they spend **salt** for goods.
+Cashiers start the day with float. Customers exchange dollars for **salt**. Later, they spend **salt** for goods.
 
-A returning customer selects the same cache, enters their name and password, and their stash *resolves again*.
+A returning customer selects the same cache, enters their name and password, and their stash resolves again.
 
-If it holds value, it *appears*. If not, it remains empty until funded.
+If it holds **value**, it appears. If not, it remains empty until funded.
 
-There is **no backend** tracking balances.
+There is no backend tracking balances.
 
 There is only **shared state**.
 
@@ -75,25 +75,25 @@ There is only **shared state**.
 
 ## 🗑️ What This Replaces
 
-Punch cards get *lost*. Gift cards are *forgotten*. Loyalty apps depend on **databases** that must be *trusted and maintained*.
+Punch cards get *lost*. Gift cards are *forgotten*. Loyalty apps depend on **databases** that must be trusted and maintained.
 
 At their core, they’re all just ways of *coordinating value* within a group.
 
-When groups share the same **surface**, coordination is *simple*.
+When groups share the same **surface**, coordination is simple.
 
 ---
 
 ## ♻️ How This Exists
 
-Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium/README.md).
+Built from primitives already demonstrated in [`Byzantium`](../Byzantium/README.md).
 
 **Cells** become *accounts*. **Salt** becomes *value*. **Whispers** become *transactions*. **Dream** becomes *state*. **Crypt** becomes *transport*.
 
-Nothing *new* is happening here.
+Nothing new is happening here.
 
-At its core, it is the *simplest transaction possible* — now routed over the internet.
+At its core, it is the *simplest transaction possible*, now routed over the internet.
 
-Coordination happens *without global consensus* or *energy overhead*.
+Coordination happens without global consensus or energy overhead.
 
 ---
 
@@ -115,47 +115,47 @@ Coordination happens *without global consensus* or *energy overhead*.
 
 ## 🧂 Salt
 
-> **Salt** is the unit of value in Mowsie.
+> **Salt** is the unit of value.
 > 
 > It is *finite*, *transferable*, and **cryptographically secured**.
 > 
-> It is a *blank canvas*. People decide what it means — *messages*, *points*, *credits*, *passes*.
+> It is a *blank canvas*. People decide what it means.
 > 
-> They can call it whatever they want, but underneath, it is always **salt**.
+> Underneath, it is always **salt**.
 
 ## 🗝️ Caches & Stashes
 
-> A **cache** is the shared state — a *small domain* that contains the surface where value *lives and moves*.
+> A **cache** is the shared state, a small domain where value lives and moves.
 > 
 > Think of it like a *tiny map*.
 > 
-> A **stash** is a specific *spot* on that map.
+> A **stash** is a specific spot on that map.
 > 
-> That spot is *always there*, but it only becomes *visible* when it holds value.
+> It only becomes *visible* when it holds value.
 > 
-> Your **name** and **password** act like a *secret location* on the map — a pin only you can find.
+> Your **name** and **password** act like a *secret location*.
 > 
-> Enter them again, and the same spot *opens every time*.
-> 
-> Value moves within a cache by *shifting between these spots*.  
+> Enter them again, and the same spot opens every time.
 
 ## 💬 Messages
 
-> Transactions can carry a *short message*, up to **60 characters**.
+> Transactions can carry a short message, up to **60 characters**.
 > 
-> Sometimes it’s a *receipt*. Sometimes it’s just a *note*.
+> Sometimes it’s a receipt. Sometimes it’s just a note.
 > 
-> Everything inside a cache is **encrypted** — meaningless from the outside, meaningful from within.
+> Everything inside a cache is **encrypted**.
 > 
-> People can share a cache and use it *however they want*.  
+> Meaningful from within, meaningless from the outside.
 
 ## 🏮 Lanterns
 
 > Lantern nodes provide **visibility**.
 > 
-> They *relay packets*. They do not decide truth. They do not store history. They do not enforce ordering.
+> They relay packets. They do not decide truth.
 > 
-> They just let the system **be seen**.
+> They do not store history.
+> 
+> They just let the system be seen.
 
 ---
 
@@ -163,47 +163,45 @@ Coordination happens *without global consensus* or *energy overhead*.
 
 Each cache defines a specific *shape* for what can exist within it.
 
-Only stashes that match that shape *exist*.
+Only matching stashes exist.
 
-This is *not a blockchain*.
+This is not a blockchain.
 
-If anything, it’s closer to a **“lockchain.”**
+It is closer to a **lockchain**.
 
-This isn’t one global system.
+Not one global system.
 
-It’s *many small systems* — independent, self-contained, and created as needed.
-
-In a sense, every cache is its own *tiny currency*.
+But many small systems.
 
 ---
 
 ## 🛠️ What We’re Building
 
-We are defining the *leaf structure*, *Merkleizing the state*, building the *mobile client*, and implementing **Lantern nodes**.
+We are defining the structure, building the client, and implementing **Lantern nodes**.
 
-The goal is clear.
+The goal is simple.
 
-Creating a value system should be as simple as *sending an email* — opening a private stash to receive value in under one minute, with *sub-second finality*.
+Creating a value system should be as easy as sending an email.
 
 ---
 
 ## 🥔 Hardware Targets 🍞
 
-Mowsie is designed to run on *everyday devices*.
+Designed to run on *everyday devices*.
 
-Wallets are expected to operate on **toaster-class phones**.
+Wallets run on **toaster-class phones**.
 
-Lantern nodes are even lighter, targeting **potato-class hardware**.
+Lantern nodes run on **potato-class hardware**.
 
-The system does not rely on *specialized infrastructure*.
+No specialized infrastructure required.
 
-**Mowsie is open-source and built to run anywhere.**
+**Built to run anywhere.**
 
 ---
 
 ## 📡 Contact
 
-> If you *see it* and want to talk, reach out — ObliviousCompute@yahoo.com
+> If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
 
 ---
 
@@ -220,6 +218,6 @@ The system does not rely on *specialized infrastructure*.
 
 ## 📜 License
 
-This project is released under the terms of the [`LICENSE`](../LICENSE).
+Released under [`LICENSE`](../LICENSE).
 
-Use it, study it, modify it—just *respect the terms outlined there*.
+Use it, study it, modify it—just respect the terms.
