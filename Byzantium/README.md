@@ -20,24 +20,25 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ---
 
-## ⬇️ Install
-
-To run Byzantium, install it with:
-
-```bash
-pipx install Byzantium-Game  
-Byzantium
-```
-
-You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
-
----
-
 ## 🐧 Operating System Support
 
 - ✅ Linux  
 - ✅ macOS  
 - ❌ Windows (sorry, but not sorry)
+
+---
+
+## ⬇️ Install
+
+To run Byzantium, install it with:
+
+```bash
+pipx install Byzantium-Game && Byzantium
+```
+
+> Don't hace pipx?
+
+You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
