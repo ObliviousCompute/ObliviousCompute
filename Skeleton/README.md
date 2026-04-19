@@ -3,7 +3,7 @@
 **A minimal, fully legible expression of the Oblivious Compute primitive.**
 
 ---
-## ⚰️ IFF It Fits, It Ships
+## ⚰️ IFF It Fits, It Ships ⚰️
 
 > A state transition is valid only if it moves forward within a constrained window of the current state.  
 > Incompatible state is rejected or treated as a boundary violation (desync).
