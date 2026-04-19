@@ -16,7 +16,7 @@ If you want to create your own system, enter a new name and select **Genesis** i
 
 Genesis adds one extra step: defining the total amount of salt in circulation.
 
-You enter your name and password, and with a single extra step, your system is created.
+After salt, you enter your name and password, and with a single extra step, your system is created.
 
 All of the salt you defined is placed into your stash. **At that moment, you are the entire system.**
 
