@@ -36,9 +36,9 @@ To run Byzantium, install it with:
 pipx install Byzantium-Game && Byzantium
 ```
 
-> Don't have pipx?
-
 You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
+
+> Don't have pipx?
 
 ---
 
