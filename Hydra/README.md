@@ -42,7 +42,7 @@ You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environm
 
 ---
 
-## 🌐 Networking
+## 🍄 Networking
 
 Hydra runs in two modes.
 
