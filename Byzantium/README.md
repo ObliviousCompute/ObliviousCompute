@@ -120,13 +120,16 @@ This allows the board to converge without logs, history, or replay.
 
 ---
 
-## 🗝️ Security Notice
+## 🧬 Design
 
-Byzantium uses Ed25519 signing to validate actions.
+This is a game built on an admissibility-governed state.
 
-However, networking currently relies on simple XOR-based obfuscation. This is not secure encryption—and it’s not meant to be.
+The state is mutated with glyphs and resolves to what can exist.
 
-The system prioritizes **state integrity over transport security**.
+No history. No ordering. No replay.  
+Consensus is not negotiated.
+
+> Only what exists persists.
 
 ---
 
@@ -134,22 +137,13 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-## 🤔 What This Is Not
+## 🗝️ Security Notice
 
-This is not a traditional system.
+Byzantium uses Ed25519 signing to validate actions.
 
-No history. No ordering. No replay.  
-Consensus is not negotiated.
+However, networking currently relies on simple XOR-based obfuscation. This is not secure encryption—and it’s not meant to be.
 
-This is not a hardened protocol or a finished product.
-
----
-
-## 🧬 Design
-
-This is a game built on an **admissibility-governed state**.
-
-The state resolves to what can exist, and **only what exists persists.**
+The system prioritizes **state integrity over transport security**.
 
 ---
 
