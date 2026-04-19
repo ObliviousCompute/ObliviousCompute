@@ -183,8 +183,10 @@ We are defining the leaf structure, Merkleizing the state, building the mobile c
 
 > **The goal is clear and threefold.**  
 >
-> Creating a value system should be as simple as **sending an email**.  
-> Opening a private stash should take **less than a minute**.  
+> Creating a value system should be as simple as **sending an email**.
+> 
+> Opening a private stash should take **less than a minute**.
+> 
 > Transactions should reach **sub-second finality**.
 
 ---
