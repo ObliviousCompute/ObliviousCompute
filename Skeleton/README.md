@@ -1,6 +1,8 @@
 # 💀 Skeleton 💀
 
-A minimal, fully legible expression of the Oblivious Compute primitive.
+**A minimal, fully legible expression of the Oblivious Compute primitive.**
+
+---
 
 No architecture.  
 No interface.  
