@@ -139,7 +139,7 @@ Coordination happens without global consensus or energy overhead.
 > 
 > Value moves within a cache by shifting between these spots.  
 
-## 💬 Messages
+## 🗨️ Messages
 
 > Transactions can carry a short message, up to 60 characters.
 > 
