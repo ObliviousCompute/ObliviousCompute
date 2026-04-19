@@ -30,7 +30,7 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 ---
 
-## ⬇️ Install
+## 🧲 Install
 
 To run Hydra, install it with:
 ```bash
