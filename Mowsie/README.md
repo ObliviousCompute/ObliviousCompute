@@ -2,18 +2,8 @@
 
 Mowsie is the first real-world application of [`Oblivious Compute`](../README.md).
 
-Dive into [`Genesis`](./Genesis.md) to see how salt comes into existence.  
-After that, check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.
-
----
-
-## 🧀 The Idea
-
-Could Mowsie replace punch cards, gift cards, and loyalty systems with shared state?
-
-What if accounts, fees, and backends just… disappeared?
-
-What remains is a name, a password, and value that moves instantly.
+After reading below, dive into [`Genesis`](./Genesis.md) to see how salt comes into existence.  
+Then check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.
 
 ---
 
@@ -30,6 +20,16 @@ That’s the surface nodes share.
 A transaction is a small set of instructions that rearranges the surface.
 
 **Sending value is simply changing the state's surface.**
+
+---
+
+## 🧀 The Idea
+
+Could Mowsie replace punch cards, gift cards, and loyalty systems with shared state?
+
+What if accounts, fees, and backends just… disappeared?
+
+What remains is a name, a password, and value that moves instantly.
 
 ---
 
