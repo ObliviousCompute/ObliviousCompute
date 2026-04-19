@@ -59,7 +59,7 @@ Hydra runs in two modes.
 
 ---
 
-🎯 **Intent**
+## 🎯 Intent
 
 The Hydra Demo has been published as a **public technical disclosure**.
 
