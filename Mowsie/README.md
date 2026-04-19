@@ -9,7 +9,7 @@ Then check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it
 
 ---
 
-## 🧬 What This is
+## 🧬 What This Is
 
 Imagine a shared state that moves value.
 
