@@ -106,8 +106,7 @@ When you return with the same identity, nothing is replayed and nothing is recon
 
 It’s like stepping back up to the card table. You don’t ask what happened while you were gone. You just look down—and the game is already in progress.
 
-> You don’t reconnect to the past.  
-> You reconnect to the present.
+> You don’t reconnect to the past. You reconnect to the present.
 
 ---
 
