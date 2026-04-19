@@ -67,10 +67,10 @@ def ingest(state, packet):
 ## 🦴 Constraint 🦴
 
 This primitive assumes no access to history.
-
-There are no logs to replay.  
+ 
 No ordering to reconstruct.  
 No prior state to consult.
+no logs to replay.
 
 All decisions are made against the present state only.
 
