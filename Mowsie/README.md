@@ -73,7 +73,7 @@ There is only shared state.
 
 ---
 
-## 🗑️ What This Replaces
+## ♻️ What This Replaces
 
 Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
 
@@ -81,19 +81,19 @@ At their core, they’re all just ways of coordinating value within a group.
 
 When groups share the same surface, coordination is simple.
 
+Value moves anywhere with no energy overhead.
+
 ---
 
-## ♻️ How This Exists
+## 💠 How This Exists
 
 Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium/README.md).
 
 Cells become accounts. Salt becomes value. Whispers become transactions. Dream becomes state. Crypt becomes transport.
 
-Nothing new is happening here.
+This is the smallest version of that system that still moves value.
 
-At its core, it is the simplest transaction possible — now routed over the internet.
-
-Coordination happens without global consensus or energy overhead.
+The mechanism is the same, just routed over the internet.
 
 ---
 
