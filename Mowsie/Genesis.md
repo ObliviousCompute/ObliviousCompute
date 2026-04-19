@@ -60,9 +60,13 @@ They now **exist inside your system**.
 
 Someone walks into your shop and you say, *“Hey, we’re using Mowsie—give it a try.”*
 
-They download the app, open it, and ask what to do next. You show them your QR code, they scan it, and within less than a minute you send them **value**.
+They download the app and open it.
 
-Their balance updates in less than a second, and they are now **funded** and part of your system.
+You show them your QR code. They scan it and choose a name and password.
+
+Within less than a minute, you scan their QR code and send them **value**.
+
+Their balance updates in under a second, and they are now **funded** and part of your system.
 
 ---
 
