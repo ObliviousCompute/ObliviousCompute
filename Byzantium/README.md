@@ -74,25 +74,17 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 ---
 
-## 🔍 What You're Seeing
+## 🔥 Ashfall
 
-Messages aren’t logs—they’re part of state. Value (“salt”) moves through interaction, and incentives shape behavior in real time.
+The text feed isn’t a global log. Each node keeps a small rolling cache, just enough to provide context.
+
+Different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
 
 Every action attempts to reshape the board. If the change is valid, it becomes reality. If it isn’t, it disappears.
 
-There are no forks. No reconciliation. No second chances.
+Value moves through interaction, and incentives shape behavior.
 
-> History is replaced by admissibility.
-
----
-
-## 🔥 Ashfall (Text Feed)
-
-The text feed isn’t a global log. Each node keeps a small rolling cache of recent messages—just enough to give context.
-
-This means different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
-
-> The feed drifts. The board converges.
+> There are no forks. No reconciliation. No second chances.
 
 ---
 
