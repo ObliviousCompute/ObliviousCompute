@@ -10,9 +10,9 @@
 
 ## 🧠 What This Is
 
-Byzantium is a **shared projection**.
+Byzantium is a game built on a distributed state surface.
 
-The system exists entirely on the surface you’re looking at. There’s no hidden layer, no stored history, no backend keeping score. What you see is the system—continuously reshaped by the people inside it.
+The system exists entirely on the board you’re looking at. There’s no hidden layer, no stored history, no backend keeping score. What you see is the system—continuously reshaped by the people inside it.
 
 You don’t play *on* it. You play *with* it.
 
