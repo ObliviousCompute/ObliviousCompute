@@ -70,7 +70,7 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 <img src="../Relics/DoubleTrouble.gif"/>
 
-> *↑↑↑...Fun fact: **This GIF is over 5× the size** of the entire Byzantium runtime...↑↑↑*
+> *Fun Fact: **This GIF is over 5× the size** of the entire Byzantium runtime*
 
 ---
 
