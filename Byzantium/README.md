@@ -64,10 +64,9 @@ Everything you see between the menu and the input line—the 6x4 grid—is the s
 
 When participants agree on those 24 cells, the result behaves like a single structure perceived from multiple places.
 
-> You’re not looking at a representation of the system.  
-> You’re looking at the system.
-
 ---
+
+> You’re not looking at a representation of the system. You’re looking at the system.
 
 <img src="../Relics/DoubleTrouble.gif"/>
 
