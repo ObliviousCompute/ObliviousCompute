@@ -1,4 +1,4 @@
-# 🐍 Hydra 🐍
+# 🐍🐍 Hydra 🐍🐍
 
 **Hands-on network toy where packets collide and state flows.**
 
@@ -38,7 +38,7 @@ pipx install Hydra-Game && Hydra
 ```
 You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have [`pipx`](../Relics/pipx.md)?
+> Don't have **pipx**? See how to install it [`here`](../Relics/pipx.md).
 
 ---
 
@@ -49,12 +49,13 @@ Hydra runs in two modes.
 **Den** is local—multiple terminals on the same machine. *(sandbox)*  
 **Swamp** runs across a LAN, allowing multiple machines to share the same **Braid**.
 
+> *Think Hungry Hungry Hppos*
+> Run Hydra in a **Swamp** and see who can chomp the most **Tailies.**
 > *All nodes must use the same depth (port), and the same number of mutated heads.*  
-> *Each node must use a unique head.*
 
 <img src="../Relics/Spam.gif"/>
 
-> *Run Hydra in a swamp if you want to use it as a packet collider.*  
+> *To use Hydra as a packet collider, run it in a Swamp.*  
 > *Push state with multiple machines and see what holds.*
 
 ---
