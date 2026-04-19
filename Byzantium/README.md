@@ -82,9 +82,7 @@ Different participants may see *slightly different* recent text. The feed is *lo
 
 Every action attempts to reshape the **board**. If the change is *valid*, it **becomes reality**. If it isn’t, it *disappears*.
 
-**Value moves through interaction**, and **incentives shape behavior**.
-
-> There are no forks. No reconciliation. No second chances.
+> **Value moves through interaction**, and **incentives shape behavior**.
 
 ---
 
