@@ -87,14 +87,8 @@ Pure, *hyper-legible* expression of the primitive.
 
 Oblivious Compute does not carry the past forward.
 
-There are **no logs to replay.**  
-**No messages to order.**  
-**No history to reconcile.**
-
-Multiple states may appear—  
-*only one persists.*
-
 The system does not remember how it arrived.  
+
 It only admits what can exist next.
 
 **Everything else falls away.**
