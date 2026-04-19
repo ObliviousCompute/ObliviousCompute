@@ -3,14 +3,6 @@
 **A minimal, fully legible expression of the Oblivious Compute primitive.**
 
 ---
-
-No architecture.  
-No interface.  
-No abstraction.
-
-Just the rule that determines what is allowed to exist.
-
----
 ## 📦 IFF It Fits, It Ships
 
 > A state transition is valid only if it moves forward within a constrained window of the current state.  
@@ -72,7 +64,7 @@ def ingest(state, packet):
 
 ---
 
-## 🕸️ Constraint
+## 🦴 Constraint 🦴
 
 This primitive assumes no access to history.
 
