@@ -36,33 +36,13 @@ It is part of the system’s identity and cannot be changed or inflated.
 
 ---
 
-## Joining
-
-You show your QR code to another device.
-
-They scan it, select **Join**, and can save it under a name.
-
-Then they enter a name and password to open a stash tied to your system.
-
-You scan their new QR code and send them value.
-
-Their balance updates instantly.
-
-They now **exist inside your system**.
-
-**Every transfer extends the system.**
-
----
-
 ## In the Wild
 
-*This is what it looks like in practice.*
+*This is how it actually happens.*
 
-Someone walks into your shop and you say, *“Hey, we’re using Mowsie—give it a try.”*
+Someone downloads the app and opens it.
 
-They download the app and open it.
-
-You show them your QR code. They scan it and choose a name and password.
+You show your QR code. They scan it and choose a name and password.
 
 Within less than a minute, you scan their QR code and send them **value**.
 
