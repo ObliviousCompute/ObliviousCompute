@@ -30,7 +30,7 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 ---
 
-## 🧲 Install
+## 🍄 Install
 
 To run Hydra, install it with:
 ```bash
@@ -42,7 +42,7 @@ You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environm
 
 ---
 
-## 🍄 Networking
+## 🕸️ Networking
 
 Hydra runs in two modes.
 
