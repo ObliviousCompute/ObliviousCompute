@@ -1,6 +1,6 @@
 # 🐍🐍 Hydra 🐍🐍
 
-**Hands-on network game where packets collide and state flows.**
+**Where packets collide and state flows.**
 
 ---
 
