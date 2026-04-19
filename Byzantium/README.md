@@ -38,7 +38,7 @@ pipx install Byzantium-Game && Byzantium
 
 You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have pipx?
+> Don't have [`pipx`](../Relics/pipx.md)
 
 ---
 
