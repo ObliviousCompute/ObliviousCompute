@@ -1,14 +1,14 @@
 [project]
-name = "Hydra-Braid"
-version = "1.0.4"
+name = "Hydra-Game"
+version = "1.0.1"
 description = "Terminal entrypoint for Hydra"
 
 [project.scripts]
-Hydra = "Mutate:main"
+Hydra = "Hydra:main"
 
 [tool.setuptools]
-py-modules = ["Mutate"]
+py-modules = ["Hydra"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["Braid*"]
+include = ["Game"]

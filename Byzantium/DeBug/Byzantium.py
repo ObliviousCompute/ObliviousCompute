@@ -1,305 +1,172 @@
 import os
 import sys
-import json
 import time
-import threading
+import json
 from functools import wraps
 
 base = os.path.dirname(os.path.abspath(__file__))
-game = os.path.join(base, 'Game')
+game = os.path.join(base, "Game")
 
 if game not in sys.path:
     sys.path.insert(0, game)
 
-LOG_PATH = os.path.join(base, 'Byzantium.log')
-LOG_LOCK = threading.Lock()
+import Gateway
+import Crypt
+import Dream
+
+LOG_PATH = os.path.join(base, "Byzantium.log")
 
 
-def Short(value, n=16):
-    text = str(value)
-    return text if len(text) <= n else text[:n]
+def Log(event, **data):
+    try:
+        line = {"t": round(time.time(), 6), "e": str(event or "")}
+        line.update(data)
+        with open(LOG_PATH, "a", encoding="utf-8") as handle:
+            handle.write(json.dumps(line, sort_keys=True, default=str) + "\n")
+    except Exception:
+        pass
 
 
-def RawShape(raw, limit=64):
-    if not isinstance(raw, (bytes, bytearray)):
-        return {'type': type(raw).__name__, 'size': None, 'headhex': ''}
-    blob = bytes(raw)
-    return {
-        'type': type(raw).__name__,
-        'size': len(blob),
-        'headhex': blob[:max(0, int(limit))].hex(),
-    }
-
-
-def PacketShape(packet):
+def Shape(value):
     try:
         import Field
     except Exception:
         Field = None
 
-    if packet is None:
-        return {'type': 'None'}
+    try:
+        if value is None:
+            return {"type": "None"}
 
-    if isinstance(packet, dict):
-        shape = {
-            'type': 'dict',
-            'keys': sorted(str(k) for k in packet.keys()),
-            'header': str(packet.get('header', '') or '').strip().lower(),
-            'kind': str(packet.get('kind', '') or '').strip().lower(),
-        }
-        if 'souls' in packet:
-            try:
-                shape['soulscount'] = len(list(packet.get('souls') or []))
-            except Exception:
-                shape['soulscount'] = 'bad'
-        if 'cells' in packet:
-            try:
-                shape['cellscount'] = len(list(packet.get('cells') or []))
-            except Exception:
-                shape['cellscount'] = 'bad'
-        if 'saltbody' in packet:
-            try:
-                shape['saltcount'] = len(list(packet.get('saltbody') or []))
-            except Exception:
-                shape['saltcount'] = 'bad'
-        if 'key' in packet:
-            shape['keyhead'] = Short(packet.get('key', ''), 12)
-        try:
-            shape['packetsize'] = len(json.dumps(packet, sort_keys=True, separators=(',', ':'), default=str).encode('utf-8'))
-        except Exception:
-            shape['packetsize'] = 'unknown'
-        return shape
+        if isinstance(value, dict):
+            textbody = value.get("textbody", {}) or {}
+            if not isinstance(textbody, dict):
+                textbody = {}
+            return {
+                "type": "dict",
+                "header": str(value.get("header", "") or "").strip().lower(),
+                "kind": str(value.get("kind", "") or "").strip().lower(),
+                "key": str(value.get("key", "") or "")[:8],
+                "souls": len(list(value.get("souls", ()) or ())) if "souls" in value else None,
+                "cells": len(list(value.get("cells", ()) or ())) if "cells" in value else None,
+                "salt": len(list(value.get("saltbody", ()) or ())) if "saltbody" in value else None,
+                "text": str(textbody.get("text", "") or "")[-16:],
+            }
 
-    if Field is not None:
-        try:
-            if isinstance(packet, Field.State):
+        if Field is not None:
+            if isinstance(value, Field.State):
                 return {
-                    'type': 'Field.State',
-                    'cellscount': len(tuple(packet.cells or ())),
-                    'monumentcount': len(tuple(packet.monument or ())),
-                    'salttotal': int(packet.saltTotal),
-                    'selfsoul': str(packet.self[0] or ''),
-                    'selfkeyhead': Short(packet.self[1] or '', 12),
+                    "type": "Field.State",
+                    "cells": len(tuple(value.cells or ())),
+                    "monument": len(tuple(value.monument or ())),
+                    "self": str(value.self[0] or "")[:8],
                 }
-        except Exception:
-            pass
-        try:
-            if isinstance(packet, Field.SaltGlyph):
+
+            if isinstance(value, Field.SaltGlyph):
                 return {
-                    'type': 'Field.SaltGlyph',
-                    'keyhead': Short(packet.key, 12),
-                    'saltcount': len(tuple(packet.saltbody or ())),
-                    'texthead': Short(getattr(packet.textbody, 'text', ''), 32),
+                    "type": "Field.SaltGlyph",
+                    "key": str(value.key or "")[:8],
+                    "salt": len(tuple(value.saltbody or ())),
+                    "text": str(getattr(value.textbody, "text", "") or "")[-16:],
                 }
-        except Exception:
-            pass
 
-    if isinstance(packet, str):
-        return {'type': 'str', 'text': Short(packet, 32)}
+        if isinstance(value, str):
+            return {"type": "str", "text": value[-16:]}
 
-    return {'type': type(packet).__name__}
-
-
-def Jsonable(value):
-    if isinstance(value, (str, int, float, bool)) or value is None:
-        return value
-    if isinstance(value, (bytes, bytearray)):
-        return RawShape(value)
-    if isinstance(value, tuple):
-        return [Jsonable(v) for v in value]
-    if isinstance(value, list):
-        return [Jsonable(v) for v in value]
-    if isinstance(value, dict):
-        return {str(k): Jsonable(v) for k, v in value.items()}
-    return PacketShape(value)
-
-
-def Log(event, **payload):
-    try:
-        body = {
-            'ts': time.strftime('%Y-%m-%d %H:%M:%S'),
-            'thread': threading.current_thread().name,
-            'event': str(event or ''),
-        }
-        for key, value in payload.items():
-            body[str(key)] = Jsonable(value)
-        line = json.dumps(body, sort_keys=True, default=str)
-        with LOG_LOCK:
-            with open(LOG_PATH, 'a', encoding='utf-8') as handle:
-                handle.write(line + '\n')
-    except Exception:
-        pass
-
-
-def StateCard(obj):
-    try:
-        state = getattr(obj, 'state', None)
-        if state is None:
-            return {'state': 'none'}
-        return PacketShape(state)
+        return {"type": type(value).__name__}
     except Exception as exc:
-        return {'state': 'error', 'error': repr(exc)}
+        return {"type": "shapeerror", "error": repr(exc)}
 
 
-def BoxCard(obj):
-    try:
-        box = getattr(obj, 'box', None)
-        if box is None:
-            return {'box': 'none'}
-        out = {}
-        for lane in ('vault', 'crypt', 'ashfall'):
-            try:
-                out[lane] = PacketShape(getattr(box, lane, None))
-            except Exception as exc:
-                out[lane] = {'type': 'error', 'error': repr(exc)}
-        return out
-    except Exception as exc:
-        return {'box': 'error', 'error': repr(exc)}
-
-
-def WrapMethod(cls, name, builder=None):
-    original = getattr(cls, name, None)
-    if original is None or getattr(original, '__byzantium_cocoon__', False):
+def Install():
+    if getattr(Install, "Done", False):
         return
+    Install.Done = True
 
-    @wraps(original)
-    def wrapped(self, *args, **kwargs):
-        before = {}
-        if builder is not None:
-            try:
-                before = builder(self, 'enter', args, kwargs, None)
-            except Exception as exc:
-                before = {'buildererror': repr(exc)}
-        Log(f'{cls.__name__}.{name}.enter', **before)
+    orig_emitglyph = Crypt.Crypt.EmitGlyph
+
+    @wraps(orig_emitglyph)
+    def EmitGlyph(self, glyph):
+        Log("WireOutGlyph", shape=Shape(glyph))
+        return orig_emitglyph(self, glyph)
+
+    Crypt.Crypt.EmitGlyph = EmitGlyph
+
+    orig_emitsouls = Crypt.Crypt.EmitSouls
+
+    @wraps(orig_emitsouls)
+    def EmitSouls(self):
         try:
-            result = original(self, *args, **kwargs)
-            after = {}
-            if builder is not None:
-                try:
-                    after = builder(self, 'exit', args, kwargs, result)
-                except Exception as exc:
-                    after = {'buildererror': repr(exc)}
-            Log(f'{cls.__name__}.{name}.exit', **after)
-            return result
-        except Exception as exc:
-            fail = {}
-            if builder is not None:
-                try:
-                    fail = builder(self, 'error', args, kwargs, None)
-                except Exception as inner:
-                    fail = {'buildererror': repr(inner)}
-            fail['error'] = repr(exc)
-            Log(f'{cls.__name__}.{name}.error', **fail)
-            raise
+            soulcount = len(tuple(getattr(self, "souls", ()) or ()))
+        except Exception:
+            soulcount = None
+        Log("WireOutSouls", souls=soulcount)
+        return orig_emitsouls(self)
 
-    wrapped.__byzantium_cocoon__ = True
-    setattr(cls, name, wrapped)
+    Crypt.Crypt.EmitSouls = EmitSouls
 
+    orig_emitcomplete = Crypt.Crypt.EmitCompleteSouls
 
-def CryptBuilder(self, phase, args, kwargs, result):
-    data = {
-        'phase': phase,
-        'genesisdone': bool(getattr(self, 'genesisdone', False)),
-        'bindhost': str(getattr(self, 'bindhost', '') or ''),
-        'bindport': getattr(self, 'bindport', None),
-        'statecard': StateCard(self),
-        'glyphcard': PacketShape(getattr(self, 'glyph', None)),
-        'selfcard': {
-            'soul': str(getattr(getattr(self, 'self', None), 'soul', '') or ''),
-            'keyhead': Short(getattr(getattr(self, 'self', None), 'key', '') or '', 12),
-        },
-    }
-    if phase == 'enter':
-        if args:
-            first = args[0]
-            if isinstance(first, (bytes, bytearray)):
-                data['raw'] = RawShape(first)
-            else:
-                data['payload'] = PacketShape(first)
-        if len(args) > 1:
-            data['addr'] = args[1]
-        if 'addr' in kwargs:
-            data['addr'] = kwargs.get('addr')
-    if phase == 'exit' and result is not None:
-        if isinstance(result, tuple) and len(result) == 2 and isinstance(result[0], (bytes, bytearray)):
-            data['result'] = {'raw': RawShape(result[0]), 'addr': Jsonable(result[1])}
-        else:
-            data['result'] = PacketShape(result)
-    return data
+    @wraps(orig_emitcomplete)
+    def EmitCompleteSouls(self):
+        try:
+            soulcount = len(tuple(getattr(self, "complete", ()) or ()) or tuple(getattr(self, "souls", ()) or ()))
+        except Exception:
+            soulcount = None
+        Log("WireOutSoulsFull", souls=soulcount)
+        return orig_emitcomplete(self)
 
+    Crypt.Crypt.EmitCompleteSouls = EmitCompleteSouls
 
-def DreamBuilder(self, phase, args, kwargs, result):
-    data = {
-        'phase': phase,
-        'changed': bool(getattr(self, 'changed', False)),
-        'bootflare': bool(getattr(self, 'bootflare', False)),
-        'statecard': StateCard(self),
-        'boxcard': BoxCard(self),
-        'glyphcard': PacketShape(getattr(self, 'glyph', None)),
-    }
-    if phase == 'enter':
-        if args:
-            data['payload'] = PacketShape(args[0])
-        if len(args) > 1:
-            data['arg1'] = Jsonable(args[1])
-        if 'source' in kwargs:
-            data['source'] = kwargs.get('source')
-        if 'publish' in kwargs:
-            data['publish'] = kwargs.get('publish')
-    if phase == 'exit' and result is not None:
-        data['result'] = PacketShape(result)
-    return data
+    orig_routeglyph = Crypt.Crypt.RouteGlyph
+
+    @wraps(orig_routeglyph)
+    def RouteGlyph(self, packet, addr):
+        Log("CryptUp", addr=str(addr), shape=Shape(packet))
+        return orig_routeglyph(self, packet, addr)
+
+    Crypt.Crypt.RouteGlyph = RouteGlyph
+
+    orig_routecrypt = Dream.Dream.RouteCrypt
+
+    @wraps(orig_routecrypt)
+    def RouteCrypt(self):
+        glyph = getattr(getattr(self, "box", None), "crypt", None)
+        Log("DreamIn", shape=Shape(glyph))
+        return orig_routecrypt(self)
+
+    Dream.Dream.RouteCrypt = RouteCrypt
+
+    orig_mutate = Dream.Dream.Mutate
+
+    @wraps(orig_mutate)
+    def Mutate(self, glyph, source=''):
+        Log("DreamMutateStart", source=str(source or ""), shape=Shape(glyph))
+        result = orig_mutate(self, glyph, source=source)
+        Log("DreamMutateEnd", source=str(source or ""), changed=bool(getattr(self, "changed", False)), result=bool(result))
+        return result
+
+    Dream.Dream.Mutate = Mutate
+
+    orig_forward = Dream.Dream.Forward
+
+    @wraps(orig_forward)
+    def Forward(self, glyph):
+        Log("DreamOut", shape=Shape(glyph))
+        return orig_forward(self, glyph)
+
+    Dream.Dream.Forward = Forward
+
+    Log("Install")
 
 
-def SanctumBuilder(self, phase, args, kwargs, result):
-    data = {
-        'phase': phase,
-        'statecard': StateCard(self),
-    }
-    if phase == 'enter' and args:
-        data['payload'] = PacketShape(args[0])
-    if phase == 'exit' and result is not None:
-        data['result'] = PacketShape(result)
-    return data
-
-
-def InstallCocoon():
-    import Crypt
-    import Dream
-    import Sanctum
-
-    Log('cocoon.install.start', module='Byzantium.py', logpath=LOG_PATH)
-
-    for name in [
-        'Start', 'Sleep', 'Listen', 'Wake', 'Tick', 'Summon', 'Poll', 'Receive',
-        'Cryptkeeper', 'SoulSqueeze', 'Genesis', 'RouteGlyph', 'Emit', 'EmitGlyph',
-        'EmitSouls', 'EmitCompleteSouls', 'BuildState', 'Encrypt', 'Decrypt'
-    ]:
-        WrapMethod(Crypt.Crypt, name, CryptBuilder)
-
-    for name in [
-        'Genesis', 'Wake', 'RouteVault', 'RouteCrypt', 'AcceptState', 'Publish',
-        'Mutate', 'MutateSalt', 'MutateDream', 'MutatePurge', 'Commit', 'Forward',
-        'Packet', 'BoxDream', 'Ashfall'
-    ]:
-        WrapMethod(Dream.Dream, name, DreamBuilder)
-
-    for name in ['Genesis']:
-        WrapMethod(Sanctum.Sanctum, name, SanctumBuilder)
-
-    Log('cocoon.install.done')
-
-
-InstallCocoon()
-
-import Gateway
+Install()
 
 
 def main():
-    Log('Byzantium.main.enter')
+    Log("Start")
     Gateway.main()
-    Log('Byzantium.main.exit')
+    Log("Stop")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

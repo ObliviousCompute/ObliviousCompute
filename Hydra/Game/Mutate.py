@@ -28,12 +28,15 @@ Options = {
 RosterCache: Set[str] = set()
 AwakeInterval = 0.75
 
+
 def BuildDen(heads: List[str], depth: int, head: str) -> Tuple[int, List[Tuple[str, int]]]:
     ports = {item: depth + index for index, item in enumerate(heads)}
     return ports[head], [("127.0.0.1", ports[item]) for item in heads if item != head]
 
+
 def BuildSwamp(heads: List[str], depth: int, head: str) -> Tuple[int, List[Tuple[str, int]]]:
     return depth, [("255.255.255.255", depth)]
+
 
 def ExitScreen() -> None:
     filedescriptor = sys.stdin.fileno()
@@ -67,8 +70,9 @@ def ExitScreen() -> None:
         sys.stdout.write(ShowCursor)
         sys.stdout.flush()
 
-def HydraShell() -> Dict[str, str]:
-    state = {"environment": "Den", "depth": "12321", "mutation": "3", "head": "A"}
+
+def MutateShell() -> Dict[str, str]:
+    state = {"environment": "Den", "depth": "12321", "mutation": "1", "head": "A"}
     fieldstep = 0
     awakensock: Optional[socket.socket] = None
     awakeheads: Set[str] = set()
@@ -210,7 +214,7 @@ def HydraShell() -> Dict[str, str]:
             value = awakevalue if field == "awakening" else state[field]
             pulse = Index(phase, 9)
             if pulse != lastpulse or field != lastfield or value != lastvalue:
-                RenderField("Hydra", Labels[field], value, phase)
+                RenderField("Mutate", Labels[field], value, phase)
                 lastpulse = pulse
                 lastfield = field
                 lastvalue = value
@@ -267,9 +271,10 @@ def HydraShell() -> Dict[str, str]:
         sys.stdout.write(ShowCursor)
         sys.stdout.flush()
 
-def Main() -> None:
+
+def Mutate() -> None:
     try:
-        state = HydraShell()
+        state = MutateShell()
         heads = BaseHeads[:int(state["mutation"])]
         head = state["head"] if state["head"] in heads else heads[0]
         depth = int(state["depth"])
@@ -278,5 +283,6 @@ def Main() -> None:
     except ExitSignal:
         ExitScreen()
 
+
 if __name__ == "__main__":
-    Main()
+    Mutate()

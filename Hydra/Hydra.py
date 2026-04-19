@@ -1,7 +1,7 @@
-from Braid import Hydra
+from Game import Mutate
 
 def main():
-    Hydra.Main()
+    Mutate.Mutate()
 
 if __name__ == "__main__":
     main()
