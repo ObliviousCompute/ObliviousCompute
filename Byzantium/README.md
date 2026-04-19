@@ -8,7 +8,7 @@
 
 ---
 
-## 🧠 What This Is
+## 👑 What This Is 👑
 
 Byzantium is a game built on a distributed state surface.
 
