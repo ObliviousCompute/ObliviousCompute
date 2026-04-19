@@ -66,7 +66,7 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 ---
 
-> You’re not looking at a representation of the system. You’re looking at the system.
+> *What you’re seeing isn’t a representation of the system, it **is** the system.*
 
 <img src="../Relics/DoubleTrouble.gif"/>
 
