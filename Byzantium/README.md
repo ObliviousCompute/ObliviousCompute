@@ -46,8 +46,8 @@ You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environm
 
 Byzantium runs in two modes.
 
-**Siege Mode** is local—multiple terminals on the same machine. *(a controlled sandbox)*  
-**Campaign Mode** runs across a LAN, allowing multiple machines to share the same projection.
+**Siege** is local—multiple terminals on the same machine. *(sandbox)*  
+**Campaign** runs across a LAN, allowing multiple machines to share the same **projection.**
 
 >  *All nodes must use the same gateway (port),skeleton key, and number of souls to join the same projection. Default gateway: 9000*.  
 >  *Tip: just spam Enter to drop straight into a board*.
