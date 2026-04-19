@@ -1,6 +1,6 @@
 [project]
 name = "Hydra-Game"
-version = "1.0.1"
+version = "1.0.2"
 description = "Terminal entrypoint for Hydra"
 
 [project.scripts]

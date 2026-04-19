@@ -214,7 +214,7 @@ def MutateShell() -> Dict[str, str]:
             value = awakevalue if field == "awakening" else state[field]
             pulse = Index(phase, 9)
             if pulse != lastpulse or field != lastfield or value != lastvalue:
-                RenderField("Mutate", Labels[field], value, phase)
+                RenderField("Hydra", Labels[field], value, phase)
                 lastpulse = pulse
                 lastfield = field
                 lastvalue = value
@@ -279,7 +279,10 @@ def Mutate() -> None:
         head = state["head"] if state["head"] in heads else heads[0]
         depth = int(state["depth"])
         port, peers = BuildDen(heads, depth, head) if state["environment"] == "Den" else BuildSwamp(heads, depth, head)
-        RunBody(heart=Plexus(head=head, heads=heads), head=head, port=port, peers=peers, heads=heads)
+        try:
+            RunBody(heart=Plexus(head=head, heads=heads), head=head, port=port, peers=peers, heads=heads)
+        except OSError:
+            ExitScreen()
     except ExitSignal:
         ExitScreen()
 

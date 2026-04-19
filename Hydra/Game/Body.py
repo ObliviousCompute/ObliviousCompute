@@ -33,7 +33,7 @@ WelcomeLines = [
     "",
     f"  {Teal}It's feeding time{Green}...{Reset}",
     "",
-    f"  {Teal}Go for it, let another set of jaws chomp on your tallies{Reset}",
+    f"  {Teal}Go for it, let another set of jaws chomp on your tailies{Reset}",
     f"  {Teal}and give of yourself freely{Green}. {Teal}Nothing here is lost{Green}.{Reset}",
     f"  {Teal}If another takes too much, draw it back through the ichor{Green}.{Reset}",
     f"  {Teal}Hydra feels no pain{Green}. {Teal}It has no memory{Green}...{Reset}",
