@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../Relics/Awake.gif"/>
+<img src="../Relics/Awake2.gif"/>
 
 ---
 
