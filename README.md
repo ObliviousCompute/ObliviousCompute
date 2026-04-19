@@ -13,6 +13,8 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else falls into oblivion.*
 
+## The Path
+
 Start with [`Mowsie`](./Mowsie/README.md) to see where this is all going.
 
 If it clicks, move to [`Hydra`](./Hydra) to watch the system operate across multiple nodes.
