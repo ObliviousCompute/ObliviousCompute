@@ -68,10 +68,12 @@ The system grows through use, not through registration or coordination.
 
 ## Summary
 
-**Genesis** creates the system.
-
-**Transfers** extend it.
-
-**Join** happens automatically as value is received.
-
-*Everything else is a consequence of those actions.*
+> **Genesis creates.**
+> 
+> **Transfers extend.**
+> 
+> **Joining is automatic.**
+> 
+> **Value moves instantly.**
+> 
+> *Everything else follows.*
