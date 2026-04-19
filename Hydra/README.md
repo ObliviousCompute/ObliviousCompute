@@ -1,6 +1,6 @@
 # 🐍🐍 Hydra 🐍🐍
 
-**Create order out of chaos.**
+**Watch packets collide as the state flows.**
 
 ---
 
