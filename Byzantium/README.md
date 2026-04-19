@@ -28,7 +28,7 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ---
 
-## 🧲 Install
+## 🍄 Install
 
 To run Byzantium, install it with:
 
@@ -42,7 +42,7 @@ You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environm
 
 ---
 
-## 🍄 Networking
+## 🕸️ Networking
 
 Byzantium runs in two modes.
 
