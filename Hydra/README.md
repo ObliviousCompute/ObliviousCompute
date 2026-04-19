@@ -1,6 +1,6 @@
 # 🐍🐍 Hydra 🐍🐍
 
-**Where packets collide and state flows.**
+**Order emerges from chaos as packets collide and state flows.**
 
 ---
 
