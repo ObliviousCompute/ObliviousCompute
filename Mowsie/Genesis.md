@@ -42,7 +42,7 @@ You show your QR code to another device.
 
 They scan it, select **Join**, and can save it under a name.
 
-They enter a name and password to open a stash tied to your system.
+Then they enter a name and password to open a stash tied to your system.
 
 You scan their new QR code and send them value.
 
