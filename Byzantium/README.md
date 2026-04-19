@@ -76,13 +76,13 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 ## 🔥 Ashfall
 
-The text feed isn’t a global log. Each node keeps a small rolling cache, just enough to provide context.
+The **text feed** isn’t a *global log*. Each node keeps a *small rolling cache*, just enough to provide context.
 
-Different participants may see slightly different recent text. The feed is local atmosphere, not shared truth.
+Different participants may see *slightly different* recent text. The feed is *local atmosphere*, not **shared truth**.
 
-Every action attempts to reshape the board. If the change is valid, it becomes reality. If it isn’t, it disappears.
+Every action attempts to reshape the **board**. If the change is *valid*, it **becomes reality**. If it isn’t, it *disappears*.
 
-Value moves through interaction, and incentives shape behavior.
+**Value moves through interaction**, and **incentives shape behavior**.
 
 > There are no forks. No reconciliation. No second chances.
 
