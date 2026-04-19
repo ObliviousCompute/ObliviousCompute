@@ -108,7 +108,7 @@ Each part of the system only accepts what already exists or one valid next state
 
 This allows the board to converge without logs, history, or replay.
 
-> If it can’t exist next, it doesn’t exist at all.
+> Only what exists persists.
 
 ---
 
@@ -126,10 +126,9 @@ This is a game built on an admissibility-governed state.
 
 The state is mutated with glyphs and resolves to what can exist.
 
-No history. No ordering. No replay.  
 Consensus is not negotiated.
 
-> Only what exists persists.
+> No *history*. No *ordering*. No *replay*.  
 
 ---
 
