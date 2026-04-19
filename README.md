@@ -13,48 +13,33 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else falls into oblivion.*
 
-Start with [`Byzantium`](./Byzantium) if you want to experience shared state
+Start with [`Mowsie`](./Mowsie/README.md) to see where this is all going.
 
-To wrap your head around the primitive, read the [`Admissibility`](./Admissibility.md) document.
+If it clicks, move to [`Hydra`](./Hydra) to watch the system operate across multiple nodes.
 
-If you want to see where this is going, [`Mowsie`](./Mowsie/README.md) is the next implementation.
+Then step into [`Byzantium`](./Byzantium) to experience the full environment.
 
----
+If you want to understand the primitive underneath it all, explore [`Skeleton`](./Skeleton/README.md).
 
-## The Stack
-
-Oblivious Compute is expressed across four layers:
-
-- [`Skeleton`](./Skeleton/README.md) — the primitive. The rule that determines what can exist.
-- [`Hydra`](./Hydra) — the demonstration. Multiple nodes applying the rule and converging.
-- [`Byzantium`](./Byzantium) — the system. A full environment built around the rule. **(testing)**
-- [`Mowsie`](./Mowsie/README.md) — the application. A real-world system built on the primitive. **(building)**
-
-*Each layer is the same idea, expressed at a different scale—from pure rule to real-world application.*
+For the underlying theory, read [`Admissibility`](./Admissibility.md).
 
 ---
 
-## Skeleton
+## Mowsie
 
-Pure, *hyper-legible* expression of the primitive.
+The first real-world application of Oblivious Compute.
 
-[`Skeleton`](./Skeleton/README.md) is the structure that makes the system lawful.
+[`Mowsie`](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
 
-**The structure is the explanation.**
+Users don’t create accounts.  
+*They receive value.*
 
-> *(the lift diagram)*
+Vendors don’t manage infrastructure.  
+*They define an invariant.*
 
----
+It is the simplest expression of the primitive in the real world.
 
-## Hydra
-
-The minimal distributed demonstration of the same primitive.
-
-[`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
-
-A simple admissibility gate, expressed in under a thousand lines of code.
-
-> *(the 1-minute flight)*
+> *(the 1-hour flight)*
 
 ---
 
@@ -76,21 +61,27 @@ Just a live board, shaped in real time by the people inside it.
 
 ---
 
-## Mowsie
+## Hydra
 
-The first real-world application of Oblivious Compute.
+The minimal distributed demonstration of the same primitive.
 
-[`Mowsie`](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
+[`Hydra`](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
 
-Users don’t create accounts.  
-*They receive value.*
+A simple admissibility gate, expressed in under a thousand lines of code.
 
-Vendors don’t manage infrastructure.  
-*They define an invariant.*
+> *(the 1-minute flight)*
 
-It is the simplest expression of the primitive in the real world.
+---
 
-> *(the 1-hour flight)*
+## Skeleton
+
+Pure, *hyper-legible* expression of the primitive.
+
+[`Skeleton`](./Skeleton/README.md) is the structure that makes the system lawful.
+
+**The structure is the explanation.**
+
+> *(the lift diagram)*
 
 ---
 
