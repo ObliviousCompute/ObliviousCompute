@@ -11,7 +11,8 @@ Just the rule that determines what is allowed to exist.
 ---
 ## 📦 IFF It Fits, It Ships
 
-> A state transition is valid only if it moves forward within a constrained window of the current state—everything else is rejected or treated as a boundary violation (desync).
+> A state transition is valid only if it moves forward within a constrained window of the current state.
+> Incompatible state is rejected or treated as a boundary violation (desync).
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
