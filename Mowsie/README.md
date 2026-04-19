@@ -181,9 +181,11 @@ In a sense, every cache is its own tiny currency.
 
 We are defining the leaf structure, Merkleizing the state, building the mobile client, and implementing Lantern nodes.
 
-The goal is clear.
-
-Creating a value system should be as simple as sending an email, and opening a private stash to receive value in under one minute, with sub-second transaction finality.
+> **The goal is clear and threefold.**  
+>
+> Creating a value system should be as simple as **sending an email**.  
+> Opening a private stash should take **less than a minute**.  
+> Transactions should reach **sub-second finality**.
 
 ---
 
