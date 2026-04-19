@@ -1,5 +1,9 @@
 # Oblivious Compute (OC)
 
+**No History. No Logs. No Problems.**
+
+---
+
 [`Oblivious Compute`](https://github.com/ObliviousCompute/ObliviousCompute) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.  
 
 **State ≡ State**.
