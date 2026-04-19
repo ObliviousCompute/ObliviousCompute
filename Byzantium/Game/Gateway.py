@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import signal
 import sys
 import termios
 import time
@@ -513,6 +514,11 @@ def HandlePortcullis(gatewayvalue: Gateway, cache: Cache, statevalue: object, ki
     return (cache, statevalue, False)
 
 
+
+def RaiseInterrupt(signum, frame) -> None:
+    raise KeyboardInterrupt
+
+
 def main() -> None:
     gatewayvalue = Gateway()
     filedescriptor = sys.stdin.fileno()
@@ -520,6 +526,15 @@ def main() -> None:
     tty.setcbreak(filedescriptor)
     statevalue = gatewayvalue.Runtime
     buffer = ''
+    signalmap = {}
+    for sig in (getattr(signal, 'SIGINT', None), getattr(signal, 'SIGQUIT', None), getattr(signal, 'SIGTSTP', None), getattr(signal, 'SIGTERM', None)):
+        if sig is None:
+            continue
+        try:
+            signalmap[sig] = signal.getsignal(sig)
+            signal.signal(sig, RaiseInterrupt)
+        except Exception:
+            continue
     try:
         while True:
             gatewayvalue.Cache.frame = int(getattr(gatewayvalue.Cache, 'frame', 0) or 0) + 1
@@ -551,8 +566,17 @@ def main() -> None:
                 sys.stdout.write(frame)
                 sys.stdout.flush()
             time.sleep(Forge.Pace())
+    except KeyboardInterrupt:
+        sys.stdout.write('\x1b[H\x1b[2J\x1b[0m')
+        sys.stdout.flush()
+        return
     finally:
         gatewayvalue.Sleep()
+        for sig, handler in signalmap.items():
+            try:
+                signal.signal(sig, handler)
+            except Exception:
+                pass
         termios.tcsetattr(filedescriptor, termios.TCSADRAIN, basicterminal)
 
 
