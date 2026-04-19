@@ -22,22 +22,23 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 ---
 
-## ⬇️ Install
-
-To run Hydra, install it with:
-```bash
-pipx install Hydra-Braid  
-Hydra
-```
-You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
-
----
-
 ## 🐧 Operating System Support
 
 - ✅ Linux  
 - ✅ macOS  
 - ❌ Windows *(sorry, but not sorry)*
+
+---
+
+## ⬇️ Install
+
+To run Hydra, install it with:
+```bash
+pipx install Hydra-Game && Hydra  
+```
+You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
+
+> Don't have [`pipx`](../Relics/pipx.md)
 
 ---
 
