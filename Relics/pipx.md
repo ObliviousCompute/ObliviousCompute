@@ -15,7 +15,7 @@ brew install pipx && pipx ensurepath
 
 ---
 
-## Ubuntu / Debian
+## Debian/Ubuntu
 
 ```bash
 sudo apt install pipx
@@ -23,7 +23,7 @@ sudo apt install pipx
 
 ---
 
-## Fedora / Red Hat
+## Red Hat/Fedora
 
 ```bash
 sudo dnf install pipx
@@ -31,7 +31,7 @@ sudo dnf install pipx
 
 ---
 
-## Arch / Manjaro
+## Arch/Manjaro
 
 ```bash
 sudo pacman -S python-pipx
