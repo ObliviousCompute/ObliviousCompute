@@ -53,10 +53,6 @@ A live, networked terminal game for up to 24 players.
 
 Connect multiple terminals on the same machine or across a network and you’re *immediately inside the same system*.
 
-**No servers.**  
-**No history.**  
-**No replay.**
-
 Just a live board, shaped in real time by the people inside it.
 
 > *(the 10-minute flight)*
