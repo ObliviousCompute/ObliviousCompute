@@ -1,6 +1,6 @@
-# 🐁 Mowsie 🐁
+# 🐭 Mowsie 🐭
 
-**Mowsie is the first real-world application of [`Oblivious Compute`](../README.md).**
+**The first real-world application of [`Oblivious Compute`](../README.md).**
 
 ---
 
@@ -9,9 +9,9 @@ Then check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it
 
 ---
 
-## 🧬 What Mowsie Is
+## 🧬 What This is
 
-Mowsie is a shared state that moves value.
+Imagine a shared state that moves value.
 
 It’s so small that even with around a hundred people, a single state is about the size of a small emoji.
 
