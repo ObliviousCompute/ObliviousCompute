@@ -120,7 +120,7 @@ This allows the board to converge without logs, history, or replay.
 
 ---
 
-## 🔐 Security Notice
+## 🗝️ Security Notice
 
 Byzantium uses Ed25519 signing to validate actions.
 
