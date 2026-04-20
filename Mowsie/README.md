@@ -27,6 +27,8 @@ There is only shared state.
 
 ## 🧬 What This Is
 
+Mowsie replace punch cards, gift cards, and loyalty systems with shared state.
+
 Imagine a shared state that moves value.
 
 It’s so small that even with around a hundred people, a single state is about the size of a small emoji.
@@ -43,8 +45,6 @@ A transaction is a small set of instructions that rearranges the surface.
 
 ## 🧀 The Idea
 
-Could Mowsie replace punch cards, gift cards, and loyalty systems with shared state?
-
 What if accounts, fees, and backends just… disappeared?
 
 What remains is a name, a password, and value that moves instantly.
@@ -53,17 +53,17 @@ What remains is a name, a password, and value that moves instantly.
 
 ## ✨ How It Feels
 
-There's that little shop or studio you like.
+You walk into a shop you like.
 
-You walk in. You scan a QR code or select a cache you’ve already scanned.
+You scan a QR code or select a cache you’ve already scanned.
 
 You enter a name and password.
 
-Your stash appears instantly — always the same for that name, password, and cache.
+Your stash appears instantly. It is always the same for that name, password, and cache.
 
-Within about a second, the state catches up.
+Within a second, everything is already there.
 
-If your stash holds value, it’s already waiting for you in the state.
+If your stash holds value, it’s waiting for you in the state.
 
 No accounts. No setup. No flows.
 
