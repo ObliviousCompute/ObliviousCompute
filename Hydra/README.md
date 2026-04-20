@@ -38,7 +38,7 @@ pipx install Hydra-Game && Hydra
 ```
 You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [`here`](../Relics/pipx.md).
+> Don't have **pipx**? See how to install it [**`here`**](../Relics/pipx.md).
 
 ---
 
@@ -76,6 +76,6 @@ If it works, it demonstrates a **new computational primitive**.
 
 ## 📜 License
 
-This project is released under the terms of the [LICENSE](../LICENSE).
+This project is released under the terms of the [**`LICENSE`**](../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
