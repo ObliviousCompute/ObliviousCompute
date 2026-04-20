@@ -15,7 +15,7 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 
 ## The Path
 
-Start with [`**Byzantium**`](./Byzantium/README.md) to see this in motion — a live system with no backend.
+Start with [**`Byzantium`**](./Byzantium/README.md) to see this in motion — a live system with no backend.
 
 Then check out [`**Mowsie**`](./Mowsie/README.md) to understand where it’s going.
 
