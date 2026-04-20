@@ -205,7 +205,7 @@ The system does not rely on specialized infrastructure.
 
 ## 📡 Contact
 
-> If you see it and want to talk, reach out — ObliviousCompute@yahoo.com
+> If you see it and want to talk, reach out — **ObliviousCompute@yahoo.com**
 
 ---
 
