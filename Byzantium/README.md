@@ -128,7 +128,7 @@ The state is mutated with glyphs and resolves to what can exist.
 
 Consensus is not negotiated.
 
-> No *history*. No *ordering*. No *replay*.
+> Only what exists persists.
 
 ---
 
