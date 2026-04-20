@@ -128,8 +128,6 @@ The state is mutated with glyphs and resolves to what can exist.
 
 Consensus is not negotiated.
 
-> Only what exists persists.
-
 ---
 
 <img src="../Relics/CollectingSouls.gif"/>
