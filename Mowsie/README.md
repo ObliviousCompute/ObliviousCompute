@@ -29,7 +29,7 @@ There is only shared state.
 
 Mowsie replaces punch cards, gift cards, and loyalty systems with shared state.
 
-It is a shared state that moves value.
+It is shared state that moves value.
 
 It’s so small that even with around a hundred people, a single state is about the size of a small emoji.
 
@@ -60,8 +60,6 @@ You scan a QR code or select a cache you’ve already scanned.
 You enter a name and password.
 
 Your stash appears instantly. It is always the same for that name, password, and cache.
-
-Within a second, your stash is already there.
 
 If your stash holds value, it’s waiting for you in the state.
 
