@@ -9,6 +9,22 @@ Then check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it
 
 ---
 
+## ☕ A Real Example
+
+A coffee shop creates a cache with an initial supply of salt.
+
+Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
+
+A returning customer selects the same cache, enters their name and password, and their stash resolves again.
+
+If it holds value, it appears. If not, it remains empty until funded.
+
+There is no backend tracking balances.
+
+There is only shared state.
+
+---
+
 ## 🧬 What This Is
 
 Imagine a shared state that moves value.
@@ -37,7 +53,7 @@ What remains is a name, a password, and value that moves instantly.
 
 ## ✨ How It Feels
 
-Imagine a little shop or studio.
+There's that little shop or studio you like.
 
 You walk in. You scan a QR code or select a cache you’ve already scanned.
 
@@ -54,22 +70,6 @@ No accounts. No setup. No flows.
 You don’t create anything.
 
 You just open your stash.
-
----
-
-## ☕ A Real Example
-
-A coffee shop creates a cache with an initial supply of salt.
-
-Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
-
-A returning customer selects the same cache, enters their name and password, and their stash resolves again.
-
-If it holds value, it appears. If not, it remains empty until funded.
-
-There is no backend tracking balances.
-
-There is only shared state.
 
 ---
 
