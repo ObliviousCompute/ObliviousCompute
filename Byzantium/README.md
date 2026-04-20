@@ -106,7 +106,7 @@ Players (“souls”) enter a shared state. A deterministic genesis builds the b
 
 Each part of the system only accepts what already exists or one valid next state. Anything else is ignored completely.
 
-This allows the board to converge without logs, history, or replay.
+This allows the board to converge against the present state only.
 
 > Only what exists persists.
 
