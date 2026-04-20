@@ -1,11 +1,11 @@
 # 🐭 Mowsie 🐭
 
-**The first real-world application of [`Oblivious Compute`](../README.md).**
+**The first real-world application of [**`Oblivious Compute`**](../README.md).**
 
 ---
 
-After reading below, dive into [`Genesis`](./Genesis.md) to see how salt is created.  
-Then check out the [`Attack Surface`](./AttackSurface.md) analysis to see how it holds up.
+After reading below, dive into [**`Genesis`**](./Genesis.md) to see how salt is created.  
+Then check out the [**`Attack Surface`**](./AttackSurface.md) analysis to see how it holds up.
 
 ---
 
@@ -85,7 +85,7 @@ Value moves anywhere with no energy overhead.
 
 ## 💠 How This Exists
 
-Mowsie is built from primitives already demonstrated in [`Byzantium`](../Byzantium/README.md).
+Mowsie is built from primitives already demonstrated in [**`Byzantium`**](../Byzantium/README.md).
 
 Cells become accounts. Salt becomes value. Whispers become transactions. Dream becomes state. Crypt becomes transport.
 
@@ -222,6 +222,6 @@ The system does not rely on specialized infrastructure.
 
 ## 📜 License
 
-This project is released under the terms of the [`LICENSE`](../LICENSE).
+This project is released under the terms of the [**`LICENSE`**](../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
