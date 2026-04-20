@@ -26,7 +26,7 @@ In technical terms, transactions form a **monoid** — they combine cleanly in a
 
 If any of these conditions fail, the transaction is rejected immediately.
 
-There is no pending state, no ordering, and no delay. A transaction is either admitted or discarded.
+There is no pending state, and no delay. A transaction is either admitted or discarded.
 
 **Invalid transactions do not propagate.**
 
@@ -100,7 +100,7 @@ The attacker is not followed — they are bypassed.
 
 Mowsie removes entire classes of attack by design.
 
-There is no ordering to manipulate, no history to replay, and no consensus to break.
+There is no consensus to break.
 
 What remains is a system where invalid state is rejected locally, valid state propagates naturally, and attackers are constrained to lawful behavior.
 
