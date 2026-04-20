@@ -126,9 +126,9 @@ This is a game built on an admissibility-governed state.
 
 The state is mutated with glyphs and resolves to what can exist.
 
-> No *history*. No *ordering*. No *replay*.
-
 Consensus is not negotiated.
+
+> No *history*. No *ordering*. No *replay*.
 
 ---
 
