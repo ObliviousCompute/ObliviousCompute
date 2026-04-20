@@ -27,9 +27,9 @@ There is only shared state.
 
 ## 🧬 What This Is
 
-Mowsie replace punch cards, gift cards, and loyalty systems with shared state.
+Mowsie replaces punch cards, gift cards, and loyalty systems with shared state.
 
-Imagine a shared state that moves value.
+It is a shared state that moves value.
 
 It’s so small that even with around a hundred people, a single state is about the size of a small emoji.
 
@@ -61,7 +61,7 @@ You enter a name and password.
 
 Your stash appears instantly. It is always the same for that name, password, and cache.
 
-Within a second, everything is already there.
+Within a second, your stash is already there.
 
 If your stash holds value, it’s waiting for you in the state.
 
@@ -75,9 +75,9 @@ You just open your stash.
 
 ## ♻️ What This Replaces
 
-Punch cards get lost. Gift cards are forgotten. Loyalty apps depend on databases that must be trusted and maintained.
+Punch cards get lost. Gift cards are forgotten. Loyalty systems depend on databases that must be trusted and maintained.
 
-At their core, they’re all just ways of coordinating value within a group.
+At their core, they are all ways of coordinating value within a group.
 
 When groups share the same surface, coordination is simple.
 
