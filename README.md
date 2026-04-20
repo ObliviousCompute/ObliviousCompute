@@ -15,15 +15,15 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 
 ## The Path
 
-Start with [`Mowsie`](./Mowsie/README.md) to see where this is all going.
+Start with [`**Byzantium**`](./Byzantium/README.md) to see this in motion — a live system with no backend.
 
-If it clicks, move to [`Hydra`](./Hydra) to watch the system operate across multiple nodes.
+Then check out [`**Mowsie**`](./Mowsie/README.md) to understand where it’s going.
 
-Then step into [`Byzantium`](./Byzantium) to experience the full environment.
+If it clicks, move to [`**Hydra**`](./Hydra/README.md) to see how shared state behaves at a smaller scale.
 
-If you want to understand the primitive underneath it all, explore [`Skeleton`](./Skeleton/README.md).
+From there, [`**Skeleton**`](./Skeleton/README.md) shows the core mechanism stripped down.
 
-For the underlying theory, read [`Admissibility`](./Admissibility.md).
+If you want to go deeper, [`**Admissibility**`](./Admissibility/README.md) explains the idea underneath it all.
 
 ---
 
