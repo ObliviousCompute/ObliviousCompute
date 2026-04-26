@@ -23,7 +23,7 @@ If it clicks, move to [**`Hydra`**](./Hydra/README.md) to see how shared state b
 
 From there, [**`Skeleton`**](./Skeleton/README.md) shows the core mechanism stripped down.
 
-If you want to go deeper, [**`Admissibility`**](./Admissibility/README.md) explains the idea underneath it all.
+If you want to go deeper, [**`Admissibility`**](/Admissibility/README.md) explains the idea underneath it all.
 
 ---
 
