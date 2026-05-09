@@ -130,7 +130,7 @@ Consensus is not negotiated.
 
 ---
 
-<img src="../Relics/CollectingSouls.gif"/>
+<img src="../Relics/CollectingSouls.gif" width="300"/>
 
 ---
 
