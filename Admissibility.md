@@ -271,3 +271,11 @@ Validity is locally determined
 Cryptographic Binding  
 h(s′) = H(h(s), s′)  
 Each state is bound to its admissible transition  
+
+---
+
+## 📜 License
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute) is released under the terms of the [**`LICENSE`**](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
