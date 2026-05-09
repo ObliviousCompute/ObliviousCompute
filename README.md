@@ -49,7 +49,7 @@ It is the simplest expression of the primitive in the real world.
 
 A live, networked terminal game for up to 24 players.
 
-[**`Byzantium`**](./Byzantium) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
+[**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
 
 Connect multiple terminals on the same machine or across a network and you’re *immediately inside the same system*.
 
@@ -63,7 +63,7 @@ Just a live board, shaped in real time by the people inside it.
 
 The minimal distributed demonstration of the same primitive.
 
-[**`Hydra`**](./Hydra) shows how state moves and collapses across a small network without logs or traditional coordination.
+[**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
 
 A simple admissibility gate, expressed in under a thousand lines of code.
 
