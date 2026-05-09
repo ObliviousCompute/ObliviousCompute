@@ -13,7 +13,7 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else falls into oblivion.*
 
-## 🧭 The Path
+## 🌀 The Path 🌀
 
 Start with [**`Byzantium`**](./Byzantium/README.md) to see this in motion.
 
@@ -80,18 +80,6 @@ Pure, *hyper-legible* expression of the primitive.
 **The structure is the explanation.**
 
 > *(the lift diagram)*
-
----
-
-## 🌀 What Survives Is the Shape
-
-Oblivious Compute does not carry the past forward.
-
-The system does not remember how it arrived.  
-
-It only admits what can exist next.
-
-**Everything else falls away.**
 
 ---
 
