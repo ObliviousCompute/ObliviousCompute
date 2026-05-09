@@ -88,11 +88,11 @@ Every action attempts to reshape the **board**. If the change is *valid*, it **b
 
 ## 🧩 Continuity
 
-You can leave at any time and come back later. *Seconds, minutes, or hours.*
+You can leave and come back any time. *Seconds, minutes, or hours.*
 
 As long as at least one participant is still connected, the projection persists.
 
-It’s like stepping back up to a ***card table already in progress.***
+It’s like stepping back up to a ***card table*** already in progress.
 
 You don’t ask what happened while you were gone.
 
@@ -107,16 +107,6 @@ You don’t ask what happened while you were gone.
 <img src="../Relics/TreeGlyph.png" width="600"/>
 
 > *The upper part of the stack runs on State, and the lower stack runs on Glyphs*
-
----
-
-## 🧬 Design
-
-This is a game built on an admissibility-governed state.
-
-The state is mutated with glyphs and resolves to what can exist.
-
-Consensus is not negotiated.
 
 ---
 
