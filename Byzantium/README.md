@@ -110,10 +110,6 @@ You don’t ask what happened while you were gone.
 
 ---
 
-<img src="../Relics/CollectingSouls.gif" width="450"/>
-
----
-
 ## 🗝️ Security Notice
 
 Byzantium uses Ed25519 signing to validate actions.
@@ -131,6 +127,10 @@ If the Hydra demo was the one-minute flight, this is closer to the ten-minute fl
 It’s not smooth. It’s not comfortable.
 
 But it flies.
+
+---
+
+<img src="../Relics/CollectingSouls.gif" width="450"/>
 
 ---
 
