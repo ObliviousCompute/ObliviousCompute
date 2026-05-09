@@ -59,7 +59,7 @@ Just a live board, shaped in real time by the people inside it.
 
 ---
 
-## 🐍 Hydra 🐍
+## 🐍🐍 Hydra 🐍🐍
 
 The minimal distributed demonstration of the same primitive.
 
