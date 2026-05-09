@@ -9,77 +9,51 @@ Then check out the [**`Attack Surface`**](./AttackSurface.md) analysis to see ho
 
 ---
 
-## ☕ A Real Example
-
-A coffee shop creates a cache with an initial supply of salt.
-
-Cashiers start the day with float. Customers exchange dollars for salt. Later, they spend salt for goods.
-
-A returning customer selects the same cache, enters their name and password, and their stash resolves again.
-
-If it holds value, it appears. If not, it remains empty until funded.
-
-There is no backend tracking balances.
-
-There is only shared state.
-
----
-
 ## 🧬 What This Is
 
-Mowsie replaces punch cards, gift cards, and loyalty systems with shared state.
+Mowsie is a shared state that moves value.
 
-It is shared state that moves value.
+Transactions do not live in a database or on a blockchain.
 
-It’s so small that even with around a hundred people, a single state is about the size of a small emoji.
+They live on a *tiny shared surface.*
 
-Think of it like a tiny surface where value simply shifts from one place to another.
+Even with around a hundred people, a single state is roughly the size of a small emoji.
 
-That’s the surface nodes share.
+A transaction between two peers is a ***short, blunt set of instructions*** that rearranges the state.
 
-A transaction is a small set of instructions that rearranges the surface.
-
-**Sending value is simply changing the state's surface.**
+***Sending value is simply changing the surface.***
 
 ---
 
-## 🧀 The Idea
+## 🧀 The Idea 🧀
 
-What if accounts, fees, and backends just… disappeared?
-
-What remains is a name, a password, and value that moves instantly.
-
----
-
-## ✨ How It Feels
+*What if accounts and payment backends simply disappeared...*
 
 You walk into a shop you like.
 
-You scan a QR code or select a cache you’ve already scanned.
+You scan a QR code, enter a name and password, and your stash appears instantly.
 
-You enter a name and password.
+The same name, password, and cache always resolve the same stash.
 
-Your stash appears instantly. It is always the same for that name, password, and cache.
+If your stash holds value, it is waiting for you in the state.
 
-If your stash holds value, it’s waiting for you in the state.
+No accounts, no setup, no backend flows.
 
-No accounts. No setup. No flows.
+***You don’t create anything.***
 
-You don’t create anything.
-
-You just open your stash.
+***You just open your stash.***
 
 ---
 
 ## ♻️ What This Replaces
 
-Punch cards get lost. Gift cards are forgotten. Loyalty systems depend on databases that must be trusted and maintained.
+***Punch cards get lost. Gift cards are forgotten. Loyalty systems depend on databases that must be trusted and maintained.***
 
 At their core, they are all ways of coordinating value within a group.
 
-When groups share the same surface, coordination is simple.
+***When groups share the same surface, coordination is simple.***
 
-Value moves anywhere with no energy overhead.
+***Value moves anywhere with no energy overhead.***
 
 ---
 
