@@ -13,7 +13,7 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else falls into oblivion.*
 
-## 🌀 The Path 🌀
+## 🌀 The Path
 
 Start with [**`Byzantium`**](./Byzantium/README.md) to see this in motion.
 
