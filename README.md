@@ -1,4 +1,4 @@
-# 🪬 Oblivious Compute 🪬 (OC)
+# 🪬 Oblivious Compute 🪬
 
 **No History. No Logs. No Problems.**
 
