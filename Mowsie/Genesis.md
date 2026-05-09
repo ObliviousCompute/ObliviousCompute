@@ -77,3 +77,7 @@ The system grows through use, not through registration or coordination.
 > **Value moves instantly.**
 > 
 > *Everything else follows.*
+
+---
+
+Back to [**`Mowsie`**](./Mowsie/README.md)
