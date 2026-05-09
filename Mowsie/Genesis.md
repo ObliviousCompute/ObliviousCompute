@@ -68,7 +68,7 @@ The system grows through use, not through registration or coordination.
 
 ## Summary
 
-[**`Mowsie`**](./Mowsie/README.md) grows through interaction.
+[**`Mowsie`**](../Mowsie/README.md) grows through interaction.
 
 > **Genesis creates.**
 > 
