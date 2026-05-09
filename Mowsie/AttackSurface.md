@@ -98,7 +98,7 @@ The attacker is not followed — they are bypassed.
 
 ## Final Thoughts
 
-[**`Mowsie`**](./Mowsie/README.md) removes entire classes of attack by design.
+[**`Mowsie`**](../Mowsie/README.md) removes entire classes of attack by design.
 
 There is no consensus to break.
 
