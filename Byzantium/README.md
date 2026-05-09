@@ -86,29 +86,19 @@ Every action attempts to reshape the **board**. If the change is *valid*, it **b
 
 ---
 
-## 🧩 Presence & Rejoining
+## 🧩 Continuity
 
-You can leave at any time and come back later—seconds, minutes, or hours.
+You can leave at any time and come back later. *Seconds, minutes, or hours.*
 
 As long as at least one participant is still connected, the projection persists.
 
-When you return with the same identity, nothing is replayed and nothing is reconstructed. You simply accept the current valid state—in a single step.
+It’s like stepping back up to a ***card table already in progress.***
 
-It’s like stepping back up to the card table. You don’t ask what happened while you were gone. You just look down—and the game is already in progress.
+You don’t ask what happened while you were gone.
 
-> You don’t reconnect to the past. You reconnect to the present.
+***You look down. The game is already there.***
 
----
-
-## ⚙️ How It Works
-
-Players (“souls”) enter a shared state. A deterministic genesis builds the board, and every interaction is expressed as a glyph—validated, applied, and propagated across the network.
-
-Each part of the system only accepts what already exists or one valid next state. Anything else is ignored completely.
-
-This allows the board to converge against the present state only.
-
-> Only what exists persists.
+> ***You don’t reconnect to the past. You reconnect to the present.***
 
 ---
 
