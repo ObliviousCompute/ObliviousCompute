@@ -4,7 +4,7 @@
 
 ---
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/main/README.md) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.  
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.  
 
 **State ≡ State**.
 
