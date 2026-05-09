@@ -1,4 +1,4 @@
-# 🪬 Oblivious Compute (OC)
+# 🪬 Oblivious Compute 🪬 (OC)
 
 **No History. No Logs. No Problems.**
 
@@ -27,7 +27,7 @@ If you want to go deeper, [**`Admissibility`**](./Admissibility.md) explains the
 
 ---
 
-## 🐭 Mowsie
+## 🐭 Mowsie 🐭
 
 The first real-world application of Oblivious Compute.
 
@@ -45,7 +45,7 @@ It is the simplest expression of the primitive in the real world.
 
 ---
 
-## ⚔️ Byzantium
+## ⚔️ Byzantium ⚔️
 
 A live, networked terminal game for up to 24 players.
 
@@ -59,7 +59,7 @@ Just a live board, shaped in real time by the people inside it.
 
 ---
 
-## 🐍 Hydra
+## 🐍 Hydra 🐍
 
 The minimal distributed demonstration of the same primitive.
 
@@ -71,7 +71,7 @@ A simple admissibility gate, expressed in under a thousand lines of code.
 
 ---
 
-## 💀 Skeleton
+## 💀 Skeleton 💀
 
 Pure, *hyper-legible* expression of the primitive.
 
