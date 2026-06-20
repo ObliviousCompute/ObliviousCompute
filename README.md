@@ -17,13 +17,13 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 
 Start with [**`Byzantium`**](./Byzantium/README.md) to see this in motion.
 
-Then check out [**`Mowsie`**](./Mowsie/README.md) to understand where it’s going.
-
 If it clicks, move to [**`Hydra`**](./Hydra/README.md) to see how shared state behaves at a smaller scale.
 
 From there, [**`Skeleton`**](./Skeleton/README.md) shows the core mechanism stripped down.
 
 If you want to go deeper, [**`Admissibility`**](./Admissibility.md) explains the idea underneath it all.
+
+Check out [**`Mowsie`**](./Mowsie/README.md) to understand where this is going.
 
 ---
 
