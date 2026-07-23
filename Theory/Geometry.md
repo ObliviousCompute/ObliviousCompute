@@ -44,14 +44,13 @@ But what if history were no longer the primitive?
 
 What if computation did not begin with a shared account of the past?
 
-The mail slot required no history. The parcel arrived, encountered the geometry, and induced a state transition. Nothing more was required.
+The mail slot required no history. A letter arrived, encountered the geometry, and produced a binary outcome. The parcel did the same. The object was presented, the geometry induced a state transition, and the computation was complete.
 
 If computation is the state transition induced by presenting an object to a geometry, then what role does history actually play?
 
-Perhaps history is not required to compute.
+Consensus exists because independent observers must agree on a common account of the past before they can agree on the present. But if every observer computes directly from the object according to the same geometry, what remains to be trusted?
 
-Perhaps history is required only to establish consensus.
-
+If we take history with a grain of salt, do we need trust at all to move a computational state forward?
 But if every observer computes objects directly according to its own invariants, why must those observers first agree on a common history?
 
 Do we need trust at all to move a computational state forward?
