@@ -2,7 +2,7 @@
 
 Every morning, a mail carrier begins the same route.
 
-His satchel contains letters and parcels of every shape and size. Something like a refrigerator is simply out of the question. It does not belong to the world in which the mail carrier operates.
+His satchel contains letters and parcels of many shapes and sizes. A refrigerator, however, is simply out of the question. It does not belong to the world in which the mail carrier operates.
 
 Arriving at the first house, he slides a stack of letters through the mail slot. They pass effortlessly through the opening. He then reaches for a small parcel. It will not fit beside the letters, so he tries it alone. The parcel barely slips through the slot, but it fits. Satisfied, the mail carrier continues on his route.
 
