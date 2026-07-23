@@ -34,7 +34,7 @@ In this sense, the computation is oblivious. The system does not begin by asking
 
 The object disappears, the computation leaves no artifact of its own. Only the state remains.
 
-##A Grain of Salt
+## A Grain of Salt
 
 Consensus systems inherit trust from history.
 
