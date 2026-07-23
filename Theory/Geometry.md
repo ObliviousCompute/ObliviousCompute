@@ -51,6 +51,3 @@ If computation is the state transition induced by presenting an object to a geom
 Consensus exists because independent observers must agree on a common account of the past before they can agree on the present. But if every observer computes directly from the object according to the same geometry, what remains to be trusted?
 
 If we take history with a grain of salt, do we need trust at all to move a computational state forward?
-But if every observer computes objects directly according to its own invariants, why must those observers first agree on a common history?
-
-Do we need trust at all to move a computational state forward?
