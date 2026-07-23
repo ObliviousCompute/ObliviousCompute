@@ -13,3 +13,23 @@ By the time they arrive, the letters and the parcel are inert objects. Their com
 The mail slot never measures the letters. It never weighs the parcel or records its dimensions. It simply admits what fits and rejects what does not. The computation was embedded in the geometry all along.
 
 Even signatures have geometry.
+
+## Binary Partition
+
+When the parcel arrived at the mail slot, what actually happened?
+
+The slot did not first request a description of the parcel before deciding whether it belonged. The parcel itself was presented to the opening. Its geometry participated directly in the outcome.
+
+What if a computational system did not compute from descriptions of objects?
+
+What if it computed the objects themselves?
+
+The object arrives. The geometry encounters it. A state transition either occurs or it does not. The computation is not a story about the object. The computation is the state transition induced by presenting an object to a geometry.
+
+The mail slot induces only two possibilities. The parcel is admitted, or it is not. There is no intermediate condition. Every geometry divides reality into two disjoint sets. It induces a binary partition.
+
+Perhaps every invariant does the same. Each invariant asks only one question: Does this object belong? Checksums, signatures, field relationships, and every other invariant are computed directly from the object itself. Nothing must first be translated into an independent description before computation can begin.
+
+In this sense, the computation is oblivious. The system does not begin by asking what the object claims to be. It does not require an explanation, a narrative, or an external account. The object arrives, the geometry computes it, and a state transition either occurs or it does not.
+
+The object may disappear. The computation leaves no artifact of its own. The state remains.
