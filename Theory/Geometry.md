@@ -8,7 +8,7 @@ Arriving at the first house, he slides a stack of letters through the mail slot.
 
 Inside the house, the homeowner gathers the morning mail. Some letters are written in a familiar language. Others are not. Some bear recognizable signatures. Others are quietly set aside. The letters themselves have not changed. Only their interpretation has.
 
-The letters and the parcel required effort to compose, package, and deliver. Once they arrive, however, they are inert objects. The homeowner does not recreate them, nor does the mail carrier recompute them. The work has already been done.
+By the time they arrive, the letters and the parcel are inert objects. Their composition is already complete. The homeowner does not recreate them, nor does the mail carrier recompute them. The work has already been done.
 
 The mail slot never measures the letters. It never weighs the parcel or records its dimensions. It simply admits what fits and rejects what does not. The computation was embedded in the geometry all along.
 
