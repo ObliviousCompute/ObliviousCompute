@@ -33,3 +33,25 @@ Perhaps every invariant does the same. Each invariant asks only one question: Do
 In this sense, the computation is oblivious. The system does not begin by asking what the object claims to be. It does not require an explanation, a narrative, or an external account. The object arrives, the geometry computes it, and a state transition either occurs or it does not.
 
 The object disappears, the computation leaves no artifact of its own. Only the state remains.
+
+##A Grain of Salt
+
+Consensus systems inherit trust from history.
+
+Traditional distributed systems spend computational resources preserving that history. The history must be stored. It must be replicated. It must be ordered. It must be defended. Only then can the present state be trusted.
+
+But what if history were no longer the primitive?
+
+What if computation did not begin with a shared account of the past?
+
+The mail slot required no history. The parcel arrived, encountered the geometry, and induced a state transition. Nothing more was required.
+
+If computation is the state transition induced by presenting an object to a geometry, then what role does history actually play?
+
+Perhaps history is not required to compute.
+
+Perhaps history is required only to establish consensus.
+
+But if every observer computes objects directly according to its own invariants, why must those observers first agree on a common history?
+
+Do we need trust at all to move a computational state forward?
