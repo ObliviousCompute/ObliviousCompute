@@ -32,4 +32,4 @@ Perhaps every invariant does the same. Each invariant asks only one question: Do
 
 In this sense, the computation is oblivious. The system does not begin by asking what the object claims to be. It does not require an explanation, a narrative, or an external account. The object arrives, the geometry computes it, and a state transition either occurs or it does not.
 
-The object may disappear. The computation leaves no artifact of its own. The state remains.
+The object disappears, the computation leaves no artifact of its own. Only the state remains.
