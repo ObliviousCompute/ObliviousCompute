@@ -1,34 +1,5 @@
 # Linchpin
 
----
-
-## Frogs on a Log
-
-Imagine three frogs sitting on a log.
-
-For years, we’ve tried to make them whisper—passing messages down the line, preserving the exact order of what was said. Careful, sequential, recorded.
-
-But frogs don’t whisper.  
-Frogs leap. Frogs croak.
-
-A single croak carries across the pond. When a frog speaks, it does not pass a fragment of history—it expresses its current state.
-
----
-
-## Computers on Logs
-
-Modern systems behave like frogs forced to stay on the log.
-
-They maintain logs—ordered histories of events. They replicate, replay, and reconcile them—attempting to reconstruct what happened so they can decide what is true now.
-
-Computers on logs are not so different from frogs on a log.
-
-And yet, like frogs, computers are capable of more.
-
-They can leap. They can broadcast. They can express state directly—without preserving the path taken to arrive there.
-
----
-
 ## The Shape
 
 In a system like this, what does a computer's croak even look like?
