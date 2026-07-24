@@ -1,30 +1,22 @@
 # Linchpin
 
-## The Event Horizon
+The Event Horizon
 
-Consider the smallest non-trivial system.
+Consider the smallest non-trivial system: Rock, Paper, Scissors.
 
-Rock.
-
-Paper.
-
-Scissors.
-
-At first glance, this appears to describe a sequence. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future.
+At first glance, this appears to describe time. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future.
 
 This intuition is useful—but only briefly.
 
-Each state admits only a finite set of continuations. Rock may remain Rock. Rock may become Paper. Rock does not become Scissors. The same is true for every state in the cycle.
-
-Every admissible state defines a finite horizon of admissible continuations. Nothing outside that horizon can occur.
+Each state admits only a finite set of continuations. Every admissible state defines a horizon of admissible next states. Nothing outside that horizon can occur.
 
 This boundary is not defined by time. It is defined by admissibility.
 
 A system may remain at any admissible state for microseconds or millennia without affecting correctness. Time does not determine whether a transition is valid. Only admissibility does.
 
-Computation therefore does not unfold through time. It unfolds across admissible states.
+Transitions therefore do not unfold through time. They unfold across admissible states.
 
-Every transition occurs at the boundary between what is admissible and what is not.
+Every computation occurs at the boundary between what is admissible and what is not.
 
 This boundary is the event horizon.
 
