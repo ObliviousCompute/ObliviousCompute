@@ -35,3 +35,12 @@ An oblivious compute network operates in much the same way. The invariant relati
 The resulting geometry is the Holerith Holograph. Every participant maintains only a local simulacrum shaped by local holographic invariants. The aggregate of those simulacra gives rise to the hologram.
 
 The hologram is not stored. It is projected. The holograph is not the projection itself, but the distributed geometry that makes the projection possible.
+
+---
+
+## 📜 License
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
+
