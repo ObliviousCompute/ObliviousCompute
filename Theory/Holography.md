@@ -1,18 +1,6 @@
 # The Holerith Holograph
 
-## Cryptographic Compendium
-
-Modern cryptography is traditionally described in terms of keys, addresses, signatures, hashes, and ledgers.
-
-This paper adopts a different perspective.
-
-A Genesis Seed defines a cryptographic universe. Every key and address occupies a deterministic coordinate within that universe. Signatures express deterministic, independently verifiable relationships between those coordinates.
-
-This paper does not derive those relationships. It simply adopts them as its foundation.
-
-Rather than viewing cryptography as recorded history, this paper explores what follows when a cryptographic universe is understood as a present reality.
-
-## Invariance
+## Shared Reality
 
 Can you point to the value of a dollar?
 
@@ -26,11 +14,19 @@ No individual possesses it.
 
 Yet every individual experiences it.
 
-An oblivious compute network functions in much the same way. No node possesses the network, yet every node experiences a coherent cryptographic reality. Each node maintains only its own present state while preserving the same invariant relationships as every other node.
+Shared realities already exist. They are not owned by any individual, nor stored in any single place. They emerge through the continued participation of those who collectively recognize them.
 
-Nothing global is stored.
+## Cryptographic Compendium
 
-It can only be experienced.
+Modern cryptography is traditionally described in terms of keys, addresses, signatures, hashes, and ledgers.
+
+This paper adopts a different perspective.
+
+A Genesis Seed defines a cryptographic universe. Every key and address occupies a deterministic coordinate within that universe. Signatures express deterministic, independently verifiable relationships between those coordinates.
+
+This paper does not derive those relationships. It simply adopts them as its foundation.
+
+Rather than viewing cryptography as recorded history, this paper explores what follows when a cryptographic universe is understood as a present reality.
 
 ## The Whole
 
