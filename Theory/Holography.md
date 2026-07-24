@@ -1,3 +1,5 @@
+# The Holerith Holograph
+
 ## Cryptographic Compendium
 
 Modern cryptography is traditionally described in terms of keys, addresses, signatures, hashes, and ledgers.
