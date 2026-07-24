@@ -29,3 +29,11 @@ An oblivious compute network functions in much the same way. No node possesses t
 Nothing global is stored.
 
 It can only be experienced.
+
+## The Whole
+
+Every participant contributes to the field, but no participant possesses it. A contribution does not pass from one observer to another. Instead, each participant spends into the field, altering the present reality experienced by every observer. In doing so, each participant maintains only a local simulacrum through which that shared reality is experienced. The field is not an object that can be owned, copied, or transferred. It exists only as an emergent phenomenon between participants.
+
+The whole belongs to no one.
+
+Traditional systems encourage us to imagine information moving between participants, as though reality were passed from hand to hand. An oblivious system asks us to think differently. Participants do not exchange reality with one another—they spend into the field. Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.
