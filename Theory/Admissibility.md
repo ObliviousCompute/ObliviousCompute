@@ -1,5 +1,33 @@
 # Linchpin
 
+## The Event Horizon
+
+Consider the smallest non-trivial system.
+
+Rock.
+
+Paper.
+
+Scissors.
+
+At first glance, this appears to describe a sequence. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future.
+
+This intuition is useful—but only briefly.
+
+Each state admits only a finite set of continuations. Rock may remain Rock. Rock may become Paper. Rock does not become Scissors. The same is true for every state in the cycle.
+
+Every admissible state defines a finite horizon of admissible continuations. Nothing outside that horizon can occur.
+
+This boundary is not defined by time. It is defined by admissibility.
+
+A system may remain at any admissible state for microseconds or millennia without affecting correctness. Time does not determine whether a transition is valid. Only admissibility does.
+
+Computation therefore does not unfold through time. It unfolds across admissible states.
+
+Every transition occurs at the boundary between what is admissible and what is not.
+
+This boundary is the event horizon.
+
 ## The Shape
 
 In a system like this, what does a computer's croak even look like?
@@ -21,44 +49,6 @@ A turn, then, is a cycle:
 a transition between admissible geometric states.
 
 Reality is filtered by shape, not by choice.
-
----
-
-## A Minimal Cycle
-
-Consider the smallest non-trivial system: three shapes in a cycle.
-
-Rock → Paper → Scissors → Rock.
-
-It is tempting to think of this as *past*, *present*, and *waiting*.
-
-This intuition is useful—but only briefly.
-
-There is no past to reconstruct, and no future to predict. There is only a current shape, and a constrained set of admissible continuations.
-
-Each shape admits itself and one successor. Nothing else.
-
-This structure is a braid—a closed system of admissible transitions.
-
----
-
-## The Boundary
-
-All computation occurs at the boundary between a valid state and its admissible continuations.
-
-This boundary is defined by a finite set of constraints, yet can be traversed indefinitely.
-
-A system may remain poised at a valid state for any duration—microseconds or millennia—without affecting correctness.
-
-When a transition occurs, it is evaluated only against what is currently valid and what is admissibly next.
-
-Time does not participate in this evaluation. It is external to it.
-
-Computation does not unfold through time, but across admissible states.
-
-The braid defines the geometry of this boundary.
-
-This boundary is the locus of computation.
 
 ---
 
