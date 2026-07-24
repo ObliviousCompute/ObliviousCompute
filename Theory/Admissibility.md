@@ -1,4 +1,4 @@
-# Oblivious Computation and the Admissibility Braid
+# Linchpin
 
 ---
 
