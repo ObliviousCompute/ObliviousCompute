@@ -35,3 +35,13 @@ Every participant contributes to the field, but no participant possesses it. A c
 The whole belongs to no one.
 
 Traditional systems encourage us to imagine information moving between participants, as though reality were passed from hand to hand. An oblivious system asks us to think differently. Participants do not exchange reality with one another—they spend into the field. Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.
+
+## The Punch
+
+Long before modern computers, computation was performed through geometry. A Holerith punch card contained no instructions in the conventional sense. Instead, computation emerged from the geometric arrangement of its holes. The pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
+
+An oblivious compute network operates in much the same way. The invariant relationships established within the cryptographic universe form a distributed geometry of constraints. No single invariant defines the system. Together, they define the geometry through which every participant interprets the aggregate.
+
+The resulting geometry is the Holerith Holograph. Every participant maintains only a local simulacrum shaped by local holographic invariants. The aggregate of those simulacra gives rise to the hologram.
+
+The hologram is not stored. It is projected. The holograph is not the projection itself, but the distributed geometry that makes the projection possible.
