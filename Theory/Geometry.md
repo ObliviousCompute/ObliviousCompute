@@ -36,11 +36,9 @@ The object disappears, the computation leaves no artifact of its own. Only the s
 
 ## A Grain of Salt
 
-Consensus systems inherit trust from history.
-
 Traditional distributed systems spend computational resources preserving that history. The history must be stored. It must be replicated. It must be ordered. It must be defended. Only then can the present state be trusted.
 
-But what if history were no longer the primitive?
+Consensus systems inherit trust from history, but what if history were no longer the primitive?
 
 What if computation did not begin with a shared account of the past?
 
