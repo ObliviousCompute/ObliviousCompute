@@ -51,3 +51,12 @@ If computation is the state transition induced by presenting an object to a geom
 Consensus exists because independent observers must agree on a common account of the past before they can agree on the present. But if every observer computes directly from the object according to the same geometry, what remains to be trusted?
 
 If we take history with a grain of salt, do we need trust at all to move a computational state forward?
+
+---
+
+## 📜 License
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
+
