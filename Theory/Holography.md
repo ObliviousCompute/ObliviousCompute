@@ -32,7 +32,7 @@ So, long before modern computers, computation was performed through geometry. A 
 
 An oblivious compute network operates in much the same way. The invariant relationships established within the system form a distributed geometry of constraints. No single invariant defines the system. Together, they define the geometry through which every participant interprets the aggregate.
 
-The resulting geometry is a Holerith Holograph. Every participant maintains only a local simulacrum shaped by thier own local holographic invariants. The constellation of those simulacra gives rise to the hologram.
+The resulting geometry is a Holerith Holograph. Every participant maintains only a local facsimile shaped by their own holographic invariants. The constellation of those facsimiles gives rise to the hologram.
 
 The hologram is not stored. It is projected. The holograph is not the projection itself, but the distributed geometry that makes the projection possible.
 
