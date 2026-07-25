@@ -48,7 +48,7 @@ No observer waits for another to advance. No observer reconstructs a shared hist
 
 Shared progression therefore does not emerge from a common past. It emerges from many local evaluations occurring simultaneously across many local event horizons.
 
-##Closing Thought
+## Closing Thought
 
 History is treated as the foundation of distributed computation. This theory proposes the opposite.
 
