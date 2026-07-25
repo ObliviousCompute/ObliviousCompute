@@ -20,7 +20,7 @@ If no individual possesses that shared reality, then where does it exist?
 
 ## The Whole
 
-If every participant contributes to the field, but no participant possesses it, let us examine a different way of understanding how relationships contribute to a whole.
+If every participant contributes to a field, but no participant possesses it, then the field exists only in the relationships between participants.
 
 Rather than passing from one observer to another, a contribution is spent into a field, altering the present reality experienced by every participant. In doing so, each participant maintains only a local simulacrum through which that shared reality is experienced. The field is not an object that can be owned, copied, or transferred. It exists only as an emergent phenomenon between participants.
 
