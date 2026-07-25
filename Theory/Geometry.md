@@ -22,7 +22,7 @@ The slot did not first request a description of the parcel before deciding wheth
 
 ***What if a computational system did not compute from descriptions of objects?***
 
-***What if it computed the objects themselves?***
+***What if a system computed the objects themselves?***
 
 The object arrives. The geometry encounters it. A state transition either occurs or it does not.
 
