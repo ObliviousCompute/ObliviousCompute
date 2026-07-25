@@ -54,6 +54,10 @@ If we take history with a grain of salt, do we need trust at all to move a compu
 
 ---
 
+Continue [**Holography**](./Holography.md)...
+
+---
+
 ## 📜 License
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
