@@ -1,21 +1,25 @@
 # Theory
 
-This section contains the theoretical foundation of Oblivious Compute.
+The theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).
 
-The papers are intended to be read sequentially, as each introduces a conceptual framework that the next builds upon.
+These papers are intended to be read sequentially. Each introduces a conceptual framework that the next builds upon.
 
-## Geometry
+## Progression
 
-Start with [**Computational Block**](./Geometry.md) to understand the geometric foundation of history-independent computation.
+Begin with **Geometry-**[**Computational Block**](./Geometry.md).
 
-## Holography
+Continue **Holography-**[**The Holerith Holograph**](./Holography.md).
 
-Next, read [**The Holerith Holograph**](./Holography.md) to explore shared state through distributed local representation.
-
-## Admissibility
-
-Finally, read [**Lynchpin**](./Admissibility.md) to understand how admissibility allows independent local evaluation to produce coherent shared progression.
+Then finish **Admissibility-**[**Lynchpin**](./Admissibility.md).
 
 ## Note
 
 Throughout these papers, terms such as *geometry*, *holography*, *resonance*, and *crystalline* are used as conceptual analogies for informational structure rather than physical phenomena. They are intended to provide intuition for abstract computational relationships, not to describe physical processes.
+
+---
+
+## 📜 License
+
+This project is released under the terms of the [**`LICENSE`**](./LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
