@@ -60,7 +60,7 @@ The resulting computational fabric becomes crystalline, and is maintained throug
 
 ---
 
-**Go back to** [**Theory**](./Theory.md)
+**Go back to** [**Theory**](./README.md)
 
 ---
 
