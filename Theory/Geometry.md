@@ -54,7 +54,7 @@ If we take history with a grain of salt, do we need trust at all to move a compu
 
 ---
 
-Continue...[**Holography**](./Holography.md)
+Continue to...[**Holography**](./Holography.md)
 
 ---
 
