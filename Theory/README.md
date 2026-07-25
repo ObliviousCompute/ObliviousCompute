@@ -1,6 +1,6 @@
 # Theory
 
-The theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).
+This section walks you through he theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).
 
 These papers are intended to be read sequentially. Each introduces a conceptual framework that the next builds upon.
 
