@@ -120,7 +120,7 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-## 🪶 A Note
+## 🪶 Note
 
 If the Hydra demo was the one-minute flight, this is closer to the ten-minute flight.
 
