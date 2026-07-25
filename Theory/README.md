@@ -6,11 +6,11 @@ These papers are intended to be read sequentially. Each introduces a conceptual 
 
 ## Progression
 
-Begin with **Geometry-**[**Computational Block**](./Geometry.md).
+Begin with [**Geometry**](./Geometry.md).
 
-Continue **Holography-**[**The Holerith Holograph**](./Holography.md).
+Continue [**Holography**](./Holography.md).
 
-Then finish **Admissibility-**[**Lynchpin**](./Admissibility.md).
+Then finish [**Admissibility**](./Admissibility.md).
 
 ## Note
 
