@@ -20,27 +20,23 @@ Every computation occurs at the boundary between what is admissible and what is 
 
 This boundary is the event horizon.
 
-## The Shape
-
-In a system like this, what does a computer's croak even look like?
+## Gambit
 
 Consider a chessboard.
 
-Each piece carries its own invariants.  
-A rook moves in straight lines.  
-A bishop moves diagonally.  
-A knight moves in its own pattern.  
+The board defines the field. Every piece is an observer within that field. Every observer maintains its own local representation of the game.
 
-These invariants define what is admissible.
+Each piece carries its own invariants. A pawn moves according to one set of constraints. A queen moves according to another. These are not preferences. They are the rules that define each piece.
 
-A proposed position is accepted only if every piece satisfies its invariants.
+Now suppose a pawn proposes a move like a queen.
 
-If not, it is not part of the game.
+No observer asks the pawn why it made the move. No observer consults the pawn's internal state. Every observer consults only its own representation of the field.
 
-A turn, then, is a cycle:  
-a transition between admissible geometric states.
+Within my representation, that piece is a pawn. Within my representation, pawns do not move like queens. The proposed transition is therefore not admissible.
 
-Reality is filtered by shape, not by choice.
+Every observer performs this evaluation independently. No observer determines reality. Each evaluates the proposed transition against the invariants of its own field.
+
+Shared reality emerges because those independent representations are governed by the same invariants.
 
 ---
 
