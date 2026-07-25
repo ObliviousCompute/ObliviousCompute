@@ -60,6 +60,10 @@ The resulting computational fabric becomes crystalline, and is maintained throug
 
 ---
 
+**Go back to** [**Theory**](./Theory.md)
+
+---
+
 ## 📜 License
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
