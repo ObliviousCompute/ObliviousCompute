@@ -38,6 +38,10 @@ The hologram is not stored. It is projected. The holograph is not the projection
 
 ---
 
+Continue to...[**Admissibility**](./Admissibility.md)
+
+---
+
 ## 📜 License
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
