@@ -6,15 +6,15 @@ The papers are intended to be read sequentially, as each introduces a conceptual
 
 ## Geometry
 
-[**`Computational Block`**](./Geometry.md) Introduces the geometric foundation of history-independent computation and the idea that the present alone can be sufficient.
+Start with [**Computational Block**](./Geometry.md) to understand the geometric foundation of history-independent computation.
 
 ## Holography
 
-[**`The Holerith Holograph`**](./Holography.md) Explores shared state as a distributed holograph maintained through local representation rather than centralized ownership.
+Next, read [**The Holerith Holograph**](./Holography.md) to explore shared state through distributed local representation.
 
 ## Admissibility
 
-[**`Lynchpin`**](./Admissibility.md) Introduces admissibility as the mechanism through which independent local evaluation produces coherent shared progression.
+Finally, read [**Lynchpin**](./Admissibility.md) to understand how admissibility allows independent local evaluation to produce coherent shared progression.
 
 ## Note
 
