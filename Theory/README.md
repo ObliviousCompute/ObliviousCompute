@@ -1,6 +1,6 @@
 # 💎 Theory 💎
 
-This section is a walkthrough for the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).
+This section is a walkthrough of the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).
 
 These papers are intended to be read sequentially. Each introduces a conceptual framework that the next builds upon.
 
