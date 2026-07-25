@@ -26,7 +26,7 @@ The object arrives. The geometry encounters it. A state transition either occurs
 
 The mail slot induces only two possibilities. The parcel is admitted, or it is not. There is no intermediate condition. Every geometry divides reality into two disjoint sets. It induces a binary partition.
 
-Perhaps every invariant does the same. Each invariant asks only one question: Does this object belong? Checksums, signatures, field relationships, and every other invariant are computed directly from the object itself. Nothing must first be translated into an independent description before computation can begin.
+Every invariant does the same. Each invariant asks only one question: Does this object belong? Checksums, signatures, field relationships, and every other invariant are computed directly from the object itself. Nothing must first be translated into an independent description before computation can begin.
 
 In this sense, the computation is oblivious. The system does not begin by asking what the object claims to be. It does not require an explanation, a narrative, or an external account. The object arrives, the geometry computes it, and a state transition either occurs or it does not.
 
