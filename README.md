@@ -13,17 +13,19 @@ Instead of preserving logs, ordering messages, or reconstructing the past, **OC*
 **The admitted state is truth.**  
 *Everything else falls into oblivion.*
 
+---
+
 ## 🌀 The Path
 
-Start with [**`Byzantium`**](./Byzantium/README.md) to see this in motion.
+Start with the [**`Theory`**](./Theory/README.md) to understand the ideas that underpin **OC**.
 
-If it clicks, move to [**`Hydra`**](./Hydra/README.md) to see how shared state behaves at a smaller scale.
+From there, [**`Skeleton`**](./Skeleton/README.md) demonstrates the core mechanism in its simplest form.
 
-From there, [**`Skeleton`**](./Skeleton/README.md) shows the core mechanism stripped down.
+Continue with [**`Hydra`**](./Hydra/README.md) to see how shared state behaves within a compact constraint system.
 
-If you want to go deeper, [**`Theory`**](./Theory/README.md) explains the idea underneath it all.
+Then explore [**`Byzantium`**](./Byzantium/README.md) to watch the same principles operate at a larger scale.
 
-Check out [**`Mowsie`**](./Mowsie/README.md) to understand where this is going.
+Finally, check out [**`Mowsie`**](./Mowsie/README.md) to see where this is going.
 
 ---
 
