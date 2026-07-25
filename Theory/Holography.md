@@ -30,9 +30,9 @@ Traditional systems encourage us to imagine information moving between participa
 
 So, long before modern computers, computation was performed through geometry. A Holerith punch card contained no instructions in the conventional sense. Instead, computation emerged from the geometric arrangement of its holes. The pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
 
-An oblivious compute network operates in much the same way. The invariant relationships established within the cryptographic universe form a distributed geometry of constraints. No single invariant defines the system. Together, they define the geometry through which every participant interprets the aggregate.
+An oblivious compute network operates in much the same way. The invariant relationships established within the system form a distributed geometry of constraints. No single invariant defines the system. Together, they define the geometry through which every participant interprets the aggregate.
 
-The resulting geometry is the Holerith Holograph. Every participant maintains only a local simulacrum shaped by local holographic invariants. The aggregate of those simulacra gives rise to the hologram.
+The resulting geometry is a Holerith Holograph. Every participant maintains only a local simulacrum shaped by thier own local holographic invariants. The constellation of those simulacra gives rise to the hologram.
 
 The hologram is not stored. It is projected. The holograph is not the projection itself, but the distributed geometry that makes the projection possible.
 
