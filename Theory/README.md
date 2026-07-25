@@ -4,7 +4,7 @@ This section is a walkthrough for the theoretical foundation of [**`Oblivious Co
 
 These papers are intended to be read sequentially. Each introduces a conceptual framework that the next builds upon.
 
-## 🌀 Progression 🌀
+## 🌀 Progression
 
 Begin with [**`Geometry`**](./Geometry.md) to start thinking geometrically about computation.
 
