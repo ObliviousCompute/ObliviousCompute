@@ -6,11 +6,11 @@ These papers are intended to be read sequentially. Each introduces a conceptual 
 
 ## Progression
 
-Begin with [**Geometry**](./Geometry.md).
+Begin with [**Geometry**](./Geometry.md) to start thinking geometrically about computation.
 
-Continue [**Holography**](./Holography.md).
+Continue [**Holography**](./Holography.md) and duscover how shared state exists without ownership.
 
-Then finish [**Admissibility**](./Admissibility.md).
+Then finish [**Admissibility**](./Admissibility.md) See how coherence emerges without coordination.
 
 ## Note
 
