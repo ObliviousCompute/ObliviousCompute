@@ -26,7 +26,7 @@ Consider a chessboard.
 
 The board defines the field. Every piece is an observer within that field. Every observer maintains its own local representation of the game.
 
-Each piece carries its own invariants. A pawn moves according to one set of constraints. A queen moves according to another. These are not preferences. They are the rules that define each piece.
+Each piece is defined by its own invariants. Every observer evaluates the field according to those same invariants. A pawn moves according to one set of constraints. A queen moves according to another. These are not preferences. They are the rules that define each piece.
 
 Now suppose a pawn proposes a move like a queen.
 
