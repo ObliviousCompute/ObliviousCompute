@@ -38,7 +38,7 @@ The hologram is not stored. It is projected. The holograph is not the projection
 
 ---
 
-Continue to...[**Admissibility**](./Admissibility.md)
+**Continue to** [**Admissibility**](./Admissibility.md)
 
 ---
 
