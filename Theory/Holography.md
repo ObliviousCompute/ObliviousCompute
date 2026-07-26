@@ -30,13 +30,9 @@ It exists only as an emergent phenomenon between participants.
 
 Traditional systems encourage us to imagine information moving between participants, as though reality were passed from hand to hand.
 
-***An oblivious system asks us to think differently.***
+Oblivious compute invites us to think about fields differently.
 
-Participants do not exchange reality with one another—they spend into a field.
-
-**Remove the participants, and the field disappears.**
-
-**The whole is not found within any node. It exists only within the aggregate.**
+Participants do not exchange reality with one another—they spend into a field. Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.
 
 ## The Punch
 
