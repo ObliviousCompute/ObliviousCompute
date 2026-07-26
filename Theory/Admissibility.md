@@ -22,7 +22,7 @@ Every computation occurs at the boundary between what is admissible and what is 
 
 ## Gambit
 
-***Consider a chessboard.***
+***Now, think about a chessboard.***
 
 The board defines the field. Every piece is an observer within that field. Every observer maintains its own local representation of the field.
 
