@@ -32,7 +32,9 @@ Traditional systems encourage us to imagine information moving between participa
 
 Oblivious compute invites us to think about fields differently.
 
-Participants do not exchange reality with one another—they spend into a field. Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.
+Participants do not exchange reality with one another—they spend into a field. 
+
+**Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.**
 
 ## The Punch
 
