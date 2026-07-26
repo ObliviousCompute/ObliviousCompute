@@ -18,7 +18,7 @@ Transitions therefore do not unfold through time. They unfold across admissible 
 
 Every computation occurs at the boundary between what is admissible and what is not.
 
-This boundary is the event horizon.
+***This boundary is the event horizon.***
 
 ## Gambit
 
@@ -36,7 +36,7 @@ Within my representation, that piece is a pawn. Within my representation, pawns 
 
 Every observer performs this evaluation independently. No observer determines reality. Each evaluates the proposed transition against the invariants of its own field.
 
-Shared reality emerges because those independent representations are governed by the same invariants.
+***Shared reality emerges because those independent representations are governed by the same invariants.***
 
 ## Natural Consequence
 
@@ -46,7 +46,7 @@ Every observer maintains only its own representation of the field. A single obse
 
 No observer waits for another to advance. No observer reconstructs a shared history. Every proposed transition is evaluated locally, and only those that remain admissible become part of the shared reality.
 
-Shared progression therefore does not emerge from a common past. It emerges from many local evaluations occurring simultaneously across many local event horizons.
+***Shared progression therefore does not emerge from a common past. It emerges from many local evaluations occurring simultaneously across many local event horizons.***
 
 ## Closing Thought
 
@@ -56,7 +56,7 @@ History breaks symmetry.
 
 By removing history, the present becomes sufficient. Shared state emerges through resonance.
 
-The resulting computational fabric becomes crystalline, and is maintained through symmetry rather than history.
+***The resulting computational fabric becomes crystalline, and is maintained through symmetry rather than history.***
 
 ---
 
