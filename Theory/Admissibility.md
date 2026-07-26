@@ -56,7 +56,7 @@ Every proposed transition is evaluated locally, and only those that remain admis
 
 ## Closing Thought
 
-***History is treated as the foundation of distributed computation. This theory proposes the opposite.***
+***The current foundation of distributed computation is built on history. This theory proposes the opposite.***
 
 **History breaks symmetry.**
 
