@@ -46,7 +46,7 @@ In this sense, the computation is oblivious. The system does not begin by asking
 
 ## A Grain of Salt
 
-Traditional distributed systems spend computational resources preserving that history. The history must be stored. It must be replicated. It must be ordered. It must be defended. Only then can the present state be trusted.
+Traditional distributed systems spend considerable amounts of computational resources preserving history. The history must be stored. It must be replicated. It must be ordered. It must be defended. Only then can the present state be trusted.
 
 **Consensus systems inherit trust from history, but what if history were no longer the primitive?**
 
