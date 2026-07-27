@@ -12,7 +12,7 @@ History is distinct from the evidence that survives from the past. Evidence may 
 
 ### Example
 
-Imagine an ancient coin is unearthed. The coin unquestionably exists and is evidence originating from the past. By itself, however, the coin cannot uniquely determine the sequence of events that produced its present location.
+*Imagine an ancient coin is unearthed. The coin unquestionably exists and is evidence originating from the past. By itself, however, the coin cannot uniquely determine the sequence of events that produced its present location.*
 
 ## Reality
 
@@ -32,7 +32,7 @@ Genesis is the initial admissible state from which progression begins.
 
 ## Field
 
-A field is the complete collection of cells that constitute a reality.
+A field is the complete collection of states that constitute a reality.
 
 ## State
 
