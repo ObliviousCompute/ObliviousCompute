@@ -2,47 +2,39 @@
 
 ## Purpose
 
-This appendix establishes the terminology used throughout *Oblivious Compute*. These definitions provide a common vocabulary for the theory and should be read before the formal axioms presented in Appendix B.
+This appendix establishes the terminology used throughout *Oblivious Compute*. Many of these definitions differ subtly from their conventional interpretation. Readers are encouraged to begin with **History**, as the distinction established there underlies much of the theory.
 
 ---
 
 ## History
 
-A narrative describing the sequence of events believed to have produced a present state.
+History is a narrative describing the sequence of events believed to have produced a present state.
 
-A history may be complete, partial, uncertain, or entirely unknown.
+History is not the same as the evidence that survives from the past.
 
-History is descriptive rather than authoritative.
+Evidence may support a historical narrative without uniquely determining one.
 
----
+History may therefore be complete, partial, uncertain, or entirely unknown.
 
-## Historical Artifact
+*Example*
 
-Evidence originating from the past.
+*Imagine an ancient coin is unearthed.*
 
-A historical artifact may inform our understanding of history, but it does not necessarily determine a unique historical narrative.
+*The coin bears an unfamiliar face, an undeciphered language, and symbols whose meaning has been lost to time.*
 
-History and historical artifacts are distinct concepts.
+*The coin unquestionably exists.*
 
-### Example
+*It is evidence originating from the past.*
 
-Imagine an ancient coin is unearthed.
+*What it cannot do, by itself, is uniquely reconstruct the sequence of events that produced its present location.*
 
-The coin bears an unfamiliar face, an undeciphered language, and symbols whose meaning has been lost to time.
+*We do not know who minted it, who carried it, where it circulated, why it was lost, or the complete sequence of events that ultimately brought it to where it was discovered.*
 
-The coin unquestionably exists.
+*The artifact is real.*
 
-It is a historical artifact.
+*The historical narrative is uncertain.*
 
-Its complete history, however, cannot be uniquely reconstructed from the artifact alone.
-
-We do not know who minted it, who carried it, where it circulated, why it was lost, or the sequence of events that ultimately brought it to its present location.
-
-The artifact is real.
-
-The historical narrative is uncertain.
-
-**Oblivious Compute relies upon this distinction. A present admissible state may be verified directly, even when the complete historical sequence that produced that state cannot be uniquely reconstructed.**
+***Oblivious Compute relies upon this distinction. Present state may be verified directly, even when the complete historical sequence that produced that state cannot be uniquely reconstructed.***
 
 ---
 
