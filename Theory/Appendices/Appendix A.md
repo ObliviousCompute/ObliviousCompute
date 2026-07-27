@@ -16,7 +16,7 @@ Evidence may support a historical narrative without uniquely determining one.
 
 History may therefore be complete, partial, uncertain, or entirely unknown.
 
-*Example*
+### Example
 
 *Imagine an ancient coin is unearthed.*
 
@@ -26,15 +26,9 @@ History may therefore be complete, partial, uncertain, or entirely unknown.
 
 *It is evidence originating from the past.*
 
-*What it cannot do, by itself, is uniquely reconstruct the sequence of events that produced its present location.*
+*The coin by itself cannot uniquely reconstruct the sequence of events that produced its present location.*
 
-*We do not know who minted it, who carried it, where it circulated, why it was lost, or the complete sequence of events that ultimately brought it to where it was discovered.*
-
-*The artifact is real.*
-
-*The historical narrative is uncertain.*
-
-***Oblivious Compute relies upon this distinction. Present state may be verified directly, even when the complete historical sequence that produced that state cannot be uniquely reconstructed.***
+*Oblivious Compute relies upon this distinction. Present state may be verified directly, even when the complete historical sequence that produced that state cannot be uniquely reconstructed.*
 
 ---
 
