@@ -64,7 +64,7 @@ Verification is the process of determining whether a proposed state or transitio
 
 ## Synchronization
 
-Synchronization is the process by which observers reconcile their local view of reality.
+Synchronization is the successful verification of another cell's present state.
 
 ## Equivocation
 
