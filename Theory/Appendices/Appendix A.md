@@ -68,36 +68,36 @@ Violation of any invariant renders a proposed state inadmissible.
 
 ---
 
-# Geometry
+## Geometry
 
 The complete set of admissible states together with every admissible transition connecting those states.
 
 ---
 
-# Observer
+## Observer
 
 Any participant capable of evaluating a proposed state.
 
 ---
 
-# Verification
+## Verification
 
 The process of determining whether a proposed state is admissible.
 
 ---
 
-# Reality
+## Reality
 
 The collection of all presently admissible states.
 
 ---
 
-# Synchronization
+## Synchronization
 
 The process by which observers update their local view to reflect the current admissible state.
 
 ---
 
-# Equivocation
+## Equivocation
 
 The proposal of multiple incompatible future states from the same prior state.
