@@ -68,52 +68,36 @@ Violation of any invariant renders a proposed state inadmissible.
 
 ---
 
-## Geometry
+# Geometry
 
 The complete set of admissible states together with every admissible transition connecting those states.
 
-The geometry defines every possible evolution of the system independently of any particular history.
+---
+
+# Observer
+
+Any participant capable of evaluating a proposed state.
 
 ---
 
-## Observer
-
-Any participant capable of evaluating the admissibility of a proposed state.
-
-Observers verify state.
-
-Observers do not reconstruct history.
-
----
-
-## Verification
+# Verification
 
 The process of determining whether a proposed state is admissible.
 
-Verification depends upon the present state and the governing invariants.
-
 ---
 
-## Reality
+# Reality
 
 The collection of all presently admissible states.
 
-Reality is maintained through continual verification rather than historical agreement.
-
 ---
 
-## Synchronization
+# Synchronization
 
 The process by which observers update their local view to reflect the current admissible state.
 
-Synchronization concerns present reality rather than historical reconstruction.
-
 ---
 
-## Equivocation
+# Equivocation
 
 The proposal of multiple incompatible future states from the same prior state.
-
-Equivocation does not create multiple realities.
-
-Only admissible successor states may persist.
