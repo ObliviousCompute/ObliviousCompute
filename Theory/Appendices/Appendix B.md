@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This appendix establishes the fundamental axioms from which the theory is derived. Each axiom is presented in both natural language and mathematical form.
+This appendix establishes the fundamental axioms from which Oblivious Compute is derived. Each axiom is presented in both natural language and mathematical form.
 
 ## Notation
 
@@ -12,13 +12,9 @@ This appendix establishes the fundamental axioms from which the theory is derive
 | c | Cell |
 | g | Genesis |
 | T | Transition |
-| A | Admissibility |
 | I | Invariant |
 | E | Event Horizon |
-| V | Verification |
-| F | Field |
-| G | Geometry |
-| R | Reality |
+| S | Synchronization |
 
 ---
 
@@ -48,39 +44,17 @@ Every admissible progression is composed of transitions.
 
 ---
 
-## Axiom 3 — Admissibility
-
-Only admissible transitions contribute to reality.
-
-### Mathematical Form
-
-A(T(s)) = true
-
-Only admissible transitions may produce a new admissible state.
-
----
-
-## Axiom 4 — Invariance
+## Axiom 3 — Invariance
 
 Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-A(T(s)) ⇒ I(s) = I(T(s))
+I(sᵢ) = I(sᵢ₊₁)
 
 ---
 
-## Axiom 5 — Verification
-
-Admissibility is established through verification.
-
-### Mathematical Form
-
-V(T(s)) = A(T(s))
-
----
-
-## Axiom 6 — Event Horizon
+## Axiom 4 — Event Horizon
 
 Every cell possesses exactly one current event horizon.
 
@@ -90,26 +64,11 @@ Every cell possesses exactly one current event horizon.
 
 ---
 
-## Axiom 7 — Reality
+## Axiom 5 — Synchronization
 
-Reality consists exclusively of presently admissible states.
-
-### Mathematical Form
-
-R = { s ∈ F | A(s) }
-
----
-
-## Axiom 8 — Synchronization
+A cell re-establishes its present state through synchronization with another cell.
 
 Synchronization occurs exclusively between two cells.
-
-A synchronization event is the successful verification and acceptance of another cell's present state.
-
 ### Mathematical Form
 
 S(cᵢ, cⱼ)
-
-where
-
-S(cᵢ, cⱼ) ⇒ V(cⱼ) = true
