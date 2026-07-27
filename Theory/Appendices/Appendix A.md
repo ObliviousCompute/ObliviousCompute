@@ -32,7 +32,7 @@ Genesis is the initial admissible state from which progression begins.
 
 ## Field
 
-A field is the complete collection of states that constitute a reality.
+A field is the complete space of possible states that constitute a reality.
 
 ## State
 
