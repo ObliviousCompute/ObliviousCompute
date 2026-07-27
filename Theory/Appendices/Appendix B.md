@@ -102,8 +102,14 @@ R = { s ∈ F | A(s) }
 
 ## Axiom 8 — Synchronization
 
-Observers synchronize by verifying admissible progression.
+Synchronization occurs exclusively between two cells.
+
+A synchronization event is the successful verification and acceptance of another cell's present state.
 
 ### Mathematical Form
 
-Synchronization preserves admissible reality without requiring historical reconstruction.
+S(cᵢ, cⱼ)
+
+where
+
+S(cᵢ, cⱼ) ⇒ V(cⱼ) = true
