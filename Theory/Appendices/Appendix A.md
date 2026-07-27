@@ -64,7 +64,7 @@ Verification is the process of determining whether a proposed state or transitio
 
 ## Synchronization
 
-Synchronization is the successful verification of another cell's present state.
+Synchronization is the successful verification and acceptance of another cell's present state.
 
 ## Equivocation
 
