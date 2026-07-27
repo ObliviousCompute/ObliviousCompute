@@ -16,7 +16,7 @@ History is distinct from the evidence that survives from the past. Evidence may 
 
 ## Reality
 
-Reality is the collection of all presently admissible states as perceived by an observer.
+Reality is the collection of all presently admissible states.
 
 ## Geometry
 
@@ -44,7 +44,7 @@ A cell is the fundamental unit of progression within the field.
 
 ## Invariant
 
-An invariant is a property that remains true throughout every admissible progression.
+An invariant is a property preserved by every admissible transition.
 
 ## Admissibility
 
@@ -68,4 +68,4 @@ Synchronization is the process by which observers reconcile their local view of 
 
 ## Equivocation
 
-Equivocation is the proposal of multiple incompatible progressions from the same event horizon.
+Equivocation is the proposal of multiple advancements from a single event horizon.
