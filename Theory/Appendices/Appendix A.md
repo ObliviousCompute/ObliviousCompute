@@ -6,7 +6,7 @@ This appendix establishes the terminology used throughout *Oblivious Compute*. T
 
 ---
 
-# History
+## History
 
 A narrative describing the sequence of events believed to have produced a present state.
 
@@ -16,7 +16,7 @@ History is descriptive rather than authoritative.
 
 ---
 
-# Historical Artifact
+## Historical Artifact
 
 Evidence originating from the past.
 
@@ -46,7 +46,7 @@ The historical narrative is uncertain.
 
 ---
 
-# State
+## State
 
 The complete description of a system at a particular instant.
 
@@ -54,7 +54,7 @@ State is the object evaluated by Oblivious Compute.
 
 ---
 
-# Genesis
+## Genesis
 
 The initial admissible state from which all subsequent admissible states originate.
 
@@ -62,7 +62,7 @@ Every admissible state is ultimately derived from a genesis.
 
 ---
 
-# Transition
+## Transition
 
 A proposed transformation from one state to another.
 
@@ -70,7 +70,7 @@ A transition has no authority until its resulting state is determined to be admi
 
 ---
 
-# Admissibility
+## Admissibility
 
 The property that determines whether a proposed state satisfies every invariant required by the system.
 
@@ -78,7 +78,7 @@ Only admissible states may exist within the geometry.
 
 ---
 
-# Invariant
+## Invariant
 
 A property that must remain true for every admissible state.
 
@@ -86,7 +86,7 @@ Violation of any invariant renders a proposed state inadmissible.
 
 ---
 
-# Geometry
+## Geometry
 
 The complete set of admissible states together with every admissible transition connecting those states.
 
@@ -94,7 +94,7 @@ The geometry defines every possible evolution of the system independently of any
 
 ---
 
-# Observer
+## Observer
 
 Any participant capable of evaluating the admissibility of a proposed state.
 
@@ -104,7 +104,7 @@ Observers do not reconstruct history.
 
 ---
 
-# Verification
+## Verification
 
 The process of determining whether a proposed state is admissible.
 
@@ -112,7 +112,7 @@ Verification depends upon the present state and the governing invariants.
 
 ---
 
-# Reality
+## Reality
 
 The collection of all presently admissible states.
 
@@ -120,7 +120,7 @@ Reality is maintained through continual verification rather than historical agre
 
 ---
 
-# Synchronization
+## Synchronization
 
 The process by which observers update their local view to reflect the current admissible state.
 
@@ -128,7 +128,7 @@ Synchronization concerns present reality rather than historical reconstruction.
 
 ---
 
-# Equivocation
+## Equivocation
 
 The proposal of multiple incompatible future states from the same prior state.
 
