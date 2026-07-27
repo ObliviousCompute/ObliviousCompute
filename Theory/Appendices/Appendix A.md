@@ -8,17 +8,13 @@ This appendix establishes the terminology used throughout *Oblivious Compute*. M
 
 ## History
 
-History is a narrative describing the sequence of events believed to have produced a present state.
+History is an account of the sequence of events believed to have produced a present state.
 
-History is not the same as the evidence that survives from the past.
-
-Evidence may support a historical narrative without uniquely determining one.
-
-History may therefore be complete, partial, uncertain, or entirely unknown.
+History is distinct from the evidence that survives from the past. Evidence may support a historical account without uniquely determining one.
 
 ### Example
 
-***Imagine an ancient coin is unearthed.***
+*Imagine an ancient coin is unearthed.*
 
 *The coin bears an unfamiliar face, an undeciphered language, and symbols whose meaning has been lost to time.*
 
@@ -26,9 +22,9 @@ History may therefore be complete, partial, uncertain, or entirely unknown.
 
 *It is evidence originating from the past.*
 
-***The coin by itself cannot uniquely reconstruct the sequence of events that produced its present location.***
+***The coin, by itself, cannot uniquely determine the sequence of events that produced its present location.***
 
-*Oblivious Compute relies upon this distinction. Present state may be verified directly, even when the complete historical sequence that produced that state cannot be uniquely reconstructed.*
+This distinction underlies *Oblivious Compute*. The theory concerns the direct verification of present state rather than the reconstruction of historical accounts.
 
 ---
 
