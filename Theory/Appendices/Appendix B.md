@@ -24,11 +24,7 @@ Every admissible progression begins from a genesis.
 
 ### Mathematical Form
 
-Given a cell c,
-
-g ∈ F
-
-Every admissible progression originates from g.
+∃! g
 
 ---
 
