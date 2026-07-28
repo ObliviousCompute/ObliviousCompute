@@ -40,6 +40,10 @@ The reference implementations are intended to facilitate independent inspection,
 
 ---
 
+**Continue to** [**`Appendix B`**](./B.md)
+
+---
+
 ## 📜 License
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../../LICENSE).
