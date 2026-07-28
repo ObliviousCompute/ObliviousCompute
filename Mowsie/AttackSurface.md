@@ -4,7 +4,7 @@
 
 ---
 
-Mowsie does not secure itself through **consensus**, **history**, or **ordering**.
+Mowsie does not secure itself through **history** or **ordering**.
 
 It secures itself through **admissibility**.
 
@@ -99,8 +99,6 @@ The attacker is not followed — they are bypassed.
 ## Final Thoughts
 
 [**`Mowsie`**](../Mowsie/README.md) removes entire classes of attack by design.
-
-There is no consensus to break.
 
 What remains is a system where invalid state is rejected locally, valid state propagates naturally, and attackers are constrained to lawful behavior.
 
