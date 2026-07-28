@@ -37,3 +37,11 @@ Byzantium extends Hydra into adversarial environments through authentication, ve
 This paper presents the theoretical foundation of Oblivious Compute. Questions regarding implementation behavior should be evaluated against the published reference implementations.
 
 The reference implementations are intended to facilitate independent inspection, execution, testing, and analysis. Claims regarding distributed behavior, convergence, synchronization, or adversarial operation should be evaluated by examining and executing the corresponding implementation rather than inferred solely from the abstract axioms.
+
+---
+
+## 📜 License
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
