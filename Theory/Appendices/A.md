@@ -16,7 +16,7 @@ These implementations are published as executable reference implementations and 
 
 ## Skeleton
 
-Skeleton is the minimal reference implementation of Oblivious Compute. It demonstrates the computational primitive using the fewest possible assumptions. Networking, persistence, synchronization, and security are intentionally omitted so that the axioms may be examined in their simplest executable form.
+[**`Skeleton**`](../../Skeleton/README.md) is the minimal reference implementation of Oblivious Compute. It demonstrates the computational primitive using the fewest possible assumptions. Networking, persistence, synchronization, and security are intentionally omitted so that the axioms may be examined in their simplest executable form.
 
 ---
 
