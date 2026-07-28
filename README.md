@@ -85,6 +85,12 @@ Pure, *hyper-legible* expression of the primitive.
 
 ---
 
+## 🪶 Note
+
+*Oblivious Compute is **not** presented as a variation of **Paxos**, **Raft**, or a **CRDT**. Instead, it explores a different approach to distributed **consensus**, where coherence emerges through admissible transitions and preserved invariants rather than the reconstruction of shared history. As far as I know, this represents a distinct computational model. If you've encountered similar ideas, know of relevant prior work, or simply have thoughts on how this framework should be classified, I'd sincerely appreciate hearing from you. Please get in touch.*
+
+---
+
 ## 📡 Contact
 
 > If you see it and want to talk, reach out — **ObliviousCompute@yahoo.com**
