@@ -66,7 +66,7 @@ By removing history, the present becomes sufficient. Shared state emerges throug
 
 ---
 
-**Go back to** [**Theory**](./README.md)**, or continues to [**`Appendix A`**](../A)
+**Go back to** [**Theory**](./README.md)**, or continue to [**`Appendix A`**](./Appendices/A)**
 
 ---
 
