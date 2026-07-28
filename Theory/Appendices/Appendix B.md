@@ -69,3 +69,11 @@ Synchronization is the successful verification and acceptance of another cell's 
 ## Equivocation
 
 Equivocation is the proposal of multiple advancements from a single event horizon.
+
+---
+
+## 📜 License
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
