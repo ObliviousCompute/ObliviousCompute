@@ -42,6 +42,6 @@ The reference implementations are intended to facilitate independent inspection,
 
 ## 📜 License
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](.../LICENSE).
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](..../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
