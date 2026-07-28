@@ -47,7 +47,7 @@ You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environm
 Hydra runs in two modes.
 
 **Den** is local—multiple terminals on the same machine. *(sandbox)*  
-**Swamp** runs across a LAN, allowing multiple machines to share the same **Braid**.
+**Swamp** runs across a LAN, allowing multiple machines to share the same field.
 
 > *Think Hungry Hungry Hppos*  
 > Run Hydra in a **Swamp** and see who can chomp the most **Tailies.**  
