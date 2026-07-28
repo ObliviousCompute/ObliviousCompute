@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Oblivious Compute axioms define the computational model. The following reference implementations demonstrate progressively more capable realizations of that model.
+The [**`Axioms`**](./C.md) in Appendix C define the computational model. The following reference implementations demonstrate progressively more capable realizations of that model.
 
 Skeleton demonstrates the computational primitive.
 
