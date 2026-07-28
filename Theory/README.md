@@ -1,8 +1,6 @@
 # 💎 Theory 💎
 
-This section is a walkthrough of the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).
-
-These papers are intended to be read sequentially. Each introduces a conceptual framework that the next builds upon.
+These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md). The concepts presented here are not purely hypothetical; they are accompanied by working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. Accordingly, these papers should be read as an explanation of an implemented computational framework rather than a speculative proposal.
 
 ## 🌀 Progression
 
