@@ -14,7 +14,7 @@ Then finish with [**`Admissibility`**](./Admissibility.md), where coherence emer
 
 ## 📚 Appendices
 
-**Appendix A** explores the [**`Implementations`**](./Appendices/A.md) of **Oblivious Compute**
+**Appendix A** explores the [**`Implementations`**](./Appendices/A.md) of Oblivious Compute.
 
 Read through **Appendix B** for the formal [**`Definitions`**](./Appendices/B.md).
 
