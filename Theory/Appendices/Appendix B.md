@@ -1,4 +1,4 @@
-# Appendix A — Definitions
+# Appendix B — Definitions
 
 ## Purpose
 
