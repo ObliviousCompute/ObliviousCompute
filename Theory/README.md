@@ -14,11 +14,11 @@ Then finish with [**`Admissibility`**](./Admissibility.md), where coherence emer
 
 ## 📚 Appendices
 
-**Appendix A** explores the [**`Implementations`**](./Appendeces/A.md) of Oblivious Compute, including the computational primitive, distributed operation, and adversarial behavior.
+**Appendix A** explores the [**`Implementations`**](./Appedeces/A.md) of Oblivious Compute, including the computational primitive, distributed operation, and adversarial behavior.
 
-Read through **Appendix B** for the formal [**`Definitions`**](./Appendeces/B.md) used throughout the theory.
+Read through **Appendix B** for the formal [**`Definitions`**](./Appedeces/B.md) used throughout the theory.
 
-If you're interested in the underlying [**`Axioms`**](./Appendeces/C.md), finish with **Appendix C.**
+If you're interested in the underlying [**`Axioms`**](./Appedeces/C.md), finish with **Appendix C.**
 
 
 ## 🪶 Note
