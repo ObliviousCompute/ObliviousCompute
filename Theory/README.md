@@ -20,6 +20,6 @@ Throughout these papers, terms such as *geometry*, *holography*, *resonance*, an
 
 ## 📜 License
 
-This project is released under the terms of the [**`LICENSE`**](./LICENSE).
+This project is released under the terms of the [**`LICENSE`**](../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
