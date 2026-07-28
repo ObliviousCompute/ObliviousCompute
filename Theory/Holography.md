@@ -60,7 +60,7 @@ Every participant maintains only a local **facsimile** shaped by their own holog
 
 ---
 
-**Continue to** [**Admissibility**](./Admissibility.md)
+**Continue to** [**`Admissibility`**](./Admissibility.md)
 
 ---
 
