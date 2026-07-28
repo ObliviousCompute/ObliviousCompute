@@ -22,13 +22,13 @@ These implementations are published as executable reference implementations and 
 
 ## Hydra
 
-Hydra extends Skeleton into a distributed implementation capable of synchronizing multiple participating cells. It demonstrates that the Oblivious Compute primitive can operate across a distributed system while preserving the same axiomatic foundation. Readers interested in distributed operation, synchronization, and convergence should evaluate the Hydra implementation.
+[**`Hydra`**](../../Hydra/README.md) extends Skeleton into a distributed implementation capable of synchronizing multiple participating cells. It demonstrates that the Oblivious Compute primitive can operate across a distributed system while preserving the same axiomatic foundation. Readers interested in distributed operation, synchronization, and convergence should evaluate the Hydra implementation.
 
 ---
 
 ## Byzantium
 
-Byzantium extends Hydra into adversarial environments through authentication, verification, and Byzantine-resistant behavior. The computational primitive remains unchanged while additional implementation requirements permit secure operation in hostile environments. Readers interested in the security properties of the framework should evaluate the Byzantium implementation.
+[**`Byzantium`**](../../Byzantium/README.md) extends Hydra into adversarial environments through authentication, verification, and Byzantine-resistant behavior. The computational primitive remains unchanged while additional implementation requirements permit secure operation in hostile environments. Readers interested in the security properties of the framework should evaluate the Byzantium implementation.
 
 ---
 
