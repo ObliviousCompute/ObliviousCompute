@@ -71,7 +71,7 @@ S(cᵢ, cⱼ)
 
 ---
 
-**Go Back To** [**`Theory`**](../README.md)
+**Go back to** [**`Theory`**](../README.md)
 
 ---
 
