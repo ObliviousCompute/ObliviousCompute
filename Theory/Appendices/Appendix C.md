@@ -1,149 +1,39 @@
 # Appendix C — Implementations
 
-The following implementations demonstrate progressively more capable realizations of the Oblivious Compute axioms. Each implementation preserves the same foundational model while introducing additional invariants appropriate to its operating environment.
+## Purpose
 
-The reference implementations are maintained independently from this paper and serve as executable specifications of the theory.
+The Oblivious Compute axioms define the computational model. The following reference implementations demonstrate progressively more capable realizations of that model.
 
----
+Skeleton demonstrates the computational primitive.
 
-## C.1 Skeleton
+Hydra demonstrates the primitive operating as a distributed system.
 
-### Purpose
+Byzantium demonstrates the primitive operating in adversarial environments.
 
-Skeleton is the minimal reference implementation of Oblivious Compute.
-
-Its purpose is to demonstrate the computational primitive using the fewest possible assumptions. It contains no networking, cryptography, persistence, consensus, or optimization. Every transition is evaluated exclusively against the present admissible state.
-
-Skeleton serves as the canonical implementation of the five axioms.
-
-### Characteristics
-
-- Single execution context
-- No historical reconstruction
-- No networking
-- No persistence
-- Present-state evaluation only
-- Minimal implementation complexity
-
-### Core Invariants
-
-- Every transition is evaluated for admissibility.
-- Every admissible transition preserves implementation invariants.
-- Exactly one current event horizon exists.
-- Invalid transitions produce desynchronization.
-
-### Reference Implementation
-
-See the Skeleton reference implementation.
+These implementations are published as executable reference implementations and are intended to be independently inspected, executed, modified, and evaluated.
 
 ---
 
-## C.2 Hydra
+## Skeleton
 
-### Purpose
-
-Hydra extends Skeleton into a distributed implementation capable of synchronizing multiple participating cells.
-
-Hydra preserves the same computational primitive while introducing networking, synchronization, persistence, and recovery. These additions do not alter the Oblivious Compute axioms; they introduce implementation-specific invariants required for distributed operation.
-
-### Characteristics
-
-- Distributed execution
-- Cell synchronization
-- Network transport
-- Persistent state
-- Recovery from desynchronization
-- Multiple participating cells
-
-### Additional Invariants
-
-- Cell identity
-- Synchronization integrity
-- State propagation
-- Persistent recovery
-- Network message validity
-
-### Relationship to Skeleton
-
-Hydra is a strict extension of Skeleton. Every Skeleton invariant remains valid while additional invariants support distributed execution.
-
-### Reference Implementation
-
-See the Hydra reference implementation.
+Skeleton is the minimal reference implementation of Oblivious Compute. It demonstrates the computational primitive using the fewest possible assumptions. Networking, persistence, synchronization, and security are intentionally omitted so that the axioms may be examined in their simplest executable form.
 
 ---
 
-## C.3 Byzantium
+## Hydra
 
-### Purpose
-
-Byzantium extends Hydra for operation in adversarial environments.
-
-While Hydra assumes cooperative participants, Byzantium introduces authentication, verification, and Byzantine-resistant behavior through additional implementation invariants.
-
-The underlying computational primitive remains unchanged.
-
-### Characteristics
-
-- Byzantine-resistant operation
-- Authentication
-- Digital signatures
-- Trust verification
-- Adversarial recovery
-- Secure synchronization
-
-### Additional Invariants
-
-- Signature validity
-- Identity verification
-- Authentication requirements
-- Byzantine fault handling
-- Secure synchronization
-
-### Relationship to Hydra
-
-Byzantium is a strict extension of Hydra. Every Hydra invariant remains valid while additional security invariants permit operation in hostile environments.
-
-### Reference Implementation
-
-See the Byzantium reference implementation.
+Hydra extends Skeleton into a distributed implementation capable of synchronizing multiple participating cells. It demonstrates that the Oblivious Compute primitive can operate across a distributed system while preserving the same axiomatic foundation. Readers interested in distributed operation, synchronization, and convergence should evaluate the Hydra implementation.
 
 ---
 
-## C.4 Invariant Library
+## Byzantium
 
-The Oblivious Compute axioms remain fixed across all implementations.
+Byzantium extends Hydra into adversarial environments through authentication, verification, and Byzantine-resistant behavior. The computational primitive remains unchanged while additional implementation requirements permit secure operation in hostile environments. Readers interested in the security properties of the framework should evaluate the Byzantium implementation.
 
-Implementations differ by the invariants they choose to enforce.
+---
 
-### Structural
+## Evaluation
 
-- Genesis immutability
-- Parent-before-child
-- Event horizon uniqueness
-- Sequence continuity
+This paper presents the theoretical foundation of Oblivious Compute. Questions regarding implementation behavior should be evaluated against the published reference implementations.
 
-### Distributed
-
-- Cell identity
-- Synchronization validity
-- Network integrity
-- Message authenticity
-
-### Security
-
-- Signature verification
-- Authorization
-- Byzantine fault handling
-- Identity validation
-
-### Domain-Specific
-
-- G-Counter monotonicity
-- OR-Set membership rules
-- Financial conservation
-- Resource ownership
-- Access control
-- Application-specific constraints
-
-The invariant library is intentionally open-ended. Additional invariants may be introduced without modifying the underlying Oblivious Compute axioms, provided every admissible transition preserves the selected invariants.
+The reference implementations are intended to facilitate independent inspection, execution, testing, and analysis. Claims regarding distributed behavior, convergence, synchronization, or adversarial operation should be evaluated by examining and executing the corresponding implementation rather than inferred solely from the abstract axioms.
