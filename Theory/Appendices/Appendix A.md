@@ -44,7 +44,7 @@ A cell is the fundamental unit of progression within the field.
 
 ## Invariant
 
-An invariant is a property preserved by every admissible transition.
+An invariant is a property that defines the admissible state of a field. Every admissible transition preserves its invariants.
 
 ## Admissibility
 
