@@ -72,6 +72,10 @@ Equivocation is the proposal of multiple advancements from a single event horizo
 
 ---
 
+**Continue to** [**`Appendix C`**](./C.md)
+
+---
+
 ## 📜 License
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../../LICENSE).
