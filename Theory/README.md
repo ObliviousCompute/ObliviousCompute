@@ -23,7 +23,7 @@ If you're interested in the underlying [**`Axioms`**](./Appendices/C.md), finish
 
 ## 🪶 Note
 
-Throughout these papers, terms such as *geometry*, *holography*, *resonance*, and *crystalline* are used as conceptual analogies for informational structure rather than physical phenomena. They are intended to provide intuition for abstract computational relationships, not to describe physical processes.
+Throughout these papers, terms such as *geometry* and *holography*, *among others*, are used as conceptual analogies for informational structure rather than physical phenomena. Together, these papers develop a computational framework in which independent observers converge on a shared state through admissible transitions and preserved invariants. The analogies are intended to build intuition for the underlying computational relationships, not to describe physical processes.
 
 ---
 
