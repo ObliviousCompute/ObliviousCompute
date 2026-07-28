@@ -10,7 +10,7 @@ History is an account of the sequence of events believed to have produced a pres
 
 History is distinct from the evidence that survives from the past. Evidence may support a historical account without uniquely determining one.
 
-### Example
+### *Example*
 
 *Imagine an ancient coin is unearthed. The coin unquestionably exists and is evidence originating from the past. By itself, however, the coin cannot uniquely determine the sequence of events that produced its present location.*
 
