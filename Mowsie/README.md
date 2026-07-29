@@ -4,7 +4,7 @@
 
 ---
 
-🚧 Mowsie is currently under construction 🚧
+**🚧 Mowsie is currently under construction 🚧**
 
 ---
 
