@@ -177,18 +177,6 @@ The system does not rely on specialized infrastructure.
 
 ---
 
-## 📡 Contact
-
-> If you see it and want to talk, reach out — **ObliviousCompute@yahoo.com**
-
----
-
-<h2><img src="../Relics/BTC.png" width="25"/> Support</h2>
-
-> **bc1qc69hm4smfvp4q2xwrn95926ljztxahe0q7fa8x**
-
----
-
 **Mowsie replaces loyalty systems with shared state.**  
 **It is the wooden nickel of the 21st century.**
 
