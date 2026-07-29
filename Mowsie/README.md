@@ -4,7 +4,9 @@
 
 ---
 
-**🚧 Mowsie is currently under construction 🚧**
+🚧 **Implementation is currently under construction.** 🚧
+
+*The theoretical foundation is available below. Source code will be published at the first stable milestone.*
 
 ---
 
