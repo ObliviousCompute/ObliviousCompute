@@ -29,21 +29,33 @@ Finally, check out [**`Mowsie`**](./Mowsie/README.md) to see where this is going
 
 ---
 
-## 🐭 Mowsie 🐭
+## 🪶 Note
 
-The first real-world application of Oblivious Compute.
+*Oblivious Compute is **not** presented as a variation of **Paxos**, **Raft**, or a **CRDT**. Instead, it explores a different approach to distributed **consensus**, where coherence emerges through admissible transitions and preserved invariants rather than the reconstruction of shared history. As far as I know, this represents a distinct computational model. If you've encountered similar ideas, know of relevant prior work, or simply have thoughts on how this framework should be classified, I'd sincerely appreciate hearing from you. Please get in touch.*
 
-[**`Mowsie`**](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
+---
 
-Users don’t create accounts.  
-*They receive value.*
+## 💀 Skeleton 💀
 
-Vendors don’t manage infrastructure.  
-*They define an invariant.*
+Pure, *hyper-legible* expression of the primitive.
 
-It is the simplest expression of the primitive in the real world.
+[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.
 
-> *(the 1-hour flight)*
+**The structure is the explanation.**
+
+> *(the lift diagram)*
+
+---
+
+## 🐍🐍 Hydra 🐍🐍
+
+The minimal distributed demonstration of the same primitive.
+
+[**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
+
+A simple admissibility gate, expressed in under a thousand lines of code.
+
+> *(the 1-minute flight)*
 
 ---
 
@@ -61,33 +73,21 @@ Just a live board, shaped in real time by the people inside it.
 
 ---
 
-## 🐍🐍 Hydra 🐍🐍
+## 🐭 Mowsie 🐭
 
-The minimal distributed demonstration of the same primitive.
+The first real-world application of Oblivious Compute.
 
-[**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
+[**`Mowsie`**](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
 
-A simple admissibility gate, expressed in under a thousand lines of code.
+Users don’t create accounts.  
+*They receive value.*
 
-> *(the 1-minute flight)*
+Vendors don’t manage infrastructure.  
+*They define an invariant.*
 
----
+It is the simplest expression of the primitive in the real world.
 
-## 💀 Skeleton 💀
-
-Pure, *hyper-legible* expression of the primitive.
-
-[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.
-
-**The structure is the explanation.**
-
-> *(the lift diagram)*
-
----
-
-## 🪶 Note
-
-*Oblivious Compute is **not** presented as a variation of **Paxos**, **Raft**, or a **CRDT**. Instead, it explores a different approach to distributed **consensus**, where coherence emerges through admissible transitions and preserved invariants rather than the reconstruction of shared history. As far as I know, this represents a distinct computational model. If you've encountered similar ideas, know of relevant prior work, or simply have thoughts on how this framework should be classified, I'd sincerely appreciate hearing from you. Please get in touch.*
+> *(the 1-hour flight)*
 
 ---
 
