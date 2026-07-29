@@ -75,7 +75,11 @@ Just a live board, shaped in real time by the people inside it.
 
 ## 🐭 Mowsie 🐭
 
-🚧 Currently under construction 🚧
+**🚧 Implementation is currently under construction. 🚧**
+
+*The theoretical foundation is available below. Source code will be published at the first stable milestone.*
+
+---
 
 The first real-world application of Oblivious Compute.
 
