@@ -4,6 +4,10 @@
 
 ---
 
+🚧Mowsie is currently under construction🚧
+
+---
+
 After reading below, dive into [**`Genesis`**](./Genesis.md) to see how salt is created.  
 Then check out the [**`Attack Surface`**](./AttackSurface.md) analysis to see how it holds up.
 
