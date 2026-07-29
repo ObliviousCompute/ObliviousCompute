@@ -429,7 +429,7 @@ def PortcullisExit(cache: Cache) -> str:
 
 
 def PortcullisVictory(cache: Cache) -> str:
-    return EnterPortcullis(cache, f'Wow{Excitement(cache)}', subtitle='Did You Do It??')
+    return EnterPortcullis(cache, 'Symmetry Is Power', subtitle=f'{EllipsisLeft(cache)}Every Victory Has a Price{EllipsisRight(cache)}')
 
 
 def CollectingSouls(cache: Cache) -> str:
