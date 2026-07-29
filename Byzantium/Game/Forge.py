@@ -270,7 +270,7 @@ ActionMap: Dict[Action, Dict[str, object]] = {
     Action.Defect: {'floor': 0, 'desc': 'rank-dependent cost to swap seats', 'preview': 'Friends Are Friends Until The End', 'label': None},
     Action.Purge: {'floor': 0, 'desc': '', 'preview': 'Restore Formation', 'label': None},
     Action.Monument: {'floor': 0, 'desc': '', 'preview': 'Memory Set In Stone', 'label': None},
-    Action.Lore: {'floor': 0, 'desc': '', 'preview': 'HisStory', 'label': None},
+    Action.Lore: {'floor': 0, 'desc': '', 'preview': 'Where Truth Lies', 'label': None},
     Action.Exit: {'floor': 0, 'desc': '', 'preview': 'Abandon Post', 'label': None},
 }
 
