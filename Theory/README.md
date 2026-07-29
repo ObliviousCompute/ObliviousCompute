@@ -2,7 +2,7 @@
 
 These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md).The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. Accordingly, these papers should be read as an explanation of an implemented computational framework rather than a speculative proposal.
 
-## 🌀 Progression
+## 🌀 The Path
 
 Begin with [**`Geometry`**](./Geometry.md) to start thinking geometrically about computation.
 
