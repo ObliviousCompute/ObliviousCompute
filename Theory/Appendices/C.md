@@ -8,13 +8,13 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 
 | Symbol | Meaning |
 |---------|---------|
-| s | State |
-| c | Cell |
-| g | Genesis |
-| T | Transition |
-| I | Invariant |
-| E | Event Horizon |
-| S | Synchronization |
+| 𝑠 | State |
+| 𝑐 | Cell |
+| 𝑔 | Genesis |
+| 𝑇 | Transition |
+| 𝐼 | Invariant |
+| 𝐸 | Event Horizon |
+| 𝑆 | Synchronization |
 
 ---
 
@@ -24,9 +24,8 @@ Every admissible progression begins from a genesis.
 
 ### Mathematical Form
 
-```text
-∃! g
-```
+∃! 𝑔
+
 ---
 
 ## Axiom 2 — Transition
@@ -35,7 +34,7 @@ Progression occurs exclusively through transitions.
 
 ### Mathematical Form
 
-T : sᵢ → sᵢ₊₁
+𝑇 : 𝑠ᵢ → 𝑠ᵢ₊₁
 
 Every admissible progression is composed of transitions.
 
@@ -47,7 +46,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-I(sᵢ) = I(sᵢ₊₁)
+𝐼(𝑠ᵢ) = 𝐼(𝑠ᵢ₊₁)
 
 ---
 
@@ -57,7 +56,7 @@ Every cell possesses exactly one current event horizon.
 
 ### Mathematical Form
 
-∀c, ∃! E(c)
+∀𝑐, ∃! 𝐸(𝑐)
 
 ---
 
@@ -66,9 +65,10 @@ Every cell possesses exactly one current event horizon.
 A cell re-establishes its present state through synchronization with another cell.
 
 Synchronization occurs exclusively between two cells.
+
 ### Mathematical Form
 
-S(cᵢ, cⱼ)
+𝑆(𝑐ᵢ, 𝑐ⱼ)
 
 ---
 
