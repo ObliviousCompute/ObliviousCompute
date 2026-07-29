@@ -24,8 +24,9 @@ Every admissible progression begins from a genesis.
 
 ### Mathematical Form
 
+```text
 ∃! g
-
+```
 ---
 
 ## Axiom 2 — Transition
