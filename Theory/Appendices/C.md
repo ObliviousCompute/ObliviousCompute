@@ -72,6 +72,16 @@ Synchronization occurs exclusively between two cells.
 
 ---
 
+## Resolution
+
+***The axioms define the admissible field.*** Their purpose is not to describe every invalid state, but to define lawful state with sufficient **resolution** that invalid states cannot pass through it.
+
+Additional invariants may increase this **resolution** without changing the underlying computational primitive. The problem therefore becomes one of discovering the ***smallest set of independently verifiable invariants*** capable of distinguishing admissible state from inadmissible state.
+
+***In this sense, the field does not need to know how a state was produced. It only needs to determine whether the state belongs.***
+
+---
+
 **Go back to** [**`Theory`**](../README.md)
 
 ---
