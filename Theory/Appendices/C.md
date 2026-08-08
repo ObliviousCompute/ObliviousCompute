@@ -64,7 +64,7 @@ Every cell possesses exactly one current event horizon.
 
 A cell re-establishes its present state through synchronization with another cell.
 
-Synchronization occurs exclusively between two cells.
+Synchronization occurs exclusively between two cells, with each cell occupied by an observer.
 
 ### Mathematical Form
 
