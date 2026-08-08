@@ -62,7 +62,7 @@ Every proposed transition is evaluated locally, and only those that remain admis
 
 By removing history, the present becomes sufficient. Shared state emerges through resonance.
 
-***The resulting computational fabric becomes crystalline, and is maintained through symmetry rather than history.***
+***The resulting computational fabric becomes crystalline, and is maintained through relational symmetry rather than history.***
 
 ---
 
