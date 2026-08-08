@@ -10,7 +10,7 @@ Jacquard's loom encoded rich geometric states composed of simple binary distinct
 
 ## Chutes and Ladders
 
-Jacquard's loom **composed lateral states, but remained sequential between those states**. Each state expressed a rich geometry of binary distinctions. The shuttle moved through that geometry, while successive states accumulated into fabric.
+Jacquard's loom **composed complete lateral states, but remained sequential between those states**. Each state expressed a rich geometry of binary distinctions. The shuttle moved through that geometry, while successive states accumulated into fabric.
 
 Hollerith preserved the card, but narrowed its geometry toward linear progression. Turing completed the abstraction: symbols arranged along an infinite tape, traversed by a head. **Geometry became data; sequence became structure.**
 
