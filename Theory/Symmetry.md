@@ -26,7 +26,7 @@ Each shuttle therefore weaves its own sequential braid through admissible states
 
 ## Eye of the Needle
 
-There is no loom. There is no shuttle. There is no fabric. **State is only a looking glass.** Each observer resolves its own event horizon through that state, weaving a sequential view through **relational admissibility**.
+There is no loom. There is no shuttle. There is no fabric. **Each state is only one view through a looking glass.** Each observer resolves its own event horizon through that state, weaving a sequential view through **relational admissibility**.
 
 No observer possesses the whole. Their compatible views **project the field**, without requiring a privileged observer, progression, or sequence.
 
