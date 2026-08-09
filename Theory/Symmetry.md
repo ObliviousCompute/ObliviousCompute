@@ -1,6 +1,6 @@
 # Fruit of a Loom
 
-## Turing. Hollerith. Jacquard.
+## Gordian Knot
 
 Hollerith arranged punched information into a linear progression; Turing reduced that progression to a head moving left or right across an infinite tape. **But before either was Jacquard.**
 
