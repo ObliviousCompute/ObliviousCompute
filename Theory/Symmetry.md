@@ -24,7 +24,7 @@ Each shuttle therefore weaves its own sequential braid through admissible states
 
 ***Sequential braids compose a non-sequential tapestry.***
 
-## Through the Looking Glass
+## Eye of the Needle
 
 There is no loom. There is no shuttle. There is no fabric. **State is only a looking glass.** Each observer resolves its own event horizon through that state, weaving a sequential view through **relational admissibility**.
 
