@@ -6,13 +6,13 @@ Hollerith arranged punched information into a linear progression; Turing reduced
 
 Jacquard's loom encoded rich geometric states composed of simple binary distinctions. Each was a complete state, overriding the one before it: *state after state, pattern upon pattern.* Each was internally complex, yet its consequence remained simple. **A misplaced state revealed itself in the resulting geometry.**
 
-***Lay enough states upon one another, and the result is fabric.***
+***Lay enough states after one another, and the result is fabric.***
 
 ## Bights
 
-Jacquard's loom **composed complete lateral states, but remained sequential between those states**. Each state expressed a geometry of binary distinctions. The shuttle only moved through the computation.
+Jacquard's loom **composed complete lateral states, but remained sequential between those states**. Each state expressed a geometry of binary distinctions. The shuttle only moved through the medium.
 
-Hollerith preserved the card, but narrowed its geometry toward linear progression. Turing completed the abstraction: symbols arranged along an infinite tape, traversed by a head. **Geometry became data; sequence became structure.**
+Hollerith preserved the card, but narrowed its geometry toward linear progression. Turing completed the abstraction. **Geometry became data; sequence became structure.**
 
 ***What began as geometry became only linear.***
 
