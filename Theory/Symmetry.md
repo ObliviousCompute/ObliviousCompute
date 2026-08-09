@@ -8,7 +8,7 @@ Jacquard's loom encoded rich geometric states composed of simple binary distinct
 
 ***Lay enough states upon one another, and the result is fabric.***
 
-## Chutes and Ladders
+## Bights
 
 Jacquard's loom **composed complete lateral states, but remained sequential between those states**. Each state expressed a rich geometry of binary distinctions. The shuttle only moved through the computation.
 
