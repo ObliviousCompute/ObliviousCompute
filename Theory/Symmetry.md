@@ -26,9 +26,9 @@ Each shuttle therefore weaves its own sequential braid through admissible states
 
 ## Eye of the Needle
 
-So, instead of progressing forward or backward along a line, **progression may occur in every admissible direction.** Each state opens further admissible directions of its own, ***each state another magnitude.***
+So, instead of progressing forward or backward along a line, **progression may occur in every admissible direction.** Each state opens further admissible directions of its own, ***through every state, another magnitude.***
 
-**There is no loom, there is no shuttle.** Each state is only one view through a looking glass. Each observer resolves its own event horizon through that state, **weaving braids through a fabric of relational admissibility.**
+There is no loom, there is no shuttle. **Each state is only one view through a looking glass**. Each observer resolves its own event horizon through that state, **weaving braids through a fabric of relational admissibility.**
 
 No observer possesses the whole. Their compatible views **project the field**, without requiring a privileged observer, progression, or sequence.
 
