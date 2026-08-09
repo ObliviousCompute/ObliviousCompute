@@ -78,6 +78,8 @@ Synchronization occurs exclusively between two cells, with each cell occupied by
 
 Additional invariants may increase this **resolution** without changing the underlying computational primitive. The problem therefore becomes one of discovering the ***smallest set of independently verifiable invariants*** capable of distinguishing admissible state from inadmissible state.
 
+**Resolution also applies to observation.** An observer may be a transistor, thread, process, virtual machine, computer, cluster, or any other independently resolvable computational boundary. ***The primitive does not prescribe scale; one may simply zoom in or out.***
+
 ***In this sense, the field does not need to know how a state was produced. It only needs to determine whether the state belongs.***
 
 ---
