@@ -32,4 +32,6 @@ There is no loom, there is no shuttle. **Each state is only one view through a l
 
 No observer possesses the whole. **Their compatible views project the field**, without requiring a privileged observer, progression, or sequence.
 
-***The loom requires a shuttle. The tape requires a head. The holograph requires no motion at all.***
+*The loom requires a shuttle. The tape requires a head. The fabric requires no motion at all.*
+
+***The field exists only where there is symmetry.***
