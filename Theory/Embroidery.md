@@ -15,3 +15,11 @@ Jacquard's loom **composed complete lateral states, but remained sequential betw
 Hollerith preserved the card, but narrowed its geometry toward linear progression. Turing completed the abstraction: symbols arranged along an infinite tape, traversed by a head. **Geometry became data; sequence became structure.**
 
 ***What began as geometry became only linear.***
+
+## Loose Ends
+
+**Oblivious Compute returns to the loom.** Every state remains complete, but no single progression is privileged. From any state, many states may properly follow, provided each preserves the **relational invariants of the pattern**.
+
+Each shuttle therefore weaves its own sequential braid through admissible states. Another shuttle may weave an entirely different braid from the same state, without either progression becoming improper. **Symmetry constrains progression without prescribing sequence.**
+
+***Sequential braids compose a non-sequential tapestry.***
