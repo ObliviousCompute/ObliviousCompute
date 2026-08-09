@@ -23,3 +23,11 @@ Hollerith preserved the card, but narrowed its geometry toward linear progressio
 Each shuttle therefore weaves its own sequential braid through admissible states. Another shuttle may weave an entirely different braid from the same state, without either progression becoming improper. **Symmetry constrains progression without prescribing sequence.**
 
 ***Sequential braids compose a non-sequential tapestry.***
+
+## Through the Looking Glass
+
+There is no loom. There is no shuttle. There is no fabric. **State is only a looking glass.** Each observer resolves its own event horizon through that state, weaving a sequential view through **relational admissibility**.
+
+No observer possesses the whole. Their compatible views **project the field**, without requiring a privileged observer, progression, or sequence.
+
+***The tape requires a head. The loom requires a shuttle. The holograph requires no motion at all.***
