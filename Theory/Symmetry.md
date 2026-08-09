@@ -30,4 +30,4 @@ There is no loom. There is no shuttle. There is no fabric. **State is only a loo
 
 No observer possesses the whole. Their compatible views **project the field**, without requiring a privileged observer, progression, or sequence.
 
-***The tape requires a head. The loom requires a shuttle. The holograph requires no motion at all.***
+***The loom requires a shuttle. The tape requires a head. The holograph requires no motion at all.***
