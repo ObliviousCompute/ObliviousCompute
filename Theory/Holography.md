@@ -4,17 +4,11 @@
 
 *Can you point to the value of a dollar?*
 
-Is it the paper in your wallet? Your bank's balance sheet? The Federal Reserve?
+Is it the paper in your wallet? Your bank's balance sheet? The Federal Reserve? None of these contain value itself.
 
-None of these contain value itself.
+The value of a dollar exists within a distributed psychological field. Every participant maintains only a local understanding of its value, yet together those local understandings produce the appearance of a single economy. **No individual possesses it. Yet every individual experiences it.**
 
-The value of a dollar exists within a distributed psychological field. Every participant maintains only a local understanding of its value, yet together those local understandings produce the appearance of a single economy.
-
-**No individual possesses it.**
-
-**Yet every individual experiences it.**
-
-Shared realities already exist. They are not owned by any individual, nor stored in any single place. They emerge through the continued participation of those who collectively recognize them.
+Shared realities already exist. They emerge through the continued participation of those who collectively recognize them, without belonging to any individual or residing in any single place.
 
 ***If no individual possesses that shared reality, then where does it exist?***
 
