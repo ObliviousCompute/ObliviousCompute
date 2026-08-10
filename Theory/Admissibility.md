@@ -1,4 +1,4 @@
-# Linchpin
+# The Linchpin
 
 ## The Event Horizon
 
@@ -66,7 +66,7 @@ By removing history, the present becomes sufficient. Shared state emerges throug
 
 ---
 
-**Continue to** [**`Symmetry`**](./Symmetry.md)
+**Continue to [**`Symmetry`**](./Symmetry.md)...**
 
 ---
 
