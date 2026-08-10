@@ -4,17 +4,11 @@
 
 ***Consider the smallest non-trivial system: Rock, Paper, Scissors.***
 
-At first glance, this appears to describe time. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future.
+At first glance, this appears to describe time. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future. *This intuition is useful—but only briefly.*
 
-*This intuition is useful—but only briefly.*
+Each state admits only certain continuations. Together, they define its horizon. **This boundary is not defined by time. It is defined by admissibility.**
 
-Each state admits only a finite set of continuations. Every admissible state defines a horizon of admissible next states. Nothing outside that horizon can occur.
-
-**This boundary is not defined by time. It is defined by admissibility.**
-
-A system may remain at any admissible state for microseconds or millennia without affecting correctness. Time does not determine whether a transition is valid. **Only admissibility does.**
-
-Transitions therefore do not unfold through time. **They unfold across admissible states.**
+A system may remain at any admissible state for microseconds or millennia without affecting correctness. Time does not determine whether a transition is valid. **Transitions do not unfold through time. They unfold across admissible states.**
 
 Every computation occurs at the boundary between what is admissible and what is not.
 
