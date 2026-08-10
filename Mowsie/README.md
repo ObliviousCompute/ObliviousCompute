@@ -59,7 +59,7 @@ At their core, they are all ways of coordinating value within a group.
 
 ***When groups share the same surface, coordination is simple.***
 
-***Value moves anywhere with no energy overhead.***
+***Value moves anywhere without overhead.***
 
 ---
 
