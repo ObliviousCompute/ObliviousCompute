@@ -7,11 +7,11 @@ The concepts presented here are embodied in working reference implementations th
 
 Begin with [**`Geometry`**](./Geometry.md) to start thinking geometrically about computation.
 
-Continue [**`Holography`**](./Holography.md) and discover how shared state exists without ownership.
+Discover how shared state exists without ownership in [**`Holography`**](./Holography.md).
 
-Finally arrive at [**`Admissibility`**](./Admissibility.md), where coherence emerges through anticipation.
+[**`Admissibility`**](./Admissibility.md) is where coherence emerges through anticipation.
 
-Bring it all together with [**`Symmetry`**](./Symmetry.md), and see how the pieces compose the field.
+And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 ## 📚 Appendices
 
