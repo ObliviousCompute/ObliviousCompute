@@ -1,7 +1,7 @@
 # 💎 Theory 💎
 
 These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md). 
-The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **These papers describe the theoretical foundation of an implemented computational framework.**
+The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **The theory therefore describes an implemented computational framework.**
 
 ## 🌀 The Path
 
