@@ -12,7 +12,7 @@
 
 Oblivious Compute asks what happens when the sequence is no longer treated as reality. Instead of preserving logs, ordering messages, or reconstructing the past, OC determines whether the present state belongs and whether its progression remains admissible.
 
-***The admitted state is truth, everything else falls into oblivion.***
+**The admitted state is truth. Everything else falls into *oblivion*.**
 
 ---
 
