@@ -9,7 +9,9 @@ Begin with [**`Geometry`**](./Geometry.md) to start thinking geometrically about
 
 Continue [**`Holography`**](./Holography.md) and discover how shared state exists without ownership.
 
-Then finish with [**`Admissibility`**](./Admissibility.md), where coherence emerges without coordination.
+Finally arrive at [**`Admissibility`**](./Admissibility.md), where coherence emerges through anticipation.
+
+Bring it all together with [**`Symmetry`**](./Symmetry.md), and see how the pieces compose the field.
 
 ## 📚 Appendices
 
