@@ -48,7 +48,7 @@ An oblivious compute network operates in much the same way. The invariant relati
 
 Together, they define the geometry through which every participant interprets the aggregate.
 
-**The resulting geometry is a Holerith Holograph.**
+**The resulting geometry is a Hollerith Holograph.**
 
 Every participant maintains only a local **facsimile** shaped by their own holographic invariants.
 
