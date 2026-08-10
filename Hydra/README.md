@@ -22,7 +22,7 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 <img src="../Relics/Fancy.png" width="400"/>
 
-> *This is Hydra's invariant*
+> *Hydra's invariant*
 
 
 
