@@ -1,6 +1,6 @@
 # Attack Surface
 
-**What can go wrong**
+**Partition. Isolation. Equivocation.**
 
 ---
 
