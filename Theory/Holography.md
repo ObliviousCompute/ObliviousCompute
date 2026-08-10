@@ -40,7 +40,7 @@ Participants do not exchange reality with one another—they spend into a field.
 
 **Long before modern computers, computation was performed through geometry.**
 
-A Holerith punch card contained no instructions in the conventional sense. Instead, computation emerged from the geometric arrangement of its holes. The pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
+A Hollerith punch card contained no instructions in the conventional sense. Instead, computation emerged from the geometric arrangement of its holes. The pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
 
 An oblivious compute network operates in much the same way. The invariant relationships established within the system form a distributed geometry of constraints.
 
