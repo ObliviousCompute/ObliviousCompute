@@ -40,9 +40,7 @@ Every proposed transition is evaluated locally. Only those that remain admissibl
 
 ***The current foundation of distributed computation is built on history. This theory proposes the opposite.***
 
-**History breaks symmetry.**
-
-By removing history, the present becomes sufficient. Shared state emerges through resonance.
+**History breaks symmetry.** By removing history, the present becomes sufficient. Shared state emerges through resonance.
 
 ***The resulting computational fabric becomes crystalline, and is maintained through relational symmetry rather than history.***
 
