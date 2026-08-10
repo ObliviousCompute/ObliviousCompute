@@ -14,7 +14,7 @@ Oblivious Compute asks what happens when the sequence is no longer treated as re
 
 **The admitted state is truth.**  
 
-*Everything else falls into oblivion.*
+***Everything else falls into oblivion.***
 
 ---
 
