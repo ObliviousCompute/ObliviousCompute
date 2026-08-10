@@ -36,7 +36,7 @@ Participants do not exchange reality with one another—they spend into a field.
 
 **Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.**
 
-## The Punch
+## Parallelogram
 
 **Long before modern computers, computation was performed through geometry.**
 
