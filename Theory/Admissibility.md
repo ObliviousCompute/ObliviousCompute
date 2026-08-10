@@ -66,7 +66,7 @@ By removing history, the present becomes sufficient. Shared state emerges throug
 
 ---
 
-**Continue to** [**`Admissibility`**](./Symmetry.md)
+**Continue to** [**`Symmetry`**](./Symmetry.md)
 
 ---
 
