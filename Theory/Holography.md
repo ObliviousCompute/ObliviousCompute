@@ -26,23 +26,15 @@ Traditional systems encourage us to imagine information **passing from** one obs
 
 **Long before modern computers, computation was performed through geometry.**
 
-A Hollerith punch card contained no instructions in the conventional sense. Instead, computation emerged from the geometric arrangement of its holes. The pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
+A Hollerith punch card contained no instructions in the conventional sense. Computation emerged from the geometric arrangement of its holes: the pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
 
-An oblivious compute network operates in much the same way. The invariant relationships established within the system form a distributed geometry of constraints.
-
-**No single invariant defines the system.**
-
-Together, they define the geometry through which every participant interprets the aggregate.
+An Oblivious Compute network operates in much the same way. Its invariant relationships form a distributed geometry of constraints. **No single invariant defines the system; together, they define the geometry through which every participant interprets the aggregate.**
 
 **The resulting geometry is a Hollerith Holograph.**
 
-Every participant maintains only a local **facsimile** shaped by their own holographic invariants.
+Every participant maintains only a local **facsimile**, shaped by its own holographic invariants. **The constellation of those facsimiles gives rise to the hologram.**
 
-**The constellation of those facsimiles gives rise to the hologram.**
-
-***The hologram*** **is not stored. It is projected.**
-
-***The holograph*** **is not the projection itself, but the distributed geometry that makes the projection possible.**
+***The hologram*** **is not stored. It is projected.** ***The holograph*** **is not the projection itself, but the distributed geometry that makes the projection possible.**
 
 ---
 
