@@ -18,13 +18,13 @@ Every computation occurs at the boundary between what is admissible and what is 
 
 ***Now, let's move onto a chessboard.***
 
-The board defines the field. Every piece is an observer within that field, maintaining its own local representation. **Every observer evaluates proposed transitions according to the invariants that define each piece.**
+The board defines the field. Every piece is an observer within that field, maintaining its own local representation of the board. **Within that representation, each observer anticipates the admissible moves of every other piece.**
 
 Now suppose a pawn proposes a move like a queen. No observer asks the pawn why it made the move or consults the pawn's internal state. Each consults only its own representation of the field: **within my representation, that piece is a pawn; pawns do not move like queens; the proposed transition is therefore not admissible.**
 
-Every observer performs this evaluation independently. No observer determines reality; each evaluates the proposed transition against the invariants of its own field.
+Every observer performs this evaluation independently. No observer determines reality; each asks only whether the proposed transition fits the field it already anticipates.
 
-***Shared reality emerges because those independent representations are governed by the same invariants.***
+***Shared reality emerges because those independent representations preserve the same invariant relationships.***
 
 ## Natural Consequence
 
