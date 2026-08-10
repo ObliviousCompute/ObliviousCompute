@@ -84,6 +84,16 @@ Additional invariants may increase this **resolution** without changing the unde
 
 ---
 
+## Consensus
+
+Oblivious Compute does not require observers to participate in determining a common progression. **Each observer already anticipates the admissible continuations of its own state.**
+
+When a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
+
+***Consensus is participatory. Oblivious Compute is anticipatory.***
+
+---
+
 **Go back to** [**`Theory`**](../README.md)
 
 ---
