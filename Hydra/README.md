@@ -18,7 +18,7 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 *Simply put, this is a distributed packet collider in under a thousand lines of code.*
 
-**No leader. Just convergence.**
+**No leaders. Just convergence.**
 
 <img src="../Relics/Fancy.png" width="400"/>
 
