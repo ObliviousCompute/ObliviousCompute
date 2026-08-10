@@ -30,13 +30,11 @@ Every observer performs this evaluation independently. No observer determines re
 
 ***History independence removes the need for a shared past.***
 
-Every observer maintains only its own representation of the field. A single observer is capable of evaluating many entities simultaneously, while every entity progresses independently according to the invariants that define it.
+Every observer maintains only its own representation of the field. A single observer can evaluate many entities simultaneously, while every entity progresses independently according to the invariants that define it. **No observer waits for another to advance or reconstructs a shared history.**
 
-**No observer waits for another to advance. No observer reconstructs a shared history.**
+Every proposed transition is evaluated locally. Only those that remain admissible become part of the shared reality.
 
-Every proposed transition is evaluated locally, and only those that remain admissible become part of the shared reality.
-
-***Shared progression therefore does not emerge from a common past. It emerges from many local evaluations occurring simultaneously across many local event horizons.***
+***Shared progression does not emerge from a common past. It emerges from many local evaluations occurring simultaneously across many local event horizons.***
 
 ## Crystal Clear
 
