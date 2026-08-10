@@ -35,3 +35,15 @@ No observer possesses the whole. **Their compatible views project the field**, w
 *The loom requires a shuttle. The tape requires a head. The fabric requires no motion at all.*
 
 ***The field exists only where there is symmetry.***
+
+---
+
+**Go back to** [**`Theory`**](./README.md)**, or continue to [**`Appendix A`**](./Appendices/A.md)**
+
+---
+
+## 📜 License
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
+
+Use it, study it, modify it—just respect the terms outlined there.
