@@ -1,6 +1,6 @@
 # The Linchpin
 
-## The Event Horizon
+## Event Horizon
 
 ***Consider the smallest non-trivial system: Rock, Paper, Scissors.***
 
