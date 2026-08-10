@@ -18,9 +18,11 @@ Every computation occurs at the boundary between what is admissible and what is 
 
 ***Now, let's move onto a chessboard.***
 
-The board defines the field. Every piece is an observer within that field, maintaining its own local representation and operating according to its own set of rules.
+The board defines the field. Every piece is an observer within that field, maintaining its own local representation.
 
-A pawn moves according to one set of constraints; a queen moves according to another. **These constraints are their invariants.**
+Every piece is defined by its own invariants, and every observer evaluates proposed transitions according to those same invariants. A pawn moves according to one set of constraints; a queen moves according to another.
+
+***These are not preferences. They are the rules that define each piece.***
 
 Every observer evaluates proposed transitions according to those invariants. A pawn moves according to one set of constraints; a queen moves according to another. ***These are not preferences. They are the rules that define each piece.***
 
