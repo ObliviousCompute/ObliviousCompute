@@ -40,7 +40,7 @@ The reference implementations are intended to facilitate independent inspection,
 
 ---
 
-**Continue to** [**`Appendix B`**](./B.md)
+**Continue to [**`Appendix B`**](./B.md)...**
 
 ---
 
