@@ -4,7 +4,7 @@
 
 ***Consider the smallest non-trivial system: Rock, Paper, Scissors.***
 
-At first glance, this appears to describe time. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future. *This intuition is useful—but only briefly.*
+At first glance, this appears to describe time. Rock becomes Paper. Paper becomes Scissors. Scissors becomes Rock. It is tempting to think of this as past, present, and future. *This intuition is useful—but only briefly.* **It is more useful to picture the progression as a braid through admissible states.**
 
 Each state admits only certain continuations. Together, they define its horizon. **This boundary is not defined by time. It is defined by admissibility.**
 
