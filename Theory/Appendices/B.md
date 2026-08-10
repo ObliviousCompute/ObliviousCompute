@@ -72,7 +72,7 @@ Equivocation is the proposal of multiple advancements from a single event horizo
 
 ---
 
-**Continue to** [**`Appendix C`**](./C.md)
+**Continue to [**`Appendix C`**](./C.md)...**
 
 ---
 
