@@ -4,13 +4,16 @@
 
 ---
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.  
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** s an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.
 
-**State ≡ State**.
+***Let's stop watching the flipbook and start watching the action.***
 
-Instead of preserving logs, ordering messages, or reconstructing the past, **OC** allows multiple candidate states to briefly exist and then admits only one.
+**We got so good at manipulating the flipbook that we started thinking computation was the flipbook.**
+
+Oblivious Compute asks what happens when the sequence is no longer treated as reality. Instead of preserving logs, ordering messages, or reconstructing the past, OC determines whether the present state belongs and whether its progression remains admissible.
 
 **The admitted state is truth.**  
+
 *Everything else falls into oblivion.*
 
 ---
