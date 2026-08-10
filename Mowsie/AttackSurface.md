@@ -1,6 +1,6 @@
 # Attack Surface
 
-**What can go wrong — and why it doesn’t.**
+**What can go wrong**
 
 ---
 
@@ -22,11 +22,11 @@ Every change to the system is a transaction.
 
 A valid transaction preserves the total amount of salt, is properly signed, and only modifies the sender’s state. It must also fit within the structure of the system.
 
-In technical terms, transactions form a **monoid** — they combine cleanly in a single **atomic transition** and always produce a valid next state.
+Transactions compose within a single state transition while preserving the system invariants.
 
 If any of these conditions fail, the transaction is rejected immediately.
 
-There is no pending state, and no delay. A transaction is either admitted or discarded.
+There is no pending agreement. A transaction is either admitted or discarded.
 
 **Invalid transactions do not propagate.**
 
@@ -38,17 +38,17 @@ Equivocation does not create forks.
 
 **It collapses.**
 
-If an attacker attempts to send two transactions at once, both are evaluated independently.
+If an attacker attempts to send two transactions at once, the resulting state must still satisfy the same funding and invariant checks.
 
-If both are valid and funded, both are counted.
+If the combined spend is valid and funded, both transactions may be admitted.
 
 The attacker is charged twice.
 
 It’s not a double spend — it’s just spending twice.
 
-If a transaction is not funded, it is rejected immediately.
+If the combined spend is not funded, the conflicting state is rejected.
 
-There is no fork, no ambiguity, and no delay.
+There is no fork or persistent ambiguity.
 
 ---
 
@@ -86,9 +86,9 @@ If it is missing, the state is rejected and refreshed.
 
 Nodes do not form trust relationships with one another. They broadcast toward shared visibility surfaces — **Lanterns**.
 
-This makes eclipse-style attacks significantly harder to achieve, and multiple Lanterns can bypass any single point of interference.
+Multiple Lanterns reduce dependence on any single visibility surface and provide alternate paths around interference.
 
-As soon as visibility is restored, the correct state reasserts itself.
+Once visibility is restored, a participant can resynchronize to admissible state.
 
 The attacker is not followed — they are bypassed.
 
