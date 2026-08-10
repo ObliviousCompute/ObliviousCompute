@@ -28,7 +28,7 @@ Each shuttle therefore weaves its own sequential braid through admissible states
 
 So, instead of progressing forward or backward along a line, **progression may occur in every admissible direction.** Each state opens further admissible directions, and through each, ***another magnitude unfolds.***
 
-There is no loom, there is no shuttle. **Each state is only one view through a looking glass.** Each observer resolves its own event horizon through that state, weaving braids through a fabric of relational admissibility.
+There is no loom, there is no shuttle. **Each state is only one view through a looking glass.** Each observer resolves its own sequence through that state, weaving braids through a fabric of relational admissibility.
 
 No observer possesses the whole. **Their compatible views project the field**, without requiring a privileged observer, progression, or sequence.
 
