@@ -25,6 +25,34 @@ This appendix places Oblivious Compute beside established computational models u
 
 ---
 
+## Oblivious Compute
+
+Oblivious Compute does not derive the authority of the present from an agreed, merged, or reconstructed history.
+
+For correspondence, let 𝐴 represent the local admissibility test performed at the current event horizon.
+
+### Mathematical Form
+
+$A_i(x)\iff [x\in E(c_i)]\land[I(s_i)=I(x)]$
+
+$A_i(x)\Rightarrow T:s_i\to x$
+
+History does not appear as an input to admissibility. Synchronization re-establishes present state between observers without requiring historical reconstruction.
+
+***The present does not summarize an authoritative past. The present is evaluated directly for admissible progression.***
+
+---
+
+## Consensus
+
+Oblivious Compute does not require observers to participate in determining a common progression. **Each observer already anticipates the admissible continuations of its own state.**
+
+When a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
+
+***Consensus is participatory. Oblivious Compute is anticipatory.***
+
+---
+
 ## Markovian
 
 A Markovian model makes the present state sufficient for determining subsequent progression.
@@ -128,30 +156,6 @@ Additional information does not invalidate conclusions already reached.
 ***Coordination freedom emerges because information grows monotonically.***
 
 ---
-
-## Oblivious Compute
-
-Oblivious Compute does not derive the authority of the present from an agreed, merged, or reconstructed history.
-
-For correspondence, let 𝐴 represent the local admissibility test performed at the current event horizon.
-
-### Mathematical Form
-
-$A_i(x)\iff [x\in E(c_i)]\land[I(s_i)=I(x)]$
-
-$A_i(x)\Rightarrow T:s_i\to x$
-
-History does not appear as an input to admissibility. Synchronization re-establishes present state between observers without requiring historical reconstruction.
-
-***The present does not summarize an authoritative past. The present is evaluated directly for admissible progression.***
-
----
-
-## Consensus
-
-Oblivious Compute does not require observers to participate in determining a common progression. **Each observer already anticipates the admissible continuations of its own state.**
-
-When a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
 
 ***Consensus is participatory. Oblivious Compute is anticipatory.***
 
