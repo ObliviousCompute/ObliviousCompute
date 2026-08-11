@@ -24,7 +24,7 @@ Every admissible progression begins from a genesis.
 
 ### Mathematical Form
 
-∃! 𝑔
+$∃! 𝑔$
 
 ---
 
@@ -34,7 +34,7 @@ Progression occurs exclusively through transitions.
 
 ### Mathematical Form
 
-𝑇 : 𝑠ᵢ → 𝑠ᵢ₊₁
+$𝑇 : 𝑠ᵢ → 𝑠ᵢ₊₁$
 
 Every admissible progression is composed of transitions.
 
@@ -46,7 +46,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-𝐼(𝑠ᵢ) = 𝐼(𝑠ᵢ₊₁)
+$𝐼(𝑠ᵢ) = 𝐼(𝑠ᵢ₊₁)$
 
 ---
 
@@ -56,7 +56,7 @@ Every cell possesses exactly one current event horizon.
 
 ### Mathematical Form
 
-∀𝑐, ∃! 𝐸(𝑐)
+$∀𝑐, ∃! 𝐸(𝑐)$
 
 ---
 
@@ -68,7 +68,7 @@ Synchronization occurs exclusively between two cells, with each cell occupied by
 
 ### Mathematical Form
 
-𝑆(𝑐ᵢ, 𝑐ⱼ)
+$𝑆(𝑐ᵢ, 𝑐ⱼ)$
 
 ---
 
