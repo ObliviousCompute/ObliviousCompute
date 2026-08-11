@@ -37,17 +37,9 @@ $𝐴_i(𝑥) \iff [𝑥 \in 𝐸(𝑐_i)] \land [𝐼(𝑠_i) = 𝐼(𝑥)]$
 
 $𝐴_i(𝑥) \Rightarrow 𝑇 : 𝑠_i \to 𝑥$
 
-History does not appear as an input to admissibility. Synchronization re-establishes present state between observers without requiring historical reconstruction.
+History does not appear as an input to admissibility. Each observer already anticipates the admissible continuations of its own state, and when a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
 
 ***The present does not summarize an authoritative past. The present is evaluated directly for admissible progression.***
-
----
-
-## Consensus
-
-Observers do not participate in determining a common progression. **Each observer already anticipates the admissible continuations of its own state.**
-
-When a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
 
 ***Consensus is participatory. Oblivious Compute is anticipatory.***
 
