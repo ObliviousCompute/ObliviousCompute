@@ -31,7 +31,7 @@ A Markovian model makes the present state sufficient for determining subsequent 
 
 ### Mathematical Form
 
-Pr(𝑠ᵢ₊₁ | 𝑠ᵢ, ℎᵢ) = Pr(𝑠ᵢ₊₁ | 𝑠ᵢ)
+$Pr(𝑠ᵢ₊₁ | 𝑠ᵢ, ℎᵢ) = Pr(𝑠ᵢ₊₁ | 𝑠ᵢ)$
 
 The history need not remain visible once the information relevant to future progression is represented by the present state.
 
@@ -45,9 +45,9 @@ In replicated state-machine systems such as Multi-Paxos or Raft, agreement estab
 
 ### Abstract Form
 
-𝑄(𝑥ᵢ) → ℎᵢ₊₁ = ℎᵢ ⧺ 𝑥ᵢ
+$𝑄(𝑥ᵢ) → ℎᵢ₊₁ = ℎᵢ ⧺ 𝑥ᵢ$
 
-𝑠ᵢ₊₁ = Apply(ℎᵢ₊₁)
+$𝑠ᵢ₊₁ = Apply(ℎᵢ₊₁)$
 
 The present state is obtained from an agreed progression.
 
@@ -61,9 +61,9 @@ A partially ordered log relaxes the requirement that every event occupy one tota
 
 ### Abstract Form
 
-ℎ = (𝑋, ≺)
+$ℎ = (𝑋, ≺)$
 
-𝑠 = Apply(ℎ)
+$𝑠 = Apply(ℎ)$
 
 where 𝑋 is the set of recorded events and ≺ preserves only the ordering relationships required between them.
 
@@ -101,11 +101,11 @@ Invariant confluence asks whether independently valid executions can be merged w
 
 ### Abstract Form
 
-𝑠₀ →* 𝑠₁
+$𝑠₀ →* 𝑠₁$
 
-𝑠₀ →* 𝑠₂
+$𝑠₀ →* 𝑠₂$
 
-𝐼(𝑠₁) ∧ 𝐼(𝑠₂) ⇒ 𝐼(𝑠₁ ⊔ 𝑠₂)
+$𝐼(𝑠₁) ∧ 𝐼(𝑠₂) ⇒ 𝐼(𝑠₁ ⊔ 𝑠₂)$
 
 for states independently reachable from a common ancestor.
 
@@ -119,7 +119,7 @@ CALM relates coordination-free computation to monotonicity.
 
 ### Abstract Form
 
-𝑠₁ ⊑ 𝑠₂ ⇒ 𝐹(𝑠₁) ⊑ 𝐹(𝑠₂)
+$𝑠₁ ⊑ 𝑠₂ ⇒ 𝐹(𝑠₁) ⊑ 𝐹(𝑠₂)$
 
 Additional information does not invalidate conclusions already reached.
 
@@ -135,9 +135,9 @@ For correspondence, let 𝐴 represent the local admissibility test performed at
 
 ### Mathematical Form
 
-𝐴ᵢ(𝑥) = [𝑥 ∈ 𝐸(𝑐ᵢ)] ∧ [𝐼(𝑠ᵢ) = 𝐼(𝑥)]
+$𝐴ᵢ(𝑥) = [𝑥 ∈ 𝐸(𝑐ᵢ)] ∧ [𝐼(𝑠ᵢ) = 𝐼(𝑥)]$
 
-𝐴ᵢ(𝑥) ⇒ 𝑇 : 𝑠ᵢ → 𝑥
+$𝐴ᵢ(𝑥) ⇒ 𝑇 : 𝑠ᵢ → 𝑥$
 
 History does not appear as an input to admissibility. Synchronization re-establishes present state between observers without requiring historical reconstruction.
 
