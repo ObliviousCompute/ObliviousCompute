@@ -31,7 +31,7 @@ A Markovian model makes the present state sufficient for determining subsequent 
 
 ### Mathematical Form
 
-$Pr(𝑠ᵢ₊₁ | 𝑠ᵢ, ℎᵢ) = Pr(𝑠ᵢ₊₁ | 𝑠ᵢ)$
+$\Pr(s_{i+1}\mid s_i,h_i)=\Pr(s_{i+1}\mid s_i)$
 
 The history need not remain visible once the information relevant to future progression is represented by the present state.
 
@@ -45,9 +45,9 @@ In replicated state-machine systems such as Multi-Paxos or Raft, agreement estab
 
 ### Abstract Form
 
-$𝑄(𝑥ᵢ) → ℎᵢ₊₁ = ℎᵢ ⧺ 𝑥ᵢ$
+$Q(x_i)\rightarrow h_{i+1}=h_i \mathbin{\|} x_i$
 
-$𝑠ᵢ₊₁ = Apply(ℎᵢ₊₁)$
+$s_{i+1}=\operatorname{Apply}(h_{i+1})$
 
 The present state is obtained from an agreed progression.
 
@@ -61,9 +61,9 @@ A partially ordered log relaxes the requirement that every event occupy one tota
 
 ### Abstract Form
 
-$ℎ = (𝑋, ≺)$
+$h=(X,\prec)$
 
-$𝑠 = Apply(ℎ)$
+$s=\operatorname{Apply}(h)$
 
 where 𝑋 is the set of recorded events and ≺ preserves only the ordering relationships required between them.
 
@@ -79,17 +79,19 @@ A state-based CRDT permits replicas to progress independently and later converge
 
 ### Mathematical Form
 
-$s_i' = T(s_i, x_i)$
+$s_i'=T(s_i,x_i)$
 
-$s_i \leftarrow s_i \sqcup s_j$
+$s_i\sqsubseteq s_i'$
 
 The join is associative, commutative, and idempotent:
 
-$a \sqcup b = b \sqcup a$
+$s_i\leftarrow s_i\sqcup s_j$
 
-$(a \sqcup b) \sqcup c = a \sqcup (b \sqcup c)$
+$a\sqcup b=b\sqcup a$
 
-$a \sqcup a = a$
+$(a\sqcup b)\sqcup c=a\sqcup(b\sqcup c)$
+
+$a\sqcup a=a$
 
 ***Divergent replicas are structured so their states can be reconciled.***
 
@@ -101,11 +103,11 @@ Invariant confluence asks whether independently valid executions can be merged w
 
 ### Abstract Form
 
-$𝑠₀ →* 𝑠₁$
+$s_0\to^{*}s_1$
 
-$𝑠₀ →* 𝑠₂$
+$s_0\to^{*}s_2$
 
-$𝐼(𝑠₁) ∧ 𝐼(𝑠₂) ⇒ 𝐼(𝑠₁ ⊔ 𝑠₂)$
+$I(s_1)\land I(s_2)\Rightarrow I(s_1\sqcup s_2)$
 
 for states independently reachable from a common ancestor.
 
@@ -119,7 +121,7 @@ CALM relates coordination-free computation to monotonicity.
 
 ### Abstract Form
 
-$𝑠₁ ⊑ 𝑠₂ ⇒ 𝐹(𝑠₁) ⊑ 𝐹(𝑠₂)$
+$s_1\sqsubseteq s_2\Rightarrow F(s_1)\sqsubseteq F(s_2)$
 
 Additional information does not invalidate conclusions already reached.
 
@@ -135,9 +137,9 @@ For correspondence, let 𝐴 represent the local admissibility test performed at
 
 ### Mathematical Form
 
-$𝐴ᵢ(𝑥) = [𝑥 ∈ 𝐸(𝑐ᵢ)] ∧ [𝐼(𝑠ᵢ) = 𝐼(𝑥)]$
+$A_i(x)\iff [x\in E(c_i)]\land[I(s_i)=I(x)]$
 
-$𝐴ᵢ(𝑥) ⇒ 𝑇 : 𝑠ᵢ → 𝑥$
+$A_i(x)\Rightarrow T:s_i\to x$
 
 History does not appear as an input to admissibility. Synchronization re-establishes present state between observers without requiring historical reconstruction.
 
