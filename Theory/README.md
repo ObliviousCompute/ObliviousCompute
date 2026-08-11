@@ -3,9 +3,9 @@
 These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md). 
 The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **The theory therefore describes an implemented computational framework.**
 
-# 🔭 Scope 🔭
+## 🔭 Scope 🔭
 
-***An observer contains state. The field does not contain state. The field exists only in symmetry between states. The computational object exists only in the field.***
+### An observer contains state. The field does not contain state. The field exists only in symmetry between states. The computational object exists only in the field.
 
 ## 🌀 The Path
 
@@ -30,7 +30,7 @@ To examine the mathematical [**`Correspondence`**](./Appendices/D.md) between mo
 
 ## 🪶 Note
 
-Throughout these papers, terms such as *geometry* and *holography*, *among others*, are used as conceptual analogies for informational structure rather than physical phenomena. Together, these papers develop a computational framework in which independent observers converge on a shared state through admissible transitions and preserved invariants. The analogies are intended to build intuition for the underlying computational relationships, not to describe physical processes.
+Throughout these papers, terms such as *geometry*, *holography*, *symmetry*, *resonance*, and *field* are used structurally rather than physically. They describe computational relationships, not physical phenomena. **These terms are not decorative metaphors; they are the closest conceptual models for the structure being described.** State resides in observers, while the computational field emerges through symmetry between states. The language is therefore intended to describe the computation itself without implying a physical process.
 
 ---
 
