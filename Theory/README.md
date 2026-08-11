@@ -19,7 +19,9 @@ And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 Read through **Appendix B** for the formal [**`Definitions`**](./Appendices/B.md).
 
-If you're interested in the underlying [**`Axioms`**](./Appendices/C.md), finish with **Appendix C.**
+If you're interested in the underlying [**`Axioms`**](./Appendices/C.md), continue to **Appendix C.**
+
+To examine the mathematical [**`Correspondence`**](./Appendices/D.md) between models, finish with **Appendix D**.
 
 
 ## 🪶 Note
