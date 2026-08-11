@@ -26,7 +26,7 @@ Traditional systems encourage us to imagine information **passing from** one obs
 
 A Hollerith punch card contained no instructions in the conventional sense. Computation emerged from the geometric arrangement of its holes: the pattern of punches constrained what could pass through the card, and those constraints determined the resulting computation.
 
-An Oblivious Compute network operates in much the same way. Its invariant relationships form a distributed geometry of constraints. **No single invariant defines the system; together, they define the geometry through which every participant interprets the aggregate.**
+An Oblivious Compute network operates in much the same way. Its invariant relationships form a distributed geometry of constraints. **No single invariant defines the system; together, they define the geometry through which every participant interprets the whole.**
 
 **The resulting geometry is a Hollerith Holograph.**
 
