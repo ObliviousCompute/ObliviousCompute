@@ -30,7 +30,7 @@ To examine the mathematical [**`Correspondence`**](./Appendices/D.md) between mo
 
 ## 🪶 Note
 
-*Throughout these papers, terms such as *geometry*, *holography*, *symmetry*, *resonance*, and *field* are used structurally rather than physically. They describe computational relationships, not physical phenomena. **These terms are not decorative metaphors; they are the closest conceptual models for the structure being described.** State resides in observers, while the computational field emerges through symmetry between states. The language is therefore intended to describe the computation itself without implying a physical process.*
+*Throughout these papers, terms such as **geometry**, **holography**, **symmetry**, **resonance**, and **field** are used structurally rather than physically. They describe computational relationships, not physical phenomena. **These terms are not decorative metaphors; they are the closest conceptual models for the structure being described.** State resides in observers, while the computational field emerges through symmetry between states. The language is therefore intended to describe the computation itself without implying a physical process.*
 
 ---
 
