@@ -62,13 +62,13 @@ $\forall c,\ \exists! E(c)$
 
 ## Axiom 5 — Synchronization
 
-A cell re-establishes its present state through synchronization with another cell.
+A cell re-establishes its present state through synchronization with one or more other cells.
 
-Synchronization occurs exclusively between two cells, with each cell occupied by an observer.
+Synchronization occurs between a target cell and a non-empty set of other cells, with each cell occupied by an observer.
 
 ### Mathematical Form
 
-$S(c_i,c_j)$
+$S(c_i, C), \qquad \varnothing \neq C \subseteq \mathcal{C} \setminus \{c_i\}$
 
 ---
 
