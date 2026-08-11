@@ -9,19 +9,21 @@ This appendix places Oblivious Compute beside established computational models u
 ## Notation
 
 | Symbol | Meaning |
-|---------|---------|
-| 𝑠 | State |
-| 𝑐 | Cell |
-| 𝑥 | Proposed input or continuation |
-| ℎ | History |
-| 𝑇 | Transition |
-| 𝐼 | Invariant |
-| 𝐸 | Event Horizon |
-| 𝐴 | Admissibility |
-| 𝑄 | Agreement / commit |
-| ⊔ | Join / merge |
-| ⊑ | Information order |
-| 𝐹 | Computation |
+|--------|---------|
+| $o$ | Observer |
+| $s$ | State |
+| $c$ | Cell |
+| $x$ | Proposed input or continuation |
+| $h$ | History |
+| $T$ | Transition |
+| $I$ | Invariant |
+| $E$ | Event Horizon |
+| $A$ | Admissibility |
+| $\Sigma$ | Symmetry |
+| $\mathcal{F}$ | Field / computational object |
+| $Q$ | Agreement / commit |
+| $\sqcup$ | Join / merge |
+| $\sqsubseteq$ | Information order |
 
 ---
 
@@ -29,13 +31,19 @@ This appendix places Oblivious Compute beside established computational models u
 
 The present does not derive its authority from an agreed, merged, or reconstructed history.
 
-For correspondence, let 𝐴 represent the local admissibility test performed at the current event horizon.
+For correspondence, let $A$ represent the local admissibility test performed by an observer at the current event horizon.
 
 ### Mathematical Form
 
-$𝐴_i(𝑥) \iff [𝑥 \in 𝐸(𝑐_i)] \land [𝐼(𝑠_i) = 𝐼(𝑥)]$
+$A_i(x) \iff [x \in E(c_i)] \land [I(s_i) = I(x)]$
 
-$𝐴_i(𝑥) \Rightarrow 𝑇 : 𝑠_i \to 𝑥$
+$A_i(x) \Rightarrow T : s_i \rightarrow x$
+
+Admissibility describes the behavior of an observer. It does not define the computational object. Let $\Sigma$ represent symmetry between independently held states and $\mathcal{F}$ the field that exists through that symmetry.
+
+$\mathcal{F} \equiv \Sigma(s_1, s_2, \ldots, s_n)$
+
+The states remain local to their observers; $\mathcal{F}$ contains no state of its own. **The computational object is the relational configuration produced through symmetry between states.**
 
 History does not appear as an input to admissibility. Each observer already anticipates the admissible continuations of its own state, and when a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
 
