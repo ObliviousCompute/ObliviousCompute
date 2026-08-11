@@ -17,6 +17,8 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 | $I$ | Invariant |
 | $E$ | Event Horizon |
 | $S$ | Synchronization |
+| $\Sigma$ | Symmetry |
+| $\mathcal{F}$ | Field |
 
 ---
 
@@ -62,7 +64,17 @@ $\forall c,\ \exists! E(c)$
 
 ---
 
-## Axiom 5 — Synchronization
+## Axiom 5 — Symmetry
+
+The field exists only where independently held states preserve the required relational invariants.
+
+### Mathematical Form
+
+$\mathcal{F} \equiv \Sigma(s_1,s_2,\ldots,s_n)$
+
+---
+
+## Axiom 6 — Synchronization
 
 A cell re-establishes its present state through synchronization with one or more other cells.
 
