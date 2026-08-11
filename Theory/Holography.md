@@ -18,11 +18,7 @@ Shared realities already exist. They emerge through the continued participation 
 
 Traditional systems encourage us to imagine information **passing from** one observer to another, as though reality were handed from participant to participant. Oblivious Compute invites a different view: a contribution is **spent into** the field, altering the present reality experienced by every participant. Each maintains only a local *simulacrum* through which that shared reality is experienced.
 
-**The field is not an object that can be owned, copied, or transferred; it exists only as an emergent phenomenon between participants.**
-
-***Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.***
-
-When those relationships constrain one another, the aggregate forms a distributed geometry.
+***Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate. When the relationships between participants constrain one another, that aggregate forms a distributed geometry.***
 
 ## Parallelogram
 
