@@ -32,6 +32,8 @@ Finally, check out [**`Mowsie`**](./Mowsie/README.md) to see where this is going
 
 ## 🪶 Note
 
+For a mathematical comparison with established models, see [**`Correspondence`**](./Theory/Appendices/D.md) in **Appendix D**.
+
 *Oblivious Compute is **not** presented as a variation of **Paxos**, **Raft**, or a **CRDT**. Instead, it explores a different approach to **distributed convergence**, where coherence emerges through admissible transitions and preserved invariants rather than the reconstruction of shared history. As far as I know, this represents a distinct computational model. If you've encountered similar ideas, know of relevant prior work, or simply have thoughts on how this framework should be classified, I'd sincerely appreciate hearing from you. Please get in touch.*
 
 ---
