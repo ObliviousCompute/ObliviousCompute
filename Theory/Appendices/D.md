@@ -79,27 +79,17 @@ A state-based CRDT permits replicas to progress independently and later converge
 
 ### Mathematical Form
 
-$$
-s_i' = T(s_i, x_i)
-$$
+$s_i' = T(s_i, x_i)$
 
-$$
-s_i \leftarrow s_i \sqcup s_j
-$$
+$s_i \leftarrow s_i \sqcup s_j$
 
 The join is associative, commutative, and idempotent:
 
-$$
-a \sqcup b = b \sqcup a
-$$
+$a \sqcup b = b \sqcup a$
 
-$$
-(a \sqcup b) \sqcup c = a \sqcup (b \sqcup c)
-$$
+$(a \sqcup b) \sqcup c = a \sqcup (b \sqcup c)$
 
-$$
-a \sqcup a = a
-$$
+$a \sqcup a = a$
 
 ***Divergent replicas are structured so their states can be reconciled.***
 
