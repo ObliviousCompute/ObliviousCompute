@@ -16,9 +16,9 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 | $T$ | Transition |
 | $I$ | Invariant |
 | $E$ | Event Horizon |
-| $S$ | Synchronization |
 | $\Sigma$ | Symmetry |
 | $\mathcal{F}$ | Field |
+| $S$ | Synchronization |
 
 ---
 
