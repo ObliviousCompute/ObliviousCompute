@@ -94,7 +94,7 @@ When a transition is presented, no agreement must first be reached. The observer
 
 ---
 
-**Go back to [**`Theory`**](../README.md)...**
+**Continue to [**`Appendix C`**](./D.md)...**
 
 ---
 
