@@ -7,14 +7,16 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 ## Notation
 
 | Symbol | Meaning |
-|---------|---------|
-| 𝑠 | State |
-| 𝑐 | Cell |
-| 𝑔 | Genesis |
-| 𝑇 | Transition |
-| 𝐼 | Invariant |
-| 𝐸 | Event Horizon |
-| 𝑆 | Synchronization |
+|--------|---------|
+| $s$ | State |
+| $c$ | Cell |
+| $\mathcal{C}$ | Set of cells |
+| $C$ | Synchronization set |
+| $g$ | Genesis |
+| $T$ | Transition |
+| $I$ | Invariant |
+| $E$ | Event Horizon |
+| $S$ | Synchronization |
 
 ---
 
@@ -68,7 +70,7 @@ Synchronization occurs between a target cell and a non-empty set of other cells,
 
 ### Mathematical Form
 
-$S(c_i, C), \qquad \varnothing \neq C \subseteq \mathcal{C} \setminus \{c_i\}$
+$S(c_i, C)\quad \text{where}\quad \varnothing \neq C \subseteq \mathcal{C} \setminus \{c_i\}$
 
 ---
 
