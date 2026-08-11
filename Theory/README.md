@@ -3,7 +3,7 @@
 > *These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md). 
 The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **The theory therefore describes an implemented computational framework.***
 
-# 🔭 Scope 🔭
+## 🔭 Scope 🔭
 
 ### An observer contains state. The field does not contain state. The field exists only in symmetry between states. The computational object exists only in the field.
 
