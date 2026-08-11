@@ -47,7 +47,7 @@ In replicated state-machine systems such as Multi-Paxos or Raft, agreement estab
 
 $Q(x_i)\rightarrow h_{i+1}=h_i \mathbin{\|} x_i$
 
-$s_{i+1}=\operatorname{Apply}(h_{i+1})$
+$𝑠_{i+1} = \mathrm{Apply}(ℎ_{i+1})$
 
 The present state is obtained from an agreed progression.
 
@@ -63,7 +63,7 @@ A partially ordered log relaxes the requirement that every event occupy one tota
 
 $h=(X,\prec)$
 
-$s=\operatorname{Apply}(h)$
+$𝑠 = \mathrm{Apply}(ℎ)$
 
 where 𝑋 is the set of recorded events and ≺ preserves only the ordering relationships required between them.
 
