@@ -27,15 +27,15 @@ This appendix places Oblivious Compute beside established computational models u
 
 ## Oblivious Compute
 
-Oblivious Compute does not derive the authority of the present from an agreed, merged, or reconstructed history.
+The present does not derive its authority from an agreed, merged, or reconstructed history.
 
 For correspondence, let 𝐴 represent the local admissibility test performed at the current event horizon.
 
 ### Mathematical Form
 
-$A_i(x)\iff [x\in E(c_i)]\land[I(s_i)=I(x)]$
+$𝐴_i(𝑥) \iff [𝑥 \in 𝐸(𝑐_i)] \land [𝐼(𝑠_i) = 𝐼(𝑥)]$
 
-$A_i(x)\Rightarrow T:s_i\to x$
+$𝐴_i(𝑥) \Rightarrow 𝑇 : 𝑠_i \to 𝑥$
 
 History does not appear as an input to admissibility. Synchronization re-establishes present state between observers without requiring historical reconstruction.
 
@@ -45,7 +45,7 @@ History does not appear as an input to admissibility. Synchronization re-establi
 
 ## Consensus
 
-Oblivious Compute does not require observers to participate in determining a common progression. **Each observer already anticipates the admissible continuations of its own state.**
+Observers do not participate in determining a common progression. **Each observer already anticipates the admissible continuations of its own state.**
 
 When a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
 
