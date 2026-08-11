@@ -22,6 +22,8 @@ Traditional systems encourage us to imagine information **passing from** one obs
 
 ***Remove the participants, and the field disappears. The whole is not found within any node. It exists only within the aggregate.***
 
+When those relationships constrain one another, the aggregate forms a distributed geometry.
+
 ## Parallelogram
 
 **Long before modern computers, computation was performed through geometry.**
