@@ -5,7 +5,7 @@ The concepts presented here are embodied in working reference implementations th
 
 ## 🔭 Scope 🔭
 
-**An observer contains state. The field does not contain state. The field exists only in symmetry between states. The computational object exists only in the field.**
+**An observer contains state. The field does not contain state. The field exists only in symmetry between states. The computational object is the field.**
 
 ## 🌀 The Path
 
