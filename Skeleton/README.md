@@ -18,7 +18,7 @@ The present position is idempotent, the successor is progressive, and every othe
 
 ---
 
-### ☠️☠️☠️
+### ☠️  ☠️  ☠️
 
 
 ```python
@@ -75,7 +75,7 @@ def ingest(state, packet):
     return state, intents
 ```
 
-### ☠️☠️☠️
+### ☠️  ☠️  ☠️
 
 ---
 
