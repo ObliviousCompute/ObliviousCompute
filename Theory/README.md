@@ -21,7 +21,7 @@ And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 Oblivious Compute's [**`Correspondence`**](./Appendices/A.md)
 
-For the Primitive [**`Axioms`**](./Appendices/B.md)
+For the Primitive's [**`Axioms`**](./Appendices/B.md)
 
 The working [**`Implementations`**](./Appendices/C.md)
 
