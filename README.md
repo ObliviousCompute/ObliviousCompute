@@ -8,7 +8,7 @@
 
 $\Large{A(s,x)\in\lbrace 0,1\rbrace}$
 
-Distributed across independently positioned observers, the same primitive produces a relational computational field:
+Distributed across observers, the same primitive produces a relational field:
 
 $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
