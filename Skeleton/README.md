@@ -18,7 +18,8 @@ The present position is idempotent, the successor is progressive, and every othe
 
 ---
 
-#☠️
+# ☠️
+
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
