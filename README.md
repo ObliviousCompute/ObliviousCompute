@@ -14,7 +14,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ***The field is the computational locus.***
 
-> *For a mathematical comparison with established models, see [**`Correspondence`**](./Theory/Appendices/D.md) in **Appendix D**.*
+> *For a comparison with established models, see [**`Correspondence`**](./Theory/Appendices/D.md) in **Appendix D**.*
 
 ---
 
