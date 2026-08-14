@@ -60,6 +60,7 @@ $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 The states remain local to their observers.
 
+
 ***𝓕 contains no state of its own. The field is the computational locus.***
 
 ---
