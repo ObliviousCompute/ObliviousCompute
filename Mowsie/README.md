@@ -1,6 +1,6 @@
 # 🐭 Mowsie 🐭
 
-**The first real-world application of [**`Oblivious Compute`**](../README.md).**
+**The first real-world application of [**`Oblivious Compute`**](https://github.com/ObliviousCompute).**
 
 ---
 
