@@ -2,28 +2,25 @@
 
 ## Purpose
 
-This appendix places Oblivious Compute beside established computational models using a common symbolic vocabulary.
+This appendix establishes Oblivious Compute in its own symbolic terms before placing it beside established computational models. The comparison begins from the primitive itself: an observer occupies a present state, a projected continuation appears, and admissibility is determined from that position.
 
 ***These are correspondences, not equivalences.*** Each section identifies a shared structure and the point at which the models diverge.
 
 ## Notation
 
+The equations below describe the kernel used throughout this appendix. $A$ is the local admissibility test performed at the current event horizon: the present does not derive its authority from an agreed, merged, or reconstructed history.
+
 | Symbol | Meaning |
 |--------|---------|
-| $o$ | Observer |
-| $s$ | State |
-| $c$ | Cell |
-| $x$ | Proposed input or continuation |
-| $h$ | History |
-| $T$ | Transition |
-| $I$ | Invariant |
-| $E$ | Event Horizon |
-| $A$ | Admissibility |
-| $\Sigma$ | Symmetry |
-| $\mathcal{F}$ | Field / computational object |
-| $Q$ | Agreement / commit |
-| $\sqcup$ | Join / merge |
-| $\sqsubseteq$ | Information order |
+| $s$ | Present observer state / position |
+| $s'$ | Admitted successor state / position |
+| $x$ | Projected state, input, or continuation |
+| $\Omega$ | State space |
+| $A(s,x)$ | Local admissibility test at the current event horizon |
+| $i,j$ | Observer indices |
+| $n$ | Number of independently maintained observer positions |
+| $\Sigma$ | Relational symmetry among observer positions |
+| $\mathcal{F}$ | Field / distributed computational locus |
 
 ---
 
