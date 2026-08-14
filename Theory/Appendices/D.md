@@ -45,21 +45,15 @@ $\Large s_1,s_2,\ldots,s_n\in\Omega \qquad A(s_i,x)\in\lbrace 0,1\rbrace$
 
 An admitted state change may establish a new local position, while independently maintained observers need not occupy equivalent positions:
 
-$\Large s_i\rightarrow s_i' \qquad s_i'\neq s_j'$
-
-Different executions may therefore traverse different distributed configurations:
-
-$\Large (s_1',s_2',\ldots,s_n')\neq(s_1'',s_2'',\ldots,s_n'')$
+$\Large s_i\rightarrow s_i' \qquad s_i'\neq s_j' \qquad (s_1',s_2',\ldots,s_n')\neq(s_1'',s_2'',\ldots,s_n'')$
 
 The intermediate configurations need not themselves constitute the distributed computational object.
-
 
 Let $\Sigma$ denote the relational symmetry among independently maintained observer positions. The resulting field is:
 
 $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 The states remain local to their observers.
-
 
 ***𝓕 contains no state of its own. The field is the computational locus.***
 
