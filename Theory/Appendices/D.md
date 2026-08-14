@@ -61,19 +61,19 @@ $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 Oblivious Compute can be approached through three nearby ideas. Invert Dijkstra’s use of local state relations, borrow the broadcast move from Broadcast Consensus Protocols, and apply the resulting mechanism at the field scale explored by Field Calculus. What remains is a smaller kernel: observers contain state, admissibility is positional, and the relational field becomes the computational locus.
 
-### Dijkstra
+### Dijkstra-1974
 
 In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and the states of their neighbors while driving a distributed system toward a legitimate global condition.
 
 Dijkstra’s constructions use asymmetry to control the evolution of the system. Oblivious Compute keeps the local relational mechanism but inverts its role: symmetry is no longer merely something to break, restore, or manage on the way to legitimacy. The relational symmetry itself becomes the distributed computational object.
 
-### Broadcast Consensus Protocols
+### Broadcast Consensus Protocols-2019
 
 Broadcast Consensus Protocols replace pairwise interaction with broadcast transitions, allowing a state change to be exposed across a population.
 
 Oblivious Compute borrows the broadcast move but removes the computationally designated recipient. A state is projected into the communication environment; any observer that encounters it independently determines its significance from its own position.
 
-### Field Calculus
+### Field Calculus-2019
 
 Field Calculus moves distributed computation upward from individual devices toward computations over fields, treating collective behavior as an object of computation in its own right.
 
