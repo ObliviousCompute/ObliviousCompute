@@ -18,7 +18,7 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 | $I$ | Invariant |
 | $E$ | Event Horizon |
 | $\Sigma$ | Symmetry |
-| $\mathcal{F}$ | Field |
+| $𝓕$ | Field |
 | $S$ | Synchronization |
 | $P_i$ | Non-empty set of peer cells |
 
@@ -72,7 +72,7 @@ The field exists only where independently held states preserve the required rela
 
 ### Mathematical Form
 
-$\mathcal{F} \equiv \Sigma(s_1,s_2,\ldots,s_n)$
+$𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
