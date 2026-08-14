@@ -16,7 +16,7 @@ As long as your **head is unique** and you share the same **depth**, your node w
 
 **Hydra** is a distributed expression of an **Oblivious Compute** system. It is not a coordinated network, but a field produced among independent nodes maintaining compatible admissible states.
 
-*Simply put, it's a distributed packet collider in under a thousand lines of code.*
+***Simply put, it's a distributed packet collider in under a thousand lines of code.***
 
 **No leaders. Just convergence.**
 
