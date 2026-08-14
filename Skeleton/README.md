@@ -77,9 +77,6 @@ def ingest(state, packet):
 
 # ☠️☠️☠️
 
----
-
-
 ## ⚰️ What's in the Box ⚰️
 
 In the example above, `state["sequence"]` is an observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, and `NEXT` encodes the relational geometry between those positions.
