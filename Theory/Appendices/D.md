@@ -31,13 +31,9 @@ This appendix places Oblivious Compute beside established computational models u
 
 ***I’m here. Something appears. Does it belong?***
 
-An observer occupies a present position within a state space:
+An observer occupies a present position within a state space, the observer performs a binary positional determination:
 
-$\Large s\in\Omega \qquad x\in\Omega$
-
-The observer performs a binary positional determination:
-
-$\Large A(s,x)\in\lbrace 0,1\rbrace$
+$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
 
 The result is simple. The relationship is not.
 
