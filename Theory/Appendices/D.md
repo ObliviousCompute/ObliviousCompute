@@ -47,7 +47,7 @@ The result is simple. The relationship is not.
 
 The same projected state may have different computational significance at different observer positions:
 
-$\Large s_i\neq s_j  A(s_i,x)=1  \qquad A(s_j,x)=0$$
+$\Large s_i\neq s_j \qquad A(s_i,x)=1 \qquad A(s_j,x)=0$$
 
 Admissibility therefore belongs to neither the observer nor the projected state in isolation. It exists in the relationship between them.
 
