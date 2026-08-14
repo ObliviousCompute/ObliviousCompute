@@ -6,15 +6,11 @@
 
 [**Oblivious Compute**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space.
 
-$$
-\Large A(s,x)\in\{0,1\}
-$$
+$\Large \boldsymbol{A(s,x)\in\lbrace 0,1\rbrace}$
 
 Distributed across independently positioned observers, the same primitive produces a relational computational field:
 
-$$
-\Large \boldsymbol{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}
-$$
+$\Large \boldsymbol{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ---
 
