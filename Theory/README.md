@@ -19,11 +19,11 @@ And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 ## 📚 Appendices
 
-**Appendix A** gives **OC** a [**`Correspondence`**](./Appendices/A.md) with other computational models.
+[**`Correspondence`**](./Appendices/A.md) is in **Appendix A**.
 
 For the [**`Axioms`**](./Appendices/B.md) continue to **Appendix B**.
 
-The [**`Implementations`**](./Appendices/C.md) in **Appendix C** describe working models.
+The [**`Implementations`**](./Appendices/C.md) are in **Appendix C**.
 
 Finally, [**`Definitions`**](./Appendices/D.md) are in **Appendix D**.
 
