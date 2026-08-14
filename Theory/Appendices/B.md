@@ -106,6 +106,6 @@ Additional invariants may increase this **resolution** without changing the unde
 
 ## 📜 License
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) is released under the terms of the [**`LICENSE`**](../../LICENSE).
+See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
 Use it, study it, modify it—just respect the terms outlined there.
