@@ -31,39 +31,27 @@ This appendix places Oblivious Compute beside established computational models u
 
 ***I’m here. Something appears. Does it belong?***
 
-An observer occupies a present position within a state space, the observer performs a binary positional determination:
+An observer occupies a present position and a projected state appears within the same state space. The observer performs a binary positional determination:
 
-$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
+$\Large s\in\Omega \;\; x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
 
-The result is simple. The relationship is not.
-
-The same projected state may have different computational significance at different observer positions:
+The result is simple. The relationship is not. The same projected state may have different computational significance at different observer positions:
 
 $\Large s_i\neq s_j \qquad A(s_i,x)=1 \qquad A(s_j,x)=0$
 
-Admissibility therefore belongs to neither the observer nor the projected state in isolation. It exists in the relationship between them.
+Distributed computation begins when the same primitive is instantiated across independently maintained observer positions:
 
-Distributed computation begins when the same primitive is instantiated across independently maintained positions:
+$\Large s_1,s_2,\ldots,s_n\in\Omega \qquad A(s_i,x)\in\lbrace 0,1\rbrace$
 
-$\Large s_1,s_2,\ldots,s_n\in\Omega$
+An admitted state change may establish a new local position, while independently maintained observers need not occupy equivalent positions:
 
-Each observer adjudicates from its own position:
+$\Large s_i\rightarrow s_i' \qquad s_i'\neq s_j'$
 
-$\Large A(s_i,x)\in\lbrace 0,1\rbrace$
-
-An admitted state change may establish a new local position:
-
-$\Large s_i\rightarrow s_i'$
-
-Different observers may therefore occupy different positions:
-
-$\Large s_i'\neq s_j'$
-
-and different executions may traverse different configurations:
+Different executions may therefore traverse different distributed configurations:
 
 $\Large (s_1',s_2',\ldots,s_n')\neq(s_1'',s_2'',\ldots,s_n'')$
 
-without requiring the intermediate configurations themselves to constitute the distributed computational object.
+The intermediate configurations need not themselves constitute the distributed computational object.
 
 Let $\Sigma$ denote the relational symmetry among independently maintained observer positions. The resulting field is:
 
