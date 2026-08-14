@@ -1,6 +1,6 @@
 # 🪬 Oblivious Compute 🪬
 
-**  ...I’m here. Something appears. Does it belong...**
+  **...I’m here. Something appears. Does it belong...**
 
 ---
 
