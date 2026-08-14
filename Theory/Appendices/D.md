@@ -33,11 +33,7 @@ This appendix places Oblivious Compute beside established computational models u
 
 An observer occupies a present position within a state space:
 
-$\Large s\in\Omega$
-
-A projected state occupies a position within the same state space:
-
-$\Large x\in\Omega$
+$\Large s\in\Omega$ \qquad x\in\Omega$
 
 The observer performs a binary positional determination:
 
@@ -47,7 +43,7 @@ The result is simple. The relationship is not.
 
 The same projected state may have different computational significance at different observer positions:
 
-$\Large s_i\neq s_j \qquad A(s_i,x)=1 \qquad A(s_j,x)=0$$
+$\Large s_i\neq s_j \qquad A(s_i,x)=1 \qquad A(s_j,x)=0$
 
 Admissibility therefore belongs to neither the observer nor the projected state in isolation. It exists in the relationship between them.
 
