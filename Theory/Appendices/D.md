@@ -20,7 +20,7 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 | $i,j$ | Observer indices |
 | $n$ | Number of independently maintained observer positions |
 | $\Sigma$ | Relational symmetry among observer positions |
-| $\mathcal{F}$ | Field / distributed computational locus |
+| $𝓕$ | Field / distributed computational locus |
 
 ---
 
