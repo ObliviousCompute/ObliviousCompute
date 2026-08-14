@@ -10,15 +10,17 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 |--------|---------|
 | $s$ | State |
 | $c$ | Cell |
-| $\Omega$ | Set of cells |
-| $C$ | Synchronization set |
+| $\Omega$ | State space |
+| $\mathcal{C}$ | Set of cells |
 | $g$ | Genesis |
 | $T$ | Transition |
+| $A$ | Admissibility |
 | $I$ | Invariant |
 | $E$ | Event Horizon |
 | $\Sigma$ | Symmetry |
 | $\mathcal{F}$ | Field |
 | $S$ | Synchronization |
+| $P_i$ | Non-empty set of peer cells |
 
 ---
 
@@ -28,7 +30,7 @@ Every admissible progression begins from a genesis.
 
 ### Mathematical Form
 
-$\exists! g$
+$\exists! g\in\Omega \qquad s_0=g$
 
 ---
 
@@ -38,7 +40,7 @@ Progression occurs exclusively through transitions.
 
 ### Mathematical Form
 
-$T:s_i \to s_{i+1}$
+$s_i\xrightarrow{T}s_{i+1}$
 
 Every admissible progression is composed of transitions.
 
@@ -50,7 +52,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$I(s_i)=I(s_{i+1})$
+$A(s_i,s_{i+1})=1 \Longrightarrow I(s_i)=I(s_{i+1})$
 
 ---
 
@@ -60,7 +62,7 @@ Every cell possesses exactly one current event horizon.
 
 ### Mathematical Form
 
-$\forall c,\ \exists! E(c)$
+$\forall c_i\in\mathcal{C},\ \exists! E(c_i)$
 
 ---
 
@@ -82,7 +84,7 @@ Synchronization occurs between a target cell and a non-empty set of other cells,
 
 ### Mathematical Form
 
-$S(c_i, C)\quad \text{where}\quad \varnothing \neq C \subseteq \Omega \setminus \{c_i\}$
+$S(c_i,P_i)\qquad \varnothing\neq P_i\subseteq\mathcal{C}\setminus\{c_i\}$
 
 ---
 
