@@ -85,9 +85,7 @@ def ingest(state, packet):
 
 ## ⚰️ What's in the Box ⚰️
 
-The mathematical model is not intended as a line-for-line specification of the implementation. It describes the structure that the code instantiates.
-
-In the example below, `state["sequence"]` is an observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, and `NEXT` encodes the relational geometry between those positions.
+In the example above, `state["sequence"]` is an observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, and `NEXT` encodes the relational geometry between those positions.
 
 The function `inWindow(incoming, current)` is the executable analogue of the admissibility relation $A(s,x)$. A presented position belongs when it is either the observer's present position or its admissible successor:
 
