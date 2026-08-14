@@ -20,14 +20,6 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 **No leaders. Just convergence.**
 
-<img src="../Relics/Fancy.png" width="400"/>
-
-$\{s\in\mathbb{Z}^n:\sum_i s_i=10n\}$
-
-$\lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
-
-$\left\{s\in\mathbb{Z}^n:\sum_i s_i=10n\right\}$
-
 $\Large \lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
 
 > *Hydra's invariant*
