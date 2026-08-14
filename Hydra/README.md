@@ -28,7 +28,7 @@ $\lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
 
 $\left\{s\in\mathbb{Z}^n:\sum_i s_i=10n\right\}$
 
-$\lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
+$\Large \lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
 
 > *Hydra's invariant*
 
