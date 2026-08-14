@@ -4,7 +4,7 @@
 
 ---
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space.
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space.
 
 $\Large{A(s,x)\in\lbrace 0,1\rbrace}$
 
