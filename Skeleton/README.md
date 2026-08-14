@@ -4,19 +4,27 @@
 
 ---
 
-## ⚰️ What's in the Box ⚰️
+## 🦴 The Bones 🦴
 
-The mathematical model is not intended as a line-for-line specification of the implementation. It describes the structure that the code instantiates.
+An observer occupies a present state $s$ within a state space $\Omega$:
 
-In the example below, `state["sequence"]` is an observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, and `NEXT` encodes the relational geometry between those positions.
+$\Large s\in\Omega$
 
-The function `inWindow(incoming, current)` is the executable analogue of the admissibility relation $A(s,x)$. A presented position belongs when it is either the observer's present position or its admissible successor:
+A presented state $x$ appears within the same state space:
 
-$A(s,x)=1 \iff x\in\lbrace s,\mathrm{NEXT}[s]\rbrace$
+$\Large x\in\Omega$
 
-When an admissible presented state differs from the observer's present state, the observer may advance to that position. A state outside the admissible relation does not produce ordinary forward progression and may instead initiate restorative behavior.
+The observer determines whether the presented state belongs from its present position:
 
-***There is no field object stored in the program.*** Each observer holds state. Distributed across observers, symmetry between those independently maintained states produces the field.
+$\Large A(s,x)\in\lbrace 0,1\rbrace$
+
+For the cyclic geometry used by **Skeleton**:
+
+$\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{NEXT}[s]\rbrace$
+
+The present position is idempotent. The successor is progressive. Any other position lies outside the ordinary admissible relation.
+
+---
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
@@ -74,19 +82,20 @@ def ingest(state, packet):
 
 ---
 
-## 🦴 Constraint 🦴
 
-This primitive assumes no access to history.
- 
-No ordering to reconstruct.  
-No prior state to consult.  
-No logs to replay.  
+## ⚰️ What's in the Box ⚰️
 
-All decisions are made against the present state only.
+The mathematical model is not intended as a line-for-line specification of the implementation. It describes the structure that the code instantiates.
 
-When combined with historical systems, this reduces to validation logic.
+In the example below, `state["sequence"]` is an observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, and `NEXT` encodes the relational geometry between those positions.
 
-When history is removed, it becomes the system itself.
+The function `inWindow(incoming, current)` is the executable analogue of the admissibility relation $A(s,x)$. A presented position belongs when it is either the observer's present position or its admissible successor:
+
+$A(s,x)=1 \iff x\in\lbrace s,\mathrm{NEXT}[s]\rbrace$
+
+When an admissible presented state differs from the observer's present state, the observer may advance to that position. A state outside the admissible relation does not produce ordinary forward progression and may instead initiate restorative behavior.
+
+***There is no field object stored in the program.*** Each observer holds state. Distributed across observers, symmetry between those independently maintained states produces the field.
 
 ---
 
