@@ -26,6 +26,8 @@ $\{s\in\mathbb{Z}^n:\sum_i s_i=10n\}$
 
 $\lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
 
+$\left\{s\in\mathbb{Z}^n:\sum_i s_i=10n\right\}$
+
 > *Hydra's invariant*
 
 
