@@ -29,27 +29,59 @@ This appendix places Oblivious Compute beside established computational models u
 
 ## Oblivious Compute
 
-The present does not derive its authority from an agreed, merged, or reconstructed history.
+***I’m here. Something appears. Does it belong?***
 
-For correspondence, let $A$ represent the local admissibility test performed by an observer at the current event horizon.
+An observer occupies a present position within a state space:
 
-### Mathematical Form
+$\Large s\in\Omega$
 
-$A_i(x) \iff [x \in E(c_i)] \land [I(s_i) = I(x)]$
+A projected state occupies a position within the same state space:
 
-$A_i(x) \Rightarrow T : s_i \rightarrow x$
+$\Large x\in\Omega$
 
-Admissibility describes the behavior of an observer. It does not define the computational object. Let $\Sigma$ represent symmetry between independently held states and $\mathcal{F}$ the field that exists through that symmetry.
+The observer performs a binary positional determination:
 
-$\mathcal{F} \equiv \Sigma(s_1, s_2, \ldots, s_n)$
+$\Large A(s,x)\in\lbrace 0,1\rbrace$
 
-The states remain local to their observers; $\mathcal{F}$ contains no state of its own. **The computational object is the relational configuration produced through symmetry between states.**
+The result is simple. The relationship is not.
 
-History does not appear as an input to admissibility. Each observer already anticipates the admissible continuations of its own state, and when a transition is presented, no agreement must first be reached. The observer resolves only whether that transition was already admissible.
+The same projected state may have different computational significance at different observer positions:
 
-***The present does not summarize an authoritative past. The present is evaluated directly for admissible progression.***
+$\Large s_i\neq s_j$
 
-***Consensus is participatory. Oblivious Compute is anticipatory.***
+$\Large A(s_i,x)=1,\qquad A(s_j,x)=0$
+
+Admissibility therefore belongs to neither the observer nor the projected state in isolation. It exists in the relationship between them.
+
+Distributed computation begins when the same primitive is instantiated across independently maintained positions:
+
+$\Large s_1,s_2,\ldots,s_n\in\Omega$
+
+Each observer adjudicates from its own position:
+
+$\Large A(s_i,x)\in\lbrace 0,1\rbrace$
+
+An admitted state change may establish a new local position:
+
+$\Large s_i\rightarrow s_i'$
+
+Different observers may therefore occupy different positions:
+
+$\Large s_i'\neq s_j'$
+
+and different executions may traverse different configurations:
+
+$\Large (s_1',s_2',\ldots,s_n')\neq(s_1'',s_2'',\ldots,s_n'')$
+
+without requiring the intermediate configurations themselves to constitute the distributed computational object.
+
+Let $\Sigma$ denote the relational symmetry among independently maintained observer positions. The resulting field is:
+
+$\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
+
+The states remain local to their observers. **𝓕 contains no state of its own.**
+
+***The field is the computational locus.***
 
 ---
 
