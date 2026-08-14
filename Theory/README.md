@@ -21,7 +21,7 @@ And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 **Appendix A** gives **OC** a [**`Correspondence`**](./Appendices/A.md) with other computational models.
 
-For the underlying [**`Axioms`**](./Appendices/B.md) continue to **Appendix B**.
+For the [**`Axioms`**](./Appendices/B.md) continue to **Appendix B**.
 
 The [**`Implementations`**](./Appendices/C.md) in **Appendix C** describe working models.
 
