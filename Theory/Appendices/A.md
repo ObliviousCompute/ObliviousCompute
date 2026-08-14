@@ -80,7 +80,7 @@ Oblivious Compute applies the inverted local mechanism at that scale, then remov
 
 ---
 
-**Continue to [**`Appendix B`**](./B.md)...**
+**Continue to [**`Appendix B`**](./B.md) or check out [**`Skeleton`**](../Skeleton.md)...**
 
 ---
 
