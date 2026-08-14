@@ -90,11 +90,11 @@ $S(c_i,P_i)\qquad \varnothing\neq P_i\subseteq\mathcal{C}\setminus\{c_i\}$
 
 ## Resolution
 
-***The axioms define the admissible field.*** Their purpose is not to describe every invalid state, but to define lawful state with sufficient **resolution** that invalid states cannot pass through it.
+***The axioms define the conditions under which states may participate in the field.*** Their purpose is not to describe every invalid state, but to define admissibility with sufficient **resolution** that inadmissible states cannot progress through the system.
 
 Additional invariants may increase this **resolution** without changing the underlying computational primitive. The problem therefore becomes one of discovering the ***smallest set of independently verifiable invariants*** capable of distinguishing admissible state from inadmissible state.
 
-***In this sense, the field does not need to know how a state was produced. It only needs to determine whether the state belongs.***
+***An observer does not need to know how a presented state was produced. It only needs to determine whether that state belongs from its present position.***
 
 **Resolution also applies to observation.** An observer may be a transistor, thread, process, virtual machine, computer, cluster, or any other independently resolvable computational boundary. ***The primitive does not prescribe scale; one may simply zoom in or out.***
 
