@@ -5,7 +5,7 @@
 Copyright © 2026  
 All rights reserved.
 
-This repository documents **Oblivious Compute (OC)**, a foundational distributed computation primitive, 
+This repository documents [**`Oblivious Compute`**](https://github.com/ObliviousCompute), a foundational distributed computation primitive, 
 along with reference material and example instantiations (Hydra, Skeleton, and Byzantium).
 
 Portions of the concepts described in this repository are the subject of **pending patent applications**. 
