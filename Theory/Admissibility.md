@@ -8,7 +8,7 @@ At first glance, this appears to describe time. Rock becomes Paper. Paper become
 
 Each state admits only certain continuations. Together, they define its horizon. **This boundary is not defined by time. It is defined by admissibility.**
 
-A system may remain at any admissible state for microseconds or millennia without affecting correctness. Time does not determine whether a transition is valid. **Transitions do not unfold through time. They unfold across admissible states.**
+A system may remain at any admissible state for **microseconds** or **millennia** without affecting correctness. Time does not determine whether a transition is valid. **Transitions do not unfold through time. They unfold across admissible states.**
 
 Every computation occurs at the boundary between what is admissible and what is not.
 
