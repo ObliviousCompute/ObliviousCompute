@@ -97,6 +97,6 @@ When an admissible presented state differs from the observer's present state, th
 
 ## 📜 License
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) is released under the terms of the [**`LICENSE`**](../LICENSE).
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) is released under the terms of the [**`LICENSE`**](../LICENSE).
 
 Use it, study it, modify it—just respect the terms outlined there.
