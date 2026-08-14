@@ -53,12 +53,11 @@ Hydra runs in two modes.
 
 *All nodes must use the same depth (port), and the same number of mutated heads.*  
 
-> *Think Hungry Hungry Hippos*  
 > *Run Hydra in a **Swamp** and see who can chomp the most Tailies.*  
 
 <img src="../Relics/Chomp.gif"/>
   
-> *Push state with multiple machines and see what holds.*
+> *Think Hungry Hungry Hippos*  
 
 ---
 
