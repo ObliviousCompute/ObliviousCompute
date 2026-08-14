@@ -33,7 +33,7 @@ This appendix places Oblivious Compute beside established computational models u
 
 An observer occupies a present position and a projected state appears within the same state space. The observer performs a binary positional determination:
 
-$\Large s\in\Omega \;\; x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
+$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
 
 The same projected state may have different computational significance at different observer positions:
 
