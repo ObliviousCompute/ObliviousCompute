@@ -1,18 +1,16 @@
 # 🪬 Oblivious Compute 🪬
 
-**No History. No Logs. No Problems.**
+**I’m here. Something appears. Does it belong?**
 
 ---
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** is an open-source distributed computation primitive that determines correctness through admissibility rather than agreement and historical coordination.
+[**Oblivious Compute**](https://github.com/ObliviousCompute/ObliviousCompute/blob/main/README.md) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space.
 
-***Let's stop watching the flipbook and start watching the action.***
+$A(s,x)\in\{0,1\}$
 
-**We got so good at manipulating the flipbook that we started thinking computation *was* the flipbook.**
+Distributed across independently positioned observers, the same primitive produces a relational computational field:
 
-Oblivious Compute asks what happens when the sequence is no longer treated as reality. Instead of preserving logs, ordering messages, or reconstructing the past, OC determines whether the present state belongs and whether its progression remains admissible.
-
-**The admitted state is truth. *Everything else falls into oblivion*.**
+$\mathcal{F}\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
