@@ -33,7 +33,7 @@ This appendix places Oblivious Compute beside established computational models u
 
 An observer occupies a present position within a state space:
 
-$\Large s\in\Omega$ \qquad x\in\Omega$
+$\Large s\in\Omega \qquad x\in\Omega$
 
 The observer performs a binary positional determination:
 
