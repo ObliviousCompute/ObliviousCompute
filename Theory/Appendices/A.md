@@ -45,7 +45,7 @@ An admitted state change may establish a new local position. Different observers
 $\Large s_i\rightarrow s_i' \qquad s_i'\neq s_j' \qquad (s_1',s_2',\ldots,s_n')\neq(s_1'',s_2'',\ldots,s_n'')$
 
 
-Let $\Sigma$ denote the relational symmetry among independently maintained observer positions. The resulting field is:
+Let $\Large \Sigma$ denote the relational symmetry among independently maintained observer positions. The resulting field is:
 
 $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
