@@ -24,6 +24,8 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 $\{s\in\mathbb{Z}^n:\sum_i s_i=10n\}$
 
+$\lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
+
 > *Hydra's invariant*
 
 
