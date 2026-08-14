@@ -50,6 +50,7 @@ Hydra runs in two modes.
 
 **Den** is local—multiple terminals on the same machine. *(sandbox)*  
 **Swamp** runs across a LAN, allowing multiple machines to share the same field.
+
 *All nodes must use the same depth (port), and the same number of mutated heads.*  
 
 > *Think Hungry Hungry Hippos*  
