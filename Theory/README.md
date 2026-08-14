@@ -19,13 +19,13 @@ And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 ## 📚 Appendices
 
-Begin with **Appendix A** to place Oblivious Compute in [**Correspondence**](./Appendices/A.md) with established computational models.
+**Appendix A** gives **OC** a [**`Correspondence`**](./Appendices/A.md) with other computational models.
 
-Continue to **Appendix B** for the underlying [**Axioms**](./Appendices/B.md) that formalize the framework.
+For the underlying [**`Axioms`**](./Appendices/B.md) continue to **Appendix B**.
 
-Then explore **Appendix C** for the working [**Implementations**](./Appendices/C.md) that embody the model.
+The [**`Implementations`**](./Appendices/C.md) in **Appendix C** describe working models.
 
-Finally, use **Appendix D** for the formal [**Definitions**](./Appendices/D.md) of its vocabulary.
+Finally, [**`Definitions`**](./Appendices/D.md) are in **Appendix D**.
 
 
 ## 🪶 Note
