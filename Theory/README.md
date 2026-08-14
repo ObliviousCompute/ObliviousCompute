@@ -5,7 +5,7 @@ The concepts presented here are embodied in working reference implementations th
 
 ## 🔭 Scope 🔭
 
-**An observer holds state. State is not the field. The field is symmetry between states. The computational object is the field.**
+**An observer holds state. Symmetry between states produces a field. The field is the computational object.**
 
 ## 🌀 The Path
 
