@@ -92,7 +92,7 @@ It is the simplest expression of the primitive in the real world.
 
 ## 📡 Contact
 
-> If you see this and want to talk, reach out — **`ObliviousCompute@yahoo.com`**
+> If you see this and want to talk, reach out — [**`ObliviousCompute@yahoo.com`**](ObliviousCompute.com)
 
 ---
 
