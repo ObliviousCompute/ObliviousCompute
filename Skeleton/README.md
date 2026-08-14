@@ -3,9 +3,8 @@
 **A minimal, fully legible expression of the Oblivious Compute primitive.**
 
 ---
-## ⚰️ What's in the Box ⚰️
 
-### From Formalism to Code
+## ⚰️ What's in the Box ⚰️
 
 The mathematical model is not intended as a line-for-line specification of the implementation. It describes the structure that the code instantiates.
 
