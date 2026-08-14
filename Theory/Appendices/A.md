@@ -12,16 +12,15 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 
 | Symbol | Meaning |
 |--------|---------|
-| $s$ | Present observer state / position |
-| $s'$ | Admitted successor state / position |
-| $x$ | Projected state, input, or continuation |
-| $A(s,x)$ | Local admissibility test at the current event horizon |
 | $i,j$ | Observer indices |
 | $n$ | Number of independently maintained observer positions |
+| $s$ | Present observer state / position |
+| $x$ | Projected state, input, or continuation |
+| $s'$ | Admitted successor state / position |
+| $A(s,x)$ | Local admissibility test at the current event horizon |
 | $\Omega$ | State space |
 | $\Sigma$ | Relational symmetry among observer positions |
 | $𝓕$ | Field / distributed computational locus |
-
 ---
 
 ## Oblivious Compute
