@@ -50,7 +50,7 @@ Let $\Sigma$ denote the relational symmetry among independently maintained obser
 $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 
-***$\Large 𝓕$ contains no state of its own. The field is the computational locus.***
+$\Large 𝓕$ ***contains no state of its own. The field is the computational locus.***
 
 ---
 
