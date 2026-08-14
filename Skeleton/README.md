@@ -81,7 +81,7 @@ def ingest(state, packet):
 
 ## ⚰️ What's in the Box ⚰️
 
-The code above instantiates the primitive directly. `state["sequence"]` is the observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, while `NEXT` encodes the relational geometry between those positions.
+The code above instantiates the primitive within a minimal working mechanism. `state["sequence"]` is the observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, while `NEXT` encodes the relational geometry between those positions.
 
 The function `inWindow(incoming, current)` is the executable analogue of the admissibility relation $A(s,x)$. It determines whether the presented position is the observer's present position or its admissible successor.
 
