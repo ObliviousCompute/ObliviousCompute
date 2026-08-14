@@ -84,12 +84,6 @@ The first real-world application of Oblivious Compute.
 
 [**`Mowsie`**](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
 
-Users don’t create accounts.  
-*They receive value.*
-
-Vendors don’t manage infrastructure.  
-*They define an invariant.*
-
 It is the simplest expression of the primitive in the real world.
 
 > *(the 1-hour flight)*
