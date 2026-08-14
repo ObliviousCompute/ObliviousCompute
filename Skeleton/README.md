@@ -1,6 +1,6 @@
 # 💀 Skeleton 💀
 
-**A minimal, fully legible expression of the Oblivious Compute primitive.**
+**A minimal, fully legible expression of the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) primitive.**
 
 ---
 
