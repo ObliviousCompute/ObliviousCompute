@@ -19,13 +19,13 @@ And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 ## 📚 Appendices
 
-[**`Correspondence`**](./Appendices/A.md) is in **Appendix A**.
+Oblivious Compute's [**`Correspondence`**](./Appendices/A.md)
 
-For the [**`Axioms`**](./Appendices/B.md) continue to **Appendix B**.
+For the Primitive [**`Axioms`**](./Appendices/B.md)
 
-The [**`Implementations`**](./Appendices/C.md) are in **Appendix C**.
+The working [**`Implementations`**](./Appendices/C.md)
 
-Finally, [**`Definitions`**](./Appendices/D.md) are in **Appendix D**.
+Finally, [**`Definitions`**](./Appendices/D.md)
 
 
 ## 🪶 Note
