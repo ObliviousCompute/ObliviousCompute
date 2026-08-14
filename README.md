@@ -12,6 +12,8 @@ Distributed across observers, the same primitive produces a relational field:
 
 $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
+**The field is the computational locus.**
+
 ---
 
 ## 🌀 The Path
