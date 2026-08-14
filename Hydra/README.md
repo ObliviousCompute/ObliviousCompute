@@ -14,7 +14,7 @@ In **Hydra**, the state is *fluid*. Nodes can leave, rejoin, and rehydrate insta
 
 As long as your **head is unique** and you share the same **depth**, your node will simply **snap to what is**. *What holds is what remains.*
 
-*Hydra* is a distributed expression of the *Oblivious Compute* system. It is not a coordinated network, but a field produced among independent nodes maintaining compatible admissible states.
+**Hydra** is a distributed expression of an **Oblivious Compute** system. It is not a coordinated network, but a field produced among independent nodes maintaining compatible admissible states.
 
 *Simply put, it's a distributed packet collider in under a thousand lines of code.*
 
