@@ -91,7 +91,7 @@ When an admissible presented state differs from the observer's present state, th
 
 ---
 
-**Continue to [**`Hydra`**](./Hydra/README.md)**
+**Continue to [**`Hydra`**](../Hydra/README.md)...**
 
 ---
 
