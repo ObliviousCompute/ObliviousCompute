@@ -22,6 +22,8 @@ Hydra is a distributed expression of the **Oblivious Compute system**. It is not
 
 <img src="../Relics/Fancy.png" width="400"/>
 
+$\{s\in\mathbb{Z}^n:\sum_i s_i=10n\}$
+
 > *Hydra's invariant*
 
 
