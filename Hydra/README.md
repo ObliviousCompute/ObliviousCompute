@@ -65,7 +65,7 @@ Hydra runs in two modes.
 
 The Hydra Demo has been published as a **public technical disclosure**.
 
-This demo exists to show that **oblivious convergence through an admissibility gate** is possible.
+*This demo exists to show that **oblivious convergence through positional admissibility** is possible.*
 
 If it fails, it fails cleanly.  
 If it works, this may demonstrate a **new computational primitive**.
