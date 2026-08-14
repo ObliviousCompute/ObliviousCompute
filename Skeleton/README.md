@@ -6,9 +6,9 @@
 
 ## 🦴 The Bones 🦴
 
-$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
-
 An observer at present state $s$ within state space $\Omega$ determines whether a presented state $x$ belongs from that position.
+
+$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
 
 For the cyclic geometry used by **Skeleton**:
 
@@ -17,6 +17,8 @@ $\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{NEXT}[s]\rbrace$
 The present position is idempotent, the successor is progressive, and every other position lies outside the ordinary admissible relation.
 
 ---
+
+#☠️
 
 ```python
 ROCK, PAPER, SCISSORS = 1, 2, 3
