@@ -12,7 +12,9 @@ $$
 
 Distributed across independently positioned observers, the same primitive produces a relational computational field:
 
-$\mathcal{F} \equiv \Sigma(s_1, s_2, \ldots, s_n)$
+$$
+\Large \boldsymbol{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}
+$$
 
 ---
 
