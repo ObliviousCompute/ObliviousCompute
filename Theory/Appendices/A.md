@@ -56,27 +56,33 @@ $\Large 𝓕$ ***contains no state of its own. The field is the computational lo
 
 ## Nearest Neighbors
 
-Oblivious Compute can be approached through three nearby ideas. Invert Dijkstra’s use of local state relations, borrow the broadcast move from Broadcast Consensus Protocols, and apply the resulting mechanism at the field scale explored by Field Calculus. What remains is a smaller kernel: observers contain state, admissibility is positional, and the relational field becomes the computational locus.
+Oblivious Compute can be approached through four nearby ideas. Remove temporal direction from interaction with Borrill, move computation to field scale with field-based coordination, replace pairwise interaction with broadcast, and begin from Dijkstra’s local state relations. What remains is a smaller kernel: observers hold state, projection requires no computationally designated recipient, admissibility is positional, and the relation among observer states becomes the computational locus.
 
-### Dijkstra-1974
+### Borrill-2026
 
-In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and the states of their neighbors while driving a distributed system toward a legitimate global condition.
+In *Message Passing Without Temporal Direction: Constraint Semantics and the FITO Category Mistake*, Paul Borrill removes temporal direction from the semantic foundation of message passing and reformulates interaction through compatibility constraints among local states.
 
-Dijkstra’s constructions use asymmetry to control the evolution of the system. Oblivious Compute keeps the local relational mechanism but inverts its role: symmetry is no longer merely something to break, restore, or manage on the way to legitimacy. The relational symmetry itself becomes the distributed computational object.
+Borrill comes remarkably close to the relational structure of Oblivious Compute, but retains a global state space formed from local-state valuations and treats compatibility as a constraint over that space. Oblivious Compute removes the additional global state object: observers hold state, while the relation among those states is itself the distributed computational object.
+
+### Field-Based Coordination-2025
+
+In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli describe computational fields as distributed data structures that associate agents with computational values. Agents possess state, interact through defined neighborhoods, and collectively compute over those fields.
+
+Oblivious Compute operates at the same collective scale but separates state from field. Observers hold state; those states do not constitute the field. Symmetry among independently maintained observer states produces the field, and the field contains no state of its own.
 
 ### Broadcast Consensus Protocols-2019
 
-Broadcast Consensus Protocols replace pairwise interaction with broadcast transitions, allowing a state change to be exposed across a population.
+*Expressive Power of Broadcast Consensus Protocols* replaces exclusively pairwise population interactions with reliable broadcast transitions, allowing an agent to expose a state change across the population.
 
 Oblivious Compute borrows the broadcast move but removes the computationally designated recipient. A state is projected into the communication environment; any observer that encounters it independently determines its significance from its own position.
 
-### Field Calculus-2019
+### Dijkstra-1974
 
-Field Calculus moves distributed computation upward from individual devices toward computations over fields, treating collective behavior as an object of computation in its own right.
+In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and neighboring states while driving a distributed system toward a legitimate global condition.
 
-Oblivious Compute applies the inverted local mechanism at that scale, then removes state from the field itself. Observers contain state. The field exists in the relationship among those states.
+Oblivious Compute keeps the local relational mechanism but removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position, while relational symmetry among those independently maintained positions produces the distributed computational object.
 
-***Dijkstra supplies the local relation. Broadcast removes the designated recipient. Field Calculus supplies the scale. Oblivious Compute moves the computational locus into the relation itself.***
+***Borrill removes temporal direction. Field-based coordination supplies the collective scale. Broadcast removes pairwise interaction. Dijkstra supplies the local relation. Oblivious Compute removes state from the field and moves the computational locus into the relation itself.***
 
 ---
 
