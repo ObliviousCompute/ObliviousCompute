@@ -8,7 +8,7 @@
 
 An observer at present state $s$ within state space $\Omega$ determines whether a presented state $x$ belongs from that position.
 
-$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
+$\Large A:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad A(s,x)\in\lbrace 0,1\rbrace$
 
 For the cyclic geometry used by **Skeleton**:
 
