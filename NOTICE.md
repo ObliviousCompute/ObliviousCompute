@@ -14,7 +14,7 @@ This notice is provided for transparency and does not alter or supersede the ter
 All source code in this repository is licensed under the **Apache License, Version 2.0**.  
 See the [`LICENSE`](./LICENSE) file for full terms.
 
-For academic or research use, please cite this work as specified in [`CITATION.cff`](./CITATION.cff).
+For academic or research use, please cite this work as specified in [`CITATION`](./CITATION.cff).
 
 This repository is published as a **defensive and academic disclosure** of a computation primitive. 
 It is not a finished protocol, standard, or commercial product. 
