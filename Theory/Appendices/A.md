@@ -12,15 +12,10 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 
 | Symbol | Meaning |
 |--------|---------|
-| $i,j$ | Observer indices |
-| $n$ | Observer count |
-| $s$ | Observer state |
-| $x$ | Projected state |
-| $s'$ | Successor state |
-| $A(s,x)$ | Admissibility test |
+| $A$ | Admissibility function |
 | $\Omega$ | State space |
 | $\Sigma$ | Relational symmetry |
-| $𝓕$ | Field |
+| $𝓕$ | Computational field |
 
 ---
 
@@ -28,29 +23,19 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 
 ***I’m here. Something appears. Does it belong?***
 
-An observer occupies a present position and a projected state appears within the same state space. The observer performs a binary positional determination:
+Oblivious Compute distributes a single admissibility function across a set of independently state-maintaining observers within a state space $\Omega$. No observer requires a computationally designated neighbor; each evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
 
-$\Large s\in\Omega \qquad x\in\Omega \qquad A(s,x)\in\lbrace 0,1\rbrace$
+$\Large A:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad A(s,x)\in\lbrace 0,1\rbrace$
 
-The same projected state may have different computational significance at different observer positions:
+The same presented state may therefore be admissible from one observer position and inadmissible from another.
 
-$\Large s_i\neq s_j \qquad A(s_i,x)=1 \qquad A(s_j,x)=0$
+$\Large s_i\neq s_j \qquad\Longrightarrow\qquad A(s_i,x)=1,\quad A(s_j,x)=0$
 
-Distributed computation begins when the same primitive is instantiated across independently maintained observer positions:
-
-$\Large s_1,s_2,\ldots,s_n\in\Omega \qquad A(s_i,x)\in\lbrace 0,1\rbrace$
-
-An admitted state change may establish a new local position. Different observers and different executions need not traverse equivalent configurations:
-
-$\Large s_i\rightarrow s_i' \qquad s_i'\neq s_j' \qquad (s_1',s_2',\ldots,s_n')\neq(s_1'',s_2'',\ldots,s_n'')$
-
-
-Let $\Large \Sigma$ denote the relational symmetry among independently maintained observer positions. The resulting field is:
+Across the observer set, let $\Sigma$ denote relational symmetry within the resulting matrix of relations. That symmetry constitutes the computational field $𝓕$.
 
 $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-
-$\Large 𝓕$ ***contains no state of its own. The field is the computational locus.***
+***No observer contains the field. The field contains no state. It exists only through the symmetry between independently maintained states.***
 
 ---
 
