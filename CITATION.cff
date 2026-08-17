@@ -3,6 +3,6 @@ message: "If you use or build upon Oblivious Compute, please cite this repositor
 title: "Oblivious Compute"
 authors:
   - family-names: "Fritz"
-    given-names: "Denton"
+    given-names: "Denton Paul"
 license: Apache-2.0
 repository-code: "https://github.com/ObliviousCompute/ObliviousCompute"
