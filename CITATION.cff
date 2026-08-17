@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use or build upon Oblivious Compute, please cite this repository."
+title: "Oblivious Compute"
+authors:
+  - family-names: "Fritz"
+    given-names: "Denton"
+license: Apache-2.0
+repository-code: "https://github.com/ObliviousCompute/ObliviousCompute"
