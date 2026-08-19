@@ -32,11 +32,11 @@ Genesis is the initial admissible state from which progression begins.
 
 ## Field
 
-A field is the complete space of possible states that constitute a reality.
+A field is the relational condition produced among independently maintained observer states.
 
 ## State
 
-A state is an observer's view of the field at a particular moment.
+A state is an observer’s presently maintained computational position within a state space.
 
 ## Cell
 
