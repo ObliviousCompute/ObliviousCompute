@@ -8,11 +8,11 @@
 
 An observer at present state $s$ within state space $\Omega$ determines whether a presented state $x$ belongs from that position.
 
-$\Large A:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad A(s,x)\in\lbrace 0,1\rbrace$
+$\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
 For the cyclic geometry used by **Skeleton**:
 
-$\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{next}\rbrace$
+$\Large 𝓐(s,x)=1 \iff x\in\lbrace s,\mathrm{next}\rbrace$
 
 The present position is idempotent, **next** is progressive, and every other position lies outside the ordinary admissible relation.
 
@@ -59,7 +59,7 @@ The code above instantiates the primitive within a minimal cyclic geometry. `sta
 
 From the observer's present `state`, `next` is selected from that geometry. Together they form the ordinary admissible window:
 
-$\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{next}\rbrace$
+$\Large 𝓐(s,x)=1 \iff x\in\lbrace s,\mathrm{next}\rbrace$
 
 The linchpin is therefore:
 
