@@ -34,9 +34,9 @@ NEXT = {
 def admit(state, projection):
     next = NEXT[state]
 
-   #============ LINCHPIN ============
+  # ============ LINCHPIN ============ #
     return projection in {state, next}
-   #==================================
+  # ================================== #
 
 def apply(state, projection):
     if not admit(state, projection):
@@ -45,7 +45,7 @@ def apply(state, projection):
     if projection == state:
         return state, []
 
-#Admit → adopt → reproject
+# Admit → adopt → reproject #
     state = projection
     return state, ["PROJECT"]
 ```
