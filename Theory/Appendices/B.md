@@ -14,7 +14,7 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 | $\mathcal{C}$ | Set of cells |
 | $g$ | Genesis |
 | $T$ | Transition |
-| $A$ | Admissibility |
+| $𝓐$ | Admissibility |
 | $I$ | Invariant |
 | $E$ | Event Horizon |
 | $\Sigma$ | Symmetry |
@@ -52,7 +52,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$A(s_i,s_{i+1})=1 \Longrightarrow I(s_i)=I(s_{i+1})$
+$𝓐(s_i,s_{i+1})=1 \Longrightarrow I(s_i)=I(s_{i+1})$
 
 ---
 
