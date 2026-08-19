@@ -65,7 +65,7 @@ Oblivious Compute borrows the broadcast move but removes the computationally des
 
 In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and neighboring states while driving a distributed system toward a legitimate global condition.
 
-Oblivious Compute keeps Dijkstra’s local relational mechanism but removes the need for computational adjacency.
+Oblivious Compute retains Dijkstra’s local relational principle while removing the need for computational adjacency.
 
 ---
 
