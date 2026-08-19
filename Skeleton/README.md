@@ -35,17 +35,17 @@ def admit(state, projection):
     next = NEXT[state]
 
     # ========== LINCHPIN ==========
-    if projection not in {state, next}:
-        return state, ["SYNC"]
+    return projection in {state, next}
     # ==============================
 
-    # Self-equivalent
+def apply(state, projection):
+    if not admit(state, projection):
+        return state, ["SYNC"]
+
     if projection == state:
         return state, []
 
-    # Admitted
     state = projection
-
     return state, ["PROJECT"]
 ```
 
