@@ -69,7 +69,7 @@ Oblivious Compute keeps the local relational mechanism but removes the requireme
 
 ### Homunculus
 
-***Borrill removes temporal direction. Field-based coordination supplies the collective scale. Broadcast removes pairwise interaction. Dijkstra supplies the local relation. Oblivious Compute removes state from the field and moves the computational locus into the relation itself.***
+*Borrill removes temporal direction. Field-based coordination supplies the collective scale. Broadcast removes pairwise interaction. Dijkstra supplies the local relation. Oblivious Compute removes state from the field and moves the computational locus into the relation itself.*
 
 ---
 
