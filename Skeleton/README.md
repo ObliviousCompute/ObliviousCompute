@@ -12,9 +12,9 @@ $\Large A:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad A(s,x)\in\lbrac
 
 For the cyclic geometry used by **Skeleton**:
 
-$\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{NEXT}[s]\rbrace$
+$\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{next}\rbrace$
 
-The present position is idempotent, the successor is progressive, and every other position lies outside the ordinary admissible relation.
+The present position is idempotent, **next** is progressive, and every other position lies outside the ordinary admissible relation.
 
 ---
 
@@ -30,49 +30,23 @@ NEXT = {
     SCISSORS: ROCK,
 }
 
-def isState(packet):
-    return (
-        packet.get("isState")
-        or packet.get("isSnap")
-        or packet.get("isIntent")
-    )
 
-def inWindow(incoming, current):
-    return incoming in (current, NEXT[current])
+def admit(state, projection):
+    next = NEXT[state]
 
-def ingest(state, packet):
+    # ========== LINCHPIN ==========
+    if projection not in {state, next}:
+        return state, ["SYNC"]
+    # ==============================
 
-    if isState(packet):
-        if packet.get("tallies") and packet["tallies"] != state["tallies"]:
-            state["tallies"] = dict(packet["tallies"])
-        state["desync"] = False
+    # Self-equivalent
+    if projection == state:
         return state, []
 
-    current = state["sequence"]
-    incoming = packet["sequence"]
+    # Admitted
+    state = projection
 
-    # =========== LINCHPIN =========== #
-    if not inWindow(incoming, current):
-    # ================================ #
-        intents = ([] if state["desync"] else ["REJECT"])
-        state["desync"] = True
-        return state, intents + ["ACCEPT"]
-
-    state["desync"] = False
-
-    if packet["tallies"] == state["tallies"]:
-        return state, []
-
-    state["tallies"] = dict(packet["tallies"])
-    state["sequence"] = incoming
-    state["head"] = packet.get("id")
-
-    intents = ["PROPAGATE"]
-
-    if incoming == NEXT[current]:
-        intents.append("ACCEPT")
-
-    return state, intents
+    return state, ["PROJECT"]
 ```
 
 ### ☠️  ☠️  ☠️
