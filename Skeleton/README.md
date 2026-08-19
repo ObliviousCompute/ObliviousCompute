@@ -45,7 +45,6 @@ def apply(state, projection):
     if projection == state:
         return state, []
 
-# Admit → adopt → reproject #
     state = projection
     return state, ["PROJECT"]
 ```
