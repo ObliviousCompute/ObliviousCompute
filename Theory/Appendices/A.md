@@ -39,9 +39,9 @@ $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
-## Nearest Neighbors
+### Homunculus
 
-Oblivious Compute can be approached through four nearby ideas. Remove temporal direction from interaction with Borrill, move computation to field scale with field-based coordination, replace pairwise interaction with broadcast, and begin from Dijkstra’s local state relations. What remains is a smaller kernel: observers hold state, projection requires no computationally designated recipient, admissibility is positional, and the relation among observer states becomes the computational locus.
+Remove temporal direction from interaction with Borrill. Move computation to field scale with field-based coordination. Replace pairwise interaction with broadcast. Begin from Dijkstra’s local state relations. **What remains is a small kernel**. observers hold state, projection requires no computationally designated recipient, admissibility is positional, and the relation among observer states becomes the computational locus.
 
 ### Borrill-2026
 
@@ -66,10 +66,6 @@ Oblivious Compute borrows the broadcast move but removes the computationally des
 In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and neighboring states while driving a distributed system toward a legitimate global condition.
 
 Oblivious Compute keeps the local relational mechanism but removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position, while relational symmetry among those independently maintained positions produces the distributed computational object.
-
-### Homunculus
-
-*Borrill removes temporal direction. Field-based coordination supplies the collective scale. Broadcast removes pairwise interaction. Dijkstra supplies the local relation. Oblivious Compute removes state from the field and moves the computational locus into the relation itself.*
 
 ---
 
