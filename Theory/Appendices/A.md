@@ -67,6 +67,8 @@ In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed h
 
 Oblivious Compute keeps the local relational mechanism but removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position, while relational symmetry among those independently maintained positions produces the distributed computational object.
 
+### Homunculus
+
 ***Borrill removes temporal direction. Field-based coordination supplies the collective scale. Broadcast removes pairwise interaction. Dijkstra supplies the local relation. Oblivious Compute removes state from the field and moves the computational locus into the relation itself.***
 
 ---
