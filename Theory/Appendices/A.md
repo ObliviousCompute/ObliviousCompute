@@ -39,7 +39,7 @@ $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
-### Homunculus
+## Homunculus
 
 Remove temporal direction from interaction with Borrill. Move computation to field scale with field-based coordination. Replace pairwise interaction with broadcast. Begin from Dijkstra’s local state relations. **What remains is a small kernel**. observers hold state, projection requires no computationally designated recipient, admissibility is positional, and the relation among observer states becomes the computational locus.
 
