@@ -12,7 +12,7 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 
 | Symbol | Meaning |
 |--------|---------|
-| $A$ | Admissibility function |
+| $𝓐$ | Admissibility function |
 | $\Omega$ | State space |
 | $\Sigma$ | Relational symmetry |
 | $𝓕$ | Computational field |
@@ -25,11 +25,11 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 
 Oblivious Compute distributes a single admissibility function across a set of independently state-maintaining observers within a state space $\Omega$. No observer requires a computationally designated neighbor; each evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
 
-$\Large A:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad A(s,x)\in\lbrace 0,1\rbrace$
+$\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
 The same presented state may therefore be admissible from one observer position and inadmissible from another.
 
-$\Large s_i\neq s_j \qquad\Longrightarrow\qquad A(s_i,x)=1,\quad A(s_j,x)=0$
+$\Large s_i\neq s_j \qquad\Longrightarrow\qquad 𝓐(s_i,x)=1,\quad 𝓐(s_j,x)=0$
 
 Across the observer set, let $\Sigma$ denote relational symmetry within the resulting matrix of relations. That symmetry constitutes the computational field $𝓕$.
 
