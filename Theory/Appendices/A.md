@@ -12,10 +12,10 @@ The equations below describe the kernel used throughout this appendix. 𝓐 is t
 
 | Symbol | Meaning |
 |--------|---------|
-| $𝓐$ | Admissibility function |
+| 𝓐 | Admissibility function |
 | $\Omega$ | State space |
 | $\Sigma$ | Relational symmetry |
-| $𝓕$ | Computational field |
+| 𝓕 | Computational field |
 
 ---
 
