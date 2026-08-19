@@ -55,7 +55,7 @@ def apply(state, projection):
 
 ## ⚰️ What's in the Box ⚰️
 
-The code above instantiates the primitive within a minimal cyclic geometry. `state` is the observer's present position \(s\), while `projection` is the presented position \(x\). The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, while `NEXT` defines the successor of each position.
+The code above instantiates the primitive within a minimal cyclic geometry. `state` is the observer's present position $s$, while `projection` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, while `NEXT` defines the successor of each position.
 
 From the observer's present `state`, `next` is selected from that geometry. Together they form the ordinary admissible window:
 
