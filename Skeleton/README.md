@@ -45,6 +45,7 @@ def apply(state, projection):
     if projection == state:
         return state, []
 
+ # Admit → adopt → reproject
     state = projection
     return state, ["PROJECT"]
 ```
@@ -68,6 +69,8 @@ The linchpin is therefore:
 A projection equal to `state` is self-equivalent and idempotent. A projection equal to `next` is admitted, becomes the observer's present state, and may be projected again. A projection outside the window does not advance the observer and may instead initiate synchronization.
 
 ***There is no field object stored in the program.*** Each observer holds state. Distributed across observers, symmetry between those independently maintained states produces the field.
+
+> ***Reprojection is semantically dense.** A normally reprojected state has already passed another observer’s admissibility gate, become that observer’s present state, and been exposed again. The receiving observer does not need that path; it performs the same determination from its own position. Repeated across many observers, those local determinations produce relational symmetry.*
 
 ---
 
