@@ -23,7 +23,7 @@ The equations below describe the kernel used throughout this appendix. $A$ is th
 
 ***I’m here. Something appears. Does it belong?***
 
-Oblivious Compute distributes a single admissibility function across a set of independently state-maintaining observers within a state space $\Omega$. No observer requires a computationally designated neighbor; each evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
+Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$. No observer requires a computationally designated neighbor; each evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
