@@ -55,11 +55,17 @@ def admit(state, projection):
 
 ## ⚰️ What's in the Box ⚰️
 
-The code above instantiates the primitive within a minimal working mechanism. `state["sequence"]` is the observer's present position $s$, while `packet["sequence"]` is the presented position $x$. The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space $\Omega$, while `NEXT` encodes the relational geometry between those positions.
+The code above instantiates the primitive within a minimal cyclic geometry. `state` is the observer's present position \(s\), while `projection` is the presented position \(x\). The values `ROCK`, `PAPER`, and `SCISSORS` occupy the state space \(\Omega\), while `NEXT` defines the successor of each position.
 
-The function `inWindow(incoming, current)` is the executable analogue of the admissibility relation $A(s,x)$. It determines whether the presented position is the observer's present position or its admissible successor.
+From the observer's present `state`, `next` is selected from that geometry. Together they form the ordinary admissible window:
 
-When an admissible presented state differs from the observer's present state, the observer advances to that position. A state outside the ordinary admissible relation does not produce forward progression and may instead initiate restorative behavior.
+$\Large A(s,x)=1 \iff x\in\lbrace s,\mathrm{next}\rbrace$
+
+The linchpin is therefore:
+
+`projection in {state, next}`
+
+A projection equal to `state` is self-equivalent and idempotent. A projection equal to `next` is admitted, becomes the observer's present state, and may be projected again. A projection outside the window does not advance the observer and may instead initiate synchronization.
 
 ***There is no field object stored in the program.*** Each observer holds state. Distributed across observers, symmetry between those independently maintained states produces the field.
 
