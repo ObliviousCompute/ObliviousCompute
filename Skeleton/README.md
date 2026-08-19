@@ -69,7 +69,7 @@ A projection equal to `state` is self-equivalent and idempotent. A projection eq
 
 ***There is no field object stored in the program.*** Each observer holds state. Distributed across observers, symmetry between those independently maintained states produces the field.
 
-> ***Reprojection is semantically dense.** A normally reprojected state has already passed another observer’s admissibility gate, become that observer’s present state, and been exposed again. The receiving observer does not need that path; it performs the same determination from its own position. Repeated across many observers, those local determinations produce relational symmetry.*
+> ***Reprojection is semantically dense.** By the time a normally reprojected state appears at an observer, it has already passed another observer’s admissibility gate, become that observer’s present state, and been projected again. **Its appearance is itself a deduction from the relation that produced it.***
 
 ---
 
