@@ -8,7 +8,7 @@ This appendix establishes [**`Oblivious Compute`**](https://github.com/Oblivious
 
 ## Notation
 
-The equations below describe the kernel used throughout this appendix. $A$ is the local admissibility test performed at the current event horizon: the present does not derive its authority from an agreed, merged, or reconstructed history.
+The equations below describe the kernel used throughout this appendix. $𝓐$ is the local admissibility test performed at the current event horizon: the present does not derive its authority from an agreed, merged, or reconstructed history.
 
 | Symbol | Meaning |
 |--------|---------|
