@@ -7,7 +7,7 @@ The concepts presented here are embodied in working reference implementations th
 
 *An observer holds state. **Symmetry between states produces a field.** The field is the computational object.*
 
-> Imagine a white room being filled with state, much of it bouncing around as a nebulous computational object. As that motion resolves into symmetry, the field becomes resonant and highly charged. In that condition, even a single admissible transition can snap a new symmetry across the entire field, like striking a bell.
+> ***Imagine a white room being filled with state, much of it bouncing around as a nebulous computational object. As that motion resolves into symmetry, the field becomes resonant and highly charged. In that condition, even a single admissible transition can snap a new symmetry across the entire field, like striking a bell.***
 
 ## 🌀 The Path
 
