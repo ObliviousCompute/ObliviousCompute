@@ -30,7 +30,7 @@ Every observer performs this evaluation independently. Reality is not determined
 
 ***History independence removes the need for a shared past.***
 
-Every observer maintains only its own representation of the field. A single observer can evaluate many entities simultaneously, while every entity progresses independently according to the invariants that define it. **No observer waits for another to advance or reconstructs a shared history.**
+Every observer maintains only its own representation of the field. A single observer can evaluate many entities simultaneously, while every entity progresses independently according to the invariants that define it. **Observers need not wait for one another to advance or reconstruct a shared history.**
 
 Every proposed transition is evaluated locally. Only those that remain admissible become part of the shared reality.
 
