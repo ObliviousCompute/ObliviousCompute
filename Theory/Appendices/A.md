@@ -55,7 +55,7 @@ Borrill comes remarkably close to the relational structure of Oblivious Compute,
 
 In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli describe computational fields as distributed data structures that associate agents with computational values. Agents possess state, interact through defined neighborhoods, and collectively compute over those fields.
 
-Oblivious Compute operates at the same collective scale but separates state from field. Observers hold state; those states do not constitute the field. Symmetry among independently maintained observer states produces the field, and the field contains no state of its own.
+Oblivious Compute operates at the same collective scale but separates state from field. Observers hold state; those states do not constitute the field. Symmetry among observer states produces the field, and the field contains no state of its own.
 
 ### Broadcast Consensus Protocols-2019
 
