@@ -49,7 +49,7 @@ Observers hold state, projection requires no computationally designated recipien
 
 In *Message Passing Without Temporal Direction: Constraint Semantics and the FITO Category Mistake*, Paul Borrill removes temporal direction from the semantic foundation of message passing and reformulates interaction through compatibility constraints among local states.
 
-Borrill comes remarkably close to the relational structure of Oblivious Compute, but retains a global state space formed from local-state valuations and treats compatibility as a constraint over that space. Oblivious Compute removes the additional global state object: observers hold state, while the relation among those states is itself the distributed computational object.
+Borrill comes remarkably close to the relational structure of Oblivious Compute, but retains a global state space formed from local-state valuations and treats compatibility as a constraint over that space. Oblivious Compute removes the additional global state object: observers hold state, while computation exists through the relation among those states.
 
 ### Field-Based Coordination-2025
 
