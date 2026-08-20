@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The [**`Axioms`**](./C.md) in Appendix B define the computational model. The following reference implementations demonstrate progressively more capable realizations of that model.
+The [**`Axioms`**](./B.md) in Appendix B define the computational model. The following reference implementations demonstrate progressively more capable realizations of that model.
 
 Skeleton demonstrates the computational primitive.
 
