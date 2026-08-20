@@ -34,7 +34,7 @@ These implementations are published as executable reference implementations and 
 
 ## Evaluation
 
-This paper presents the theoretical foundation of Oblivious Compute. Questions regarding implementation behavior should be evaluated against the published reference implementations.
+This appendix connects the theoretical model to its reference implementations. Questions regarding implementation behavior should be evaluated against the published reference implementations.
 
 The reference implementations are intended to facilitate independent inspection, execution, testing, and analysis. Claims regarding distributed behavior, convergence, synchronization, or adversarial operation should be evaluated by examining and executing the corresponding implementation rather than inferred solely from the abstract axioms.
 
