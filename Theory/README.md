@@ -1,13 +1,13 @@
 # 💎 Theory 💎
 
-> *These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute). 
-The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **The theory therefore describes an implemented computational framework.***
-
-## 🔭 Scope 🔭
-
 *An observer holds state. **Symmetry between states produces a field.** The field is the computational object.*
 
 > *Imagine a white room being filled with state, all of it bouncing around as a nebulous computational object. As that motion resolves into symmetry, **the field becomes resonant and highly charged**. In that condition, even a single admissible transition can snap a new symmetry across the entire field, **like striking a bell.***
+
+## 🔭 Scope 🔭
+
+> *These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute). 
+The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **The theory therefore describes an implemented computational framework.***
 
 ## 🌀 The Path
 
