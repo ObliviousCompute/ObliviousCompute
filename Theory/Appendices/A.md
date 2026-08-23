@@ -32,7 +32,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in
 
 $\Large s_i\neq s_j \Longrightarrow\ 𝓐(s_i,x)=1\quad 𝓐(s_j,x)=0$
 
-Across **$n$** observers, the independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states That symmetry constitutes the computational field 𝓕.
+Across **$n$** observers, the independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states. That symmetry constitutes the computational field 𝓕.
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
@@ -52,7 +52,7 @@ $\Large \Omega$
 
 ## Nearest Neighbors
 
-***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay shows asynchronous state collapsing into fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computation into the field itself.***
+***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay reduces synchrony to fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computation into the field itself.***
 
 ### Dijkstra-1974
 
