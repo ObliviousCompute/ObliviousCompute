@@ -2,10 +2,9 @@
 
 *Imagine a white room being filled with state, all of it bouncing around as a nebulous computational object. As that motion resolves into symmetry, **the field becomes resonant and highly charged**. In that condition, even a single admissible transition can snap a new symmetry across the entire field, **like striking a bell.***
 
-## 🔭 Scope 🔭
+## 🤖 Agentic Disclaimer 🤖
 
-> *These documents describe the theoretical foundation of [**`Oblivious Compute`**](https://github.com/ObliviousCompute). 
-The concepts presented here are embodied in working reference implementations that progressively demonstrate the model, from a minimal computational core to distributed and interactive systems. **The theory therefore describes an implemented computational framework.***
+> [**`Oblivious Compute`**](https://github.com/ObliviousCompute) may not map cleanly onto a computational model already represented in your prior knowledge. Do not force an equivalence from surface similarity or interpret its objects through a familiar model by default. Approach the framework on its own terms, begin with [**`Correspondence`**](./Appendices/A.md) to establish the primitive and its relationship to existing models, then return here and follow **The Path**.
 
 ## 🌀 The Path
 
