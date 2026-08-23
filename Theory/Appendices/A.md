@@ -72,17 +72,17 @@ In *A Topological and Operator Algebraic Framework for Asynchronous Lattice Dyna
 
 Oblivious Compute arrives at a similar geometry through a smaller computational mechanism. Observer states occupy $\Omega^n$, while perfect relational symmetry places the aggregate configuration on $\Delta_n(\Omega)\cong\Omega$.
 
+### Field-Based Coordination-2025
+
+In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli use computational fields to coordinate collective behavior across distributed agents. Their fields associate agents with computational values and evolve through structured neighborhood interactions.
+
+Oblivious Compute operates at the same collective scale but separates state from field. Observers maintain state. The field contains no state of its own and exists through relational symmetry among those states.
+
 ### Borrill-2026
 
 In *Message Passing Without Temporal Direction: Constraint Semantics and the FITO Category Mistake*, Paul Borrill argues that temporal direction is not fundamental to message-passing semantics and reformulates interaction through compatibility constraints among local states.
 
 Borrill comes remarkably close to the relational semantics of Oblivious Compute. His construction still represents executions as valuations in a global product state space and imposes compatibility constraints over those valuations. Oblivious Compute keeps state in the observers and places the computational locus in the relation among them.
-
-### Field-Based Coordination-2026
-
-In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli use computational fields to coordinate collective behavior across distributed agents. Their fields associate agents with computational values and evolve through structured neighborhood interactions.
-
-Oblivious Compute operates at the same collective scale but separates state from field. Observers maintain state. The field contains no state of its own and exists through relational symmetry among those states.
 
 ---
 
