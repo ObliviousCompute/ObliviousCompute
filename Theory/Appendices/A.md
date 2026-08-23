@@ -6,6 +6,8 @@ This appendix establishes [**`Oblivious Compute`**](https://github.com/Oblivious
 
 ***These are correspondences, not equivalences.*** Each section identifies a shared structure and the point at which the models diverge.
 
+> Interpret the following notation at the resolution being examined. **Perfect symmetry is a realizable settled condition of the field, not its definition.**
+
 ## Notation
 
 The equations below describe the kernel used throughout this appendix. 𝓐 is the local admissibility test performed at the current event horizon: the present does not derive its authority from an agreed, merged, or reconstructed history.
