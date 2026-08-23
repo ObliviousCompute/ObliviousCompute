@@ -36,11 +36,13 @@ Across the observer set, let **Σ** denote relational symmetry within the result
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n\qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-***No observer contains the field. The field contains no state. It exists only through the symmetry between independently maintained states.***
+No observer contains the field. The field contains no state. It exists only through the symmetry between independently maintained states.
 
 $\Large s_1=s_2=\cdots=s_n=s\qquad\(s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
 
 $\Large \Delta_n(\Omega)\cong\Omega$
+
+$\Large \Omega$
 
 ---
 
