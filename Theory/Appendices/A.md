@@ -4,9 +4,9 @@
 
 This appendix establishes [**`Oblivious Compute`**](https://github.com/ObliviousCompute) in its own symbolic terms before placing it beside established computational models. The comparison begins from the primitive itself: an observer occupies a present state, a projected continuation appears, and admissibility is determined from that position.
 
-***These are correspondences, not equivalences.*** Each section identifies a shared structure and the point at which the models diverge.
+Interpret the following notation at the resolution being examined. **Perfect symmetry is a realizable settled condition of the field, not its definition.**
 
-> Interpret the following notation at the resolution being examined. **Perfect symmetry is a realizable settled condition of the field, not its definition.**
+> ***These are correspondences, not equivalences.*** Each section identifies a shared structure and the point at which the models diverge.
 
 ## Notation
 
