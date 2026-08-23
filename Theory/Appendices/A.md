@@ -40,6 +40,8 @@ $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n\qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_
 
 $\Large s_1=s_2=\cdots=s_n=s\qquad\(s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
 
+$\Large \Delta_n(\Omega)\cong\Omega$
+
 ---
 
 ## Nearest Neighbors
