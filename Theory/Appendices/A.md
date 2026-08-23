@@ -52,7 +52,7 @@ $\Large \Omega$
 
 ## Nearest Neighbors
 
-Oblivious Compute sits near several established lines of thought without reducing cleanly to any one of them. Read chronologically, the correspondence moves from local state relations, through synchronization geometry and asynchronous coherence, toward timeless relational semantics and field-scale computation.
+***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay shows asynchronous state collapsing into fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computational locus into the relation itself.***
 
 ### Dijkstra-1974
 
@@ -60,7 +60,7 @@ In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed h
 
 Oblivious Compute retains the local relational principle but removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position.
 
-### Pereira et al.-2013
+### Pereira-2013
 
 In *Towards a General Theory for Coupling Functions Allowing Persistent Synchronisation*, Pereira, Eldering, Rasmussen, and Veneziani study networks of coupled dynamical systems in which full synchronization satisfies $x_1=x_2=\cdots=x_n=s$. These synchronized configurations form an invariant diagonal manifold within the product state space.
 
@@ -83,8 +83,6 @@ Borrill comes remarkably close to the relational semantics of Oblivious Compute.
 In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli use computational fields to coordinate collective behavior across distributed agents. Their fields associate agents with computational values and evolve through structured neighborhood interactions.
 
 Oblivious Compute operates at the same collective scale but separates state from field. Observers maintain state. The field contains no state of its own and exists through relational symmetry among those states.
-
-***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay shows asynchronous state collapsing into fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computational locus into the relation itself.***
 
 ---
 
