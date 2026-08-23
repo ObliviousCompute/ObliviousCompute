@@ -28,7 +28,7 @@ Oblivious Compute distributes a single admissibility function 𝓐 across a set 
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
-**The same presented state *may* therefore be admissible from one observer position and inadmissible from another.**
+The same presented state ***may*** therefore be admissible from one observer position and inadmissible from another.
 
 $\Large s_i\neq s_j \Longrightarrow\ 𝓐(s_i,x)=1\quad 𝓐(s_j,x)=0$
 
