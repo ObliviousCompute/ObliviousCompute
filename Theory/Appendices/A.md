@@ -4,13 +4,13 @@
 
 This appendix establishes [**`Oblivious Compute`**](https://github.com/ObliviousCompute) in its own symbolic terms before placing it beside established computational models. The comparison begins from the primitive itself: an observer occupies a present state, a projected continuation appears, and admissibility is determined from that position.
 
-Interpret the following notation at the resolution being examined. **Perfect symmetry is a realizable settled condition of the field, not its definition.**
+Interpret the notation at the resolution being examined. **Perfect symmetry is a realizable settled condition of the field, not its definition.**
 
 > ***These are correspondences, not equivalences.*** Each section identifies a shared structure and the point at which the models diverge.
 
 ## Notation
 
-The equations below describe the kernel used throughout this appendix. 𝓐 is the local admissibility test performed at the current event horizon: the present does not derive its authority from an agreed, merged, or reconstructed history.
+The following equations describe the kernel used throughout this appendix. 𝓐 is the local admissibility test performed at the current event horizon: the present does not derive its authority from an agreed, merged, or reconstructed history.
 
 | Symbol | Meaning |
 |--------|---------|
