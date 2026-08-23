@@ -24,7 +24,7 @@ The equations below describe the kernel used throughout this appendix. 𝓐 is t
 
 $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Omega\times\Omega\leftarrow\Omega\cdots$
 
-Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space Ω. A computationally designated neighbor is unnecessary; each observer evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
+Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$. A computationally designated neighbor is unnecessary; each observer evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
@@ -32,9 +32,9 @@ The same presented state may therefore be admissible from one observer position 
 
 $\Large s_i\neq s_j \qquad\Longrightarrow\qquad 𝓐(s_i,x)=1,\quad 𝓐(s_j,x)=0$
 
-Across **$n$** observers, the independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states; that symmetry constitutes the computational field $\mathcal{F}$.
+Across **$n$** observers, the independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states; that symmetry constitutes the computational field 𝓕.
 
-$\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad \mathcal{F}\equiv\Sigma(s_1,s_2,\ldots,s_n)$
+$\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad \𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 No observer contains the field. The field contains no state of its own; it exists through symmetry among independently maintained states. As the observer configuration resolves toward perfect relational symmetry, the states coincide and the aggregate configuration lies on the diagonal of the product space.
 
