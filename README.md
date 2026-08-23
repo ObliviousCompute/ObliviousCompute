@@ -72,7 +72,7 @@ The first real-world application of Oblivious Compute.
 
 ---
 
-**🚧 Implementation is currently under construction. 🚧**
+**🚧 Currently under construction. 🚧**
 
 *Source code will be published at the first stable milestone.*
 
