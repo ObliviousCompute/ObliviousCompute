@@ -1,8 +1,4 @@
-# 🪬 Oblivious Compute 🪬
-
-**$\Large \ldots\Omega \rightarrow \Omega\times\Omega \rightarrow \Omega \leftarrow \Omega\times\Omega \leftarrow \Omega\ldots$**
-
----
+# Ω Oblivious Compute Ω
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space.
 
