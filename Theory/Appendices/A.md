@@ -52,33 +52,39 @@ $\Large \Omega$
 
 ## Nearest Neighbors
 
-Take Dijkstra’s local state relations and strip away temporal direction with Borrill. Remove pairwise interaction with broadcast consensus and move computation to field scale with field-based coordination. What remains is a small oblivious kernel.
-
-Observers hold state, projection requires no computationally designated recipient, admissibility is positional, and computation emerges through the relation among observer states.
-
-### Borrill-2026
-
-In *Message Passing Without Temporal Direction: Constraint Semantics and the FITO Category Mistake*, Paul Borrill removes temporal direction from the semantic foundation of message passing and reformulates interaction through compatibility constraints among local states.
-
-Borrill comes remarkably close to the relational structure of Oblivious Compute, but retains a global state space formed from local-state valuations and treats compatibility as a constraint over that space. Oblivious Compute removes the additional global state object: observers hold state, while computation exists through the relation among those states.
-
-### Field-Based Coordination-2025
-
-In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli describe computational fields as distributed data structures that associate agents with computational values. Agents possess state, interact through defined neighborhoods, and collectively compute over those fields.
-
-Oblivious Compute operates at the same collective scale but separates state from field. Observers hold state; those states do not constitute the field. Symmetry among observer states produces the field, and the field contains no state of its own.
-
-### Broadcast Consensus Protocols-2019
-
-*Expressive Power of Broadcast Consensus Protocols* replaces exclusively pairwise population interactions with reliable broadcast transitions, allowing an agent to expose a state change across the population.
-
-Oblivious Compute borrows the broadcast move but removes the computationally designated recipient. A state is projected into the communication environment; any observer that encounters it independently determines its significance from its own position.
+Oblivious Compute sits near several established lines of thought without reducing cleanly to any one of them. Read chronologically, the correspondence moves from local state relations, through synchronization geometry and asynchronous coherence, toward timeless relational semantics and field-scale computation.
 
 ### Dijkstra-1974
 
 In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and neighboring states while driving a distributed system toward a legitimate global condition.
 
-Oblivious Compute retains Dijkstra’s local relational principle while removing the need for computational adjacency.
+Oblivious Compute retains the local relational principle but removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position.
+
+### Pereira et al.-2013
+
+In *Towards a General Theory for Coupling Functions Allowing Persistent Synchronisation*, Pereira, Eldering, Rasmussen, and Veneziani study networks of coupled dynamical systems in which full synchronization satisfies $x_1=x_2=\cdots=x_n=s$. These synchronized configurations form an invariant diagonal manifold within the product state space.
+
+The geometry closely matches the resting configuration of Oblivious Compute. The distinction lies in what the diagonal means: Pereira et al. study synchronization produced by coupled dynamics, while Oblivious Compute reaches the diagonal through relational admissibility among independently maintained observer states.
+
+### Alpay-2025
+
+In *A Topological and Operator Algebraic Framework for Asynchronous Lattice Dynamical Systems*, Alpay models asynchronously evolving subsystems within a stratified state space organized by degrees of synchrony. As synchrony increases, fewer coordinates vary independently, and the fully synchronous stratum is often isomorphic to the state space of a single subsystem.
+
+Oblivious Compute arrives at a similar geometry through a smaller computational mechanism. Observer states occupy $\Omega^n$, while perfect relational symmetry places the aggregate configuration on $\Delta_n(\Omega)\cong\Omega$.
+
+### Borrill-2026
+
+In *Message Passing Without Temporal Direction: Constraint Semantics and the FITO Category Mistake*, Paul Borrill argues that temporal direction is not fundamental to message-passing semantics and reformulates interaction through compatibility constraints among local states.
+
+Borrill comes remarkably close to the relational semantics of Oblivious Compute. His construction still represents executions as valuations in a global product state space and imposes compatibility constraints over those valuations. Oblivious Compute keeps state in the observers and places the computational locus in the relation among them.
+
+### Field-Based Coordination-2026
+
+In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli use computational fields to coordinate collective behavior across distributed agents. Their fields associate agents with computational values and evolve through structured neighborhood interactions.
+
+Oblivious Compute operates at the same collective scale but separates state from field. Observers maintain state. The field contains no state of its own and exists through relational symmetry among those states.
+
+***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay shows asynchronous state collapsing into fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computational locus into the relation itself.***
 
 ---
 
