@@ -30,7 +30,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in
 
 **The same presented state may therefore be admissible from one observer position and inadmissible from another.**
 
-$\Large s_i\neq s_j \qquad\Longrightarrow\qquad 𝓐(s_i,x)=1,\quad 𝓐(s_j,x)=0$
+$\Large s_i\neq s_j \Longrightarrow\ 𝓐(s_i,x)=1,\quad 𝓐(s_j,x)=0$
 
 Across **$n$** observers, the independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states That symmetry constitutes the computational field 𝓕.
 
