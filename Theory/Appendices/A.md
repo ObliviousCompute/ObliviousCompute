@@ -33,7 +33,7 @@ $\Large s_i\neq s_j \qquad\Longrightarrow\qquad 𝓐(s_i,x)=1,\quad 𝓐(s_j,x)=
 
 Across the observer set, let $\Sigma$ denote relational symmetry within the resulting matrix of relations. That symmetry constitutes the computational field $𝓕$.
 
-$\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
+$\Large (s_1,s_2,\ldots,s_n)\in\Omega^n\qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 ***No observer contains the field. The field contains no state. It exists only through the symmetry between independently maintained states.***
 
