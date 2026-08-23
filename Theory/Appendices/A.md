@@ -52,7 +52,7 @@ $\Large \Omega$
 
 ## Nearest Neighbors
 
-***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay shows asynchronous state collapsing into fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computational locus into the relation itself.***
+***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay shows asynchronous state collapsing into fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computation into the field itself.***
 
 ### Dijkstra-1974
 
