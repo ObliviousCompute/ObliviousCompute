@@ -1,6 +1,6 @@
 # 🪬 Oblivious Compute 🪬
 
-**$\Large \ldots\Omega \rightarrow \Omega\times\Omega \rightarrow \Omega \rightarrow \Omega\times\Omega \rightarrow \Omega\ldots$**
+**$\Large \ldots\Omega \rightarrow \Omega\times\Omega \rightarrow \Omega \leftarrow \Omega\times\Omega \leftarrow \Omega\ldots$**
 
 ---
 
