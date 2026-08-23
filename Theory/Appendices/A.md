@@ -23,7 +23,7 @@ The equations below describe the kernel used throughout this appendix. 𝓐 is t
 
 ***I’m here. Something appears. Does it belong?***
 
-Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$. A computationally designated neighbor is unnecessary; each observer evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
+Oblivious Compute distributes a single admissibility function **𝓐** across a set of independently state-maintaining observers within a state space **Ω**. A computationally designated neighbor is unnecessary; each observer evaluates presented state from its own position. Together, these local determinations form a matrix of relations across the observer set.
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
@@ -31,7 +31,7 @@ The same presented state may therefore be admissible from one observer position 
 
 $\Large s_i\neq s_j \qquad\Longrightarrow\qquad 𝓐(s_i,x)=1,\quad 𝓐(s_j,x)=0$
 
-Across the observer set, let $\Sigma$ denote relational symmetry within the resulting matrix of relations. That symmetry constitutes the computational field $𝓕$.
+Across the observer set, let **Σ** denote relational symmetry within the resulting matrix of relations. That symmetry constitutes the computational field **𝓕**.
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n\qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
