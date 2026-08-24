@@ -30,7 +30,7 @@ Every admissible progression begins from a genesis.
 
 ### Mathematical Form
 
-$s_0 = G \in \Omega$
+$\Large s_0 = G \in \Omega$
 
 ---
 
