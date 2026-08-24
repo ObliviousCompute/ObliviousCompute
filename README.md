@@ -1,6 +1,6 @@
 # Ω Oblivious Compute Ω
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space.
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) **(OC)** is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space. State is projected obliviously into a shared medium rather than to a computationally designated recipient.
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
