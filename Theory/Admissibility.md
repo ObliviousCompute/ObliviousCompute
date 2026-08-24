@@ -38,7 +38,7 @@ Every proposed transition is evaluated locally. Observers need not wait for one 
 
 ## Crystal Clear
 
-***The current foundation of distributed computation is built on history. This theory proposes the opposite.***
+***The current foundation of distributed coordination is built on history. This theory proposes the opposite.***
 
 **History breaks symmetry.** By removing history, the present becomes sufficient, and shared state emerges through resonance.
 
