@@ -52,7 +52,7 @@ At perfect symmetry, the $n$ observer coordinates no longer vary independently. 
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-**At rest, the distributed configuration reduces to the state space.**
+**At rest on the diagonal, the distributed configuration reduces to the state space.**
 
 $\Large \Omega$
 
