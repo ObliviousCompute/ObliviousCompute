@@ -40,7 +40,7 @@ Progression occurs exclusively through transitions.
 
 ### Mathematical Form
 
-$s_i \xrightarrow{T} s_{i+1}$
+$\Large s_i \xrightarrow{T} s_{i+1}$
 
 Every admissible progression is composed of transitions.
 
@@ -52,7 +52,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$s_i \xrightarrow{T} s_{i+1} \Longrightarrow I(s_i)=I(s_{i+1})$
+$\Large s_i \xrightarrow{T} s_{i+1} \Longrightarrow I(s_i)=I(s_{i+1})$
 
 ---
 
@@ -72,7 +72,7 @@ The field exists only where independently held states preserve the required rela
 
 ### Mathematical Form
 
-$𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
+$\Large 𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
@@ -84,7 +84,7 @@ Synchronization occurs between a target cell and a non-empty set of other cells,
 
 ### Mathematical Form
 
-$S(c_i,P_i)\qquad \varnothing\neq P_i\subseteq\mathcal{C}\setminus\{c_i\}$
+$\Large S(c_i,P_i)\qquad \varnothing\neq P_i\subseteq\mathcal{C}\setminus\{c_i\}$
 
 ---
 
