@@ -34,7 +34,7 @@ Therefore, the same presented state *may* be admissible from one observer positi
 
 $\Large s_i\neq s_j \Longrightarrow\ 𝓐(s_i,x)=1\quad 𝓐(s_j,x)=0$
 
-Across **$n$** observers, the independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states. That symmetry constitutes the computational field 𝓕.
+Across **$n$** observers, independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states. That symmetry constitutes the computational field 𝓕.
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
