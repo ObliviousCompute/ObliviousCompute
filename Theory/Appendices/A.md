@@ -44,7 +44,7 @@ As the observer configuration resolves toward perfect relational symmetry, the s
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
 
-On the diagonal, the $n$ observer coordinates no longer vary independently. The diagonal is canonically isomorphic to the original state space.
+At perfect symmetry, the $n$ observer coordinates no longer vary independently. The diagonal is canonically isomorphic to the original state space.
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
