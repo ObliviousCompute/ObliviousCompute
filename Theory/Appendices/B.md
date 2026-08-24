@@ -12,7 +12,7 @@ This appendix establishes the fundamental axioms from which Oblivious Compute is
 | $c$ | Cell |
 | $\Omega$ | State space |
 | $\mathcal{C}$ | Set of cells |
-| $g$ | Genesis |
+| $G$ | Genesis |
 | $T$ | Transition |
 | $𝓐$ | Admissibility |
 | $I$ | Invariant |
@@ -40,7 +40,7 @@ Progression occurs exclusively through transitions.
 
 ### Mathematical Form
 
-$s_i\xrightarrow{T}s_{i+1}$
+$s_i \xrightarrow{T} s_{i+1}$
 
 Every admissible progression is composed of transitions.
 
@@ -52,7 +52,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$𝓐(s_i,s_{i+1})=1 \Longrightarrow I(s_i)=I(s_{i+1})$
+$s_i \xrightarrow{T} s_{i+1} \Longrightarrow I(s_i)=I(s_{i+1})$
 
 ---
 
@@ -62,7 +62,7 @@ Every cell possesses exactly one current event horizon.
 
 ### Mathematical Form
 
-$\forall c_i\in\mathcal{C},\ \exists! E(c_i)$
+$E(c)=\{x\in\Omega\mid \mathcal{A}(s_c,x)=1\}$
 
 ---
 
