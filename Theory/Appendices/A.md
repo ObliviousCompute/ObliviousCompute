@@ -26,7 +26,7 @@ The following equations describe the kernel used throughout this appendix. 𝓐 
 
 $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Omega\times\Omega\leftarrow\Omega\cdots$
 
-Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$. A computationally designated neighbor is unnecessary. 
+Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$.
 
 ***State is projected into a shared medium without selecting, or requiring knowledge of, a computationally designated recipient. Any observer that encounters the projection evaluates it from its own position.*** 
 
