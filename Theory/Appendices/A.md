@@ -28,7 +28,7 @@ $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Ome
 
 Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$.
 
-***State is projected into a shared medium without selecting, or requiring knowledge of, a computationally designated recipient. Any observer that encounters the projection evaluates it from its own position.*** 
+***State is projected into a shared medium without selecting, or requiring knowledge of, a computationally designated recipient. Any observer that encounters a projection evaluates it from its own position.*** 
 
 Together, these local determinations form a matrix of relations across the observer set.
 
