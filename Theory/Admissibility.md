@@ -34,7 +34,7 @@ Every observer maintains only its own representation of the field. A single obse
 
 Every proposed transition is evaluated locally. Observers need not wait for one another to advance or reconstruct a shared history. Shared progression does not emerge from a common past. It emerges from many local evaluations occurring simultaneously across many local event horizons.
 
-***Consequently, admissible progressions are cast into oblivion, and only those that preserve symmetry become part of the shared reality.***
+***Consequently, admissible progressions may be cast into oblivion, and only those that preserve symmetry become part of the shared reality.***
 
 ## Crystal Clear
 
