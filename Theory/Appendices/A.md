@@ -32,21 +32,21 @@ Oblivious Compute distributes a single admissibility function 𝓐 across a set 
 
 Together, these local determinations form a matrix of relations across the observer set.
 
-$\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
+$\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \quad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
 Therefore, the same presented state *may* be admissible from one observer position and inadmissible from another.
 
-$\Large s_i\neq s_j \qquad \ 𝓐(s_i,x)=1\quad 𝓐(s_j,x)=0$
+$\Large s_i\neq s_j \quad \ 𝓐(s_i,x)=1\quad 𝓐(s_j,x)=0$
 
 Across **$n$** observers, independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote relational symmetry among those states. That symmetry constitutes the computational field 𝓕.
 
-$\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
+$\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \quad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 **No observer contains the field. The field contains no state of its own because it exists only through symmetry among independently maintained states.** 
 
 As observer states resolve toward perfect relational symmetry, they coincide and the aggregate configuration lies on the diagonal of the product space.
 
-$\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
+$\Large s_1=s_2=\cdots=s_n=s \quad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
 
 At perfect symmetry, the $n$ observer coordinates no longer vary independently. The diagonal is canonically isomorphic to the original state space.
 
