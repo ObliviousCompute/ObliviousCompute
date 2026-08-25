@@ -235,7 +235,11 @@ def VerifySalt(glyph: SaltGlyph) -> SaltGlyph:
     return glyph
 
 def VerifyDream(state: State, *, expectedkeys: Optional[Iterable[str]]=None) -> State:
-    return VerifyState(Scrub(state), expectedkeys=expectedkeys)
+    verified = VerifyState(Scrub(state), expectedkeys=expectedkeys)
+    for cell in verified.cells:
+        if cell.sign != NullSignHex:
+            VerifyLock(cell.key, cell.lock, cell.sign)
+    return verified
 
 def VerifyLock(key: str, lock: Lock, sign: str, *, allownull: bool=False) -> bool:
     VerifyKey(key)
@@ -492,9 +496,7 @@ def Equivocation(a: Cell, b: Cell) -> Tuple[Cell, Cell]:
         raise ValueError('Equivocation requires same parent')
     if a.lock.child == b.lock.child:
         raise ValueError('Equivocation requires competing children')
-    ah = LockHash(a.lock)
-    bh = LockHash(b.lock)
-    return (a, b) if ah <= bh else (b, a)
+    return (a, b) if a.lock.child <= b.lock.child else (b, a)
 
 def MutateReceipt(state: State, glyph: SaltGlyph) -> Tuple[State, Tuple[Chain, ...]]:
     VerifyState(state)
@@ -506,11 +508,16 @@ def MutateReceipt(state: State, glyph: SaltGlyph) -> Tuple[State, Tuple[Chain, .
     signercandidate = replace(signer, salt=signer.salt - debit, lock=glyph.lockbody, sign=glyph.locksign)
     signerchain = Link(signer, signercandidate)
     if not signerchain.linked:
-        return (ReplaceCell(state, OpenCell(signer)), (signerchain,))
+        return (ReplaceCell(state, OpenCell(signer)), (signerchain,))  
+    signerresult = signercandidate
+    if signerchain.equivocate and signerchain.winner is not None:
+        signerresult = replace(
+            signerchain.winner,
+            salt=signercandidate.salt)  
     credits: dict[str, int] = {}
     for spend in glyph.saltbody:
         credits[spend.key] = credits.get(spend.key, 0) + int(spend.salt)
-    replacements: dict[str, Cell] = {signer.key: signerchain.winner or signercandidate}
+    replacements: dict[str, Cell] = {signer.key: signerresult}
     chains = [signerchain]
     for key, amount in credits.items():
         target = FindCell(state, key)
