@@ -34,7 +34,7 @@ Together, these local determinations form a matrix of relations across the obser
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
 
-Therefore, the same presented state *may* be admissible from one observer position and inadmissible from another.
+Therefore, the same presented state may be admissible from one observer position and inadmissible from another.
 
 $\Large s_i\neq s_j \quad \ 𝓐(s_i,x)=1\quad 𝓐(s_j,x)=0$
 
