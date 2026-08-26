@@ -26,6 +26,16 @@ Finally, check out [**`Mowsie`**](./Mowsie/README.md) to see where this is going
 
 ---
 
+## 💎 Kernel 💎
+
+The mathematical progression of the primitive.
+
+[**Kernel**](./Theory/Kernel.md) follows local admissibility through relational symmetry, reducing the distributed configuration.
+
+**The reduction is the explanation.**
+
+---
+
 ## 💀 Skeleton 💀
 
 Pure, *hyper-legible* expression of the primitive.
