@@ -94,7 +94,7 @@ Borrill comes remarkably close to the relational semantics of Oblivious Compute.
 
 ---
 
-**Continue to [**`Appendix B`**](./B.md) go to [**`Theory`**](../../Theory/README.md) or check out [**`Skeleton`**](../../Skeleton/README.md)...**
+**Continue to [**`Appendix B`**](./B.md)...**
 
 ---
 
