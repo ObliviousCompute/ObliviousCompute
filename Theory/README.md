@@ -18,7 +18,7 @@ Discover shared state without ownership in [**`Holography`**](./Holography.md).
 
 [**`Admissibility`**](./Admissibility.md) is where coherence emerges.
 
-And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
+Bring it all together with [**`Symmetry`**](./Symmetry.md).
 
 ## 📚 Appendices
 
