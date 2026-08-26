@@ -74,15 +74,13 @@ When participants agree on those 24 cells, the result behaves like a single stru
 
 ---
 
-## 🔥 Ashfall
+## 🔥 Equivocation 🔥
 
-The **text feed** isn’t a *global log*. Each node keeps a *small rolling cache*, just enough to provide context.
+**Byzantium protects the field from equivocation; it does not protect an equivocator from equivocation.**
 
-Different participants may see *slightly different* recent text. The feed is *local atmosphere*, not **shared truth**.
+An observer that produces incompatible projections forfeits its ability to participate coherently in the field. The field itself need not become ambiguous.
 
-Every action attempts to reshape the **board**. If the change is *valid*, it **becomes reality**. If it isn’t, it *disappears*.
-
-> **Value moves through interaction**, and **incentives shape behavior**.
+**This inversion is a practical demonstration that the computational locus has shifted from the observer to the field.**
 
 ---
 
