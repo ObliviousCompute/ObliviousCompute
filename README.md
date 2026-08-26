@@ -10,8 +10,6 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ***The field is the computational locus.***
 
-> *For a comparison with established models, see [**`Correspondence`**](./Theory/Appendices/A.md) in **Appendix A**.*
-
 ---
 
 ## 🌀 The Path
