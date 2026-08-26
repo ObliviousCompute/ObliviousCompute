@@ -32,8 +32,6 @@ The mathematical progression of the primitive.
 
 [**Kernel**](./Theory/Kernel.md) follows local admissibility through relational symmetry, reducing the distributed configuration.
 
-**The reduction is the explanation.**
-
 ---
 
 ## 💀 Skeleton 💀
@@ -42,7 +40,7 @@ Pure, *hyper-legible* expression of the primitive.
 
 [**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.
 
-**The structure is the explanation.**
+The structure is the explanation.
 
 > *(the lift diagram)*
 
@@ -66,9 +64,7 @@ A live, networked terminal game for up to 24 players.
 
 [**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
 
-Connect multiple terminals on the same machine or across a network and you’re *immediately inside the same system*.
-
-Just a live board, shaped in real time by the people inside it.
+Just a live board, shaped in real time by the observers inside it.
 
 > *(the 10-minute flight)*
 
