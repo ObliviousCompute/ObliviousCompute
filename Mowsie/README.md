@@ -140,8 +140,6 @@ Only stashes that match that shape exist.
 
 This is not a blockchain.
 
-If anything, it’s closer to a “lockchain.”
-
 This isn’t one global system.
 
 It’s many small systems — independent, self-contained, and created as needed.
