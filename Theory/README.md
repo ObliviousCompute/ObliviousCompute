@@ -10,7 +10,9 @@
 
 ## 🌀 The Path
 
-Begin with [**`Geometry`**](./Geometry.md) to start thinking geometrically about computation.
+Begin with the [**`Kernel`**](./Kernel.md) to see the mathematical progression.
+
+Continue to [**`Geometry`**](./Geometry.md) to start thinking shape-wise about computation.
 
 Discover how shared state exists without ownership in [**`Holography`**](./Holography.md).
 
