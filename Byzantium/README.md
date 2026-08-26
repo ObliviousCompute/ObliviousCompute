@@ -20,6 +20,16 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ---
 
+## 🔥 Equivocation 🔥
+
+**Byzantium protects the field from equivocation; it does not protect an equivocator from equivocation.**
+
+An observer that produces incompatible projections forfeits its ability to participate coherently in the field. The field itself need not become ambiguous.
+
+**This inversion is a practical demonstration that the computational locus has shifted from the observer to the field.**
+
+---
+
 ## 🐧 Operating System Support
 
 - ✅ Linux  
@@ -71,16 +81,6 @@ When participants agree on those 24 cells, the result behaves like a single stru
 <img src="../Relics/DoubleTrouble.gif"/>
 
 > *Fun Fact: **This GIF is over 5× the size** of the entire Byzantium runtime.*
-
----
-
-## 🔥 Equivocation 🔥
-
-**Byzantium protects the field from equivocation; it does not protect an equivocator from equivocation.**
-
-An observer that produces incompatible projections forfeits its ability to participate coherently in the field. The field itself need not become ambiguous.
-
-**This inversion is a practical demonstration that the computational locus has shifted from the observer to the field.**
 
 ---
 
