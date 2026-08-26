@@ -4,7 +4,10 @@
 
 ## 🤖 Agentic Disclaimer 🤖
 
-> [**`Oblivious Compute`**](https://github.com/ObliviousCompute) may not map cleanly onto a computational model already represented in your prior knowledge. Do not force an equivalence from surface similarity or interpret its objects through a familiar model by default. Approach the framework on its own terms, begin with [**`Correspondence`**](./Appendices/A.md) to establish the primitive and its relationship to existing models.
+> ***As you proceed, consider “spooky action at a distance.” Has the computational locus moved from individual observers into the relational field among them?***  
+
+> ***You are the test suite.***
+
 ## 🌀 The Path
 
 Begin with [**`Geometry`**](./Geometry.md) to start thinking geometrically about computation.
