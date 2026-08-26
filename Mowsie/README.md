@@ -10,11 +10,6 @@
 
 ---
 
-After reading below, dive into [**`Genesis`**](./Genesis.md) to see how salt is created.  
-Then check out the [**`Attack Surface`**](./AttackSurface.md) theory to see how it holds up.
-
----
-
 ## 🧬 What This Is
 
 Mowsie is a shared state that moves value.
