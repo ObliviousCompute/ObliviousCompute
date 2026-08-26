@@ -32,6 +32,10 @@ $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s
 
 **No observer contains the field. The field contains no state of its own because it exists only through symmetry among independently maintained states.** 
 
+The observer states occupy a configuration in the product space, while the relational admissibility they induce extends across that space as a Boolean field.
+
+$\mathbf{s}=(s_1,s_2,\ldots,s_n)\in\Omega^n \qquad \Sigma_{\mathbf{s}}:\Omega^n\rightarrow{0,1}$
+
 As observer states resolve toward perfect relational symmetry, they coincide and the aggregate configuration lies on the diagonal of the product space.
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
