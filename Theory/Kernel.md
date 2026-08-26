@@ -8,7 +8,7 @@
 | 𝓕 | Computational field |
 | Δ | Diagonal |
 
-> **Interpretive note**. *Relational symmetry **\(\Sigma\)** intentionally names the field relation without fully resolving its internal formalism at this stage. Different observer positions may yield different admissibility outcomes during resolution. Perfect symmetry **\(\Delta\)** is a realizable settled condition of the field, not its definition.*
+> **Interpretive note**. *Relational symmetry **Σ** intentionally names the field relation without fully resolving its internal formalism at this stage. Different observer positions may yield different admissibility outcomes during resolution. Perfect symmetry **Δ** is a realizable settled condition of the field, not its definition.*
 
 ---
 
