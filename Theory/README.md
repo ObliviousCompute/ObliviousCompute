@@ -12,11 +12,11 @@
 
 Begin with the [**`Kernel`**](./Kernel.md) to see the mathematical progression.
 
-Continue to [**`Geometry`**](./Geometry.md) to start thinking shape-wise about computation.
+Continue to [**`Geometry`**](./Geometry.md) to start thinking shape-wise.
 
-Discover how shared state exists without ownership in [**`Holography`**](./Holography.md).
+Discover shared state without ownership in [**`Holography`**](./Holography.md).
 
-[**`Admissibility`**](./Admissibility.md) is where coherence emerges through anticipation.
+[**`Admissibility`**](./Admissibility.md) is where coherence emerges.
 
 And finally, bring it all together with [**`Symmetry`**](./Symmetry.md).
 
