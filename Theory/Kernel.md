@@ -1,4 +1,4 @@
-# Oblivious Compute Kernel
+# 💎 Kernel 💎
 
 | Symbol | Meaning |
 |--------|---------|
