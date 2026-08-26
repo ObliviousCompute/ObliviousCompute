@@ -8,7 +8,7 @@
 | 𝓕 | Computational field |
 | Δ | Diagonal |
 
-> ***Interpretive note:*** *Relational symmetry **Σ** intentionally names the field relation without fully resolving its internal formalism at this stage. Perfect symmetry **Δ** is a realizable settled condition of the field, not its definition. This formulation holds one fixed resolution.*
+> ***Interpretive note:*** *Relational symmetry **Σ** intentionally names the field relation without fully resolving its internal formalism at this stage. Perfect symmetry **Δ** is a realizable settled condition of the field, not its definition. This formulation presents one cross-section of the field at one fixed resolution.*
 
 ---
 
