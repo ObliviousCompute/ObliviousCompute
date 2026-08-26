@@ -30,9 +30,7 @@ Across **$n$** observers, independently maintained states form a configuration i
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-**No observer contains the field. The field contains no state of its own because it exists only through symmetry among independently maintained states.** 
-
-The observer states occupy a configuration in the product space, while the relational admissibility they induce extends across that space as a Boolean field.
+**No observer contains the field.** It exists only in the relations among independently maintained states, which at any moment define a Boolean admissibility field across the shared configuration space.
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad \Sigma_s:\Omega^n\rightarrow\{0,1\}$
 
