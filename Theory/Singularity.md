@@ -20,6 +20,6 @@ It becomes the only ride left to take, so we lean in for another look.
 
 What else is there to say that hasn’t been said? Zoom all the way in and you will find a Trinity: transistors, neurons, atoms, gates, whatever. Three local objects, one relational unit: a trit. Trinity upon Trinity. Zoom out and you see a relational field. Further still, that field becomes another guest at another table.
 
-Relational symmetry pulls asymmetry toward perfect symmetry. Perfect symmetry collapses into a singularity, and the singularity folds into something larger. It may fold again and again. At that point, the individual machine becomes a scale rather than a boundary, until fiber becomes bus and lasers compose constellations, with maybe a little spooky action at a distance.
+Relational symmetry pulls asymmetry toward perfect symmetry. Perfect symmetry collapses into a singularity, and the singularity folds into something larger, and then larger again. At that point, the individual machine becomes a scale rather than a boundary, until fiber becomes bus and lasers compose constellations, with maybe a little spooky action at a distance.
 
 In all seriousness, the point is not that distance disappears. The point is that distance need not define the computational boundary. If computation lives in relation rather than inside any one observer, then a transistor, a processor, a machine, a network, or a constellation differ primarily by scale. The primitive does not care how large the table is, only that there is enough relation to go around.
