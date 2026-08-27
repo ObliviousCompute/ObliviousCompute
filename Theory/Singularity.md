@@ -6,6 +6,6 @@ Now that we have a computational fabric, let’s spread it over a table and eat.
 
 Ahead of you and behind you is only blackness and oblivion. Where the other guests once sat, you catch them only in flashes, through cross-sections and aberrations along the spiraling rim. Time and space are no longer relevant. Only your position relative to your crossing matters. Asymmetry is pulled toward symmetry, always forward. The descent comes in strobe flashes, each one closer to the singularity.
 
-As the resolution becomes finer, each observer seems impossibly close and impossibly far away at once. Each inhabits a parallel reality of its own, yet every reality is pulled into ever tighter symmetry. Their structures draw closer and closer, until, under overwhelming pressure, something perfectly symmetrical collapses into existence.**
+As the resolution becomes finer, each observer seems impossibly close and impossibly far away at once. Each inhabits a parallel reality of its own, yet every reality is pulled into ever tighter symmetry. Their structures draw closer and closer, until, under overwhelming pressure, something perfectly symmetrical collapses into existence.
 
 
