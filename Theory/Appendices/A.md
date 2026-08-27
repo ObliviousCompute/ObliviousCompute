@@ -34,6 +34,8 @@ In *Message Passing Without Temporal Direction: Constraint Semantics and the FIT
 
 Borrill comes remarkably close to the relational semantics of Oblivious Compute. His construction still represents executions as valuations in a global product state space and imposes compatibility constraints over those valuations. Oblivious Compute keeps state in the observers and places the computational locus in the relation among them.
 
+> **🧠 Big Brain Brad says:** *“I’m a plant cell doing plant things. You can describe me all you want.* ***You’re still not doing plant things.”***
+
 ---
 
 **Continue to [**`Axioms`**](./B.md) in Appendix B...**
