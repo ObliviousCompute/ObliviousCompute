@@ -20,7 +20,7 @@ Discover shared state without ownership in [**`Holography`**](./Holography.md).
 
 Bring it together with [**`Symmetry`**](./Symmetry.md).
 
-[**`The Singularity`**](./Singularity.md).
+The [**`Singularity`**](./Singularity.md).
 
 ## 📚 Appendices
 
