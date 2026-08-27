@@ -30,7 +30,7 @@ Across **$n$** observers, independently maintained states form a configuration i
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-**No observer contains the field.** It contains no state of its own and exists only through symmetry among independently maintained states. At perfect relational symmetry, those states coincide and the aggregate configuration lies on the diagonal of the product space.
+**No observer contains the field.** It contains no state of its own and exists only through symmetry among independently maintained states. In this perfectly symmetric resolution, those states coincide and the aggregate configuration lies on the diagonal of the product space.
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)\subseteq\Omega^n$
 
