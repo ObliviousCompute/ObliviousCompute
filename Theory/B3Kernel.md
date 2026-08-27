@@ -10,7 +10,7 @@ Or just run [**`Hydra`**](.././Hydra/README.md) -_-
 
 **Hydra performs that computation for you.** The physical network, processors, delays, and independently maintained states resolve one actual cross-section of the field simply by operating. You do not need to analytically reconstruct every variable that produced it in order to observe the result.
 
-***You want to solve Σ look at the field while it computes.***
+***You want to solve Σ ? Look at the field while it computes.***
 
 ---
 
