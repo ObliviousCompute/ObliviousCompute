@@ -36,7 +36,7 @@ Borrill comes remarkably close to the relational semantics of Oblivious Compute.
 
 ---
 
-**Continue to [**`Appendix B`**](./B.md)...**
+**Continue to [**`Axioms`**](./B.md) in Appendix B...**
 
 ---
 
