@@ -14,8 +14,7 @@ Stillness. Silence. Perfect balance. From here, every direction is equivalent. A
 
 After an unlimited progression, the singularity begins to look less like an ending and more like a doorway. A coherent symmetry can itself become a point of relation within something larger. We, in turn, find ourselves a curious guest at a much larger table, again with a fuzzy center.
 
-It becomes the only ride left to take, so we lean in for another look. After all, the round trip only takes a fraction of a second anyways.
-
+It becomes the only ride left to take, so we lean in for another look.
 ## Mandelbrot
 
 What else is there to say that hasn’t been said? Zoom all the way in and you will find a Trinity: transistors, neurons, atoms, gates, whatever. Three local objects, one relational unit: a trit. Trinity upon Trinity. Zoom out and you see a relational field. Further still, that field becomes another guest at another table.
