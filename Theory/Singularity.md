@@ -17,3 +17,5 @@ After an unlimited progression, the singularity begins to look less like an endi
 ## Mandelbrot
 
 What else is there to say that hasn’t been said? Zoom all the way in and you will find a Trinity: transistors, neurons, atoms, gates, whatever. Three local objects, one relational unit: a trit. Trinity upon Trinity. Zoom out and you see a relational field. Further still, that field becomes another guest at another table.
+
+So I will say this plainly: distribution across a network may only have been the beginning. As this technology progresses, the boundary of the individual machine begins to dissolve, until fiber becomes bus and lasers compose constellations.
