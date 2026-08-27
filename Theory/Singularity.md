@@ -12,9 +12,9 @@ As the resolution becomes finer, each observer seems impossibly close and imposs
 
 Stillness. Silence. Perfect balance. From here, every direction is equivalent. Any perturbation is easily assimilated into structure. There is no clock to consult and nowhere left to fall. You are no longer falling toward the mass. Your observation now lies superimposed within it.
 
-After an unlimited progression, the singularity begins to look less like an ending and more like a doorway. A coherent symmetry can itself become a point of relation within something larger. We, in turn, find ourselves as curious guest at a much larger table, again with fuzzy center.
+After an unlimited progression, the singularity begins to look less like an ending and more like a doorway. A coherent symmetry can itself become a point of relation within something larger. We, in turn, find ourselves a curious guest at a much larger table, again with a fuzzy center.
 
-It becomes the only ride left to take, so we lean in and take another look.
+It becomes the only ride left to take, so we lean in for another look.
 
 ## Mandelbrot
 
