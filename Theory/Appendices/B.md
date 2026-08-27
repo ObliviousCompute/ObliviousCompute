@@ -100,7 +100,7 @@ Additional invariants may increase this **resolution** without changing the unde
 
 ---
 
-**Continue to [**`Appendix C`**](./C.md)...**
+**Continue to [**`Implementations`**](./C.md) in Appendix C...**
 
 ---
 
