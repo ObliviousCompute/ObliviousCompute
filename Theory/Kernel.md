@@ -46,7 +46,7 @@ $\Large \Omega$
 > 
 > $\Large \Sigma_s:\Omega^n\rightarrow\lbrace 0,1\rbrace$>
 
-Check out what [**`Big Brain Brad`**](./B3Kernel.md) thinks.
+**Check out what [**`Big Brain Brad`**](./B3Kernel.md) thinks.**
 
 ---
 
