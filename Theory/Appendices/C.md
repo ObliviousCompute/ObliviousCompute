@@ -40,7 +40,7 @@ The reference implementations are intended to facilitate independent inspection,
 
 ---
 
-**Continue to [**`Appendix D`**](./D.md)...**
+**Continue to [**`Definitions`**](./D.md) in Appendix D...**
 
 ---
 
