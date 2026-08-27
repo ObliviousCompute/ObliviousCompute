@@ -2,7 +2,7 @@
 
 ## Byzantium
 
-***I think this might solve Byzantine fault tolerance.***
+***I think this might solve Byzantine Fault Tolerance.***
 
 And yeah, I see the double spend. An equivocator can expose multiple valid children and get punished by them. I don't think that's the problem we're supposed to be solving. **BFT was never a promise to protect the Byzantine participant after they equivocate**. The problem is whether that participant can use conflicting information to split honest observers into incompatible decisions.
 
