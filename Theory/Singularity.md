@@ -8,4 +8,11 @@ Ahead of you and behind you is only blackness and oblivion. Where the other gues
 
 As the resolution becomes finer, each observer seems impossibly close and impossibly far away at once. Each inhabits a parallel reality of its own, yet every reality is pulled into ever tighter symmetry. Their structures draw closer and closer, becoming nearly indistinguishable, until, under overwhelming pressure, something perfectly symmetrical collapses into existence.
 
+## Easy As Phi
+
+Stillness. Silence. Perfect balance. From here, every direction is equivalent. Any perturbation is easily assimilated into structure. There is no clock to consult and nowhere left to fall. You are no longer falling toward the mass. Your observation now lies superimposed within it.
+
+After an unlimited progression, the singularity begins to look less like an ending and more like a doorway. A coherent symmetry can itself become a point of relation within something larger. We, in turn, become a guest at a much larger table.
+
+##Mandelbrot
 
