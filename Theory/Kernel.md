@@ -44,7 +44,7 @@ $\Large \Omega$
 
 > **Whole-space view:** *At a fixed observer configuration, the relational admissibility of the field may be represented across the full product space. This is a whole-space view of the same field, not a definition of it.*
 > 
-> $\Large \Sigma_s:\Omega^n\rightarrow\{0,1\}$
+> $\Large \Sigma_s:\Omega^n\rightarrow\{0,1}$
 
 ---
 
