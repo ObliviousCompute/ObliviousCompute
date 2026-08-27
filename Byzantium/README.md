@@ -26,7 +26,7 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 An observer that produces incompatible projections forfeits its ability to participate coherently in the field. The field itself need not become ambiguous.
 
-**This inversion is a practical demonstration that the computational locus has shifted from the observer to the field.**
+**Check out what [**`Big Brain Brad`**](./B3Byzantium.md) thinks**
 
 ---
 
