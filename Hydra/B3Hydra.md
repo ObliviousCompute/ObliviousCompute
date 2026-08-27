@@ -2,7 +2,7 @@
 
 ## Hydra
 
-***I think Hydra is a holographic bit.***
+***Hydra looks like a holographic bit to me.***
 
 Assuming we are playing Monopoly and nobody is allowed to reach into the bank and rewrite the balances, Hydra conserves a distribution. The numbers can move dramatically between nodes, but they do not simply disappear. That **movement is the computation.**
 
