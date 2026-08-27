@@ -14,5 +14,5 @@ Stillness. Silence. Perfect balance. From here, every direction is equivalent. A
 
 After an unlimited progression, the singularity begins to look less like an ending and more like a doorway. A coherent symmetry can itself become a point of relation within something larger. We, in turn, become a guest at a much larger table.
 
-##Mandelbrot
+## Mandelbrot
 
