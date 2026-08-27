@@ -24,6 +24,14 @@ $\Large \lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
 
 ---
 
+🫧 Conservation 🫧
+
+Hydra distributes conserved tallies across independently maintained nodes. The tallies may move, differ, and resolve, but **the conserved distribution is the computation.**
+
+**Check out what [**`Big Brain Brad`**](./B3Hydra.md) thinks.**
+
+---
+
 ## 🐧 Operating System Support
 
 - ✅ Linux  
