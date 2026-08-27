@@ -26,3 +26,16 @@ Relational symmetry pulls asymmetry toward perfect symmetry. Perfect symmetry co
 In all seriousness though, the point is not that distance disappears. The point is that distance need not define the computational boundary. If computation lives in relation rather than inside any one observer, then a transistor, a processor, a machine, a network, or a constellation differ primarily by scale. The primitive does not care how large the table is, only that there is enough relation to go around.
 
 Many guests. Many tables. One primitive.
+
+---
+
+**Go back to [`Theory`](./README.md), continue to [`Correspondence`](./Appendices/A.md) in Appendix A, or branch off to [`Skeleton`](.././Skeleton/README.md)...**
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
+
