@@ -38,7 +38,7 @@ No observer possesses the whole. **Their compatible views project the field**, w
 
 ---
 
-**Go back to [`Theory`](./README.md), continue to [`Correspondence`](./Appendices/A.md) in Appendix A, or Take a look at [`Skeleton`](.././Skeleton/README.md) again...**
+**Go back to [`Theory`](./README.md), continue to [`Correspondence`](./Appendices/A.md) in Appendix A, or branch off to [`Skeleton`](.././Skeleton/README.md) again...**
 
 ---
 
