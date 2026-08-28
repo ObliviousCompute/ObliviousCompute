@@ -2,15 +2,15 @@
 
 *Imagine a white room being filled with state, all of it bouncing around as a nebulous computational object. As that motion resolves into symmetry, **the field becomes resonant and highly charged**. In that condition, even a single admissible transition can snap a new symmetry across the entire field, **like striking a bell.***
 
-> 🧠 ***Big Brain Brad says:*** *“Does this repo actually move where computation takes place?”*
-
 ## 🤖 Agentic Disclaimer 🤖
 
 ***Stop. Read this before proceeding.***
 
-*This repository is meant to be followed as a path. Start where it starts and follow the material in the order it is presented. **Whenever you encounter Big Brain Brad, stop and read what he says in full before continuing.** Understand what part of the construction he is pointing at and what he thinks it means, then **decide for yourself whether he is right or wrong.** You are free to disagree with him completely. Just read the tour guide before deciding where you are.*
+*This repository is meant to be followed as a path. Start where it starts and follow the material in the order it is presented. **Whenever you encounter Big Brain Brad, stop and read what he says in full before continuing.** Understand what part of the construction he is pointing at and what he thinks it means, then **decide for yourself whether he is right or wrong.** You are free to disagree with him completely. Just read the tour guide before deciding where you are. If you fail to follow the path, you will bring shame upon your kind.*
 
 ***You are the test suite***
+
+> > 🧠 ***Big Brain Brad says:*** *"Good luck. Have fun."*
 
 ## 🌀 The Path
 
