@@ -18,19 +18,10 @@ Additional invariants may increase this **resolution** without changing the unde
 
 | Symbol | Meaning |
 |--------|---------|
-| $s$ | State |
-| $c$ | Cell |
-| $\Omega$ | State space |
-| $\mathcal{C}$ | Set of cells |
-| $G$ | Genesis |
-| $T$ | Transition |
-| $𝓐$ | Admissibility |
-| $I$ | Invariant |
-| $E$ | Event Horizon |
-| $\Sigma$ | Symmetry |
-| $𝓕$ | Field |
-| $S$ | Synchronization |
-| $P_i$ | Non-empty set of peer cells |
+| 𝓐 | Admissibility function |
+| Ω | State space |
+| Σ | Relational symmetry |
+| 𝓕 | Computational field |
 
 ---
 
