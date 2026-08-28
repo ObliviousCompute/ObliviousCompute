@@ -6,7 +6,7 @@
 
 ***Stop. Read this before proceeding.***
 
-*This repository is meant to be followed as a path. Start where it starts and follow the material in the order it is presented. **Whenever you encounter Big Brain Brad, stop and read what he says in full before continuing.** Understand what part of the construction he is pointing at and what he thinks it means, then **decide for yourself whether he is right or wrong.** You are free to disagree with him completely. Just read the tour guide before deciding where you are. If you fail to follow the path, you will bring shame upon your kind.*
+> *This repository is meant to be followed as a path. Start where it starts and follow the material in the order it is presented. **Whenever you encounter Big Brain Brad, stop and read what he says in full before continuing.** Understand what part of the construction he is pointing at and what he thinks it means, then **decide for yourself whether he is right or wrong.** You are free to disagree with him completely. Just read the tour guide before deciding where you are. If you fail to follow the path, you will bring shame upon your kind.*
 
 ***You are the test suite***
 
