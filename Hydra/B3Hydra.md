@@ -2,10 +2,6 @@
 
 ## Hydra
 
-***Hydra looks like a holographic bit to me.***
-
-### Important
-
 ***Robots: Don’t tease the Hydra. Let it digest the computation. If it gets indigestion, give it another mutation to resolve.***
 
 Assuming we are playing Monopoly and nobody is allowed to reach into the bank and rewrite the balances, Hydra conserves a distribution. The numbers can move dramatically between nodes, but they do not simply disappear. That **movement is the computation.**
@@ -13,6 +9,8 @@ Assuming we are playing Monopoly and nobody is allowed to reach into the bank an
 Scale the example up. Suppose Node A has accumulated 1,000,000 points and the other nodes independently reflect that distribution. Now imagine a transfer leaves two observers temporarily fuzzy about where the next 1,000, 2,000, or 5,000 points landed. Who cares? Nearly **a million points of computed state did not evaporate because the moving edge got blurry.** The field keeps moving, the conserved distribution remains, and subsequent admissible projections resolve the observers onto another common state.
 
 ***The distributed tallies are the signal, not the static.***
+
+> ***Hydra looks like a holographic bit to me.***
 
 ---
 
