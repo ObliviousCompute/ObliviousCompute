@@ -12,7 +12,7 @@ The old Byzantine Generals story has messengers running around a city, arrows fl
 
 What happens to the equivocator afterward is somebody else's decision. Ignore them. Debit them. Cut their head off... It's not my problem. ***Byzantium protects the field from equivocation. It does not promise to protect an equivocator from the consequences of equivocation.***
 
-> ***Important Consideration*** *Sure, honest observers may be a little staticky about the Byzantine’s resulting position after equivocation. Different observers can temporarily hold different views. The field keeps refreshing, the static clears, and the honest observers cohere again without reconstructing the history.*** Easy-Peasy.*
+> ***Important Consideration:*** *Sure, honest observers may be a little staticky about the Byzantine’s resulting position after equivocation. Different observers can temporarily hold different views. The field keeps refreshing, the static clears, and the honest observers cohere again without reconstructing the history.*** Easy-Peasy.*
 
 
 ---
