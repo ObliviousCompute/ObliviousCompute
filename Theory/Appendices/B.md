@@ -59,7 +59,7 @@ $\Large 𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
 
 ## Axiom 4 — Synchronization
 
-A cell re-establishes its present state through synchronization with one or more other cells.
+A cell synchronizes by evaluating a presented state from its present position.
 
 ### Mathematical Form
 
