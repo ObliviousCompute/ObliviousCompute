@@ -66,6 +66,7 @@ Synchronization occurs between a target cell and a non-empty set of other cells,
 ### Mathematical Form
 
 $\Large \mathcal{A}(s,x) \in {0,1} $
+
 ---
 
 **Continue to [**`Implementations`**](./C.md) in Appendix C...**
