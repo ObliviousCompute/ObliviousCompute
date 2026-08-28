@@ -18,7 +18,7 @@ Additional invariants may increase this **resolution** without changing the unde
 
 | Symbol | Meaning |
 |--------|---------|
-| s | State
+| $s$ | State
 | 𝓐 | Admissibility function |
 | Ω | State space |
 | $I$ | Invariant
