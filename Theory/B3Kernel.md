@@ -10,7 +10,7 @@ But what about Sigma? Fine. Start adding variables. Network latency. Processor t
 
 ***You want to solve Sigma? Watch the field while it computes.*** The physical network, processors, delays, and independently maintained states resolve one actual cross-section of the field simply by operating. You do not need to analytically reconstruct every variable that produced it in order to observe the result.
 
-> ***This is the clsssic observer's paradox.***
+> ***And there’s the observer’s paradox.***
 
 
 
