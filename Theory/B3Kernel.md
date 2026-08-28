@@ -12,6 +12,8 @@ Or just run [**`Hydra`**](.././Hydra/README.md)😑
 
 ***You want to solve Sigma? Look at the field while it computes.***
 
+> A good magician tells you exactly how the trick is done, and it’s still amazing. The trick is semantic reprojection, but you’re still distracted by Sigma.
+
 ---
 
 **Back to [**`Kernel`**](./Kernel.md)...**
