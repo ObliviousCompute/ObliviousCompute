@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This appendix establishes the fundamental axioms from which Oblivious Compute is derived. Each axiom is presented in both natural language and mathematical form.
+This appendix presents the current axiomatic formulation of Oblivious Compute. Each axiom is stated in both natural language and mathematical form.
 
 ## Resolution
 
@@ -33,7 +33,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$\Large s_i \xrightarrow{T} s_{i+1} \Longrightarrow I(s_i)=I(s_{i+1})$
+$\Large \mathcal{A}(s_i,s_{i+1}) = 1 ;\Longrightarrow; I(s_i) = I(s_{i+1}) $
 
 ---
 
