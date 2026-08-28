@@ -1,9 +1,5 @@
 # Appendix D — Definitions
 
-## Purpose
-
-This appendix establishes the fundamental vocabulary used throughout the theory. Each definition introduces a single concept without assuming any particular implementation.
-
 ## Sequence
 
 **A sequence is an ordered progression of states or events.**
