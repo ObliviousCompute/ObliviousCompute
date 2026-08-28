@@ -1,4 +1,4 @@
-# The Last Supper?
+# The Last Supper
 
 ## Spaghetti and Meatballs
 
