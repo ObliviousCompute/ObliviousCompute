@@ -61,8 +61,6 @@ $\Large 𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
 
 A cell re-establishes its present state through synchronization with one or more other cells.
 
-Synchronization occurs between a target cell and a non-empty set of other cells, with each cell occupied by an observer.
-
 ### Mathematical Form
 
 $\Large 𝓐(s,x) \in {0,1} $
