@@ -10,7 +10,7 @@
 
 ***You are the test suite***
 
-> > 🧠 ***Big Brain Brad says:*** *"Good luck. Have fun."*
+> 🧠 ***Big Brain Brad says:*** *"Good luck. Have fun."*
 
 ## 🌀 The Path
 
