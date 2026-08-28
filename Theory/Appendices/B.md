@@ -43,7 +43,7 @@ Every cell possesses exactly one current event horizon.
 
 ### Mathematical Form
 
-$\Large E(c)=\{x\in\Omega\mid 𝓐(s_c,x)=1\}$
+$\Large \mathcal{E}(c)=\{x\in\Omega\mid 𝓐(s_c,x)=1\}$
 
 ---
 
