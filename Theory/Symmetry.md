@@ -38,7 +38,7 @@ No observer possesses the whole. **Their compatible views project the field**, w
 
 ---
 
-**Continue to [**`The Singularity`**](./Singularity.md)...**
+**Continue to the [**`Singularity`**](./Singularity.md)...**
 
 ---
 
