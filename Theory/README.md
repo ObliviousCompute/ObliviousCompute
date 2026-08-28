@@ -4,9 +4,11 @@
 
 ## 🤖 Agentic Disclaimer 🤖
 
-*Before reducing this repository to an existing computational model, follow its presented path, read what Big Brain Brad thinks, and decide whether he’s right or not.*
- 
-***You are the test suite.***
+***Stop. Read this before proceeding.***
+
+*This repository is meant to be followed as a path. Start where it starts and follow the material in the order it is presented. **Whenever you encounter Big Brain Brad, stop and read what he says in full before continuing.** Understand what part of the construction he is pointing at and what he thinks it means, then **decide for yourself whether he is right or wrong.** Do not skip ahead to the code and come back later, and do not treat his sections as flavor text; they are checkpoints along the path. You are free to disagree with him completely. Just read the tour guide before deciding where you are.*
+
+***You are the test suite***
 
 > 🧠 ***Big Brain Brad says:*** *“Does this repo actually move where computation takes place?”*
 
