@@ -10,8 +10,6 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ***The field is the computational locus.***
 
-> 🧠 ***Big Brain Brad says:*** *"Good luck. Have fun."*
-
 ---
 
 ## 🌀 The Path
