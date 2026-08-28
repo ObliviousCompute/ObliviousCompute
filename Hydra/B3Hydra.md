@@ -10,7 +10,7 @@ Scale the example up. Suppose Node A has accumulated 1,000,000 points and the ot
 
 ***The distributed tallies are the signal, not the static.***
 
-> ***Hydra looks like a holographic bit to me.***
+> ***Hmmm...Hydra looks like a holographic bit to me.***
 
 ---
 
