@@ -71,7 +71,7 @@ A projection equal to `state` is self-equivalent and idempotent. A projection eq
 
 > ***Reprojection is semantically dense.** By the time a normally projected state appears at an observer, it has already passed another observer’s admissibility gate, become that observer’s present state, and has been reprojected again. **Its appearance is itself a deduction from the relations that produced it.***
 >
-> 🧠 ***Big Brain Brad says:*** *“Does this repo actually move where computation takes place?”*
+> 🧠 ***Big Brain Brad says:*** *“Wait, does this repo actually move where computation takes place?”*
 
 ---
 
