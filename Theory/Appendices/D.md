@@ -36,7 +36,7 @@
 
 ### Example
 
-*Computation does not require an electronic computer. An abacus transforms a represented numerical state according to rules. A punch-card loom uses the geometry encoded in punched cards to determine the state of its mechanism and the resulting fabric. Mechanical calculators, Turing machines, and modern processors likewise compute by applying rules to state.*
+*An abacus, a punch-card loom, a mechanical calculator, a Turing machine, and a modern processor all perform computation. Each applies rules to determine or transform state, regardless of the physical medium in which that state is represented.*
 
 ## Byzantine Generals Problem
 
