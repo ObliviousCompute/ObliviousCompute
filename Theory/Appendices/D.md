@@ -24,6 +24,18 @@ This appendix establishes the fundamental vocabulary used throughout the theory.
 
 *Imagine an ancient coin is unearthed. The coin unquestionably exists and is evidence originating from the past. By itself, however, the coin cannot uniquely determine the sequence of events that produced its present location.*
 
+## Byzantine Generals Problem
+
+*The Byzantine Generals Problem asks whether loyal participants can coordinate on a common course of action despite traitorous participants sending conflicting information.*
+
+### IC1. 
+
+*All loyal lieutenants obey the same order.*
+
+### IC2. 
+
+*If the commanding general is loyal, every loyal lieutenant obeys the order he sends.*
+
 ---
 
 **Go back to [**`Theory`**](../README.md) or continue to [**`Skeleton`**](../.././Skeleton/README.md)...**
