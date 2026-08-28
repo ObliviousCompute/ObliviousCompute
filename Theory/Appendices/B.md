@@ -33,7 +33,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$\Large \𝓐(s_i,s_{i+1}) = 1 ;\Longrightarrow; I(s_i) = I(s_{i+1}) $
+$\Large 𝓐(s_i,s_{i+1}) = 1 ;\Longrightarrow; I(s_i) = I(s_{i+1}) $
 
 ---
 
@@ -65,7 +65,7 @@ Synchronization occurs between a target cell and a non-empty set of other cells,
 
 ### Mathematical Form
 
-$\Large \𝓐(s,x) \in {0,1} $
+$\Large 𝓐(s,x) \in {0,1} $
 
 ---
 
