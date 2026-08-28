@@ -34,6 +34,14 @@ This appendix establishes the fundamental vocabulary used throughout the theory.
 
 *The fans can retain different accounts of the game. Their perspectives have not been brought into consensus, but they can still agree that the score is correct.*
 
+## Computation
+
+**A computation is a rule-governed transformation or determination of state.**
+
+### Example
+
+*Computation does not require an electronic computer. An abacus transforms a represented numerical state according to rules. A punch-card loom uses the geometry encoded in punched cards to determine the state of its mechanism and the resulting fabric. Mechanical calculators, Turing machines, and modern processors likewise compute by applying rules to state.*
+
 ## Byzantine Generals Problem
 
 **The Byzantine Generals Problem asks whether loyal participants can coordinate on a common course of action despite traitorous participants sending conflicting information.**
