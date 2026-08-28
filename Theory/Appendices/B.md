@@ -18,8 +18,10 @@ Additional invariants may increase this **resolution** without changing the unde
 
 | Symbol | Meaning |
 |--------|---------|
+| s | State
 | 𝓐 | Admissibility function |
 | Ω | State space |
+| $I$ | Invariant
 | Σ | Relational symmetry |
 | 𝓕 | Computational field |
 
