@@ -12,7 +12,9 @@ Or just run [**`Hydra`**](.././Hydra/README.md)😑
 
 ***You want to solve Sigma? Look at the field while it computes.***
 
-> A good magician tells you exactly how the trick is done, and it’s still amazing. The sleight of hand is semantic reprojection, but you’re still distracted by sigma. By the time symmetry appears, the trick is already over.
+> A good magician tells you exactly how the trick is done, and it’s still amazing.
+>
+> The sleight of hand is semantic reprojection, but you’re still distracted by sigma. By the time symmetry appears, the trick is already over.
 
 ---
 
