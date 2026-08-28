@@ -6,7 +6,7 @@ This appendix establishes the fundamental vocabulary used throughout the theory.
 
 ## Sequence
 
-A sequence is an ordered progression of states or events.
+**A sequence is an ordered progression of states or events.**
 
 ### *Example*
 
@@ -16,7 +16,7 @@ A sequence is an ordered progression of states or events.
 
 ## History
 
-History is an account of the sequence of events believed to have produced a present state.
+**History is an account of the sequence of events believed to have produced a present state.**
 
 History is distinct from the evidence that survives from the past. Evidence may support a historical account without uniquely determining one.
 
