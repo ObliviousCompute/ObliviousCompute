@@ -26,7 +26,7 @@ This appendix establishes the fundamental vocabulary used throughout the theory.
 
 ## Byzantine Generals Problem
 
-*The Byzantine Generals Problem asks whether loyal participants can coordinate on a common course of action despite traitorous participants sending conflicting information.*
+**The Byzantine Generals Problem asks whether loyal participants can coordinate on a common course of action despite traitorous participants sending conflicting information.**
 
 ### IC1. 
 
