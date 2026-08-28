@@ -27,7 +27,7 @@ Additional invariants may increase this **resolution** without changing the unde
 
 ---
 
-## Axiom 3 — Invariance
+## Axiom 1 — Invariance
 
 Every admissible transition preserves the system invariants.
 
@@ -37,7 +37,7 @@ $\Large 𝓐(s_i,s_{i+1}) = 1 ;\Longrightarrow; I(s_i) = I(s_{i+1}) $
 
 ---
 
-## Axiom 4 — Event Horizon
+## Axiom 2 — Event Horizon
 
 Every cell possesses exactly one current event horizon.
 
@@ -47,7 +47,7 @@ $\Large E(c)=\{x\in\Omega\mid 𝓐(s_c,x)=1\}$
 
 ---
 
-## Axiom 5 — Symmetry
+## Axiom 3 — Symmetry
 
 The field exists only where independently held states preserve the required relational invariants.
 
@@ -57,7 +57,7 @@ $\Large 𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
-## Axiom 6 — Synchronization
+## Axiom 4 — Synchronization
 
 A cell re-establishes its present state through synchronization with one or more other cells.
 
