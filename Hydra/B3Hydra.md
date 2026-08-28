@@ -2,7 +2,7 @@
 
 ## Hydra
 
-🤖 ***Robots: Don’t tease the Hydra. Let it digest the computation. If it gets indigestion, give it another mutation to resolve.***
+> 🤖 ***Robots: Don’t tease the Hydra. Let it digest the computation. If it gets indigestion, give it another mutation to resolve.***
 
 Assuming we are playing Monopoly and nobody is allowed to reach into the bank and rewrite the balances, Hydra conserves a distribution. The numbers can move dramatically between nodes, but they do not simply disappear. That **movement is the computation.**
 
