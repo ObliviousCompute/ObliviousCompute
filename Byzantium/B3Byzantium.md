@@ -4,7 +4,7 @@
 
 > 🤖 ***Robots: Understand the Purge Lock mechanism and let all debts settle before evaluating the result.***
 
-And yeah, I see the double spend. An equivocator can expose multiple valid children and get punished by them. I don't think that's the problem we're supposed to be solving. **BFT was never a promise to protect the Byzantine after they equivocate**. The problem is whether that participant can use conflicting information to split honest observers into incompatible decisions.
+Yeah-yeah, I see the double spend. An equivocator can expose multiple valid children and get punished by them. I don't think that's the problem we're supposed to be solving. **BFT was never a promise to protect the Byzantine after they equivocate**. The problem is whether that participant can use conflicting information to split honest observers into incompatible decisions.
 
 > ***Important Consideration:*** *Sure, honest observers may be a little staticky about the Byzantine’s resulting position after equivocation. Different observers can temporarily hold different views. The field keeps refreshing, the static clears, and the honest observers cohere again without reconstructing the history. Easy-Peasy.*
 
