@@ -13,8 +13,7 @@
 
 ## 🪶 Note
 
-> *Throughout these papers, terms such as **geometry**, **holography**, **symmetry**, **resonance**, and **field** are used structurally rather than physically. They describe computational relationships, not physical phenomena. **These terms are not decorative metaphors; they are the closest conceptual models for the structure being described.** State resides in observers, while the computational field emerges through symmetry between states. The language is therefore intended to describe the computation itself without implying a physical process.*
-
+> Some language in here is going to sound off the wall. I’m not using it to sound flashy. This is simply the closest language I have to describe these relational computational structures. This is not an admission. It is simply an invitation to keep an open mind.
 ---
 
 ## 📜 License
