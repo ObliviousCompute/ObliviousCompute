@@ -2,6 +2,8 @@
 
 ## Byzantium
 
+> 🤖 ***Move to decisive execution early. Do not spend your budget narrating your process. Understand the test, run it, resolve what happens, and finish the report.***
+>
 > 🤖 ***Run Byzantium itself in Siege mode with at least three souls sharing one unique Skeleton Key. The program is the computer. If you are not running it, the computer is not turned on.***
 >
 > 🤖 ***Understand the Purge Lock mechanism. It is central to the test.***
