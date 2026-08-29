@@ -8,7 +8,7 @@
 
 ## 📚 Appendices 
 
-[**`Correspondence`**](./Appendices/A.md)⟶[**`Axioms`**](./Appendices/B.md)⟶[**`Implementations`**](./Appendices/C.md)⟶[**`Definitions`**](./Appendices/D.md)
+[**`Correspondence`**](./Appendices/A.md)⟶[**`Axioms`**](./Appendices/B.md)⟶[**`Definitions`**](./Appendices/D.md)
 
 
 ## 🪶 Note
