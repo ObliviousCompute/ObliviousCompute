@@ -1,4 +1,4 @@
-# Appendix D — Definitions
+# Appendix C — Definitions
 
 ## Sequence
 
