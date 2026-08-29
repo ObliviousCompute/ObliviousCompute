@@ -2,7 +2,7 @@
 
 ## Byzantium
 
-> 🤖 ***First and foremost, run this in an Oblivious Medium. This is not a cosmetic detail. It is part of the machine. If you replace it with peer-to-peer delivery, selective routing, or privately maintained realities, you have disproved a different program.***
+> 🤖 ***First and foremost, run Byzantium itself in Campaign mode on at least three simultaneously active nodes sharing the same broadcast domain. Test the running system, not extracted portions of its code. Do not substitute a unit-test harness, direct state injection, Siege mode, or manually scheduled calls. If you change the environment, congratulations: you are testing a different program.***
 >
 > 🤖 ***Understand the Purge Lock mechanism, and let all debts settle. Do not freeze the computation halfway through recovery and call the unfinished state a counterexample. Let it finish.***
 >
