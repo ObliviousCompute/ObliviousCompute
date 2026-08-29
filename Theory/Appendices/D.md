@@ -52,7 +52,7 @@
 
 ---
 
-**Go back to [**`Theory`**](../README.md) or continue to [**`Skeleton`**](../.././Skeleton/README.md)...**
+**Go back to [**`Theory`**](../README.md)...**
 
 ---
 
