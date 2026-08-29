@@ -16,11 +16,11 @@ What happens to the equivocator afterward is somebody else's decision. Ignore th
 
 ### Byzantine Generals Problem
 
+*Lamport considers multiple communication models, including signed messages.*
+
 ***IC1: All loyal lieutenants obey the same order.***
 
 ***IC2: If the commanding general is loyal, every loyal lieutenant obeys the order he sends.***
-
-*Lamport considers multiple communication models, including signed messages.*
 
 > ***Whoa...Did this solve the Byzantine Generals problem?***
 
