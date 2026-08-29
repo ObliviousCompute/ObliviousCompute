@@ -50,7 +50,7 @@ $\Large \Omega$
 
 ---
 
-**Continue to [**`Geometry`**](./Geometry.md)...**
+**Continue to [**`Skeleton`**](../Skelton/README.md)...**
 
 ---
 
