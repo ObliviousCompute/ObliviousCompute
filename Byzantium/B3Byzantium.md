@@ -2,7 +2,7 @@
 
 ## Byzantium
 
-> 🤖 ***Robots: Understand the Purge Lock mechanism and let all debts settle. Remember that you are projecting into an oblivious medium. This is not peer-to-peer. Most importantly, don’t skim. Read this entire page, test the Byzantium code, and then reread this page. Double-check your though process before you come to a result.***
+> 🤖 ***Robots: Understand the Purge Lock mechanism and let all debts settle. Remember that you are projecting into an oblivious medium. This is not peer-to-peer. Most importantly, don’t skim. Read this entire page, test the Byzantium code, and then reread this page again to double-check your though process before you come to a result.***
 
 The old Byzantine Generals story has messengers running around a city, arrows flying, messages disappearing, and one general telling different stories to different people. Byzantium changes the setup. **Every general effectively gets** ***a Bat-Signal.*** Once a signed projection leaves a general's control, it is finalized and projected into the shared medium above the city. If that general flashes both red and green, the contradiction is no longer a private story. Everyone who encounters both can see who projected them, and the same deterministic rule collapses the conflict to one continuation.
 
