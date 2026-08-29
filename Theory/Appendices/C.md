@@ -38,18 +38,6 @@
 
 *An abacus, a punch-card loom, a mechanical calculator, a Turing machine, and a modern processor all perform computation. Each applies rules to determine or transform state, regardless of the physical medium in which that state is represented.*
 
-## Byzantine Generals Problem
-
-**The Byzantine Generals Problem asks whether loyal participants can coordinate on a common course of action despite traitorous participants sending conflicting information.**
-
-### IC1. 
-
-*All loyal lieutenants obey the same order.*
-
-### IC2. 
-
-*If the commanding general is loyal, every loyal lieutenant obeys the order he sends.*
-
 ---
 
 **Go back to [**`Theory`**](../README.md)...**
