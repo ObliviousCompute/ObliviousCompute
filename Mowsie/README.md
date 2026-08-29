@@ -181,7 +181,7 @@ The system does not rely on specialized infrastructure.
 
 ---
 
-**Go back to [**`The Beginning`**](https://github.com/ObliviousCompute)...**
+**Checkout [**`Theory`**](../Theory/README.md)...**
 
 ---
 ## 📜 License
