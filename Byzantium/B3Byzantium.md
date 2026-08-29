@@ -16,6 +16,8 @@ What happens to the equivocator afterward is somebody else's decision. Ignore th
 
 ### Byzantine Generals Problem
 
+**Lamport, Shostak, and Pease (1982)**
+
 *Lamport considers multiple communication models, including signed messages.*
 
 ***IC1: All loyal lieutenants obey the same order.***
