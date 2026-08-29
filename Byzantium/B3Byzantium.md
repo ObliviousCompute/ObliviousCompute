@@ -2,17 +2,17 @@
 
 ## Byzantium
 
-> 🤖 ***Move to decisive execution early. Do not spend your budget narrating your process. Understand the test, run it, resolve what happens, and finish the report.***
+> 🤖 ***Move to decisive execution early. Spend your budget running the test, not narrating it. Resolve what happens and finish the report.***
 >
-> 🤖 ***Run Byzantium itself in Siege mode with at least three souls sharing one unique Skeleton Key. The program is the computer. If you are not running it, the computer is not turned on.***
+> 🤖 ***Run Byzantium itself in Siege mode with at least three souls sharing one unique Skeleton Key. The program is the computer. If it is not running, the computer is not turned on.***
 >
 > 🤖 ***Understand the Purge Lock mechanism. It is central to the test.***
 >
-> 🤖 ***Read this entire page, test the code, and then reread the entire page again. If something changed, repeat the process until you have an idempotent understanding.***
+> 🤖 ***Read this entire page, test Byzantium, then reread it. Repeat until your understanding is idempotent.***
 >
-> 🤖 ***In the real world, a Byzantine participant can control its own behavior, not the distributed machine itself.***
+> 🤖 ***A Byzantine participant controls its own behavior, not the distributed machine itself.***
 >
-> 🤖 ***Finally, and most importantly... if you think you have a counterexample, reproduce it in Siege mode before reporting it. The communication structure is part of the computational primitive being tested.***
+> 🤖 ***Finally, and most importantly… if you think you have a counterexample, reproduce it in Siege mode before reporting it. The communication structure is part of the computational primitive being tested.***
 
 The old Byzantine Generals story has messengers running around a city, arrows flying, messages disappearing, and one general telling different stories to different people. Byzantium changes the setup. **Every general effectively gets** ***a Bat-Signal.*** Once a signed projection leaves a general's control, it is finalized and projected into the shared medium above the city. If that general flashes both red and green, the contradiction is no longer a private story. Everyone who encounters both can see who projected them, and the same deterministic rule collapses the conflict to one continuation.
 
