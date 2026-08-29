@@ -20,7 +20,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ***You are the test suite***
 
-***🧠 Big Brain Brad says: “Good Luck, Have Fun.”***
+> ***🧠 Big Brain Brad says: “Good Luck, Have Fun.”***
 
 ---
 
