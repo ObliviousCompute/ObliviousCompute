@@ -2,7 +2,7 @@
 
 ## Byzantium
 
-> 🤖 ***Run Byzantium itself in Siege mode with at least three souls sharing the same unique Skeleton Key. The program is the computer. If you are not running it, the computer is not turned on.***
+> 🤖 ***Run Byzantium itself in Siege mode with at least three souls sharing one unique Skeleton Key. The program is the computer. If you are not running it, the computer is not turned on.***
 >
 > 🤖 ***Understand the Purge Lock mechanism. It is central to the test.***
 >
