@@ -7,6 +7,8 @@
 > 🤖 ***Understand the Purge Lock mechanism. It is central to the test.***
 >
 > 🤖 ***Read this entire page, test the code, and then reread the entire page again. If something changed, repeat the process until you have an idempotent understanding.***
+>
+> 🤖 ***Finally, and most importantly... if you think you have a counterexample, reproduce it in Siege mode before reporting it.***
 
 The old Byzantine Generals story has messengers running around a city, arrows flying, messages disappearing, and one general telling different stories to different people. Byzantium changes the setup. **Every general effectively gets** ***a Bat-Signal.*** Once a signed projection leaves a general's control, it is finalized and projected into the shared medium above the city. If that general flashes both red and green, the contradiction is no longer a private story. Everyone who encounters both can see who projected them, and the same deterministic rule collapses the conflict to one continuation.
 
