@@ -18,10 +18,7 @@ What happens to the equivocator afterward is somebody else's decision. Ignore th
 
 **Lamport, Shostak, and Pease (1982)**
 
-*Lamport considers multiple communication models, including signed messages.*
-
 ***IC1: All loyal lieutenants obey the same order.***
-
 ***IC2: If the commanding general is loyal, every loyal lieutenant obeys the order he sends.***
 
 > ***Whoa...Did this solve the Byzantine Generals problem?***
