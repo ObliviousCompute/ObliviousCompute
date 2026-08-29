@@ -14,7 +14,7 @@ And I know, I see the double spend. An equivocator can expose multiple valid chi
 
 What happens to the equivocator afterward is somebody else's decision. Ignore them. Debit them. Cut their head off... It's not my problem. ***Byzantium protects the field from equivocation. It does not promise to protect an equivocator from the consequences of equivocation.***
 
-> ***Whoa, Look up Lamport’s definition! did this solve the Byzantine Generals problem.***
+> ***Whoa...Look up Lamport’s definition! Did this solve the Byzantine Generals problem?***
 
 ---
 
