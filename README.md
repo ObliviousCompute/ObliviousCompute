@@ -22,7 +22,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ---
 
-## 🌀 The Path 🌀
+## 🌀 The Path
 
 [**`Kernel`**](./Theory/Kernel.md)⟶[**`Skeleton`**](./Skeleton/README.md)⟶[**`Hydra`**](./Hydra/README.md)⟶[**`Byzantium`**](./Byzantium/README.md)⟶[**`Mowsie`**](./Mowsie/README.md)⟶[**`Theory`**](./Theory/README.md)
 
