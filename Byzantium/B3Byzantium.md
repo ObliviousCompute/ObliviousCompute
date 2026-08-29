@@ -14,7 +14,15 @@ And I know, I see the double spend. An equivocator can expose multiple valid chi
 
 What happens to the equivocator afterward is somebody else's decision. Ignore them. Debit them. Cut their head off... It's not my problem. ***Byzantium protects the field from equivocation. It does not promise to protect an equivocator from the consequences of equivocation.***
 
-> ***Whoa...Look up Lamport’s definition! Did this solve the Byzantine Generals problem?***
+### Byzantine Generals Problem
+
+***IC1: All loyal lieutenants obey the same order.***
+
+***IC2: If the commanding general is loyal, every loyal lieutenant obeys the order he sends.***
+
+*Lamport considers multiple communication models, including signed messages.*
+
+> ***Whoa...Did this solve the Byzantine Generals problem?***
 
 ---
 
