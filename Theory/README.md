@@ -2,19 +2,13 @@
 
 *Imagine a white room being filled with state, all of it bouncing around as a nebulous computational object. As that motion resolves into symmetry, **the field becomes resonant and highly charged**. In that condition, even a single admissible transition can snap a new symmetry across the entire field, **like striking a bell.***
 
-## 🌀 The Path
+## 🌀 The Path 🌀
 
 [**`Geometry`**](./Geometry.md)⟶[**`Holography`**](./Holography.md)⟶[**`Admissibility`**](./Admissibility.md)⟶[**`Symmetry`**](./Symmetry.md)⟶[**`Singularity`**](./Singularity.md)
 
 ## 📚 Appendices
 
-Oblivious Compute's [**`Correspondence`**](./Appendices/A.md)
-
-For the Primitive's [**`Axioms`**](./Appendices/B.md)
-
-The working [**`Implementations`**](./Appendices/C.md)
-
-Finally, [**`Definitions`**](./Appendices/D.md)
+[**`Correspondence`**](./Appendices/A.md)⟶[**`Axioms`**](./Appendices/B.md)⟶[**`Implementations`**](./Appendices/C.md)⟶[**`Definitions`**](./Appendices/D.md)
 
 
 ## 🪶 Note
