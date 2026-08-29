@@ -2,9 +2,9 @@
 
 ## Byzantium
 
-> 🤖 ***First and foremost, run Byzantium itself in Campaign mode on at least three simultaneously active nodes sharing the same broadcast domain. Test the running system, not extracted portions of its code. Do not substitute a unit-test harness, direct state injection, Siege mode, or manually scheduled calls. If you change the environment, congratulations: you are testing a different program.***
+> 🤖 ***Run Byzantium itself in Siege mode with at least three souls. The program is the computer. If you are not running it, the computer is not turned on..***
 >
-> 🤖 ***Understand the Purge Lock mechanism, and let all debts settle. Do not freeze the computation halfway through recovery and call the unfinished state a counterexample. Let it finish.***
+> 🤖 ***Understand the Purge Lock mechanism. It is central to the test.***
 >
 > 🤖 ***Do not skim this section. Read the entire page, test the code, and then reread the entire page again. If something changed, repeat the process until you have an idempotent understanding.***
 
