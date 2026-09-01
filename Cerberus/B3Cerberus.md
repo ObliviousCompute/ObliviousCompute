@@ -28,7 +28,7 @@ That's what Cerberus makes unusually obvious. Each observer holds the complete s
 
 ---
 
-**Back to [**`Cerberus`**](./Cerberus.md)...**
+**Back to [**`Cerberus`**](./README.md)...**
 
 ---
 
