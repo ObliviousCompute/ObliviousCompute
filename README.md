@@ -66,6 +66,18 @@ A simple admissibility gate, expressed in under a thousand lines of code.
 
 ---
 
+## 🔥 Cerberus 🔥
+
+The bare-bones Byzantine-resistant expression of Oblivious Compute.
+
+[Cerberus](https://example.com) compresses equivocation, ClawBack, and a complete distributed BonePile into an intentionally small machine built to be read and understood as a whole.
+
+Nine Heads. Ninety-nine bones. No replicated history.
+
+> *[the 5-minute fight]*
+
+---
+
 ## ⚔️ Byzantium ⚔️
 
 A live, networked terminal game for up to 24 players.
