@@ -98,7 +98,7 @@ A live, networked terminal game for up to 24 players.
 
 **🚧 Currently Under Construction 🚧**
 
-*Source code will be published at the first stable milestone.*
+> *Source code will be published at the first stable milestone.*
 
 ---
 
