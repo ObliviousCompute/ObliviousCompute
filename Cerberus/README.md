@@ -6,6 +6,8 @@
 
 <img src="../Relics/DogBoard.png" width="600"/>
 
+> Bare-Bones Oblivious State
+
 ---
 
 ## 🐕🐕DogPile🐕🐕
