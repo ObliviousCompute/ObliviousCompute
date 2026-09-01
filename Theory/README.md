@@ -13,7 +13,8 @@
 
 ## 🪶 Note
 
-> *Some language in here is going to sound off the wall. To be fair, I’m only using it partly because it sounds flashy. It also happens to be the closest language I have to describe these relational computational structures.*  
+> *Some language in here is going to sound off the wall. To be fair, I’m only using it partly because it sounds flashy. It also happens to be the closest language I have to describe these relational computational structures.*
+> 
 > ***Enjoy the ride and keep an open mind.***
 
 ---
