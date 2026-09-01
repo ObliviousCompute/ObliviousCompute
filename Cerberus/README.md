@@ -70,7 +70,12 @@ Cerberus runs locally over sockets as a **Sandbox Smoketest**.
 
 > *How Bones shape the BonePile*
 
+The **Oblivious Medium** lets Cerberus produce unusually rich distributed behavior from a very small machine. Three layers are enough to carry identity, state, equivocation, recovery, projection, and re-entry.
+
+*The whole thing runs in under 1,700 lines of Python.* **Small enough to understand as one object.**
+
 ---
+
 **Continue to [**`Byzantium`**](../Byzantium/README.md)...**
 
 ---
