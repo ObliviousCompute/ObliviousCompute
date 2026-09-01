@@ -10,13 +10,11 @@
 
 ---
 
-## 🐕🐕DogPile🐕🐕
+## 🐕🐕 DogPile 🐕🐕
 
 Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single 99-bone **BonePile**, with every observer maintaining the complete state independently.
 
-When a Head signs conflicting actions, Cerberus need not decide which happened first. If both can be paid, **both become consequential state**. If they cannot, **Clawback** recovers an admissible BonePile.
-
-Cerberus is a distributed expression of an **Oblivious Compute** system: independently maintained states continuously project into a common medium and admit what survives the same rules.
+Cerberus is a distributed expression of an **Oblivious Compute** system: independently maintained states continuously project into a common medium and admit what survives the same rules. There is no replicated log and no authority deciding which story happened first.
 
 **Make the dogs fight. Try to split the pile.**
 
@@ -24,13 +22,13 @@ Cerberus is a distributed expression of an **Oblivious Compute** system: indepen
 
 ## 🪝 ClawBack 🪝
 
-Cerberus does not try to pretend equivocation never happened.
+Cerberus does not try to pretend equivocation never happened. When a Head signs conflicting actions, both can become consequential state.
 
-When a Head signs conflicting actions and cannot pay for both, the fork becomes a debt. Cerberus claws value back through the state until the equivocator can be convicted and an admissible BonePile remains.
+If the equivocator can pay for both, both are honored. If it cannot, the fork becomes a debt. **ClawBack** pulls consequences through the BonePile until the equivocator can be convicted and an admissible state remains.
 
-The trick is not choosing which lie was “really first.” It is making the consequences of both lies part of the computation.
+The trick is not choosing which lie was *“really first.”* It is making the consequences of both lies part of the computation.
 
-**Clawback turns equivocation into state.**
+**ClawBack turns equivocation into state.**
 
 ---
 
