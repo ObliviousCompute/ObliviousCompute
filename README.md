@@ -64,7 +64,7 @@ The minimal distributed demonstration of the same primitive.
 
 [**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
 
-**A simple admissibility gate in under a thousand lines of code.**
+**A simple admissibility gate**
 
 > *[the 1-minute flight]*
 
