@@ -26,7 +26,7 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 An observer that produces incompatible projections forfeits its ability to participate coherently in the field. The field itself need not become ambiguous.
 
-**Check out what [**`🧠 Big Brain Brad`**](./B3Byzantium.md) thinks.**
+> **Check out what [**`🧠 Big Brain Brad`**](./B3Byzantium.md) thinks.**
 
 ---
 
