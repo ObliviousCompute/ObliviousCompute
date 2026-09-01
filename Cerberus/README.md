@@ -63,3 +63,22 @@ Cerberus runs locally over sockets as a sandbox smoke test.
 > *Tip: just spam Enter to drop straight into a board*.
 
 ---
+
+## 🏛️ Architecture
+
+<img src="../Relics/DogTree.png" width="400"/>
+
+> *How Bones shape the BonePile*
+
+---
+**Continue to [**`Byzantium`**](../Byzantium/README.md)...**
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
+
+
