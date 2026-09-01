@@ -172,15 +172,15 @@ def Field(
             chars.append(raw.decode("ascii"))
 
 
-def ChooseHeads(fd: int, count: int = 5) -> tuple[int, str]:
-    count = max(3, min(MaxHeads, int(count)))
+def ChooseHeads(fd: int, count: int = 1) -> tuple[int, str]:
+    count = max(1, min(MaxHeads, int(count)))
     while True:
         EntryCard("How Many Heads?", str(count))
         key = ReadKey(fd)
         if key == Up:
             count = min(MaxHeads, count + 1)
         elif key == Down:
-            count = max(3, count - 1)
+            count = max(1, count - 1)
         elif key == Left:
             return count, Left
         elif key in (Right, Enter):
@@ -188,7 +188,7 @@ def ChooseHeads(fd: int, count: int = 5) -> tuple[int, str]:
 
 
 def Setup(fd: int) -> tuple[str, int, str, str]:
-    fields = ["Fluffy", 5, "", "Paradise"]
+    fields = ["Fluffyyy", 1, "Backbite", "Paradise"]
     step = 0
     while step < len(fields):
         if step == 0:
@@ -197,7 +197,7 @@ def Setup(fd: int) -> tuple[str, int, str, str]:
             fields[1], move = ChooseHeads(fd, int(fields[1]))
         elif step == 2:
             fields[2], move = Field(
-                fd, "What's Your DogTag", str(fields[2]), bracket=True
+                fd, "What's Your DogTag", str(fields[2])
             )
         else:
             fields[3], move = Field(fd, "Claim Your BonePile", str(fields[3]))
@@ -271,11 +271,11 @@ class Guardian:
         self.boneyard = BoneYard(self.cerberus, HeadCountIn=self.HeadCount, NoticeOut=self.Notice)
 
     def Open(self, count: int) -> None:
-        self.count = max(3, min(MaxHeads, int(count)))
+        self.count = max(1, min(MaxHeads, int(count)))
         self.boneyard.Open(self.count)
 
     def Identity(self, dogtag: str, bonepile: str) -> None:
-        if self.count < 3:
+        if self.count < 1:
             raise RuntimeError("HeadCount must be chosen before identity.")
         self.dogtag = str(dogtag).strip()[:NameMax]
         self.bonepile = str(bonepile).strip()[:NameMax]
@@ -284,6 +284,8 @@ class Guardian:
         self.publickey = PublicKeyHex(self.privatekey)
         self.counted = {self.publickey: self.dogtag}
         self.HeadCount()
+        if len(self.counted) == self.count and self.catacomb is None:
+            self.Genesis()
 
     def HeadCount(self, value: object = None) -> bool:
         if value is None:
@@ -399,7 +401,8 @@ class Guardian:
         if self.catacomb.Seed(genesis).status == "BAD BONEPILE":
             raise RuntimeError("Guardian could not generate Genesis.")
         self.state = self.catacomb.BonePile
-        self.catacomb.Hunger()
+        if self.count > 1:
+            self.catacomb.Hunger()
 
     def Catacomb(self, pile: BonePile, result: Result) -> None:
         self.state = pile
