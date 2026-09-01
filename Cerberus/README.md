@@ -76,6 +76,16 @@ The **Oblivious Medium** lets Cerberus produce unusually rich distributed behavi
 
 ---
 
+## 🗝️ Security Notice
+
+Cerberus uses **Ed25519 signing** to validate actions.
+
+However, networking currently relies on simple **XOR-based obfuscation**. This is not secure encryption—and it’s not meant to be.
+
+The system prioritizes **state integrity over transport security**.
+
+---
+
 **Continue to [**`Byzantium`**](../Byzantium/README.md)...**
 
 ---
