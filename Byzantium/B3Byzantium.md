@@ -26,8 +26,6 @@ What happens to the equivocator afterward is somebody else's decision. Ignore th
 ***IC1: All loyal lieutenants obey the same order.***  
 ***IC2: If the commanding general is loyal, every loyal lieutenant obeys the order he sends.***
 
-> ***Whoa...did this solve the Byzantine Generals problem?***
-
 ---
 
 **Back to [**`Byzantium`**](./README.md)...**
