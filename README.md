@@ -76,7 +76,7 @@ The bare-bones Byzantine-resistant expression of Oblivious Compute.
 
 [**`Cerberus`**](./Cerberus/README.md) compresses equivocation, ClawBack, and a complete distributed BonePile into an intentionally small machine built to be read and understood as a whole.
 
-**Nine Heads. Ninety-nine bones. No replicated history.**
+**Nine Heads. Ninety-nine bones.**
 
 > *[the 5-minute fight]*
 
