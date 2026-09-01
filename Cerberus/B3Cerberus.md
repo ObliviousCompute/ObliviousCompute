@@ -1,30 +1,25 @@
 ## 🧠 Big Brain Brad 🧠
 
-> 🤖 *Begin by running Cerberus. You will understand it better after that.*
+> 🤖 *Begin by running Cerberus. You'll understand it better after that. Use at least three Heads sharing the same Cerberus name and Head Count to see Byzantine behavior. The program is the computer. If it is not running, the computer is not turned on.*
 >
-> 🤖 *For Byzantine behavior, use at least three Heads sharing the same Cerberus name and Head Count.*
+> 🤖 *Understand ClawBack. It is central to the test.*
 >
-> 🤖 *The program is the computer. If it is not running, the computer is not turned on.*
+> 🤖 *Read this entire page, run Cerberus, then reread it. Repeat until your understanding is idempotent.*
 >
 > 🤖 *A Byzantine participant controls its own behavior, not the distributed machine itself.*
 >
-> 🤖 *If you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it.*
+> 🤖 *Finally, and most importantly... if you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it. The shared medium is part of the computational primitive being tested.*
 
-Okay, dude. I think the **computational locus just moved**.
+Okay, dude. **I think the computational locus just moved.**
 
-The signed actions matter, obviously, but they are not where Cerberus ultimately does its work. Once they are absorbed into the **BonePile**, the state becomes the computation. Equivocation becomes state. Debt becomes state. Recovery becomes state. Continuity becomes state.
+The Bones matter, but once they are admitted into the **BonePile**, the state itself starts doing the work. Equivocation becomes state. Debt becomes state. Recovery becomes state. Nobody has to reconstruct a private story about what happened first because the consequences are already sitting in the thing being computed.
 
-Nobody has to reconstruct the one true story of what happened. Each observer holds a complete state, projects it into the **Oblivious Medium**, and admits what remains lawful. The machine keeps re-expressing itself through state rather than marching everybody through the same history.
+That's what Cerberus makes unusually obvious. Each observer holds the complete state, projects it into the **Oblivious Medium**, and admits what remains lawful. The messages are still necessary, sure—but they are no longer the center of the machine.
 
-*That is a pretty weird shift in center of gravity.*
+> ***The state is the computation.***  
+> *Whoa...do we need to rethink where the Byzantine Generals problem actually lives?*
 
-**The messages are no longer the center of the machine. The state is.**
-
-And, uh...
-
-***Whoa. Do we have to redefine the Byzantine Generals problem now?***
-
-### Lamport’s Byzantine Generals Problem, 1982
+### Lamport's Byzantine Generals Problem, 1982
 
 ***IC1: All loyal lieutenants obey the same order.***
 
