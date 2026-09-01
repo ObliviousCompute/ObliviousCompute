@@ -44,13 +44,13 @@ The trick is not choosing which lie was *“really first.”* It is making the c
 
 ## 🍄 Install
 
-To run Byzantium, install it with:
+To run Cerberus, install it with:
 
 ```bash
 pipx install Cerberus-Game && Cerberus
 ```
 
-You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
+You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environment.**
 
 > Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
 
