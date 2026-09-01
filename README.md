@@ -30,7 +30,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ## 🌀 The Path
 
-[**`Kernel`**](./Theory/Kernel.md)⟶[**`Skeleton`**](./Skeleton/README.md)⟶[**`Hydra`**](./Hydra/README.md)⟶[**`Byzantium`**](./Byzantium/README.md)⟶[**`Mowsie`**](./Mowsie/README.md)⟶[**`Theory`**](./Theory/README.md)
+[**`Kernel`**](./Theory/Kernel.md)⟶[**`Skeleton`**](./Skeleton/README.md)⟶[**`Hydra`**](./Hydra/README.md)⟶[**`Cerburus`**](./Cerberus/README.md)⟶[**`Byzantium`**](./Byzantium/README.md)⟶[**`Mowsie`**](./Mowsie/README.md)⟶[**`Theory`**](./Theory/README.md)
 
 ---
 
