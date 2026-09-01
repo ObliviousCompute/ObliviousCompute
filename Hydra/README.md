@@ -94,7 +94,7 @@ If it works, this may demonstrate a **new computational primitive**.
 
 ---
 
-**Continue to [**`Cerberus`**](../Cerberus/README.md)...**
+**Go Back to [**`Skeleton`**](../Skeleton/README.md) Continue to [**`Cerberus`**](../Cerberus/README.md)...**
 
 ---
 
