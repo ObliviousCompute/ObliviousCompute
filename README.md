@@ -38,7 +38,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 The mathematical progression of the primitive.
 
-[**Kernel**](./Theory/Kernel.md) follows local admissibility through relational symmetry, reducing the distributed configuration.
+[**`Kernel`**](./Theory/Kernel.md) follows local admissibility through relational symmetry, reducing the distributed configuration.
 
 **The math is simple. The implications are not.**
 
