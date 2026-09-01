@@ -40,6 +40,10 @@ The mathematical progression of the primitive.
 
 [**Kernel**](./Theory/Kernel.md) follows local admissibility through relational symmetry, reducing the distributed configuration.
 
+**The math is simple. The implications are not.**
+
+> *[back of the napkin]*
+
 ---
 
 ## 💀 Skeleton 💀
@@ -48,7 +52,7 @@ Pure, *hyper-legible* expression of the primitive.
 
 [**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.
 
-The structure is the explanation.
+**The structure is the explanation.**
 
 > *(the lift diagram)*
 
@@ -60,7 +64,7 @@ The minimal distributed demonstration of the same primitive.
 
 [**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
 
-A simple admissibility gate, expressed in under a thousand lines of code.
+**A simple admissibility gate, expressed in under a thousand lines of code.**
 
 > *(the 1-minute flight)*
 
@@ -72,7 +76,7 @@ The bare-bones Byzantine-resistant expression of Oblivious Compute.
 
 [Cerberus](https://example.com) compresses equivocation, ClawBack, and a complete distributed BonePile into an intentionally small machine built to be read and understood as a whole.
 
-Nine Heads. Ninety-nine bones. No replicated history.
+**Nine Heads. Ninety-nine bones. No replicated history.**
 
 > *[the 5-minute fight]*
 
@@ -84,7 +88,7 @@ A live, networked terminal game for up to 24 players.
 
 [**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
 
-Just a live board, shaped in real time by the observers inside it.
+**Just a live board, shaped in real time by the observers inside it.**
 
 > *(the 10-minute flight)*
 
@@ -92,19 +96,17 @@ Just a live board, shaped in real time by the observers inside it.
 
 ## 🐭 Mowsie 🐭
 
-The first real-world application of Oblivious Compute.
-
----
-
 **🚧 Currently Under Construction 🚧**
 
 *Source code will be published at the first stable milestone.*
 
 ---
 
+The first real-world application of Oblivious Compute.
+
 [**`Mowsie`**](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
 
-It is the simplest expression of the primitive in the real world.
+**The simplest expression of the primitive in the real world.**
 
 > *(the 1-hour flight)*
 
