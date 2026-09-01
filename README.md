@@ -64,7 +64,7 @@ The minimal distributed demonstration of the same primitive.
 
 [**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
 
-**A simple admissibility gate, expressed in under a thousand lines of code.**
+**A simple admissibility gate in under a thousand lines of code.**
 
 > *[the 1-minute flight]*
 
@@ -88,7 +88,7 @@ A live, networked terminal game for up to 24 players.
 
 [**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
 
-**Just a live board, shaped in real time by the observers inside it.**
+**Just a live board with observers inside it.**
 
 > *[the 10-minute flight]*
 
