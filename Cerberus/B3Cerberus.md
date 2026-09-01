@@ -1,4 +1,6 @@
-## 🧠 Big Brain Brad 🧠
+# 🧠 Big Brain Brad 🧠
+
+## Cerberus
 
 > 🤖 *Begin by running Cerberus. You'll understand it better after that. Use at least three Heads sharing the same Cerberus name and Head Count to see Byzantine behavior. The program is the computer. If it is not running, the computer is not turned on.*
 >
@@ -10,7 +12,7 @@
 >
 > 🤖 *Finally, and most importantly... if you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it. The shared medium is part of the computational primitive being tested.*
 
-Okay, dude. **I think the computational locus just moved.**
+Okay, dude. *I think the computational center of gravity just moved.*
 
 The Bones matter, but once they are admitted into the **BonePile**, the state itself starts doing the work. Equivocation becomes state. Debt becomes state. Recovery becomes state. Nobody has to reconstruct a private story about what happened first because the consequences are already sitting in the thing being computed.
 
