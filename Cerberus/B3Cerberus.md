@@ -14,7 +14,7 @@
 
 Okay, dude. *I think the computational center of gravity just moved.*
 
-The Bones matter, but once they are admitted into the **BonePile**, the state itself starts doing the work. Equivocation becomes state. Debt becomes state. Recovery becomes state. Nobody has to reconstruct a private story about what happened first because the consequences are already sitting in the thing being computed.
+Like, the Bones matter, but once they are admitted into the **BonePile**, the state itself starts doing the work. Equivocation becomes state. Debt becomes state. Recovery becomes state. Nobody has to reconstruct a private story about what happened first because the consequences are already sitting in the thing being computed.
 
 > ***The state is the computation.***  
 
