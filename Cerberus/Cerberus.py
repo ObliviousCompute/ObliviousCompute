@@ -1,5 +1,9 @@
 from Game.Guardian import Run
 
 
-if __name__ == "__main__":
+def main():
     Run()
+
+
+if __name__ == "__main__":
+    main()
