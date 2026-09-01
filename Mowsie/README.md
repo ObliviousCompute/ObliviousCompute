@@ -10,7 +10,7 @@
 
 ---
 
-## 🧬 What This Is
+## 🧪 What This Is 🧪
 
 Mowsie is a shared state that moves value.
 
@@ -70,7 +70,7 @@ The mechanism is the same, just routed over the internet.
 
 ---
 
-## 🧩 The Pieces of Mowsie
+## 🧬 The Pieces of Mowsie 🧬
 
 *If you want to understand how it works under the hood, this is the model.*
 
