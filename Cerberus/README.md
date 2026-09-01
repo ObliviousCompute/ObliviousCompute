@@ -12,15 +12,13 @@
 
 ## 🐕🐕DogPile🐕🐕
 
-Cerberus is a bare-bones experiment in Byzantine-resistant distributed state.
+## 🐕🐕🐕🐕 DogPile 🐕🐕🐕🐕
 
-Nine logical **Heads** fight over a single 99-bone **BonePile**. Every observer maintains the complete state independently, with no replicated log and no authority deciding which story happened first.
+Cerberus is an intentionally small experiment in Byzantine-resistant distributed state, built to be read, run, and understood in one sitting.
 
-When a Head signs conflicting actions, Cerberus does not necessarily choose one and discard the other. If both can be paid, both become consequential state. If they cannot, **Clawback** pulls the consequences apart until an admissible state remains.
+Nine logical **Heads** fight over a single 99-bone **BonePile**. Every observer maintains the complete state independently, with no replicated log and no authority deciding which story happened first. When a Head signs conflicting actions, Cerberus does not necessarily choose one and discard the other. If both can be paid, both become consequential state. If they cannot, **Clawback** pulls the consequences apart until an admissible state remains.
 
-Cerberus is a distributed expression of an **Oblivious Compute** system. The nodes do not maintain private histories of one another. They continuously project state into a common medium and admit what survives the same rules.
-
-*Simply put, it's Byzantine agreement stripped down to the bare bones.*
+Cerberus is a distributed expression of an **Oblivious Compute** system: independently maintained states continuously project into a common medium and admit what survives the same rules.
 
 **Make the dogs fight. Try to split the pile.**
 
