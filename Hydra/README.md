@@ -32,6 +32,12 @@ Hydra distributes conserved tallies across independently maintained nodes. The t
 
 ---
 
+<img src="../Relics/Chomp.gif"/>
+  
+> *Think Hungry Hungry Hippos*
+
+---
+
 ## 🐧 Operating System Support
 
 - ✅ Linux  
@@ -70,12 +76,6 @@ Hydra runs in two modes.
 Leave and return *microseconds or millennia later*. As long as one participant still holds the state, the projection persists.
 
 **You do not reconnect to the past. You reconnect to what is.**
-
----
-
-<img src="../Relics/Chomp.gif"/>
-  
-> *Think Hungry Hungry Hippos*  
 
 ---
 
