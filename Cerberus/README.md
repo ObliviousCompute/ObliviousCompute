@@ -1,4 +1,4 @@
-# 🔥 Cerberus 🔥
+# 🐕 Cerberus 🐕
 
 **Watch nine heads fight over a pile of bones.**
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 🐕🐕 DogPile 🐕🐕
+## 🦴 BonePile 🦴
 
 Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single 99-bone **BonePile**, with every observer maintaining the complete state independently.
 
@@ -20,7 +20,7 @@ Cerberus is a distributed expression of an **Oblivious Compute** system: indepen
 
 ---
 
-## 🪝 ClawBack 🪝
+## 🔥 ClawBack 🔥
 
 Cerberus does not try to pretend equivocation never happened. When a Head signs conflicting actions, both can become consequential state.
 
