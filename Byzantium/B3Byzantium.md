@@ -18,7 +18,7 @@ The old Byzantine Generals story has messengers running around a city, arrows fl
 
 ***And I know,*** I see the double spend. An equivocator can expose multiple valid children and get punished by them. It's part of the game. **BFT was never a promise to protect the Byzantine after they equivocate**. The problem is whether that participant can use conflicting information to split honest observers into incompatible decisions.
 
-> 🧠 *Backstabbers stabbing backstabbers...hehe*
+> 🧠 *Backstabbers backstabbing backstabbers...hehe*
 
 Whatever happens to the equivocator afterward is somebody else's decision. Ignore them. Debit them. Cut their head off... It's not my problem. ***Byzantium protects the field from equivocation. It does not promise to protect an equivocator from the consequences of equivocation.***
 
