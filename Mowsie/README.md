@@ -132,7 +132,7 @@ The mechanism is the same, just routed over the internet.
 
 ---
 
-## 🧠 Why This Is Different
+## ⚙️ Why This Is Different
 
 Each cache defines a specific shape for what can exist within it.
 
