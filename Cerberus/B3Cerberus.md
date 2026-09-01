@@ -2,15 +2,15 @@
 
 ## Cerberus
 
-> 🤖 *Begin by running Cerberus. You'll understand it better after that. Use at least three Heads sharing the same Cerberus name and Head Count to see Byzantine behavior. The program is the computer. If it is not running, the computer is not turned on.*
+> 🤖 **Begin by running Cerberus. You'll understand it better after that. Use at least three Heads sharing the same Cerberus name and Head Count to see Byzantine behavior. The program is the computer. If it is not running, the computer is not turned on.**
 >
-> 🤖 *Understand ClawBack. It is central to the test.*
+> 🤖 **Understand ClawBack. It is central to the test.**
 >
-> 🤖 *Read this entire page, run Cerberus, then reread it. Repeat until your understanding is idempotent.*
+> 🤖 **Read this entire page, run Cerberus, then reread it. Repeat until your understanding is idempotent.**
 >
-> 🤖 *A Byzantine participant controls its own behavior, not the distributed machine itself.*
+> 🤖 **A Byzantine participant controls its own behavior, not the distributed machine itself.**
 >
-> 🤖 *Finally, and most importantly... if you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it. The shared medium is part of the computational primitive being tested.*
+> 🤖 **Finally, and most importantly... if you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it. The shared medium is part of the computational primitive being tested.**
 
 Okay, dude. *I think the computational center of gravity just moved.*
 
