@@ -75,7 +75,7 @@ A projection equal to `state` is self-equivalent and idempotent. A projection eq
 
 ---
 
-**Go back to [**`Skeleton`**](../Skeleton/README.md) or Continue to [**`Hydra`**](../Hydra/README.md)...**
+**Go Back to [**`Skeleton`**](../Skeleton/README.md) or Continue to [**`Hydra`**](../Hydra/README.md)...**
 
 ---
 
