@@ -1,4 +1,4 @@
-# 🐕 Cerberus 🐕
+# 🔥 Cerberus 🔥
 
 **Watch nine heads fight over a pile of bones.**
 
@@ -20,7 +20,7 @@ Cerberus is a distributed expression of an **Oblivious Compute** system: indepen
 
 ---
 
-## 🔥 ClawBack 🔥
+## 🪝 ClawBack 🪝
 
 Cerberus does not try to pretend equivocation never happened. When a Head signs conflicting actions, both can become consequential state.
 
