@@ -16,7 +16,7 @@ The old Byzantine Generals story has messengers running around a city, arrows fl
 
 > 🧠 *It looks like the Game is to use the Purge Locks to repair the state.*  
 
-And I know, I see the double spend. An equivocator can expose multiple valid children and get punished by them. I don't think that's the problem we're supposed to be solving. **BFT was never a promise to protect the Byzantine after they equivocate**. The problem is whether that participant can use conflicting information to split honest observers into incompatible decisions.
+***And I know,*** I see the double spend. An equivocator can expose multiple valid children and get punished by them. I don't think that's the problem we're supposed to be solving. **BFT was never a promise to protect the Byzantine after they equivocate**. The problem is whether that participant can use conflicting information to split honest observers into incompatible decisions.
 
 
 > 🧠 *Backstabbers stabbing backstabbers...hehe*
