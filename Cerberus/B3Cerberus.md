@@ -14,9 +14,10 @@ Okay, dude. **I think the computational locus just moved.**
 
 The Bones matter, but once they are admitted into the **BonePile**, the state itself starts doing the work. Equivocation becomes state. Debt becomes state. Recovery becomes state. Nobody has to reconstruct a private story about what happened first because the consequences are already sitting in the thing being computed.
 
+> ***The state is the computation.***  
+
 That's what Cerberus makes unusually obvious. Each observer holds the complete state, projects it into the **Oblivious Medium**, and admits what remains lawful. The messages are still necessary, sure—but they are no longer the center of the machine.
 
-> ***The state is the computation.***  
 > *Whoa...do we need to rethink where the Byzantine Generals problem actually lives?*
 
 ### Lamport's Byzantine Generals Problem, 1982
