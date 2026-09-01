@@ -20,7 +20,7 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ---
 
-## 🔥 Equivocation 🔥
+## 🔱 Equivocation 🔱
 
 **Byzantium protects the field from equivocation; it does not protect an equivocator from equivocation.**
 
