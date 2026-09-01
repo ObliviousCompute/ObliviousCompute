@@ -64,6 +64,14 @@ Byzantium runs in two modes.
 
 ---
 
+## 🧩 Continuity
+
+Leave and return *microseconds or millennia later*. As long as one participant still holds the state, the projection persists.
+
+**You do not reconnect to the past. You reconnect to what is.**
+
+---
+
 ## ♟️ The Board ♟️
 
 At the center of Byzantium is a **24-cell board**.
@@ -81,22 +89,6 @@ When participants agree on those 24 cells, the result behaves like a single stru
 <img src="../Relics/DoubleTrouble.gif"/>
 
 > *Fun Fact: **This GIF is over 5× the size** of the entire Byzantium runtime.*
-
----
-
-## 🧩 Continuity
-
-You can leave and come back any time. *Seconds, minutes, or hours.*
-
-As long as at least one participant is still connected, the projection persists.
-
-It’s like stepping back up to a ***card table*** already in progress.
-
-You don’t ask what happened while you were gone.
-
-***You look down. The game is already there.***
-
-> ***You don’t reconnect to the past. You reconnect to the present.***
 
 ---
 
