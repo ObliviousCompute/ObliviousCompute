@@ -88,7 +88,7 @@ A live, networked terminal game for up to 24 players.
 
 [**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
 
-**Just a live board with observers inside it.**
+**Will the state survive betrayal?**
 
 > *[the 10-minute flight]*
 
