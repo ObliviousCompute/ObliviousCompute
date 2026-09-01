@@ -27,7 +27,7 @@ What happens to the equivocator afterward is somebody else's decision. Ignore th
 
 ---
 
-**Back to [**`Byzantium`**](./README.md)...**
+**Back to [**`Cerberus`**](./README.md)...**
 
 ---
 
