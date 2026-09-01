@@ -84,7 +84,7 @@ If it works, this may demonstrate a **new computational primitive**.
 
 ---
 
-**Continue to [**`Byzantium`**](../Byzantium/README.md)...**
+**Continue to [**`Cerberus`**](../Cerberus/README.md)...**
 
 ---
 
