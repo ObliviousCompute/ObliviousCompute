@@ -181,7 +181,7 @@ The system does not rely on specialized infrastructure.
 
 ---
 
-**Checkout [**`Theory`**](../Theory/README.md)...**
+**Go Back to [**`Byzantium`**](../Byzantium/README.md) or Continue to [**`Theory`**](../Theory/README.md)...**
 
 ---
 ## 📜 License
