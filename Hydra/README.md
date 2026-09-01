@@ -61,7 +61,17 @@ Hydra runs in two modes.
 
 *All nodes must use the same depth (port), and the same number of mutated heads.*  
 
-> *Run Hydra in a **Swamp** and see who can chomp the most Tailies.*  
+> *Run Hydra in a **Swamp** and see who can chomp the most Tailies.*
+
+---
+
+## 🧩 Continuity
+
+Leave and return *microseconds or millennia later*. As long as one participant still holds the state, the projection persists.
+
+**You do not reconnect to the past. You reconnect to what is.**
+
+---
 
 <img src="../Relics/Chomp.gif"/>
   
