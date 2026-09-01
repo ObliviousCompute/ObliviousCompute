@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Cerberus-Game"
+version = "0.1.0"
+description = "Terminal entrypoint for Cerberus"
+requires-python = ">=3.10"
+dependencies = [
+    "cryptography",
+]
+
+[project.scripts]
+Cerberus = "Cerberus:main"
+
+[tool.setuptools]
+py-modules = ["Cerberus"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["Game*"]
