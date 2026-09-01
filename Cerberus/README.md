@@ -4,6 +4,10 @@
 
 ---
 
+<img src="../Relics/DogBoard.png" width="600"/>
+
+---
+
 ## 🐕🐕DogPile🐕🐕
 
 Cerberus is a bare-bones experiment in Byzantine-resistant distributed state.
@@ -66,7 +70,7 @@ Cerberus runs locally over sockets as a sandbox smoke test.
 
 ## 🏛️ Architecture
 
-<img src="../Relics/DogTree.png" width="400"/>
+<img src="../Relics/DogTree.png" width="600"/>
 
 > *How Bones shape the BonePile*
 
