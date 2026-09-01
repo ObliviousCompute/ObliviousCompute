@@ -1,6 +1,6 @@
 # 🔥 Cerberus 🔥
 
-**Watch nine heads fight itself over a pile of bones.**
+**Watch nine heads fight over a pile of bones.**
 
 
 ## 🪝 ClawBack 🪝
