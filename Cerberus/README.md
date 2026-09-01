@@ -97,7 +97,7 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-**Go Back to [**`Cerberus`**](../Cerberus/README.md) or Continue to [**`Byzantium`**](../Byzantium/README.md)...**
+**Go Back to [**`Hydra`**](../Hydra/README.md) or Continue to [**`Byzantium`**](../Byzantium/README.md)...**
 
 ---
 
