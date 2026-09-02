@@ -1,10 +1,12 @@
 # ⚔️ Byzantium ⚔️
 
-**A shared projection where actions become reality.**
+**Rebuild the fractured state.**
 
 ---
 
 <img src="../Relics/BringTheChips.gif"/>
+
+> *What you’re seeing isn’t a representation of the system, it **is** the system.*
 
 ---
 
@@ -72,23 +74,9 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-## ♟️ The Board ♟️
-
-At the center of Byzantium is a **24-cell board**.
-
-Those 24 cells are the state.
-
-Everything you see between the menu and the input line—the 6x4 grid—is the system itself. There is nothing behind it. The system doesn’t synchronize logs or events. It synchronizes this board.
-
-When participants agree on those 24 cells, the result behaves like a single structure perceived from multiple places.
-
----
-
-> *What you’re seeing isn’t a representation of the system, it **is** the system.*
-
 <img src="../Relics/DoubleTrouble.gif"/>
 
-> *Fun Fact: **This GIF is over 5× the size** of the entire Byzantium runtime.*
+> ***The 24-cell board is the state:*** *Byzantium synchronizes no log or event history, only a single structure perceived from multiple places.*
 
 ---
 
