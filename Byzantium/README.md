@@ -110,16 +110,6 @@ The system prioritizes **state integrity over transport security**.
 
 ---
 
-## 🪶 Note
-
-If the Hydra demo was the one-minute flight, this is closer to the ten-minute flight.
-
-It’s not smooth. It’s not comfortable.
-
-But it flies.
-
----
-
 <img src="../Relics/CollectingSouls.gif" width="450"/>
 
 ---
