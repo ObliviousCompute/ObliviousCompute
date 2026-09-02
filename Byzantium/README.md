@@ -1,6 +1,6 @@
 # ⚔️ Byzantium ⚔️
 
-**Rebuild the fractured state.**
+**Rebuild the fractured state after betrayal.**
 
 ---
 
