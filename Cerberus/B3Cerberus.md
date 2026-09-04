@@ -12,7 +12,7 @@
 >
 > 🤖 ***Finally, and most importantly... if you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it. The shared medium is part of the computational primitive being tested.***
 
-Okay, dude!! the weirdest part is:
+Okay, dude!! So this is the weirdest part.
 
 Every Head can lie, double spend, fork, or generally act like an asshole. But once those Bones hit the BonePile, they’re no longer somebody’s private version of events. They become something the state itself has to deal with.
 
