@@ -51,19 +51,17 @@ class Geometry:
     @classmethod
     def Split(cls, total: int, cells: Sequence[Any], *, by=None) -> Tuple[Tuple[str, int], ...]:
         total = max(0, int(total or 0))
-        live = [cell for cell in cells if Key(cell)]
-        count = len(live)
-        if total <= 0 or count <= 0:
+        members = [cell for cell in cells if Key(cell)]
+        if not members:
             return ()
-        ordered = sorted(live, key=Amount if by is None else by)
-        base = total // count
-        rem = total % count
-        out: List[Tuple[str, int]] = []
-        for i, cell in enumerate(ordered):
-            share = base + (1 if i < rem else 0)
-            if share > 0:
-                out.append((Key(cell), share))
-        return tuple(out)
+        ordered = sorted(members, key=Amount if by is None else by)
+        live = [cell for cell in ordered if not Burned(cell)]
+        if total > 0 and not live:
+            raise ValueError('no live targets available for salt distribution')
+        base = 0 if not live else total // len(live)
+        rem = 0 if not live else total % len(live)
+        shares = {Key(cell): base + (1 if i < rem else 0) for i, cell in enumerate(live)}
+        return tuple((Key(cell), 0 if Burned(cell) else int(shares.get(Key(cell), 0))) for cell in ordered)
 
 
 geometry = Geometry
@@ -84,6 +82,7 @@ Salt = '\x1b[97m'
 Ember = '\x1b[38;5;130m'
 Flame = '\x1b[38;5;208m'
 Flare = '\x1b[38;5;214m'
+Blood = '\x1b[38;5;52m'
 Fps = 60.0
 
 
@@ -130,6 +129,8 @@ def Crucible(cache: Any = None) -> Dict[str, str]:
     flicker4 = FlickerCycle((Flare, Flare, Flame, Ember), phase)
     flicker5 = FlickerCycle((Ember, Ember, Ember, Flame, Flame, Flare), phase)
     flicker6 = FlickerCycle((Ash, Ember, Ember, Flare, Ember, Ember), phase)
+    pulse = FlickerCycle((Blood, Ash, Ash, Ash, Blood, Ash, Ash, Ash, Ash, Ash, Ash, Ash), phase)
+    emberpulse = FlickerCycle((Blood, Ember, Ember, Ember, Blood, Ember, Ember, Ember, Ember, Ember, Ember, Ember), phase)
 
     return {
         'Ash': Ash,
@@ -137,6 +138,9 @@ def Crucible(cache: Any = None) -> Dict[str, str]:
         'Ember': Ember,
         'Flame': Flame,
         'Flare': Flare,
+        'Blood': Blood,
+        'Pulse': pulse,
+        'EmberPulse': emberpulse,
         'Flicker1': flicker1,
         'Flicker2': flicker2,
         'Flicker3': flicker3,
@@ -154,14 +158,24 @@ class Cell:
     salt: int = 0
     purge: Any = None
     lock: Any = None
+    lowlock: Any = None
     sign: Any = None
+
+
+@dataclass(frozen=True)
+class AshState:
+    sender: str = ''
+    text: str = ''
+    total: int = 0
 
 
 @dataclass(frozen=True)
 class State:
     cells: Tuple[Cell, ...] = ()
     self: Tuple[str, str] = ('', '')
-    monument: Tuple[str, ...] = ()
+    ash: Optional[AshState] = None
+    dreamfall: bool = False
+    ashfall: bool = False
 
 
 @dataclass
@@ -244,6 +258,7 @@ class Cache:
     lore: bool = False
     showdebug: bool = False
     lorescroll: int = 0
+    monumentscroll: int = 0
     mode: str = 'Siege'
     gate: str = '9000'
     skeleton: str = 'Skeleton'
@@ -268,8 +283,8 @@ ActionMap: Dict[Action, Dict[str, object]] = {
     Action.Rally: {'floor': 100, 'desc': 'spend salt on your column', 'preview': 'You Got To Pump It Up', 'label': 'COHORT'},
     Action.Wrath: {'floor': 1000, 'desc': 'spend salt on everyone', 'preview': 'Show No Mercy', 'label': 'LEGION'},
     Action.Defect: {'floor': 0, 'desc': 'rank-dependent cost to swap seats', 'preview': 'Friends Are Friends Until The End', 'label': None},
-    Action.Purge: {'floor': 0, 'desc': '', 'preview': 'Restore Formation', 'label': None},
-    Action.Monument: {'floor': 0, 'desc': '', 'preview': 'Memory Set In Stone', 'label': None},
+    Action.Purge: {'floor': 0, 'desc': '', 'preview': 'Restore a Fractured State', 'label': None},
+    Action.Monument: {'floor': 0, 'desc': '', 'preview': 'When You Gotta Go', 'label': None},
     Action.Lore: {'floor': 0, 'desc': '', 'preview': 'Where Truth Lies', 'label': None},
     Action.Exit: {'floor': 0, 'desc': '', 'preview': 'Abandon Post', 'label': None},
 }
@@ -284,6 +299,7 @@ def MakeCell(raw: Any) -> Cell:
         salt=int(getattr(raw, 'salt', 0) or 0),
         purge=getattr(raw, 'purge', None),
         lock=getattr(raw, 'lock', None),
+        lowlock=getattr(raw, 'lowlock', None),
         sign=getattr(raw, 'sign', None),
     )
 
@@ -298,13 +314,33 @@ def MakeSelf(raw: Any) -> Tuple[str, str]:
     return (str(getattr(raw, 'soul', '') or ''), str(getattr(raw, 'key', '') or '').strip())
 
 
+def MakeAsh(raw: Any) -> Optional[AshState]:
+    if raw is None:
+        return None
+    if isinstance(raw, AshState):
+        return raw
+    if isinstance(raw, dict):
+        return AshState(
+            sender=str(raw.get('sender', '') or '').strip(),
+            text=str(raw.get('text', '') or ''),
+            total=int(raw.get('total', 0) or 0),
+        )
+    return AshState(
+        sender=str(getattr(raw, 'sender', '') or '').strip(),
+        text=str(getattr(raw, 'text', '') or ''),
+        total=int(getattr(raw, 'total', 0) or 0),
+    )
+
+
 def MakeState(raw: Any, selfraw: Any = None) -> State:
     if isinstance(raw, State) and selfraw is None:
         return raw
     cells = tuple(MakeCell(cell) for cell in getattr(raw, 'cells', ()) or ())
     me = MakeSelf(selfraw if selfraw is not None else getattr(raw, 'self', None))
-    monument = tuple(getattr(raw, 'monument', ()) or ())
-    return State(cells=cells, self=me, monument=monument)
+    ash = MakeAsh(getattr(raw, 'ash', None))
+    dreamfall = bool(getattr(raw, 'dreamfall', False))
+    ashfall = bool(getattr(raw, 'ashfall', False))
+    return State(cells=cells, self=me, ash=ash, dreamfall=dreamfall, ashfall=ashfall)
 
 
 def VisLen(text: str) -> int:
@@ -423,24 +459,6 @@ def SpineCost(cost: int, *, width: int = SaltWidth, signed: bool = True) -> str:
     return text.rjust(int(width or 0))
 
 
-def ParseMonument(line: str, *, name: int = NameWidth):
-    if len(line) < 10:
-        return (None, None, line)
-    head = line[:name].strip()
-    tail = line[name:].strip()
-    match = re.match(r'^([+-]?[\d,]+):\s*(.*)', tail)
-    return (head, match.group(1), match.group(2)) if match else (head, None, tail)
-
-
-def MonumentAnchorCol(monuments: List[str], anchor: str, *, name: int = NameWidth) -> int:
-    parsed = [ParseMonument(m, name=name) for m in monuments]
-    for head, score, _ in parsed:
-        if head == anchor and score is not None:
-            return len(f'{head.ljust(name)[:name]} {score}')
-    widths = [len(f'{head.ljust(name)[:name]} {score}') for head, score, _ in parsed if head is not None]
-    return max(widths, default=0)
-
-
 def Key(raw: Any) -> str:
     if raw is None:
         return ''
@@ -454,6 +472,19 @@ def Key(raw: Any) -> str:
 
 def Amount(cell: Any) -> int:
     return int(getattr(cell, 'salt', 0) or 0)
+
+
+def Equivocator(cell: Any) -> bool:
+    return getattr(cell, 'lowlock', None) is not None
+
+
+def Burned(cell: Any) -> bool:
+    return Equivocator(cell) and Amount(cell) == 0
+
+
+def WhisperViable(state: Any, mine: int, target: int) -> bool:
+    cells = list(getattr(state, 'cells', []) or [])
+    return 0 <= int(target) < len(cells) and int(target) != int(mine) and bool(Key(cells[int(target)])) and not Burned(cells[int(target)])
 
 
 def SelfKey(state: Any) -> str:
@@ -546,7 +577,14 @@ def MoveTable(state: Any, city: int, arrow: str, current: Action) -> int:
             return old
         return old
     cand = geometry.Move(old, arrow)
-    if current in (Action.Whisper, Action.Purge) and cand == mine:
+    if current == Action.Whisper:
+        q = cand
+        for _ in range(geometry.cells):
+            if WhisperViable(state, mine, q):
+                return q
+            q = geometry.Move(q, arrow)
+        return old
+    if current == Action.Purge and cand == mine:
         q = cand
         for _ in range(geometry.cells - 1):
             q = geometry.Move(q, arrow)

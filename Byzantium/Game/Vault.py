@@ -25,7 +25,7 @@ DefaultSkeleton = 'skeleton'
 DefaultSecret = 'password'
 DefaultSoul = 'SATOSHI'
 DefaultGenesis = 1
-TextMaxLen = 68
+TextMaxLen = Field.TextHumanMax
 
 ExpectedSpendCounts = {
     Whisper: 1,
@@ -58,7 +58,7 @@ class Glyph:
         kind = str(self.kind or '').strip().lower()
         key = str(self.key or '').strip()
         pairs = tuple((str(k or '').strip(), int(v or 0)) for k, v in tuple(self.pairs or ()))
-        text = str(self.text or '')[:TextMaxLen]
+        text = str(self.text or '').replace('\r', ' ').replace('\n', ' ')[:TextMaxLen]
         lock = self.lock
         if lock is not None and not isinstance(lock, Field.Lock):
             raise TypeError('glyph.lock must be Field.Lock or None')
@@ -166,17 +166,30 @@ def LockParse(value: Any) -> Optional[Field.Lock]:
     if isinstance(value, Field.Lock):
         return value
     if isinstance(value, dict):
-        if 'parent' not in value or 'child' not in value:
-            raise KeyError('lock dict must contain parent and child')
-        return Field.Lock(
-            parent=str(value['parent'] or Field.ZeroHashHex),
-            child=str(value['child'] or Field.ZeroHashHex),
+        payout = tuple(
+            Field.Payout(
+                tag=str(item.get('tag', item.get('key', '')) or '').strip().lower(),
+                salt=int(item.get('salt', 0) or 0),
+            )
+            for item in tuple(value.get('payout', ()) or ())
         )
-    parent = getattr(value, 'parent')
-    child = getattr(value, 'child')
+        return Field.Lock(
+            kind=Field.KindValue(value.get('kind', Field.KindEmpty)),
+            tag=str(value.get('tag', '') or '').strip().lower(),
+            parent=str(value.get('parent', Field.ZeroHashHex) or Field.ZeroHashHex),
+            child=str(value.get('child', Field.ZeroHashHex) or Field.ZeroHashHex),
+            payout=payout,
+            texthash=str(value.get('texthash', Field.ZeroHashHex) or Field.ZeroHashHex),
+            sign=str(value.get('sign', Field.NullSignHex) or Field.NullSignHex),
+        )
     return Field.Lock(
-        parent=str(parent or Field.ZeroHashHex),
-        child=str(child or Field.ZeroHashHex),
+        kind=Field.KindValue(getattr(value, 'kind', Field.KindEmpty)),
+        tag=str(getattr(value, 'tag', '') or '').strip().lower(),
+        parent=str(getattr(value, 'parent', Field.ZeroHashHex) or Field.ZeroHashHex),
+        child=str(getattr(value, 'child', Field.ZeroHashHex) or Field.ZeroHashHex),
+        payout=tuple(getattr(value, 'payout', ()) or ()),
+        texthash=str(getattr(value, 'texthash', Field.ZeroHashHex) or Field.ZeroHashHex),
+        sign=str(getattr(value, 'sign', Field.NullSignHex) or Field.NullSignHex),
     )
 
 
@@ -294,77 +307,62 @@ class Vault:
 
     def Text(self, glyph: Glyph) -> Field.Text:
         kind = str(glyph.kind or '').strip().lower()
-        rawtext = str(glyph.text or '')
-        if not kind:
-            return Field.Text(text=rawtext[:TextMaxLen])
-        suffix = f'|{kind}'
-        if rawtext.lower().endswith(suffix):
-            return Field.Text(text=rawtext[:TextMaxLen])
-        return Field.Text(text=f'{rawtext}{suffix}'[:TextMaxLen])
+        return Field.CanonicalText(glyph.text, kind)
 
     def HashText(self, textbody: Field.Text) -> str:
         return Field.TextHash(textbody)
 
-    def Salt(self, pairs: Sequence[TransferPair]) -> Tuple[Field.Salt, ...]:
-        return tuple(Field.Salt(key=recipientkey, salt=int(amount)) for recipientkey, amount in pairs)
-
-    def HashSalt(self, saltbody: Tuple[Field.Salt, ...]) -> str:
-        return Field.SaltHash(self.publickeyhex, saltbody)
+    def Payout(self, pairs: Sequence[TransferPair]) -> Tuple[Field.Payout, ...]:
+        return tuple(
+            Field.Payout(tag=Field.PlayerTag(recipientkey), salt=int(amount))
+            for recipientkey, amount in pairs
+        )
 
     def BlankLock(self, lock: Field.Lock) -> bool:
-        return (
-            str(lock.parent or Field.ZeroHashHex) == Field.ZeroHashHex
-            and str(lock.child or Field.ZeroHashHex) == Field.ZeroHashHex
-        )
+        return bool(lock.kind == Field.KindEmpty and lock.child == Field.ZeroHashHex)
 
     def BaseLock(self, glyph: Glyph) -> Field.Lock:
         currentlock = glyph.lock
         if currentlock is None or self.BlankLock(currentlock):
-            return Field.Lock(parent=Field.ZeroHashHex, child=Field.ZeroHashHex)
+            return Field.GenesisLock(self.publickeyhex)
         return currentlock
 
-    def ChildLockHex(self, kind: str, parent: str, texthash: str, pairs: Sequence[TransferPair]) -> str:
-        parts = [str(kind or '').lower(), str(parent or Field.ZeroHashHex), str(texthash or Field.ZeroHashHex)]
-        for recipientkey, amount in pairs:
-            parts.extend([str(recipientkey), str(int(amount))])
-        return Sha256Hex('|'.join(parts).encode('utf-8'))
+    def ChildLockHex(self, kind: str, tag: str, parent: str, texthash: str, payout: Tuple[Field.Payout, ...]) -> str:
+        return Field.ChildHex(
+            Field.KindValue(kind),
+            str(tag or '').strip().lower(),
+            str(parent or Field.ZeroHashHex),
+            tuple(payout),
+            str(texthash or Field.ZeroHashHex),
+        )
 
-    def HashLock(self, lockbody: Field.Lock) -> str:
-        return Field.LockHash(lockbody)
-
-    def NextLock(self, glyph: Glyph, texthash: str, pairs: Sequence[TransferPair]) -> Field.Lock:
+    def Lock(self, glyph: Glyph, texthash: str, payout: Tuple[Field.Payout, ...]) -> Field.Lock:
         currentlock = self.BaseLock(glyph)
+        tag = Field.PlayerTag(self.publickeyhex)
         parent = str(currentlock.child or Field.ZeroHashHex)
-        child = self.ChildLockHex(glyph.kind, parent, texthash, pairs)
-        return Field.Lock(parent=parent, child=child)
-
-    def Lock(self, glyph: Glyph, texthash: str, pairs: Sequence[TransferPair]) -> Field.Lock:
-        return self.NextLock(glyph, texthash, pairs)
+        kind = Field.KindValue(glyph.kind)
+        child = self.ChildLockHex(glyph.kind, tag, parent, texthash, payout)
+        unsigned = Field.Lock(
+            kind=kind,
+            tag=tag,
+            parent=parent,
+            child=child,
+            payout=tuple(payout),
+            texthash=texthash,
+            sign=Field.NullSignHex,
+        )
+        sign = self.SignDigestHex(Field.LockHash(unsigned))
+        return replace(unsigned, sign=sign)
 
     def SaltGlyph(self, glyph: Glyph) -> Field.SaltGlyph:
         pairs = self.NormalizePairs(glyph.pairs)
         self.AssertGlyphShape(glyph, pairs)
         textbody = self.Text(glyph)
         texthash = self.HashText(textbody)
-        saltbody = self.Salt(pairs)
-        salthash = self.HashSalt(saltbody)
-        lockbody = self.Lock(glyph, texthash, pairs)
-        lockhash = self.HashLock(lockbody)
-        locksign = self.SignDigestHex(lockhash)
-        proto = Field.SaltGlyph(
-            key=self.publickeyhex,
-            saltbody=saltbody,
-            lockbody=lockbody,
-            textbody=textbody,
-            salthash=salthash,
-            lockhash=lockhash,
-            texthash=texthash,
-            sign=Field.NullSignHex,
-            locksign=locksign,
-        )
-        sign = self.SignDigestHex(Field.SaltGlyphHash(proto))
-        body = replace(proto, sign=sign)
-        Field.VerifySalt(body)
+        payout = self.Payout(pairs)
+        lock = self.Lock(glyph, texthash, payout)
+        body = Field.SaltGlyph(lockbody=lock, textbody=textbody)
+        Field.VerifySalt(body, key=self.publickeyhex)
         return body
 
     def Purge(self, glyph: Glyph) -> dict[str, Any]:

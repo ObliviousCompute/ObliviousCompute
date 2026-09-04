@@ -1,3 +1,8 @@
+# The death of a Byzantine:
+# equivocation is tolerated while the actor can still pay.
+# Cross the estate boundary and the field closes around the fork:
+# salt to zero, receipts remain, agency ends.
+
 import os
 import sys
 

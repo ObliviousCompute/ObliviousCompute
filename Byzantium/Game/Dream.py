@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-import re
 import threading
 from typing import Any
 
@@ -12,106 +11,234 @@ import Field
 PurgeGlyph = 'purge'
 DreamGlyph = 'dream'
 SaltGlyph = 'salt'
-MonumentSlots = 3
-MonumentNameWidth = 8
-MonumentPattern = re.compile(r'^(.{0,8})\s+([+-]?[\d,]+):\s*(.*)$')
+NightmareGlyph = 'nightmare'
+WireDream = 0
+WireNightmare = 1
+WirePurge = 2
+WireWhisper = 3
+WireRally = 4
+WireDefect = 5
+WireWrath = 6
+@dataclass(frozen=True)
+class Ash:
+    sender: str = ''
+    text: str = ''
+    total: int = 0
 
 
-def Seat(state: Field.State, key: str) -> int | None:
-    key = str(key or '').strip()
-    if not key:
-        return None
-    for q, cell in enumerate(state.cells):
-        if str(cell.key or '').strip() == key:
-            return q
-    return None
+@dataclass(frozen=True)
+class Surface:
+    cells: tuple[Field.Cell, ...]
+    self: tuple[str, str]
+    pristine: int
+    ash: Ash | None = None
+    dreamfall: bool = False
+    ashfall: bool = False
 
 
-def SameFile(a: int, b: int) -> bool:
-    return int(a) // Field.SeatsPerFile == int(b) // Field.SeatsPerFile
-
-
-def DefectShape(glyph: Field.SaltGlyph) -> bool:
-    return len(tuple(glyph.saltbody or ())) == 6
-
-
-def DefectParts(glyph: Field.SaltGlyph) -> tuple[tuple[Field.Salt, ...], Field.Salt | None]:
-    legs = tuple(glyph.saltbody or ())
-    if len(legs) != 6:
-        return (legs, None)
-    return (legs[:-1], legs[-1])
-
-
-def MonumentParse(line: Any) -> tuple[str, int | None, str]:
-    text = str(line or '').rstrip()
-    match = MonumentPattern.match(text)
-    if not match:
-        head = text[:MonumentNameWidth].strip()
-        tail = text[MonumentNameWidth:].strip() if len(text) > MonumentNameWidth else ''
-        return (head, None, tail or text)
-    head = str(match.group(1) or '').strip()
-    scoretext = str(match.group(2) or '').replace(',', '').strip()
-    body = str(match.group(3) or '')
-    try:
-        score = int(scoretext)
-    except Exception:
-        score = None
-    return (head, score, body)
-
-
-def MonumentScore(line: Any) -> int:
-    head, score, body = MonumentParse(line)
-    return abs(int(score or 0))
-
-
-def AshSplit(text: Any) -> tuple[str, str]:
-    raw = str(text or '').replace('\r', ' ').replace('\n', ' ').strip()
-    body, sep, kind = raw.rpartition('|')
-    if sep:
-        return (kind.strip().lower(), body.strip())
-    return ('', raw)
-
-
-def MonumentClean(text: Any, n: int = 60) -> str:
-    kind, body = AshSplit(text)
-    return body[:n]
-
-
-def MonumentName(name: Any) -> str:
-    raw = str(name or '').strip()
-    if not raw:
-        return 'UNKNOWN'
-    return raw[:MonumentNameWidth].ljust(MonumentNameWidth)
-
-
-def MonumentLine(name: Any, total: int, text: Any) -> str:
-    score = f'{int(total):+,}'
-    body = MonumentClean(text)
-    return f'{MonumentName(name)} {score}:{body}' if body else f'{MonumentName(name)} {score}:'
-
-
-def AshKind(text: Any) -> str:
-    kind, body = AshSplit(text)
-    return kind
-
-
-def AshBroadcastTotal(glyph: Field.SaltGlyph, viewer: str, sender: str, kind: str) -> int:
-    legs = tuple(getattr(glyph, 'saltbody', ()) or ())
-    if viewer == sender:
-        return sum((int(getattr(leg, 'salt', 0) or 0) for leg in legs))
-    direct = sum((int(getattr(leg, 'salt', 0) or 0) for leg in legs if str(getattr(leg, 'key', '') or '').strip() == viewer))
+def AshTotal(glyph: Field.SaltGlyph, viewer: str, sender: str) -> int:
+    legs = tuple(glyph.lockbody.payout or ())
+    viewertag = Field.PlayerTag(viewer) if len(str(viewer or '').strip()) == Field.KeyHexLen else str(viewer or '').strip().lower()
+    sendertag = str(sender or '').strip().lower()
+    if viewertag == sendertag:
+        return sum(int(getattr(leg, 'salt', 0) or 0) for leg in legs)
+    direct = sum(int(getattr(leg, 'salt', 0) or 0) for leg in legs if str(leg.tag or '').strip().lower() == viewertag)
     if direct > 0:
         return direct
-    if kind == 'defect':
+    if int(glyph.lockbody.kind) == Field.KindDefect:
         return max((int(getattr(leg, 'salt', 0) or 0) for leg in legs), default=0)
     return 0
+
+
+def MutatePurge(cell: Field.Cell, *, chainbit: int | None = None, lockbit: int | None = None) -> Field.Cell:
+    Field.VerifyCell(cell)
+    cb = cell.purge.chainbit if chainbit is None else int(chainbit)
+    lb = cell.purge.lockbit if lockbit is None else int(lockbit)
+    return replace(cell, purge=Field.PurgeLocks(chainbit=cb, lockbit=lb))
+
+
+def OpenCell(cell: Field.Cell) -> Field.Cell:
+    return MutatePurge(cell, chainbit=0)
+
+
+def CloseCell(cell: Field.Cell) -> Field.Cell:
+    return MutatePurge(cell, chainbit=1)
+
+
+def Link(current: Field.Cell, candidate: Field.Cell) -> Field.Chain:
+    Field.VerifyCell(current)
+    Field.VerifyCell(candidate)
+    if current == candidate:
+        return Field.Chain(linked=True, relation='Link')
+    if candidate.key != current.key:
+        return Field.Chain(linked=False, relation='reject', open=True, reason='key changed')
+    if Field.Burned(current):
+        if int(candidate.salt) != 0:
+            return Field.Chain(linked=False, relation='reject', open=True, reason='burned actor resurrection')
+        if candidate.lowlock is None:
+            return Field.Chain(linked=False, relation='reject', open=True, reason='burned actor lost competing pair')
+        currentlocks = Field.LockSet(current)
+        candidatelocks = Field.LockSet(candidate)
+        if currentlocks == candidatelocks:
+            return Field.Chain(linked=True, relation='Link', reason='burned pair')
+        try:
+            canonical = Field.CanonicalLocks(*(currentlocks + candidatelocks))
+        except Exception:
+            canonical = tuple()
+        if canonical == candidatelocks:
+            return Field.Chain(linked=True, relation='Link', reason='lower burned pair')
+        return Field.Chain(linked=False, relation='reject', open=True, reason='burned pair mismatch')
+    if candidate.lock.parent == Field.ContinuationChild(current):
+        if candidate.salt < current.salt and candidate.lock.sign == Field.NullSignHex:
+            return Field.Chain(linked=False, relation='reject', open=True, reason='debit without sign')
+        return Field.Chain(linked=True, relation='Link')
+    if Field.LockSet(current) == Field.LockSet(candidate):
+        return Field.Chain(linked=True, relation='Link')
+    return Field.Chain(linked=False, relation='reject', open=True, reason='no Link')
+
+
+def BurnRecipients(state: Field.State, *locks: Field.Lock) -> set[str]:
+    keys: set[str] = set()
+    for lock in locks:
+        for leg in lock.payout:
+            if int(leg.salt) <= 0:
+                continue
+            target = Field.FindCell(state, leg.tag)
+            if target is not None:
+                keys.add(target.key)
+    return keys
+
+
+def ReconcileCellLocks(
+    working: Field.State,
+    candidate: Field.Cell,
+) -> tuple[Field.State, set[str], set[str], set[str]]:
+    current = Field.FindCell(working, candidate.key)
+    if current is None or current.purge.lockbit == 0:
+        return (working, set(), set(), set())
+    incoming = Field.LockSet(candidate)
+    currentlocks = Field.LockSet(current)
+    if not incoming or incoming == currentlocks:
+        return (working, set(), set(), set())
+
+    # A complete zero-Salt Dream may carry a lower burned settlement. The Dream
+    # supplies that whole settlement; do not locally re-burn the exhausted actor.
+    if Field.Burned(current):
+        if int(candidate.salt) != 0 or candidate.lowlock is None:
+            return (working, set(), set(), set())
+        try:
+            canonical = Field.CanonicalLocks(*(currentlocks + incoming))
+        except Exception:
+            return (working, set(), set(), set())
+        if canonical != incoming:
+            return (working, set(), set(), set())
+        settlement = BurnRecipients(working, *(currentlocks + incoming))
+        settlement.discard(current.key)
+        return (working, set(), {current.key}, settlement)
+
+    evidence: Field.Lock | tuple[Field.Lock, ...]
+    evidence = incoming[0] if len(incoming) == 1 else incoming
+    try:
+        repaired, _chains = Field.Adopt(working, evidence)
+    except Exception:
+        return (working, set(), set(), set())
+    if repaired == working:
+        return (working, set(), set(), set())
+    before = {cell.key: cell for cell in working.cells}
+    beforepos = {cell.key: index for index, cell in enumerate(working.cells)}
+    afterpos = {cell.key: index for index, cell in enumerate(repaired.cells)}
+    changed = {
+        cell.key for cell in repaired.cells
+        if before.get(cell.key) != cell or beforepos.get(cell.key) != afterpos.get(cell.key)
+    }
+    refreshed = Field.FindCell(repaired, candidate.key)
+    if refreshed is not None and refreshed.lowlock is not None:
+        changed.update(BurnRecipients(working, *(currentlocks + incoming + Field.LockSet(refreshed))))
+    return (repaired, changed, set(), set())
+
+
+def Assimilate(local: Field.State, incoming: Field.State) -> tuple[Field.State, tuple[Field.Chain, ...]]:
+    Field.VerifyState(local)
+    keys = Field.FindKeys(local)
+    Field.VerifyDream(incoming, expectedkeys=keys)
+    scrubbed = Field.Scrub(incoming)
+
+    # A closed burned surface cannot be resurrected by a whole Dream. Lower
+    # competing siblings may improve its tombstone, but Salt stays zero and the
+    # fork stays on the same parent until that local PurgeLock is cleared.
+    incomingmap = {cell.key: cell for cell in scrubbed.cells}
+    for current in local.cells:
+        if not Field.Burned(current) or current.purge.lockbit == 0:
+            continue
+        candidate = incomingmap.get(current.key)
+        if candidate is None:
+            raise ValueError('burned actor missing from incoming Dream')
+        if int(candidate.salt) != 0:
+            raise ValueError('burned actor cannot be resurrected while PurgeLocked')
+        if candidate.lowlock is None:
+            raise ValueError('burned actor must retain competing children while PurgeLocked')
+        if candidate.lock.parent != current.lock.parent:
+            raise ValueError('burned actor parent cannot change while PurgeLocked')
+
+    # Reconcile signed child evidence on one complete working projection first.
+    # Revoke/Trace/Adopt may touch arbitrary cells, so every touched cell remains
+    # anchored to that coherent repair for the rest of this assimilation pass.
+    working = local
+    protected: set[str] = set()
+    burnedpairs: set[str] = set()
+    burnrecipients: set[str] = set()
+    for candidate in scrubbed.cells:
+        working, changed, pairkeys, recipientkeys = ReconcileCellLocks(working, candidate)
+        protected.update(changed)
+        burnedpairs.update(pairkeys)
+        burnrecipients.update(recipientkeys)
+
+    selected: dict[str, Field.Cell] = {}
+    chainmap: dict[str, Field.Chain] = {}
+    for candidate in scrubbed.cells:
+        current = Field.FindCell(working, candidate.key)
+        if current is None:
+            raise ValueError('incoming state key missing from local state')
+        if current.key in protected:
+            selected[current.key] = current
+            chainmap[current.key] = Field.Chain(linked=True, relation='Link', open=False, reason='reconciled')
+            continue
+        if current.key in burnedpairs:
+            selected[current.key] = CloseCell(candidate)
+            chainmap[current.key] = Field.Chain(linked=True, relation='Link', open=False, reason='burned Dream pair')
+            continue
+        if current.key in burnrecipients and Field.LockSet(current) == Field.LockSet(candidate):
+            if Field.Burned(current) and int(candidate.salt) != 0:
+                selected[current.key] = OpenCell(current)
+                chainmap[current.key] = Field.Chain(linked=False, relation='reject', open=True, reason='burned recipient resurrection')
+            else:
+                selected[current.key] = CloseCell(candidate)
+                chainmap[current.key] = Field.Chain(linked=True, relation='Link', open=False, reason='burn settlement')
+            continue
+        if current.purge.lockbit == 0:
+            selected[current.key] = CloseCell(candidate)
+            chainmap[current.key] = Field.Chain(linked=True, relation='Link', open=False, reason='open')
+            continue
+        outcome = Link(current, candidate)
+        chainmap[current.key] = outcome
+        selected[current.key] = CloseCell(candidate) if outcome.linked else OpenCell(current)
+
+    order = working.cells if working != local else scrubbed.cells
+    cells = tuple(selected[cell.key] for cell in order)
+    chains = tuple(chainmap[cell.key] for cell in order)
+    nextstate = Field.State(
+        cells=cells,
+        self=local.self,
+        pristine=incoming.pristine,
+    )
+    Field.VerifyState(nextstate, expectedkeys=keys)
+    return (nextstate, chains)
 
 
 @dataclass
 class Box:
     vault: Any = None
     crypt: Any = None
-    ashfall: Any = None
 
 
 class Dream:
@@ -122,7 +249,9 @@ class Dream:
         self.citadel = citadel
         self.crypt = crypt
         self.glyph: Any = None
-        self.changed = False
+        self.ash: Ash | None = None
+        self.dreamfall = False
+        self.ashfall = False
         self.bootflare = False
         self.Sleepwalk = threading.Lock()
         self.Dreaming = False
@@ -170,10 +299,11 @@ class Dream:
 
         try:
             while True:
-                self.changed = False
                 self.RouteVault()
+                if self.dreamfall:
+                    self.Publish()
                 self.RouteCrypt()
-                if self.changed:
+                if self.dreamfall:
                     self.Publish()
 
                 with self.Sleepwalk:
@@ -201,47 +331,13 @@ class Dream:
     def Route(self):
         return self.Wake()
 
-    def MonumentName(self, key: str) -> str:
-        key = str(key or '').strip()
-        if self.state is not None:
-            cell = Field.FindCell(self.state, key)
-            if cell is not None:
-                soul = str(getattr(cell, 'soul', '') or '').strip()
-                if soul:
-                    return soul
-        if self.state is not None:
-            selfkey = str(self.state.self[1] or '').strip()
-            selfsoul = str(self.state.self[0] or '').strip()
-            if key and key == selfkey and selfsoul:
-                return selfsoul
-        return key or 'UNKNOWN'
-
-    def MonumentTotal(self, glyph: Field.SaltGlyph) -> int:
-        return sum((int(getattr(leg, 'salt', 0) or 0) for leg in tuple(glyph.saltbody or ())))
-
-    def MonumentEntry(self, glyph: Field.SaltGlyph) -> str:
-        return MonumentLine(self.MonumentName(glyph.key), self.MonumentTotal(glyph), glyph.textbody.text)
-
-    def UpdateMonument(self, state: Field.State, glyph: Field.SaltGlyph) -> Field.State:
-        candidate = self.MonumentEntry(glyph)
-        entries = [str(line) for line in tuple(getattr(state, 'monument', ()) or ()) if str(line or '').strip()]
-        head, score, body = MonumentParse(candidate)
-        if score is None or score <= 0:
-            return state
-        pool = list(entries)
-        if candidate not in pool:
-            pool.append(candidate)
-        ranked = sorted(pool, key=lambda line: (MonumentScore(line), str(line)), reverse=True)[:MonumentSlots]
-        monument = tuple(ranked)
-        if monument == tuple(getattr(state, 'monument', ()) or ()):
-            return state
-        return Field.State(cells=state.cells, self=state.self, monument=monument, pristine=state.pristine)
-
     def AcceptState(self, state: Any, *, publish: bool = True):
         if not isinstance(state, Field.State):
             raise TypeError('Dream.AcceptState expects Field.State')
         firstreal = self.state is None and bool(getattr(state, 'cells', ()) or ())
         self.state = state
+        self.dreamfall = True
+        self.ashfall = False
         if firstreal and (not self.bootflare):
             self.bootflare = True
             flare = self.PurgeFlare()
@@ -251,16 +347,20 @@ class Dream:
         return self.state
 
     def Publish(self):
-        if self.state is None:
-            return None
+        if self.state is None or not self.dreamfall:
+            return self.state
+        surface = Surface(
+            cells=self.state.cells,
+            self=self.state.self,
+            pristine=self.state.pristine,
+            ash=self.ash,
+            dreamfall=True,
+            ashfall=bool(self.ashfall),
+        )
         citadel = self.WakeCitadel()
-        citadel.State = self.state
-        if self.box.ashfall is not None:
-            try:
-                citadel.Ashfall(self.box.ashfall)
-            except Exception:
-                pass
-            self.box.ashfall = None
+        citadel.State = surface
+        self.dreamfall = False
+        self.ashfall = False
         return self.state
 
     def Scrub(self, state: Field.State | None = None) -> Field.State | None:
@@ -276,7 +376,7 @@ class Dream:
         self.box.vault = None
         if self.state is None:
             if isinstance(glyph, Field.State):
-                self.AcceptState(glyph, publish=True)
+                self.AcceptState(glyph, publish=False)
                 return self.state
             raise TypeError('Dream.RouteVault expected Field.State during bootstrap')
         self.Mutate(glyph, source='vault')
@@ -300,36 +400,24 @@ class Dream:
             if isinstance(glyph, Field.State):
                 if int(getattr(glyph, 'pristine', 1) or 0) != 0:
                     glyph = replace(glyph, pristine=0)
-                self.AcceptState(glyph, publish=True)
+                self.AcceptState(glyph, publish=False)
                 return self.state
             raise TypeError('Dream.RouteCrypt expected Field.State during bootstrap')
         self.Mutate(glyph, source='crypt')
         return self.state
 
-    def Ashfall(self, glyph: Field.SaltGlyph) -> Any:
+    def SetAsh(self, glyph: Field.SaltGlyph) -> Ash | None:
         if self.state is None:
             return None
         viewer = str(self.state.self[1] or '').strip()
-        sender = str(glyph.key or '').strip()
-        if not viewer or not sender:
-            return None
+        sender = str(glyph.lockbody.tag or '').strip()
         rawtext = str(getattr(getattr(glyph, 'textbody', None), 'text', '') or '')
-        action, body = AshSplit(rawtext)
-        total = AshBroadcastTotal(glyph, viewer, sender, action)
-        if viewer != sender and total <= 0:
-            return None
-        sendercell = Field.FindCell(self.state, sender)
-        sendername = str(sendercell.soul or '') if sendercell is not None else str(self.state.self[0] or '')
-        payload = {
-            'sender': sendername or sender,
-            'kind': SaltGlyph,
-            'action': action,
-            'text': body[:60],
-            'rawtext': rawtext,
-            'total': int(total),
-        }
-        self.box.ashfall = payload
-        return payload
+        sendercell = Field.FindCell(self.state, sender) if sender else None
+        sendername = str(sendercell.soul or '') if sendercell is not None else sender
+        total = AshTotal(glyph, viewer, sender)
+        self.ash = Ash(sender=sendername or sender, text=rawtext, total=int(total))
+        self.ashfall = True
+        return self.ash
 
     def SelfKey(self) -> str:
         if self.state is None:
@@ -349,58 +437,59 @@ class Dream:
 
     def WithChainbit(self, cell: Field.Cell, chainbit: int) -> Field.Cell:
         cb = 1 if int(chainbit) else 0
-        lb = 1 if int(cell.purge.lockbit) or cb else 0
-        return replace(cell, purge=Field.Purge(chainbit=cb, lockbit=lb))
+        return replace(cell, purge=Field.PurgeLocks(chainbit=cb, lockbit=1))
 
     def LatchOnly(self, cell: Field.Cell) -> Field.Cell:
-        return replace(cell, purge=Field.Purge(chainbit=0, lockbit=1))
+        return replace(cell, purge=Field.PurgeLocks(chainbit=0, lockbit=1))
 
     def ClearPurge(self, cell: Field.Cell) -> Field.Cell:
-        return replace(cell, purge=Field.Purge(chainbit=0, lockbit=0))
+        return replace(cell, purge=Field.PurgeLocks(chainbit=0, lockbit=0))
 
-    def ActiveChain(self, cell: Field.Cell, chain: Field.Chain) -> int:
-        child = str(getattr(cell.lock, 'child', '') or '').strip()
-        return 1 if chain.linked and child not in ('', Field.ZeroHashHex) else 0
+    def StampKeys(self, state: Field.State, keys: set[str], chainbit: int) -> Field.State:
+        wanted = {str(key or '').strip() for key in keys if str(key or '').strip()}
+        cells = tuple(self.WithChainbit(cell, chainbit) if cell.key in wanted else cell for cell in state.cells)
+        return Field.State(cells=cells, self=state.self, pristine=state.pristine)
 
-    def IdempotentSalt(self, current: Field.Cell | None, glyph: Field.SaltGlyph) -> bool:
-        if current is None:
-            return False
-        sameparent = str(current.lock.parent or '') == str(glyph.lockbody.parent or '')
-        samechild = str(current.lock.child or '') == str(glyph.lockbody.child or '')
-        samesign = str(current.sign or '') == str(glyph.locksign or '')
-        return bool(sameparent and samechild and samesign)
+    def SaltFootprint(self, state: Field.State, glyph: Field.SaltGlyph) -> set[str]:
+        keys: set[str] = set()
+        signer = Field.FindCell(state, str(glyph.lockbody.tag or '').strip())
+        if signer is not None:
+            keys.add(signer.key)
+        for leg in glyph.lockbody.payout:
+            target = Field.FindCell(state, str(leg.tag or '').strip())
+            if target is not None:
+                keys.add(target.key)
+        return keys
 
-    def StampChainSalt(self, state: Field.State, glyph: Field.SaltGlyph, chains: tuple[Field.Chain, ...]) -> Field.State:
-        cells = {cell.key: cell for cell in state.cells}
-        signer = str(glyph.key or '').strip()
-        if signer and signer in cells and (len(chains) >= 1):
-            cells[signer] = self.WithChainbit(cells[signer], 1 if chains[0].linked else 0)
-        seen = set()
-        creditkeys = []
-        for leg in glyph.saltbody:
-            key = str(getattr(leg, 'key', '') or '').strip()
-            if not key or key == signer or key in seen:
+    def MutationKeys(self, before: Field.State, after: Field.State) -> set[str]:
+        beforemap = {cell.key: cell for cell in before.cells}
+        beforepos = {cell.key: i for i, cell in enumerate(before.cells)}
+        afterpos = {cell.key: i for i, cell in enumerate(after.cells)}
+        changed: set[str] = set()
+        for cell in after.cells:
+            old = beforemap.get(cell.key)
+            if old is None:
+                changed.add(cell.key)
                 continue
-            seen.add(key)
-            creditkeys.append(key)
-        for index, key in enumerate(creditkeys, start=1):
-            if key in cells and index < len(chains):
-                cells[key] = self.WithChainbit(cells[key], 1) if chains[index].linked else self.WithChainbit(cells[key], 0)
-        stamped = Field.State(cells=tuple((cells[cell.key] for cell in state.cells)), self=state.self, monument=state.monument, pristine=state.pristine)
-        return stamped
+            oldbody = replace(old, purge=Field.PurgeLocks(chainbit=0, lockbit=0))
+            newbody = replace(cell, purge=Field.PurgeLocks(chainbit=0, lockbit=0))
+            if oldbody != newbody or beforepos.get(cell.key) != afterpos.get(cell.key):
+                changed.add(cell.key)
+        return changed
+
+    def StampChainSalt(self, state: Field.State, glyph: Field.SaltGlyph, chainbit: int, extra: set[str] | None = None) -> Field.State:
+        keys = self.SaltFootprint(state, glyph)
+        keys.update(extra or set())
+        return self.StampKeys(state, keys, chainbit)
 
     def StampChainDream(self, state: Field.State, chains: tuple[Field.Chain, ...]) -> Field.State:
         if len(chains) != len(state.cells):
             return state
-        cells = []
-        for cell, chain in zip(state.cells, chains):
-            if chain.linked:
-                active = self.ActiveChain(cell, chain)
-                cells.append(self.WithChainbit(cell, 1) if active else self.LatchOnly(cell))
-            else:
-                cells.append(self.WithChainbit(cell, 0))
-        stamped = Field.State(cells=tuple(cells), self=state.self, monument=state.monument, pristine=state.pristine)
-        return stamped
+        cells = tuple(self.WithChainbit(cell, 1 if chain.linked else 0) for cell, chain in zip(state.cells, chains))
+        return Field.State(cells=cells, self=state.self, pristine=state.pristine)
+
+    def StampAll(self, state: Field.State, chainbit: int) -> Field.State:
+        return self.StampKeys(state, {cell.key for cell in state.cells}, chainbit)
 
     def ApplyPurgeKey(self, state: Field.State, key: str) -> Field.State:
         key = str(key or '').strip()
@@ -413,101 +502,102 @@ class Dream:
         nextstate = Field.ReplaceCell(state, cleared)
         return nextstate
 
-    def ScrubPurge(self, state: Field.State) -> Field.State:
-        cleared = tuple((replace(cell, purge=Field.Purge(chainbit=0, lockbit=0)) for cell in state.cells))
-        out = Field.State(cells=cleared, self=state.self, monument=state.monument, pristine=state.pristine)
-        return out
-
     def PurgeFlare(self) -> dict[str, Any]:
         return {'kind': PurgeGlyph, 'key': self.SelfKey()}
 
     def Mutate(self, glyph: Any, source: str = ''):
         kind = self.Kind(glyph)
+        before = self.state
         if kind == PurgeGlyph:
             mutated = self.MutatePurge(glyph, source=source)
         elif kind == DreamGlyph:
             mutated = self.MutateDream(glyph, source=source)
+        elif kind == NightmareGlyph:
+            mutated = self.MutateNightmare(glyph, source=source)
         else:
             mutated = self.MutateSalt(glyph, source=source)
         if mutated:
-            self.changed = True
+            self.dreamfall = True
             if kind == SaltGlyph:
-                self.Ashfall(glyph)
-            echo = True
+                self.SetAsh(glyph)
             if kind == PurgeGlyph:
-                echo = False
-            elif source == 'crypt' and kind == DreamGlyph:
-                echo = False
-            if echo:
-                self.Forward(glyph)
+                return mutated
+            if source == 'crypt' and kind == DreamGlyph:
+                return mutated
+            if kind in (SaltGlyph, NightmareGlyph) and self.state is not None:
+                tag = glyph.lockbody.tag if kind == SaltGlyph else glyph.lowlock.tag
+                current = Field.FindCell(self.state, tag)
+                previous = Field.FindCell(before, tag) if before is not None else None
+                if current is not None and current.lowlock is not None and (previous is None or Field.LockSet(previous) != Field.LockSet(current)):
+                    self.Forward(Field.NightmareGlyph(lowlock=current.lowlock, lock=current.lock))
+                    return mutated
+            self.Forward(glyph)
         return mutated
 
-    def DefectViable(self, state: Field.State, glyph: Field.SaltGlyph) -> bool:
-        spend, victim = DefectParts(glyph)
-        if victim is None:
-            return False
-        signerq = Seat(state, glyph.key)
-        victimq = Seat(state, victim.key)
-        if signerq is None or victimq is None:
-            return False
-        if signerq == victimq:
-            return False
-        if SameFile(signerq, victimq):
-            return False
-        signer = state.cells[signerq]
-        target = state.cells[victimq]
-        if int(target.salt) >= int(signer.salt):
-            return False
-        total = sum((int(leg.salt) for leg in spend))
-        floor = 10000 if signerq % Field.SeatsPerFile == 0 else 1000
-        if total != floor:
-            return False
-        if any((int(leg.salt) <= 0 for leg in spend)):
-            return False
-        filekeys = {cell.key for index, cell in enumerate(state.cells) if index != signerq and SameFile(index, signerq)}
-        spendkeys = {str(leg.key or '').strip() for leg in spend}
-        if spendkeys != filekeys:
-            return False
-        if int(victim.salt) != 0:
-            return False
-        return True
-
-    def DefectSwap(self, state: Field.State, glyph: Field.SaltGlyph) -> Field.State:
-        spend, victim = DefectParts(glyph)
-        if victim is None:
-            return state
-        signerq = Seat(state, glyph.key)
-        victimq = Seat(state, victim.key)
-        if signerq is None or victimq is None:
-            return state
-        cells = list(state.cells)
-        cells[signerq], cells[victimq] = (cells[victimq], cells[signerq])
-        out = Field.State(cells=tuple(cells), self=state.self, monument=state.monument, pristine=state.pristine)
-        return out
 
     def MutateSalt(self, glyph: Any, source: str = '') -> bool:
         if self.state is None:
             return False
         if not isinstance(glyph, Field.SaltGlyph):
             raise TypeError('Dream.MutateSalt expects Field.SaltGlyph')
-        defect = DefectShape(glyph)
+        before = self.state
+        verified = False
         try:
-            Field.VerifySalt(glyph)
-            current = Field.FindCell(self.state, glyph.key)
-            if defect and (not self.DefectViable(self.state, glyph)):
+            Field.VerifySalt(glyph, before)
+            verified = True
+            nextstate, _chains = Field.Adopt(before, glyph.lockbody)
+            if nextstate == before:
+                observed = self.StampChainSalt(before, glyph, 0)
+                if observed != before:
+                    self.state = observed
+                    self.dreamfall = True
                 return False
-            if source == 'crypt' and self.IdempotentSalt(current, glyph):
-                return False
-            nextstate, chains = Field.MutateReceipt(self.state, glyph)
-            if defect:
-                nextstate = self.DefectSwap(nextstate, glyph)
-            nextstate = self.UpdateMonument(nextstate, glyph)
         except Exception:
+            if verified:
+                observed = self.StampChainSalt(before, glyph, 0)
+                if observed != before:
+                    self.state = observed
+                    self.dreamfall = True
             return False
         changed = self.Commit(nextstate)
         if not changed or self.state is None:
             return False
-        self.state = self.StampChainSalt(self.state, glyph, chains)
+        touched = self.MutationKeys(before, self.state)
+        self.state = self.StampChainSalt(self.state, glyph, 1, touched)
+        return True
+
+    def MutateNightmare(self, glyph: Any, source: str = '') -> bool:
+        if self.state is None:
+            return False
+        if not isinstance(glyph, Field.NightmareGlyph):
+            raise TypeError('Dream.MutateNightmare expects NightmareGlyph')
+        before = self.state
+        verified = False
+        signer = Field.FindCell(before, glyph.lowlock.tag)
+        footprint = set() if signer is None else {signer.key}
+        try:
+            Field.VerifyNightmare(glyph, before)
+            verified = True
+            nextstate, _chains = Field.Adopt(before, (glyph.lowlock, glyph.lock))
+        except Exception:
+            if verified and footprint:
+                observed = self.StampKeys(before, footprint, 0)
+                if observed != before:
+                    self.state = observed
+                    self.dreamfall = True
+            return False
+        if nextstate == before:
+            if footprint:
+                observed = self.StampKeys(before, footprint, 0)
+                if observed != before:
+                    self.state = observed
+                    self.dreamfall = True
+            return False
+        changed = self.Commit(nextstate)
+        if not changed or self.state is None:
+            return False
+        touched = self.MutationKeys(before, self.state) | footprint
+        self.state = self.StampKeys(self.state, touched, 1)
         return True
 
     def MutateDream(self, glyph: Any, source: str = '') -> bool:
@@ -515,15 +605,23 @@ class Dream:
             return False
         if not isinstance(glyph, Field.State):
             raise TypeError('Dream.MutateDream expects Field.State')
+        before = self.state
         try:
-            nextstate, chains = Field.MutateState(self.state, glyph)
+            nextstate, chains = Assimilate(before, glyph)
         except Exception:
+            observed = self.StampAll(before, 0)
+            if observed != before:
+                self.state = observed
+                self.dreamfall = True
             return False
         changed = self.Commit(nextstate)
-        if not changed or self.state is None:
+        if self.state is None:
             return False
-        self.state = self.StampChainDream(self.state, chains)
-        return True
+        stamped = self.StampChainDream(self.state, chains)
+        if stamped != self.state:
+            self.state = stamped
+            self.dreamfall = True
+        return bool(changed)
 
     def MutatePurge(self, glyph: Any, source: str = '') -> bool:
         if self.state is None:
@@ -531,27 +629,28 @@ class Dream:
         if source == 'vault':
             key = self.PurgeKey(glyph)
             if key and key == self.SelfKey():
-                nextstate = self.ScrubPurge(self.state)
+                nextstate = Field.Purge(self.state)
                 changed = self.Commit(nextstate)
                 flare = self.PurgeFlare()
                 self.Forward(flare)
-                return changed or True
+                return changed
             nextstate = self.ApplyPurgeKey(self.state, key)
             changed = self.Commit(nextstate)
             flare = self.PurgeFlare()
             self.Forward(flare)
-            return changed or True
+            return changed
         if source == 'crypt':
             if self.Pristine(self.state):
-                return False
-            monument = tuple(getattr(self.state, 'monument', ()) or ())
-            if len(monument) == 0:
                 return False
             key = self.PurgeKey(glyph)
             if key and key == self.SelfKey():
                 return False
+            if key:
+                target = Field.FindCell(self.state, key)
+                if target is not None and Field.Burned(target):
+                    return False
             self.Forward(self.Scrub(self.state))
-            return True
+            return False
         return False
 
     def Commit(self, nextstate: Field.State) -> bool:
@@ -571,27 +670,14 @@ class Dream:
         crypt = self.WakeCrypt()
         if crypt is None:
             return glyph
-        packet = self.Packet(glyph)
         try:
-            crypt.glyph = packet
+            crypt.glyph = glyph
         except Exception:
             pass
         try:
-            crypt.EmitGlyph(packet)
+            crypt.EmitGlyph(glyph)
         except Exception:
             pass
-        return packet
-
-    def Packet(self, glyph: Any) -> Any:
-        kind = self.Kind(glyph)
-        if kind == DreamGlyph:
-            return self.BoxDream(glyph)
-        if kind == SaltGlyph:
-            return self.BoxSalt(glyph)
-        if isinstance(glyph, dict):
-            return dict(glyph)
-        if isinstance(glyph, str):
-            return str(glyph)
         return glyph
 
     def Kind(self, glyph: Any) -> str:
@@ -601,57 +687,27 @@ class Dream:
             return DreamGlyph
         if isinstance(glyph, Field.SaltGlyph):
             return SaltGlyph
+        if isinstance(glyph, Field.NightmareGlyph):
+            return NightmareGlyph
         if isinstance(glyph, dict):
-            kind = str(glyph.get('kind', '') or '').strip().lower()
+            rawkind = glyph.get('kind', '')
+            if isinstance(rawkind, int) and not isinstance(rawkind, bool):
+                if rawkind == WireDream:
+                    return DreamGlyph
+                if rawkind == WireNightmare:
+                    return NightmareGlyph
+                if rawkind == WirePurge:
+                    return PurgeGlyph
+                if rawkind in (WireWhisper, WireRally, WireDefect, WireWrath):
+                    return SaltGlyph
+            kind = str(rawkind or '').strip().lower()
             if kind:
                 return kind
             if 'cells' in glyph:
                 return DreamGlyph
-            if 'saltbody' in glyph and 'lockbody' in glyph and 'textbody' in glyph:
+            if ('lock' in glyph or 'lockbody' in glyph) and 'textbody' in glyph:
                 return SaltGlyph
         return SaltGlyph
-
-    def BoxSalt(self, glyph: Field.SaltGlyph) -> dict[str, Any]:
-        return {
-            'key': glyph.key,
-            'saltbody': [self.BoxLeg(leg) for leg in glyph.saltbody],
-            'lockbody': self.BoxLock(glyph.lockbody),
-            'textbody': {'text': glyph.textbody.text},
-            'salthash': glyph.salthash,
-            'lockhash': glyph.lockhash,
-            'texthash': glyph.texthash,
-            'sign': glyph.sign,
-            'locksign': glyph.locksign,
-        }
-
-    def BoxLeg(self, leg: Field.Salt) -> dict[str, Any]:
-        return {'key': leg.key, 'salt': leg.salt}
-
-    def BoxLock(self, lock: Field.Lock) -> dict[str, Any]:
-        return {'parent': lock.parent, 'child': lock.child}
-
-    def BoxPurge(self, purge: Field.Purge) -> dict[str, Any]:
-        return {'chainbit': purge.chainbit, 'lockbit': purge.lockbit}
-
-    def BoxCell(self, cell: Field.Cell) -> dict[str, Any]:
-        return {
-            'soul': cell.soul,
-            'key': cell.key,
-            'salt': cell.salt,
-            'purge': self.BoxPurge(cell.purge),
-            'lock': self.BoxLock(cell.lock),
-            'sign': cell.sign,
-        }
-
-    def BoxDream(self, state: Field.State) -> dict[str, Any]:
-        scrubbed = Field.Scrub(state)
-        return {
-            'kind': DreamGlyph,
-            'self': [scrubbed.self[0], scrubbed.self[1]],
-            'monument': list(scrubbed.monument),
-            'pristine': int(getattr(scrubbed, 'pristine', 1) or 0),
-            'cells': [self.BoxCell(cell) for cell in scrubbed.cells],
-        }
 
 
 dream = Dream()

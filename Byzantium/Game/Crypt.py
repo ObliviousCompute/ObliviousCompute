@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import hashlib
-import json
 import select
 import socket
 import threading
@@ -17,16 +16,51 @@ NameMax = 8
 ModeSiege = 'siege'
 ModeCampaign = 'campaign'
 
-HeaderSouls = 'souls'
-HeaderGlyph = 'glyph'
+KindDream = 0
+KindNightmare = 1
+KindPurge = 2
+KindWhisper = 3
+KindRally = 4
+KindDefect = 5
+KindWrath = 6
+KindSouls = 7
+KindSalt = (KindWhisper, KindRally, KindDefect, KindWrath)
 
-KindPurge = 'purge'
-KindDream = 'dream'
-KindSalt = 'salt'
+HeaderMagic = b'BYZ!'
+HeaderVersion = 1
+HeaderSize = 64
+ReceiptMagic = b'^_^'
+ReceiptSize = 352
+PayoutSlots = 23
+PayoutSlotSize = 8
+TextBrickSize = 96
+SoulCardSize = 40
+CellMetaSize = 64
+CellSize = 768
 
-VeilPurge = 'purge'
-VeilSouls = 'souls'
-VeilGlyph = 'glyph'
+PurgeSize = 64
+SaltSize = 512
+NightmareSize = 768
+SoulsSize = 1024
+DreamSize = 18496
+
+GlyphSizes = {
+    KindDream: DreamSize,
+    KindNightmare: NightmareSize,
+    KindPurge: PurgeSize,
+    KindWhisper: SaltSize,
+    KindRally: SaltSize,
+    KindDefect: SaltSize,
+    KindWrath: SaltSize,
+    KindSouls: SoulsSize,
+}
+LegalSizes = frozenset(GlyphSizes.values())
+
+Zero4 = b'\x00' * 4
+Zero8 = b'\x00' * 8
+Zero19 = b'\x00' * 19
+Zero32 = b'\x00' * 32
+Zero352 = b'\x00' * ReceiptSize
 
 
 @dataclass(frozen=True)
@@ -48,6 +82,12 @@ class Soul:
 
 
 @dataclass(frozen=True)
+class SoulsGlyph:
+    expected: int
+    souls: tuple[Soul, ...] = ()
+
+
+@dataclass(frozen=True)
 class Baton:
     self: Self = field(default_factory=Self)
     souls: tuple[Soul, ...] = ()
@@ -63,30 +103,11 @@ class Baton:
 
 @dataclass
 class Veil:
-    purgewindow: Optional[tuple[int, int]] = None
-    soulswindow: Optional[tuple[int, int]] = None
-    glyphwindow: Optional[tuple[int, int]] = None
     dedupe: list[str] = field(default_factory=list)
-    dedupesize: int = 2
+    dedupesize: int = 8
 
-    def Accepts(self, raw: bytes, lane: str) -> bool:
-        if not isinstance(raw, (bytes, bytearray)) or not raw:
-            return False
-        size = len(raw)
-        if size < 8 or size > 65535:
-            return False
-        if lane == VeilPurge:
-            window = self.purgewindow
-        elif lane == VeilSouls:
-            window = self.soulswindow
-        elif lane == VeilGlyph:
-            window = self.glyphwindow
-        else:
-            return False
-        if window is None:
-            return True
-        low, high = window
-        return int(low) <= size <= int(high)
+    def Accepts(self, raw: bytes) -> bool:
+        return isinstance(raw, (bytes, bytearray)) and len(raw) in LegalSizes
 
     def Seen(self, digest: str) -> bool:
         if self.dedupesize <= 0:
@@ -110,7 +131,7 @@ class Crypt:
         if isinstance(state, dict):
             mode = str(state.get('mode', ModeSiege) or ModeSiege).strip().lower()
             skeleton = str(state.get('skeleton', '') or '')
-            genesis = int(state.get('genesis', 1) or 1)
+            genesis = self.MustGenesis(state.get('genesis', 1))
             gate = int(state.get('gate', state.get('port', port)) or port)
             nested = state.get('self', state)
             selfcard = Self(
@@ -121,7 +142,7 @@ class Crypt:
         else:
             mode = str(getattr(state, 'mode', ModeSiege) or ModeSiege).strip().lower()
             skeleton = str(getattr(state, 'skeleton', '') or '')
-            genesis = int(getattr(state, 'genesis', 1) or 1)
+            genesis = self.MustGenesis(getattr(state, 'genesis', 1))
             gate = int(getattr(state, 'gate', getattr(state, 'port', port)) or port)
             nested = getattr(state, 'self', state)
             selfcard = Self(
@@ -132,7 +153,7 @@ class Crypt:
 
         self.mode = mode if mode in (ModeSiege, ModeCampaign) else ModeSiege
         self.skeleton = skeleton
-        self.genesisnumber = max(1, genesis)
+        self.genesisnumber = genesis
         self.gate = gate
         self.self = selfcard
         self.souls = self.SoulPack(rawsouls) or self.SoulPack(()) or []
@@ -158,6 +179,8 @@ class Crypt:
         self.Start()
         self.EmitSouls()
         self.Genesis(state)
+
+    # ---------- transport ----------
 
     def Start(self):
         if self.live:
@@ -196,7 +219,6 @@ class Crypt:
         with self.ReapLock:
             if not self.Reaping or not self.Reap:
                 return self.state
-
             batch = list(self.Reap)
             self.Reap = []
             self.Reaping = False
@@ -218,9 +240,7 @@ class Crypt:
                     self.Reap = []
                 self.Reap = list(batch) + list(self.Reap)
             raise
-
         return self.state
-
 
     def Summon(self):
         return self.sock.recvfrom(65535)
@@ -283,7 +303,7 @@ class Crypt:
         return sock
 
     def SeatPorts(self) -> list[int]:
-        return [self.gate + index for index in range(max(1, int(self.genesisnumber or 1)))]
+        return [self.gate + index for index in range(self.genesisnumber)]
 
     def SiegePeers(self) -> list[tuple[str, int]]:
         return [('127.0.0.1', port) for port in self.SeatPorts() if int(port) != int(self.bindport or -1)]
@@ -321,7 +341,7 @@ class Crypt:
     def Receive(self, raw: bytes, addr: tuple[str, int]):
         if self.CampaignSelf(addr):
             return
-        if not self.veil.Accepts(raw, VeilGlyph):
+        if not self.veil.Accepts(raw):
             return
         self.Cryptkeeper(raw, addr)
 
@@ -335,48 +355,40 @@ class Crypt:
         return host in (local, '127.0.0.1', '0.0.0.0')
 
     def Cryptkeeper(self, raw: bytes, addr: tuple[str, int]):
-        packet = self.Decrypt(raw)
-        header = self.HeaderOf(packet)
+        plain = self.Decrypt(raw)
+        header = self.ParseHeader(plain)
+        kind = header['kind']
+        glyph = self.Unpack(plain)
 
-        if header == HeaderSouls:
-            if not self.veil.Accepts(raw, VeilSouls):
-                return
-        elif header == HeaderGlyph:
-            kind = self.KindOf(packet)
-            if kind == KindPurge:
-                if not self.veil.Accepts(raw, VeilPurge):
-                    return
-            elif not self.veil.Accepts(raw, VeilGlyph):
-                return
-        else:
-            return
-
-        skipdedupe = 100 <= len(raw) <= 125
-        if not skipdedupe:
-            digest = self.PacketHash(packet)
+        # Purge requests are deliberately repeatable. Everything else is burst-deduped.
+        if kind != KindPurge:
+            digest = hashlib.sha256(plain).hexdigest()
             if self.veil.Seen(digest):
                 return
             self.veil.Remember(digest)
 
-        if header == HeaderSouls:
-            self.SoulSqueeze(packet, addr)
+        if isinstance(glyph, SoulsGlyph):
+            self.SoulSqueeze(glyph, addr)
             return
+        self.RouteGlyph(glyph, addr)
 
-        self.RouteGlyph(packet, addr)
+    # ---------- genesis / souls ----------
 
     def SoulFlare(self):
         self.EmitSouls()
 
-    def SoulSqueeze(self, packet: dict[str, Any], addr: tuple[str, int]):
+    def SoulSqueeze(self, glyph: SoulsGlyph, addr: tuple[str, int]):
+        if int(glyph.expected) != int(self.genesisnumber):
+            return self.state
         if self.genesisdone:
-            incomingsouls = self.SoulSnap(packet.get('souls', []))
+            incomingsouls = self.SoulSnap(glyph.souls)
             if incomingsouls is None:
                 return self.state
             completesouls = tuple(self.complete or ())
             self.SoulSwap(incomingsouls, completesouls)
             return self.state
 
-        incomingsouls = self.SoulPack(packet.get('souls', []))
+        incomingsouls = self.SoulPack(glyph.souls)
         if incomingsouls is None:
             return self.state
 
@@ -399,17 +411,14 @@ class Crypt:
         completesouls = self.SoulSnap(completesouls)
         if incomingsouls is None or completesouls is None:
             return self.state
-
         incomingkeys = self.SoulKeys(incomingsouls)
         completekeys = self.SoulKeys(completesouls)
-
         if not incomingkeys:
             return self.state
         if not incomingkeys.issubset(completekeys):
             return self.state
         if len(incomingkeys) >= len(completekeys):
             return self.state
-
         self.EmitCompleteSouls()
         return self.state
 
@@ -442,7 +451,7 @@ class Crypt:
         if self.AcceptSelf(self.self) and self.self.key not in cards:
             cards[self.self.key] = Soul(soul=self.self.soul, key=self.self.key)
         souls = sorted(cards.values(), key=lambda soul: soul.key)
-        if len(souls) > max(1, int(self.genesisnumber or 1)):
+        if len(souls) > self.genesisnumber or len(souls) > Field.SeatCount:
             return None
         return souls
 
@@ -454,7 +463,7 @@ class Crypt:
                 continue
             cards[soul.key] = soul
         souls = sorted(cards.values(), key=lambda soul: soul.key)
-        if len(souls) > max(1, int(self.genesisnumber or 1)):
+        if len(souls) > self.genesisnumber or len(souls) > Field.SeatCount:
             return None
         return souls
 
@@ -475,7 +484,7 @@ class Crypt:
                     soul=self.MustName(nested.get('soul', '')),
                     key=self.MustKey(nested.get('key', nested.get('pubkey', ''))),
                 )
-                self.genesisnumber = max(1, int(state.get('genesis', 1) or 1))
+                self.genesisnumber = self.MustGenesis(state.get('genesis', 1))
                 merged = self.SoulPack(list(self.souls) + list(state.get('souls', [])))
                 if merged is not None:
                     self.souls = merged
@@ -489,7 +498,7 @@ class Crypt:
                     soul=self.MustName(getattr(nested, 'soul', '')),
                     key=self.MustKey(getattr(nested, 'key', getattr(nested, 'pubkey', ''))),
                 )
-                self.genesisnumber = max(1, int(getattr(state, 'genesis', 1) or 1))
+                self.genesisnumber = self.MustGenesis(getattr(state, 'genesis', 1))
                 merged = self.SoulPack(list(self.souls) + list(getattr(state, 'souls', [])))
                 if merged is not None:
                     self.souls = merged
@@ -497,7 +506,7 @@ class Crypt:
 
         if self.genesisdone:
             return self.state
-        need = max(1, int(self.genesisnumber or 1))
+        need = self.genesisnumber
         have = len(self.souls)
         if have < need:
             return self.state
@@ -506,129 +515,468 @@ class Crypt:
         self.complete = tuple(self.souls)
         self.state = self.BuildState()
         self.EmitCompleteSouls()
-
         sanctum = self.WakeSanctum()
         return sanctum.Genesis(self.state)
 
     def AcceptSoulIterable(self, value: Any) -> bool:
         if not isinstance(value, (list, tuple)):
             return False
-        for item in value:
-            if self.SoulShape(item) is None:
-                return False
-        return True
+        return all(self.SoulShape(item) is not None for item in value)
 
-    def UnboxGlyph(self, payload: dict[str, Any]) -> Any:
-        kind = str(payload.get('kind', '') or '').strip().lower()
+    # ---------- fixed geometry ----------
 
-        if kind == KindPurge:
-            return {'kind': KindPurge, 'key': self.MustKey(payload.get('key', ''))}
+    def U32(self, value: int, fieldname: str = 'value') -> bytes:
+        number = int(value)
+        if number < 0 or number > 0xFFFFFFFF:
+            raise ValueError(f'{fieldname} must fit unsigned 32 bits')
+        return number.to_bytes(4, 'big')
+
+    def ReadU32(self, data: bytes) -> int:
+        if len(data) != 4:
+            raise ValueError('u32 requires exactly four bytes')
+        return int.from_bytes(data, 'big')
+
+    def BuildHeader(
+        self,
+        kind: int,
+        *,
+        flags: int = 0,
+        expected: int = 0,
+        populated: int = 0,
+        key: bytes = Zero32,
+    ) -> bytes:
+        if kind not in GlyphSizes:
+            raise ValueError('unknown glyph kind')
+        if not 0 <= int(flags) <= 0xFF:
+            raise ValueError('header flags must fit one byte')
+        if not isinstance(key, (bytes, bytearray)) or len(key) != 32:
+            raise ValueError('header key must be exactly 32 bytes')
+        out = bytearray(HeaderSize)
+        out[0:4] = HeaderMagic
+        out[4] = HeaderVersion
+        out[5] = int(kind)
+        out[6] = int(flags)
+        out[7] = 0
+        out[8:12] = self.U32(GlyphSizes[kind], 'glyph size')
+        out[12:16] = self.U32(expected, 'expected souls')
+        out[16:20] = self.U32(populated, 'populated souls')
+        out[20:24] = Zero4
+        out[24:56] = bytes(key)
+        out[56:64] = Zero8
+        return bytes(out)
+
+    def ParseHeader(self, data: bytes) -> dict[str, Any]:
+        if not isinstance(data, (bytes, bytearray)) or len(data) < HeaderSize:
+            raise ValueError('glyph shorter than fixed header')
+        header = bytes(data[:HeaderSize])
+        if header[0:4] != HeaderMagic:
+            raise ValueError('glyph header magic mismatch')
+        if header[4] != HeaderVersion:
+            raise ValueError('unsupported glyph header version')
+        kind = int(header[5])
+        if kind not in GlyphSizes:
+            raise ValueError('unknown glyph header kind')
+        if header[7] != 0 or header[20:24] != Zero4 or header[56:64] != Zero8:
+            raise ValueError('glyph header reserved bytes must be zero')
+        size = self.ReadU32(header[8:12])
+        if size != GlyphSizes[kind] or len(data) != size:
+            raise ValueError('glyph length does not match canonical kind geometry')
+        flags = int(header[6])
+        expected = self.ReadU32(header[12:16])
+        populated = self.ReadU32(header[16:20])
+        key = header[24:56]
 
         if kind == KindDream:
-            selfraw = payload.get('self', ['', '']) or ['', '']
-            if not isinstance(selfraw, list) or len(selfraw) != 2:
-                raise TypeError('dream self must be two-item list')
+            if flags not in (0, 1) or expected != 0 or populated != 0 or key != Zero32:
+                raise ValueError('dream header metadata is non-canonical')
+        elif kind == KindSouls:
+            if flags != 0 or not (1 <= expected <= Field.SeatCount) or populated > expected or key != Zero32:
+                raise ValueError('souls header metadata is non-canonical')
+        elif kind == KindPurge:
+            if flags != 0 or expected != 0 or populated != 0 or key == Zero32:
+                raise ValueError('purge header metadata is non-canonical')
+        else:
+            if flags != 0 or expected != 0 or populated != 0 or key != Zero32:
+                raise ValueError('glyph header metadata is non-canonical')
+        return {
+            'kind': kind,
+            'flags': flags,
+            'size': size,
+            'expected': expected,
+            'populated': populated,
+            'key': key,
+        }
 
-            dreamsoul = str(selfraw[0] or '')
-            dreamkey = str(selfraw[1] or '')
-            if not (dreamsoul == '' and dreamkey == ''):
-                raise ValueError('dream self must be blank pair')
+    def EncodeName(self, value: Any) -> bytes:
+        text = str(value or '')
+        if not text.strip() or len(text) > NameMax or '\x00' in text:
+            raise ValueError('invalid soul name')
+        raw = text.encode('utf-8')
+        if len(raw) > NameMax:
+            raise ValueError('soul name must fit fixed 8-byte UTF-8 field')
+        return raw + (b'\x00' * (NameMax - len(raw)))
 
-            cells = []
-            for item in tuple(payload.get('cells', ()) or ()):
-                purge = dict(item.get('purge', {}) or {})
-                lock = dict(item.get('lock', {}) or {})
-                cells.append(
-                    Field.Cell(
-                        soul=self.MustName(item.get('soul', '')),
-                        key=self.MustKey(item.get('key', '')),
-                        salt=int(item.get('salt', 0) or 0),
-                        purge=Field.Purge(
-                            chainbit=int(purge.get('chainbit', 0) or 0),
-                            lockbit=int(purge.get('lockbit', 0) or 0),
-                        ),
-                        lock=Field.Lock(
-                            parent=self.MustHash(lock.get('parent', Field.ZeroHashHex)),
-                            child=self.MustHash(lock.get('child', Field.ZeroHashHex)),
-                        ),
-                        sign=self.MustSign(item.get('sign', Field.NullSignHex)),
-                    )
-                )
+    def DecodeName(self, data: bytes) -> str:
+        if len(data) != NameMax:
+            raise ValueError('soul name field must be exactly eight bytes')
+        cut = data.find(b'\x00')
+        if cut < 0:
+            raw = data
+        else:
+            raw = data[:cut]
+            if any(data[cut:]):
+                raise ValueError('soul name padding must be zero')
+        try:
+            text = raw.decode('utf-8')
+        except UnicodeDecodeError as exc:
+            raise ValueError('soul name is not valid UTF-8') from exc
+        if not text.strip() or len(text) > NameMax or len(raw) > NameMax:
+            raise ValueError('invalid decoded soul name')
+        return text
 
-            return Field.State(
-                cells=tuple(cells),
-                self=('', ''),
-                monument=tuple(str(item or '') for item in (payload.get('monument', ()) or ())),
-                pristine=int(payload.get('pristine', 1) or 0),
-            )
+    def PadLock(self, lock: Field.Lock) -> bytes:
+        Field.VerifyLockShape(lock, allowempty=True)
+        if lock.kind != Field.KindEmpty and lock.tag == Field.ZeroTagHex:
+            raise ValueError('zero tag is reserved for payout padding')
+        if lock.tag:
+            tag = bytes.fromhex(self.MustTag(lock.tag))
+        else:
+            tag = Zero4
 
-        saltbody = []
-        for item in tuple(payload.get('saltbody', ()) or ()):
-            saltbody.append(
-                Field.Salt(
-                    key=self.MustKey(item.get('key', '')),
-                    salt=int(item.get('salt', 0) or 0),
-                )
-            )
+        out = bytearray(ReceiptSize)
+        out[0:3] = ReceiptMagic
+        out[3] = int(lock.kind)
+        out[4:8] = tag
+        out[8:40] = bytes.fromhex(self.MustHash(lock.parent))
+        out[40:72] = bytes.fromhex(self.MustHash(lock.child))
+        out[72:104] = bytes.fromhex(self.MustHash(lock.texthash))
+        out[104:168] = bytes.fromhex(self.MustSign(lock.sign))
 
-        lockraw = dict(payload.get('lockbody', {}) or {})
-        textraw = dict(payload.get('textbody', {}) or {})
+        expected = Field.KindSpendCounts[int(lock.kind)]
+        if len(lock.payout) != expected:
+            raise ValueError('receipt payout count does not match kind')
+        cursor = 168
+        for index in range(PayoutSlots):
+            if index < expected:
+                leg = lock.payout[index]
+                if leg.tag == Field.ZeroTagHex:
+                    raise ValueError('occupied payout slot may not use zero tag')
+                out[cursor:cursor + 4] = bytes.fromhex(self.MustTag(leg.tag))
+                out[cursor + 4:cursor + 8] = self.U32(leg.salt, 'payout salt')
+            else:
+                out[cursor:cursor + 8] = b'\x00' * 8
+            cursor += PayoutSlotSize
+        if cursor != ReceiptSize:
+            raise AssertionError('receipt geometry drift')
+        return bytes(out)
 
-        return Field.SaltGlyph(
-            key=self.MustKey(payload.get('key', '')),
-            saltbody=tuple(saltbody),
-            lockbody=Field.Lock(
-                parent=self.MustHash(lockraw.get('parent', Field.ZeroHashHex)),
-                child=self.MustHash(lockraw.get('child', Field.ZeroHashHex)),
-            ),
-            textbody=Field.Text(text=str(textraw.get('text', '') or '')),
-            salthash=self.MustHash(payload.get('salthash', Field.ZeroHashHex)),
-            lockhash=self.MustHash(payload.get('lockhash', Field.ZeroHashHex)),
-            texthash=self.MustHash(payload.get('texthash', Field.ZeroHashHex)),
-            sign=self.MustSign(payload.get('sign', Field.NullSignHex)),
-            locksign=self.MustSign(payload.get('locksign', Field.NullSignHex)),
+    def Unlock(self, data: bytes) -> Field.Lock:
+        if not isinstance(data, (bytes, bytearray)) or len(data) != ReceiptSize:
+            raise ValueError('PadLock block must be exactly 352 bytes')
+        raw = bytes(data)
+        if raw[0:3] != ReceiptMagic:
+            raise ValueError('PadLock receipt magic mismatch')
+        kind = int(raw[3])
+        Field.VerifyKind(kind)
+        tagraw = raw[4:8]
+        tag = '' if tagraw == Zero4 and kind == Field.KindEmpty else tagraw.hex()
+        if tag:
+            self.MustTag(tag)
+            if tag == Field.ZeroTagHex:
+                raise ValueError('receipt tag may not use zero padding tag')
+
+        expected = Field.KindSpendCounts[kind]
+        payout = []
+        cursor = 168
+        for index in range(PayoutSlots):
+            slot = raw[cursor:cursor + PayoutSlotSize]
+            if index < expected:
+                tagbytes = slot[:4]
+                if tagbytes == Zero4:
+                    raise ValueError('occupied payout slot requires nonzero tag')
+                payout.append(Field.Payout(tag=tagbytes.hex(), salt=self.ReadU32(slot[4:8])))
+            elif slot != b'\x00' * PayoutSlotSize:
+                raise ValueError('unused payout slot must be all zero')
+            cursor += PayoutSlotSize
+
+        lock = Field.Lock(
+            kind=kind,
+            tag=tag,
+            parent=raw[8:40].hex(),
+            child=raw[40:72].hex(),
+            payout=tuple(payout),
+            texthash=raw[72:104].hex(),
+            sign=raw[104:168].hex(),
         )
+        Field.VerifyLockShape(lock, allowempty=True)
+        return lock
 
-    def RouteGlyph(self, packet: dict[str, Any], addr: tuple[str, int]):
+    def PackText(self, textbody: Field.Text) -> bytes:
+        if not isinstance(textbody, Field.Text):
+            raise TypeError('PackText expects Field.Text')
+        raw = textbody.text.encode('utf-8')
+        if len(raw) > TextBrickSize - 1:
+            raise ValueError('Salt text exceeds 95-byte fixed text payload')
+        return bytes([len(raw)]) + raw + (b'\x00' * (TextBrickSize - 1 - len(raw)))
+
+    def UnpackText(self, data: bytes) -> Field.Text:
+        if len(data) != TextBrickSize:
+            raise ValueError('text brick must be exactly 96 bytes')
+        size = int(data[0])
+        if size > TextBrickSize - 1:
+            raise ValueError('text brick length byte out of range')
+        body = data[1:1 + size]
+        if any(data[1 + size:]):
+            raise ValueError('text brick padding must be zero')
+        try:
+            text = body.decode('utf-8')
+        except UnicodeDecodeError as exc:
+            raise ValueError('text brick is not valid UTF-8') from exc
+        return Field.Text(text=text)
+
+    def PackCell(self, cell: Field.Cell) -> bytes:
+        Field.VerifyCell(cell)
+        meta = bytearray(CellMetaSize)
+        meta[0:8] = self.EncodeName(cell.soul)
+        meta[8:40] = bytes.fromhex(self.MustKey(cell.key))
+        meta[40:44] = self.U32(cell.salt, 'cell salt')
+        purge = (int(cell.purge.chainbit) & 1) | ((int(cell.purge.lockbit) & 1) << 1)
+        meta[44] = purge
+        meta[45:64] = Zero19
+        low = Zero352 if cell.lowlock is None else self.PadLock(cell.lowlock)
+        out = bytes(meta) + self.PadLock(cell.lock) + low
+        if len(out) != CellSize:
+            raise AssertionError('cell geometry drift')
+        return out
+
+    def UnpackCell(self, data: bytes) -> Field.Cell:
+        if len(data) != CellSize:
+            raise ValueError('cell stone must be exactly 768 bytes')
+        meta = data[:CellMetaSize]
+        if any(meta[45:64]):
+            raise ValueError('cell metadata reserved bytes must be zero')
+        purgebyte = int(meta[44])
+        if purgebyte & ~0b11:
+            raise ValueError('cell purge byte has non-canonical bits')
+        key = meta[8:40].hex()
+        self.MustKey(key)
+        lock = self.Unlock(data[64:416])
+        lowraw = data[416:768]
+        lowlock = None if lowraw == Zero352 else self.Unlock(lowraw)
+        cell = Field.Cell(
+            soul=self.DecodeName(meta[0:8]),
+            key=key,
+            salt=self.ReadU32(meta[40:44]),
+            purge=Field.PurgeLocks(chainbit=purgebyte & 1, lockbit=(purgebyte >> 1) & 1),
+            lock=lock,
+            lowlock=lowlock,
+        )
+        Field.VerifyCell(cell)
+        return cell
+
+    def PackPurge(self, glyph: Any) -> bytes:
+        key = self.PurgeKey(glyph)
+        keyraw = bytes.fromhex(self.MustKey(key))
+        return self.BuildHeader(KindPurge, key=keyraw)
+
+    def UnpackPurge(self, data: bytes) -> dict[str, Any]:
+        header = self.ParseHeader(data)
+        if header['kind'] != KindPurge:
+            raise ValueError('not a PurgeGlyph')
+        key = header['key'].hex()
+        self.MustKey(key)
+        return {'kind': Dream.PurgeGlyph, 'key': key}
+
+    def PackSalt(self, glyph: Field.SaltGlyph) -> bytes:
+        Field.SaltGlyphShape(glyph)
+        Field.VerifyTextBody(glyph.textbody, glyph.lockbody.texthash)
+        Field.VerifyCanonicalText(glyph.textbody, glyph.lockbody.kind)
+        wirekind = int(glyph.lockbody.kind) + 2
+        if wirekind not in KindSalt:
+            raise ValueError('receipt kind is not a SaltGlyph kind')
+        out = self.BuildHeader(wirekind) + self.PadLock(glyph.lockbody) + self.PackText(glyph.textbody)
+        if len(out) != SaltSize:
+            raise AssertionError('SaltGlyph geometry drift')
+        return out
+
+    def UnpackSalt(self, data: bytes) -> Field.SaltGlyph:
+        header = self.ParseHeader(data)
+        kind = header['kind']
+        if kind not in KindSalt:
+            raise ValueError('not a SaltGlyph')
+        lock = self.Unlock(data[64:416])
+        if int(lock.kind) + 2 != kind:
+            raise ValueError('wire Salt kind does not match PadLock receipt kind')
+        textbody = self.UnpackText(data[416:512])
+        Field.VerifyTextBody(textbody, lock.texthash)
+        Field.VerifyCanonicalText(textbody, lock.kind)
+        glyph = Field.SaltGlyph(lockbody=lock, textbody=textbody)
+        Field.SaltGlyphShape(glyph)
+        return glyph
+
+    def PackNightmare(self, glyph: Field.NightmareGlyph) -> bytes:
+        Field.VerifyNightmare(glyph)
+        out = self.BuildHeader(KindNightmare) + self.PadLock(glyph.lowlock) + self.PadLock(glyph.lock)
+        if len(out) != NightmareSize:
+            raise AssertionError('NightmareGlyph geometry drift')
+        return out
+
+    def UnpackNightmare(self, data: bytes) -> Field.NightmareGlyph:
+        header = self.ParseHeader(data)
+        if header['kind'] != KindNightmare:
+            raise ValueError('not a NightmareGlyph')
+        glyph = Field.NightmareGlyph(
+            lowlock=self.Unlock(data[64:416]),
+            lock=self.Unlock(data[416:768]),
+        )
+        Field.VerifyNightmare(glyph)
+        return glyph
+
+    def PackDream(self, state: Field.State) -> bytes:
+        Field.VerifyDream(state)
+        scrubbed = Field.Scrub(state)
+        header = self.BuildHeader(KindDream, flags=int(scrubbed.pristine))
+        body = b''.join(self.PackCell(cell) for cell in scrubbed.cells)
+        out = header + body
+        if len(out) != DreamSize:
+            raise AssertionError('DreamGlyph geometry drift')
+        return out
+
+    def UnpackDream(self, data: bytes) -> Field.State:
+        header = self.ParseHeader(data)
+        if header['kind'] != KindDream:
+            raise ValueError('not a DreamGlyph')
+        cells = []
+        cursor = HeaderSize
+        for _index in range(Field.SeatCount):
+            cells.append(self.UnpackCell(data[cursor:cursor + CellSize]))
+            cursor += CellSize
+        if cursor != DreamSize:
+            raise AssertionError('DreamGlyph geometry drift')
+        state = Field.State(cells=tuple(cells), self=Field.Clean.self(), pristine=int(header['flags']))
+        Field.VerifyDream(state)
+        return state
+
+    def PackSoulCard(self, soul: Soul) -> bytes:
+        card = self.SoulShape(soul)
+        if card is None:
+            raise ValueError('invalid soul card')
+        return self.EncodeName(card.soul) + bytes.fromhex(self.MustKey(card.key))
+
+    def UnpackSoulCard(self, data: bytes) -> Soul:
+        if len(data) != SoulCardSize:
+            raise ValueError('soul card must be exactly 40 bytes')
+        return Soul(soul=self.DecodeName(data[:8]), key=self.MustKey(data[8:40].hex()))
+
+    def PackSouls(self, souls: Iterable[Any], *, expected: Optional[int] = None) -> bytes:
+        expectedcount = self.genesisnumber if expected is None else self.MustGenesis(expected)
+        cards = self.SoulSnap(souls)
+        if cards is None:
+            raise ValueError('invalid souls roster')
+        cards = sorted(cards, key=lambda soul: soul.key)
+        if len(cards) > expectedcount:
+            raise ValueError('souls roster exceeds expected count')
+        header = self.BuildHeader(KindSouls, expected=expectedcount, populated=len(cards))
+        body = bytearray(Field.SeatCount * SoulCardSize)
+        cursor = 0
+        for card in cards:
+            body[cursor:cursor + SoulCardSize] = self.PackSoulCard(card)
+            cursor += SoulCardSize
+        out = header + bytes(body)
+        if len(out) != SoulsSize:
+            raise AssertionError('SoulsGlyph geometry drift')
+        return out
+
+    def UnpackSouls(self, data: bytes) -> SoulsGlyph:
+        header = self.ParseHeader(data)
+        if header['kind'] != KindSouls:
+            raise ValueError('not a SoulsGlyph')
+        cards = []
+        cursor = HeaderSize
+        for index in range(Field.SeatCount):
+            slot = data[cursor:cursor + SoulCardSize]
+            if index < header['populated']:
+                if slot == b'\x00' * SoulCardSize:
+                    raise ValueError('populated soul card may not be zero')
+                cards.append(self.UnpackSoulCard(slot))
+            elif slot != b'\x00' * SoulCardSize:
+                raise ValueError('unused soul card must be all zero')
+            cursor += SoulCardSize
+        if tuple(card.key for card in cards) != tuple(sorted(card.key for card in cards)):
+            raise ValueError('SoulsGlyph cards must be sorted by key')
+        if len({card.key for card in cards}) != len(cards):
+            raise ValueError('SoulsGlyph contains duplicate keys')
+        return SoulsGlyph(expected=int(header['expected']), souls=tuple(cards))
+
+    def Pack(self, glyph: Any) -> bytes:
+        if isinstance(glyph, SoulsGlyph):
+            return self.PackSouls(glyph.souls, expected=glyph.expected)
+        if isinstance(glyph, Field.State):
+            return self.PackDream(glyph)
+        if isinstance(glyph, Field.NightmareGlyph):
+            return self.PackNightmare(glyph)
+        if isinstance(glyph, Field.SaltGlyph):
+            return self.PackSalt(glyph)
+        if isinstance(glyph, (dict, str)):
+            kind = self.LogicalKind(glyph)
+            if kind == KindPurge:
+                return self.PackPurge(glyph)
+        raise TypeError(f'unsupported logical glyph: {type(glyph).__name__}')
+
+    def Unpack(self, data: bytes) -> Any:
+        header = self.ParseHeader(data)
+        kind = header['kind']
+        if kind == KindSouls:
+            return self.UnpackSouls(data)
+        if kind == KindDream:
+            return self.UnpackDream(data)
+        if kind == KindNightmare:
+            return self.UnpackNightmare(data)
+        if kind == KindPurge:
+            return self.UnpackPurge(data)
+        if kind in KindSalt:
+            return self.UnpackSalt(data)
+        raise ValueError('unknown canonical glyph kind')
+
+    # ---------- routing / emission ----------
+
+    def RouteGlyph(self, glyph: Any, addr: tuple[str, int]):
         if not self.genesisdone:
             return
-        payload = dict(packet)
-        payload.pop('header', None)
-        payload = self.UnboxGlyph(payload)
         with self.ReapLock:
             if not self.Reaping:
                 self.Reaping = True
                 self.Reap = []
-            self.Reap.append(payload)
-        self.glyph = payload
+            self.Reap.append(glyph)
+        self.glyph = glyph
 
     def EmitSouls(self):
-        packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in self.souls]}
-        self.Emit(packet)
+        self.Emit(self.PackSouls(self.souls, expected=self.genesisnumber))
 
     def EmitCompleteSouls(self):
         souls = self.complete or tuple(self.souls)
-        packet = {'header': HeaderSouls, 'souls': [soul.Box() for soul in souls]}
-        self.Emit(packet)
+        self.Emit(self.PackSouls(souls, expected=self.genesisnumber))
 
-    def EmitGlyph(self, glyph: dict[str, Any]):
-        payload = {'header': HeaderGlyph}
-        payload.update(dict(glyph or {}))
-        self.Emit(payload)
+    def EmitGlyph(self, glyph: Any):
+        self.Emit(self.Pack(glyph))
 
-    def Emit(self, packet: dict[str, Any]):
-        raw = self.Encrypt(packet)
-        burst = 3
+    def Emit(self, packet: Any):
+        plain = bytes(packet) if isinstance(packet, (bytes, bytearray)) else self.Pack(packet)
+        if len(plain) not in LegalSizes:
+            raise ValueError('attempted to emit non-canonical glyph size')
+        raw = self.Encrypt(plain)
         peers = self.Peers()
         for host, port in peers:
-            for _shot in range(burst):
+            for _shot in range(3):
                 try:
                     self.sock.sendto(raw, (host, port))
                 except Exception:
                     pass
 
-    def Cast(self, packet: dict[str, Any]):
+    def Cast(self, packet: Any):
         return self.Emit(packet)
+
+    # ---------- helpers ----------
 
     def BuildState(self) -> Baton:
         souls = tuple(self.complete) if self.genesisdone else tuple(self.souls)
@@ -650,58 +998,108 @@ class Crypt:
             return dream()
         return dream
 
-    def HeaderOf(self, packet: dict[str, Any]) -> str:
-        return str(packet.get('header', '') or '').strip().lower()
+    def PurgeKey(self, glyph: Any) -> str:
+        if isinstance(glyph, str):
+            return self.MustKey(glyph)
+        if isinstance(glyph, dict):
+            return self.MustKey(glyph.get('key', ''))
+        return self.MustKey(getattr(glyph, 'key', ''))
 
-    def KindOf(self, packet: dict[str, Any]) -> str:
-        return str(packet.get('kind', '') or '').strip().lower()
+    def LogicalKind(self, glyph: Any) -> int:
+        if isinstance(glyph, Field.State):
+            return KindDream
+        if isinstance(glyph, Field.NightmareGlyph):
+            return KindNightmare
+        if isinstance(glyph, Field.SaltGlyph):
+            return int(glyph.lockbody.kind) + 2
+        if isinstance(glyph, SoulsGlyph):
+            return KindSouls
+        if isinstance(glyph, str):
+            return KindPurge
+        if isinstance(glyph, dict):
+            raw = glyph.get('kind', '')
+            if isinstance(raw, int) and raw in GlyphSizes:
+                return int(raw)
+            text = str(raw or '').strip().lower()
+            names = {
+                Dream.DreamGlyph: KindDream,
+                Dream.NightmareGlyph: KindNightmare,
+                Dream.PurgeGlyph: KindPurge,
+                'whisper': KindWhisper,
+                'rally': KindRally,
+                'defect': KindDefect,
+                'wrath': KindWrath,
+                'souls': KindSouls,
+            }
+            if text in names:
+                return names[text]
+        raise ValueError('unknown logical glyph kind')
 
-    def PacketHash(self, packet: dict[str, Any]) -> str:
-        body = json.dumps(packet, sort_keys=True, separators=(',', ':'), default=str)
-        return hashlib.sha256(body.encode('utf-8')).hexdigest()
+    def PacketHash(self, packet: Any) -> str:
+        body = bytes(packet) if isinstance(packet, (bytes, bytearray)) else self.Pack(packet)
+        return hashlib.sha256(body).hexdigest()
 
-
-    def Encrypt(self, packet: dict[str, Any]) -> bytes:
-        body = json.dumps(packet, sort_keys=True, separators=(',', ':'), default=str)
-        data = body.encode('utf-8')
+    def Encrypt(self, data: bytes) -> bytes:
+        if not isinstance(data, (bytes, bytearray)):
+            raise TypeError('Encrypt expects canonical glyph bytes')
+        body = bytes(data)
         mask = hashlib.sha256(self.skeleton.encode('utf-8')).digest()
-        return bytes((byte ^ mask[index % len(mask)] for index, byte in enumerate(data)))
+        return bytes(byte ^ mask[index % len(mask)] for index, byte in enumerate(body))
 
-    def Decrypt(self, raw: bytes) -> dict[str, Any]:
+    def Decrypt(self, raw: bytes) -> bytes:
+        if not isinstance(raw, (bytes, bytearray)) or len(raw) not in LegalSizes:
+            raise ValueError('encrypted glyph has non-canonical size')
         mask = hashlib.sha256(self.skeleton.encode('utf-8')).digest()
-        data = bytes((byte ^ mask[index % len(mask)] for index, byte in enumerate(raw)))
-        packet = json.loads(data.decode('utf-8'))
-        if not isinstance(packet, dict):
-            raise TypeError('packet must decode to dict')
-        return packet
+        return bytes(byte ^ mask[index % len(mask)] for index, byte in enumerate(bytes(raw)))
+
+    def MustGenesis(self, value: Any) -> int:
+        number = int(value or 1)
+        if number < 1 or number > Field.SeatCount:
+            raise ValueError(f'genesis must be 1..{Field.SeatCount} for fixed SoulsGlyph geometry')
+        return number
 
     def MustName(self, value: Any) -> str:
         text = str(value or '').strip()
         if not (0 < len(text) <= NameMax):
             raise ValueError('invalid soul name')
+        if len(text.encode('utf-8')) > NameMax:
+            raise ValueError('soul name must fit fixed 8-byte UTF-8 field')
         return text
 
     def MustKey(self, value: Any) -> str:
-        text = str(value or '').strip()
+        text = str(value or '').strip().lower()
         Field.VerifyKey(text)
+        # A participant with a zero four-byte prefix is indistinguishable from payout padding.
+        Field.PlayerTag(text)
+        return text
+
+    def MustTag(self, value: Any) -> str:
+        text = str(value or '').strip().lower()
+        Field.VerifyTag(text)
+        if text == Field.ZeroTagHex:
+            raise ValueError('zero tag is reserved for fixed-slot padding')
         return text
 
     def MustHash(self, value: Any) -> str:
-        text = str(value or '').strip()
+        text = str(value or '').strip().lower()
         Field.VerifyHash(text, fieldname='hash')
         return text
 
     def MustSign(self, value: Any) -> str:
-        text = str(value or '').strip()
+        text = str(value or '').strip().lower()
         Field.VerifySignHex(text, fieldname='sign')
         return text
 
     def AcceptSoulName(self, value: str) -> bool:
-        return isinstance(value, str) and 0 < len(value) <= NameMax
+        try:
+            return self.MustName(value) == str(value or '').strip()
+        except Exception:
+            return False
 
     def AcceptKey(self, value: str) -> bool:
         try:
-            return bool(Field.VerifyKey(value))
+            self.MustKey(value)
+            return True
         except Exception:
             return False
 

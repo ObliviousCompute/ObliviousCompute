@@ -282,9 +282,9 @@ def BuildCells(
                 soul=str(generalcard.soul),
                 key=str(generalcard.key),
                 salt=int(generalsalt),
-                purge=Field.Clean.purge(),
-                lock=Field.Clean.lock(),
-                sign=Field.Clean.sign(),
+                purge=Field.Clean.purge_locks(),
+                lock=Field.GenesisLock(str(generalcard.key)),
+                lowlock=None,
             )
         )
         for _rank in range(2, Ranks + 1):
@@ -296,9 +296,9 @@ def BuildCells(
                     soul=str(card.soul),
                     key=str(card.key),
                     salt=int(salt),
-                    purge=Field.Clean.purge(),
-                    lock=Field.Clean.lock(),
-                    sign=Field.Clean.sign(),
+                    purge=Field.Clean.purge_locks(),
+                    lock=Field.GenesisLock(str(card.key)),
+                    lowlock=None,
                 )
             )
     return tuple(cells)
@@ -325,7 +325,6 @@ def State(cryptstate: Any) -> Field.State:
     )
     finalstate = Field.State(
         self=genesis.myself or Field.Clean.self(),
-        monument=(),
         pristine=1,
         cells=cells,
     )

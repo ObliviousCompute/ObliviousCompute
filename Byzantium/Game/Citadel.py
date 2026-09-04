@@ -27,6 +27,13 @@ class Relay:
 
     def SurfaceState(self, value: Any) -> Any:
         self.statecache = Forge.MakeState(value)
+        if bool(getattr(self.statecache, 'ashfall', False)):
+            ash = getattr(self.statecache, 'ash', None)
+            if ash is not None:
+                if self.ash is None:
+                    self.ash = []
+                self.ash.append(ash)
+                self.ash = self.ash[-7:]
         if self.cache is not None:
             Project(self.cache, self.statecache)
             ApplyAsh(self.cache, self.ash or [])
@@ -45,31 +52,6 @@ class Relay:
 
     def Sleep(self) -> Any:
         return Sleep()
-
-    def Ashfall(self, value: Any) -> Any:
-        if self.ash is None:
-            self.ash = []
-        if not isinstance(value, dict):
-            return None
-        sender = str(value.get('sender', '') or '').strip()
-        kind = str(value.get('action', '') or value.get('kind', '') or '').strip().lower()
-        text = str(value.get('text', '') or '')
-        rawtext = str(value.get('rawtext', '') or '')
-        total = int(value.get('total', 0) or 0)
-        entry = {
-            'kind': kind or 'ash',
-            'sender': sender,
-            'name': sender.ljust(Forge.NameWidth)[:Forge.NameWidth],
-            'left': 'Defected' if kind == 'defect' else Forge.SpineCost(total, width=Forge.SaltWidth, signed=True),
-            'text': text,
-            'rawtext': rawtext,
-            'total': total,
-        }
-        self.ash.append(entry)
-        self.ash = self.ash[-7:]
-        if self.cache is not None:
-            ApplyAsh(self.cache, self.ash)
-        return entry
 
     def PeerDisplay(self, key: str) -> str:
         key = str(key or '').strip()
@@ -127,6 +109,19 @@ def DefectWrap(state: Any, mine: int, start: int) -> Optional[int]:
     return None
 
 
+def WhisperWrap(state: Any, mine: int, start: int) -> Optional[int]:
+    cells = list(getattr(state, 'cells', []) or [])
+    count = len(cells)
+    if count <= 0:
+        return None
+    q = int(start) % count
+    for hop in range(count):
+        seat = (q + hop) % count
+        if Forge.WhisperViable(state, int(mine), seat):
+            return seat
+    return None
+
+
 def BindState(cache: Cache, state: Any, q: Optional[int] = None) -> Optional[int]:
     if q is None:
         q = getattr(cache, 'stateq', 0)
@@ -145,10 +140,73 @@ def BindTarget(cache: Cache, state: Any, q: Optional[int] = None) -> Optional[in
     return cache.targetq
 
 
+LatrineInsults = (
+    "{poss} mother was a barbarian.",
+    "{name} smells of goat.",
+    "{name} sleeps in the stables.",
+    "{name} owes the bathhouse money.",
+    "{name} argues with donkeys.",
+    "{name} fears his own shadow.",
+    "{name} waters his wine.",
+    "{name} cheats at dice.",
+    "{name} bathes only on feast days.",
+    "{poss} sandals offend the gods.",
+    "{name} cannot count past ten.",
+    "{name} steals figs from children.",
+    "{name} kisses icons for luck.",
+    "{name} lost a fight to a goose.",
+    "{poss} beard is borrowed.",
+    "{name} cannot afford a decent cloak.",
+    "{poss} horse is ashamed of him.",
+    "{name} mistakes incense for seasoning.",
+    "{poss} mother prefers his brother.",
+    "{poss} mule refuses to carry him.",
+    "{poss} creditors know where he sleeps.",
+)
+
+
+def Possessive(name: str) -> str:
+    text = str(name or '').strip()
+    if not text:
+        return ''
+    return text + "'" if text.lower().endswith('s') else text + "'s"
+
+
+def Latrine(state: Any) -> list[str]:
+    equivocators = [cell for cell in list(getattr(state, 'cells', ()) or ()) if getattr(cell, 'lowlock', None) is not None]
+    equivocators.sort(key=lambda cell: (int(getattr(cell, 'salt', 0) or 0), str(getattr(cell.lowlock, 'tag', '') or '').strip().lower()))
+    graffiti: list[str] = []
+    for cell in equivocators:
+        lowlock = cell.lowlock
+        lowchild = str(getattr(lowlock, 'child', '') or '').strip().lower()
+        upperchild = str(getattr(getattr(cell, 'lock', None), 'child', '') or '').strip().lower()
+        try:
+            lower = int(lowchild, 16)
+            upper = int(upperchild, 16)
+            insult = LatrineInsults[lower % len(LatrineInsults)]
+            prefix = 1 + (upper % 10)
+            suffix = 1 + ((upper >> 8) % 10)
+        except Exception:
+            continue
+        name = str(getattr(cell, 'soul', '') or '').strip() or 'UNKNOWN'
+        line = insult.format(name=name, poss=Possessive(name))
+        graffiti.append(f"{'#' * prefix} {line} {'#' * suffix}")
+    return graffiti
+
+
+def ClampMonumentScroll(cache: Cache) -> int:
+    total = len(list(getattr(cache, 'monuments', None) or []))
+    maximum = max(0, total - 3)
+    offset = max(0, min(int(getattr(cache, 'monumentscroll', 0) or 0), maximum))
+    cache.monumentscroll = offset
+    return offset
+
+
 def Project(cache: Cache, state: Any) -> None:
     cache.state = state
     cache.activerequest = ''
-    cache.monuments = list(getattr(state, 'monument', ()) or ())
+    cache.monuments = Latrine(state)
+    ClampMonumentScroll(cache)
     cache.intent.q.self = Forge.SelfQ(state)
     RebindFocus(cache, state)
     cache.SyncIntent()
@@ -177,12 +235,11 @@ def RebindFocus(cache: Cache, state: Any) -> None:
     if current == Action.Whisper:
         if targetq is None and stateq is not None:
             targetq = stateq
-        if targetq is None or targetq == mine:
-            targetq = int(getattr(cache, 'stateq', mine) or mine) % count
-            if targetq == mine:
-                targetq = (mine + 1) % count
-        BindState(cache, state, int(targetq))
-        BindTarget(cache, state, None if int(targetq) == mine else int(targetq))
+        if targetq is None or not Forge.WhisperViable(state, mine, int(targetq)):
+            start = int(getattr(cache, 'stateq', mine + 1) or (mine + 1)) % count
+            targetq = WhisperWrap(state, mine, start)
+        BindState(cache, state, mine if targetq is None else int(targetq))
+        BindTarget(cache, state, None if targetq is None else int(targetq))
         return
 
     if current == Action.Purge:
@@ -212,7 +269,12 @@ def RebindFocus(cache: Cache, state: Any) -> None:
 
 def Say(cache: Cache, chan: str, line: str) -> None:
     feed = list(getattr(cache, 'feed', []) or [])
-    feed.append((chan, line))
+    feed.append({
+        'kind': str(chan or 'ash').strip().lower(),
+        'sender': '',
+        'text': str(line or ''),
+        'total': 0,
+    })
     cache.feed = feed[-7:]
     cache.feedcount = len(cache.feed)
 
@@ -313,6 +375,8 @@ def IntentPairs(state: Any, mine: int, current: Action, target: Optional[int], t
         return ()
     if current == Action.Whisper:
         if len(cells) == 1:
+            if Forge.Burned(cells[0]):
+                raise ValueError('burned actors cannot receive whispers')
             found = Forge.Key(cells[0])
             return () if not found else ((found, int(total)),)
         return Forge.geometry.Split(int(total), cells)
@@ -359,7 +423,11 @@ def Submit(cache: Cache, state: Any, current: Action) -> None:
 def MoveMenu(cache: Cache, state: Any, kind: str, value: Optional[str]):
     current = MenuAction(cache)
     if kind == 'Arrow':
-        if value == 'C':
+        if current == Action.Monument and not bool(getattr(cache, 'banner', True)) and value in ('A', 'B'):
+            offset = ClampMonumentScroll(cache)
+            cache.monumentscroll = max(0, offset - 1) if value == 'A' else offset + 1
+            ClampMonumentScroll(cache)
+        elif value == 'C':
             MoveMenuIndex(cache, +1)
         elif value == 'D':
             MoveMenuIndex(cache, -1)
@@ -378,7 +446,11 @@ def MoveMenu(cache: Cache, state: Any, kind: str, value: Optional[str]):
         cache.SyncIntent()
         return (cache, state, False)
     if current == Action.Monument:
-        cache.banner = not bool(getattr(cache, 'banner', True))
+        opening = bool(getattr(cache, 'banner', True))
+        cache.banner = not opening
+        if opening:
+            cache.monumentscroll = 0
+        ClampMonumentScroll(cache)
         cache.SyncIntent()
         return (cache, state, False)
     if current == Action.Lore:
@@ -399,7 +471,9 @@ def MoveMenu(cache: Cache, state: Any, kind: str, value: Optional[str]):
         cache.focus = Focus.TableMove
         cache.salt = 1
         cache.text = ''
-        BindState(cache, state, (SelfQ(state) + 1) % geometry.cells)
+        mine = SelfQ(state) % geometry.cells
+        target = WhisperWrap(state, mine, (mine + 1) % geometry.cells)
+        BindState(cache, state, mine if target is None else target)
         cache.SyncIntent()
         return (cache, state, False)
     if current == Action.Defect:
@@ -425,9 +499,15 @@ def MoveTable(cache: Cache, state: Any, kind: str, value: Optional[str]):
         return (cache, state, False)
     if current == Action.Whisper:
         mine = SelfQ(state) % geometry.cells
-        if int(cache.stateq) == mine:
-            cache.stateq = (mine + 1) % geometry.cells
-        BindTarget(cache, state, int(cache.stateq))
+        target = int(cache.stateq) % geometry.cells
+        if not Forge.WhisperViable(state, mine, target):
+            wrapped = WhisperWrap(state, mine, (target + 1) % geometry.cells)
+            if wrapped is None:
+                ResetIntent(cache)
+                return (cache, state, False)
+            target = wrapped
+            BindState(cache, state, target)
+        BindTarget(cache, state, target)
         cache.focus = Focus.Spine
         cache.SyncIntent()
         return (cache, state, False)
@@ -590,6 +670,7 @@ def InitCache(state: Any):
         Citadel.ash = []
     ApplyAsh(cache, Citadel.ash)
     cache.lorescroll = 0
+    cache.monumentscroll = 0
     cache.intent.q.self = Forge.SelfQ(state)
     Citadel.BindCache(cache)
     Citadel.State = state
@@ -615,10 +696,6 @@ def State(value: Any = None) -> Any:
 
 def Intent(value: Any) -> Any:
     return Citadel.Intent(value)
-
-
-def Ashfall(value: Any) -> Any:
-    return Citadel.Ashfall(value)
 
 
 def PeerDisplayLabel(key: str) -> str:

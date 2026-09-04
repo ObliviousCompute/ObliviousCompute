@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Dict, List, Optional
 
 import Forge
+import Field
 from Forge import Action, Focus, Cache, Menu, NameWidth, Columns, Rows, VisLen, ClipTerm, CenterTerm, MakeState
 
 
@@ -216,34 +217,6 @@ def RenderMenu(cache: Cache) -> List[str]:
     ]
 
 
-def AshSplit(raw: str) -> tuple[str, str]:
-    text = str(raw or '')
-    body, sep, kind = text.rpartition('|')
-    if sep:
-        return kind.strip().lower(), body
-    return '', text
-
-
-def BuildMonument(line: object) -> str:
-    raw = str(line or '')
-    if not raw.strip():
-        return ''
-    head, score, body = Forge.ParseMonument(raw, name=NameWidth)
-    name = str(head or '').ljust(NameWidth)[:NameWidth]
-    kind, tail = AshSplit(str(body or ''))
-    kind = str(kind or '').strip().lower()
-    if kind == 'defect':
-        scorefield = 'Defected'.rjust(Forge.SaltWidth)[:Forge.SaltWidth]
-    elif score is None:
-        scorefield = ''.rjust(Forge.SaltWidth)
-    else:
-        try:
-            scorefield = Forge.SpineCost(int(str(score).replace(',', '')), width=Forge.SaltWidth, signed=True)
-        except Exception:
-            scorefield = str(score).rjust(Forge.SaltWidth)[:Forge.SaltWidth]
-    return f'{name} {scorefield}:{tail}' if score is not None or tail else ''
-
-
 def RenderBanner(cache: Cache, monuments: List[str]) -> List[str]:
     lux = Forge.Crucible(cache)
     reset = lux['Reset']
@@ -252,27 +225,49 @@ def RenderBanner(cache: Cache, monuments: List[str]) -> List[str]:
     else:
         cleaned = [str(m).strip() for m in monuments if str(m).strip()]
         if cleaned:
-            payload = [lux['Ash'] + BuildMonument(line) + reset for line in (cleaned + ['', '', ''])[:3]]
+            maximum = max(0, len(cleaned) - 3)
+            offset = max(0, min(int(getattr(cache, 'monumentscroll', 0) or 0), maximum))
+            cache.monumentscroll = offset
+            window = cleaned[offset:offset + 3]
+            payload = [lux['Ash'] + line + reset for line in (window + ['', '', ''])[:3]]
         else:
+            cache.monumentscroll = 0
             payload = ['', CenterTerm(lux['Ash'] + 'Tabula Rasa' + reset)[2:], '']
     return [ClipTerm(line) for line in payload]
 
 
 def BoardNameColor(lux: Dict[str, str], action: Action, focus: Focus, me: int, idx: int, city: int, target: Optional[int], state: object) -> str:
-    if action == Action.Wrath and focus in (Focus.TableLock, Focus.Spine):
-        return lux['Flicker1']
+    cells = list(getattr(state, 'cells', []) or [])
+    cell = cells[idx] if 0 <= idx < len(cells) else None
+
+    # Cursor feedback is authoritative over board-state coloring.
+    # In global Purge preview the selected name keeps its normal cursor flicker
+    # while every other name pulses underneath it.
     if action == Action.Purge and focus == Focus.TableMove and idx == city:
         return lux['Flicker6']
     if (focus == Focus.TableMove and idx == city) or (action in (Action.Whisper, Action.Purge) and focus == Focus.Spine and idx == (target if target is not None else -1)):
         return lux['Flicker2']
+    if action == Action.Defect and focus == Focus.Spine and idx in (me, target if target is not None else -1):
+        return lux['Flicker1']
+
+    # Hovering over your own name in Purge mode is the global-purge warning:
+    # the rest of the board uses the same blood pulse as a live equivocator.
+    if action == Action.Purge and focus == Focus.TableMove and me >= 0 and city == me:
+        return lux['Pulse']
+
+    if cell is not None and Forge.Burned(cell):
+        return lux['Blood']
+    if cell is not None and Forge.Equivocator(cell):
+        return lux['EmberPulse'] if idx % Rows == 0 else lux['Pulse']
+
+    if action == Action.Wrath and focus in (Focus.TableLock, Focus.Spine):
+        return lux['Flicker1']
     if action == Action.Rally and focus in (Focus.TableLock, Focus.Spine):
         return lux['Flicker3'] if me >= 0 and idx // Rows == me // Rows else lux['Ash']
     if action == Action.Defect and focus == Focus.TableMove:
         if idx == me:
             return lux['Flicker4']
         return lux['Ember'] if me >= 0 and Forge.DefectViable(state, me, idx) else lux['Ash']
-    if action == Action.Defect and focus == Focus.Spine:
-        return lux['Flicker1'] if idx == me or idx == (target if target is not None else -1) else lux['Ash']
     if me >= 0 and idx == me:
         return lux['Flicker2'] if idx % Rows == 0 else lux['Flicker5']
     if idx % Rows == 0:
@@ -367,14 +362,6 @@ def BuildSpine(cache: Cache, state: object, *, lux: Optional[Dict[str, str]] = N
     return [ash + Description(action, anchorcol, state=state) + reset, white + Forge.Hline + reset]
 
 
-def AshTotal(raw: str) -> int:
-    digits = ''.join(ch for ch in str(raw or '') if ch.isdigit())
-    try:
-        return int(digits or '0')
-    except Exception:
-        return 0
-
-
 def AshColor(lux: Dict[str, str], mine: bool) -> str:
     return lux['Ash'] if mine else lux['Salt']
 
@@ -404,31 +391,23 @@ def RenderAshEntry(cache: Cache, lux: Dict[str, str], entry: object) -> str:
     mine = str(getattr(cache, 'name', '') or '').strip()
 
     if isinstance(entry, dict):
-        kind = str(entry.get('kind', '') or '').strip().lower()
         sender = str(entry.get('sender', '') or '').strip()
-        name = str(entry.get('name', '') or sender).ljust(NameWidth)[:NameWidth]
-        amounttext = str(entry.get('left', '') or '')
-        text = str(entry.get('text', '') or '')
+        rawtext = str(entry.get('text', '') or '')
         amounttotal = int(entry.get('total', 0) or 0)
+        hinted = str(entry.get('kind', '') or '').strip().lower()
     else:
-        chan = ''
-        line = ''
-        if isinstance(entry, tuple) and len(entry) >= 2:
-            chan, line = entry[0], entry[1]
-        rawline = str(line or '')
-        sender = rawline[:NameWidth].strip()
-        name = rawline[:NameWidth].ljust(NameWidth)[:NameWidth]
-        cut = min(len(rawline), NameWidth + 1)
-        colon = rawline.find(':', cut)
-        if colon < 0:
-            colon = len(rawline)
-        amounttext = rawline[cut:colon].strip()
-        rawtext = rawline[colon + 1:] if colon < len(rawline) else ''
-        kindtext, body = AshSplit(rawtext)
-        kind = kindtext or str(chan or '').strip().lower()
-        text = body if kindtext else rawtext
-        amounttotal = AshTotal(amounttext)
+        sender = str(getattr(entry, 'sender', '') or '').strip()
+        rawtext = str(getattr(entry, 'text', '') or '')
+        amounttotal = int(getattr(entry, 'total', 0) or 0)
+        hinted = ''
 
+    kind, body = Field.SplitText(rawtext)
+    if not kind:
+        kind = hinted or 'ash'
+        body = rawtext
+
+    name = sender.ljust(NameWidth)[:NameWidth]
+    amounttext = '' if kind == 'ash' and not sender else Forge.SpineCost(amounttotal, width=Forge.SaltWidth, signed=True)
     ismine = bool(sender) and sender == mine
     payload = AshColor(lux, ismine)
     tag = AshTag(lux, ismine, kind, amounttotal)
@@ -438,7 +417,7 @@ def RenderAshEntry(cache: Cache, lux: Dict[str, str], entry: object) -> str:
 
     nameslot = str(name).ljust(NameWidth)[:NameWidth]
     leftslot = str(left).rjust(Forge.SaltWidth)[:Forge.SaltWidth]
-    bodyslot = str(text or '').replace('\r', ' ').replace('\n', ' ')[:Forge.MessageMax]
+    bodyslot = str(body or '').replace('\r', ' ').replace('\n', ' ')[:Forge.MessageMax]
 
     return (
         lux['Ash'] + nameslot + reset +
@@ -540,8 +519,8 @@ def RenderScreen(cache: Cache, state: object) -> str:
     if getattr(cache, 'lore', False):
         return RenderLore(cache)
     rawmonuments = getattr(cache, 'monuments', None) or []
-    monuments = [str(item[1]) if isinstance(item, tuple) and len(item) >= 2 else str(item) for item in rawmonuments] if isinstance(rawmonuments, list) else []
-    anchorcol = Forge.MonumentAnchorCol(monuments, getattr(cache, 'name', '') or '')
+    monuments = [str(item) for item in rawmonuments] if isinstance(rawmonuments, list) else []
+    anchorcol = 0
     lines: List[str] = []
     lines.extend(RenderMenu(cache))
     lines.extend(RenderBanner(cache, monuments))
