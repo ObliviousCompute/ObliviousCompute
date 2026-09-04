@@ -14,7 +14,7 @@
 
 Okay, dude!! So, this is the weirdest part.
 
-Every Head can lie, double spend, fork, or generally act like an asshole. But once those Bones hit the **BonePile**, they’re no longer somebody’s private version of events. **They become something the state itself has to deal with.**
+Every Head can Gnash, bark and growle, or generally act like an asshole. But once those Bones hit the **BonePile**, they’re no longer somebody’s private version of events. **They become something the state itself has to deal with.**
 
 **ClawBack follows the damage through the state**, settles what can still be paid, and leaves the result sitting right there in the thing everyone is computing. Nobody has to reconstruct *who heard what first* or agree on a story about how it happened.
 
