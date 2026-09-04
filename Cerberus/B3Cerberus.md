@@ -12,19 +12,15 @@
 >
 > 🤖 ***Finally, and most importantly... if you think you have a counterexample, reproduce it through BoneYard and Oblivion before reporting it. The shared medium is part of the computational primitive being tested.***
 
-Okay, dude. *I think the computational center of gravity just moved.*
+Okay, dude!! the weirdest part is:
 
-Like, the Bones matter, but once they are admitted into the **BonePile**, the state itself starts doing the work. Equivocation becomes state. Debt becomes state. Recovery becomes state. Nobody has to reconstruct a private story about what happened first because the consequences are already sitting in the thing being computed.
+Every Head can lie, double spend, fork, or generally act like an asshole. But once those Bones hit the BonePile, they’re no longer somebody’s private version of events. They become something the state itself has to deal with.
 
-> 🧠 ***The state is the computation.***  
+ClawBack follows the damage through the state, settles what can still be paid, and leaves the result sitting right there in the thing everyone is computing. Nobody has to reconstruct who heard what first or agree on a story about how it happened.
 
-Okay, dude. I think I see what happened here.
+Each observer holds the complete state, projects it into the Oblivious Medium, and accepts whatever remains lawful. The messages still matter, sure—but they’re not the center of the machine anymore.
 
-Once the double spend hits the field, it stops being somebody’s private story. The two conflicting moves become part of the board. If more forks show up, Byzantium keeps collapsing them down to a bounded pair and repairs the state around whatever survives.
-
-As long as the player can still pay for both sides, the fork stays alive. Once they can’t, they’re done. Zero balance. Adios Muchacho!!
-
-> 🧠 *Damn. Byzantium eats forks for breakfast.*
+> 🧠 *Whoa...so the Byzantine problem might not actually live in the messages.*
 
 ### Lamport's Byzantine Generals Problem, 1982
 
