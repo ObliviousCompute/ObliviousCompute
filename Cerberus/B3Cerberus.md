@@ -20,7 +20,7 @@ Every Head can lie, double spend, fork, or generally act like an asshole. But on
 
 Each observer holds the **complete state**, projects it into the **Oblivious Medium**, and accepts whatever remains lawful. The messages still matter, sure—but **they’re not the center of the machine anymore.**
 
-> 🧠 *Whoa...maybe the Byzantine problem is a history problem.*
+> 🧠 *Whoa...the Byzantine problem is a reliance-on-history problem.*
 
 ### Lamport's Byzantine Generals Problem, 1982
 
