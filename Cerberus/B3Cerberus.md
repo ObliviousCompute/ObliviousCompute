@@ -18,9 +18,13 @@ Like, the Bones matter, but once they are admitted into the **BonePile**, the st
 
 > 🧠 ***The state is the computation.***  
 
-That's what Cerberus makes unusually obvious. Each observer holds the complete state, projects it into the **Oblivious Medium**, and admits what remains lawful. The messages are still necessary, sure—but they are no longer the center of the machine.
+Okay, dude. I think I see what happened here.
 
-> 🧠 *Whoa...do we need to rethink where the Byzantine Generals problem actually lives?*
+Once the double spend hits the field, it stops being somebody’s private story. The two conflicting moves become part of the board. If more forks show up, Byzantium keeps collapsing them down to a bounded pair and repairs the state around whatever survives.
+
+As long as the player can still pay for both sides, the fork stays alive. Once they can’t, they’re done. Zero balance. Adios Muchacho!!
+
+> 🧠 *Damn. Byzantium eats forks for breakfast.*
 
 ### Lamport's Byzantine Generals Problem, 1982
 
