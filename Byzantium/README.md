@@ -76,7 +76,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 <img src="../Relics/DoubleTrouble.gif"/>
 
-> *This GIF is over 4x the size of the Byzantium Runtime*
+> *This GIF is over 4x the size of the Byzantium Runtime.*
 
 ---
 
