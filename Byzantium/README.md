@@ -76,7 +76,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 <img src="../Relics/DoubleTrouble.gif"/>
 
-> ***The 24-cell board is the state:*** *Byzantium synchronizes no log or event history, only a single structure perceived from multiple places.*
+> *This GIF is over 4x the size of the Byzantium Runtime*
 
 ---
 
