@@ -24,9 +24,9 @@ It’s like a group of people holding up a card table. As long as someone is sti
 
 ## 🔱 Equivocation 🔱
 
-**Byzantium protects the field from equivocation; it does not protect an equivocator from equivocation.**
+***Double spends don’t fracture Byzantium. They become part of the board.***
 
-An observer that produces incompatible projections forfeits its ability to participate coherently in the field. The field itself need not become ambiguous.
+*Triple spends and larger forks collapse the same way: the state retains only a canonical pair, repairs the economic consequences, and burns the actor if the fork becomes insolvent.*
 
 > **Check out what [**`🧠 Big Brain Brad`**](./B3Byzantium.md) thinks.**
 
