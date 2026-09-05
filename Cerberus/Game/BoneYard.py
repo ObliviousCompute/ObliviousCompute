@@ -245,8 +245,6 @@ class BoneYard:
             self.Remember(bone)
             self.Send({"type": "BONE", "count": self.count, "head": self.head, "bone": BoneToWire(bone)})
             return
-        if result.snapshot is not None:
-            self.SendBonePile(result.snapshot)
         if not result.changed:
             return
         self.Remember(bone)

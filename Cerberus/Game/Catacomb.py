@@ -125,6 +125,8 @@ class Head:
     tag: Tag
     locksign: str
     receipts: tuple[Bone, ...] = ()
+    # Legacy wire name. It is a tri-state fork marker now:
+    # None = ordinary, 0 = canonical virgin package, positive = Doghouse.
     clawcount: Optional[int] = None
 
     def __post_init__(self) -> None:
@@ -156,7 +158,6 @@ class Result:
     changed: bool = False
     reproject: bool = False
     bone: Optional[Bone] = None
-    snapshot: Optional[BonePile] = None
 
 
 def LockHash(tag: Tag) -> str:
@@ -959,7 +960,6 @@ class Catacomb:
         *,
         status: str = "BURIED",
         reproject: bool = False,
-        snapshot: Optional[BonePile] = None,
     ) -> Result:
         bad = "BAD BONE" if bone is not None else "BAD BONEPILE"
         if self.SortingBonePile is None:
@@ -984,7 +984,6 @@ class Catacomb:
             changed=True,
             reproject=bool(reproject),
             bone=bone,
-            snapshot=self.CopyBonePile(snapshot) if snapshot is not None else None,
         )
 
         if self.GuardianOut is not None:
