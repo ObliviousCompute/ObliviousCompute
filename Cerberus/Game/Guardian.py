@@ -222,6 +222,21 @@ def LeaveScreen(fd: int) -> None:
         ReadKey(fd)
     except ExitCerberus:
         pass
+    finally:
+        sys.stdout.write(Clear)
+        sys.stdout.flush()
+
+
+def PortTakenScreen(fd: int) -> None:
+    card = Canvas()
+    Center(card, 9, "Stop chasing your tail.")
+    Center(card, 12, "This port is already taken.")
+    Paint(card)
+    try:
+        ReadKey(fd)
+    except ExitCerberus:
+        return
+    LeaveScreen(fd)
 
 
 def HeadTile(name: str, cell: Head) -> tuple[str, str]:
@@ -394,10 +409,10 @@ class Guardian:
             CatacombIn=self.catacomb.BoneYard,
             BonePileIn=self.catacomb.ReceiveBonePile,
             BonePileOut=lambda: self.catacomb.BonePile,
-            BonePileSignOut=self.catacomb.SignBonePile,
         )
         self.catacomb.BoneYardOut = self.boneyard.Catacomb
         self.catacomb.HungerOut = self.boneyard.Hunger
+        self.catacomb.ProjectOut = self.boneyard.SendBonePile
         if self.catacomb.Seed(genesis).status == "BAD BONEPILE":
             raise RuntimeError("Guardian could not generate Genesis.")
         self.state = self.catacomb.BonePile
@@ -447,6 +462,7 @@ class Guardian:
         Put(card, 17, f"Bones: {total} / {expected}", left)
         Put(card, 18, f"BonePile: {self.bonepile}", left)
         Put(card, 19, f"Cerberus: {self.cerberus}", left)
+        Put(card, 21, "(H)unger for a fresh BonePile", left)
         Paint(card)
 
     def Commit(self) -> bool:
@@ -533,7 +549,13 @@ def Run() -> None:
         try:
             cerberus, count, dogtag, bonepile = Setup(fd)
             guardian = Guardian(cerberus)
-            guardian.Open(count)
+            try:
+                guardian.Open(count)
+            except RuntimeError as error:
+                if "No clean mouth available" not in str(error):
+                    raise
+                PortTakenScreen(fd)
+                return
             guardian.Identity(dogtag, bonepile)
             guardian.Run(fd)
         except (ExitCerberus, KeyboardInterrupt):

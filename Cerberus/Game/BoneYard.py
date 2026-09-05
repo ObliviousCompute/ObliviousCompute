@@ -10,11 +10,9 @@ from typing import Callable, Iterable, Optional
 from .Catacomb import (
     Bone,
     BonePile,
-    BonePileHash,
     Head,
     Result,
     Tag,
-    VerifyDigest,
 )
 
 Host = "127.0.0.1"
@@ -106,9 +104,8 @@ class BoneYard:
         self.ready = False
 
         self.CatacombIn: Optional[Callable[[Bone], Result]] = None
-        self.BonePileIn: Optional[Callable[[BonePile, str], Result]] = None
+        self.BonePileIn: Optional[Callable[[BonePile], Result]] = None
         self.BonePileOut: Optional[Callable[[], BonePile]] = None
-        self.BonePileSignOut: Optional[Callable[[BonePile], str]] = None
 
         self.seenorder: deque[tuple[object, ...]] = deque()
         self.seen: set[tuple[object, ...]] = set()
@@ -197,9 +194,8 @@ class BoneYard:
         head: str,
         *,
         CatacombIn: Callable[[Bone], Result],
-        BonePileIn: Callable[[BonePile, str], Result],
+        BonePileIn: Callable[[BonePile], Result],
         BonePileOut: Callable[[], BonePile],
-        BonePileSignOut: Callable[[BonePile], str],
     ) -> None:
         heads = tuple(str(item).upper() for item in heads)
         head = str(head).upper()
@@ -212,22 +208,17 @@ class BoneYard:
         self.CatacombIn = CatacombIn
         self.BonePileIn = BonePileIn
         self.BonePileOut = BonePileOut
-        self.BonePileSignOut = BonePileSignOut
         self.ready = True
 
     def SendBonePile(self, pile: Optional[BonePile] = None) -> None:
-        if not self.ready or self.BonePileOut is None or self.BonePileSignOut is None:
+        if not self.ready or self.BonePileOut is None:
             return
         pile = self.BonePileOut() if pile is None else pile
         if set(pile) != self.expected:
             return
-        statehash = BonePileHash(self.head, pile)
         self.Send({
             "type": "BONEPILE",
             "count": self.count,
-            "head": self.head,
-            "statehash": statehash,
-            "statesign": self.BonePileSignOut(pile),
             "bonepile": BonePileToWire(pile),
         })
 
@@ -280,8 +271,6 @@ class BoneYard:
                 return False
         except Exception:
             return False
-        claimed = str(message.get("head", "")).upper()
-
         if kind == "BONE":
             try:
                 bone = BoneFromWire(message.get("bone"))
@@ -306,19 +295,14 @@ class BoneYard:
         if kind == "BONEPILE":
             try:
                 pile = BonePileFromWire(message.get("bonepile"), self.heads)
-                statehash = str(message.get("statehash", ""))
-                statesign = str(message.get("statesign", ""))
-                if claimed not in self.expected or statehash != BonePileHash(claimed, pile):
-                    raise ValueError("BonePile projector/hash mismatch")
-                VerifyDigest(pile[claimed].key, statehash, statesign)
             except Exception:
                 if self.NoticeOut:
                     self.NoticeOut("BAD BONEPILE")
                 return True
             if self.BonePileIn is None:
                 return False
-            result = self.BonePileIn(pile, claimed)
-            if result.status in ("LOCKED", "DOGHOUSE"):
+            result = self.BonePileIn(pile)
+            if result.status == "LOCKED":
                 return False
             if result.status == "IDEMPOTENT":
                 return True

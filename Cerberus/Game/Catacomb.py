@@ -187,35 +187,11 @@ def ReceiptHash(bone: Bone) -> str:
         bone.locksign,
     )
 
-def ForkHash(*receipts: Bone) -> str:
+def ForkChildren(*receipts: Bone) -> tuple[str, str]:
     pair = CanonicalReceipts(*receipts)
     if len(pair) != 2 or pair[0].head != pair[1].head or pair[0].tag.parent != pair[1].tag.parent:
-        raise ValueError("fork hash needs two same-parent sibling Bones")
-    return HashHex(
-        "CERBERUS::FORK::V1",
-        pair[0].head,
-        pair[0].tag.parent,
-        pair[0].tag.child,
-        pair[1].tag.child,
-    )
-
-def BonePileHash(projector: str, pile: BonePile) -> str:
-    parts: list[object] = [str(projector).upper()]
-    for head in sorted(pile):
-        cell = pile[head]
-        parts.extend((
-            cell.head,
-            cell.key,
-            int(cell.bones),
-            cell.tag.parent,
-            cell.tag.child,
-            cell.locksign,
-            "" if cell.clawcount is None else int(cell.clawcount),
-            len(cell.receipts),
-        ))
-        for receipt in cell.receipts:
-            parts.extend((ReceiptHash(receipt), receipt.sign))
-    return HashHex("CERBERUS::BONEPILE::V1", *parts)
+        raise ValueError("fork children need two same-parent sibling Bones")
+    return (pair[0].tag.child, pair[1].tag.child)
 
 
 def VerifyBoneProof(bone: Bone) -> Bone:
@@ -240,6 +216,23 @@ def CanonicalReceipts(*receipts: Bone) -> tuple[Bone, ...]:
     if len(ordered) > 2:
         raise ValueError("a convicted Cell retains exactly two sibling receipts")
     return ordered
+
+def LowestForkReceipts(*receipts: Bone) -> tuple[Bone, Bone]:
+    unique: dict[str, Bone] = {}
+    for receipt in receipts:
+        VerifyBoneProof(receipt)
+        unique[ReceiptHash(receipt)] = receipt
+    ordered = tuple(sorted(unique.values(), key=lambda item: (item.tag.child, ReceiptHash(item))))
+    if len(ordered) < 2:
+        raise ValueError("fork evidence needs at least two distinct Bones")
+    head = ordered[0].head
+    key = ordered[0].key
+    parent = ordered[0].tag.parent
+    if any(item.head != head or item.key != key or item.tag.parent != parent for item in ordered):
+        raise ValueError("fork evidence must share one Head, key, and parent")
+    if len({item.tag.child for item in ordered}) != len(ordered):
+        raise ValueError("fork evidence children must be distinct")
+    return (ordered[0], ordered[1])
 def VerifyCellLock(cell: Head) -> Head:
     if cell.locksign == ZeroSign and not cell.receipts and cell.clawcount is None and cell.tag == Tag(ZeroHash, GenesisChild(cell.head, cell.key)):
         return cell
@@ -278,6 +271,9 @@ class Catacomb:
         self.GuardianOut = GuardianOut
         self.BoneYardOut = BoneYardOut
         self.HungerOut = HungerOut
+        # Complete BonePiles are anonymous. This callback projects a proven
+        # canonical virgin package before the local facsimile is settled.
+        self.ProjectOut: Optional[Callable[[BonePile], None]] = None
 
         self.BuriedBonePile: BonePile = {self.head: self.GenesisCell}
         self.SortingBonePile: Optional[BonePile] = None
@@ -298,9 +294,6 @@ class Catacomb:
 
     def CopyBonePile(self, source: Optional[BonePile] = None) -> BonePile:
         return dict(self.BuriedBonePile if source is None else source)
-
-    def SignBonePile(self, pile: BonePile) -> str:
-        return SignDigest(self.privatekey, BonePileHash(self.head, pile))
 
     def VerifyBonePile(self, pile: BonePile) -> BonePile:
         if not isinstance(pile, dict):
@@ -336,15 +329,7 @@ class Catacomb:
                 if len(receipts) == 2 and (len(parents) != 1 or len(children) != 2):
                     raise ValueError("two Cell receipts must be conflicting siblings")
                 canonical = receipts[0]
-                if len(receipts) == 2 and cell.clawcount == 0:
-                    applied = any(
-                        cell.tag == receipt.tag and cell.locksign == receipt.locksign
-                        for receipt in receipts
-                    )
-                    untouched = cell.tag.child == receipts[0].tag.parent
-                    if not applied and not untouched:
-                        raise ValueError("virgin clawback surface does not expose its fork")
-                elif cell.tag != canonical.tag or cell.locksign != canonical.locksign:
+                if cell.tag != canonical.tag or cell.locksign != canonical.locksign:
                     raise ValueError("Cell surface must follow its lower recorded child")
             else:
                 genesis = Tag(parent=ZeroHash, child=GenesisChild(head, cell.key))
@@ -396,79 +381,94 @@ class Catacomb:
             self.HungerOut()
         return Result(status="HUNGRY")
 
-    def ReceiveBonePile(self, pile: BonePile, projector: str) -> Result:
+    def ReceiveBonePile(self, pile: BonePile) -> Result:
         try:
             candidate = self.CopyBonePile(pile)
             self.VerifyBonePile(candidate)
         except Exception:
             return Result(status="BAD BONEPILE")
 
-        projector = str(projector).upper()
-        if projector in self.BuriedBonePile and self.Doghouse(self.BuriedBonePile[projector]):
-            return Result(status="DOGHOUSE")
-
         virgins = [head for head in self.heads if candidate[head].clawcount == 0]
         if virgins:
             if len(virgins) != 1:
                 return Result(status="BAD BONEPILE")
             dirty = virgins[0]
-            if projector == dirty:
-                return Result(status="DOGHOUSE")
-            release = self.Clawback(candidate, dirty)
-            if release is None:
+            local = self.BuriedBonePile[dirty]
+            incomingpair = CanonicalReceipts(*candidate[dirty].receipts)
+            if len(incomingpair) != 2:
                 return Result(status="BAD BONEPILE")
-            repaired = release
 
-            mydogs = self.Dogs(self.BuriedBonePile)
-            theirdogs = self.Dogs(repaired)
-            if not mydogs <= theirdogs:
+            packages: list[BonePile] = []
+            if self.Doghouse(local):
+                try:
+                    oldpair = CanonicalReceipts(*local.receipts)
+                    bestpair = LowestForkReceipts(*(oldpair + incomingpair))
+                    if ForkChildren(*bestpair) >= ForkChildren(*oldpair):
+                        return Result(status="LOCKED")
+                except Exception:
+                    return Result(status="BAD BONEPILE")
+
+                # The incoming virgin surface already contains every incoming-ahead
+                # effect. Advance it with any provable local-ahead effects first;
+                # its Dirty Dog balance is then the only estate that can reconcile.
+                probe = self.CopyBonePile(candidate)
+                self.Advance(probe, self.BuriedBonePile, skip={dirty})
+                virgin = self.Clawback(self.BuriedBonePile, dirty, estate=probe[dirty].bones)
+                if virgin is not None:
+                    reconciled = self.ReconcileVirgin(virgin, candidate, dirty)
+                    if reconciled is not None:
+                        package, pair = reconciled
+                        if sum(receipt.bones for receipt in pair) > package[dirty].bones:
+                            packages.append(package)
+            else:
+                try:
+                    evidence = list(incomingpair)
+                    localreceipts = tuple(local.receipts)
+                    if localreceipts and all(
+                        receipt.head == dirty
+                        and receipt.key == incomingpair[0].key
+                        and receipt.tag.parent == incomingpair[0].tag.parent
+                        for receipt in localreceipts
+                    ):
+                        evidence.extend(localreceipts)
+                    bestpair = LowestForkReceipts(*evidence)
+                except Exception:
+                    return Result(status="BAD BONEPILE")
+
+                virgin = self.Clawback(self.BuriedBonePile, dirty, pair=bestpair)
+                if virgin is None:
+                    return Result(status="LOCKED")
+                reconciled = self.ReconcileVirgin(virgin, candidate, dirty)
+                if reconciled is not None:
+                    package, pair = reconciled
+                    if sum(receipt.bones for receipt in pair) > package[dirty].bones:
+                        packages.append(package)
+
+            if len(packages) != 1:
                 return Result(status="LOCKED")
 
-            local = self.BuriedBonePile[dirty]
-            if self.Doghouse(local):
-                incomingrank = (
-                    ForkHash(*candidate[dirty].receipts),
-                    int(repaired[dirty].clawcount or 0),
-                    BonePileHash("", repaired),
-                )
-                localrank = (
-                    ForkHash(*local.receipts),
-                    int(local.clawcount or 0),
-                    BonePileHash("", self.BuriedBonePile),
-                )
-                if incomingrank >= localrank:
-                    return Result(status="LOCKED")
+            package = packages[0]
+            settled = self.ApplyPair(package, dirty)
+            if settled is None:
+                return Result(status="BAD BONEPILE")
 
+            # Facsimile first: project the proven virgin package, then settle
+            # the local copy and bury it. No projector identity is attached.
+            self.Project(package)
             self.Hungry = False
-            self.BuriedBonePile = repaired
-            self.SortingBonePile = None
-            result = Result(status="CLAWED", changed=True)
-            if self.GuardianOut is not None:
-                self.GuardianOut(self.CopyBonePile(), result)
-            return result
+            self.SortingBonePile = settled
+            return self.Bury(status="CLAWED")
 
         if not self.Hungry:
             return Result(status="LOCKED")
 
-        mydogs = self.Dogs(self.BuriedBonePile)
-        theirdogs = self.Dogs(candidate)
-        if not mydogs <= theirdogs:
+        joined = self.Reconcile(self.BuriedBonePile, candidate)
+        if joined is None:
             return Result(status="LOCKED")
 
         self.Hungry = False
-        if candidate == self.BuriedBonePile:
-            result = Result(status="IDEMPOTENT")
-            if self.GuardianOut is not None:
-                self.GuardianOut(self.CopyBonePile(), result)
-            return result
-
-        self.BuriedBonePile = candidate
-        self.SortingBonePile = None
-
-        result = Result(status="BURIED", changed=True)
-        if self.GuardianOut is not None:
-            self.GuardianOut(self.CopyBonePile(), result)
-        return result
+        self.SortingBonePile = joined
+        return self.Bury(status="BURIED")
 
 
     def Mint(self, target: str, bones: int) -> Bone:
@@ -538,10 +538,22 @@ class Catacomb:
     def Doghouse(cell: Head) -> bool:
         return bool(cell.clawcount)
 
-    def Dogs(self, pile: BonePile) -> set[str]:
-        return {head for head in self.heads if self.Doghouse(pile[head])}
+    @staticmethod
+    def SameFrontier(first: Head, second: Head) -> bool:
+        return (
+            first.head == second.head
+            and first.key == second.key
+            and first.tag == second.tag
+            and first.locksign == second.locksign
+            and first.receipts == second.receipts
+            and first.clawcount == second.clawcount
+        )
 
-    def RaiseForClawback(
+    def Project(self, pile: BonePile) -> None:
+        if self.ProjectOut is not None:
+            self.ProjectOut(self.CopyBonePile(pile))
+
+    def Dig(
         self,
         candidate: BonePile,
         head: str,
@@ -563,7 +575,7 @@ class Catacomb:
                 continue
             before = self.CopyBonePile(candidate)
             beforeunwound = set(unwound)
-            if not self.RaiseForClawback(candidate, edge.target, edge.bones, unwound, nexttrail):
+            if not self.Dig(candidate, edge.target, edge.bones, unwound, nexttrail):
                 candidate.clear()
                 candidate.update(before)
                 unwound.clear()
@@ -579,97 +591,294 @@ class Catacomb:
                 return True
         return False
 
-    def Clawback(self, virgin: BonePile, dirty: str) -> Optional[BonePile]:
-        candidate = self.CopyBonePile(virgin)
+    def Clawback(
+        self,
+        sourcepile: BonePile,
+        dirty: str,
+        *,
+        pair: Optional[tuple[Bone, Bone]] = None,
+        estate: Optional[int] = None,
+    ) -> Optional[BonePile]:
+        """Return an economically virgin fork surface.
+
+        ClawBack is normalization only. Dig recovers any downstream Bones.
+        It does not settle the new pair; ApplyPair does that only after the
+        two 99-bone reconciliation checks have produced one common surface.
+        """
+        candidate = self.CopyBonePile(sourcepile)
         cell = candidate[dirty]
-        pair = CanonicalReceipts(*cell.receipts)
-        if cell.clawcount != 0 or len(pair) != 2:
-            return None
-
-        applied = next(
-            (receipt for receipt in pair if cell.tag == receipt.tag and cell.locksign == receipt.locksign),
-            None,
-        )
-        if applied is None and cell.tag.child != pair[0].tag.parent:
-            return None
-        estatebefore = cell.bones + (applied.bones if applied is not None else 0)
-        if sum(receipt.bones for receipt in pair) <= estatebefore:
-            return None
-
         unwound: set[str] = set()
-        if applied is not None:
-            if not self.RaiseForClawback(candidate, applied.target, applied.bones, unwound, {dirty}):
-                return None
-            victim = candidate[applied.target]
-            if victim.bones < applied.bones:
-                return None
-            candidate[applied.target] = replace(victim, bones=victim.bones - applied.bones)
-            source = candidate[dirty]
-            candidate[dirty] = replace(source, bones=source.bones + applied.bones)
-
-        source = candidate[dirty]
-        estate = int(source.bones)
-        canonical = pair[0]
-        claws = set(unwound)
-        if applied is not None:
-            claws.add(ReceiptHash(applied))
-        candidate[dirty] = Head(
-            head=source.head,
-            key=source.key,
-            bones=0,
-            tag=canonical.tag,
-            locksign=canonical.locksign,
-            receipts=pair,
-            clawcount=max(1, len(claws)),
-        )
-
-        q, r = divmod(estate, len(pair))
-        for index, receipt in enumerate(pair):
-            share = q + (1 if index < r else 0)
-            if share:
-                target = candidate[receipt.target]
-                candidate[receipt.target] = replace(target, bones=target.bones + share)
 
         try:
+            if self.Doghouse(cell):
+                oldpair = CanonicalReceipts(*cell.receipts)
+                if len(oldpair) != 2 or estate is None:
+                    return None
+                estate = int(estate)
+                if estate < 0 or estate >= sum(receipt.bones for receipt in oldpair):
+                    return None
+
+                q, r = divmod(estate, len(oldpair))
+                for index, receipt in enumerate(oldpair):
+                    share = q + (1 if index < r else 0)
+                    if not share:
+                        continue
+                    if not self.Dig(candidate, receipt.target, share, unwound, {dirty}):
+                        return None
+                    victim = candidate[receipt.target]
+                    if victim.bones < share:
+                        return None
+                    candidate[receipt.target] = replace(victim, bones=victim.bones - share)
+                    candidate[dirty] = replace(candidate[dirty], bones=candidate[dirty].bones + share)
+
+                if candidate[dirty].bones != estate:
+                    return None
+                evidence = oldpair
+            else:
+                if pair is None:
+                    if len(cell.receipts) != 2:
+                        return None
+                    evidence = CanonicalReceipts(*cell.receipts)
+                else:
+                    evidence = LowestForkReceipts(*pair)
+
+                parent = evidence[0].tag.parent
+                applied: list[Bone] = []
+                if len(cell.receipts) == 1:
+                    held = cell.receipts[0]
+                    if held.tag.parent == parent and any(ReceiptHash(held) == ReceiptHash(item) for item in evidence):
+                        applied = [held]
+                    elif cell.tag.child != parent:
+                        return None
+                elif len(cell.receipts) == 2 and cell.clawcount is None:
+                    currentpair = CanonicalReceipts(*cell.receipts)
+                    if currentpair[0].tag.parent != parent:
+                        return None
+                    applied = list(currentpair)
+                elif not cell.receipts:
+                    if cell.tag.child != parent:
+                        return None
+                elif cell.tag.child != parent:
+                    return None
+
+                for receipt in applied:
+                    if not self.Dig(candidate, receipt.target, receipt.bones, unwound, {dirty}):
+                        return None
+                    victim = candidate[receipt.target]
+                    if victim.bones < receipt.bones:
+                        return None
+                    candidate[receipt.target] = replace(victim, bones=victim.bones - receipt.bones)
+                    candidate[dirty] = replace(candidate[dirty], bones=candidate[dirty].bones + receipt.bones)
+
+            canonical = evidence[0]
+            source = candidate[dirty]
+            candidate[dirty] = Head(
+                head=source.head,
+                key=source.key,
+                bones=source.bones,
+                tag=canonical.tag,
+                locksign=canonical.locksign,
+                receipts=evidence,
+                clawcount=0,
+            )
             self.VerifyBonePile(candidate)
+            return candidate
         except Exception:
             return None
-        return candidate
+
+    def ApplyForward(self, candidate: BonePile, aheadpile: BonePile, head: str) -> bool:
+        """Advance one Head using only the ahead surface's retained signed Bones.
+
+        The operation is transactional. It never copies balances from the other
+        state; it reproduces their effect against the local scratch BonePile.
+        """
+        behind = candidate[head]
+        ahead = aheadpile[head]
+        if self.SameFrontier(behind, ahead):
+            return True
+        if behind.head != ahead.head or behind.key != ahead.key:
+            return False
+        if behind.clawcount is not None or ahead.clawcount is not None:
+            return False
+
+        try:
+            receipts = CanonicalReceipts(*ahead.receipts)
+        except Exception:
+            return False
+        missing: list[Bone] = []
+
+        if len(receipts) == 1:
+            edge = receipts[0]
+            if edge.tag.parent != behind.tag.child:
+                return False
+            missing = [edge]
+        elif len(receipts) == 2:
+            parent = receipts[0].tag.parent
+            if behind.tag.child == parent:
+                missing = list(receipts)
+            elif len(behind.receipts) == 1:
+                held = behind.receipts[0]
+                heldid = ReceiptHash(held)
+                ids = {ReceiptHash(item) for item in receipts}
+                if heldid not in ids or behind.tag != held.tag or behind.locksign != held.locksign:
+                    return False
+                missing = [item for item in receipts if ReceiptHash(item) != heldid]
+            else:
+                return False
+        else:
+            return False
+
+        before = self.CopyBonePile(candidate)
+        try:
+            for edge in missing:
+                self.VerifyBone(edge)
+                source = candidate[head]
+                if source.bones < edge.bones:
+                    raise ValueError("forward Bone overspends the scratch surface")
+                target = candidate[edge.target]
+                if self.Doghouse(target):
+                    raise ValueError("forward Bone targets a Head already in the Doghouse")
+                candidate[head] = replace(source, bones=source.bones - edge.bones)
+                candidate[edge.target] = replace(target, bones=target.bones + edge.bones)
+
+            source = candidate[head]
+            candidate[head] = Head(
+                head=source.head,
+                key=source.key,
+                bones=source.bones,
+                tag=ahead.tag,
+                locksign=ahead.locksign,
+                receipts=ahead.receipts,
+                clawcount=ahead.clawcount,
+            )
+            return True
+        except Exception:
+            candidate.clear()
+            candidate.update(before)
+            return False
+
+    def Advance(self, target: BonePile, source: BonePile, *, skip: set[str] | None = None) -> None:
+        skip = set() if skip is None else set(skip)
+        pending = {head for head in self.heads if head not in skip and not self.SameFrontier(target[head], source[head])}
+        while pending:
+            progress = False
+            for head in tuple(pending):
+                if self.SameFrontier(target[head], source[head]):
+                    pending.discard(head)
+                    continue
+                if self.ApplyForward(target, source, head):
+                    pending.discard(head)
+                    progress = True
+            if not progress:
+                break
+
+    def Reconcile(self, local: BonePile, incoming: BonePile) -> Optional[BonePile]:
+        mine, theirs = self.CopyBonePile(local), self.CopyBonePile(incoming)
+        self.Advance(mine, theirs)
+        try:
+            self.VerifyBonePile(mine)              # 99 check #1
+        except Exception:
+            return None
+        self.Advance(theirs, mine)
+        try:
+            self.VerifyBonePile(theirs)            # 99 check #2
+        except Exception:
+            return None
+        return mine if mine == theirs else None
+
+    def ReconcileVirgin(
+        self, localvirgin: BonePile, incomingvirgin: BonePile, dirty: str
+    ) -> Optional[tuple[BonePile, tuple[Bone, Bone]]]:
+        mine, theirs = self.CopyBonePile(localvirgin), self.CopyBonePile(incomingvirgin)
+        try:
+            pair = LowestForkReceipts(*(mine[dirty].receipts + theirs[dirty].receipts))
+        except Exception:
+            return None
+
+        self.Advance(mine, theirs, skip={dirty})
+        try:
+            self.VerifyBonePile(mine)              # 99 check #1
+        except Exception:
+            return None
+        self.Advance(theirs, mine, skip={dirty})
+        try:
+            self.VerifyBonePile(theirs)            # 99 check #2
+        except Exception:
+            return None
+
+        canonical = pair[0]
+        for pile in (mine, theirs):
+            cell = pile[dirty]
+            pile[dirty] = Head(cell.head, cell.key, cell.bones, canonical.tag, canonical.locksign, pair, 0)
+            try:
+                self.VerifyBonePile(pile)
+            except Exception:
+                return None
+        return (mine, pair) if mine == theirs else None
+
+    def ApplyPair(self, virgin: BonePile, dirty: str) -> Optional[BonePile]:
+        """Apply the canonical pair to a proven virgin surface, then return burial."""
+        candidate = self.CopyBonePile(virgin)
+        try:
+            source = candidate[dirty]
+            pair = CanonicalReceipts(*source.receipts)
+            if source.clawcount != 0 or len(pair) != 2:
+                return None
+            estate = int(source.bones)
+            if sum(receipt.bones for receipt in pair) <= estate:
+                return None
+
+            canonical = pair[0]
+            candidate[dirty] = Head(
+                head=source.head,
+                key=source.key,
+                bones=0,
+                tag=canonical.tag,
+                locksign=canonical.locksign,
+                receipts=pair,
+                clawcount=1,
+            )
+
+            q, r = divmod(estate, len(pair))
+            for index, receipt in enumerate(pair):
+                share = q + (1 if index < r else 0)
+                if share:
+                    target = candidate[receipt.target]
+                    candidate[receipt.target] = replace(target, bones=target.bones + share)
+
+            self.VerifyBonePile(candidate)
+            return candidate
+        except Exception:
+            return None
 
     def DirtyDog(self, first: Bone, second: Bone) -> Result:
-        pair = CanonicalReceipts(first, second)
-        if len(pair) != 2 or pair[0].tag.parent != pair[1].tag.parent:
-            return Result(status="BAD BONE", bone=second)
-
-        virgin = self.CopyBonePile()
-        source = virgin[second.head]
-        virgin[second.head] = Head(
-            head=source.head,
-            key=source.key,
-            bones=source.bones,
-            tag=source.tag,
-            locksign=source.locksign,
-            receipts=pair,
-            clawcount=0,
-        )
         try:
-            self.VerifyBonePile(virgin)
+            pair = LowestForkReceipts(first, second)
         except Exception:
             return Result(status="BAD BONE", bone=second)
 
-        release = self.Clawback(virgin, second.head)
-        if release is None:
+        # ClawBack + Dig happen before the canonical package exists. The
+        # package is a fully virgin facsimile: two signed children, no fork
+        # economics applied yet, and a conserved complete BonePile.
+        virgin = self.Clawback(self.BuriedBonePile, second.head, pair=pair)
+        if virgin is None:
             self.Hungry = True
             if self.HungerOut is not None:
                 self.HungerOut()
-            result = Result(status="HUNGRY", bone=second, snapshot=virgin)
-            if self.BoneYardOut is not None:
-                self.BoneYardOut(second, result)
-            return result
+            return Result(status="HUNGRY", bone=second)
 
-        repaired = release
-        self.SortingBonePile = repaired
-        return self.Bury(second, snapshot=virgin)
+        if sum(receipt.bones for receipt in pair) <= virgin[second.head].bones:
+            return Result(status="BAD BONE", bone=second)
+
+        settled = self.ApplyPair(virgin, second.head)
+        if settled is None:
+            return Result(status="BAD BONE", bone=second)
+
+        # Project the exact canonical virgin package first. Local settlement is
+        # just ApplyPair -> Bury; there is no second ClawBack or Dig below it.
+        self.Project(virgin)
+        self.SortingBonePile = settled
+        return self.Bury(second, status="CLAWED")
 
     def ReceiveBone(self, bone: Bone) -> Result:
         try:
@@ -744,16 +953,24 @@ class Catacomb:
         return self.Bury(bone, reproject=reproject)
 
 
-    def Bury(self, bone: Bone, *, reproject: bool = False, snapshot: Optional[BonePile] = None) -> Result:
+    def Bury(
+        self,
+        bone: Optional[Bone] = None,
+        *,
+        status: str = "BURIED",
+        reproject: bool = False,
+        snapshot: Optional[BonePile] = None,
+    ) -> Result:
+        bad = "BAD BONE" if bone is not None else "BAD BONEPILE"
         if self.SortingBonePile is None:
-            return Result(status="BAD BONE", bone=bone)
+            return Result(status=bad, bone=bone)
 
         candidate = self.CopyBonePile(self.SortingBonePile)
         try:
             self.VerifyBonePile(candidate)
         except Exception:
             self.SortingBonePile = None
-            return Result(status="BAD BONE", bone=bone)
+            return Result(status=bad, bone=bone)
 
         if candidate == self.BuriedBonePile:
             self.SortingBonePile = None
@@ -763,7 +980,7 @@ class Catacomb:
         self.SortingBonePile = None
 
         result = Result(
-            status="BURIED",
+            status=str(status),
             changed=True,
             reproject=bool(reproject),
             bone=bone,
@@ -772,6 +989,6 @@ class Catacomb:
 
         if self.GuardianOut is not None:
             self.GuardianOut(self.CopyBonePile(), result)
-        if self.BoneYardOut is not None:
+        if bone is not None and self.BoneYardOut is not None:
             self.BoneYardOut(bone, result)
         return result
