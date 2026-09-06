@@ -30,7 +30,7 @@ The trick is not choosing which lie was *“really first.”* It is making the c
 
 **ClawBack turns equivocation into state.**
 
-> **Check out what [**`🧠 Big Brain Brad`**](./B3Cerberus.md) thinks.**
+> **Want to try to break it? Check out the [**`DogHouse`**](./DogHouse.md)**
 
 ---
 
