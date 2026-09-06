@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import hashlib
 import os
 import select
@@ -8,7 +7,7 @@ import sys
 import termios
 import tty
 from contextlib import contextmanager
-
+from typing import Callable
 from .Catacomb import (
     BonePile,
     BonesPerHead,
@@ -24,7 +23,6 @@ from .Catacomb import (
     ZeroSign,
 )
 from .BoneYard import BoneYard
-
 Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 MaxHeads = 9
 NameMax = 8
@@ -39,59 +37,39 @@ Guardians = (
     "Toby", "Ziggy", "Bruno", "Daisy", "Finn", "Harley",
     "Jax", "Moose", "Pepper", "Rusty", "Shadow", "Spot",
 )
-
 Clear = "\x1b[2J\x1b[H"
 Hide = "\x1b[?25l"
 Show = "\x1b[?25h"
-
 Up, Down, Left, Right = "UP", "DOWN", "LEFT", "RIGHT"
-Enter, Space, HungerKey, Other = "ENTER", "SPACE", "HUNGER", "OTHER"
-
-
+Enter, Space, ProofsKey, Other = "ENTER", "SPACE", "PROOFS", "OTHER"
 class ExitCerberus(Exception):
     pass
-
-
 def Heads(count: int = MaxHeads) -> list[str]:
     return list(Uppercase[:max(1, min(MaxHeads, int(count)))])
-
-
 def HeadCountHash(counted: dict[str, str]) -> str:
     keys = sorted((str(key) for key in counted), reverse=True)
     body = b"".join(bytes.fromhex(key) for key in keys)
     return hashlib.sha256(b"CERBERUS::HEADCOUNT::V1::" + body).hexdigest()
-
-
 def HashRank(seed: str, domain: str, value: str) -> str:
     body = f"CERBERUS::{domain}::V1::{seed}::{value}".encode("utf-8")
     return hashlib.sha256(body).hexdigest()
-
-
 def Canvas() -> list[str]:
     return [" " * Width] * Height
-
-
 def Put(card: list[str], row: int, text: str, col: int = 0) -> None:
     if not 0 <= row < Height or not 0 <= col < Width:
         return
     text = str(text)[:Width - col]
     line = card[row]
     card[row] = line[:col] + text + line[col + len(text):]
-
-
 def Center(card: list[str], row: int, text: str) -> None:
     text = str(text)[:Width]
     Put(card, row, text, max(0, (Width - len(text)) // 2))
-
-
 def Paint(card: list[str]) -> None:
     columns, rows = shutil.get_terminal_size(fallback=(Width, Height))
     prefix = " " * max((columns - Width) // 2, 0)
     screen = [""] * max((rows - Height) // 2, 0) + [prefix + line.rstrip() for line in card]
     sys.stdout.write(Clear + "\n".join(screen))
     sys.stdout.flush()
-
-
 def ReadKey(fd: int) -> str:
     first = os.read(fd, 1)
     if not first or first == b"\x03":
@@ -100,19 +78,17 @@ def ReadKey(fd: int) -> str:
         return Enter
     if first == b" ":
         return Space
-    if first in (b"h", b"H"):
-        return HungerKey
+    if first in (b"p", b"P"):
+        return ProofsKey
     if first != b"\x1b":
         return Other
-    ready, _, _ = select.select([fd], [], [], 0.04)
+    ready, writable, errors = select.select([fd], [], [], 0.04)
     if not ready or os.read(fd, 1) != b"[":
         return Other
-    ready, _, _ = select.select([fd], [], [], 0.04)
+    ready, writable, errors = select.select([fd], [], [], 0.04)
     if not ready:
         return Other
     return {b"A": Up, b"B": Down, b"C": Right, b"D": Left}.get(os.read(fd, 1), Other)
-
-
 @contextmanager
 def Terminal():
     fd = sys.stdin.fileno()
@@ -126,18 +102,14 @@ def Terminal():
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
         sys.stdout.write(Show)
         sys.stdout.flush()
-
-
 def EntryCard(question: str, value: str, bracket: bool = False) -> None:
     card = Canvas()
     Center(card, 6, "Welcome To")
-    Center(card, 8, "Cerberus")
+    Center(card, 8, "Oblivion")
     Center(card, 11, question)
     shown = f"[{str(value).ljust(NameMax)[:NameMax]}]" if bracket else str(value)
     Center(card, 13, shown)
     Paint(card)
-
-
 def Field(
     fd: int,
     question: str,
@@ -152,9 +124,9 @@ def Field(
         if not raw or raw == b"\x03":
             raise ExitCerberus
         if raw == b"\x1b":
-            ready, _, _ = select.select([fd], [], [], 0.04)
+            ready, writable, errors = select.select([fd], [], [], 0.04)
             if ready and os.read(fd, 1) == b"[":
-                ready, _, _ = select.select([fd], [], [], 0.04)
+                ready, writable, errors = select.select([fd], [], [], 0.04)
                 arrow = os.read(fd, 1) if ready else b""
                 if arrow == b"D":
                     return "".join(chars).strip(), Left
@@ -170,8 +142,6 @@ def Field(
                 chars.pop()
         elif 32 <= raw[0] <= 126 and len(chars) < limit:
             chars.append(raw.decode("ascii"))
-
-
 def ChooseHeads(fd: int, count: int = 1) -> tuple[int, str]:
     count = max(1, min(MaxHeads, int(count)))
     while True:
@@ -185,14 +155,12 @@ def ChooseHeads(fd: int, count: int = 1) -> tuple[int, str]:
             return count, Left
         elif key in (Right, Enter):
             return count, Right
-
-
 def Setup(fd: int) -> tuple[str, int, str, str]:
     fields = ["Fluffyyy", 1, "Backbite", "Paradise"]
     step = 0
     while step < len(fields):
         if step == 0:
-            fields[0], move = Field(fd, "What's Its Name", str(fields[0]))
+            fields[0], move = Field(fd, "What's Your Cerberus's Name?", str(fields[0]))
         elif step == 1:
             fields[1], move = ChooseHeads(fd, int(fields[1]))
         elif step == 2:
@@ -203,16 +171,12 @@ def Setup(fd: int) -> tuple[str, int, str, str]:
             fields[3], move = Field(fd, "Claim Your BonePile", str(fields[3]))
         step = max(0, step - 1) if move == Left else step + 1
     return str(fields[0]), int(fields[1]), str(fields[2]), str(fields[3])
-
-
 def OblivionCard(counted: dict[str, str]) -> None:
     card = Canvas()
     Center(card, 4, "ENTERING OBLIVION")
-    for row, dogtag in enumerate((tag for _, tag in sorted(counted.items(), reverse=True)), 7):
+    for row, dogtag in enumerate((tag for key, tag in sorted(counted.items(), reverse=True)), 7):
         Center(card, row, str(dogtag)[:NameMax])
     Paint(card)
-
-
 def LeaveScreen(fd: int) -> None:
     card = Canvas()
     Center(card, 9, "YOU ARE NOW LEAVING OBLIVION")
@@ -225,7 +189,36 @@ def LeaveScreen(fd: int) -> None:
     finally:
         sys.stdout.write(Clear)
         sys.stdout.flush()
+def VoidCard() -> None:
+    card = Canvas()
+    Center(card, 9, "The Void is Cold")
+    Center(card, 12, "[P]roof")
+    Center(card, 14, "[Space]")
+    Paint(card)
 
+def ProofsScreen(fd: int, proofs: str) -> None:
+    sys.stdout.write(Clear + Show + str(proofs).rstrip() + "\n\n[Space]\n")
+    sys.stdout.flush()
+    while True:
+        try:
+            if ReadKey(fd) == Space:
+                break
+        except ExitCerberus:
+            raise
+    sys.stdout.write(Hide)
+    sys.stdout.flush()
+
+def VoidScreen(fd: int, proofs: Callable[[], str]) -> None:
+    while True:
+        VoidCard()
+        try:
+            key = ReadKey(fd)
+        except ExitCerberus:
+            return
+        if key == Space:
+            return
+        if key == ProofsKey:
+            ProofsScreen(fd, proofs())
 
 def PortTakenScreen(fd: int) -> None:
     card = Canvas()
@@ -237,31 +230,24 @@ def PortTakenScreen(fd: int) -> None:
     except ExitCerberus:
         return
     LeaveScreen(fd)
-
-
-def HeadTile(name: str, cell: Head) -> tuple[str, str]:
+def HeadTile(name: str, cell: Head, dirtydog: bool = False) -> tuple[str, str]:
     top = f"{str(name)[:NameMax]:<{NameMax}} {int(cell.bones):>2}"
-    bottom = "Dirty------" if cell.clawcount else f"{cell.tag.child[:5]}------"
+    bottom = "Dirty------" if dirtydog else f"{cell.tag.child[:5]}------"
     return top, bottom
-
-
-def BoardRows(names: dict[str, str], state: BonePile) -> list[str]:
+def BoardRows(names: dict[str, str], state: BonePile, dirtydogs: set[str] | frozenset[str] = frozenset()) -> list[str]:
     rows: list[str] = []
     heads = Heads()
     for start in range(0, MaxHeads, 3):
         top, bottom = [], []
         for head in heads[start:start + 3]:
-            first, second = HeadTile(names.get(head, head), state[head])
+            first, second = HeadTile(names.get(head, head), state[head], head in dirtydogs)
             top.append(first)
             bottom.append(second)
         rows.extend((BoardGap.join(top), BoardGap.join(bottom)))
         if start < 6:
             rows.append("")
     return rows
-
-
 class Guardian:
-
     def __init__(self, cerberus: str):
         self.cerberus = str(cerberus)[:NameMax]
         self.count = 0
@@ -273,22 +259,18 @@ class Guardian:
         self.counted: dict[str, str] = {}
         self.names: dict[str, str] = {}
         self.headcounthash = ""
-
         self.heads: list[str] = []
         self.expected: set[str] = set()
         self.head = ""
         self.target = ""
         self.amount = 1
         self.notice: str | None = None
-
         self.catacomb: Catacomb | None = None
-        self.state: BonePile = {}
+        self.state: BonePile = BonePile()
         self.boneyard = BoneYard(self.cerberus, HeadCountIn=self.HeadCount, NoticeOut=self.Notice)
-
     def Open(self, count: int) -> None:
         self.count = max(1, min(MaxHeads, int(count)))
         self.boneyard.Open(self.count)
-
     def Identity(self, dogtag: str, bonepile: str) -> None:
         if self.count < 1:
             raise RuntimeError("HeadCount must be chosen before identity.")
@@ -301,7 +283,6 @@ class Guardian:
         self.HeadCount()
         if len(self.counted) == self.count and self.catacomb is None:
             self.Genesis()
-
     def HeadCount(self, value: object = None) -> bool:
         if value is None:
             if not self.publickey:
@@ -335,7 +316,6 @@ class Guardian:
             return False
         if len(incoming) > self.count:
             return False
-
         before = dict(self.counted)
         merged = dict(before)
         for key, dogtag in incoming.items():
@@ -344,12 +324,10 @@ class Guardian:
             merged[key] = dogtag
         if len(merged) > self.count:
             return False
-
         changed = merged != before
         if changed:
             self.counted = dict(sorted(merged.items(), reverse=True))
             self.HeadCount()
-
         complete = len(self.counted) == self.count
         incomingkeys = set(incoming)
         if complete and not changed and 0 < len(incomingkeys) < self.count and incomingkeys <= set(self.counted):
@@ -357,17 +335,15 @@ class Guardian:
         if complete and self.catacomb is None:
             self.Genesis()
         return changed
-
     def Genesis(self) -> None:
         if self.catacomb is not None or len(self.counted) != self.count:
             return
         active = sorted(self.counted.items(), reverse=True)
-        activekeys = {key for key, _dogtag in active}
+        activekeys = {key for key, dogtag in active}
         if self.publickey not in activekeys:
             raise RuntimeError("Cerberus is full.")
-
         self.headcounthash = HeadCountHash(self.counted)
-        usednames = {dogtag.casefold() for _key, dogtag in active}
+        usednames = {dogtag.casefold() for key, dogtag in active}
         dogpool = sorted(
             (name for name in Guardians if name.casefold() not in usednames),
             key=lambda name: HashRank(self.headcounthash, "GUARDIANNAME", name),
@@ -381,33 +357,29 @@ class Guardian:
             guardkey = PublicKeyHex(guardprivate)
             del guardprivate
             roster.append((guardkey, name))
-
-        if len(roster) != MaxHeads or len({key for key, _name in roster}) != MaxHeads:
+        if len(roster) != MaxHeads or len({key for key, name in roster}) != MaxHeads:
             raise RuntimeError("Guardian could not fill Genesis.")
         roster.sort(
             key=lambda item: HashRank(self.headcounthash, "HEADORDER", item[0]),
             reverse=True,
         )
-
         self.heads = Heads()
         self.expected = set(self.heads)
-        slotbykey = {key: self.heads[index] for index, (key, _name) in enumerate(roster)}
+        slotbykey = {key: self.heads[index] for index, (key, name) in enumerate(roster)}
         self.head = slotbykey[self.publickey]
-        self.names = {self.heads[index]: name for index, (_key, name) in enumerate(roster)}
+        self.names = {self.heads[index]: name for index, (key, name) in enumerate(roster)}
         self.target = next(head for head in self.heads if head != self.head)
-
-        genesis: BonePile = {}
+        genesis = BonePile()
         for index, head in enumerate(self.heads):
             key = roster[index][0]
             tag = Tag(ZeroHash, GenesisChild(head, key))
             genesis[head] = Head(head, key, BonesPerHead, tag, ZeroSign)
-
         self.catacomb = Catacomb(self.heads, self.head, self.secret, GuardianOut=self.Catacomb)
         self.boneyard.Attach(
             self.heads,
             self.head,
             CatacombIn=self.catacomb.BoneYard,
-            BonePileIn=self.catacomb.ReceiveBonePile,
+            BonePileIn=self.catacomb.FetchBonePile,
             BonePileOut=lambda: self.catacomb.BonePile,
         )
         self.catacomb.BoneYardOut = self.boneyard.Catacomb
@@ -418,56 +390,50 @@ class Guardian:
         self.state = self.catacomb.BonePile
         if self.count > 1:
             self.catacomb.Hunger()
-
     def Catacomb(self, pile: BonePile, result: Result) -> None:
         self.state = pile
         self.notice = None
         self.ClampAmount()
-
     def Notice(self, text: str) -> None:
         self.notice = str(text)
-
     def ClampAmount(self) -> None:
         if not self.head or self.head not in self.state:
             return
         available = max(0, int(self.state[self.head].bones))
         self.amount = 0 if available == 0 else max(1, min(self.amount, available))
-
     def MoveTarget(self, step: int) -> None:
         targets = [head for head in self.heads if head != self.head] or [self.head]
         if self.target not in targets:
             self.target = targets[0]
             return
         self.target = targets[(targets.index(self.target) + step) % len(targets)]
-
     def Game(self) -> None:
         self.ClampAmount()
         card = Canvas()
-        Center(card, 2, "OBLIVION")
-
-        board = BoardRows(self.names, self.state)
+        Center(card, 2, self.cerberus)
+        board = BoardRows(self.names, self.state, self.boneyard.DirtyDogs())
         boardwidth = max(map(len, board))
         left = max(0, (Width - boardwidth) // 2)
         for row, text in enumerate(board, 5):
             Put(card, row, text, left)
-
         noun = "bone" if self.amount == 1 else "bones"
         source = self.names.get(self.head, self.head)
         target = self.names.get(self.target, self.target)
         action = self.notice or f"{source} lets {target} steal {self.amount} {noun}"
         Put(card, 15, action, left)
-
         total = sum(int(self.state[head].bones) for head in self.heads)
         expected = BonesPerHead * MaxHeads
-        Put(card, 17, f"Bones: {total} / {expected}", left)
-        Put(card, 18, f"BonePile: {self.bonepile}", left)
-        Put(card, 19, f"Cerberus: {self.cerberus}", left)
-        Put(card, 21, "(H)unger for a fresh BonePile", left)
+        Put(card, 17, f"DogTags: {self.dogtag} {self.publickey[:5]}", left)
+        Put(card, 18, f"BonePile: {self.bonepile} {self.headcounthash[:5]}", left)
+        Put(card, 19, f"Bones: {total} / {expected}", left)
         Paint(card)
-
     def Commit(self) -> bool:
         if self.catacomb is None:
             return False
+        dirtydogs = self.boneyard.DirtyDogs()
+        if self.head in dirtydogs or self.target in dirtydogs:
+            self.notice = "DIRTY DOG"
+            return True
         result = self.catacomb.Guardian(self.target, self.amount)
         if result.status == "IDEMPOTENT":
             return False
@@ -475,20 +441,12 @@ class Guardian:
             self.notice = "BAD BONE"
             return True
         return bool(result.changed)
-
-    def Hunger(self) -> bool:
-        if self.catacomb is None:
-            return False
-        self.catacomb.Hunger()
-        self.notice = "HUNGER"
-        return True
-
     def Run(self, fd: int) -> None:
         if self.boneyard.sock is None or not self.publickey:
             raise RuntimeError("Guardian has not entered Oblivion.")
         OblivionCard(self.counted)
         while self.catacomb is None or self.catacomb.Hungry:
-            ready, _, _ = select.select([self.boneyard.sock, fd], [], [])
+            ready, writable, errors = select.select([self.boneyard.sock, fd], [], [])
             if fd in ready:
                 try:
                     ReadKey(fd)
@@ -498,14 +456,12 @@ class Guardian:
                 return
             if self.boneyard.sock in ready and self.boneyard.Pump():
                 OblivionCard(self.counted)
-
         self.state = self.catacomb.BonePile
         self.notice = None
         termios.tcflush(fd, termios.TCIFLUSH)
         self.Game()
-
         while True:
-            ready, _, _ = select.select([self.boneyard.sock, fd], [], [])
+            ready, writable, errors = select.select([self.boneyard.sock, fd], [], [])
             redraw = self.boneyard.Pump() if self.boneyard.sock in ready else False
             if fd in ready:
                 try:
@@ -513,7 +469,7 @@ class Guardian:
                 except ExitCerberus:
                     LeaveScreen(fd)
                     return
-                if key in (Up, Down, Left, Right, Enter, HungerKey):
+                if key in (Up, Down, Left, Right, Enter):
                     self.notice = None
                 if key == Up:
                     self.MoveTarget(+1)
@@ -529,18 +485,39 @@ class Guardian:
                     redraw = True
                 elif key == Enter:
                     redraw = self.Commit() or redraw
-                elif key == HungerKey:
-                    redraw = self.Hunger() or redraw
                 elif key == Space:
                     LeaveScreen(fd)
                     return
             if redraw:
                 self.Game()
+    def Trial(self, fd: int, step: Callable[[], bool], proofs: Callable[[], str]) -> None:
+        """Render this real Guardian while a scripted trial drives Cerberus.
 
+        Any ordinary key advances exactly one scenario step.  The callback returns
+        True when the trial is complete.  Ctrl-C still exits immediately.
+        """
+        if self.catacomb is None:
+            raise RuntimeError("Guardian has not entered Oblivion.")
+        termios.tcflush(fd, termios.TCIFLUSH)
+        self.state = self.catacomb.BonePile
+        self.Game()
+        while True:
+            # Trial controllers own when Oblivion is pumped.  This keeps a
+            # scripted step atomic from the viewer's perspective and, more
+            # importantly, never gives the presentation loop a private packet
+            # schedule that the trial itself did not request.
+            ready, writable, errors = select.select([fd], [], [])
+            if fd in ready:
+                ReadKey(fd)
+                if step():
+                    self.state = self.catacomb.BonePile
+                    self.Game()
+                    VoidScreen(fd, proofs)
+                    return
+                self.state = self.catacomb.BonePile
+                self.Game()
     def Close(self) -> None:
         self.boneyard.Close()
-
-
 def Run() -> None:
     if not sys.stdin.isatty():
         raise RuntimeError("Cerberus needs a terminal for arrow-key input.")

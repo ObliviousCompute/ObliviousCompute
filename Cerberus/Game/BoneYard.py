@@ -1,34 +1,26 @@
 from __future__ import annotations
-
 from collections import deque
 from dataclasses import asdict
 import hashlib
 import json
 import socket
 from typing import Callable, Iterable, Optional
-
 from .Catacomb import (
     Bone,
     BonePile,
+    BonesPerHead,
     Head,
     Result,
     Tag,
 )
-
 Host = "127.0.0.1"
 BonePilePort = 9000
 Burst = 3
 CacheLimit = 4096
-
-
 def BoneKey(bone: Bone) -> tuple[object, ...]:
     return (bone.head, bone.key, bone.target, bone.bones, bone.tag.parent, bone.tag.child, bone.locksign, bone.sign)
-
-
 def BoneToWire(bone: Bone) -> dict[str, object]:
     return asdict(bone)
-
-
 def BoneFromWire(value: object) -> Bone:
     if not isinstance(value, dict) or not isinstance(value.get("tag"), dict):
         raise ValueError("Bone has bad shape")
@@ -42,12 +34,8 @@ def BoneFromWire(value: object) -> Bone:
         locksign=str(value.get("locksign", "")),
         sign=str(value.get("sign", "")),
     )
-
-
 def HeadToWire(cell: Head) -> dict[str, object]:
     return asdict(cell)
-
-
 def HeadFromWire(value: object) -> Head:
     if not isinstance(value, dict) or not isinstance(value.get("tag"), dict):
         raise ValueError("BonePile Head has bad shape")
@@ -62,26 +50,27 @@ def HeadFromWire(value: object) -> Head:
         tag=Tag(str(tag.get("parent", "")), str(tag.get("child", ""))),
         locksign=str(value.get("locksign", "")),
         receipts=tuple(BoneFromWire(item) for item in receipts),
-        clawcount=value.get("clawcount"),
     )
-
-
 def BonePileToWire(pile: BonePile) -> dict[str, object]:
-    return {head: HeadToWire(cell) for head, cell in pile.items()}
-
-
+    return {"heads": {head: HeadToWire(cell) for head, cell in pile.items()}}
 def BonePileFromWire(value: object, heads: Iterable[str]) -> BonePile:
     expected = tuple(heads)
-    if not isinstance(value, dict) or set(value) != set(expected):
+    if not isinstance(value, dict):
+        raise ValueError("BonePile has bad shape")
+    rawheads = value.get("heads")
+    if not isinstance(rawheads, dict) or set(rawheads) != set(expected):
         raise ValueError("BonePile has the wrong heads")
-    pile = {head: HeadFromWire(value[head]) for head in expected}
+    pile = BonePile({head: HeadFromWire(rawheads[head]) for head in expected})
     if any(pile[head].head != head for head in expected):
-        raise ValueError("BonePile Cell label does not match its slot")
+        raise ValueError("BonePile Head label does not match its slot")
     return pile
-
-
+def DirtyDogs(pile: BonePile) -> frozenset[str]:
+    return frozenset(
+        head
+        for head, cell in pile.items()
+        if int(cell.bones) == 0 and len(cell.receipts) == 2
+    )
 class BoneYard:
-
     def __init__(
         self,
         ring: str,
@@ -92,24 +81,20 @@ class BoneYard:
         self.mask = hashlib.sha256(str(ring).encode("utf-8")).digest()
         self.HeadCountIn = HeadCountIn
         self.NoticeOut = NoticeOut
-
         self.mouthcount = 0
         self.bindport: Optional[int] = None
         self.sock: Optional[socket.socket] = None
-
         self.heads: tuple[str, ...] = ()
         self.expected: set[str] = set()
         self.count = 0
         self.head = ""
         self.ready = False
-
         self.CatacombIn: Optional[Callable[[Bone], Result]] = None
         self.BonePileIn: Optional[Callable[[BonePile], Result]] = None
         self.BonePileOut: Optional[Callable[[], BonePile]] = None
-
         self.seenorder: deque[tuple[object, ...]] = deque()
         self.seen: set[tuple[object, ...]] = set()
-
+        self.recent: deque[bytes] = deque(maxlen=16)
     def Open(self, count: int) -> None:
         if self.sock is not None:
             return
@@ -129,13 +114,10 @@ class BoneYard:
                 lasterror = exc
                 sock.close()
         raise RuntimeError(f"No clean mouth available in {self.Mouths()}.") from lasterror
-
     def Mouths(self) -> list[int]:
         return [BonePilePort + index for index in range(self.mouthcount)]
-
     def Peers(self) -> list[int]:
         return [port for port in self.Mouths() if port != self.bindport]
-
     def Close(self) -> None:
         sock = self.sock
         self.sock = None
@@ -145,29 +127,25 @@ class BoneYard:
             sock.close()
         except Exception:
             pass
-
     def Encrypt(self, message: dict[str, object]) -> bytes:
         body = json.dumps(message, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
         return bytes(byte ^ self.mask[index % len(self.mask)] for index, byte in enumerate(body))
-
     def Decrypt(self, raw: bytes) -> dict[str, object]:
         body = bytes(byte ^ self.mask[index % len(self.mask)] for index, byte in enumerate(raw))
         message = json.loads(body.decode("utf-8"))
         if not isinstance(message, dict):
             raise TypeError("packet must decode to dict")
         return message
-
     def Send(self, message: dict[str, object]) -> None:
         if self.sock is None:
             return
         raw = self.Encrypt(message)
         for port in self.Peers():
-            for _shot in range(Burst):
+            for shot in range(Burst):
                 try:
                     self.sock.sendto(raw, (Host, port))
                 except OSError:
                     pass
-
     def Receive(self) -> list[dict[str, object]]:
         if self.sock is None:
             return []
@@ -180,14 +158,17 @@ class BoneYard:
             if address[0] != Host:
                 continue
             try:
-                messages.append(self.Decrypt(raw))
+                message = self.Decrypt(raw)
+                if str(message.get("type", "")).upper() in ("BONE", "BONEPILE"):
+                    if raw in self.recent:
+                        continue
+                    self.recent.append(raw)
+                messages.append(message)
             except Exception:
                 continue
         return messages
-
     def HeadCount(self, headcount: object) -> None:
         self.Send({"type": "HEADCOUNT", "headcount": headcount})
-
     def Attach(
         self,
         heads: Iterable[str],
@@ -209,7 +190,16 @@ class BoneYard:
         self.BonePileIn = BonePileIn
         self.BonePileOut = BonePileOut
         self.ready = True
-
+    def DirtyDogs(self, pile: Optional[BonePile] = None) -> frozenset[str]:
+        if pile is None:
+            if self.BonePileOut is None:
+                return frozenset()
+            pile = self.BonePileOut()
+        if not isinstance(pile, dict) or set(pile) != self.expected:
+            return frozenset()
+        return DirtyDogs(pile)
+    def NinetyNine(self, pile: BonePile) -> bool:
+        return sum(int(pile[head].bones) for head in self.heads) == BonesPerHead * self.count
     def SendBonePile(self, pile: Optional[BonePile] = None) -> None:
         if not self.ready or self.BonePileOut is None:
             return
@@ -221,14 +211,11 @@ class BoneYard:
             "count": self.count,
             "bonepile": BonePileToWire(pile),
         })
-
     def Hunger(self) -> None:
         if self.ready:
             self.Send({"type": "HUNGER", "count": self.count, "head": self.head})
-
     def Seen(self, bone: Bone) -> bool:
         return BoneKey(bone) in self.seen
-
     def Remember(self, bone: Bone) -> None:
         key = BoneKey(bone)
         if key in self.seen:
@@ -237,9 +224,12 @@ class BoneYard:
         self.seenorder.append(key)
         while len(self.seenorder) > CacheLimit:
             self.seen.discard(self.seenorder.popleft())
-
     def Catacomb(self, bone: Bone, result: Result) -> None:
         if not self.ready or not isinstance(bone, Bone):
+            return
+        dirtydogs = self.DirtyDogs()
+        if bone.head in dirtydogs or bone.target in dirtydogs:
+            self.Remember(bone)
             return
         if result.status == "GROWL":
             self.Remember(bone)
@@ -251,13 +241,11 @@ class BoneYard:
         self.Send({"type": "BONE", "count": self.count, "head": self.head, "bone": BoneToWire(bone)})
         if result.reproject:
             self.SendBonePile()
-
     def Pump(self) -> bool:
         redraw = False
         for message in self.Receive():
             redraw = self.Handle(message) or redraw
         return redraw
-
     def Handle(self, message: dict[str, object]) -> bool:
         kind = str(message.get("type", "")).upper()
         if kind == "HEADCOUNT":
@@ -276,6 +264,10 @@ class BoneYard:
                 if self.NoticeOut:
                     self.NoticeOut("BAD BONE")
                 return True
+            dirtydogs = self.DirtyDogs()
+            if bone.head in dirtydogs or bone.target in dirtydogs:
+                self.Remember(bone)
+                return False
             if self.Seen(bone):
                 return False
             if self.CatacombIn is None:
@@ -288,11 +280,12 @@ class BoneYard:
             if result.status == "HUNGRY":
                 return True
             self.Remember(bone)
-            return False if result.status in ("IDEMPOTENT", "DOGHOUSE") else bool(result.changed)
-
+            return False if result.status == "IDEMPOTENT" else bool(result.changed)
         if kind == "BONEPILE":
             try:
                 pile = BonePileFromWire(message.get("bonepile"), self.heads)
+                if not self.NinetyNine(pile):
+                    raise ValueError("NinetyNine invariant violated at BoneYard")
             except Exception:
                 if self.NoticeOut:
                     self.NoticeOut("BAD BONEPILE")
@@ -309,7 +302,6 @@ class BoneYard:
                     self.NoticeOut("BAD BONEPILE")
                 return True
             return bool(result.changed)
-
         if kind == "HUNGER":
             self.SendBonePile()
         return False
