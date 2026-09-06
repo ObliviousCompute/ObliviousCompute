@@ -20,7 +20,7 @@ If you’re running Cerberus directly from this folder instead of through pipx, 
 
 LuckyDog uses the exact same format. Just replace `DevilDog` with `LuckyDog`.
 
-## Double Dog
+## DevilDog
 
 Double Dog puts five greedy dogs in a field with four loyal dogs.
 
@@ -28,7 +28,7 @@ The greedy dogs create conflicting signed spends while ordinary gameplay continu
 
 Watch the dogs get Razed, the Bone Bucks settle, and all nine Heads Bury the same 99-bone BonePile.
 
-## Lucky Dog
+## LuckyDog
 
 Lucky Dog keeps going.
 
