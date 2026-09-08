@@ -2,7 +2,7 @@
 
 The fastest way to understand Oblivious Compute.
 
-FasTrack is a guided path through the smallest set of ideas and implementations needed to understand the project on its own terms.
+The Spark is a guided path through the smallest set of ideas and implementations needed to understand the project on its own terms.
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Correspondence`**](../Correspondence.md)
 
