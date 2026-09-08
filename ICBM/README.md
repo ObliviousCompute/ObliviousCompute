@@ -1,6 +1,6 @@
 # 🚀 ICBM 🚀
 
-***Interactive Consistency* Broadcast Machine***
+***Interactive Consistency Broadcast Machine***
 
 ---
 
