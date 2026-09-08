@@ -4,8 +4,7 @@
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
-**Relations between observers maintain a distributed field.**
-
+**Relations between observers maintain a distributed field.**  
 **The field is the computational locus.**
 
 ---
