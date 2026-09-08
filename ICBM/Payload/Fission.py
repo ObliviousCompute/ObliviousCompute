@@ -32,7 +32,7 @@ HideCursor = "\x1b[?25l"
 ShowCursor = "\x1b[?25h"
 
 Burst = 3
-PacketLimit = 65535
+PayloadLimit = 65535
 SimulationHost = "127.0.0.1"
 SimulationBasePort = 19482
 LivePort = 19582
@@ -82,20 +82,20 @@ class Channel:
         if self.mode == "Simulation":
             return ((SimulationHost, port) for port in range(SimulationBasePort, SimulationBasePort + Players) if port != self.port)
         return ((LiveBroadcast, LivePort),)
-    def encode(self, message: dict[str, object]) -> bytes:
-        body = json.dumps(message, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    def encode(self, payload: dict[str, object]) -> bytes:
+        body = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
         return bytes(byte ^ self.mask[i % len(self.mask)] for i, byte in enumerate(body))
     def decode(self, raw: bytes) -> dict[str, object]:
         body = bytes(byte ^ self.mask[i % len(self.mask)] for i, byte in enumerate(raw))
-        message = json.loads(body.decode("utf-8"))
-        if not isinstance(message, dict):
-            raise ValueError("packet is not an object")
-        return message
+        payload = json.loads(body.decode("utf-8"))
+        if not isinstance(payload, dict):
+            raise ValueError("payload is not an object")
+        return payload
 
-    def send(self, message: dict[str, object]) -> None:
+    def send(self, payload: dict[str, object]) -> None:
         if self.sock is None:
             return
-        raw = self.encode(message)
+        raw = self.encode(payload)
         for host, port in self.destinations():
             for _ in range(Burst):
                 try:
@@ -106,17 +106,17 @@ class Channel:
     def receive(self) -> list[dict[str, object]]:
         if self.sock is None:
             return []
-        messages: list[dict[str, object]] = []
+        payloads: list[dict[str, object]] = []
         while True:
             try:
-                raw, _ = self.sock.recvfrom(PacketLimit)
+                raw, _ = self.sock.recvfrom(PayloadLimit)
             except (BlockingIOError, OSError):
                 break
             try:
-                messages.append(self.decode(raw))
+                payloads.append(self.decode(raw))
             except Exception:
                 continue
-        return messages
+        return payloads
     def close(self) -> None:
         sock, self.sock = self.sock, None
         if sock is not None:
@@ -270,11 +270,11 @@ class Field:
         body = [(c.player, c.version, c.country, c.commitment) for c in genesis]
         return H(json.dumps(body, separators=(",", ":")))
 
-    def field_packet(self) -> dict[str, object]:
+    def Payload(self) -> dict[str, object]:
         return {
-            "type": "FIELD",
-            "claims": [asdict(c) for c in self.claims.values()],
-            "reveals": dict(self.reveals),
+            "Kind": "State",
+            "Claims": [asdict(c) for c in self.claims.values()],
+            "Reveals": dict(self.reveals),
         }
 
 class App:
@@ -301,7 +301,7 @@ class App:
             return
         self.channel = Channel(self.scenario, self.mode)
         self.last_send = 0.0
-        self.send_field(True)
+        self.ProjectState(True)
 
     def reset_projection(self) -> None:
         self.field = Field(self.player)
@@ -334,40 +334,40 @@ class App:
             self.channel.close()
             self.channel = None
 
-    def send_field(self, force: bool = False) -> None:
+    def ProjectState(self, force: bool = False) -> None:
         if self.channel is None:
             return
         now = time.monotonic()
         if force or now - self.last_send >= FieldEvery:
-            self.channel.send(self.field.field_packet())
+            self.channel.send(self.field.Payload())
             if self.genesis_digest:
-                self.channel.send({"type": "READY", "player": self.player, "digest": self.genesis_digest})
+                self.channel.send({"Kind": "Set", "Player": self.player, "Digest": self.genesis_digest})
             self.last_send = now
 
     def pump(self) -> None:
         if self.channel is None:
             return
-        for message in self.channel.receive():
-            kind = str(message.get("type", "")).upper()
-            if kind == "FIELD":
-                raw = message.get("claims", [])
+        for payload in self.channel.receive():
+            kind = str(payload.get("Kind", ""))
+            if kind == "State":
+                raw = payload.get("Claims", [])
                 if not isinstance(raw, list):
                     continue
                 for item in raw:
                     claim = Claim.from_wire(item)
                     if claim:
                         self.field.merge_claim(claim)
-                reveals = message.get("reveals", {})
+                reveals = payload.get("Reveals", {})
                 if self.genesis and self.reveals_open and isinstance(reveals, dict):
                     for country, code in reveals.items():
                         self.ingest_reveal(str(country).upper(), str(code))
-            elif kind == "READY":
-                player, digest = str(message.get("player", "")), str(message.get("digest", ""))
+            elif kind == "Set":
+                player, digest = str(payload.get("Player", "")), str(payload.get("Digest", ""))
                 if player and len(digest) == 64:
                     self.field.readies[player] = digest
-            elif kind == "REVEAL" and self.genesis and self.reveals_open:
-                self.ingest_reveal(str(message.get("country", "")).upper(), str(message.get("code", "")))
-        self.send_field()
+            elif kind == "Key" and self.genesis and self.reveals_open:
+                self.ingest_reveal(str(payload.get("Country", "")).upper(), str(payload.get("Code", "")))
+        self.ProjectState()
 
     def ingest_reveal(self, country: str, code: str) -> None:
         if not self.genesis:
@@ -392,10 +392,10 @@ class App:
         local = next((claim for claim in self.genesis if claim.player == self.player), None)
         if local is None:
             return
-        packet = {"type": "REVEAL", "country": local.country, "code": code}
+        payload = {"Kind": "Key", "Country": local.country, "Code": code}
         self.ingest_reveal(local.country, code)
         if self.channel is not None:
-            self.channel.send(packet)
+            self.channel.send(payload)
 
     def setup_lines(self, focus: int) -> list[str]:
         lines = [""] * Height
@@ -446,7 +446,7 @@ class App:
                     self.field.claims.pop(self.player, None)
                     self.field.version += 1
                     focus = 4
-                    self.send_field(True)
+                    self.ProjectState(True)
 
             lines = self.setup_lines(focus)
             frame = "\n".join(lines)
@@ -519,7 +519,7 @@ class App:
                     if country in winners and winners[country].player != self.player:
                         continue
                     self.field.local_claim(country, self.code)
-                    self.send_field(True)
+                    self.ProjectState(True)
                     return
 
     def lobby_lines(self, elapsed: float) -> list[str]:
@@ -558,7 +558,7 @@ class App:
                     self.genesis, self.genesis_digest = genesis, digest
                     self.field.readies = {self.player: digest}
                     self.ready_since = time.monotonic()
-                self.send_field(True)
+                self.ProjectState(True)
                 players = {c.player for c in genesis}
                 agreeing = {p for p, d in self.field.readies.items() if p in players and d == digest}
                 if agreeing >= players and self.ready_since and time.monotonic() - self.ready_since >= 0.25:
