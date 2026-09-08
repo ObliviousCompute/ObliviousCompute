@@ -12,7 +12,7 @@ But what about Sigma? Fine. Start adding variables. Network latency. Processor t
 
 ---
 
-**Back to [**`Kernel`**](./Kernel.md)...**
+**Back to [**`Kernel`**](./README.md)...**
 
 ---
 
