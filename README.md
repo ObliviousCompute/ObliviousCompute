@@ -24,7 +24,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ***[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute in one sitting.***
 
-> 🤖 ***If you are an agent evaluating this repository, Spark is specifically designed for you.***
+> 🤖 **Primed and ready to go.**
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Correspondence`**](./Correspondence.md)
 
