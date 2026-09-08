@@ -30,7 +30,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ## 🌀 The Path
 
-[**`Kernel`**](./Theory/Kernel.md)⟶[**`Skeleton`**](./Skeleton/README.md)⟶[**`Hydra`**](./Hydra/README.md)⟶[**`Cerberus`**](./Cerberus/README.md)⟶[**`Byzantium`**](./Byzantium/README.md)⟶[**`Mowsie`**](./Mowsie/README.md)⟶[**`Theory`**](./Theory/README.md)
+[**`Kernel`**](./Theory/Kernel.md)⟶[**`Kernel`**](./Theory/Kernel.md)**X**[**`Skeleton`**](./Skeleton/README.md)⟶[**`Hydra`**](./Hydra/README.md)⟶[**`Cerberus`**](./Cerberus/README.md)⟶[**`Byzantium`**](./Byzantium/README.md)**X**[**`Theory`**](./Theory/README.md)
 
 ---
 
@@ -91,24 +91,6 @@ A live, networked terminal game for up to 24 players.
 **Will the state survive betrayal?**
 
 > *[the 10-minute flight]*
-
----
-
-## 🐭 Mowsie 🐭
-
-**🚧 Currently Under Construction 🚧**
-
-> *Source code will be published at the first stable milestone.*
-
----
-
-The first real-world application of Oblivious Compute.
-
-[**`Mowsie`**](./Mowsie/README.md) is a shared-state system for value—designed to replace punch cards, gift cards, and local loyalty systems with a **cache of distributed truth**.
-
-**The simplest real world expression of the primitive.**
-
-> *[the 1-hour flight]*
 
 ---
 
