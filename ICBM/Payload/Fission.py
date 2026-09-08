@@ -31,14 +31,12 @@ White = "\x1b[97m"
 HideCursor = "\x1b[?25l"
 ShowCursor = "\x1b[?25h"
 
-
 Burst = 3
 PacketLimit = 65535
 SimulationHost = "127.0.0.1"
 SimulationBasePort = 19482
 LivePort = 19582
 LiveBroadcast = "255.255.255.255"
-
 
 class Channel:
     def __init__(self, scenario: str, mode: str) -> None:
@@ -130,18 +128,14 @@ class Channel:
             except OSError:
                 pass
 
-
 def H(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
-
 
 def Commitment(country: str, code: str) -> str:
     return H(f"{country}\0{code}")
 
-
 def ClaimKey(claim: "Claim") -> tuple[str, str]:
     return claim.commitment, claim.player
-
 
 def Visible(text: str) -> int:
     n = 0
@@ -157,34 +151,27 @@ def Visible(text: str) -> int:
             n += 1
     return n
 
-
 def Paint(text: str, color: str) -> str:
     return f"{color}{text}{Reset}"
-
 
 def TitleText() -> str:
     words = Title.split(" ")
     return " ".join(Paint(word[0], White) + Paint(word[1:], Ash) for word in words)
 
-
 def Center(text: str) -> str:
     gap = max(0, (Width - Visible(text)) // 2)
     return " " * gap + text
-
 
 def Place(lines: list[str], row: int, text: str, *, center: bool = True) -> None:
     if 0 <= row < Height:
         lines[row] = Center(text) if center else text
 
-
 def PlaceRight(lines: list[str], row: int, text: str, margin: int = 0) -> None:
     if 0 <= row < Height:
         lines[row] = " " * max(0, Width - margin - Visible(text)) + text
 
-
 def ExitHint(lines: list[str]) -> None:
     PlaceRight(lines, Height - 2, Paint("Ctrl+C Exit", Ash), margin=1)
-
 
 def Render(lines: list[str]) -> None:
     output: list[str] = []
@@ -196,7 +183,6 @@ def Render(lines: list[str]) -> None:
     sys.stdout.write("\x1b[H" + "\n".join(output))
     sys.stdout.flush()
 
-
 def ReadKey() -> str:
     key = sys.stdin.read(1)
     if key != "\x1b":
@@ -207,23 +193,18 @@ def ReadKey() -> str:
     third = sys.stdin.read(1)
     return {"A": "UP", "B": "DOWN", "C": "RIGHT", "D": "LEFT"}.get(third, third)
 
-
-
 def LockedFrame() -> None:
     ready, _, _ = select.select([sys.stdin], [], [], Frame)
     if ready and ReadKey() in ("\x03", "ESC"):
         raise KeyboardInterrupt
 
-
 def FlashWhite(elapsed: float) -> bool:
     return int(max(0.0, elapsed)) % 2 == 0
-
 
 def WaitingText(elapsed: float) -> str:
     dots = int(max(0.0, elapsed)) % 4
     edge = "." * dots
     return f"{edge}Waiting for Genesis{edge}"
-
 
 @dataclass(frozen=True)
 class Claim:
@@ -249,7 +230,6 @@ class Claim:
         if country not in Countries or len(claim.commitment) != 64 or not claim.player:
             return None
         return claim
-
 
 class Field:
     def __init__(self, player: str) -> None:
@@ -305,7 +285,6 @@ class Field:
             "claims": [asdict(c) for c in self.claims.values()],
             "reveals": dict(self.reveals),
         }
-
 
 class App:
     def __init__(self) -> None:
@@ -405,14 +384,16 @@ class App:
         match = next((claim for claim in self.genesis if claim.country == country), None)
 
         # ================= LINCHPIN ================= #
-        if match is None or Commitment(country, code) != match.commitment:
+        admissible = match is not None and Commitment(country, code) == match.commitment
+        # ============================================ #
+
+        if not admissible:
             self.field.invalid += 1
             self.intruder_until = time.monotonic() + FlashSeconds
             return
         if country in self.field.reveals:
             return
         self.field.reveals[country] = code
-        # ============================================ #
 
     def submit_reveal(self, code: str) -> None:
         if not self.genesis or not self.reveals_open:
@@ -761,7 +742,6 @@ class App:
         self.lobby()
         self.game()
         self.result_screen()
-
 
 def Run() -> None:
     fd = sys.stdin.fileno()
