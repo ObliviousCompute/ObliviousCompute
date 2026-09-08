@@ -16,11 +16,6 @@ The old Byzantine Generals story has messengers running around a city, arrows fl
 
 > 🧠 *It looks like the Game is to use the Purge Locks to repair the state.*  
 
-### Lamport’s Byzantine Generals Problem, 1982
-
-***IC1: All loyal lieutenants obey the same order.***  
-***IC2: If the commanding general is loyal, every loyal lieutenant obeys the order he sends.***
-
 ---
 
 **Back to [**`Byzantium`**](./README.md)...**
