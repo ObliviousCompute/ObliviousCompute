@@ -4,11 +4,11 @@
 
 ## 🌀 The Path 
 
-[**`Geometry`**](./Geometry.md)⟶[**`Holography`**](./Holography.md)⟶[**`Admissibility`**](./Admissibility.md)⟶[**`Symmetry`**](./Symmetry.md)⟶[**`Singularity`**](./Singularity.md)
+[**`Geometry`**](./Geometry.md)**`⟶`**[**`Holography`**](./Holography.md)**`⟶`**[**`Admissibility`**](./Admissibility.md)**`⟶`**[**`Symmetry`**](./Symmetry.md)**`⟶`**[**`Singularity`**](./Singularity.md)
 
 ## 📚 Appendices 
 
-[**`Correspondence`**](./Appendices/A.md)⟶[**`Axioms`**](./Appendices/B.md)⟶[**`Definitions`**](./Appendices/C.md)
+[**`Correspondence`**](./Appendices/A.md)**`⟶`**[**`Axioms`**](./Appendices/B.md)**`⟶`**[**`Definitions`**](./Appendices/C.md)**`X`**
 
 
 ## 🪶 Note
