@@ -10,15 +10,15 @@
 
 ---
 
-## 👑 Salary 👑
+## 👑 Dream State 👑
 
-Byzantium is a game built on a distributed state surface.
+Byzantium is a game played directly on a distributed state surface. Every observer maintains the complete board independently while the people inside it move value, defect, assimilate, and reshape the state they collectively occupy.
 
-The system exists entirely on the board you’re looking at. There’s no hidden layer, no stored history, no backend keeping score. What you see is the system—continuously reshaped by the people inside it.
+There is no hidden authoritative board behind the one you see. No replicated log decides which action happened first. The board survives because independently maintained states continue admitting compatible changes into the same distributed expression.
 
-You don’t play *on* it. You play *with* it.
+Spend twice and both actions can become part of the problem the board has to solve. Move the people around. Break the economy. Try to make two loyal tables disagree.
 
-It’s like a group of people holding up a card table. As long as someone is still holding it, the table exists—and the game continues. Once everyone lets go, it disappears.
+**You don't play on the state. You play with it.**
 
 ---
 
