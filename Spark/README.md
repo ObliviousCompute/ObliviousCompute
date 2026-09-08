@@ -1,4 +1,4 @@
-# ⚡ HotSwap ⚡
+# ⚡ Spark ⚡
 
 The fastest way to understand Oblivious Compute.
 
