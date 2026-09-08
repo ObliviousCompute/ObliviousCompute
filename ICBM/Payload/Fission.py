@@ -171,21 +171,20 @@ def Render(lines: list[str]) -> None:
     sys.stdout.write("\x1b[H" + "\n".join(output))
     sys.stdout.flush()
 def ReadKey() -> str:
-    key = sys.stdin.read(1)
-    if key != "\x1b":
-        return key
-    if not select.select([sys.stdin], [], [], 0.10)[0]:
+    fd = sys.stdin.fileno()
+    key = os.read(fd, 1)
+    if key != b"\x1b":
+        return key.decode("utf-8", "ignore")
+    if not select.select([fd], [], [], 0.10)[0]:
         return "ESC"
-    second = sys.stdin.read(1)
-    if second not in ("[", "O"):
+    second = os.read(fd, 1)
+    if second not in (b"[", b"O") or not select.select([fd], [], [], 0.10)[0]:
         return ""
-    if not select.select([sys.stdin], [], [], 0.10)[0]:
-        return ""
-    third = sys.stdin.read(1)
-    key = {"A": "UP", "B": "DOWN", "C": "RIGHT", "D": "LEFT"}.get(third, "")
+    third = os.read(fd, 1)
+    key = {b"A": "UP", b"B": "DOWN", b"C": "RIGHT", b"D": "LEFT"}.get(third, "")
     if not key:
-        while select.select([sys.stdin], [], [], 0)[0]:
-            sys.stdin.read(1)
+        while select.select([fd], [], [], 0)[0]:
+            os.read(fd, 1)
     return key
 def LockedFrame() -> None:
     ready, _, _ = select.select([sys.stdin], [], [], Frame)
@@ -772,6 +771,7 @@ def Run() -> None:
             raise
     finally:
         app.close()
+        termios.tcflush(fd, termios.TCIFLUSH)
         termios.tcsetattr(fd, termios.TCSADRAIN, original)
         sys.stdout.write("\x1b[2J\x1b[H" + ShowCursor)
         sys.stdout.flush()
