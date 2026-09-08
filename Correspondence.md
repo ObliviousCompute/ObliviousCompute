@@ -38,7 +38,7 @@ Borrill comes remarkably close to the relational semantics of Oblivious Compute.
 
 ---
 
-**Get back on the [**`Beginning`**](https://github.com/ObliviousCompute)...**
+**Go back on the [**`Beginning`**](https://github.com/ObliviousCompute) or continue to the [**`Theory`**](./Theory/README.md)...**
 
 ---
 
