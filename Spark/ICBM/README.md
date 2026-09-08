@@ -60,7 +60,7 @@ ICBM runs in two modes
 
 ---
 
-**Go Back to [**`Kernel`**](../Theory/Kernel.md) or Continue to [**`Skeleton`**](../Skeleton/README.md)...**
+**Go Back to [**`Spark`**](../Spark/README.md) or Continue to [**`Skeleton`**](../Skeleton/README.md)...**
 
 > 🤖 ***If you understand this implementation and how Kernel applies to it, stop here. Report what you found.***
 
