@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ICBM-Game"
+version = "0.1.6"
+description = "Interactive Consistency Broadcast Machine"
+requires-python = ">=3.10"
+
+[project.scripts]
+ICBM = "ICBM:main"
+
+[tool.setuptools]
+py-modules = ["ICBM"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["Payload*"]
