@@ -22,7 +22,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 *The shortest arc from primitive to proof.*
 
-***[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute in one sitting.***
+***[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute.***
 
 **Primed and ready to go.**
 
@@ -34,7 +34,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 *The mathematical progression of the primitive.*
 
-***[**`Kernel`**](./Kernel/README.md) follows local admissibility through relational symmetry, reducing the distributed configuration.***
+***[**`Kernel`**](./Kernel/README.md) follows local admissibility through relational symmetry.***
 
 **The primitive is simple. The conflux is not.**
 
