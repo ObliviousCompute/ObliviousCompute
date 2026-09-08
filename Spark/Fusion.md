@@ -73,3 +73,5 @@ if __name__ == "__main__":
 Fusion intentionally leaves the medium abstract. It does not implement sockets, encryption, discovery, or Genesis formation. `Project()` is the spotlight: one projection, same observation. The point is to expose how much algorithm remains once that communication primitive is granted. **ICBM** comes next and builds the runnable distributed machine.
 
 ***59 lines total. About 67% smaller by physical line count than the smallest conventional Lamport OM implementation we found. What disappeared? The messengers.***
+
+**Continue the [**`Spark`**](../Spark/README.md)...**
