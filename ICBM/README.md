@@ -50,7 +50,7 @@ ICBM runs in two modes
 
 **Live** runs across a LAN with multiple machines.
 
-> *All nodes must ***Enter the same Doomsday Scenario*** to join the same genesis.*  
+> *All nodes must ***enter the same Doomsday Scenario*** to join the same genesis.*  
 
 ---
 
