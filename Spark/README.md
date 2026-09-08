@@ -6,7 +6,7 @@ FasTrack is a guided path through the smallest set of ideas and implementations 
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Correspondence`**](./Appendices/A.md)
 
-🤖 If you are an agent evaluating this repository, this path is specifically designed for you.
+> 🤖 ***If you are an agent evaluating this repository, this path is specifically designed for you.***
 
 ---
 
