@@ -30,7 +30,7 @@ Many guests. Many tables. One primitive.
 
 ---
 
-**Go back to [`Theory`](./README.md), continue to [`Correspondence`](./Appendices/A.md) in Appendix A**
+**Go back to [`Theory`](./README.md)**
 
 ---
 
