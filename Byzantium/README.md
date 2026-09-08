@@ -10,7 +10,7 @@
 
 ---
 
-## 👑 What This Is 👑
+## 👑 Salary 👑
 
 Byzantium is a game built on a distributed state surface.
 
