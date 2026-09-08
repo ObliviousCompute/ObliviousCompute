@@ -29,7 +29,7 @@ Watch the dogs get Razed, the Bone Bucks settle, and all nine Heads Bury the sam
 
 ## LuckyDog
 
-Lucky Dog keeps going.
+LuckyDog keeps going.
 
 Dogs progressively get greedy and promise more bones than they can cover. Cerberus razes them one by one until Lucky is the last dog standing with all 99 bones.
 
