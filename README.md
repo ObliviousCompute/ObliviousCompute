@@ -26,7 +26,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ## 🌀 The Path
 
-[**`Kernel`**](./Theory/Kernel.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`X`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Theory`**](./Theory/README.md)
+[**`Kernel`**](./Theory/Kernel.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`X`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Theory`**](./Theory/README.md)
 
 ---
 
