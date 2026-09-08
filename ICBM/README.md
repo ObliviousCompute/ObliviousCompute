@@ -10,10 +10,10 @@
 
 ## 🍄 Install
 
-To run Cerberus, install it with:
+To run ICBM, install it with:
 
 ```bash
-pipx install Cerberus-Game && Cerberus
+pipx install ICBM-Game && ICBM
 ```
 
 You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environment.**
@@ -24,12 +24,13 @@ You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environ
 
 ## 🕸️ Networking
 
-Cerberus runs locally over sockets as a **Sandbox Smoketest**.
+ICBM runs in two modes
 
-> *All nodes must ***use the same Cerberus name and Head Count*** to join the same projection.*  
-> ***Each node chooses its own DogTag and BonePile.***
-> 
-> *Tip: just spam Enter to drop straight into a board*.  
+**Simulation** is local a **Sandbox Smoketest** over sockets.
+
+**Live** is meant for a LAN environment with **Multiple Machines**.
+
+> *All nodes must ***use the same Doomsday and Authorization codes*** to join the same genesis.*  
 
 ---
 
