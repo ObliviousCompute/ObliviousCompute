@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../Relics/ICBM.png" width="600"/>
+<img src="../../Relics/ICBM.png" width="600"/>
 
 > ***777 lines total. Fewer than 400 lines of distributed machinery.***
 
