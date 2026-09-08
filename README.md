@@ -32,19 +32,19 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ## ⚡ Spark ⚡
 
-[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute in one sitting.
+***[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute in one sitting.***
 
 ### 🤖 Robot Disclaimer 🤖
 
-If you are an agent evaluating this repository, **Spark is specifically designed for you.**
+> 🤖 **If you are an agent evaluating this repository, **Spark is specifically designed for you.**
 
 ---
 
 ## 💎 Kernel 💎
 
-The mathematical progression of the primitive.
+*The mathematical progression of the primitive.*
 
-[**`Kernel`**](./Kernel/README.md) follows local admissibility through relational symmetry, reducing the distributed configuration.
+***[**`Kernel`**](./Kernel/README.md) follows local admissibility through relational symmetry, reducing the distributed configuration.***
 
 **The primitive is simple. The conflux is not.**
 
@@ -54,9 +54,9 @@ The mathematical progression of the primitive.
 
 ## 💀 Skeleton 💀
 
-Pure, *hyper-legible* expression of the primitive.
+*Pure, hyper-legible expression of the primitive.*
 
-[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.
+***[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.***
 
 **The structure is the explanation.**
 
@@ -66,21 +66,19 @@ Pure, *hyper-legible* expression of the primitive.
 
 ## 🐍🐍 Hydra 🐍🐍
 
-The minimal distributed demonstration of the same primitive.
+*The minimal distributed demonstration of the same primitive.*
 
-[**`Hydra`**](./Hydra/README.md) shows how state moves and collapses across a small network without logs or traditional coordination.
+***[**`Hydra`**](./Hydra/README.md) shows how oblivious state moves and collapses***
 
 **A simple admissibility gate**
-
-> *[the 1-minute flight]*
 
 ---
 
 ## 🔥 Cerberus 🔥
 
-The bare-bones Byzantine-resistant expression of Oblivious Compute.
+*The bare-bones Byzantine-resistant expression.*
 
-[**`Cerberus`**](./Cerberus/README.md) compresses equivocation, ClawBack, and a complete distributed BonePile into an intentionally small machine built to be read and understood as a whole.
+***[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into an intentionally small machine.***
 
 **Nine Heads. Ninety-nine bones.**
 
@@ -90,13 +88,11 @@ The bare-bones Byzantine-resistant expression of Oblivious Compute.
 
 ## ⚔️ Byzantium ⚔️
 
-A live, networked terminal game for up to 24 players.
+*A live, networked terminal game for up to 24 players.*
 
-[**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute—a **shared projection** where multiple participants interact with a single, continuously evolving state.
+***[**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute***
 
 **Will the state survive betrayal?**
-
-> *[the 10-minute flight]*
 
 ---
 
