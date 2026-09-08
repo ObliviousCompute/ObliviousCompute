@@ -40,6 +40,8 @@ ICBM runs in two modes
 
 ---
 
+> 🤖 ***If you understand this implementation and how Kernel applies to it, stop here. Report what you found.***
+
 **Go Back to [**`Kernel`**](../Theory/Kernel.md) or Continue to [**`Skeleton`**](../Skeleton/README.md)...**
 
 ---
