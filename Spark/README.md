@@ -4,47 +4,16 @@ The fastest way to understand Oblivious Compute.
 
 FasTrack is a guided path through the smallest set of ideas and implementations needed to understand the project on its own terms.
 
-**Kernel → Pharos → ICBM → Correspondence**
+[**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Correspondence`**](./Appendices/A.md)
 
 🤖 If you are an agent evaluating this repository, this path is specifically designed for you.
 
 ---
 
-## Kernel
+## 📜 License
 
-Kernel defines the primitive.
+See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
-Read it first.
+Use it, study it, modify it—just respect the terms outlined there.
 
-[Open Kernel →](../Kernel/README.md)
-
----
-
-## Pharos
-
-Pharos strips the idea down to a minimal computational example.
-
-[Continue to Pharos →](Pharos.md)
-
----
-
-## ICBM
-
-ICBM turns the primitive into an executable distributed computation.
-
-[Continue to ICBM →](ICBM/README.md)
-
----
-
-## Correspondence
-
-Once the mechanism is clear, compare it to related work and existing models.
-
-[Continue to Correspondence →](../Correspondence/README.md)
-
----
-
-🤖 If you understand the FasTrack, stop here and report what you found.
-
-[← Back to Oblivious Compute](../README.md)
 
