@@ -24,7 +24,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ***[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute in one sitting.***
 
-> 🤖 **Primed and ready to go.**
+**Primed and ready to go.**
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Correspondence`**](./Correspondence.md)
 
@@ -38,8 +38,6 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 **The primitive is simple. The conflux is not.**
 
-> *[back of the napkin]*
-
 ---
 
 ## 💀 Skeleton 💀
@@ -49,8 +47,6 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 ***[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.***
 
 **The structure is the explanation.**
-
-> *[the lift diagram]*
 
 ---
 
@@ -71,8 +67,6 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 ***[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into an intentionally small machine.***
 
 **Nine Heads. Ninety-nine bones.**
-
-> *[the 5-minute fight]*
 
 ---
 
