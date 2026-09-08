@@ -187,16 +187,24 @@ def ReadKey() -> str:
     key = sys.stdin.read(1)
     if key != "\x1b":
         return key
+    if not select.select([sys.stdin], [], [], 0.01)[0]:
+        return "ESC"
     second = sys.stdin.read(1)
     if second not in ("[", "O"):
         return "ESC"
+    if not select.select([sys.stdin], [], [], 0.01)[0]:
+        return "ESC"
     third = sys.stdin.read(1)
-    return {"A": "UP", "B": "DOWN", "C": "RIGHT", "D": "LEFT"}.get(third, third)
+    key = {"A": "UP", "B": "DOWN", "C": "RIGHT", "D": "LEFT"}.get(third, "ESC")
+    if key == "ESC":
+        while select.select([sys.stdin], [], [], 0)[0]:
+            sys.stdin.read(1)
+    return key
 
 def LockedFrame() -> None:
     ready, _, _ = select.select([sys.stdin], [], [], Frame)
-    if ready and ReadKey() in ("\x03", "ESC"):
-        raise KeyboardInterrupt
+    if ready:
+        ReadKey()
 
 def FlashWhite(elapsed: float) -> bool:
     return int(max(0.0, elapsed)) % 2 == 0
@@ -611,7 +619,6 @@ class App:
         Place(lines, 15, Paint("*" * len(typed), Ash if phase != "LIVE" else White))
         if time.monotonic() < self.intruder_until:
             Place(lines, 19, Paint("Intruder Detected", White if FlashWhite(self.intruder_until - time.monotonic()) else Ash))
-        ExitHint(lines)
         return lines
 
     @staticmethod
@@ -621,6 +628,13 @@ class App:
         return f"{millis // 1000:02d}.{millis % 1000:03d}"
 
     def game(self) -> None:
+        fd = sys.stdin.fileno()
+        game_term = termios.tcgetattr(fd)
+        locked_term = termios.tcgetattr(fd)
+        locked_term[0] &= ~(termios.IXON | termios.IXOFF)
+        locked_term[3] &= ~(termios.ISIG | termios.IEXTEN)
+        termios.tcsetattr(fd, termios.TCSANOW, locked_term)
+
         phase_start = time.monotonic()
         while time.monotonic() - phase_start < FlashSeconds:
             self.pump()
@@ -661,8 +675,6 @@ class App:
             if not ready:
                 continue
             key = ReadKey()
-            if key in ("\x03", "ESC"):
-                raise KeyboardInterrupt
             if key in ("\x7f", "\b"):
                 typed = typed[:-1]
             elif key in ("\r", "\n"):
@@ -679,6 +691,7 @@ class App:
             Render(self.board_lines(self.frozen, "FINISH", elapsed, ""))
             LockedFrame()
         self.result = outcome
+        termios.tcsetattr(fd, termios.TCSANOW, game_term)
 
     def stalemate_lines(self) -> list[str]:
         lines = [""] * Height
@@ -755,7 +768,8 @@ def Run() -> None:
         sys.stdout.flush()
         app.run()
     except KeyboardInterrupt:
-        app.stalemate_screen()
+        if app.genesis is None:
+            app.stalemate_screen()
     finally:
         app.close()
         termios.tcsetattr(fd, termios.TCSADRAIN, original)
