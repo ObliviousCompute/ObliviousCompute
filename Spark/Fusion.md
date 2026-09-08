@@ -1,4 +1,4 @@
-# Pharos
+# ✨ Fusion ✨
 
 > ***Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982***
 >
