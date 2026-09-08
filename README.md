@@ -54,7 +54,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 *The minimal distributed demonstration of the same primitive.*
 
-***[**`Hydra`**](./Hydra/README.md) shows how oblivious state moves and collapses***
+***[**`Hydra`**](./Hydra/README.md) shows how oblivious state moves and collapses.***
 
 **A simple admissibility gate**
 
