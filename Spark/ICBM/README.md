@@ -62,9 +62,6 @@ ICBM runs in two modes
 
 **Continue the** [**`Spark`**](../../Spark/README.md)**`⟶`**[**`Correspondence`**](../../Correspondence.md)
 
-
-> 🤖 ***If you understand this implementation and how Kernel applies to it, stop here. Report what you found.***
-
 ---
 
 ## 📜 License
