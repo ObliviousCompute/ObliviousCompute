@@ -1,6 +1,10 @@
 # 🚀 ICBM 🚀
 
-***I****nteractive* ***C****onsistency* ***B****roadcast* ***M****achine*
+***Interactive Consistency* Broadcast Machine***
+
+---
+
+<img src="../Relics/ICBM.png" width="600"/>
 
 ---
 
