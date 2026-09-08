@@ -82,11 +82,9 @@ class Channel:
         if self.mode == "Simulation":
             return ((SimulationHost, port) for port in range(SimulationBasePort, SimulationBasePort + Players) if port != self.port)
         return ((LiveBroadcast, LivePort),)
-
     def encode(self, message: dict[str, object]) -> bytes:
         body = json.dumps(message, sort_keys=True, separators=(",", ":")).encode("utf-8")
         return bytes(byte ^ self.mask[i % len(self.mask)] for i, byte in enumerate(body))
-
     def decode(self, raw: bytes) -> dict[str, object]:
         body = bytes(byte ^ self.mask[i % len(self.mask)] for i, byte in enumerate(raw))
         message = json.loads(body.decode("utf-8"))
@@ -119,7 +117,6 @@ class Channel:
             except Exception:
                 continue
         return messages
-
     def close(self) -> None:
         sock, self.sock = self.sock, None
         if sock is not None:
@@ -130,10 +127,8 @@ class Channel:
 
 def H(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
-
 def Commitment(country: str, code: str) -> str:
     return H(f"{country}\0{code}")
-
 def ClaimKey(claim: "Claim") -> tuple[str, str]:
     return claim.commitment, claim.player
 
@@ -150,29 +145,22 @@ def Visible(text: str) -> int:
         else:
             n += 1
     return n
-
 def Paint(text: str, color: str) -> str:
     return f"{color}{text}{Reset}"
-
 def TitleText() -> str:
     words = Title.split(" ")
     return " ".join(Paint(word[0], White) + Paint(word[1:], Ash) for word in words)
-
 def Center(text: str) -> str:
     gap = max(0, (Width - Visible(text)) // 2)
     return " " * gap + text
-
 def Place(lines: list[str], row: int, text: str, *, center: bool = True) -> None:
     if 0 <= row < Height:
         lines[row] = Center(text) if center else text
-
 def PlaceRight(lines: list[str], row: int, text: str, margin: int = 0) -> None:
     if 0 <= row < Height:
         lines[row] = " " * max(0, Width - margin - Visible(text)) + text
-
 def ExitHint(lines: list[str]) -> None:
     PlaceRight(lines, Height - 2, Paint("Ctrl+C Exit", Ash), margin=1)
-
 def Render(lines: list[str]) -> None:
     output: list[str] = []
     for line in lines[:Height]:
@@ -182,7 +170,6 @@ def Render(lines: list[str]) -> None:
         output.append(" " * Width)
     sys.stdout.write("\x1b[H" + "\n".join(output))
     sys.stdout.flush()
-
 def ReadKey() -> str:
     key = sys.stdin.read(1)
     if key != "\x1b":
@@ -200,15 +187,12 @@ def ReadKey() -> str:
         while select.select([sys.stdin], [], [], 0)[0]:
             sys.stdin.read(1)
     return key
-
 def LockedFrame() -> None:
     ready, _, _ = select.select([sys.stdin], [], [], Frame)
     if ready:
         ReadKey()
-
 def FlashWhite(elapsed: float) -> bool:
     return int(max(0.0, elapsed)) % 2 == 0
-
 def WaitingText(elapsed: float) -> str:
     dots = int(max(0.0, elapsed)) % 4
     edge = "." * dots
@@ -693,6 +677,16 @@ class App:
         self.result = outcome
         termios.tcsetattr(fd, termios.TCSANOW, game_term)
 
+    def war_room_full_screen(self) -> None:
+        lines = [""] * Height
+        Place(lines, 2, TitleText())
+        Place(lines, 9, Paint("War Room Full", White))
+        Place(lines, 12, Paint("Try Another Doomsday", Ash))
+        Render(lines)
+        while not select.select([sys.stdin], [], [], Frame)[0]:
+            pass
+        ReadKey()
+
     def stalemate_lines(self) -> list[str]:
         lines = [""] * Height
         Place(lines, Height // 2 - 2, Paint("Stalemate", White))
@@ -769,7 +763,13 @@ def Run() -> None:
         app.run()
     except KeyboardInterrupt:
         if app.genesis is None:
+            app.close()
             app.stalemate_screen()
+    except RuntimeError as exc:
+        if str(exc) == "Simulation already has five occupied seats":
+            app.war_room_full_screen()
+        else:
+            raise
     finally:
         app.close()
         termios.tcsetattr(fd, termios.TCSADRAIN, original)
