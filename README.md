@@ -30,7 +30,7 @@ $\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
 
 ---
 
-# ⚡ Spark ⚡
+## ⚡ Spark ⚡
 
 [**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute in one sitting.
 
