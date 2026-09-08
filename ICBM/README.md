@@ -26,11 +26,11 @@ You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environ
 
 ICBM runs in two modes
 
-**Simulation** is local a **Sandbox Smoketest** over sockets.
+**Simulation** is a local five-terminal smoke test over loopback sockets..
 
-**Live** is meant for a LAN environment with **Multiple Machines**.
+**Live** runs across a LAN with multiple machines.
 
-> *All nodes must ***use the same Doomsday and Authorization codes*** to join the same genesis.*  
+> *All nodes must ***Enter the same Doomsday Scenario*** to join the same genesis.*  
 
 ---
 
