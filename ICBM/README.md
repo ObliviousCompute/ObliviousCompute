@@ -6,7 +6,7 @@
 
 <img src="../Relics/ICBM.png" width="600"/>
 
-> ***Lamport's Byzantine Generals Problem, 1982***  
+> ***Lamport's Byzantine Generals Problem***  
 > ***IC1*** *All loyal lieutenants obey the same order.*  
 > ***IC2*** *If the commanding general is loyal, then every loyal lieutenant obeys the order he sends.*
 
