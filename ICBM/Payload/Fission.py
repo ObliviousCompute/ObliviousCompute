@@ -187,16 +187,16 @@ def ReadKey() -> str:
     key = sys.stdin.read(1)
     if key != "\x1b":
         return key
-    if not select.select([sys.stdin], [], [], 0.01)[0]:
+    if not select.select([sys.stdin], [], [], 0.10)[0]:
         return "ESC"
     second = sys.stdin.read(1)
     if second not in ("[", "O"):
-        return "ESC"
-    if not select.select([sys.stdin], [], [], 0.01)[0]:
-        return "ESC"
+        return ""
+    if not select.select([sys.stdin], [], [], 0.10)[0]:
+        return ""
     third = sys.stdin.read(1)
-    key = {"A": "UP", "B": "DOWN", "C": "RIGHT", "D": "LEFT"}.get(third, "ESC")
-    if key == "ESC":
+    key = {"A": "UP", "B": "DOWN", "C": "RIGHT", "D": "LEFT"}.get(third, "")
+    if not key:
         while select.select([sys.stdin], [], [], 0)[0]:
             sys.stdin.read(1)
     return key
