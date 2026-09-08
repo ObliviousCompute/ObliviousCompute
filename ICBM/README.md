@@ -36,7 +36,7 @@ ICBM runs in two modes
 
 ## 🗝️ Security Notice
 
-Oblivious Compute does not depend on any particular encryption scheme. Some reference implementations use simple XOR obfuscation for projection separation, which is not secure encryption and is not intended to be. Add whatever transport security you want; it does not change the primitive.
+> Oblivious Compute does not depend on any particular encryption scheme. Some reference implementations use simple XOR obfuscation for projection separation, which is not secure encryption and is not intended to be. Add whatever transport security you want; it does not change the primitive.
 
 ---
 
