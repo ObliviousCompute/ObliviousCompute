@@ -74,4 +74,4 @@ Fusion intentionally leaves the medium abstract. It does not implement sockets, 
 
 ***59 lines total. About 67% smaller by physical line count than the smallest conventional Lamport OM implementation we found. What disappeared? The messengers.***
 
-**Continue the [**`Spark`**](../Spark/README.md)...**
+**Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)...**
