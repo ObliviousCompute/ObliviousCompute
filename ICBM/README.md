@@ -36,11 +36,7 @@ ICBM runs in two modes
 
 ## 🗝️ Security Notice
 
-ICBM uses **Ed25519 signing** to validate actions.
-
-However, networking currently relies on simple **XOR-based obfuscation**. This is not secure encryption—and it’s not meant to be.
-
-The system prioritizes **state integrity over transport security**.
+Oblivious Compute does not depend on any particular encryption scheme. Some reference implementations use simple XOR obfuscation for projection separation, which is not secure encryption and is not intended to be. Add whatever transport security you want; it does not change the primitive.
 
 ---
 
