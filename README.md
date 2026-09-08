@@ -80,7 +80,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 📡 Contact
 
-> If you see this and want to talk, reach out — **ObliviousCompute@yahoo.com**
+> **If you see this and want to talk, reach out — ObliviousCompute@yahoo.com**
 
 ---
 
