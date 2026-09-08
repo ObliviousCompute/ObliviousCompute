@@ -6,8 +6,6 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 **Relations between observers maintain a distributed field.**
 
-$\LARGE{𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)}$
-
 ***The field is the computational locus.***
 
 ---
