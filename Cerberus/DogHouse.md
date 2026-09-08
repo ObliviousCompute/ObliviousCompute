@@ -39,7 +39,7 @@ The proofs show what actually happened.
 
 ---
 
-**Go Back to [**`Cerberus`**](./Cerberus/README.md)...**
+**Go Back to [**`Cerberus`**](./README.md)...**
 
 ---
 
