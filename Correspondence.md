@@ -38,7 +38,7 @@ Borrill comes remarkably close to the relational semantics of Oblivious Compute.
 
 ---
 
-**Get back on the [**`FasTrack`**](../FasTrack/README.md.md)...**
+**Get back on the [**`FasTrack`**](/FasTrack/README.md.md)...**
 
 ---
 
