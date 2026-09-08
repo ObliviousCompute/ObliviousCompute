@@ -14,7 +14,7 @@
 
 The old Byzantine Generals story has messengers running around a city, arrows flying, messages disappearing, and one general telling different stories to different people. Byzantium changes the setup. **Every general effectively gets** ***a Bat-Signal.*** Once a signed projection leaves a general's control, it is finalized and projected into the shared medium above the city. If that general flashes both red and green, the contradiction is no longer a private story. Everyone who encounters both can see who projected them, and the same deterministic rule collapses the conflict to one continuation.
 
-> 🧠 *It looks like the Game is to use the Purge Locks to repair the state.*  
+> 🧠 ***"It looks like the Game is to use the Purge Locks to repair the state."***  
 
 ---
 
