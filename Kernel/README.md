@@ -50,7 +50,7 @@ $\Large \Omega$
 
 ---
 
-**Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](./Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
+**Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
 
 ---
 
