@@ -1,12 +1,12 @@
 # ✨ Fusion ✨
 
+Fusion is the Byzantine Generals problem under the Kernel primitive. Instead of sending private messages from general to general, a participant projects into one oblivious medium. Every loyal observer sees the same projection, applies the same admissibility rule, and independently maintains the resulting state.
+
 > ***Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982***
 >
 > *IC1. All loyal lieutenants obey the same order.*
 >
 > *IC2. If the commanding general is loyal, then every loyal lieutenant obeys the order he sends.*
-
-Faros is the Byzantine Generals problem under the Kernel primitive. Instead of sending private messages from general to general, a participant projects into one oblivious medium. Every loyal observer sees the same projection, applies the same admissibility rule, and independently maintains the resulting state.
 
 ```python
 from dataclasses import dataclass
@@ -70,6 +70,6 @@ if __name__ == "__main__":
     print("Byzantine silent:", Trial("ATTACK", loyal=False, reveal=False))
 ```
 
-Faros intentionally leaves the medium abstract. It does not implement sockets, encryption, discovery, or Genesis formation. `Project()` is the spotlight: one projection, same observation. The point is to expose how much algorithm remains once that communication primitive is granted. **ICBM** comes next and builds the runnable distributed machine.
+Fusion intentionally leaves the medium abstract. It does not implement sockets, encryption, discovery, or Genesis formation. `Project()` is the spotlight: one projection, same observation. The point is to expose how much algorithm remains once that communication primitive is granted. **ICBM** comes next and builds the runnable distributed machine.
 
 ***59 lines total. About 67% smaller by physical line count than the smallest conventional Lamport OM implementation we found. What disappeared? The messengers.***
