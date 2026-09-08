@@ -5,7 +5,7 @@
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 **Relations between observers maintain a distributed field.**  
-**The field becomes the computational locus.**
+> **The field becomes the computational locus.**
 
 ---
 
