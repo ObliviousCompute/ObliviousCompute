@@ -67,7 +67,7 @@ $\Large 𝓐(s,x) \in {0,1} $
 
 ---
 
-**Continue to [**`Definitions`**](./C.md) in Appendix C...**
+**Continue to [**`Definitions`**](./B.md) in Appendix B...**
 
 ---
 
