@@ -24,7 +24,7 @@ When a Head equivocates, Cerberus does not erase the conflict. Conflicting actio
 
 ***Cerberus includes two built-in adversarial demonstrations.***
 
-> **😈 DevilDog** *puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same 99-bone BonePile.*
+> **😈 DevilDog** *puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same BonePile.*
 > 
 > **😇 LuckyDog** *keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.*
 
