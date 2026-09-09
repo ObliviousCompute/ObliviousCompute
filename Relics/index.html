@@ -39,8 +39,6 @@
       display: grid;
       place-items: center;
 
-      overflow-x: hidden;
-
       font-family:
         ui-monospace,
         SFMono-Regular,
@@ -52,19 +50,30 @@
         monospace;
     }
 
-    main {
-      width: 720px;
-      max-width: 100%;
-      text-align: center;
-    }
+main {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
-    h1 {
-      margin: 0 0 18px;
-      text-align: center;
-      font-size: clamp(1.5rem, 4vw, 3.5rem);
-      font-weight: 700;
-      white-space: nowrap;
-    }
+  width: 720px;
+  max-width: calc(100vw - 40px);
+  text-align: center;
+}
+
+h1 {
+  width: max-content;
+  max-width: none;
+  margin: 0 0 18px;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+}
 
     .tagline {
       max-width: 620px;
