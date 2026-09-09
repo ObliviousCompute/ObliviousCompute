@@ -28,7 +28,7 @@ When a Head equivocates, Cerberus does not erase the conflict. Conflicting actio
 > 
 > **😇 LuckyDog** *keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.*
 
-***After intallation:***
+***After installation:***
 
 ```bash
 Cerberus DevilDog proofs
