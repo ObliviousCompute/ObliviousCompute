@@ -20,7 +20,7 @@ Every admitted Key changes the computation itself. One abort is a state. Two abo
 
 > **Genesis is the boot sequence.** Before Genesis settles, ICBM is forming the common state that defines the machine. ***Once Genesis exists, the distributed computer is running.***
 >
-> The countdown is gameplay pressure, not part of the consistency mechanism. Failing to enter a valid authorization in time is losing the game, not a Byzantine violation.  
+> **The countdown is gameplay pressure, not part of the consistency mechanism. Failing to enter a valid authorization in time is losing the game, not a Byzantine violation.**  
 >
 > ***If you think you have a counterexample, reproduce it through the running program and show loyal observers resolving the computation differently.***
 
