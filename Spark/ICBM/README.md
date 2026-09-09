@@ -44,7 +44,7 @@ You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environ
 
 ## 🕸️ Networking
 
-ICBM runs in two modes
+**ICBM runs in two modes**
 
 **Simulation** is a local five-terminal smoke test over loopback sockets..
 
