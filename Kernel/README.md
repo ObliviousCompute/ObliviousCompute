@@ -42,11 +42,18 @@ $\Large \Delta_n(\Omega)\cong\Omega$
 
 $\Large \Omega$
 
-> **Whole-space view:** *At a fixed observer configuration, the relational admissibility of the field may be represented across the full product space. This is a whole-space view of the same field, not a definition of it.*
-> 
-> $\Large \Sigma_s:\Omega^n\rightarrow\lbrace 0,1\rbrace$
-> 
-> **Check out what [**`🧠 Big Brain Brad`**](./B3Kernel.md) thinks.**
+## 🔪 Slice 🔪
+
+At a fixed observer configuration, the relational admissibility of the field can be represented across the full product space.
+
+$\Large \Sigma_s:\Omega^n\rightarrow\{0,1\}$
+
+This is a **whole-space view** of the field, not a definition of it.
+
+Want to reconstruct the whole thing analytically? ***Fine.*** Add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers are communicating over fiber, ***put the speed of light in there too***. Keep going until you've described exactly **which projection can exist with which observer at which instant**.
+
+> ***Or just run the machine.***  
+> ***The physical system resolves one actual slice of the field simply by operating.***
 
 ---
 
