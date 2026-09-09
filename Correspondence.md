@@ -40,6 +40,16 @@ Borrill comes remarkably close to the relational semantics of Oblivious Compute.
 >
 > ***A language that can describe the field is not necessarily the machine that produces it.***
 
+## The Medium
+
+An oblivious medium does not choose a computational recipient, maintain an authoritative history, or decide which state is correct. It exposes projections to the observers participating in the same domain, and each observer independently decides what belongs from the state it already holds.
+
+The medium guarantees ***common opportunity for observation, not common authority***. Coordination comes from repeated projection and local admissibility rather than pairwise relationships, leaders, or designated replicas. Observers may differ while the field is in motion. Settlement occurs when their independently maintained states again become compatible.
+
+Within a shared domain, Oblivious Compute trades **redundant projection for less coordination structure**.
+
+> ***The medium carries projections. The observers supply meaning.***
+
 ---
 
 **Go back on the [**`Beginning`**](https://github.com/ObliviousCompute) or continue to the [**`Theory`**](./Theory/README.md)...**
