@@ -12,9 +12,12 @@
 
 ## 🦴 BonePile 🦴
 
+
 Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single 99-bone **BonePile**, with every observer maintaining the complete state independently.
 
 Cerberus is a distributed expression of an **Oblivious Compute** system: independently maintained states continuously project into a common medium and admit what survives the same rules. There is no replicated log and no authority deciding which story happened first.
+
+When a Head equivocates, Cerberus does not erase the conflict or pretend one branch never existed. The economic consequences of conflicting actions become part of the state the machine must resolve.
 
 **Make the dogs fight. Try to split the pile.**
 
@@ -22,11 +25,7 @@ Cerberus is a distributed expression of an **Oblivious Compute** system: indepen
 
 ## 🪝 ClawBack 🪝
 
-Cerberus does not try to pretend equivocation never happened. When a Head signs conflicting actions, both can become consequential state.
-
-If the equivocator can pay for both, both are honored. If it cannot, the fork becomes a debt. **ClawBack** pulls consequences through the BonePile until the equivocator can be convicted and an admissible state remains.
-
-The trick is not choosing which lie was *“really first.”* It is making the consequences of both lies part of the computation.
+If an equivocator can pay for conflicting actions, both can remain consequential. If it cannot, the fork becomes a debt.
 
 **ClawBack turns equivocation into state.**
 
