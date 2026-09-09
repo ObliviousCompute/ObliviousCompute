@@ -1,12 +1,25 @@
 # ✨ Fusion ✨
 
-Fusion is the Byzantine Generals problem under the Kernel primitive. Instead of sending private messages from general to general, a participant projects into one oblivious medium. Every loyal observer sees the same projection, applies the same admissibility rule, and independently maintains the resulting state.
+*Under enough pressure, possibility collapses*
 
-> ***Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982***
->
-> *IC1. All loyal lieutenants obey the same order.*
->
-> *IC2. If the commanding general is loyal, then every loyal lieutenant obeys the order he sends.*
+## Interactive Consistency
+
+*Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982*
+
+**IC1** All loyal lieutenants obey the same order
+
+**IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
+
+---
+
+## The Reaction
+
+Fusion places Interactive Consistency under the **Kernel primitive**. Instead of sending private messages from one participant to another, a participant projects state into an oblivious medium. Every loyal observer encounters the same projection from its own independently maintained state and applies the same admissibility rule.
+
+The commander begins with an order committed into the Genesis state. A candidate reveal does not become computational state merely because it was projected. Each observer independently determines whether it is admissible from the state already held. If it matches the commitment, it survives. If it does not, it contributes nothing.
+
+The medium does not decide, coordinate, vote, or choose a recipient. It carries the projection. The observers perform the computation, and agreement appears through the relation among their independently maintained states. ***What survives the same rule becomes the same state.***
+
 
 ```python
 from dataclasses import dataclass
@@ -69,10 +82,6 @@ if __name__ == "__main__":
     print("Byzantine reveal:", Trial("ATTACK", loyal=False))
     print("Byzantine silent:", Trial("ATTACK", loyal=False, reveal=False))
 ```
-
-Fusion intentionally leaves the medium abstract. It does not implement sockets, encryption, discovery, or Genesis formation. `Project()` is the spotlight: one projection, same observation. The point is to expose how much algorithm remains once that communication primitive is granted. **ICBM** comes next and builds the runnable distributed machine.
-
-***59 lines total. About 67% smaller by physical line count than the smallest conventional Lamport OM implementation we found. What disappeared? The messengers.***
 
 ---
 
