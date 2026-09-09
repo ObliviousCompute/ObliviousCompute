@@ -18,7 +18,7 @@ Every admitted Key changes the computation itself. One abort is a state. Two abo
 
 ***Five observers. One field. Ten seconds. Don’t do it.***
 
-> **Genesis is the boot sequence.** Before Genesis settles, ICBM is forming the common state that defines the machine. Once Genesis exists, the distributed computer is running.
+> **Genesis is the boot sequence.** Before Genesis settles, ICBM is forming the common state that defines the machine. ***Once Genesis exists, the distributed computer is running.***
 >
 > ***If you think you have a counterexample, reproduce it through the running program and show loyal observers resolving the computation differently.***
 
