@@ -20,6 +20,25 @@ When a Head equivocates, Cerberus does not erase the conflict. Conflicting actio
 
 ---
 
+## 🏚️ DogHouse 🏚️
+
+***Cerberus includes two built-in adversarial demonstrations.***
+
+> **😈 DevilDog** *puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same 99-bone BonePile.*
+> 
+> **😇 LuckyDog** *keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.*
+
+**After intallation:**
+
+```bash
+Cerberus DevilDog proofs
+Cerberus LuckyDog proofs
+```
+
+Remove `proofs` to watch either demonstration run interactively.
+
+---
+
 ## 🐧 Operating System Support
 
 - ✅ Linux  
@@ -39,23 +58,6 @@ pipx install Cerberus-Game && Cerberus
 You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environment.**
 
 > Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
-
----
-
-## 🏚️ DogHouse 🏚️
-
-***Cerberus includes two built-in adversarial demonstrations.***
-
-> **😈 DevilDog** *puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same 99-bone BonePile.*
-> 
-> **😇 LuckyDog** *keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.*
-
-```bash
-Cerberus DevilDog proofs
-Cerberus LuckyDog proofs
-```
-
-Remove `proofs` to watch either demonstration run interactively.
 
 ---
 
