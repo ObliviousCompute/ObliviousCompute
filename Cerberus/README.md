@@ -13,23 +13,17 @@
 ## 🦴 BonePile 🦴
 
 
-Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single 99-bone **BonePile**, with every observer maintaining the complete state independently.
+## 🦴 BonePile 🦴
 
-Cerberus is a distributed expression of an **Oblivious Compute** system: independently maintained states continuously project into a common medium and admit what survives the same rules. There is no replicated log and no authority deciding which story happened first.
+Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single **99-bone BonePile**, with every observer maintaining the complete state independently.
 
-When a Head equivocates, Cerberus does not erase the conflict or pretend one branch never existed. The economic consequences of conflicting actions become part of the state the machine must resolve.
+Cerberus is a distributed expression of an **Oblivious Compute** system. Independently maintained states continuously project into a common medium and admit what survives the same rules. There is **no replicated log** and no authority deciding which story happened first.
+
+When a Head equivocates, Cerberus does not erase the conflict or pretend one branch never existed. Conflicting actions become *consequential state*. If the equivocator cannot cover both, **ClawBack** carries the debt through the BonePile until an admissible state remains.
+
+***The trick is not choosing which lie was really first. It is making the consequences of both part of the computation.***
 
 **Make the dogs fight. Try to split the pile.**
-
----
-
-## 🪝 ClawBack 🪝
-
-If an equivocator can pay for conflicting actions, both can remain consequential. If it cannot, the fork becomes a debt.
-
-**ClawBack turns equivocation into state.**
-
-> **Want to try to break it? Check out the [**`DogHouse`**](./DogHouse.md)**
 
 ---
 
@@ -52,6 +46,23 @@ pipx install Cerberus-Game && Cerberus
 You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environment.**
 
 > Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
+
+---
+
+## 🏚️ DogHouse 🏚️
+
+Cerberus includes two built-in adversarial demonstrations.
+
+**😈 DevilDog** puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same 99-bone BonePile.
+
+**😇 LuckyDog** keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.
+
+```bash
+Cerberus DevilDog proofs
+Cerberus LuckyDog proofs
+```
+
+Remove `proofs` to watch either demonstration run interactively.
 
 ---
 
