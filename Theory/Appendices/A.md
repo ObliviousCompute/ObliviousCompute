@@ -1,4 +1,4 @@
-# Appendix B — Axioms
+# Appendix A — Axioms
 
 ## Purpose
 
