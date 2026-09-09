@@ -42,7 +42,7 @@ $\Large \Delta_n(\Omega)\cong\Omega$
 
 $\Large \Omega$
 
-## 🔪 Slice 🔪
+## 💎 Diamond Tip 💎
 
 At a fixed observer configuration, ***the field has a whole-space shape***. Its relational admissibility can be represented across the full product space.
 
