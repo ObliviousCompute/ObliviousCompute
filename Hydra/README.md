@@ -83,15 +83,6 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-## 🎯 Intent
-
-The Hydra Demo has been published as a **public technical disclosure**.
-
-*This demo exists to show that **oblivious convergence through positional admissibility** is possible.*
-
-If it fails, it fails cleanly.  
-If it works, this may demonstrate a **new computational primitive**.
-
 <img src="../Relics/Alpha.png" width="400"/>
 
 <img src="../Relics/Bye.gif" width="400"/>
