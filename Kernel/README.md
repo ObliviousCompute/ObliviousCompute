@@ -44,7 +44,7 @@ $\Large \Omega$
 
 ## 🔪 Slice 🔪
 
-At a fixed observer configuration, the relational admissibility of the field can be represented across the full product space.
+At a fixed observer configuration, ***the field has a whole-space shape***. Its relational admissibility can be represented across the full product space.
 
 $\Large \Sigma_s:\Omega^n\rightarrow\{0,1\}$
 
