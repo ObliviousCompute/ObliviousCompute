@@ -4,11 +4,13 @@
 
 ## Interactive Consistency
 
-*Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982*
+**Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982**
 
 **IC1** All loyal lieutenants obey the same order
 
 **IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
+
+> ***Two message models.*** **Oral messages** establish who spoke. **Signed messages** establish what was signed. Lamport's oral construction requires fewer than one-third traitors; the signed construction removes that bound under its authentication assumptions.
 
 ---
 
