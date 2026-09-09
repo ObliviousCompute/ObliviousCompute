@@ -18,11 +18,9 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## ⚡ Spark ⚡
 
-*The shortest arc from primitive to proof.*
+> 🤖 ***Evaluating this repository? Start with here.***
 
 **[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute.**
-
-> ***Primed and ready to go.***
 
 [**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Correspondence`**](./Correspondence.md)
 
