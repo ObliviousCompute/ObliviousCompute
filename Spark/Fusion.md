@@ -90,6 +90,8 @@ if __name__ == "__main__":
     print("Byzantine silent:", Trial("ATTACK", loyal=False, reveal=False))
 ```
 
+> **59 lines total.** About **68% smaller by physical line count** than the smallest conventional Lamport OM implementation we found at 183 lines.
+
 ---
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)...**
