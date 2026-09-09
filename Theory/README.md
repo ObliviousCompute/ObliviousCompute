@@ -6,6 +6,10 @@
 
 [**`Geometry`**](./Geometry.md)**`⟶`**[**`Holography`**](./Holography.md)**`⟶`**[**`Admissibility`**](./Admissibility.md)**`⟶`**[**`Symmetry`**](./Symmetry.md)**`⟶`**[**`Singularity`**](./Singularity.md)
 
+## 🛋️ Afterhours
+
+[**`Halting Machine`**](./Halting Machine.md)
+
 ## 📚 Appendices 
 
 [**`Axioms`**](./Appendices/A.md)**`&`**[**`Definitions`**](./Appendices/B.md)
