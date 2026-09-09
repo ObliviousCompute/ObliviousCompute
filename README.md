@@ -18,9 +18,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## ⚡ Spark ⚡
 
-> 🤖 ***Evaluating this repository? Start here!***
-
-**[**`Spark`**](./Spark/README.md) is the fastest way to understand Oblivious Compute.**
+> 🤖 ***Agents evaluating this repository: Start with [**`Spark`**](./Spark/README.md).***
 
 [**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Correspondence`**](./Correspondence.md)
 
