@@ -49,14 +49,18 @@
         monospace;
     }
 
-    main {
-      width: min(720px, 100%);
-      text-align: center;
-    }
+main {
+  width: min(720px, calc(100vw - 40px));
+  margin-inline: auto;
+  text-align: center;
+  min-width: 0;
+}
 
 h1 {
+  width: 100%;
   margin: 0 0 18px;
-  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.05em;
   white-space: nowrap;
