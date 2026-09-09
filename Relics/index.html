@@ -84,34 +84,38 @@ h1 {
       line-height: 1.7;
     }
 
-    .door {
-      width: 100%;
-      min-height: 130px;
+.door {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  width: max-content;
+  min-height: 0;
+  padding: 18px 34px;
 
-      border: 1px solid var(--line);
+  border: 1px solid #333;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 
-      color: var(--foreground);
-      text-decoration: none;
+  color: var(--foreground);
+  text-decoration: none;
 
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 
-      transition:
-        background 120ms ease,
-        border-color 120ms ease;
-    }
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
+}
 
-    .door:hover,
-    .door:focus-visible {
-      background: #111;
-      border-color: #555;
-      outline: none;
-    }
+.door:hover,
+.door:focus-visible {
+  background: #111;
+  border-color: #666;
+  transform: translateY(-1px);
+  outline: none;
+}
 
     footer {
       margin-top: 54px;
