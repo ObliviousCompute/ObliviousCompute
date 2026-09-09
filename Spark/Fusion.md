@@ -12,7 +12,9 @@
 
 > **Oral messages** establish who spoke.  
 > 
-> **Signed messages** establish what was signed. Lamport's oral construction requires fewer than one-third traitors; the signed construction removes that bound under its authentication assumptions.
+> **Signed messages** establish what was signed.  
+>
+> *Lamport's oral construction requires fewer than one-third traitors; the signed construction removes that bound under its authentication assumptions.*
 
 ---
 
