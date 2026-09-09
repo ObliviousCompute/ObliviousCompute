@@ -34,7 +34,7 @@ Every admitted Key changes the computation itself. One abort is a state. Two abo
 
 ## 🍄 Install
 
-To run ICBM, install it with:
+***To run ICBM, install it with:***
 
 ```bash
 pipx install ICBM-Game && ICBM
