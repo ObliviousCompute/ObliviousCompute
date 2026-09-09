@@ -10,18 +10,19 @@
 
 **IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
 
-> ***Two message models.*** **Oral messages** establish who spoke. **Signed messages** establish what was signed. Lamport's oral construction requires fewer than one-third traitors; the signed construction removes that bound under its authentication assumptions.
+> ***Two message models.***
+> **Oral messages** establish who spoke.
+> **Signed messages** establish what was signed. Lamport's oral construction requires fewer than one-third traitors; the signed construction removes that bound under its authentication assumptions.
 
 ---
 
 ## The Reaction
 
-Fusion places Interactive Consistency under the **Kernel primitive**. Instead of sending private messages from one participant to another, a participant projects state into an oblivious medium. Every loyal observer encounters the same projection from its own independently maintained state and applies the same admissibility rule.
+Fusion places Interactive Consistency under the ***Kernel primitive***. Instead of sending private messages from one participant to another, a participant **projects state into an oblivious medium**. Every loyal observer encounters the same projection from its own independently maintained state and applies the ***same admissibility rule***.
 
-The commander begins with an order committed into the Genesis state. A candidate reveal does not become computational state merely because it was projected. Each observer independently determines whether it is admissible from the state already held. If it matches the commitment, it survives. If it does not, it contributes nothing.
+The commander begins with an order committed into the **Genesis state**. A candidate reveal does not become computational state merely because it was projected. Each observer independently determines whether it is ***admissible from the state already held***. If it matches the commitment, **it survives**. If it does not, it contributes nothing.
 
-The medium does not decide, coordinate, vote, or choose a recipient. It carries the projection. The observers perform the computation, and agreement appears through the relation among their independently maintained states. ***What survives the same rule becomes the same state.***
-
+The medium does not **decide, coordinate, vote, or choose a recipient**. It carries the projection. The observers perform the computation, and agreement appears through the relation among their independently maintained states. ***What survives the same rule becomes the same state.***
 
 ```python
 from dataclasses import dataclass
