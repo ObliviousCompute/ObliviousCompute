@@ -12,8 +12,6 @@
 
 ## 🦴 BonePile 🦴
 
-## 🦴 BonePile 🦴
-
 Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**. Nine logical **Heads** fight over a single **99-bone BonePile**, while every observer maintains the complete state independently. There is **no replicated log** and no authority deciding which story happened first.
 
 When a Head equivocates, Cerberus does not erase the conflict. Conflicting actions become *consequential state*, and **ClawBack** carries any unpaid debt through the BonePile until an admissible state remains. ***The trick is not choosing which lie was really first. It is making the consequences part of the computation.***
