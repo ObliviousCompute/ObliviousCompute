@@ -12,13 +12,11 @@
 
 ## 🦴 BonePile 🦴
 
-Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single **99-bone BonePile**, with every observer maintaining the complete state independently.
+## 🦴 BonePile 🦴
 
-Cerberus is a distributed expression of an **Oblivious Compute** system. Independently maintained states continuously project into a common medium and admit what survives the same rules. There is **no replicated log** and no authority deciding which story happened first.
+Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**. Nine logical **Heads** fight over a single **99-bone BonePile**, while every observer maintains the complete state independently. There is **no replicated log** and no authority deciding which story happened first.
 
-When a Head equivocates, Cerberus does not erase the conflict or pretend one branch never existed. Conflicting actions become *consequential state*. If the equivocator cannot cover both, **ClawBack** carries the debt through the BonePile until an admissible state remains.
-
-***The trick is not choosing which lie was really first. It is making the consequences of both part of the computation.***
+When a Head equivocates, Cerberus does not erase the conflict. Conflicting actions become *consequential state*, and **ClawBack** carries any unpaid debt through the BonePile until an admissible state remains. ***The trick is not choosing which lie was really first. It is making the consequences part of the computation.***
 
 **Make the dogs fight. Try to split the pile.**
 
@@ -48,11 +46,11 @@ You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environ
 
 ## 🏚️ DogHouse 🏚️
 
-Cerberus includes two built-in adversarial demonstrations.
+***Cerberus includes two built-in adversarial demonstrations.***
 
-**😈 DevilDog** puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same 99-bone BonePile.
+> **😈 DevilDog** *puts five greedy dogs in a field with four loyal dogs. The greedy dogs issue conflicting signed spends while ordinary play continues. Their evidence eventually reaches Oblivion, Cerberus reconciles the field, and all nine Heads bury the same 99-bone BonePile.*
 
-**😇 LuckyDog** keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.
+> **😇 LuckyDog** *keeps escalating the same idea. Dogs progressively promise more bones than they can cover until Cerberus razes them one by one and Lucky is left standing with all 99 bones.*
 
 ```bash
 Cerberus DevilDog proofs
