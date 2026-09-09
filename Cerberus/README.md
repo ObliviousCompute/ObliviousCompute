@@ -12,9 +12,6 @@
 
 ## 🦴 BonePile 🦴
 
-
-## 🦴 BonePile 🦴
-
 Cerberus is an intentionally small experiment in **Byzantine-resistant distributed state**, built to be *read, run, and understood in one sitting*. Nine logical **Heads** fight over a single **99-bone BonePile**, with every observer maintaining the complete state independently.
 
 Cerberus is a distributed expression of an **Oblivious Compute** system. Independently maintained states continuously project into a common medium and admit what survives the same rules. There is **no replicated log** and no authority deciding which story happened first.
