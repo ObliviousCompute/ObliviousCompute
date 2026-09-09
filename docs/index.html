@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Oblivious Compute</title>
+
+  <meta
+    name="description"
+    content="A distributed computation primitive based on oblivious projection, local admissibility, and relational state."
+  >
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #090909;
+      --foreground: #f2f2f2;
+      --muted: #8a8a8a;
+      --line: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--background);
+      color: var(--foreground);
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 32px 20px;
+
+      display: grid;
+      place-items: center;
+
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+    }
+
+main {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 720px;
+  max-width: calc(100vw - 40px);
+  text-align: center;
+}
+
+h1 {
+  width: max-content;
+  max-width: none;
+  margin: 0 0 18px;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+}
+
+    .tagline {
+      max-width: 620px;
+      margin: 0 auto 54px;
+
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+.door {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  min-height: 0;
+  padding: 18px 34px;
+
+  border: 1px solid #333;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+  color: var(--foreground);
+  text-decoration: none;
+
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+
+.door:hover,
+.door:focus-visible {
+  background: #111;
+  border-color: #666;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+    footer {
+      margin-top: 54px;
+
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+
+      color: #555;
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: clamp(1.35rem, 7vw, 2.4rem);
+      }
+
+      .tagline {
+        margin-bottom: 40px;
+        font-size: 0.9rem;
+      }
+
+      .door {
+        min-height: 110px;
+      }
+
+      footer {
+        gap: 10px;
+        font-size: 0.66rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <h1>Ω Oblivious Compute Ω</h1>
+
+    <p class="tagline">
+      A distributed computation primitive based on oblivious projection,
+      local admissibility, and relational state.
+    </p>
+
+    <a
+      class="door"
+      href="https://github.com/ObliviousCompute"
+      aria-label="Open the Oblivious Compute repository on GitHub"
+    >
+      Good Luck Have Fun
+    </a>
+
+    <footer>
+      <span>Relativity</span>
+      <span>·</span>
+      <span>Open Source</span>
+      <span>·</span>
+      <span>Distributed</span>
+    </footer>
+
+  </main>
+</body>
+</html>
