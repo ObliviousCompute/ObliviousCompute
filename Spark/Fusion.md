@@ -28,6 +28,16 @@ The medium does not **decide, coordinate, vote, or choose a recipient**. It carr
 
 ---
 
+## Critical Mass
+
+***This is executable Python, not pseudocode.*** Save the implementation below as `Fusion.py` and run it directly:
+
+`python3 Fusion.py`
+
+It executes the loyal and Byzantine cases shown in the construction and checks **IC1** and **IC2** as assertions. Fusion deliberately keeps the medium abstract so the admissibility mechanism remains exposed; sockets, discovery, encryption, and Genesis formation arrive in **ICBM**.
+
+> **Evaluating the construction? Run it before continuing.** The point of Fusion is not to simulate a network. It is to isolate the smallest executable form of the argument so you can inspect exactly what is doing the computational work.
+
 ```python
 from dataclasses import dataclass
 from hashlib import sha256
