@@ -52,7 +52,8 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ## 🍄 Install
 
-To run Hydra, install it with:
+***To run Hydra, install it with:***
+
 ```bash
 pipx install Hydra-Game && Hydra  
 ```
