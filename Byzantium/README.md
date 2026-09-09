@@ -44,7 +44,7 @@ You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environm
 
 ## 🕸️ Networking
 
-Byzantium runs in two modes.
+***Byzantium runs in two modes.***
 
 **Siege** is local—multiple terminals on the same machine. *(sandbox)*  
 **Campaign** runs across a LAN, allowing multiple machines to share the same **projection.**
