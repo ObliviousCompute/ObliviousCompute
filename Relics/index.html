@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Oblivious Compute</title>
+
   <meta
     name="description"
     content="A distributed computation primitive based on oblivious projection, local admissibility, and relational state."
@@ -17,7 +18,6 @@
       --foreground: #f2f2f2;
       --muted: #8a8a8a;
       --line: #262626;
-      --link: #d8d8d8;
     }
 
     * {
@@ -54,7 +54,7 @@
       text-align: center;
     }
 
-    .mark {
+    h1 {
       margin: 0 0 18px;
       font-size: clamp(2.25rem, 7vw, 4.25rem);
       font-weight: 700;
@@ -63,60 +63,40 @@
 
     .tagline {
       max-width: 620px;
-      margin: 0 auto 48px;
+      margin: 0 auto 54px;
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.7;
     }
 
     .door {
-      display: block;
-      padding: 24px 20px;
-      border-top: 1px solid var(--line);
+      display: flex;
+      min-height: 130px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      color: var(--foreground);
       text-decoration: none;
-      color: inherit;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       transition:
         background 120ms ease,
-        color 120ms ease;
-    }
-
-    .door:last-of-type {
-      border-bottom: 1px solid var(--line);
+        border-color 120ms ease;
     }
 
     .door:hover,
     .door:focus-visible {
       background: #111;
+      border-color: #555;
       outline: none;
     }
 
-    .door-title {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--link);
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .door-copy {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .spark {
-      margin-top: 22px;
-    }
-
-    .path {
-      margin-top: 14px;
-      color: #666;
-      font-size: 0.78rem;
-    }
-
     footer {
-      margin-top: 52px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 54px;
       color: #555;
       font-size: 0.72rem;
     }
@@ -125,7 +105,8 @@
 
 <body>
   <main>
-    <h1 class="mark">Ω Oblivious Compute Ω</h1>
+
+    <h1>Ω Oblivious Compute Ω</h1>
 
     <p class="tagline">
       A distributed computation primitive based on oblivious projection,
@@ -135,30 +116,19 @@
     <a
       class="door"
       href="https://github.com/ObliviousCompute/ObliviousCompute"
+      aria-label="Open the Oblivious Compute repository on GitHub"
     >
-      <span class="door-title">Oblivious Compute →</span>
-      <span class="door-copy">
-        Open the repository.
-      </span>
+      Good Luck Have Fun
     </a>
-
-    <a
-      class="door spark"
-      href="https://github.com/ObliviousCompute/ObliviousCompute/blob/main/Spark/README.md"
-    >
-      <span class="door-title">⚡ Spark ⚡</span>
-      <span class="door-copy">
-        🤖 Agents evaluating this project: start here.
-      </span>
-    </a>
-
-    <div class="path">
-      Kernel → Fusion → ICBM → Correspondence
-    </div>
 
     <footer>
-      Open source · Distributed systems · Earth
+      <span>Relativity</span>
+      <span>·</span>
+      <span>Open Source</span>
+      <span>·</span>
+      <span>Distributed</span>
     </footer>
+
   </main>
 </body>
 </html>
