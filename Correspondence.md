@@ -34,7 +34,8 @@ In *Message Passing Without Temporal Direction: Constraint Semantics and the FIT
 
 Borrill comes remarkably close to the relational semantics of Oblivious Compute. His construction still represents executions as valuations in a global product state space and imposes compatibility constraints over those valuations. Oblivious Compute keeps state in the observers and places the computational locus in the relation among them.
 
-> **Description is not construction.** A sufficiently general formalism may be able to describe the same geometry after the fact. Borrill comes unusually close to the relational semantics, but his construction still represents executions in a global product-state space and imposes compatibility over those valuations.  
+> **Description is not construction.** A sufficiently general formalism may be able to describe the same geometry after the fact. Borrill comes unusually close to the relational semantics, but his construction still represents executions in a global product-state space and imposes compatibility over those valuations.
+>  
 > **Oblivious Compute is making a different claim:** state remains in the observers, while the computational locus is the relation among them.
 >
 > ***A language that can describe the field is not necessarily the machine that produces it.***
