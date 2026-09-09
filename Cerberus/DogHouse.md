@@ -1,4 +1,4 @@
-# Doghouse
+# 🐾 Doghouse 🐾
 
 Cerberus comes with two built-in Doghouse demos.
 
@@ -19,7 +19,7 @@ Remove `proofs` if you want to watch the demo play out interactively.
 
 If you’re running Cerberus directly from this folder instead of through pipx, use `python Cerberus.py` in place of `Cerberus`.
 
-## DevilDog
+## 😈 DevilDog
 
 DevilDog puts five greedy dogs in a field with four loyal dogs.
 
@@ -27,7 +27,7 @@ The greedy dogs create conflicting signed spends while ordinary gameplay continu
 
 Watch the dogs get Razed, the Bone Bucks settle, and all nine Heads Bury the same 99-bone BonePile.
 
-## LuckyDog
+## 😇 LuckyDog
 
 LuckyDog keeps going.
 
