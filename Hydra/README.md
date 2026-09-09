@@ -18,9 +18,9 @@ As long as your **head is unique** and you share the same **depth**, your node w
 
 ***Simply put, it's a distributed packet collider in under a thousand lines of code.***
 
-**No leaders. Just convergence.**
-
 $\Large \lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
+
+**No leaders. Just convergence.**
 
 ---
 
