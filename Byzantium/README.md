@@ -28,8 +28,6 @@ Spend twice and both actions can become part of the problem the board has to sol
 
 *Triple spends and larger forks collapse the same way: the state retains only a canonical pair, repairs the economic consequences, and burns the actor if the fork becomes insolvent.*
 
-> **Check out what [**`🧠 Big Brain Brad`**](./B3Byzantium.md) thinks.**
-
 ---
 
 ## 🐧 Operating System Support
