@@ -26,9 +26,17 @@ $\Large \lbrace s\in\mathbb{Z}^n:\sum_i s_i=10n\rbrace$
 
 ## 🫧 Conservation 🫧
 
-Hydra distributes conserved tallies across independently maintained nodes. The tallies may move, differ, and resolve, but **the conserved distribution is the computation.**
+Hydra does not conserve a particular arrangement. It conserves the space in which the computation is allowed to move.
 
-> **Check out what [**`🧠 Big Brain Brad`**](./B3Hydra.md) thinks.**
+The tallies can shift dramatically between nodes while the total remains fixed. During a mutation, independent observers may temporarily occupy different points. When the computation settles, they coincide again on the same admissible state.
+
+$$
+\Large (s,\ldots,s)\; \longrightarrow\; \text{transient disagreement}\; \longrightarrow\; (s',\ldots,s')
+$$
+
+Suppose the field already represents nearly 1,000,000 points of computed state and the next few thousand are temporarily unresolved between observers. The million-point state did not disappear because one moving edge became fuzzy. The conserved distribution remains while the observers resolve onto another common point.
+
+***The computation moves. The invariant does not.***
 
 ---
 
