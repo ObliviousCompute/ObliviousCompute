@@ -38,6 +38,8 @@
       align-items: center;
       justify-content: center;
       padding: 32px 20px;
+      overflow-x: hidden;
+
       font-family:
         ui-monospace,
         SFMono-Regular,
@@ -49,22 +51,22 @@
         monospace;
     }
 
-main {
-  width: min(720px, calc(100vw - 40px));
-  margin-inline: auto;
-  text-align: center;
-  min-width: 0;
-}
+    main {
+      width: min(720px, calc(100vw - 40px));
+      margin-inline: auto;
+      text-align: center;
+      min-width: 0;
+    }
 
-h1 {
-  width: 100%;
-  margin: 0 0 18px;
-  text-align: center;
-  font-size: clamp(1.5rem, 4vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  white-space: nowrap;
-}
+    h1 {
+      width: 100%;
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: clamp(1.5rem, 4vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+    }
 
     .tagline {
       max-width: 620px;
@@ -79,6 +81,7 @@ h1 {
       min-height: 130px;
       align-items: center;
       justify-content: center;
+      width: 100%;
       border: 1px solid var(--line);
       color: var(--foreground);
       text-decoration: none;
