@@ -24,6 +24,8 @@ The commander begins with an order committed into the **Genesis state**. A candi
 
 The medium does not **decide, coordinate, vote, or choose a recipient**. It carries the projection. The observers perform the computation, and agreement appears through the relation among their independently maintained states. ***What survives the same rule becomes the same state.***
 
+---
+
 ```python
 from dataclasses import dataclass
 from hashlib import sha256
