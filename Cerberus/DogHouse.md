@@ -1,4 +1,4 @@
-# 🐾 Doghouse 🐾
+# 🏚️ Doghouse 🏚️
 
 Cerberus comes with two built-in Doghouse demos.
 
