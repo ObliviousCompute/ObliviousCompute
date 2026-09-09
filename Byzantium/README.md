@@ -18,7 +18,7 @@ There is no hidden authoritative board behind the one you see. No replicated log
 
 Spend twice and both actions can become part of the problem the board has to solve. Move the people around. Break the economy. Try to make two loyal tables disagree.
 
-**You don't play on the state. You play with it.**
+**You don't play ***on*** the state. You play ***with*** the state.**
 
 ---
 
