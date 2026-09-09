@@ -100,7 +100,7 @@ if __name__ == "__main__":
     print("Byzantine silent:", Trial("ATTACK", loyal=False, reveal=False))
 ```
 
-> **59 lines total.** Roughly **68% smaller by physical line count** than our smallest 183-line conventional Lamport OM reference.
+> **59 lines total.** The smallest conventional Lamport OM reference we found is **210% larger by physical line count**.
 
 ---
 
