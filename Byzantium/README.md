@@ -30,7 +30,7 @@ When someone spends twice, the contradiction does not fracture the machine or di
 
 ## 🍄 Install
 
-To run Byzantium, install it with:
+***To run Byzantium, install it with:***
 
 ```bash
 pipx install Byzantium-Game && Byzantium
