@@ -12,21 +12,11 @@
 
 ## 👑 Dream State 👑
 
-Byzantium is a game played directly on a distributed state surface. Every observer maintains the complete board independently while the people inside it move value, defect, assimilate, and reshape the state they collectively occupy.
+Byzantium is a game played directly on a **distributed state surface**. Every observer maintains the complete board independently while the people inside it move value, defect, assimilate, and reshape the state they collectively occupy. There is no hidden authoritative board, no replicated log deciding which action happened first, and no backend keeping score.
 
-There is no hidden authoritative board behind the one you see. No replicated log decides which action happened first. The board survives because independently maintained states continue admitting compatible changes into the same distributed expression.
+When someone spends twice, the contradiction does not fracture the machine or disappear into history. It becomes part of the board. Larger forks collapse to a canonical pair, the economic consequences are repaired, and an actor that cannot cover the conflict is burned from the state.
 
-Spend twice and both actions can become part of the problem the board has to solve. Move the people around. Break the economy. Try to make two loyal tables disagree.
-
-**You don't play ***on*** the state. You play ***with*** the state.**
-
----
-
-## 🔱 Equivocation 🔱
-
-***Double spends don’t fracture Byzantium. They become part of the board.***
-
-*Triple spends and larger forks collapse the same way: the state retains only a canonical pair, repairs the economic consequences, and burns the actor if the fork becomes insolvent.*
+*You don't play ***on*** the state. You play ***with*** the state.*
 
 ---
 
