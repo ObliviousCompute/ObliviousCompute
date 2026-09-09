@@ -1,7 +1,5 @@
 # Black Box
 
-# Black Box
-
 ## The Oblivious Halting Machine
 
 A computer is ordinarily treated as the locus of its computation. A state enters the machine, the machine executes, and a result emerges. Whatever comes out is treated as the output of the computation.
