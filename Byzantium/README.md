@@ -12,11 +12,11 @@
 
 ## 👑 Dream State 👑
 
-Byzantium is a game played directly on a **distributed state surface**. Every observer maintains the complete board independently while the people inside it move value, defect, assimilate, and reshape the state they collectively occupy. There is no hidden authoritative board, no replicated log deciding which action happened first, and no backend keeping score.
+Byzantium is a game played directly on a ***distributed state surface***. Every observer maintains the complete board independently while the people inside it **move value, defect, assimilate, and reshape the state** they collectively occupy. There is no hidden authoritative board, no replicated log deciding which action happened first, and no backend keeping score.
 
-When someone spends twice, the contradiction does not fracture the machine or disappear into history. **It becomes part of the board.** Larger forks collapse to a canonical pair, the economic consequences are repaired, and an actor that cannot cover the conflict is burned from the state.
+When someone spends twice, the contradiction does not fracture the machine or disappear into history. ***It becomes part of the board.*** Larger forks collapse to a **canonical pair**, the economic consequences are repaired, and an actor that cannot cover the conflict is ***burned from the state***.
 
-**You don't play _on_ the state. You play _with_ the state.**
+**You don't play ***on*** the state. You play ***with*** the state.**
 
 ---
 
