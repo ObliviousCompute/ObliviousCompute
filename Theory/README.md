@@ -8,7 +8,7 @@
 
 ## 📚 Appendices 
 
-[**`Axioms`**](./Appendices/B.md)**`&`**[**`Definitions`**](./Appendices/C.md)
+[**`Axioms`**](./Appendices/A.md)**`&`**[**`Definitions`**](./Appendices/B.md)
 
 
 ## 🪶 Note
