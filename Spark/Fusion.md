@@ -10,10 +10,10 @@
 
 **IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
 
-> **Oral messages** establish who spoke.  
-> 
-> **Signed messages** establish what was signed.  
->
+**Oral messages** establish who spoke.
+
+**Signed messages** establish what was signed.  
+
 > *Lamport's oral construction requires fewer than one-third traitors; the signed construction removes that bound under its authentication assumptions.*
 
 ---
