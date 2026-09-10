@@ -37,3 +37,16 @@ The machines execute. Their outputs project. **The relation determines what cont
 **The machine reveals its hand. Its state is the ante. The field calls.**
 
 ***Now the game begins.***
+
+---
+
+Go back to [**`Kernel`**](../../Kernel/README.md) or [**`Theory`**](./Theory/README.md)
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
+
