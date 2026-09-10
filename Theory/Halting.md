@@ -14,7 +14,7 @@ $\large (s,\ldots,s)\in\Delta_n(\Omega)\qquad \Delta_n(\Omega)\cong\Omega$
 
 ## Price of Admission
 
-Imagine several black boxes around a table. Put the exact same ticket into every box. Each ticket carries the same state. Whatever machinery exists behind the walls may remain completely unknown; what matters is that every machine began from the same presented state and whatever comes back must enter the same relational computation.
+Step right up. Several ordinary black boxes sit around a table. Put the exact same ticket into every box. Each ticket carries the same state. Whatever machinery exists behind the walls may remain completely unknown; what matters is that every machine began from the same presented state and whatever comes back must enter the same relational computation.
 
 A returned ticket does not become authoritative because a machine printed it. It is simply another projection seeking admission from the state already held. For the smallest halting example, let $H$ mean **HALT** and $R$ mean **REPEAT**. A healthy machine presented HALT consumes the state and emits no further ticket. If another ticket appears, feed it back into the same oblivious medium and evaluate it again.
 
