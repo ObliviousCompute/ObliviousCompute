@@ -1,6 +1,6 @@
 # The Black Box
 
-## The Oblivious Machine
+## Inside The Oblivious Machine
 
 A computer computes. State enters the machine, the machine executes, and something happens next. Conventionally, whatever happens inside that box is treated as the computation, while whatever emerges is treated as its result. The machine may be simple or arbitrarily complex, but the computational question remains pointed inward.
 
@@ -28,7 +28,7 @@ A single mirror can invert an image. A second reflection reveals that inversion.
 
 ## Raise the Anti
 
-The inverter raises the problem by making a black box contradict whatever answer is placed before it. Oblivious Compute raises the anti one level further. Put that box among independent machines, give them the same state, and let every result return to the same oblivious medium. The inverter still controls whatever happens behind its own walls, but it does not control what its output means. Once projected, its state becomes relative to states it does not own.
+A black box inside an oblivious machine creates an inversion of an inversion. The first machine may hide everything behind its walls; the second gives those walls no authority. Whatever the box produces is projected back into a relation with independently maintained states. Its interior can remain oblivious. Its output cannot.
 
 Drawing a larger box around the system does not restore that authority. The boundary may contain every machine, every projection, and every changing state, but it is only a description of what has been enclosed. The computation remains in the relation among independently maintained states. A black box can reflect itself forever; the field reflects the reflection.
 
