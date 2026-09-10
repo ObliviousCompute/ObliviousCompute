@@ -12,31 +12,19 @@ When independently maintained states resolve to the same position, their relatio
 
 $\large (s,\ldots,s)\in\Delta_n(\Omega)\qquad \Delta_n(\Omega)\cong\Omega$
 
-## Price of Admission
-
-Step right up. Several ordinary black boxes sit around a table. Put the exact same ticket into every box. Each ticket carries the same state. Whatever machinery exists behind the walls may remain completely unknown; what matters is that every machine began from the same presented state and whatever comes back must enter the same relational computation.
-
-A returned ticket does not become authoritative because a machine printed it. It is simply another projection seeking admission from the state already held. For the smallest halting example, let $H$ mean **HALT** and $R$ mean **REPEAT**. A healthy machine presented HALT consumes the state and emits no further ticket. If another ticket appears, feed it back into the same oblivious medium and evaluate it again.
-
-$\large \Omega_H=\{H,R\}\qquad H\rightarrow\varnothing\qquad \mathcal A(H,R)=0$
-
-Projection is unrestricted. Continued participation is not.
-
 ## House of Mirrors
 
-Now place an inverter among the machines. Presented HALT, it produces REPEAT. Presented REPEAT, it produces HALT. Nothing prevents the inverter from performing this reflection forever. Every output becomes another ticket, every ticket may be projected again, and the machine may continue executing for as long as its own internal rule demands.
+Now the fun begins. Place an inverter among the machines. Presented HALT, it produces REPEAT. Presented REPEAT, it produces HALT. Nothing prevents that machine from reflecting the state back into its opposite again and again.
 
 $\large H\rightarrow R\qquad R\rightarrow H\qquad H\rightarrow R\rightarrow H\rightarrow R\rightarrow\cdots$
 
-Now give the same HALT state to five independent machines. Four consume HALT and produce nothing further. The inverter produces REPEAT. The important result is not hidden inside any box: one machine has produced a continuation from a state for which the other machines have no continuation. What looked like an endless logical reflection inside one box has become visible asymmetry outside of it.
+Now give the same HALT state to five independent machines. Four consume HALT and produce no further continuation. The inverter alone produces REPEAT. What appears endless inside one black box becomes visible when its output is reflected against independently maintained states across the field.
 
-$\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \mathcal A(H,R)=0$
+$\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
 
-The inverter may continue. Its next reflection does not acquire authority merely because another ticket appears. The machines already settled at HALT do not have to follow it, reconstruct its history, or discover why it behaved differently. From the state they already hold, its continuation simply does not belong.
+A single mirror can invert an image. A second reflection reveals that inversion. The inverter may continue producing an endless hallway of reflected states, but every new projection is still compared against the state already held by the other observers. It can reflect itself forever without making its reflection symmetrical with the field.
 
-The mirror can reflect forever. The computation does not have to move with it.
-
-$\large \text{process still running}\not\Rightarrow\text{distributed computation still running}$
+***The inverter can reflect forever. The field reflects the reflection.***
 
 ## Outside the Box
 
