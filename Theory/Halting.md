@@ -2,120 +2,50 @@
 
 ## The Oblivious Machine
 
-A computer computes. A state enters the machine, the machine executes, and a result emerges. Whatever comes out is ordinarily treated as the computation.
+A computer computes. State enters the machine, the machine executes, and something happens next. Conventionally, whatever happens inside that box is treated as the computation, while whatever emerges is treated as its result. The machine may be simple or arbitrarily complex, but the computational question remains pointed inward.
 
-Oblivious Compute moves the computation outside of the box.
+Oblivious Compute moves the distributed computation outside of the box. Give independent machines the same state, allow each to execute locally, and treat whatever emerges as another projected state rather than an authoritative answer. No machine needs to know what happens inside another machine. The computation appears in the relation among the states they independently produce.
 
-A machine still executes locally, but its output is only a projected state. Give multiple independent machines the same state and no individual result needs to be authoritative. What matters is the relation among the states they independently produce.
+$\large x\rightarrow\{F_1(x),F_2(x),\ldots,F_n(x)\}\qquad \Sigma(F_1(x),F_2(x),\ldots,F_n(x))$
 
-> ***The black boxes execute. Their relation computes.***
+When independently maintained states resolve to the same position, their relational configuration lies on the diagonal. Many machines remain physically independent while the distributed state resolves to one computational position.
 
-Let an observer occupy a state within a state space $\Omega$. Given a presented state $x\in\Omega$, the observer determines whether that state belongs from its present position according to an admissibility relation $\mathcal A:\Omega\times\Omega\rightarrow\{0,1\}$.
-
-Give the same state $x$ to $n$ independently operating machines. Each produces a state $F_i(x)$, forming $(F_1(x),F_2(x),\ldots,F_n(x))\in\Omega^n$.
-
-No individual $F_i(x)$ is the distributed computation. The computation is the symmetry $\Sigma$ among the independently produced states.
-
-When every machine resolves to the same state $s$:
-
-$(s,\ldots,s)\in\Delta_n(\Omega)$
-
-and:
-
-$\Delta_n(\Omega)\cong\Omega$
-
-Many independently executing machines have resolved relationally to one computational state.
+$\large (s,\ldots,s)\in\Delta_n(\Omega)\qquad \Delta_n(\Omega)\cong\Omega$
 
 ## Price of Admission
 
-Imagine a row of black boxes around a table. Give every box the exact same ticket. Each ticket contains the same state. Every box performs whatever computation exists behind its walls and returns another ticket.
+Imagine several black boxes around a table. Put the exact same ticket into every box. Each ticket carries the same state. Whatever machinery exists behind the walls may remain completely unknown; what matters is that every machine began from the same presented state and whatever comes back must enter the same relational computation.
 
-The boxes may remain black. Their outputs do not.
+A returned ticket does not become authoritative because a machine printed it. It is simply another projection seeking admission from the state already held. For the smallest halting example, let $H$ mean **HALT** and $R$ mean **REPEAT**. A healthy machine presented HALT consumes the state and emits no further ticket. If another ticket appears, feed it back into the same oblivious medium and evaluate it again.
 
-Because every machine began from the same presented state, what comes back can be evaluated against the same admissibility rule. A machine does not gain authority merely by producing an answer. Its answer is another state seeking admission to the computation.
+$\large \Omega_H=\{H,R\}\qquad H\rightarrow\varnothing\qquad \mathcal A(H,R)=0$
 
-> ***Projection is free. Admission is conditional.***
-
-Consider a minimal state space:
-
-$\Omega_H=\{H,R\}$
-
-where $H$ means **HALT** and $R$ means **REPEAT**.
-
-Let HALT be idempotent:
-
-$\mathcal A(H,H)=1$
-
-and let REPEAT be inadmissible from an established HALT state:
-
-$\mathcal A(H,R)=0$
-
-Once an observer occupies $H$, another $H$ changes nothing. It is already there. A later $R$ does not require reconstruction of the machine's history or inspection of whatever happened inside the box.
-
-It simply does not belong from here.
+Projection is unrestricted. Continued participation is not.
 
 ## House of Mirrors
 
-Now place an inverter among the machines.
+Now place an inverter among the machines. Presented HALT, it produces REPEAT. Presented REPEAT, it produces HALT. Nothing prevents the inverter from performing this reflection forever. Every output becomes another ticket, every ticket may be projected again, and the machine may continue executing for as long as its own internal rule demands.
 
-Presented with HALT, it returns REPEAT. Presented with REPEAT, it returns HALT:
+$\large H\rightarrow R\qquad R\rightarrow H\qquad H\rightarrow R\rightarrow H\rightarrow R\rightarrow\cdots$
 
-$H\rightarrow R$
+Now give the same HALT state to five independent machines. Four consume HALT and produce nothing further. The inverter produces REPEAT. The important result is not hidden inside any box: one machine has produced a continuation from a state for which the other machines have no continuation. What looked like an endless logical reflection inside one box has become visible asymmetry outside of it.
 
-$R\rightarrow H$
+$\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \mathcal A(H,R)=0$
 
-The inverter may perform this reflection indefinitely. Nothing requires its internal process to stop.
+The inverter may continue. Its next reflection does not acquire authority merely because another ticket appears. The machines already settled at HALT do not have to follow it, reconstruct its history, or discover why it behaved differently. From the state they already hold, its continuation simply does not belong.
 
-Now give five independent machines the same state $H$. Four return $H`. The inverter returns $R$.
+The mirror can reflect forever. The computation does not have to move with it.
 
-The resulting configuration is:
-
-$(H,H,H,H,R)$
-
-It is not perfectly symmetric:
-
-$(H,H,H,H,R)\notin\Delta_5(\Omega_H)$
-
-The inverter has not changed the established state. It has exposed its own incompatibility with it.
-
-For every observer already occupying $H$, the distinction remains mechanical:
-
-$\mathcal A(H,H)=1,\qquad\mathcal A(H,R)=0$
-
-The four idempotent results remain part of the same relation. The inverted result does not.
-
-The inverter may continue executing. It may continue projecting REPEAT, HALT, REPEAT, HALT forever. Those projections remain subject to the state already held by the other observers.
-
-A non-halting process therefore need not produce a non-halting distributed computation.
-
-$\text{process still running}\not\Rightarrow\text{computation still running}$
-
-The mirror can reflect forever.
-
-The field does not have to follow it.
+$\large \text{process still running}\not\Rightarrow\text{distributed computation still running}$
 
 ## Outside the Box
 
-The classical black box asks what happens inside a machine.
+The black box may remain black. Its internal instructions, timing, circuitry, implementation, and private execution need not be reconstructed. Give independent boxes the same state, observe what comes back, and compare those projections from the computational position already established. A box that behaves differently exposes that difference through state.
 
-Oblivious Compute asks what happens between machines.
+The ticket itself is not the computer, and neither is any individual box. The boxes execute locally. Their outputs become projections. The relation among those independently produced states determines what continues to belong. What was opaque inside one machine becomes computationally visible outside of it.
 
-Put the same state into independent black boxes. Let them execute. Let them project what comes back. No box determines the distributed result simply by speaking first, speaking last, or continuing to speak forever.
+$\large \text{state in}\rightarrow\text{boxes execute}\rightarrow\text{states out}\rightarrow\Sigma$
 
-The output of a black box is only another state.
-
-Its computational meaning appears through its relation to the states independently maintained by the other observers.
-
-The machine may be healthy, faulty, divergent, adversarial, or indefinitely executing. None of those conditions grants it authority over the larger computation. Continued participation is determined by admissibility.
-
-The box may therefore remain physically opaque while becoming relationally transparent. We do not need to know every instruction executed behind its walls. We need to know the state that entered, the state that emerged, and whether that state belongs from the computational position already established.
-
-The box receives state.
-
-The box executes.
-
-The box projects state.
+The box receives state. The box executes. The box projects state.
 
 ***Then the computation begins.***
-
-> ***Put the same ticket into every black box. Let the boxes execute. Compare what comes back. The relation is the computer.***
