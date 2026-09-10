@@ -46,6 +46,8 @@ The ticket itself is not the computer, and neither is any individual box. The bo
 
 $\large \text{state in}\rightarrow\text{boxes execute}\rightarrow\text{states out}\rightarrow\Sigma$
 
+The black box need not be opened. Oblivious Compute places the black box inside an oblivious medium, where its output becomes relative to independently produced state. What is unknowable inside one machine becomes observable as relation outside it.
+
 The box receives state. The box executes. The box projects state.
 
 ***Then the computation begins.***
