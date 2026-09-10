@@ -4,7 +4,7 @@
 
 A computer computes. State enters the machine, the machine executes, and something happens next. Conventionally, whatever happens inside that box is treated as the computation, while whatever emerges is treated as its result. The machine may be simple or arbitrarily complex, but the computational question remains pointed inward.
 
-Oblivious Compute moves the distributed computation outside of the box. Give independent machines the same state, allow each to execute locally, and treat whatever emerges as another projected state rather than an authoritative answer. No machine needs to know what happens inside another machine. The computation appears in the relation among the states they independently produce.
+Oblivious Compute moves the distributed computation outside of the box. Give independent machines the same state $x$ and allow each machine $i$ to produce a state $F_i(x)$. No individual result is authoritative; the computation appears in the relation $\Sigma$ among those independently produced states.
 
 $\large x\rightarrow\{F_1(x),F_2(x),\ldots,F_n(x)\}\qquad \Sigma(F_1(x),F_2(x),\ldots,F_n(x))$
 
