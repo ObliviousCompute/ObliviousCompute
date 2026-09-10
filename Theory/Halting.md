@@ -28,10 +28,12 @@ A single mirror can invert an image. A second reflection reveals that inversion.
 
 ## Raise the Anti
 
-The inverter raises the problem by making the black box contradict whatever answer is placed before it. Oblivious Compute raises the anti one level further. Put that black box among independent machines, give them the same state, and project what comes back into the same medium. The inverter still controls what happens inside its own walls, but it no longer controls what its output means. Every result must enter a relation it does not own.
+The inverter raises the problem by making a black box contradict whatever answer is placed before it. Oblivious Compute raises the anti one level further. Put that box among independent machines, give them the same state, and let every result return to the same oblivious medium. The inverter still controls whatever happens behind its own walls, but it does not control what its output means. Once projected, its state becomes relative to states it does not own.
 
-This also changes what happens when another box is drawn around the system. A larger boundary may describe every machine, every projection, and every state in the field, but the boundary is not another observer and does not become authoritative merely because it encloses them. It has drawn a box around the reflection, not relocated the computation into a larger black box. The computation remains the changing relation among independently maintained states.
+Drawing a larger box around the system does not restore that authority. The boundary may contain every machine, every projection, and every changing state, but it is only a description of what has been enclosed. The computation remains in the relation among independently maintained states. A black box can reflect itself forever; the field reflects the reflection.
 
-The black boxes execute. Their outputs project. The field reflects what comes back.
+The machines execute. Their outputs project. The relation determines what continues to belong.
 
-***That is where the game begins.***
+***The machine reveals its hand. Its state is the ante. The field calls.***
+
+***Now the game begins.***
