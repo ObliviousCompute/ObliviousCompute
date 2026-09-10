@@ -26,16 +26,12 @@ A single mirror can invert an image. A second reflection reveals that inversion.
 
 ***The inverter can reflect forever. The field reflects the reflection.***
 
-## Outside the Box
+## Raise the Anti
 
-The black box may remain black. Its internal instructions, timing, circuitry, implementation, and private execution need not be reconstructed. Give independent boxes the same state, observe what comes back, and compare those projections from the computational position already established. A box that behaves differently exposes that difference through state.
+The inverter raises the problem by making the black box contradict whatever answer is placed before it. Oblivious Compute raises the anti one level further. Put that black box among independent machines, give them the same state, and project what comes back into the same medium. The inverter still controls what happens inside its own walls, but it no longer controls what its output means. Every result must enter a relation it does not own.
 
-The ticket itself is not the computer, and neither is any individual box. The boxes execute locally. Their outputs become projections. The relation among those independently produced states determines what continues to belong. What was opaque inside one machine becomes computationally visible outside of it.
+This also changes what happens when another box is drawn around the system. A larger boundary may describe every machine, every projection, and every state in the field, but the boundary is not another observer and does not become authoritative merely because it encloses them. It has drawn a box around the reflection, not relocated the computation into a larger black box. The computation remains the changing relation among independently maintained states.
 
-$\large \text{state in}\rightarrow\text{boxes execute}\rightarrow\text{states out}\rightarrow\Sigma$
+The black boxes execute. Their outputs project. The field reflects what comes back.
 
-The black box need not be opened. Oblivious Compute places the black box inside an oblivious medium, where its output becomes relative to independently produced state. What is unknowable inside one machine becomes observable as relation outside it.
-
-The box receives state. The box executes. The box projects state.
-
-***Then the computation begins.***
+***That is where the game begins.***
