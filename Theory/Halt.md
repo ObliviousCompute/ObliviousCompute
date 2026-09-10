@@ -40,7 +40,7 @@ The machines execute. Their outputs project. **The relation determines what cont
 
 ---
 
-**Go back to [**`Kernel`**](../../Kernel/README.md) or [**`Theory`**](./Theory/README.md)...**
+**Go back to [**`Kernel`**](../Kernel/README.md) or [**`Theory`**](../Theory/README.md)...**
 
 ---
 
