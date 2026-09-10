@@ -30,7 +30,7 @@ $\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
 
 A black box inside an oblivious machine creates **an inversion of an inversion.** The first machine may hide everything **within its bounds.** The second gives those bounds **no authority.** Whatever the box produces is projected back into a relation with independently maintained states. ***Its interior can remain oblivious. Its output cannot.***
 
-**Expanding the boundary around the system does not restore that authority.** The boundary may contain every machine, every projection, and every changing state, but it is **only a description of what has been enclosed.** The computation remains in the relation among independently maintained states. A black box can reflect itself forever. **The field reflects the reflection.**
+**Expanding the boundary around the system does not restore that authority. A boundary may only expand when the computation does.** The boundary may contain every machine, every projection, and every changing state, but it is **only a description of what has been enclosed.** The computation remains in the relation among independently maintained states. A black box can reflect itself forever. **The field reflects the reflection.**
 
 The machines execute. Their outputs project. **The relation determines what continues to belong.**
 
