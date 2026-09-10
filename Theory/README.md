@@ -8,7 +8,7 @@
 
 ## 🛋️ Afterhours
 
-[**`Halting`**](./Halting.md)
+[**`HALT`**](./Halt.md)
 
 ## 📚 Appendices 
 
