@@ -58,7 +58,7 @@ Want to reconstruct the whole thing analytically? ***Fine.*** Add **network late
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
 
-> ***If you must...spoil the fun, go straight to*** [**`HALT`**](../Theory/Halt.md)...
+> ***If you must...spoil the fun, go straight to*** [**`HALT`**](../Theory/Halt.md)***...***
 
 ---
 
