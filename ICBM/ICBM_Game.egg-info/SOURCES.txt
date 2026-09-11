@@ -1,9 +1,0 @@
-ICBM.py
-README.md
-pyproject.toml
-ICBM_Game.egg-info/PKG-INFO
-ICBM_Game.egg-info/SOURCES.txt
-ICBM_Game.egg-info/dependency_links.txt
-ICBM_Game.egg-info/entry_points.txt
-ICBM_Game.egg-info/top_level.txt
-Payload/Fission.py
