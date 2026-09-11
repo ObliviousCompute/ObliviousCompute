@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: ICBM-Game
+Version: 0.1.6
+Summary: Interactive Consistency Broadcast Machine
+Requires-Python: >=3.10

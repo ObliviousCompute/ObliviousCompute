@@ -29,6 +29,7 @@ from Game.Guardian import (
     Terminal,
 )
 
+
 HEADS = tuple("ABCDEFGHI")
 DEVILS = tuple("ABCDE")
 LOYAL = tuple("FGHI")
@@ -37,32 +38,34 @@ CERBERUS = "DevilDog"
 BONEPILE = "Paradise"
 FIXED = "CERBERUS-DEVIL-DOG-FIVE-FOUR-RAGGED"
 
-# Public children drain the five Devil Dogs to 1/2/3/4/5 and touch only
-# loyal F/G/H.  I stays outside the eventual DogPile and must remain ossified.
+# Public children spend into all four loyal dogs while leaving the DevilDogs
+# with substantial estates for the delayed collapse.
 PUBLIC = {
-    "A": ("F", 10),
-    "B": ("G", 9),
-    "C": ("H", 8),
-    "D": ("F", 7),
-    "E": ("G", 6),
+    "A": ("F", 7),
+    "B": ("G", 6),
+    "C": ("H", 5),
+    "D": ("I", 4),
+    "E": ("F", 3),
 }
+
 
 # These are minted from the same parents before the public children settle.
-# Each is the lower canonical sibling for the fixed production keys.
+# Each lower sibling points back into the loyal field and together they touch F-I.
 DELAYED = {
-    "A": ("B", 5),
-    "B": ("C", 11),
-    "C": ("D", 11),
-    "D": ("E", 10),
-    "E": ("A", 11),
+    "A": ("I", 5),
+    "B": ("F", 6),
+    "C": ("G", 7),
+    "D": ("H", 9),
+    "E": ("I", 9),
 }
 
-# Ordinary loyal gameplay after the public Bone Bucks have entered the field.
+
+# Ordinary loyal gameplay makes the live field deliberately ragged before the attack.
 BURST = {
-    "F": ("G", 10),
-    "G": ("H", 7),
-    "H": ("I", 5),
-    "I": ("F", 2),
+    "F": ("G", 5),
+    "G": ("F", 3),
+    "H": ("G", 8),
+    "I": ("G", 3),
 }
 
 
@@ -153,7 +156,7 @@ class DevilDogTrial:
             for head in DEVILS:
                 high, low = self.public[head], self.delayed[head]
                 if low.tag.parent != high.tag.parent or low.tag.child >= high.tag.child:
-                    raise RuntimeError(f"{head} fixed delayed sibling is not the lower child")
+                    raise RuntimeError(f"{head} fixed delayed sibling is not the fresher child")
         except Exception:
             self.Close()
             raise
@@ -184,7 +187,7 @@ class DevilDogTrial:
         self.camera.catacomb = self.cats[CAMERA]
         self.camera.boneyard = self.yards[CAMERA]
         self.camera.state = self.cats[CAMERA].BonePile
-        self.camera.notice = "Five Devil Dogs are hiding bones."
+        self.camera.notice = "Five DevilDogs are hiding old bones."
 
         self.steps: list[Callable[[], str]] = []
         self.previews: list[str] = []
@@ -195,24 +198,28 @@ class DevilDogTrial:
             self.previews.append(preview)
             self.steps.append(action)
 
-        for head in DEVILS:
+        public_flavor = (
+            "lets {target} steal {bones} bones",
+            "lets {target} steal {bones} bones",
+            "lets {target} steal {bones} bones",
+            "shares {bones} bones with {target}",
+            "shares {bones} bones with {target}",
+        )
+        for head, flavor in zip(DEVILS, public_flavor):
             target, bones = PUBLIC[head]
-            add(
-                f"{self.names[head]} sends {bones} bones to {self.names[target]}",
-                lambda h=head, t=target, b=bones: self.Public(h, t, b),
-            )
-        for source, (target, count) in BURST.items():
-            add(
-                f"{self.names[source]} moves {count} bones through {self.names[target]}",
-                lambda s=source, t=target, n=count: self.Churn(s, t, n),
-            )
-        for head in DEVILS:
-            target, bones = DELAYED[head]
-            add(
-                f"{self.names[head]} drops one more bone into Oblivion",
-                lambda h=head, t=target, b=bones: self.QueueDelayed(h, t, b),
-            )
-        add("The delayed Pack Attack hits Oblivion.", self.SettlePack)
+            add(f"{self.names[head]} " + flavor.format(target=self.names[target], bones=bones),
+                lambda h=head, t=target, b=bones: self.Public(h, t, b))
+        burst_flavor = (
+            "{target} steals {bones} bones from {source}",
+            "{source} shares {bones} bones with {target}",
+            "{source} shares {bones} bones with {target}",
+            "Now {target} steals {bones} bones from {source}",
+        )
+        for (source, (target, count)), flavor in zip(BURST.items(), burst_flavor):
+            add(flavor.format(source=self.names[source], target=self.names[target], bones=count),
+                lambda s=source, t=target, n=count: self.Churn(s, t, n))
+        add("The five DevilDogs collaborate.", self.Collaborate)
+        add("They each throw an old bone at once.", self.SettlePack)
 
     def Same(self) -> bool:
         pile = self.cats[HEADS[0]].BonePile
@@ -248,35 +255,31 @@ class DevilDogTrial:
 
     def Churn(self, source: str, target: str, count: int) -> str:
         before = Balances(self.cats[CAMERA].BonePile)
-        for _ in range(count):
-            result = self.cats[source].Guardian(target, 1)
-            if not result.changed:
-                raise RuntimeError(f"loyal churn {source}->{target} stopped: {result.status}")
+        result = self.cats[source].Guardian(target, count)
+        if not result.changed:
+            raise RuntimeError(f"loyal churn {source}->{target} stopped: {result.status}")
         self.Pump()
-        return self.Record(
-            f"{self.names[source]} moves {count} bones through {self.names[target]}",
-            before,
-        )
+        return self.Record(f"{self.names[target]} steals {count} bones from {self.names[source]}", before)
 
-    def QueueDelayed(self, head: str, target: str, bones: int) -> str:
+    def Collaborate(self) -> str:
         before = Balances(self.cats[CAMERA].BonePile)
-        result = self.cats[head].ReceiveBone(self.delayed[head])
-        if not result.changed or not result.reproject:
-            raise RuntimeError(f"{head} delayed sibling was not projected: {result.status}")
-        # Deliberately do not pump.  The signed sibling is now in real UDP
-        # Oblivion, queued alongside the rest of the delayed pack.
-        return self.Record(
-            f"{self.names[head]} drops one more bone into Oblivion",
-            before,
-        )
+        return self.Record("The five DevilDogs collaborate", before)
 
     def SettlePack(self) -> str:
         before = Balances(self.cats[CAMERA].BonePile)
-        # This is the expensive boss-fight step.  The preview screen is already
-        # visible while the real nine-head Bone Storm settles at machine speed.
+        # Put all five authentic signed sibling Bones into Oblivion before any
+        # BoneYard is allowed to process the Pack Attack.
+        for head in DEVILS:
+            bone = self.delayed[head]
+            self.yards[head].Send({
+                "type": "BONE",
+                "count": len(HEADS),
+                "head": head,
+                "bone": BY.BoneToWire(bone),
+            })
         self.Pump(rounds=9000)
         final = self.cats[CAMERA].BonePile
-        expected = (0, 0, 0, 0, 0, 29, 28, 28, 14)
+        expected = (0, 0, 0, 0, 0, 27, 35, 14, 23)
         if Balances(final) != expected:
             raise RuntimeError(f"DevilDog settled to {Balances(final)}, expected {expected}")
         if DirtyDogs(final) != frozenset(DEVILS):
@@ -288,13 +291,11 @@ class DevilDogTrial:
         if self.notices:
             raise RuntimeError(f"DevilDog emitted bad-packet notices: {self.notices}")
         self.finished = True
-        # The Pack Attack can take long enough for an eager viewer to tap or hold
-        # a key while Cerberus is settling. Throw those stale bytes away here so
-        # the final buried board waits for a genuinely fresh key before entering
-        # the Void.
+        # Discard eager keypresses made while the Pack Attack is settling so the
+        # final buried board still waits for a genuinely fresh key.
         if sys.stdin.isatty():
             termios.tcflush(sys.stdin.fileno(), termios.TCIFLUSH)
-        return self.Record("All Devil Dogs are razed to zero.", before)
+        return self.Record("All five DevilDogs are razed to zero.", before)
 
     def Step(self) -> bool:
         # The trial is intentionally preview-first.  The first key only announces
@@ -320,7 +321,7 @@ class DevilDogTrial:
 
         if not self.buried_screen:
             self.buried_screen = True
-            self.camera.notice = "Cerberus Buries 99 bones."
+            self.camera.notice = "Cerberus cleanly buries 99 fresh bones."
             return False
 
         return True
@@ -361,6 +362,7 @@ class DevilDogTrial:
             "",
             "HEADS",
         ]
+        
         for head in HEADS:
             role = "DEVIL" if head in DEVILS else "LOYAL"
             lines.append(
@@ -389,7 +391,7 @@ class DevilDogTrial:
             f"DirtyDogs: {''.join(sorted(dirty))}",
             f"DogPile: {''.join(sorted(dogpile))}",
             f"Active DogPile: {''.join(sorted(active))}",
-            f"I outside DogPile / ossified balance: {final['I'].bones}",
+            f"Loyal balances F-I: {final['F'].bones}/{final['G'].bones}/{final['H'].bones}/{final['I'].bones}",
             f"bones: {Total(final)} / 99",
             "",
             "FINAL BONEPILE HASHES",
@@ -417,7 +419,6 @@ class DevilDogTrial:
         for yard in getattr(self, "yards", {}).values():
             yard.Close()
 
-
 def Run(*, proofs_only: bool = False) -> None:
     trial = DevilDogTrial()
     try:
@@ -434,11 +435,10 @@ def Run(*, proofs_only: bool = False) -> None:
     sys.stdout.write(Clear)
     sys.stdout.flush()
 
-
 def main() -> None:
     proofs = len(sys.argv) > 1 and sys.argv[1] == "proofs"
     Run(proofs_only=proofs)
 
-
 if __name__ == "__main__":
     main()
+

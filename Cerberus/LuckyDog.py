@@ -1,6 +1,6 @@
 """LuckyDog: Last Dog Standing in Oblivion.
 Nine production Cerberus heads begin with 99 bones.
-Ordinary play continues as eight dogs get greedy.
+Ordinary play continues until the dogs get greedy.
 The surviving Lucky dog inherits the whole field.
 Proof mode exposes the execution for inspection.
 """
@@ -35,7 +35,7 @@ CERBERUS = "LuckyDog"
 BONEPILE = "Paradise"
 FIXED = "CERBERUS-LUCKY-DOG-LAST-DOG-STANDING"
 
-# Ordinary gameplay is deliberately interleaved with each greedy collapse.
+# Ordinary gameplay runs until the last dogs stop sharing.
 # The sources are the names narrated on screen; all moves are production Bones.
 BUNDLES = (
     (("B", "C", 2), ("D", "E", 4), ("F", "G", 3)),
@@ -43,9 +43,6 @@ BUNDLES = (
     (("C", "E", 10), ("F", "G", 12), ("H", "I", 14)),
     (("D", "F", 17), ("G", "H", 15), ("I", "E", 18)),
     (("E", "G", 12), ("H", "I", 19), ("F", "G", 16)),
-    (("F", "H", 9), ("G", "I", 22)),
-    (("G", "I", 13), ("H", "I", 11)),
-    (("I", "H", 25), ("H", "I", 14)),
 )
 
 # Each dog signs two same-parent spends for its entire current estate.  Both are
@@ -58,7 +55,7 @@ GREED_TARGETS = {
     "D": ("E", "F"),
     "E": ("F", "G"),
     "F": ("G", "H"),
-    "G": ("H", "I"),
+    "G": ("H", "A"),
     "H": ("I", "A"),
 }
 
@@ -193,17 +190,16 @@ class LuckyDogTrial:
             self.previews.append(preview)
             self.steps.append(action)
 
+        leads = ("But ", "But then ", "", "Of course, ", "")
         for index, head in enumerate(FALLEN):
-            moves = BUNDLES[index]
-            sources = [self.names[source] for source, target, bones in moves]
-            if len(sources) == 1:
-                caption = f"{sources[0]} sends some bones."
-            elif len(sources) == 2:
-                caption = f"{sources[0]} and {sources[1]} send some bones."
+            if index < len(BUNDLES):
+                moves = BUNDLES[index]
+                sources = [self.names[source] for source, _, _ in moves]
+                add(f"{', '.join(sources[:-1])}, and {sources[-1]} share some bones.", lambda moves=moves: self.Bundle(moves))
+                add(f"{leads[index]}{self.names[head]} gets sneaky.", lambda head=head: self.Greed(head))
             else:
-                caption = f"{sources[0]}, {sources[1]}, and {sources[2]} send some bones."
-            add(caption, lambda moves=moves: self.Bundle(moves))
-            add(f"{self.names[head]} gets greedy.", lambda head=head: self.Greed(head))
+                add("All dogs get greedy. Nobody moves a bone.", lambda: "")
+                add(f"Until {self.names[head]} gets sneaky.", lambda head=head: self.Greed(head))
 
     def Same(self) -> bool:
         pile = self.cats[HEADS[0]].BonePile
@@ -266,7 +262,7 @@ class LuckyDogTrial:
             raise RuntimeError(f"{head} greed produced DirtyDogs {sorted(actual)}, expected {sorted(expected)}")
         if Total(self.cats[CAMERA].BonePile) != 99:
             raise RuntimeError("LuckyDog lost the 99 invariant")
-        return self.Record(f"{self.names[head]} gets greedy", before)
+        return self.Record(f"{self.names[head]} gets sneaky", before)
 
     def LuckyAttempt(self) -> None:
         beforepile = self.cats[CAMERA].BonePile
@@ -274,7 +270,7 @@ class LuckyDogTrial:
         result = self.cats[CAMERA].Guardian("A", 100)
         after = Balances(self.cats[CAMERA].BonePile)
         self.final_attempt = result
-        self.events.append(TrialEvent(len(self.events) + 1, "Lucky tries to steal 100 bones", before, after))
+        self.events.append(TrialEvent(len(self.events) + 1, "Lucky tries to bury 100 bones", before, after))
         if result.changed or after != before or Total(self.cats[CAMERA].BonePile) != 99:
             raise RuntimeError("Lucky's impossible 100-bone attempt changed the last valid field")
         if not self.Same():
@@ -307,14 +303,18 @@ class LuckyDogTrial:
 
         if self.ending == 0:
             self.ending = 1
-            self.camera.notice = "But...Lucky gets greedy."
+            self.camera.notice = "But of course, Lucky can't help it."
             return False
         if self.ending == 1:
             self.ending = 2
-            self.camera.notice = "Lucky tries to steal 100 bones."
+            self.camera.notice = "Lucky gets sneaky and tries to bury 100 bones."
+            return False
+        if self.ending == 2:
+            self.ending = 3
+            self.LuckyAttempt()
+            self.camera.notice = self.final_attempt.status
             return False
 
-        self.LuckyAttempt()
         return True
 
     def Proofs(self) -> str:
@@ -326,12 +326,12 @@ class LuckyDogTrial:
             "",
             "WHAT THIS RUN IS",
             "Nine independent production Cerberus heads maintain separate BonePiles.",
-            "Eight heads progressively oversubscribe while ordinary gameplay continues between collapses.",
+            "Five rounds of ordinary play give way to three still rounds before the final collapses.",
             "All Bones and BonePiles reconcile through production BoneYard / UDP Oblivion.",
             "LuckyDog supplies gameplay actions; it does not assign balances or replace Catacomb logic.",
             "",
             "WHAT TO CHECK",
-            "Eight greedy heads are Razed through signed sibling evidence.",
+            "Eight sneaky heads are Razed through signed sibling evidence.",
             "The field converges until Lucky alone holds all 99 bones.",
             "Lucky's final 100-bone attempt is rejected without changing the last buried BonePile.",
             "",
@@ -348,13 +348,13 @@ class LuckyDogTrial:
             "HEADS",
         ]
         for head in HEADS:
-            role = "LUCKY" if head == CAMERA else "GREEDY"
+            role = "LUCKY" if head == CAMERA else "SNEAKY"
             lines.append(
                 f"{head} {self.names[head]:<8} {role:<6} "
                 f"key={self.cats[head].publickey[:16]} port={self.yards[head].bindport}"
             )
 
-        lines += ["", "SIGNED GREEDY SIBLINGS"]
+        lines += ["", "SIGNED SNEAKY SIBLINGS"]
         for evidence in self.greeds:
             first, second = evidence.first, evidence.second
             lines.append(

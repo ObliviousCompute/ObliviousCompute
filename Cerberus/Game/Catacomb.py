@@ -4,10 +4,7 @@ import hashlib
 from typing import Callable, Iterable, Optional
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric.ed25519 import (
-    Ed25519PrivateKey,
-    Ed25519PublicKey,
-)
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 BonesPerHead = 11
 HashBytes = 32
@@ -37,15 +34,10 @@ def HashBody(domain: str, *parts: object) -> bytes:
 def HashHex(domain: str, *parts: object) -> str:
     return hashlib.sha256(HashBody(domain, *parts)).hexdigest()
 def StateKey(secret: str) -> Ed25519PrivateKey:
-    seed = hashlib.sha256(
-        f"Cerberus::Dog::V1::{str(secret)}".encode("utf-8")
-    ).digest()
+    seed = hashlib.sha256(f"Cerberus::Dog::V1::{str(secret)}".encode("utf-8")).digest()
     return Ed25519PrivateKey.from_private_bytes(seed)
 def PublicKeyHex(privatekey: Ed25519PrivateKey) -> str:
-    return privatekey.public_key().public_bytes(
-        encoding=serialization.Encoding.Raw,
-        format=serialization.PublicFormat.Raw,
-    ).hex()
+    return privatekey.public_key().public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw).hex()
 def SignDigest(privatekey: Ed25519PrivateKey, digesthex: str) -> str:
     if not ValidHash(digesthex):
         raise ValueError("digest must be a SHA-256 hex string")
@@ -154,12 +146,7 @@ def GenesisChild(head: str, key: str) -> str:
     return HashHex("CERBERUS::GENESIS::V1", head, key, BonesPerHead, ZeroHash)
 def ChildHash(head: str, key: str, parent: str, target: str, bones: int) -> str:
     return HashHex(
-        "CERBERUS::CHILD::V1",
-        head,
-        key,
-        parent,
-        target,
-        int(bones),
+        "CERBERUS::CHILD::V1", head, key, parent, target, int(bones),
     )
 def ReceiptHash(bone: Bone) -> str:
     return HashHex(
@@ -193,7 +180,8 @@ def CanonicalReceipts(*receipts: Bone) -> tuple[Bone, ...]:
     if len(ordered) > 2:
         raise ValueError("a Head retains at most two canonical sibling receipts")
     return ordered
-def LowestForkReceipts(*receipts: Bone) -> tuple[Bone, Bone]:
+def FreshBones(*receipts: Bone) -> tuple[Bone, Bone]:
+    """Return the two freshest siblings: lowest child hashes, never arrival order."""
     unique: dict[str, Bone] = {}
     for receipt in receipts:
         VerifyBoneProof(receipt)
@@ -209,8 +197,8 @@ def LowestForkReceipts(*receipts: Bone) -> tuple[Bone, Bone]:
     if len({item.tag.child for item in ordered}) != len(ordered):
         raise ValueError("fork evidence children must be distinct")
     return (ordered[0], ordered[1])
-def ForkChildren(*receipts: Bone) -> tuple[str, str]:
-    pair = LowestForkReceipts(*receipts)
+def FreshHashes(*receipts: Bone) -> tuple[str, str]:
+    pair = FreshBones(*receipts)
     return (pair[0].tag.child, pair[1].tag.child)
 def VerifyCellLock(cell: Head) -> Head:
     if cell.locksign == ZeroSign and not cell.receipts and cell.tag == Tag(ZeroHash, GenesisChild(cell.head, cell.key)):
@@ -301,7 +289,7 @@ class Catacomb:
                         raise ValueError("two receipts must be conflicting siblings")
                 canonical = receipts[0]
                 if cell.tag != canonical.tag or cell.locksign != canonical.locksign:
-                    raise ValueError("Head surface must follow its lower retained child")
+                    raise ValueError("Head surface must follow its freshest retained child")
             else:
                 genesis = Tag(parent=ZeroHash, child=GenesisChild(head, cell.key))
                 if cell.tag != genesis:
@@ -430,12 +418,12 @@ class Catacomb:
         pairs: list[tuple[Bone, Bone]] = []
         for group in groups.values():
             try:
-                pairs.append(LowestForkReceipts(*group))
+                pairs.append(FreshBones(*group))
             except Exception:
                 continue
         if not pairs:
             return None
-        pairs.sort(key=lambda pair: ForkChildren(*pair))
+        pairs.sort(key=lambda pair: FreshHashes(*pair))
         return pairs[0]
     def Dirt(self, incoming: BonePile) -> set[str]:
         dirt: set[str] = set()
@@ -470,10 +458,10 @@ class Catacomb:
             )
             if sibling:
                 try:
-                    pair = LowestForkReceipts(*(held + (packet,)))
+                    pair = FreshBones(*(held + (packet,)))
                 except Exception:
                     return None, Result(status="BAD BONE", bone=packet)
-                if len(held) == 2 and ForkChildren(*pair) >= ForkChildren(*held):
+                if len(held) == 2 and FreshHashes(*pair) >= FreshHashes(*held):
                     return None, Result(status="IDEMPOTENT", bone=packet)
                 maul.equivocation = True
                 maul.forward = True
@@ -525,10 +513,10 @@ class Catacomb:
                 currentpair: tuple[Bone, ...] = ()
                 if len(mine.receipts) == 2:
                     try:
-                        currentpair = LowestForkReceipts(*mine.receipts)
+                        currentpair = FreshBones(*mine.receipts)
                     except Exception:
                         currentpair = ()
-                if currentpair and ForkChildren(*pair) >= ForkChildren(*currentpair):
+                if currentpair and FreshHashes(*pair) >= FreshHashes(*currentpair):
                     if head in maul.dirt:
                         maul.equivocation = True
                         maul.changed = True
@@ -588,7 +576,7 @@ class Catacomb:
         }
     def FinalFrontier(self, maul: Maul, head: str) -> tuple[Bone, ...]:
         if head in maul.frontier:
-            return LowestForkReceipts(*maul.frontier[head])
+            return FreshBones(*maul.frontier[head])
         return CanonicalReceipts(*maul[head].receipts)
     def DogPile(self, maul: Maul, dirtydogs: set[str]) -> set[str]:
         dogpile: set[str] = set()
@@ -604,7 +592,7 @@ class Catacomb:
         dirtydogs = self.DirtyDogs(self.BuriedBonePile)
         solvent: set[str] = set()
         for head in sorted(maul.changedpairs):
-            pair = LowestForkReceipts(*maul.frontier[head])
+            pair = FreshBones(*maul.frontier[head])
             maul.frontier[head] = pair
             if head in dirtydogs:
                 continue
@@ -644,30 +632,25 @@ class Catacomb:
             balances[receipt.target] -= int(receipt.bones)
     def Spoils(
         self,
+        maul: Maul,
         balances: dict[str, int],
         dirtydogs: set[str],
-        dogpile: set[str],
+        newdirty: set[str],
     ) -> dict[str, int]:
-        surface = set(dirtydogs) | set(dogpile)
-        if not surface <= self.expected:
-            raise ValueError("DogPile names an unknown Head")
-        ossified: dict[str, int] = {}
-        for head in self.heads:
-            if head in surface:
-                ossified[head] = 0
-            else:
-                value = int(balances[head])
-                if value < 0:
-                    raise ValueError("negative Head cannot be ossified")
-                ossified[head] = value
-        expected = BonesPerHead * len(self.heads)
-        spoils = expected - sum(ossified.values())
+        resolved = {head: int(balances[head]) for head in self.heads}
+        spoils = sum(int(resolved[dog]) for dog in newdirty)
         if spoils < 0:
-            raise ValueError("Ossified claims exceed the conserved field")
-        eligible = set(dogpile) - set(dirtydogs)
-        resolved = dict(ossified)
+            raise ValueError("dirty Dogs cannot contribute negative Spoils")
+        for dog in newdirty:
+            resolved[dog] = 0
+        eligible = self.DogPile(maul, set(newdirty)) - set(dirtydogs)
         for head, share in self.Shares(spoils, eligible).items():
             resolved[head] += share
+        if any(value < 0 for value in resolved.values()):
+            raise ValueError("negative Head cannot be ossified")
+        expected = BonesPerHead * len(self.heads)
+        if sum(resolved.values()) != expected:
+            raise ValueError("Spoils did not conserve the field")
         return resolved
     def Underbelly(self, maul: Maul) -> Optional[Maul]:
         if maul.incoming is None or not maul.dirt:
@@ -675,11 +658,11 @@ class Catacomb:
         dirtydogs = set(maul.dirtydogs) | set(maul.dirt)
         try:
             dogpile = self.DogPile(maul, dirtydogs)
-            resolved = self.Spoils(
-                {head: int(maul[head].bones) for head in self.heads},
-                dirtydogs,
-                dogpile,
-            )
+            balances = {head: int(maul[head].bones) for head in self.heads}
+            newdirty = dirtydogs - set(maul.dirtydogs)
+            for head in sorted(newdirty):
+                self.Retract(maul, balances, head)
+            resolved = self.Spoils(maul, balances, dirtydogs, newdirty)
             for head in self.heads:
                 maul[head] = replace(maul[head], bones=int(resolved[head]))
         except Exception:
@@ -695,7 +678,7 @@ class Catacomb:
         try:
             for head in sorted(maul.solvent):
                 self.Retract(maul, balances, head)
-                pair = LowestForkReceipts(*maul.frontier[head])
+                pair = FreshBones(*maul.frontier[head])
                 claims = sum(int(receipt.bones) for receipt in pair)
                 if balances[head] < claims:
                     return None
@@ -703,11 +686,15 @@ class Catacomb:
                     balances[head] -= int(receipt.bones)
                     balances[receipt.target] += int(receipt.bones)
                 self.SetFrontier(maul, head, pair)
+            burieddirty = self.DirtyDogs(self.BuriedBonePile)
+            newdirty = maul.dirtydogs - burieddirty
+            for head in sorted(newdirty):
+                self.Retract(maul, balances, head)
             for head in sorted(maul.dirtydogs):
                 if head in maul.frontier:
-                    self.SetFrontier(maul, head, LowestForkReceipts(*maul.frontier[head]))
+                    self.SetFrontier(maul, head, FreshBones(*maul.frontier[head]))
             if maul.dirtydogs:
-                balances = self.Spoils(balances, maul.dirtydogs, maul.dogpile)
+                balances = self.Spoils(maul, balances, maul.dirtydogs, newdirty)
             elif any(value < 0 for value in balances.values()):
                 return None
             for head in self.heads:
