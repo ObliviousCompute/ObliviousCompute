@@ -40,7 +40,7 @@ The machines execute. Their outputs project. **The relation determines what cont
 
 ---
 
-> ***If the machine is a true inverter, add a rock–paper–scissors cycle on top of HALT/REPEAT. Healthy machines move Rock → Paper → Scissors → Rock, while the inverter tries to move the wrong way or flips the bit, so its state does not fit the next admissible step. The field ignores that state and the healthy cycle continues.***
+> ***If the machine is a true inverter, add Rock → Paper → Scissors → Rock on top of HALT/REPEAT. An inverting machine produces the wrong next state or bit, so its projection is not admissible; it falls into oblivion while the healthy cycle continues.***
 
 ---
 
