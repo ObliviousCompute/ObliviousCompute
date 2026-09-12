@@ -1,6 +1,6 @@
 # 💀 Skeleton 💀
 
-**After everything falls away.**
+**After everything is picked clean..**
 
 ---
 
