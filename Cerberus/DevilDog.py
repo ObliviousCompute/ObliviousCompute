@@ -26,6 +26,9 @@ from Game.Guardian import (
     HashRank,
     HeadCountHash,
     Heads,
+    MintBone,
+    PublicKeyHex,
+    StateKey,
     Terminal,
 )
 
@@ -122,7 +125,8 @@ class DevilDogTrial:
         self.finished = False
 
         secrets = {head: f"{FIXED}|{head}" for head in HEADS}
-        self.cats = {head: Catacomb(HEADS, head, secrets[head]) for head in HEADS}
+        self.privatekeys = {head: StateKey(secrets[head]) for head in HEADS}
+        self.cats = {head: Catacomb(HEADS, head, PublicKeyHex(self.privatekeys[head])) for head in HEADS}
         genesis = BonePile({head: self.cats[head].GenesisCell for head in HEADS})
         for cat in self.cats.values():
             if not cat.Seed(genesis).changed:
@@ -140,7 +144,7 @@ class DevilDogTrial:
                 yard.Attach(
                     HEADS,
                     head,
-                    CatacombIn=cat.BoneYard,
+                    CatacombIn=cat.ReceiveBone,
                     BonePileIn=cat.FetchBonePile,
                     BonePileOut=lambda cat=cat: cat.BonePile,
                 )
@@ -151,8 +155,8 @@ class DevilDogTrial:
 
             # Both children are genuinely signed by each Devil Dog before either
             # child can advance that dog's parent.
-            self.public = {head: self.cats[head].Mint(*PUBLIC[head]) for head in DEVILS}
-            self.delayed = {head: self.cats[head].Mint(*DELAYED[head]) for head in DEVILS}
+            self.public = {head: self.Mint(head, *PUBLIC[head]) for head in DEVILS}
+            self.delayed = {head: self.Mint(head, *DELAYED[head]) for head in DEVILS}
             for head in DEVILS:
                 high, low = self.public[head], self.delayed[head]
                 if low.tag.parent != high.tag.parent or low.tag.child >= high.tag.child:
@@ -245,6 +249,10 @@ class DevilDogTrial:
         self.camera.notice = text
         return text
 
+    def Mint(self, head: str, target: str, bones: int) -> Bone:
+        cat = self.cats[head]
+        return MintBone(self.privatekeys[head], head, cat.publickey, cat.BonePile[head], target, bones)
+
     def Public(self, head: str, target: str, bones: int) -> str:
         before = Balances(self.cats[CAMERA].BonePile)
         result = self.cats[head].ReceiveBone(self.public[head])
@@ -255,7 +263,7 @@ class DevilDogTrial:
 
     def Churn(self, source: str, target: str, count: int) -> str:
         before = Balances(self.cats[CAMERA].BonePile)
-        result = self.cats[source].Guardian(target, count)
+        result = self.cats[source].ReceiveBone(self.Mint(source, target, count))
         if not result.changed:
             raise RuntimeError(f"loyal churn {source}->{target} stopped: {result.status}")
         self.Pump()

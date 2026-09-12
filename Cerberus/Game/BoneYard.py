@@ -228,7 +228,7 @@ class BoneYard:
         if not self.ready or not isinstance(bone, Bone):
             return
         dirtydogs = self.DirtyDogs()
-        if bone.head in dirtydogs or bone.target in dirtydogs:
+        if bone.head in dirtydogs:
             self.Remember(bone)
             return
         if result.status == "GROWL":
@@ -265,7 +265,7 @@ class BoneYard:
                     self.NoticeOut("BAD BONE")
                 return True
             dirtydogs = self.DirtyDogs()
-            if bone.head in dirtydogs or bone.target in dirtydogs:
+            if bone.head in dirtydogs:
                 self.Remember(bone)
                 return False
             if self.Seen(bone):

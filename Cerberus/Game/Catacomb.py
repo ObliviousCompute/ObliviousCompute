@@ -3,8 +3,7 @@ from dataclasses import dataclass, replace
 import hashlib
 from typing import Callable, Iterable, Optional
 from cryptography.exceptions import InvalidSignature
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 BonesPerHead = 11
 HashBytes = 32
@@ -33,15 +32,6 @@ def HashBody(domain: str, *parts: object) -> bytes:
     return "|".join((str(domain), *(str(part) for part in parts))).encode("utf-8")
 def HashHex(domain: str, *parts: object) -> str:
     return hashlib.sha256(HashBody(domain, *parts)).hexdigest()
-def StateKey(secret: str) -> Ed25519PrivateKey:
-    seed = hashlib.sha256(f"Cerberus::Dog::V1::{str(secret)}".encode("utf-8")).digest()
-    return Ed25519PrivateKey.from_private_bytes(seed)
-def PublicKeyHex(privatekey: Ed25519PrivateKey) -> str:
-    return privatekey.public_key().public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw).hex()
-def SignDigest(privatekey: Ed25519PrivateKey, digesthex: str) -> str:
-    if not ValidHash(digesthex):
-        raise ValueError("digest must be a SHA-256 hex string")
-    return privatekey.sign(bytes.fromhex(digesthex)).hex()
 def VerifyDigest(keyhex: str, digesthex: str, signhex: str) -> None:
     if not ValidKey(keyhex):
         raise ValueError("bad Ed25519 public key")
@@ -210,7 +200,7 @@ class Catacomb:
         self,
         heads: Iterable[str],
         head: str,
-        secret: str,
+        publickey: str,
         *,
         GuardianOut: Optional[Callable[[BonePile, Result], None]] = None,
         BoneYardOut: Optional[Callable[[Bone, Result], None]] = None,
@@ -228,14 +218,16 @@ class Catacomb:
         self.head = str(head).upper()
         if self.head not in self.expected:
             raise ValueError("local head is not in this Cerberus")
-        self.privatekey = StateKey(secret)
-        self.publickey = PublicKeyHex(self.privatekey)
+        if not ValidKey(publickey):
+            raise ValueError("local Head needs a valid Ed25519 public key")
+        self.publickey = str(publickey)
         self.Authority: dict[str, str] = {}
         self.GuardianOut = GuardianOut
         self.BoneYardOut = BoneYardOut
         self.HungerOut = HungerOut
         self.ProjectOut: Optional[Callable[[BonePile], None]] = None
         self.BuriedBonePile = BonePile({self.head: self.GenesisCell})
+        self.Strays: dict[str, Bone] = {}
         self.Hungry = False
     @property
     def GenesisCell(self) -> Head:
@@ -317,6 +309,7 @@ class Catacomb:
         if candidate == self.BuriedBonePile:
             return Result(status="IDEMPOTENT")
         self.BuriedBonePile = candidate
+        self.Strays = {head: bone for head, bone in self.Strays.items() if bone.tag.parent == candidate[head].tag.child}
         result = Result(status="BURIED", changed=True)
         if self.GuardianOut is not None:
             self.GuardianOut(self.BonePile, result)
@@ -326,28 +319,6 @@ class Catacomb:
         if self.HungerOut is not None:
             self.HungerOut()
         return Result(status="HUNGRY")
-    def Mint(self, target: str, bones: int) -> Bone:
-        if not self.Authority:
-            raise ValueError("Genesis authority has not been frozen")
-        target = str(target).upper()
-        bones = int(bones)
-        current = self.BuriedBonePile[self.head]
-        if current.key != self.publickey:
-            raise ValueError("local Head key does not match local private key")
-        parent = current.tag.child
-        child = ChildHash(self.head, self.publickey, parent, target, bones)
-        tag = Tag(parent=parent, child=child)
-        locksign = SignDigest(self.privatekey, LockHash(tag))
-        proto = Bone(
-            head=self.head,
-            key=self.publickey,
-            target=target,
-            bones=bones,
-            tag=tag,
-            locksign=locksign,
-            sign=ZeroSign,
-        )
-        return replace(proto, sign=SignDigest(self.privatekey, ReceiptHash(proto)))
     def VerifyBone(self, bone: Bone) -> Bone:
         if not isinstance(bone, Bone):
             raise TypeError("expected Bone")
@@ -366,14 +337,6 @@ class Catacomb:
     def Recorded(cell: Head, bone: Bone) -> bool:
         receiptid = ReceiptHash(bone)
         return any(ReceiptHash(receipt) == receiptid for receipt in cell.receipts)
-    def Guardian(self, target: str, bones: int) -> Result:
-        try:
-            bone = self.Mint(target, bones)
-        except Exception:
-            return Result(status="BAD BONE")
-        return self.ReceiveBone(bone)
-    def BoneYard(self, bone: Bone) -> Result:
-        return self.ReceiveBone(bone)
     @staticmethod
     def SameFrontier(first: Head, second: Head) -> bool:
         return (
@@ -451,30 +414,38 @@ class Catacomb:
             if self.Recorded(current, packet):
                 return None, Result(status="IDEMPOTENT", bone=packet)
             held = tuple(current.receipts)
+            stray = self.Strays.get(packet.head)
+            evidence = held + ((stray,) if stray and stray.tag.parent == packet.tag.parent else ())
             sibling = bool(
-                held
-                and all(receipt.tag.parent == packet.tag.parent for receipt in held)
-                and packet.tag.child not in {receipt.tag.child for receipt in held}
+                evidence
+                and all(receipt.tag.parent == packet.tag.parent for receipt in evidence)
+                and packet.tag.child not in {receipt.tag.child for receipt in evidence}
             )
             if sibling:
                 try:
-                    pair = FreshBones(*(held + (packet,)))
+                    pair = FreshBones(*(evidence + (packet,)))
                 except Exception:
                     return None, Result(status="BAD BONE", bone=packet)
                 if len(held) == 2 and FreshHashes(*pair) >= FreshHashes(*held):
                     return None, Result(status="IDEMPOTENT", bone=packet)
-                maul.equivocation = True
-                maul.forward = True
-                maul.changed = True
+                self.Strays.pop(packet.head, None)
+                maul.equivocation = maul.forward = maul.changed = True
                 maul.changedpairs.add(packet.head)
                 maul.frontier[packet.head] = pair
                 return maul, Result(status="MAULED", changed=True, reproject=True, bone=packet)
+            dirtydogs = self.DirtyDogs(self.BuriedBonePile)
+            if packet.head in dirtydogs:
+                return None, Result(status="IDEMPOTENT", bone=packet)
             if packet.tag.parent != current.tag.child:
                 return None, Result(status="BAD BONE", bone=packet)
             if packet.bones > current.bones:
                 return None, Result(status="GROWL", bone=packet)
+            if packet.target in dirtydogs:
+                self.Strays[packet.head] = packet
+                return None, Result(status="STRAY", bone=packet)
             if not self.Apply(maul, packet):
                 return None, Result(status="BAD BONE", bone=packet)
+            self.Strays.pop(packet.head, None)
             maul.forward = True
             self.Check(maul)
             return maul, Result(status="MAULED", changed=True, bone=packet)
@@ -610,10 +581,12 @@ class Catacomb:
         changed = True
         while changed:
             changed = False
-            for head in sorted(solvent):
-                pair = maul.frontier[head]
-                if any(receipt.target in dirtydogs for receipt in pair):
-                    solvent.remove(head)
+            for head in self.heads:
+                if head in dirtydogs:
+                    continue
+                pair = self.FinalFrontier(maul, head)
+                if len(pair) == 2 and any(receipt.target in dirtydogs for receipt in pair):
+                    solvent.discard(head)
                     dirtydogs.add(head)
                     changed = True
                     break
@@ -637,17 +610,36 @@ class Catacomb:
         dirtydogs: set[str],
         newdirty: set[str],
     ) -> dict[str, int]:
-        resolved = {head: int(balances[head]) for head in self.heads}
-        spoils = sum(int(resolved[dog]) for dog in newdirty)
+        base = {head: int(balances[head]) for head in self.heads}
+        spoils = sum(int(base[dog]) for dog in newdirty)
         if spoils < 0:
             raise ValueError("dirty Dogs cannot contribute negative Spoils")
         for dog in newdirty:
-            resolved[dog] = 0
-        eligible = self.DogPile(maul, set(newdirty)) - set(dirtydogs)
-        for head, share in self.Shares(spoils, eligible).items():
-            resolved[head] += share
-        if any(value < 0 for value in resolved.values()):
-            raise ValueError("negative Head cannot be ossified")
+            base[dog] = 0
+        surface = self.DogPile(maul, set(newdirty))
+        trailed: set[str] = set()
+        while True:
+            resolved = dict(base)
+            for head, share in self.Shares(spoils, surface - dirtydogs).items():
+                resolved[head] += share
+            negative = {head for head, value in resolved.items() if value < 0}
+            if not negative:
+                break
+            progress = False
+            for head in sorted(negative - dirtydogs - trailed):
+                receipts = CanonicalReceipts(*maul[head].receipts)
+                if not receipts:
+                    continue
+                for receipt in receipts:
+                    base[head] += int(receipt.bones)
+                    base[receipt.target] -= int(receipt.bones)
+                    surface.add(receipt.target)
+                surface.add(head)
+                trailed.add(head)
+                progress = True
+            if not progress:
+                raise ValueError("negative Head cannot be ossified")
+        maul.dogpile.update(surface)
         expected = BonesPerHead * len(self.heads)
         if sum(resolved.values()) != expected:
             raise ValueError("Spoils did not conserve the field")
@@ -667,7 +659,8 @@ class Catacomb:
                 maul[head] = replace(maul[head], bones=int(resolved[head]))
         except Exception:
             return None
-        maul.dirtydogs, maul.dogpile, maul.ossified = dirtydogs, dogpile, True
+        maul.dirtydogs, maul.ossified = dirtydogs, True
+        maul.dogpile.update(dogpile)
         if not maul.forward and BonePile(dict(maul)) != maul.incoming:
             return None
         return maul
@@ -725,6 +718,7 @@ class Catacomb:
         if candidate == self.BuriedBonePile:
             return Result(status="IDEMPOTENT", bone=bone)
         self.BuriedBonePile = candidate
+        self.Strays = {head: bone for head, bone in self.Strays.items() if bone.tag.parent == candidate[head].tag.child}
         self.Hungry = False
         result = Result(
             status=status,

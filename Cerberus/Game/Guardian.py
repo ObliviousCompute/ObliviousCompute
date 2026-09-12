@@ -7,17 +7,23 @@ import sys
 import termios
 import tty
 from contextlib import contextmanager
+from dataclasses import replace
 from typing import Callable
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from .Catacomb import (
+    Bone,
     BonePile,
     BonesPerHead,
     Catacomb,
+    ChildHash,
     GenesisChild,
     Head,
-    PublicKeyHex,
+    LockHash,
+    ReceiptHash,
     Result,
-    StateKey,
     Tag,
+    ValidHash,
     ValidKey,
     ZeroHash,
     ZeroSign,
@@ -53,6 +59,23 @@ def HeadCountHash(counted: dict[str, str]) -> str:
 def HashRank(seed: str, domain: str, value: str) -> str:
     body = f"CERBERUS::{domain}::V1::{seed}::{value}".encode("utf-8")
     return hashlib.sha256(body).hexdigest()
+def StateKey(secret: str) -> Ed25519PrivateKey:
+    seed = hashlib.sha256(f"Cerberus::Dog::V1::{str(secret)}".encode("utf-8")).digest()
+    return Ed25519PrivateKey.from_private_bytes(seed)
+def PublicKeyHex(privatekey: Ed25519PrivateKey) -> str:
+    return privatekey.public_key().public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw).hex()
+def SignDigest(privatekey: Ed25519PrivateKey, digesthex: str) -> str:
+    if not ValidHash(digesthex):
+        raise ValueError("digest must be a SHA-256 hex string")
+    return privatekey.sign(bytes.fromhex(digesthex)).hex()
+def MintBone(privatekey: Ed25519PrivateKey, head: str, key: str, current: Head, target: str, bones: int) -> Bone:
+    target, bones = str(target).upper(), int(bones)
+    if current.head != head or current.key != key:
+        raise ValueError("local Head does not match signing key")
+    tag = Tag(current.tag.child, ChildHash(head, key, current.tag.child, target, bones))
+    locksign = SignDigest(privatekey, LockHash(tag))
+    proto = Bone(head, key, target, bones, tag, locksign, ZeroSign)
+    return replace(proto, sign=SignDigest(privatekey, ReceiptHash(proto)))
 def Canvas() -> list[str]:
     return [" " * Width] * Height
 def Put(card: list[str], row: int, text: str, col: int = 0) -> None:
@@ -374,11 +397,11 @@ class Guardian:
             key = roster[index][0]
             tag = Tag(ZeroHash, GenesisChild(head, key))
             genesis[head] = Head(head, key, BonesPerHead, tag, ZeroSign)
-        self.catacomb = Catacomb(self.heads, self.head, self.secret, GuardianOut=self.Catacomb)
+        self.catacomb = Catacomb(self.heads, self.head, self.publickey, GuardianOut=self.Catacomb)
         self.boneyard.Attach(
             self.heads,
             self.head,
-            CatacombIn=self.catacomb.BoneYard,
+            CatacombIn=self.catacomb.ReceiveBone,
             BonePileIn=self.catacomb.FetchBonePile,
             BonePileOut=lambda: self.catacomb.BonePile,
         )
@@ -428,13 +451,18 @@ class Guardian:
         Put(card, 19, f"Bones: {total} / {expected}", left)
         Paint(card)
     def Commit(self) -> bool:
-        if self.catacomb is None:
+        if self.catacomb is None or self.privatekey is None:
             return False
         dirtydogs = self.boneyard.DirtyDogs()
         if self.head in dirtydogs or self.target in dirtydogs:
             self.notice = "DIRTY DOG"
             return True
-        result = self.catacomb.Guardian(self.target, self.amount)
+        try:
+            bone = MintBone(self.privatekey, self.head, self.publickey, self.state[self.head], self.target, self.amount)
+        except Exception:
+            self.notice = "BAD BONE"
+            return True
+        result = self.catacomb.ReceiveBone(bone)
         if result.status == "IDEMPOTENT":
             return False
         if result.status == "BAD BONE":

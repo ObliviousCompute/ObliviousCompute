@@ -25,6 +25,9 @@ from Game.Guardian import (
     Guardians,
     HashRank,
     HeadCountHash,
+    MintBone,
+    PublicKeyHex,
+    StateKey,
     Terminal,
 )
 
@@ -124,7 +127,8 @@ class LuckyDogTrial:
         self.final_attempt = None
 
         secrets = {head: f"{FIXED}|{head}" for head in HEADS}
-        self.cats = {head: Catacomb(HEADS, head, secrets[head]) for head in HEADS}
+        self.privatekeys = {head: StateKey(secrets[head]) for head in HEADS}
+        self.cats = {head: Catacomb(HEADS, head, PublicKeyHex(self.privatekeys[head])) for head in HEADS}
         genesis = BonePile({head: self.cats[head].GenesisCell for head in HEADS})
         for cat in self.cats.values():
             if not cat.Seed(genesis).changed:
@@ -142,7 +146,7 @@ class LuckyDogTrial:
                 yard.Attach(
                     HEADS,
                     head,
-                    CatacombIn=cat.BoneYard,
+                    CatacombIn=cat.ReceiveBone,
                     BonePileIn=cat.FetchBonePile,
                     BonePileOut=lambda cat=cat: cat.BonePile,
                 )
@@ -229,11 +233,15 @@ class LuckyDogTrial:
         self.events.append(TrialEvent(len(self.events) + 1, text, before, after))
         return text
 
+    def Mint(self, head: str, target: str, bones: int) -> Bone:
+        cat = self.cats[head]
+        return MintBone(self.privatekeys[head], head, cat.publickey, cat.BonePile[head], target, bones)
+
     def Bundle(self, moves: tuple[tuple[str, str, int], ...]) -> str:
         before = Balances(self.cats[CAMERA].BonePile)
         names = []
         for source, target, bones in moves:
-            result = self.cats[source].Guardian(target, bones)
+            result = self.cats[source].ReceiveBone(self.Mint(source, target, bones))
             if not result.changed:
                 raise RuntimeError(f"ordinary LuckyDog play {source}->{target} failed: {result.status}")
             names.append(self.names[source])
@@ -246,8 +254,8 @@ class LuckyDogTrial:
         if estate <= 0:
             raise RuntimeError(f"{head} has no estate left to oversubscribe")
         firsttarget, secondtarget = GREED_TARGETS[head]
-        first = self.cats[head].Mint(firsttarget, estate)
-        second = self.cats[head].Mint(secondtarget, estate)
+        first = self.Mint(head, firsttarget, estate)
+        second = self.Mint(head, secondtarget, estate)
         if first.tag.parent != second.tag.parent or first.tag.child == second.tag.child:
             raise RuntimeError(f"{head} did not mint a genuine sibling pair")
         one = self.cats[head].ReceiveBone(first)
@@ -267,7 +275,7 @@ class LuckyDogTrial:
     def LuckyAttempt(self) -> None:
         beforepile = self.cats[CAMERA].BonePile
         before = Balances(beforepile)
-        result = self.cats[CAMERA].Guardian("A", 100)
+        result = self.cats[CAMERA].ReceiveBone(self.Mint(CAMERA, "A", 100))
         after = Balances(self.cats[CAMERA].BonePile)
         self.final_attempt = result
         self.events.append(TrialEvent(len(self.events) + 1, "Lucky tries to bury 100 bones", before, after))
