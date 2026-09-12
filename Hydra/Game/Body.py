@@ -78,6 +78,7 @@ class Body:
     targethead: str = ""
     amount: int = 1
     seen: Dict[str, None] = field(default_factory=dict)
+    running: bool = True
 
     def Crown(self) -> int:
         return int(self.heart.state.crown)
@@ -119,6 +120,8 @@ class Body:
             sys.stdout.flush()
 
     def RenderStatus(self) -> None:
+        if not self.running:
+            return
         self.EnsureTarget()
         snap = self.heart.Snapshot()
         crown = int(snap.get("crown", 1) or 1)
@@ -126,6 +129,9 @@ class Body:
         envy = bool(self.heart.Emotions().get("envy", False))
         hudline, cursorleft = self.HudLine(crown, tallies, envy)
         self.Paint(WelcomeLines + [hudline], cursorleft)
+
+    def AcceptMessage(self, message: Dict[str, Any]) -> bool:
+        return "race" not in message
 
     def SendMessage(self, message: Dict[str, Any], dstaddr: Optional[Tuple[str, int]] = None, skipaddr: Optional[Tuple[str, int]] = None) -> None:
         payload = json.dumps(message, separators=(",", ":")).encode("utf-8")
@@ -214,14 +220,15 @@ class Receiver(threading.Thread):
         self.body = body
 
     def run(self) -> None:
-        while True:
+        while self.body.running:
             try:
                 data, addr = self.body.sock.recvfrom(65535)
                 message = json.loads(data.decode("utf-8"))
-                if isinstance(message, dict) and self.body.HandleSignal(message, addr):
+                if not isinstance(message, dict) or not self.body.AcceptMessage(message):
                     continue
-                if isinstance(message, dict):
-                    self.body.IngestMessage(message, addr)
+                if self.body.HandleSignal(message, addr):
+                    continue
+                self.body.IngestMessage(message, addr)
             except Exception:
                 continue
 
@@ -233,7 +240,7 @@ def ReadCommand(body: Body) -> Command:
     try:
         tty.setcbreak(filedescriptor)
         laststep = None
-        while True:
+        while body.running:
             step = Step()
             if step != laststep:
                 body.RenderStatus()
@@ -269,6 +276,7 @@ def ReadCommand(body: Body) -> Command:
             else:
                 continue
             body.RenderStatus()
+        return "STOP"
     finally:
         termios.tcsetattr(filedescriptor, termios.TCSADRAIN, original)
 
@@ -303,6 +311,11 @@ def RunBody(*, heart: Heart, head: str, port: int, peers: List[Tuple[str, int]],
     except (KeyboardInterrupt, EOFError) as exc:
         raise ExitSignal() from exc
     finally:
+        body.running = False
+        try:
+            sock.close()
+        except Exception:
+            pass
         with PrintLock:
             sys.stdout.write(ShowCursor)
             sys.stdout.flush()

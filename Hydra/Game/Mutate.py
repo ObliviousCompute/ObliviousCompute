@@ -29,6 +29,12 @@ RosterCache: Set[str] = set()
 AwakeInterval = 0.75
 
 
+class SetupBack(Exception):
+    def __init__(self, state: Dict[str, str]):
+        super().__init__("return to MacAttack target")
+        self.state = dict(state)
+
+
 def BuildDen(heads: List[str], depth: int, head: str) -> Tuple[int, List[Tuple[str, int]]]:
     ports = {item: depth + index for index, item in enumerate(heads)}
     return ports[head], [("127.0.0.1", ports[item]) for item in heads if item != head]
@@ -71,8 +77,17 @@ def ExitScreen() -> None:
         sys.stdout.flush()
 
 
-def MutateShell() -> Dict[str, str]:
+def MutateShell(
+    race: Optional[int] = None,
+    *,
+    initial: Optional[Dict[str, str]] = None,
+    back_to_race: bool = False,
+) -> Dict[str, str]:
     state = {"environment": "Den", "depth": "12321", "mutation": "1", "head": "A"}
+    if initial:
+        for key in state:
+            if key in initial:
+                state[key] = str(initial[key])
     fieldstep = 0
     awakensock: Optional[socket.socket] = None
     awakeheads: Set[str] = set()
@@ -97,7 +112,10 @@ def MutateShell() -> Dict[str, str]:
     def AwakeSend() -> None:
         if awakensock is None:
             return
-        message = json.dumps({"type": "AWAKE", "head": state["head"], "heads": CurrentHeads()}, separators=(",", ":")).encode("utf-8")
+        message = {"type": "AWAKE", "head": state["head"], "heads": CurrentHeads()}
+        if race is not None:
+            message["race"] = int(race)
+        message = json.dumps(message, separators=(",", ":")).encode("utf-8")
         _, peers = Network()
         for host, peerport in peers:
             try:
@@ -126,9 +144,10 @@ def MutateShell() -> Dict[str, str]:
             raise ExitSignal() from exc
         awakensock.setblocking(False)
         expectedheads = set(CurrentHeads())
-        awakeheads = {item for item in RosterCache if item in expectedheads}
+        awakeheads = ({item for item in RosterCache if item in expectedheads} if race is None else set())
         awakeheads.add(state["head"])
-        RosterCache = set(awakeheads)
+        if race is None:
+            RosterCache = set(awakeheads)
         awakevalue = AwakeField(awakeheads)
         awakenready = False
         lastawakesent = 0.0
@@ -177,6 +196,15 @@ def MutateShell() -> Dict[str, str]:
             incoming = str(message.get("head", "") or "").strip().upper()
             incomingheads = {str(item).upper() for item in list(message.get("heads", []) or []) if str(item).strip()}
             messagetype = str(message.get("type", "") or "")
+            if race is None:
+                if "race" in message:
+                    continue
+            else:
+                try:
+                    if int(message.get("race", -1)) != int(race):
+                        continue
+                except Exception:
+                    continue
             if messagetype == "AWAKE":
                 if incomingheads:
                     expectedheads = set(incomingheads)
@@ -193,6 +221,9 @@ def MutateShell() -> Dict[str, str]:
                     awakeheads.add(incoming)
         awakevalue = AwakeField(awakeheads)
         awakenready = bool(expectedheads) and awakeheads >= expectedheads
+
+    # Initial/back-navigation state must obey the mutation-sized Head roster too.
+    ClampHead()
 
     filedescriptor = sys.stdin.fileno()
     original = termios.tcgetattr(filedescriptor)
@@ -214,7 +245,7 @@ def MutateShell() -> Dict[str, str]:
             value = awakevalue if field == "awakening" else state[field]
             pulse = Index(phase, 9)
             if pulse != lastpulse or field != lastfield or value != lastvalue:
-                RenderField("Hydra", Labels[field], value, phase)
+                RenderField("Hydra", Labels[field], value, phase, subtitle="MacAttack" if race is not None else "")
                 lastpulse = pulse
                 lastfield = field
                 lastvalue = value
@@ -238,6 +269,8 @@ def MutateShell() -> Dict[str, str]:
                 fieldstep = min(len(Fields) - 1, fieldstep + 1)
                 continue
             if key == "D":
+                if fieldstep == 0 and back_to_race:
+                    raise SetupBack(state)
                 fieldstep = max(0, fieldstep - 1)
                 continue
             if key in ("A", "B"):
@@ -245,13 +278,15 @@ def MutateShell() -> Dict[str, str]:
                 if field == "depth":
                     state["depth"] = f"{max(0, min(99999, int(state['depth']) + direction)):05d}"
                     continue
-                fieldoptions = Options.get(field)
+                fieldoptions = CurrentHeads() if field == "head" else Options.get(field)
                 if fieldoptions is not None:
+                    if state[field] not in fieldoptions:
+                        ClampHead()
                     index = fieldoptions.index(state[field])
                     if field == "head":
                         direction = -direction
                     state[field] = fieldoptions[(index + direction) % len(fieldoptions)]
-                    if field == "mutation":
+                    if field in ("mutation", "head"):
                         ClampHead()
                 continue
             if not key.isprintable():
@@ -261,9 +296,8 @@ def MutateShell() -> Dict[str, str]:
                 ClampHead()
             elif field == "head":
                 typed = key.upper()
-                if typed in BaseHeads:
+                if typed in CurrentHeads():
                     state["head"] = typed
-                    ClampHead()
     finally:
         CloseAwakening()
         termios.tcsetattr(filedescriptor, termios.TCSADRAIN, original)

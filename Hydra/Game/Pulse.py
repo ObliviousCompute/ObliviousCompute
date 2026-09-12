@@ -126,10 +126,17 @@ def DotField(value: str) -> str:
 def AwakeField(heads: Set[str]) -> str:
     return "" if not heads else f"{Teal}" + f"{Reset}{Green}.{Reset}{Teal}".join(sorted(heads))
 
-def RenderField(title: str, label: str, value: str, phase: float, bias: float = 0.35) -> None:
+def RenderField(
+    title: str,
+    label: str,
+    value: str,
+    phase: float,
+    bias: float = 0.35,
+    subtitle: str = "",
+) -> None:
     RenderCentered([
         TitleLine(title),
-        "",
+        TitleLine(subtitle) if subtitle else "",
         BubbleLine(phase),
         LabelLine(label),
         DotField(value),
