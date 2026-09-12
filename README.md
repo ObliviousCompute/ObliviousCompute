@@ -26,7 +26,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 💎 Kernel 💎
 
-*The mathematical progression of the primitive.*
+*The mathematical progression.*
 
 **[**`Kernel`**](./Kernel/README.md) follows local admissibility through relational symmetry.**
 
