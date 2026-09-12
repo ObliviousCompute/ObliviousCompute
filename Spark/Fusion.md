@@ -1,6 +1,6 @@
 # ✨ Fusion ✨
 
-***Pressure collapses possibility into state.***
+***Pressure collapses possibility.***
 
 ## Interactive Consistency
 
