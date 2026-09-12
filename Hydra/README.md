@@ -1,4 +1,4 @@
-# 🐍🐍 Hydra 🐍🐍
+# 🐲 Hydra 🐲
 
 **Watch packets collide as state flows.**
 
