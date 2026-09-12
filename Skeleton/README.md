@@ -1,6 +1,6 @@
 # 💀 Skeleton 💀
 
-**After everything is picked clean..**
+**After everything is picked clean.**
 
 ---
 
