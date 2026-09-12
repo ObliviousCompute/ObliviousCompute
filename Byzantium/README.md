@@ -1,6 +1,6 @@
 # ⚔️ Byzantium ⚔️
 
-**Make the fractured state whole.**
+**Dissolve the fracture. Crystallize the state.**
 
 ---
 
