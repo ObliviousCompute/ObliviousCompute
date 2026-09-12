@@ -28,7 +28,7 @@ Hydra does not conserve a particular arrangement. **It conserves the space in wh
 
 The tallies can shift dramatically between nodes while the **total remains fixed**. During a mutation, independent observers may temporarily occupy different points. When the computation settles, **they coincide again on the same admissible state.**
 
-$\Large (s,\ldots,s)\in\Delta_n(\Omega)\\longrightarrow\\text{field in motion}\\longrightarrow\(s',\ldots,s')\in\Delta_n(\Omega)$
+$\Large (s,\ldots,s)\in\Delta_n(\Omega)\longrightarrow\\text{field in motion}\longrightarrow\(s',\ldots,s')\in\Delta_n(\Omega)$
 
 Suppose the field already represents nearly **1,000,000 points of computed state** and the next few thousand are temporarily unresolved between observers. The million-point state did not disappear because one moving edge became fuzzy. **The conserved distribution remains** while the observers resolve onto another common point.
 
