@@ -38,8 +38,6 @@ The machines execute. Their outputs project. **The relation determines what cont
 
 ***Now the game begins.***
 
----
-
 > ***If the machine is a true inverter, add Rock → Paper → Scissors → Rock on top of HALT/REPEAT. An inverting machine produces the wrong next state or bit, so its projection is not admissible; it falls into oblivion while the healthy cycle continues.***
 
 ---
