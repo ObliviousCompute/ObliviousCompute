@@ -1,6 +1,6 @@
 # 🔥 Cerberus 🔥
 
-**9 heads fight over 99 bones.**
+**Nine heads fight over bones.**
 
 ---
 
