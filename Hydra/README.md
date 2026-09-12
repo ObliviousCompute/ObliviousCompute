@@ -67,7 +67,7 @@ Hydra MacAttack
 ```bash
 pipx install Hydra-Game && Hydra  
 ```
-You’ll need **Python 3.9 or newer** and an **80x24 UNIX-like terminal environment.**
+You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 > Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
 
