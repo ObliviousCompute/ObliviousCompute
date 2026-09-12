@@ -42,7 +42,7 @@ Every admitted Key changes the computation itself. One abort is a state. Two abo
 pipx install ICBM-Game && ICBM
 ```
 
-You’ll need **Python 3.10 or newer** and an **80x24 UNIX-like terminal environment.**
+You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 > Don't have **pipx**? See how to install it [**`Here`**](../../Relics/pipx.md).
 
