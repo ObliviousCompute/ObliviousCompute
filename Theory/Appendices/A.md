@@ -33,7 +33,7 @@ Every admissible transition preserves the system invariants.
 
 ### Mathematical Form
 
-$\Large 𝓐(s_i,s_{i+1}) = 1 ;\Longrightarrow; I(s_i) = I(s_{i+1}) $
+$\Large 𝓐(s_i,s_{i+1}) = 1 \Longrightarrow I(s_i) = I(s_{i+1}) $
 
 ---
 
