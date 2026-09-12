@@ -46,7 +46,7 @@ The machines execute. Their outputs project. **The relation determines what cont
 
 ## 📜 License
 
-See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+See the [**`NOTICE`**](../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
 Use it, study it, modify it—just respect the terms outlined there.
 
