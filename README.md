@@ -36,7 +36,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 💀 Skeleton 💀
 
-*Pure, hyper-legible expression of the primitive.*
+*Pure, hyper-legible expression.*
 
 **[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.**
 
@@ -46,7 +46,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🐍🐍 Hydra 🐍🐍
 
-*The minimal distributed demonstration of the same primitive.*
+*The minimal distributed demonstration.*
 
 **[**`Hydra`**](./Hydra/README.md) shows how oblivious state moves and collapses.**
 
@@ -56,17 +56,17 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🔥 Cerberus 🔥
 
-*The bare-bones Byzantine-resistant expression.*
+*The Byzantine-resistant expression.*
 
 **[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into an intentionally small machine.**
 
-> ***Nine Heads. Ninety-nine bones.***
+> ***Nine Heads. NinetyNine bones.***
 
 ---
 
 ## ⚔️ Byzantium ⚔️
 
-*A live, networked terminal game for up to 24 players.*
+*Networked terminal game for up to 24 players.*
 
 **[**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute**
 
