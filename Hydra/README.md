@@ -1,4 +1,4 @@
-# 🐲🐲 Hydra 🐲🐲
+# 🐍🐍 Hydra 🐍🐍
 
 **Watch packets collide as state flows.**
 
@@ -36,9 +36,9 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ---
 
-## 🍔 OmNom 🍔
+## 🍟🍔 OmNom 🍔🍟
 
-***MacAttack*** turns the field into a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and see which Head can ***chomp the most first.***
+***MacAttack*** is a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and try to ***chomp the last bite.***
 
 ***After installation:***
 
