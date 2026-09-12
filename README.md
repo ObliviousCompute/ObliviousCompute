@@ -56,7 +56,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🔥 Cerberus 🔥
 
-*The Byzantine-resistant expression.*
+*The Byzantine-resistant demonstration.*
 
 **[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into an intentionally small machine.**
 
