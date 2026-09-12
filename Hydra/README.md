@@ -40,13 +40,13 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ***MacAttack*** is a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and try to ***chomp the last bite.***
 
+<img src="../Relics/Chomp.gif"/>
+
 ***After installation:***
 
 ```bash
 Hydra MacAttack
 ```
-
-<img src="../Relics/Chomp.gif"/>
   
 > *Think Hungry Hungry Hippos*
 
