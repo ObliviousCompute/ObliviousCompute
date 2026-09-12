@@ -6,7 +6,7 @@
 
 <img src="../../Relics/ICBM.png" width="600"/>
 
-> ***777 lines total. Fewer than 400 lines of distributed machinery.***
+> ***Fission is 777 lines total. Fewer than 400 lines of distributed machinery.***
 
 ---
 
