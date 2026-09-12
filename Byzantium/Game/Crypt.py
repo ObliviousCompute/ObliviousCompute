@@ -62,7 +62,6 @@ Zero19 = b'\x00' * 19
 Zero32 = b'\x00' * 32
 Zero352 = b'\x00' * ReceiptSize
 
-
 @dataclass(frozen=True)
 class Self:
     soul: str = ''
@@ -179,7 +178,6 @@ class Crypt:
         self.Start()
         self.EmitSouls()
         self.Genesis(state)
-
     # ---------- transport ----------
 
     def Start(self):
@@ -241,7 +239,6 @@ class Crypt:
                 self.Reap = list(batch) + list(self.Reap)
             raise
         return self.state
-
     def Summon(self):
         return self.sock.recvfrom(65535)
 
@@ -266,7 +263,6 @@ class Crypt:
             except Exception:
                 continue
         return self.state
-
     def BindTransport(self) -> socket.socket:
         if self.mode == ModeSiege:
             return self.BindSiege()
@@ -958,6 +954,8 @@ class Crypt:
         self.Emit(self.PackSouls(souls, expected=self.genesisnumber))
 
     def EmitGlyph(self, glyph: Any):
+        if self.LogicalKind(glyph) == KindPurge:
+            self.veil.dedupe.clear()
         self.Emit(self.Pack(glyph))
 
     def Emit(self, packet: Any):

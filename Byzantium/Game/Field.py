@@ -646,6 +646,51 @@ def CanonicalLocks(*locks: Lock) -> Tuple[Lock, ...]:
         unique[lock.child] = lock
     return tuple(sorted(unique.values(), key=lambda item: item.child)[:2])
 
+def Pair(*locks: Lock) -> Optional[Tuple[Lock, Lock]]:
+    groups: dict[tuple[str, str], list[Lock]] = {}
+    for lock in locks:
+        if not isinstance(lock, Lock) or lock.kind == KindEmpty:
+            continue
+        groups.setdefault((lock.tag, lock.parent), []).append(lock)
+    pairs = []
+    for group in groups.values():
+        try:
+            canonical = CanonicalLocks(*group)
+        except Exception:
+            continue
+        if len(canonical) == 2 and canonical[0].child != canonical[1].child:
+            pairs.append((canonical[0], canonical[1]))
+    return min(pairs, key=lambda pair: (pair[0].child, pair[1].child)) if pairs else None
+
+def Recipients(state: State, *locks: Lock) -> set[str]:
+    keys: set[str] = set()
+    for lock in locks:
+        for leg in lock.payout:
+            if int(leg.salt) <= 0:
+                continue
+            target = FindCell(state, leg.tag)
+            if target is not None:
+                keys.add(target.key)
+    return keys
+
+def Kindred(current: Cell, incoming: Tuple[Lock, ...]) -> bool:
+    VerifyCell(current)
+    active = LockSet(current)
+    if not active and not incoming:
+        return True
+    local = active or (current.lock,)
+    return any(
+        mine.child == theirs.child or mine.child == theirs.parent or mine.parent == theirs.child or mine.parent == theirs.parent
+        for theirs in incoming if theirs.kind != KindEmpty for mine in local
+    )
+
+def Scorched(state: State, lock: Lock) -> bool:
+    VerifyState(state)
+    return any(
+        int(leg.salt) > 0 and (target := FindCell(state, leg.tag)) is not None and Burned(target)
+        for leg in lock.payout
+    )
+
 def ContinuationChild(cell: Cell) -> str:
     VerifyCell(cell)
     return cell.lowlock.child if cell.lowlock is not None else cell.lock.child
@@ -700,18 +745,6 @@ def Swap(state: State, first: str, second: str) -> State:
     cells[a], cells[b] = cells[b], cells[a]
     return State(cells=tuple(cells), self=state.self, pristine=state.pristine)
 
-def Transfer(state: State, sourceid: str, targetid: str, amount: int) -> State:
-    source = FindCell(state, sourceid)
-    target = FindCell(state, targetid)
-    amount = int(amount)
-    if source is None or target is None or source.key == target.key or amount < 0 or source.salt < amount:
-        raise ValueError('invalid transfer')
-    replacements = {
-        source.key: replace(source, salt=source.salt - amount),
-        target.key: replace(target, salt=target.salt + amount),
-    }
-    return State(cells=tuple(replacements.get(cell.key, cell) for cell in state.cells), self=state.self, pristine=state.pristine)
-
 def ApplyEffect(state: State, lock: Lock, *, verifydefect: bool=True) -> Tuple[State, Tuple[Chain, ...]]:
     VerifyState(state)
     signer = FindCell(state, lock.tag)
@@ -746,120 +779,6 @@ def ApplyEffect(state: State, lock: Lock, *, verifydefect: bool=True) -> Tuple[S
     VerifyState(candidate, expectedkeys=FindKeys(state))
     return (candidate, tuple(chains))
 
-def Trace(state: State, tag: str, needed: int, unwound: set[str], trail: set[str]) -> Optional[State]:
-    cell = FindCell(state, tag)
-    if cell is None:
-        return None
-    if cell.salt >= int(needed):
-        return state
-    if cell.key in trail:
-        return None
-    nexttrail = set(trail)
-    nexttrail.add(cell.key)
-    candidate = state
-    for lock in sorted(LockSet(cell), key=lambda item: item.child):
-        receiptid = ReceiptHash(lock)
-        if receiptid in unwound:
-            continue
-        before = candidate
-        beforeunwound = set(unwound)
-        repaired = Revoke(candidate, lock, unwound=unwound, trail=nexttrail)
-        if repaired is None:
-            candidate = before
-            unwound.clear()
-            unwound.update(beforeunwound)
-            continue
-        candidate = repaired
-        refreshed = FindCell(candidate, tag)
-        if refreshed is not None and refreshed.salt >= int(needed):
-            return candidate
-    return None
-
-def Revoke(state: State, lock: Lock, *, unwound: Optional[set[str]]=None, trail: Optional[set[str]]=None) -> Optional[State]:
-    VerifyState(state)
-    VerifyLockShape(lock, allowempty=False)
-    unwound = set() if unwound is None else unwound
-    trail = set() if trail is None else trail
-    receiptid = ReceiptHash(lock)
-    if receiptid in unwound:
-        return state
-    candidate = state
-    if lock.kind == KindDefect:
-        _spend, victim = DefectParts(lock)
-        if victim is None:
-            return None
-        try:
-            candidate = Swap(candidate, lock.tag, victim.tag)
-        except Exception:
-            return None
-    credits: dict[str, int] = {}
-    for leg in lock.payout:
-        if int(leg.salt) <= 0:
-            continue
-        credits[leg.tag] = credits.get(leg.tag, 0) + int(leg.salt)
-    for tag, amount in credits.items():
-        repaired = Trace(candidate, tag, amount, unwound, trail)
-        if repaired is None:
-            return None
-        candidate = repaired
-        target = FindCell(candidate, tag)
-        source = FindCell(candidate, lock.tag)
-        if target is None or source is None or target.salt < amount:
-            return None
-        try:
-            candidate = Transfer(candidate, tag, lock.tag, amount)
-        except Exception:
-            return None
-    unwound.add(receiptid)
-    VerifyState(candidate, expectedkeys=FindKeys(state))
-    return candidate
-
-def BurnShares(pair: Tuple[Lock, Lock], estate: int) -> dict[str, int]:
-    claims = []
-    for lock in pair:
-        for index, leg in enumerate(lock.payout):
-            if int(leg.salt) > 0:
-                claims.append((lock.child, leg.tag, int(leg.salt), index))
-    total = sum(item[2] for item in claims)
-    if estate <= 0 or total <= 0:
-        return {}
-    rows = []
-    paid = 0
-    for child, tag, amount, index in claims:
-        numerator = int(estate) * amount
-        share, remainder = divmod(numerator, total)
-        rows.append([child, tag, share, remainder, index])
-        paid += share
-    leftover = int(estate) - paid
-    rows.sort(key=lambda row: (-row[3], row[0], row[1], row[4]))
-    for index in range(leftover):
-        rows[index][2] += 1
-    payouts: dict[str, int] = {}
-    for _child, tag, share, _remainder, _index in rows:
-        payouts[tag] = payouts.get(tag, 0) + int(share)
-    return payouts
-
-def Burn(state: State, pair: Tuple[Lock, Lock]) -> State:
-    VerifyState(state)
-    low, high = CanonicalLocks(*pair)
-    signer = FindCell(state, low.tag)
-    if signer is None:
-        raise ValueError('burn signer not found')
-    estate = int(signer.salt)
-    if LockTotal(low) + LockTotal(high) <= estate:
-        raise ValueError('burn requires insolvency')
-    payouts = BurnShares((low, high), estate)
-    replacements: dict[str, Cell] = {signer.key: replace(signer, salt=0, lowlock=low, lock=high)}
-    for tag, amount in payouts.items():
-        target = FindCell(state, tag)
-        if target is None:
-            raise ValueError('burn payout tag not found')
-        base = replacements.get(target.key, target)
-        replacements[target.key] = replace(base, salt=base.salt + int(amount))
-    candidate = State(cells=tuple(replacements.get(cell.key, cell) for cell in state.cells), self=state.self, pristine=state.pristine)
-    VerifyState(candidate, expectedkeys=FindKeys(state))
-    return candidate
-
 def SetLockSet(state: State, tag: str, locks: Tuple[Lock, ...]) -> State:
     signer = FindCell(state, tag)
     if signer is None:
@@ -872,73 +791,6 @@ def SetLockSet(state: State, tag: str, locks: Tuple[Lock, ...]) -> State:
     else:
         raise ValueError('lockset must contain one or two receipts')
     return ReplaceCell(state, replacement)
-
-def Adopt(state: State, evidence: Lock | Iterable[Lock]) -> Tuple[State, Tuple[Chain, ...]]:
-    VerifyState(state)
-    incoming = (evidence,) if isinstance(evidence, Lock) else tuple(evidence)
-    if not incoming:
-        raise ValueError('Adopt requires receipt evidence')
-    first = incoming[0]
-    signer = FindCell(state, first.tag)
-    if signer is None:
-        raise ValueError('receipt signer tag not found in state')
-    for lock in incoming:
-        VerifyLock(signer.key, lock)
-        if lock.tag != first.tag:
-            raise ValueError('Adopt evidence must share one signer')
-    current = LockSet(signer)
-    currentchildren = {lock.child for lock in current}
-    if len(incoming) == 1 and first.child in currentchildren:
-        return (state, (Chain(linked=True, relation='Link', reason='idempotent'),))
-    if Burned(signer):
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='burned actor'),))
-
-    if len(incoming) == 1 and first.parent == ContinuationChild(signer):
-        if LockTotal(first) > signer.salt:
-            return (state, (Chain(linked=False, relation='reject', open=True, reason='insolvent continuation'),))
-        candidate, chains = ApplyEffect(state, first)
-        candidate = SetLockSet(candidate, first.tag, (first,))
-        return (candidate, chains)
-
-    parents = {lock.parent for lock in incoming}
-    if len(parents) != 1:
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='nightmare parent mismatch'),))
-    parent = next(iter(parents))
-    relevant = tuple(lock for lock in current if lock.parent == parent)
-    if not relevant and signer.lock.kind != KindEmpty:
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='stale fork'),))
-    candidates = CanonicalLocks(*(relevant + incoming))
-    if len(candidates) != 2:
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='no competing pair'),))
-    if len(current) == 2 and tuple(current) == candidates:
-        return (state, (Chain(linked=True, relation='Link', reason='idempotent nightmare'),))
-    if signer.lowlock is not None and signer.salt == 0:
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='zero LockSet re-settlement is undefined'),))
-
-    candidate = state
-    unwound: set[str] = set()
-    for old in relevant:
-        repaired = Revoke(candidate, old, unwound=unwound, trail={signer.key})
-        if repaired is None:
-            return (state, (Chain(linked=False, relation='reject', open=True, reason='trace failed'),))
-        candidate = repaired
-
-    source = FindCell(candidate, first.tag)
-    if source is None:
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='signer vanished'),))
-    obligation = sum(LockTotal(lock) for lock in candidates)
-    if obligation > source.salt:
-        candidate = Burn(candidate, (candidates[0], candidates[1]))
-        return (candidate, (Chain(linked=True, relation='Link', reason='burn'),))
-    if any(lock.kind == KindDefect and not DefectViable(candidate, lock) for lock in candidates):
-        return (state, (Chain(linked=False, relation='reject', open=True, reason='defect geometry is not viable'),))
-
-    chains: Tuple[Chain, ...] = tuple()
-    for lock in reversed(candidates):
-        candidate, lockchains = ApplyEffect(candidate, lock, verifydefect=False)
-        chains = lockchains
-    candidate = SetLockSet(candidate, first.tag, candidates)
-    return (candidate, chains or (Chain(linked=True, relation='Link', reason='adopt'),))
 
 def Purge(state: State) -> State:
     VerifyState(state)
