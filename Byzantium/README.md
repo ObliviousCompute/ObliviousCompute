@@ -1,6 +1,6 @@
 # ⚔️ Byzantium ⚔️
 
-**Dissolve the fracture. Crystallize the state.**
+**Dissolve impurity. Crystallize truth.**
 
 ---
 
