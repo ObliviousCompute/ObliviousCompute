@@ -16,7 +16,7 @@ Byzantium is a game played directly on a ***distributed state surface***. Every 
 
 When someone spends twice, the contradiction does not fracture the machine or disappear into history. ***It becomes part of the board.*** Larger forks collapse to a **canonical pair**, the economic consequences are repaired, and an actor that cannot cover the conflict is ***burned from the state***.
 
-**You don't play ***on*** the state. You play ***with*** the state.**
+***The Dream ends when the Salt reaches equilibrium.***
 
 ---
 
