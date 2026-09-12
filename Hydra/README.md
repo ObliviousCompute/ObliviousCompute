@@ -36,6 +36,16 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ---
 
+## 🍔 OmNom 🍔
+
+***MacAttack*** turns the field into a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and see which Head can ***chomp the most first.***
+
+***After installation:***
+
+```bash
+Hydra MacAttack
+```
+
 <img src="../Relics/Chomp.gif"/>
   
 > *Think Hungry Hungry Hippos*
