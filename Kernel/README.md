@@ -54,6 +54,16 @@ Want to reconstruct the whole thing analytically? ***Fine.*** Add **network late
 
 > ***The space between the observers constitutes the machine… Σ is the computation.***
 
+Want to reconstruct the whole thing analytically? ***Fine.*** Add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers are communicating over fiber, ***put the speed of light in there too.*** Keep going until you've described exactly **which projection can exist with which observer at which instant**.
+
+Let $\mathbf{s}=(s_1,\ldots,s_n)\in\Omega^n$. Let $\Phi_{\mathbf{s}}$ denote the physical and causal medium shaped by that observer configuration.
+
+$\Large \mathfrak{M}_{\mathbf{s}}=(\mathbf{s},\Phi_{\mathbf{s}})$
+
+The space between the observers constitutes the machine.
+
+$\Large \boxed{\Sigma_{\mathfrak{M}}}$
+
 ---
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
