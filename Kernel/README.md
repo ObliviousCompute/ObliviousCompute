@@ -38,21 +38,22 @@ At perfect symmetry, the $n$ observer coordinates no longer vary independently. 
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-**At rest on the diagonal, the distributed configuration reduces to the state space.**
+**At perfect symmetry, it reduces to $\Omega$.**
 
 $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-Now assemble the realized machine. Let $s$ denote an observer configuration within $\Omega^n$, and let $\Phi_s$ denote the physical and causal medium through which that configuration is realized. Together they constitute the machine $M_s$.
+Now assemble the ***realized machine.*** Let $s$ denote an observer configuration within $\Omega^n$, and let $\Phi_s$ denote the ***physical and causal medium*** through which that configuration is realized. Together they constitute the machine $M_s$.
 
 $\Large M_s=(s,\Phi_s)$
 
-With the machine defined, its relational symmetry is the computation.
+With the machine defined, its ***relational symmetry is the computation.***
 
 $\Large \Sigma_{M_s}$
 
-> ***The relations between the observers constitute the machine…*** $\Sigma$ ***is the computation.***
+> ***The machine exists in the symmetry between observers… Σ is the computation.***
+
 ---
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
