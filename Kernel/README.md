@@ -56,9 +56,9 @@ $\Large M_s=(s,\Phi_s)$
 
 The observer configuration does not exist apart from the physical and causal medium through which its projections can occur. $\Phi_s$ denotes that medium as shaped by the configuration $s$. Together they constitute the realized machine $M_s$.
 
-> ***The space between the observers constitutes the machine.***
-
 $\Large \Sigma_{M_s}$
+
+> ***The space between the observers constitutes the machine.***
 
 ---
 
