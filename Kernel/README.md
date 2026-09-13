@@ -38,7 +38,7 @@ At perfect symmetry, the $n$ observer coordinates no longer vary independently. 
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-**At perfect symmetry, it reduces to $\Omega$.**
+> ***At perfect symmetry, it reduces to Ω***
 
 ## 💎 Diamond Tip 💎
 
