@@ -2,12 +2,12 @@
 
 | Symbol | Meaning |
 |--------|---------|
-| 𝓐 | Admissibility function |
 | Ω | State space |
+| 𝓐 | Admissibility function |
+| 𝑆 | Observer Geometry |
 | Σ | Relational symmetry |
 | 𝓕 | Computational field |
 | Δ | Diagonal |
-| 𝑆 | Observer Geometry |
 
 > ***Interpretive note:*** *Relational symmetry **Σ** constitutes the computational field **𝓕**. Perfect symmetry **Δ** is a realizable settled condition of that field, not its definition. The equations below describe the observer geometry at one fixed resolution. **Diamond Tip** later assembles that geometry with its physical and causal medium into the realized machine.*
 
