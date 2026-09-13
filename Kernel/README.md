@@ -44,19 +44,17 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-At a fixed observer configuration, ***the field has a whole-space shape.*** Let $s$ denote the independently maintained observer states considered together within the Cartesian product $\Omega^n$. From that configuration, $\Sigma_s$ represents relational admissibility across the whole space, distinguishing admissible from inadmissible configurations with a value of zero or one. This is a **whole-space view of the field at one fixed resolution**, not a definition of the field itself.
+Now zoom out and look at the realized machine. Let $s$ denote a realized observer configuration within $\Omega^n$, and let $\Phi_s$ denote the physical and causal conditions under which that configuration can operate. These are not additional observer states; they are the conditions through which the observers can physically stand in relation.
 
-$\Large s=(s_1,\ldots,s_n)\in\Omega^n \quad \Sigma_s:\Omega^n\rightarrow\{0,1\}$
-
-Now let $\Phi_s$ denote the physical and causal medium through which that configuration can actually exist. It includes whatever determines which projection can exist with which observer at which instant: latency, processor timing, scheduling, memory access, geographic separation, packet propagation, and even the speed of light where it matters. The configuration and the medium together constitute the realized machine, denoted $M_s$.
+$\Phi_s$ can include network latency, processor timing, scheduling, memory access, geographic separation, packet propagation, thermal lag, and whatever else determines which projection can exist with which observer at which instant. If the observers communicate over fiber, ***put the speed of light in there too.*** Together, the observer configuration and those conditions constitute the realized machinery.
 
 $\Large M_s=(s,\Phi_s)$
 
-Relational symmetry can now be taken over the realized machine itself. The observer configuration supplies the positions, $\Phi_s$ supplies the physical conditions through which those positions can relate, and the resulting relational object is the field at that realized scale.
+With the machinery defined, relational symmetry can now be taken over the realized machine itself.
 
 $\Large \Sigma_{M_s}$
 
-> ***The space between the observers constitutes the machine.***
+> ***The symmetry between the observers constitutes the machine… $\Sigma$ is the computation.***
 
 ---
 
