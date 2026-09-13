@@ -44,7 +44,7 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-Now assemble the ***realized machine.*** Let $\mathbf{s}$ denote an observer configuration within $\Omega^n$, and let $\boldsymbol{\Phi}_{\mathbf{s}}$ denote the ***physical and causal medium*** through which that configuration is realized. Together they constitute the machine $\mathbf{M}_{\mathbf{s}}$.
+Now assemble the ***realized machine.*** *Let* $\mathbf{s}$ *denote an observer configuration within* $\Omega^n$, *and let* $\boldsymbol{\Phi}_{\mathbf{s}}$ *denote the* ***physical and causal medium*** *through which that configuration is realized. Together they constitute the machine* $\mathbf{M}_{\mathbf{s}}$.
 
 $\Large M_s=(s,\Phi_s)$
 
