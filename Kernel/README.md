@@ -40,8 +40,6 @@ $\Large \Delta_n(\Omega)\cong\Omega$
 
 **At perfect symmetry, it reduces to $\Omega$.**
 
-$\Large \Omega$
-
 ## 💎 Diamond Tip 💎
 
 Now assemble the ***realized machine.*** Let $s$ denote an observer configuration within $\Omega^n$, and let $\Phi_s$ denote the ***physical and causal medium*** through which that configuration is realized. Together they constitute the machine $M_s$.
