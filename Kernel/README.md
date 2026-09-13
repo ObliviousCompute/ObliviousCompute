@@ -50,8 +50,6 @@ With the machine defined, its ***relational symmetry is the computation.***
 
 $\Large \Sigma_{M_s}$
 
-> ***The machine exists in the symmetry between observers… Σ is the computation.***
-
 ---
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
