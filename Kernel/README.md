@@ -44,7 +44,7 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-Now zoom out to the ***realized machine.*** Let $s$ denote an observer configuration within Ωn, and let $\Phi_s$ denote the ***physical and causal medium*** through which that configuration is realized. Together they constitute the machine $M_s$.
+***Now dissect the relational symmetry $\Sigma$ across $\Omega^n$. Let $s$ denote the observer geometry and $\Phi_s$ denote its oblivious medium. Together they constitute the realized machine $M_s$, with the observer geometry suspended in the medium through which its relations may occur.***
 
 $\Large M_s=(s,\Phi_s)$
 
