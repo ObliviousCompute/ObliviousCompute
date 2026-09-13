@@ -44,17 +44,15 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-At a fixed observer configuration, ***the field has a whole-space shape.*** Its relational admissibility can be represented across the full product space.
+At a fixed observer configuration, ***the field has a whole-space shape.*** Let $s=(s_1,\ldots,s_n)\in\Omega^n$ denote that configuration. Its relational admissibility can then be represented across the full product space.
 
-$\Large \mathbf{s}=(s_1,\ldots,s_n)\in\Omega^n \qquad \Sigma_{\mathbf{s}}:\Omega^n\rightarrow\{0,1\}$
+$\Large s=(s_1,\ldots,s_n)\in\Omega^n \quad \Sigma_s:\Omega^n\rightarrow\{0,1\}$
 
-This is a **whole-space view** of the field, not a definition of it.
-
-Want to reconstruct the whole thing analytically? ***Fine.*** Add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers are communicating over fiber, ***put the speed of light in there too.*** Keep going until you've described exactly **which projection can exist with which observer at which instant**.
+This remains a **whole-space view** of the field at one fixed resolution. To reconstruct the realized system, add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers communicate over fiber, ***put the speed of light in there too.*** Keep going until you've described exactly **which projection can exist with which observer at which instant**. Let $\Phi_s$ denote the physical and causal medium shaped by that configuration. Together, $s$ and $\Phi_s$ constitute the realized machinery.
 
 $\Large M_s=(s,\Phi_s)$
 
-The observer configuration does not exist apart from the physical and causal medium through which its projections can occur. $\Phi_s$ denotes that medium as shaped by the configuration $s$. Together they constitute the realized machine $M_s$.
+The relational symmetry is now the symmetry of the realized machine.
 
 $\Large \Sigma_{M_s}$
 
