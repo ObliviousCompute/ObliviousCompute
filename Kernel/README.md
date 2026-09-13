@@ -44,11 +44,11 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-***Now dissect the relational symmetry*** $\Sigma$ ***across*** $\Omega^n$. ***Let*** $s$ ***denote the observer geometry and*** $\Phi_s$ ***denote its oblivious medium. Together they constitute the realized machine*** $M_s$ ***in which the observer geometry is suspended through the medium where its relations may occur.***
+***Now dissect the relational symmetry*** $\Sigma$ ***across*** $\Omega^n$. ***Let*** $s$ ***denote the observer geometry and*** $\Phi_s$ ***denote its medium. Together they constitute the realized machine*** $M_s$ ***in which the observer geometry is suspended in an Oblivious Medium.***
 
 $\Large M_s=(s,\Phi_s)$
 
-***Its relational symmetry is the computation.***
+***Its relational symmetry is an Oblivious Computation.***
 
 $\Large \Sigma_{M_s}$
 
