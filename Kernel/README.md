@@ -52,7 +52,7 @@ With the machine defined, its relational symmetry is the computation.
 
 $\Large \Sigma_{M_s}$
 
-> ***The relations between the observers constitute the machine… $\Sigma$ is the computation.***
+> ***The relations between the observers constitute the machine…*** $\Sigma$ ***is the computation.***
 ---
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
