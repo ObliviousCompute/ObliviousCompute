@@ -52,7 +52,7 @@ Within a shared domain, Oblivious Compute trades **redundant projection** for **
 
 ---
 
-**Go back to the [**`Beginning`**](https://github.com/ObliviousCompute) or continue to the [**`Theory`**](./Theory/README.md)...**
+**Continue the** [**`Spark`**](../../Spark/README.md)**`⟶`**[**`HAULT`**](../../Theory/Halt.md) **or go strait to** [**`Theory`**](./Theory/README.md)...**
 
 ---
 
