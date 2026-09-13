@@ -52,7 +52,7 @@ This is a **whole-space view** of the field, not a definition of it.
 
 Want to reconstruct the whole thing analytically? ***Fine.*** Add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers are communicating over fiber, ***put the speed of light in there too***. Keep going until you've described exactly **which projection can exist with which observer at which instant**.
 
-> ***The physical system resolves one actual slice of the field simply by operating.***
+> > ***Each observer computes one actual slice of Σ simply by operating. The observers together constitute the machine through which Σ is realized as a whole.***
 
 ---
 
