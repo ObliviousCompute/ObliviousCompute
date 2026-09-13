@@ -54,15 +54,25 @@ Want to reconstruct the whole thing analytically? ***Fine.*** Add **network late
 
 > ***The space between the observers constitutes the machine… Σ is the computation.***
 
+## 💎 Diamond Tip 💎
+
+At a fixed observer configuration, ***the field has a whole-space shape.*** Its relational admissibility can be represented across the full product space.
+
+$\Large \mathbf{s}=(s_1,\ldots,s_n)\in\Omega^n
+\qquad
+\Sigma_{\mathbf{s}}:\Omega^n\rightarrow\{0,1\}$
+
+This is a **whole-space view** of the field, not a definition of it.
+
 Want to reconstruct the whole thing analytically? ***Fine.*** Add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers are communicating over fiber, ***put the speed of light in there too.*** Keep going until you've described exactly **which projection can exist with which observer at which instant**.
 
-Let $\mathbf{s}=(s_1,\ldots,s_n)\in\Omega^n$. Let $\Phi_{\mathbf{s}}$ denote the physical and causal medium shaped by that observer configuration.
+The observer configuration does not exist apart from the physical and causal medium through which its projections can occur. Let $\Phi_{\mathbf{s}}$ denote that medium as shaped by the configuration $\mathbf{s}$. Together they constitute the realized machine:
 
 $\Large \mathfrak{M}_{\mathbf{s}}=(\mathbf{s},\Phi_{\mathbf{s}})$
 
 The space between the observers constitutes the machine.
 
-$\Large \boxed{\Sigma_{\mathfrak{M}}}$
+$\Large \Sigma_{\mathfrak{M}_{\mathbf{s}}}$
 
 ---
 
