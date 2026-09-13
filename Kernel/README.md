@@ -7,6 +7,7 @@
 | Σ | Relational symmetry |
 | 𝓕 | Computational field |
 | Δ | Diagonal |
+| S | Observer Geometry |
 
 > ***Interpretive note:*** *Relational symmetry **Σ** constitutes the computational field **𝓕**. Perfect symmetry **Δ** is a realizable settled condition of that field, not its definition. The equations below describe the observer geometry at one fixed resolution. **Diamond Tip** later assembles that geometry with its physical and causal medium into the realized machine.*
 
