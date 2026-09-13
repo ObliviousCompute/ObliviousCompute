@@ -68,7 +68,7 @@ Want to reconstruct the whole thing analytically? ***Fine.*** Add **network late
 
 The observer configuration does not exist apart from the physical and causal medium through which its projections can occur. Let $\Phi_{\mathbf{s}}$ denote that medium as shaped by the configuration $\mathbf{s}$. Together they constitute the realized machine:
 
-$\Large \mathfrak{M}_{\mathbf{s}}=(\mathbf{s},\Phi_{\mathbf{s}})$
+$\Large M_{\mathbf{s}}=(\mathbf{s},\Phi_{\mathbf{s}})$
 
 The space between the observers constitutes the machine.
 
