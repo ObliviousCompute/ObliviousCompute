@@ -44,15 +44,15 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-At a fixed observer configuration, ***the field has a whole-space shape.*** Let $s=(s_1,\ldots,s_n)\in\Omega^n$ denote that configuration. Its relational admissibility can then be represented across the full product space.
+At a fixed observer configuration, ***the field has a whole-space shape.*** Let $s$ denote the independently maintained observer states considered together within the Cartesian product $\Omega^n$. From that configuration, $\Sigma_s$ represents relational admissibility across the whole space, distinguishing admissible from inadmissible configurations with a value of zero or one. This is a **whole-space view of the field at one fixed resolution**, not a definition of the field itself.
 
 $\Large s=(s_1,\ldots,s_n)\in\Omega^n \quad \Sigma_s:\Omega^n\rightarrow\{0,1\}$
 
-This remains a **whole-space view** of the field at one fixed resolution. To reconstruct the realized system, add **network latency, processor timing, scheduling, memory access, geographic separation, and packet propagation**. If the observers communicate over fiber, ***put the speed of light in there too.*** Keep going until you've described exactly **which projection can exist with which observer at which instant**. Let $\Phi_s$ denote the physical and causal medium shaped by that configuration. Together, $s$ and $\Phi_s$ constitute the realized machinery.
+Now let $\Phi_s$ denote the physical and causal medium through which that configuration can actually exist. It includes whatever determines which projection can exist with which observer at which instant: latency, processor timing, scheduling, memory access, geographic separation, packet propagation, and even the speed of light where it matters. The configuration and the medium together constitute the realized machine, denoted $M_s$.
 
 $\Large M_s=(s,\Phi_s)$
 
-The relational symmetry is now the symmetry of the realized machine.
+Relational symmetry can now be taken over the realized machine itself. The observer configuration supplies the positions, $\Phi_s$ supplies the physical conditions through which those positions can relate, and the resulting relational object is the field at that realized scale.
 
 $\Large \Sigma_{M_s}$
 
