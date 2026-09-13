@@ -4,11 +4,7 @@
 
 ## 🌀 The Path 
 
-[**`Geometry`**](./Geometry.md)**`⟶`**[**`Holography`**](./Holography.md)**`⟶`**[**`Admissibility`**](./Admissibility.md)**`⟶`**[**`Symmetry`**](./Symmetry.md)**`⟶`**[**`Singularity`**](./Singularity.md)
-
-## 🛋️ Afterhours
-
-[**`HALT`**](./Halt.md)
+[**`HALT`**](./Halt.md)**`⟶`**[**`Geometry`**](./Geometry.md)**`⟶`**[**`Holography`**](./Holography.md)**`⟶`**[**`Admissibility`**](./Admissibility.md)**`⟶`**[**`Symmetry`**](./Symmetry.md)**`⟶`**[**`Singularity`**](./Singularity.md)
 
 ## 📚 Appendices 
 
