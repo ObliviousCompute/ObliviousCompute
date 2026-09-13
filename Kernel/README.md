@@ -38,7 +38,7 @@ At perfect symmetry, the $n$ observer coordinates no longer vary independently. 
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-> *****The diagonal returns to the state space.*****
+***The diagonal returns to the state space.***
 
 $\Large \Omega$
 
