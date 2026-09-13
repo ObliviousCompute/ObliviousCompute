@@ -33,7 +33,7 @@ $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s
 
 **No observer contains the field.** It contains no state of its own and exists only through symmetry among independently maintained states. In this perfectly symmetric resolution, those states coincide and the observer geometry lies on the diagonal.
 
-$\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)
+$\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
 
 At perfect symmetry, the $n$ observer coordinates no longer vary independently. The diagonal is canonically isomorphic to the original state space.
 
