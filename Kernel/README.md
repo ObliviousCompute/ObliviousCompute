@@ -46,9 +46,9 @@ $\Large \Omega$
 
 Now zoom out and look at the realized machine. Let $s$ denote a realized observer configuration within $\Omega^n$, and let $\Phi_s$ denote the physical and causal conditions under which that configuration can operate. These are not additional observer states; they are the conditions through which the observers can physically stand in relation.
 
-$\Phi_s$ can include network latency, processor timing, scheduling, memory access, geographic separation, packet propagation, thermal lag, and whatever else determines which projection can exist with which observer at which instant. If the observers communicate over fiber, ***put the speed of light in there too.*** Together, the observer configuration and those conditions constitute the realized machinery.
-
 $\Large M_s=(s,\Phi_s)$
+
+$\Phi_s$ can include network latency, processor timing, scheduling, memory access, geographic separation, packet propagation, thermal lag, and whatever else determines which projection can exist with which observer at which instant. If the observers communicate over fiber, ***put the speed of light in there too.*** Together, the observer configuration and those conditions constitute the realized machinery.
 
 With the machinery defined, relational symmetry can now be taken over the realized machine itself.
 
