@@ -48,7 +48,7 @@ $\Large \Omega$
 
 $\Large M_s=(s,\Phi_s)$
 
-With the machine defined, its ***relational symmetry is the computation.***
+***Its relational symmetry is the computation.***
 
 $\Large \Sigma_{M_s}$
 
