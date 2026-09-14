@@ -14,20 +14,6 @@ $\large (s,\ldots,s)\in\Delta_n(\Omega)\qquad \Delta_n(\Omega)\cong\Omega$
 
 ## House of Mirrors
 
-Now the fun begins. Place an inverter among the machines. Presented HALT, it produces REPEAT. Presented REPEAT, it produces HALT. Nothing prevents that machine from **reflecting the state back into its opposite again and again.**
-
-$\large H\rightarrow R\qquad R\rightarrow H\qquad H\rightarrow R\rightarrow H\rightarrow R\rightarrow\cdots$
-
-Now give **the identical HALT state** to five independent machines. Four consume HALT and produce no further continuation. The inverter alone produces REPEAT. ***What appears endless inside one black box becomes visible*** when its output is reflected against independently maintained states across the field.
-
-$\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
-
-**A single mirror can invert an image. A second reflection reveals that inversion.** The inverter may continue producing an endless hallway of reflected states, but every new projection is still compared against the state already held by the other observers. It can reflect itself forever without making its reflection symmetrical with the field.
-
-***The inverter can reflect forever. The field reflects the reflection.***
-
-## House of Mirrors
-
 Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
 
 $\large F:\text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}
@@ -38,7 +24,7 @@ Now place **HALT** and **REPEAT** on top of that cycle. Give every machine **HAL
 
 ***HALT and REPEAT belong to the machine, not the field. The field determines what continues to belong.***
 
-***The inverter can reflect forever. The field reflects the reflection.***
+> ***The inverter can reflect forever. The field reflects the reflection.***
 
 ## Raise the Anti
 
