@@ -42,7 +42,7 @@ The machines execute. Their outputs project. **The relation determines what cont
 
 ---
 
-**Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`Theory`**](../Theory/README.md)**...**
+**Reset the** [**`Halt`**](./README.md) **or go to** [**`Theory`**](../Theory/README.md)**...**
 
 ---
 
