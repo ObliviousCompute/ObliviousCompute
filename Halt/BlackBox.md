@@ -28,13 +28,15 @@ $\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
 
 ## House of Mirrors
 
-Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Now place **HALT** and **REPEAT** on top of that cycle. A healthy machine presented **HALT** stops producing fresh continuation. Presented **REPEAT**, it continues. The inverter reflects that behavior as well.
+Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
 
 $\large F:\text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}
 \qquad
 F_I:\text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
-From here, give every machine **HALT**. The healthy machines stop producing fresh projections while the inverter continues, but from Rock it projects Scissors where the others admit Paper. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it. ***HALT and REPEAT belong to the machine, not the field.***
+Now place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** and the healthy machines stop producing fresh continuation while the inverter continues. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it.
+
+***HALT and REPEAT belong to the machine, not the field.*** The machine controls what it projects. The field determines what continues to belong. ***The inverter can reflect forever. The field reflects the reflection.***
 
 ***The inverter can reflect forever. The field reflects the reflection.***
 
