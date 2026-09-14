@@ -26,6 +26,32 @@ $\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
 
 ***The inverter can reflect forever. The field reflects the reflection.***
 
+## House of Mirrors
+
+Now the fun begins. Give five independent machines **the identical state: Rock.** Four move through the same cycle:
+
+***Rock → Paper → Scissors → Rock.***
+
+Place an inverter among them. It occupies the same state space, but moves through it in the opposite direction:
+
+***Rock → Scissors → Paper → Rock.***
+
+Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
+
+Now place **HALT and REPEAT on top of that state cycle.** A healthy machine presented HALT produces no fresh continuation; presented REPEAT, it continues forward. The inverter reflects that behavior as well: presented HALT, it repeats; presented REPEAT, it halts.
+
+Give every machine **HALT.** Four stop producing fresh projections. The inverter continues. From Rock, it projects Scissors—but the healthy observers at Rock admit Paper. The inverter may continue producing its reverse cycle forever, but its projections acquire no authority merely because it keeps producing them.
+
+***The inverter can repeat forever while the field remains halted.***
+
+Now give every machine **REPEAT.** Four continue through the forward cycle. The inverter halts. But HALT stops only its production of fresh projections; it does not remove the observer from the field. The surrounding computation continues, and the inverter may still move whenever an admissible projection reaches it.
+
+***The inverter can halt while the field continues to repeat.***
+
+**A single mirror can invert an image. A second reflection reveals that inversion.** The machine controls what it projects. It does not control what the field admits.
+
+***The field reflects the reflection.***
+
 ## Raise the Anti
 
 A black box inside an oblivious machine creates **an inversion of an inversion.** The first machine may hide everything **within its bounds.** The second gives those bounds **no authority.** Whatever the box produces is projected back into a relation with independently maintained states. ***Its interior can remain oblivious. Its output cannot.***
