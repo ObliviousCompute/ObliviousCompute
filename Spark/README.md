@@ -1,6 +1,6 @@
 # ⚡ Spark ⚡
 
-[**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Correspondence`**](../Correspondence.md)**`⟶`**[**`Halt`**](..Halt/README.md)
+[**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Correspondence`**](../Correspondence.md)**`⟶`**[**`Halt`**](../Halt/README.md)
 
 ---
 
