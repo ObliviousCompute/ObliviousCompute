@@ -26,7 +26,7 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 ***Read the companion paper. Run the machine. Maybe read it again.***
 
-[**The Black Box**](BlackBox.md) asks what changes when computation no longer takes place **inside a black box**, but ***inside an oblivious medium*** among independently maintained states.
+[**BlackBox**](BlackBox.md) asks what changes when computation no longer takes place **inside a black box**, but ***inside an oblivious medium*** among independently maintained states.
 
 > *The box receives state. The box executes. The box projects state.*
 >
