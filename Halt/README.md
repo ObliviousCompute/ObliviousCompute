@@ -1,4 +1,4 @@
-# HaltingMachine
+# 🙂 HaltingMachine 🙂
 
 <img src="../Relics/HaltingMachine.gif" width="400"/>
 
