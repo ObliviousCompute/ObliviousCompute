@@ -34,9 +34,7 @@ $\large F:\text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarro
 \qquad
 F_I:\text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
-From here, give every machine **HALT**. The healthy machines stop producing fresh projections. The inverter continues, but from Rock it projects Scissors where the healthy observers admit Paper. It may repeat forever without making its reflection symmetrical with the field.
-
-Likewise, give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts. Its own continuation has stopped, but it remains an observer in the field and may still move when an admissible projection reaches it.
+From here, give every machine **HALT**. The healthy machines stop producing fresh projections while the inverter continues, but from Rock it projects Scissors where the others admit Paper. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it. ***HALT and REPEAT belong to the machine, not the field.***
 
 ***The inverter can reflect forever. The field reflects the reflection.***
 
