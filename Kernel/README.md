@@ -53,6 +53,8 @@ $\Large M_s=(s,\Phi_s)$
 
 $\Large \Sigma_{M_s}$
 
+> ***As the observer geometry changes, it re-enters the machine and reshapes*** \(\Sigma\)***. The relation itself is the computation, rather than an after-the-fact result.***
+
 ---
 
 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md) or start [**`Skeleton`**](../Skeleton/README.md)...**
