@@ -30,7 +30,7 @@ halted. It can also stop producing while the field continues to move it.
 
 The machine may remain a black box.
 
-[**`The BlackBox`**](../BlackBox.md) asks what happens when computation is moved
+[**`The BlackBox`**](./BlackBox.md) asks what happens when computation is moved
 outside the private execution of any individual machine and into the relation among
 the states those machines independently project.
 
