@@ -58,7 +58,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 *The Byzantine-resistant demonstration.*
 
-**[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into an intentionally small machine.**
+**[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into a tiny machine.**
 
 > ***Nine Heads. NinetyNine bones.***
 
