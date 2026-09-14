@@ -1,0 +1,4 @@
+from machine.field import main
+
+if __name__ == "__main__":
+    main()
