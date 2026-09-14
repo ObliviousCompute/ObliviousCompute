@@ -4,7 +4,7 @@
 
 <img src="../Relics/HaltingMachine.gif" width="350"/>
 
-> FOREVER
+> ...Forever...
 
 ---
 
