@@ -28,13 +28,13 @@ $\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
 
 ## House of Mirrors
 
-Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction; place an inverter among them and it moves through the **same state space in the opposite direction.** Now place HALT and REPEAT on top of that cycle. A healthy machine presented HALT stops producing fresh continuation; presented REPEAT, it continues. The inverter reflects that behavior as well.
+Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Now place **HALT** and **REPEAT** on top of that cycle. A healthy machine presented **HALT** stops producing fresh continuation. Presented **REPEAT**, it continues. The inverter reflects that behavior as well.
 
 $\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}\qquad\text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
-Give every machine **HALT.** The healthy machines stop producing fresh projections. The inverter continues, but from Rock it projects Scissors where the healthy observers admit Paper. It may repeat forever without making its reflection symmetrical with the field.
+From here, give every machine **HALT**. The healthy machines stop producing fresh projections. The inverter continues, but from Rock it projects Scissors where the healthy observers admit Paper. It may repeat forever without making its reflection symmetrical with the field.
 
-Give every machine **REPEAT.** The healthy machines continue through the cycle while the inverter halts. Its own continuation has stopped, but it remains an observer in the field and may still move when an admissible projection reaches it.
+Likewise, give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts. Its own continuation has stopped, but it remains an observer in the field and may still move when an admissible projection reaches it.
 
 ***The inverter can reflect forever. The field reflects the reflection.***
 
