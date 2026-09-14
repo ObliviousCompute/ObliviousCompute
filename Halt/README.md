@@ -8,19 +8,15 @@
 
 ---
 
-## 🪞 House of Mirrors 🪞
+## 🪞 The Inverter 🪞
 
 HaltingMachine is a tiny executable specimen of Oblivious Compute.
 
-Each terminal is an independent observer holding its own state. Normal observers move
-through Rock → Paper → Scissors. An inverter moves through the same state space in
-the opposite direction.
+Each terminal is an independent observer holding its own state. Normal observers move through Rock → Paper → Scissors. The inverter moves through the same state space in reverse.
 
-Nothing an observer projects becomes state merely because it was projected.
-Every observer admits a projection only from its own present position.
+A projection does not become state merely because it was projected. Each observer admits only what belongs from its own present position.
 
-The inverter can keep producing a continuation while the surrounding field remains
-halted. It can also stop producing while the field continues to move it.
+The inverter can keep running while the surrounding field remains halted. It can also stop while the field continues to move it.
 
 **Local execution does not decide the computation.**
 
@@ -28,11 +24,9 @@ halted. It can also stop producing while the field continues to move it.
 
 ## 🧠 Inside Out 🧠
 
-The machine may remain a black box.
+Read the companion paper. Run the machine. Maybe read it again.
 
-[**`The BlackBox`**](./BlackBox.md) asks what happens when computation is moved
-outside the private execution of any individual machine and into the relation among
-the states those machines independently project.
+[**BlackBox**](BlackBox.md) asks what changes when computation no longer takes place inside a black box, but inside an oblivious medium among independently maintained states.
 
 > *The box receives state. The box executes. The box projects state.*
 >
