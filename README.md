@@ -76,7 +76,11 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🪬 Halt 🪬
 
-[**`Halt`**](./Halt/README.md)
+*The computational boundary.*
+
+[**`Halt`**](./Halt/README.md) puts the inverter inside the machine.
+
+> *The inverter controls its projection. It does not control the computation.*
 
 ---
 
