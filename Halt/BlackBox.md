@@ -52,6 +52,26 @@ Now give every machine **REPEAT.** Four continue through the forward cycle. The 
 
 ***The field reflects the reflection.***
 
+## House of Mirrors
+
+Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the **same state space in the opposite direction.** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
+
+$\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}\qquad\text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
+
+Now place **HALT and REPEAT on top of that cycle.** A healthy machine presented HALT produces no fresh continuation; presented REPEAT, it continues forward. The inverter reflects that behavior as well: presented HALT, it repeats; presented REPEAT, it halts.
+
+Give every machine **HALT.** The healthy machines stop producing fresh projections. The inverter does not. From Rock, it projects Scissors while the healthy observers at Rock admit Paper. ***What appears endless inside one black box becomes visible*** when its output is reflected against independently maintained states across the field.
+
+The inverter may continue producing an endless hallway of reflected states, but every new projection is still compared against the state already held by the other observers. It can reflect forever without making its reflection symmetrical with the field.
+
+***The inverter can reflect forever. The field reflects the reflection.***
+
+Now give every machine **REPEAT.** The healthy machines continue through the forward cycle. The inverter halts. But halting its own production does not remove it from the field. An admissible projection may still move it, while the surrounding computation continues without requiring the inverter to originate anything at all.
+
+***The inverter can halt. The field does not have to halt with it.***
+
+**A single mirror can invert an image. A second reflection reveals that inversion.** The machine controls what it projects. **The field determines what continues to belong.**
+
 ## Raise the Anti
 
 A black box inside an oblivious machine creates **an inversion of an inversion.** The first machine may hide everything **within its bounds.** The second gives those bounds **no authority.** Whatever the box produces is projected back into a relation with independently maintained states. ***Its interior can remain oblivious. Its output cannot.***
