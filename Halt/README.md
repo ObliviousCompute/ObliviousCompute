@@ -34,3 +34,12 @@ On exit, HaltingMachine restores the terminal, clears the screen, and returns th
 ---
 
 **Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`The Beginning`**](https://github.com/ObliviousCompute)**...**
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
+
