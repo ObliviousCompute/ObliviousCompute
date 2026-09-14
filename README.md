@@ -50,7 +50,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 **[**`Hydra`**](./Hydra/README.md) shows how oblivious state moves and collapses.**
 
-> ***A simple admissibility gate***
+> ***A simple admissibility gate.***
 
 ---
 
@@ -80,7 +80,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 **[**`Halt`**](./Halt/README.md) puts the inverter inside the machine.**
 
-> ***The inverter controls its projection. It does not control the computation.***
+> ***Invert the Inversion.***
 
 ---
 
