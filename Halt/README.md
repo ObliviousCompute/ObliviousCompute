@@ -1,6 +1,6 @@
 # 🙂 HaltingMachine 🙂
 
-***Rock. Paper. Scissors. Rock. Paper. Scissors.***
+***...Rock. Paper. Scissors. Rock. Paper. Scissors...***
 
 <img src="../Relics/HaltingMachine.gif" width="350"/>
 
