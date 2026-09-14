@@ -10,23 +10,23 @@
 
 ## 🪞 The Inverter 🪞
 
-HaltingMachine is a tiny executable specimen of Oblivious Compute.
+**HaltingMachine** is a tiny executable specimen of **Oblivious Compute**.
 
-Each terminal is an independent observer holding its own state. Normal observers move through Rock → Paper → Scissors. The inverter moves through the same state space in reverse.
+Each terminal is an **independent observer** holding its own state. Normal observers move through ***Rock → Paper → Scissors.*** The inverter moves through the same state space ***in reverse.***
 
-A projection does not become state merely because it was projected. Each observer admits only what belongs from its own present position.
+A projection does not become state merely because it was projected. Each observer admits only what belongs from its own **present position**.
 
-The inverter can keep running while the surrounding field remains halted. It can also stop while the field continues to move it.
+The inverter can **keep running while the surrounding field remains halted.** It can also **stop while the field continues to move it.**
 
-**Local execution does not decide the computation.**
+***Local execution does not decide the computation.***
 
 ---
 
 ## 🧠 Inside Out 🧠
 
-Read the companion paper. Run the machine. Maybe read it again.
+***Read the companion paper. Run the machine. Maybe read it again.***
 
-[**BlackBox**](BlackBox.md) asks what changes when computation no longer takes place inside a black box, but inside an oblivious medium among independently maintained states.
+[**The Black Box**](BlackBox.md) asks what changes when computation no longer takes place **inside a black box**, but ***inside an oblivious medium*** among independently maintained states.
 
 > *The box receives state. The box executes. The box projects state.*
 >
