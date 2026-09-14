@@ -14,9 +14,9 @@ When independently maintained states resolve to the same position, their relatio
 
 Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
 
-$\large F:\text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}
+$\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}
 \qquad
-F_I:\text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
+(\mathrm{I})\ \text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
 Now place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** and the healthy machines stop producing fresh continuation while the inverter continues. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it.
 
