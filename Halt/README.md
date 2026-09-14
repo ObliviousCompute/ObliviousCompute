@@ -1,5 +1,7 @@
 # HaltingMachine
 
+<img src="../Relics/Awake.gif" width="400"/>
+
 A tiny loopback-socket specimen of an Oblivious Compute field.
 
 Install from this directory:
