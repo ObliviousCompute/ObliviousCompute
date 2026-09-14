@@ -28,49 +28,21 @@ $\large (H,H,H,H,R)\notin\Delta_5(\Omega_H)\qquad \Sigma(H,H,H,H,R)=0$
 
 ## House of Mirrors
 
-Now the fun begins. Give five independent machines **the identical state: Rock.** Four move through the same cycle:
-
-***Rock → Paper → Scissors → Rock.***
-
-Place an inverter among them. It occupies the same state space, but moves through it in the opposite direction:
-
-***Rock → Scissors → Paper → Rock.***
-
-Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
-
-Now place **HALT and REPEAT on top of that state cycle.** A healthy machine presented HALT produces no fresh continuation; presented REPEAT, it continues forward. The inverter reflects that behavior as well: presented HALT, it repeats; presented REPEAT, it halts.
-
-Give every machine **HALT.** Four stop producing fresh projections. The inverter continues. From Rock, it projects Scissors—but the healthy observers at Rock admit Paper. The inverter may continue producing its reverse cycle forever, but its projections acquire no authority merely because it keeps producing them.
-
-***The inverter can repeat forever while the field remains halted.***
-
-Now give every machine **REPEAT.** Four continue through the forward cycle. The inverter halts. But HALT stops only its production of fresh projections; it does not remove the observer from the field. The surrounding computation continues, and the inverter may still move whenever an admissible projection reaches it.
-
-***The inverter can halt while the field continues to repeat.***
-
-**A single mirror can invert an image. A second reflection reveals that inversion.** The machine controls what it projects. It does not control what the field admits.
-
-***The field reflects the reflection.***
-
-## House of Mirrors
-
-Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the **same state space in the opposite direction.** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
+Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the **same state space in the opposite direction.** Nothing inside the inverter needs to be inspected; its inversion becomes visible in what it projects.
 
 $\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}\qquad\text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
-Now place **HALT and REPEAT on top of that cycle.** A healthy machine presented HALT produces no fresh continuation; presented REPEAT, it continues forward. The inverter reflects that behavior as well: presented HALT, it repeats; presented REPEAT, it halts.
+Now place **HALT and REPEAT on top of that cycle.** A healthy machine presented HALT stops producing fresh continuation; presented REPEAT, it continues forward. The inverter reflects that behavior: HALT makes it repeat, and REPEAT makes it halt.
 
-Give every machine **HALT.** The healthy machines stop producing fresh projections. The inverter does not. From Rock, it projects Scissors while the healthy observers at Rock admit Paper. ***What appears endless inside one black box becomes visible*** when its output is reflected against independently maintained states across the field.
-
-The inverter may continue producing an endless hallway of reflected states, but every new projection is still compared against the state already held by the other observers. It can reflect forever without making its reflection symmetrical with the field.
+Give every machine **HALT.** The healthy machines stop. The inverter continues, but from Rock it projects Scissors where the healthy observers admit Paper. It may reflect forever without making its reflection symmetrical with the field.
 
 ***The inverter can reflect forever. The field reflects the reflection.***
 
-Now give every machine **REPEAT.** The healthy machines continue through the forward cycle. The inverter halts. But halting its own production does not remove it from the field. An admissible projection may still move it, while the surrounding computation continues without requiring the inverter to originate anything at all.
+Give every machine **REPEAT.** The healthy machines continue through the cycle while the inverter halts. Its local execution has stopped, but admissible projections from the field may still move it.
 
 ***The inverter can halt. The field does not have to halt with it.***
 
-**A single mirror can invert an image. A second reflection reveals that inversion.** The machine controls what it projects. **The field determines what continues to belong.**
+**The machine controls what it projects. The field determines what continues to belong.**
 
 ## Raise the Anti
 
