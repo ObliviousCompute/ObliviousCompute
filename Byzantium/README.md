@@ -86,7 +86,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-**Go Back to [**`Cerberus`**](../Cerberus/README.md) or Continue to [**`Correspondence`**](../Correspondence.md)...**
+**Go Back to [**`Cerberus`**](../Cerberus/README.md) or Continue to [**`Peers`**](../Correspondence.md)...**
 
 ---
 
