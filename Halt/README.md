@@ -64,7 +64,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ## 🕸️ Networking
 
-HaltingMachine runs locally over sockets as a **Smoketest**.
+**HaltingMachine runs locally** over sockets as a **Smoketest**.
 
 ---
 
