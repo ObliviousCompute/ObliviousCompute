@@ -30,3 +30,7 @@ There is no DDUP/history window in this specimen. The present R/P/S state itself
 The red-handle scissors wire state is the real UTF-8 `✂️` emoji. Its display row inserts one terminal cell after each glyph because some Linux terminal/font combinations draw the emoji across two cells while advancing the cursor by one.
 
 On exit, HaltingMachine restores the terminal, clears the screen, and returns the original window to a clean shell. Ctrl-C exits cleanly; Ctrl-Z and Ctrl-\ are ignored while the machine owns the terminal.
+
+---
+
+**Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`Theory`**](../Theory/README.md)**...**
