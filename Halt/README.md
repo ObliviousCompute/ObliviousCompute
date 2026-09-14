@@ -33,4 +33,4 @@ On exit, HaltingMachine restores the terminal, clears the screen, and returns th
 
 ---
 
-**Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`Theory`**](../Theory/README.md)**...**
+**Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`The Beginning`**](https://github.com/ObliviousCompute)**...**
