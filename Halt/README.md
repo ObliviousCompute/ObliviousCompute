@@ -1,6 +1,10 @@
 # 🙂 HaltingMachine 🙂
 
+***Rock. Paper. Scissors.***
+
 <img src="../Relics/HaltingMachine.gif" width="350"/>
+
+> FOREVER
 
 ---
 
