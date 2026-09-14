@@ -74,7 +74,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 🪬 Halt 🪬
+## 🙂 Halt 🙂
 
 *The computational boundary.*
 
