@@ -10,8 +10,6 @@ $\large x\rightarrow F_1(x),F_2(x),\ldots,F_n(x)\qquad \Sigma(F_1(x),F_2(x),\ldo
 
 When independently maintained states resolve to the same position, their relational configuration lies on the diagonal. Many machines remain physically independent while the distributed state resolves to **one computational position.**
 
-$\large (s,\ldots,s)\in\Delta_n(\Omega)\qquad \Delta_n(\Omega)\cong\Omega$
-
 ## House of Mirrors
 
 Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
