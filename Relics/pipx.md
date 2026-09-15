@@ -3,7 +3,7 @@
 **pipx** is a tool for installing and running Python applications in isolated environments.  
 It keeps your system clean and lets you run the games directly.
 
-[**`ICBM`**](../Spark/ICBM/README.md)**`⟶`**[**`Hydra`**](../Hydra/README.md)**`⟶`**[**`Cerberus`**](../Cerberus/README.md)**`⟶`**[**`Byzantium`**](../Byzantium/README.md) 
+[**`Halt`**](../Halt/README.md)**`⟶`**[**`ICBM`**](../Spark/ICBM/README.md)**`⟶`**[**`Hydra`**](../Hydra/README.md)**`⟶`**[**`Cerberus`**](../Cerberus/README.md)**`⟶`**[**`Byzantium`**](../Byzantium/README.md) 
 
 On most systems, installing pipx will also install Python automatically if it’s not already present.
 
