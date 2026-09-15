@@ -10,8 +10,8 @@ Additional machine-specific invariants may refine admissibility without changing
 
 | Symbol | Meaning |
 |--------|---------|
-| s | Present observer state |
-| x | Projected state |
+| $s$ | Present observer state |
+| $x$ | Projected state |
 | 𝓐 | Admissibility function |
 | Ω | State space |
 | Σ | Relational symmetry |
