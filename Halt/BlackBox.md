@@ -26,7 +26,7 @@ A projected state does not become authoritative merely because a machine produce
 
 ## Raise the Anti
 
-A black box inside an oblivious machine creates **an inversion of an inversion.** The first machine may hide everything **within its bounds.** The second gives those bounds **no authority.** Whatever the box produces is projected back into relation with independently maintained states. ***Its interior can remain oblivious. Its output cannot.***
+***Within an oblivious machine, a black box creates an inversion of an inversion.*** The black box may hide everything **within its bounds.** The oblivious machine gives those bounds **no authority.** Whatever the box produces is projected back into relation with independently maintained states. ***Its interior can remain oblivious. Its output cannot.***
 
 **Expanding the boundary does not restore that authority.** A projection may carry the geometry of the field, but ***it is not the field.*** Enclose a projection and the relation that gave it life remains outside. The closest any observer comes to the field is the admissible state it holds. **An inverted field may exist, but only as another live relation, not as a captured object turned inside out.**
 
