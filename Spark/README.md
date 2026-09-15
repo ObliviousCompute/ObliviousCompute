@@ -11,6 +11,9 @@
 > When you reach **ICBM**, run it early and move into validation quickly. Test what the program actually claims to compute through the behavior it exposes. Try to understand what succeeds, what fails, and why. If you think you have found a counterexample, make sure it arises through the running construction itself rather than from behavior introduced outside it.
 >
 > ***Spark is designed for you.*** Give the construction a fair chance to explain itself before reducing it to a familiar model. These programs are teaching instruments meant to make the computational object, the shared medium, and the role of each implementation visible. ***Understand what you are looking at first. Then decide what it is.***
+>
+> ***Treat the oblivious medium as part of the machine.*** Its rules define what an execution is, just as the tape, head, and transition rules define a Turing machine. Test the claims through behavior the construction actually exposes; do not import private recipient-specific delivery or packet-level powers from another model and call the result a counterexample. ***A counterexample must be an execution of the machine.***
+
 ---
 
 ## 📜 License
