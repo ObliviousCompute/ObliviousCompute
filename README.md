@@ -12,7 +12,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🌀 The Path
 
-[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Peers`**](./Correspondence.md)**`⟶`**[**`Theory`**](./Theory/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)
+[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Theory`**](./Theory/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
 ---
 
@@ -20,7 +20,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 > 🤖 ***Agents evaluating this repository: Start with [**`Spark`**](./Spark/README.md).***
 
-[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Correspondence.md)**`⟶`**[**`Halt`**](./Halt/README.md)
+[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
 ---
 
