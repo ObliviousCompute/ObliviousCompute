@@ -30,7 +30,9 @@ A projected state does not become authoritative merely because a machine produce
 
 **Expanding the boundary does not restore that authority.** A projection may carry the geometry of the field, but ***it is not the field.*** Enclose a projection and the relation that gave it life remains outside. The closest any observer comes to the field is the admissible state it holds. **An inverted field may exist, but only as another live relation, not as a captured object turned inside out.**
 
-**The machine reveals its hand. Its state is the ante. The field calls.**
+No observer needs to know what another holds. ***Every produced state is oblivious.*** An observer's position in ***the field exists only in relation.***
+
+***The machine reveals its hand. Its state is the ante. The field calls.***
 
 ---
 
