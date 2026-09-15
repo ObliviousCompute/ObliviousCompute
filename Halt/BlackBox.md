@@ -12,15 +12,15 @@ When independently maintained states resolve to the same position, their relatio
 
 ## House of Mirrors
 
-Now the fun begins. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
+Now the fun begins with a simple example. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
 
 $\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}
 \qquad
 (\mathrm{I})\ \text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
-Now place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** and the healthy machines stop producing fresh continuation while the inverter continues. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it.
+Place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** and the healthy machines stop producing fresh continuation while the inverter continues. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it.
 
-***HALT and REPEAT belong to the machine, not the field. The field determines what continues to belong.***
+***A projected state does not become authoritative merely because a machine produced it. Each observer retains its own state and admits only the continuation available from that position. The machine determines what it projects. The relation determines whether that projection becomes state.***
 
 > ***The inverter can reflect forever. The field reflects the reflection.***
 
