@@ -20,7 +20,7 @@ $\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\
 
 Place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** and the healthy machines stop producing fresh continuation while the inverter continues. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it.
 
-***A projected state does not become authoritative merely because a machine produced it. Each observer retains its own state and admits only the continuation available from that position. The machine determines what it projects. The relation determines whether that projection becomes state.***
+A projected state does not become authoritative merely because a machine produced it. Each observer **retains its own state** and admits only the continuation available from that position. ***The machine determines what it projects. The relation determines whether that projection becomes state.***
 
 > ***The inverter can reflect forever. The field reflects the reflection.***
 
