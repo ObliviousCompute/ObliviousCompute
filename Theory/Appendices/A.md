@@ -2,68 +2,73 @@
 
 ## Purpose
 
-This appendix presents the current axiomatic formulation of Oblivious Compute. Each axiom is stated in both natural language and mathematical form.
+This appendix presents the smallest axiomatic formulation of Oblivious Compute. The primitive requires independently maintained state, positional admissibility, and a relational computational field.
 
-## Resolution
-
-***The axioms define the conditions under which states may participate in the field.*** Their purpose is not to describe every invalid state, but to define admissibility with sufficient **resolution** that inadmissible states cannot progress through the system.
-
-Additional invariants may increase this **resolution** without changing the underlying computational primitive. The problem therefore becomes one of discovering the ***smallest set of independently verifiable invariants*** capable of distinguishing admissible state from inadmissible state.
-
-***An observer does not need to know how a presented state was produced. It only needs to determine whether that state belongs from its present position.***
-
-**Resolution also applies to observation.** An observer may be a transistor, thread, process, virtual machine, computer, cluster, or any other independently resolvable computational boundary. ***The primitive does not prescribe scale; one may simply zoom in or out.***
+Additional machine-specific invariants may refine admissibility without changing the underlying primitive.
 
 ## Notation
 
 | Symbol | Meaning |
 |--------|---------|
-| $s$ | State
+| s | Present observer state |
+| x | Projected state |
 | 𝓐 | Admissibility function |
 | Ω | State space |
-| $I$ | Invariant
 | Σ | Relational symmetry |
 | 𝓕 | Computational field |
+| Δ | Diagonal |
 
 ---
 
-## Axiom 1 — Invariance
+## Axiom 1 — Position
 
-Every admissible transition preserves the system invariants.
+Every observer independently maintains a present state in Ω. That present position is the point from which any encountered state is evaluated.
 
 ### Mathematical Form
 
-$\Large 𝓐(s_i,s_{i+1}) = 1 \Longrightarrow I(s_i) = I(s_{i+1}) $
+$\Large s_i\in\Omega \qquad (s_1,s_2,\ldots,s_n)\in\Omega^n$
 
 ---
 
-## Axiom 2 — Event Horizon
+## Axiom 2 — Admissibility
 
-Every cell possesses exactly one current event horizon.
+A projected state carries no authority merely because it was projected. Any observer that encounters x evaluates it from its own present position using the same binary admissibility function 𝓐.
 
 ### Mathematical Form
 
-$\Large \mathcal{E}(c)=\{x\in\Omega\mid 𝓐(s_c,x)=1\}$
+$\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s_i,x)\in\lbrace 0,1\rbrace$
+
+The same projected state may therefore belong from one observer position and not from another.
+
+$\Large s_i\neq s_j \qquad 𝓐(s_i,x)=1 \qquad 𝓐(s_j,x)=0$
 
 ---
 
-## Axiom 3 — Symmetry
+## Axiom 3 — Relation
 
-The field exists only where independently held states preserve the required relational invariants.
+Across independently maintained observer states, relational symmetry Σ constitutes the computational field 𝓕.
 
 ### Mathematical Form
 
-$\Large 𝓕 \equiv \Sigma(s_1,s_2,\ldots,s_n)$
+$\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
+
+***No observer contains the field. The field contains no state of its own. It exists only through relation among independently maintained states.***
 
 ---
 
-## Axiom 4 — Synchronization
+## Resolution
 
-A cell synchronizes by evaluating a presented state from its present position.
+As observer states resolve toward perfect relational symmetry, their independently maintained positions coincide on the diagonal.
 
 ### Mathematical Form
 
-$\Large 𝓐(s,x) \in {0,1} $
+$\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
+
+At perfect symmetry, the observer coordinates no longer vary independently.
+
+$\Large \Delta_n(\Omega)\cong\Omega$
+
+***The diagonal is a settled condition of the field, not its definition.***
 
 ---
 
