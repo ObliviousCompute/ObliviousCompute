@@ -100,7 +100,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-**Go Back to [**`Skeleton`**](../Skeleton/README.md) or Continue to [**`Cerberus`**](../Cerberus/README.md)...**
+🧭 **Go Back to [**`Skeleton`**](../Skeleton/README.md) or Continue to [**`Cerberus`**](../Cerberus/README.md)...**
 
 ---
 
