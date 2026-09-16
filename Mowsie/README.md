@@ -122,9 +122,9 @@ The mechanism is the same, just routed over the internet.
 > 
 > People can share a cache and use it however they want.  
 
-## 💡 Filaments
+## 💡 Lumas
 
-> Filament nodes provide visibility.
+> Luma nodes provide visibility.
 > 
 > They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
 > 
