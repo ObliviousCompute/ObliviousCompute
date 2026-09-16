@@ -38,8 +38,8 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ### ⚙️ Gear Ratio
 
-> Each Crown is a position in Hydra's three-state cycle. When one falls out of phase, **Hunger causes the mechanism to re-mesh**, because ***synchronization belongs to the relation among the gears.***
-
+> Each Crown is a position in Hydra's three-state cycle. When one falls out of phase, **Hunger acts like a skipped tooth, forcing the mechanism to re-mesh and return to alignment.**
+> 
 ---
 
 ## 🍟🍔 OmNom 🍔🍟
