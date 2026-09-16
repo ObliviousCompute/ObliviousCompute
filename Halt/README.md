@@ -36,9 +36,7 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 ### ⚙️ Gear Ratio
 
-> HaltingMachine turns the same three-state space in opposite directions. One observer moves `Rock → Paper → Scissors`; an inverter moves `Rock → Scissors → Paper`.
->
-> **The gears can turn differently while the mechanism still returns to a shared alignment.** The computation is not any one gear's motion. It is the relation among them.
+> HaltingMachine turns the same three-state cycle in opposite directions, like **gears rotating against one another**. ***The observers can move differently and still return to a shared alignment because the computation is in the relation among their states, not in any one observer.***
 
 ---
 
