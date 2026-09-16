@@ -34,6 +34,18 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 ---
 
+> ### ⚙️ Mechanical Intuition
+>
+> Think of the observers as gears in one mechanism.
+>
+> Some turn forward. Some turn backward. Their local motion is different, but the computation is not any one gear's motion. It is the relation among them.
+>
+> In HaltingMachine, the forward and inverted observers separate through the Rock–Paper–Scissors state space and then return to symmetry. No observer contains that symmetry as an authoritative global state. It exists in the configuration of the observers together.
+>
+> **The nodes are the gears. Their states are the positions. The relation is the mechanism.**
+
+---
+
 ## 🐧 Operating System Support
 
 - ✅ Linux  
