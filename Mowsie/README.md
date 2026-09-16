@@ -58,7 +58,7 @@ At their core, they are all ways of coordinating value within a group.
 
 ---
 
-## 💠 How This Exists
+## 🧫 How This Exists
 
 Mowsie is built from primitives already demonstrated in [**`Byzantium`**](../Byzantium/README.md).
 
@@ -132,7 +132,7 @@ The mechanism is the same, just routed over the internet.
 
 ---
 
-## ⚙️ Why This Is Different
+## 🔬 Why This Is Different
 
 Each cache defines a specific shape for what can exist within it.
 
