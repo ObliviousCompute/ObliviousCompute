@@ -44,7 +44,7 @@ Consensus arose because independent observers must agree on a common account of 
 
 ---
 
-**Continue to [**`Holography`**](./Holography.md)...**
+🧭 **Continue to [**`Holography`**](./Holography.md)...**
 
 ---
 
