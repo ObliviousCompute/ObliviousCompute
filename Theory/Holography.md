@@ -36,7 +36,7 @@ Every participant maintains only a local **facsimile**, shaped by its own hologr
 
 ---
 
-**Continue to [**`Admissibility`**](./Admissibility.md)...**
+🧭 **Continue to [**`Admissibility`**](./Admissibility.md)...**
 
 ---
 
