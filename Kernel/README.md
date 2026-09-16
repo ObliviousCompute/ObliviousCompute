@@ -57,8 +57,8 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-> ### ⚙️ Mechanical Intuition ⚙️
->
+### ⚙️ Mechanical Intuition ⚙️
+
 > Think of the observers as gears in one machine. Each gear maintains its own position and moves according to its own local constraints. No gear contains the state of the mechanism as a whole.
 >
 > What matters is the **relation among their positions**. When the gears are in phase, the mechanism is aligned. When one falls out of phase, the relation changes even though every gear still has a perfectly valid local position.
