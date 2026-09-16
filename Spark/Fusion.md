@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
 ---
 
-**Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)...**
+🧭 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)...**
 
 ---
 
