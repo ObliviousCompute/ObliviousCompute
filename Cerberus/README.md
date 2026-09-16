@@ -98,7 +98,7 @@ The **Oblivious Medium** lets Cerberus produce unusually rich distributed behavi
 
 ---
 
-**Go Back to [**`Hydra`**](../Hydra/README.md) or Continue to [**`Byzantium`**](../Byzantium/README.md)...**
+🧭 **Go Back to [**`Hydra`**](../Hydra/README.md) or Continue to [**`Byzantium`**](../Byzantium/README.md)...**
 
 ---
 
