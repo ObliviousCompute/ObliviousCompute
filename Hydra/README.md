@@ -36,12 +36,6 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ---
 
-### ⚙️ Gear Ratio
-
-> Each Crown is a position in Hydra's three-state cycle. When one falls out of phase, **Hunger acts like a skipped tooth, forcing the mechanism to re-mesh and return to alignment.**
-> 
----
-
 ## 🍟🍔 OmNom 🍔🍟
 
 ***MacAttack*** is a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and try to ***chomp the last bite.***
