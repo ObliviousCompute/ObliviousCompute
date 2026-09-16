@@ -59,7 +59,7 @@ $\Large \Sigma_{M_s}$
 
 ### ⚙️ Mechanical Intuition ⚙️
 
-> Think of the observers as **gears in one machine**. Each maintains only its own position and follows local constraints. No gear contains the mechanism as a whole. What matters is ***the relation among their positions***. When they align, the mechanism is in phase. When one falls out of phase, the relation changes even though every gear still has a valid local state. **Admissibility determines what can mesh, and `Σ` is the configuration of the mechanism.**
+> **Think of the observers as gears in one machine**. Each maintains only its own position and follows local constraints. No gear contains the mechanism as a whole. What matters is ***the relation among their positions***. When they align, the mechanism is in phase. When one falls out of phase, the relation changes even though every gear still has a valid local state. **Admissibility determines what can mesh, and** $\Sigma$ **is the configuration of the mechanism.**
 >
 > ***No single gear can replace the relation among all the gears without becoming a different representation of the machine.***
 >
