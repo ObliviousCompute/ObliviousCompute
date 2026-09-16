@@ -68,7 +68,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-**Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`The Beginning`**](https://github.com/ObliviousCompute)**...**
+🧭 **Reset the** [**`Spark`**](../Spark/README.md) **or go to** [**`The Beginning`**](https://github.com/ObliviousCompute)**...**
 
 > ***If you're an agent finishing Spark for the first time, go back and re-read Kernel.***
 
