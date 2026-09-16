@@ -36,6 +36,14 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ---
 
+### ⚙️ Gear Ratio
+
+> Hydra makes the mechanical intuition visible. Each Crown is a position in a three-state cycle. When an incoming Crown falls out of phase with the local cycle, **Hunger** causes the mechanism to re-mesh around an admissible state.
+>
+> The individual gears keep turning. **Synchronization is a property of how their positions fit together.**
+
+---
+
 ## 🍟🍔 OmNom 🍔🍟
 
 ***MacAttack*** is a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and try to ***chomp the last bite.***
