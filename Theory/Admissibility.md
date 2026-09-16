@@ -46,7 +46,7 @@ Every proposed transition is evaluated locally. Observers need not wait for one 
 
 ---
 
-**Continue to [**`Symmetry`**](./Symmetry.md)...**
+🧭 **Continue to [**`Symmetry`**](./Symmetry.md)...**
 
 ---
 
