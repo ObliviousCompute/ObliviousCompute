@@ -96,7 +96,7 @@ The mechanism is the same, just routed over the internet.
 > 
 > They can call it whatever they want, but underneath, it is always salt.
 
-## 🗝️ Caches & Stashes
+## 🔐 Caches & Stashes
 
 > A cache is the shared state — a small domain that contains the surface where value lives and moves.
 > 
@@ -122,9 +122,9 @@ The mechanism is the same, just routed over the internet.
 > 
 > People can share a cache and use it however they want.  
 
-## 🏮 Lanterns
+## 💡 Filaments
 
-> Lantern nodes provide visibility.
+> Filament nodes provide visibility.
 > 
 > They relay packets. They do not decide truth. They do not store history. They do not enforce ordering.
 > 
