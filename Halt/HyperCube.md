@@ -2,11 +2,11 @@
 
 ## Hexagram
 
-Start with three binary cells. Here, a **trit** means those three cells considered together. Each cell can hold 0 or 1, so the trit has eight possible positions. Nothing else is required.
+Start with **three** binary cells. Here, a **trit** means those three cells considered together. Each arrangement is one complete state, and that complete three-bit state is what a machine projects into the medium. With **three** cells there are only **eight** possible positions.
 
-$\Large 000 \quad 001 \quad 010 \quad 011 \quad 100 \quad 101 \quad 110 \quad 111$
+$\Large 000\quad001\quad010\quad011\quad100\quad101\quad110\quad111$
 
-A move changes one cell at a time. Pick any route from one fully uniform state to the other and the trit walks one step at a time between two opposite ends.
+A receiving machine admits the whole state, changes one cell, and projects another whole state. Pick any route between the two fully uniform positions and the trit walks one binary step at a time.
 
 $\Large 000 \rightarrow 001 \rightarrow 011 \rightarrow 111 \qquad 0 \rightarrow 1 \rightarrow 2 \rightarrow 3$
 
