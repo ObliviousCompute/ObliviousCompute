@@ -26,12 +26,10 @@ A single machine never needs to store that cube. It holds only one trit state at
 
 ## Tesseract
 
-Add one more binary cell. The rule does not change: two positions are neighbors when they differ by one bit. What changes is the number of positions hiding inside each Hamming shell.
+The rule stays small, but the space unfolds. Two positions are still neighbors when they differ by only one bit. Add one more binary cell and nothing about the walk changes; only the number of positions hiding inside it does.
 
 $\Large 1|3|3|1 \qquad 1|4|6|4|1$
 
-The gradient has grown by only one step, but its middle has opened. A cube has four Hamming shells; a tesseract has five. The walk is still made of single-bit changes, yet there are more positions and more possible routes inside the same simple rule. Increasing the number of cells increases the **nebulosity** of the geometry without changing the rule that generates it.
+The cube has **four** Hamming shells. The tesseract has **five**. The gradient has grown by only one step, yet its middle has opened from **three** positions to **six**. The rule is still a single-bit change, but the number of positions and possible routes inside that rule has begun to expand. Increasing the number of cells increases the **nebulosity** of the geometry without changing the rule that generates it.
 
 A classical machine may occupy one position in that geometry at a time. Quantum mechanically, amplitudes may occupy the geometry.
-
-***The rule stays small. The space unfolds.***
