@@ -8,7 +8,7 @@ $\Large 000 \quad 001 \quad 010 \quad 011 \quad 100 \quad 101 \quad 110 \quad 11
 
 A move changes one cell at a time. Pick any route from one fully uniform state to the other and the trit walks one step at a time between two opposite ends.
 
-$\Large 000 \rightarrow 001 \rightarrow 011 \rightarrow 111 \quad 0 \rightarrow 1 \rightarrow 2 \rightarrow 3$
+$\Large 000 \rightarrow 001 \rightarrow 011 \rightarrow 111 \qquad 0 \rightarrow 1 \rightarrow 2 \rightarrow 3$
 
 ***Three binary cells. Eight positions. Two opposite ends.***
 
@@ -28,7 +28,7 @@ No machine needs to store the cube. A machine holds only one trit state at a tim
 
 Add one more binary cell. The rule does not change: two positions are neighbors when they differ by one bit. What changes is the number of positions hiding inside each Hamming shell.
 
-$\Large 1|3|3|1 \quad 1|4|6|4|1$
+$\Large 1|3|3|1 \qquad 1|4|6|4|1$
 
 The gradient has grown by only one step, but its middle has opened. A cube has four Hamming shells; a tesseract has five. The walk is still made of single-bit changes, yet there are more positions and more possible routes inside the same simple rule. Increasing the number of cells increases the **nebulosity** of the geometry without changing the rule that generates it.
 
