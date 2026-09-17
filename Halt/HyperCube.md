@@ -14,15 +14,15 @@ $\Large 000 \rightarrow 001 \rightarrow 011 \rightarrow 111 \qquad 0 \rightarrow
 
 ## Metatron
 
-Now take those same eight positions and sort them only by how many bits differ from 000. Nothing has been added to the trit. We are only changing how we look at the positions it already had.
+Now take those same **eight** positions and sort them only by how many bits differ from **000**. Nothing has been added to the trit. No new state has been created. We are only changing how we look at the positions it already had.
 
 $\Large 000 \|\ 001\ 010\ 100 \|\ 011\ 101\ 110 \|\ 111$
 
-Those groups are Hamming shells. The first position is zero steps from 000; the next three are one step away; the next three are two steps away; 111 is three steps away. States in neighboring shells differ by one bit. Those one-bit relationships are exactly the edges of a three-dimensional Boolean cube.
+These groups are Hamming shells. **000** and **111** are antipodal poles. The first shell sits **zero** steps from **000**; the next **three** states sit **one** step away; the next **three** sit **two** steps away; and **111** sits **three** steps away. Change a single bit and the state moves between neighboring shells. Those one-bit relationships are not merely a sequence—they are exactly the edges of a three-dimensional Boolean cube.
 
-No machine needs to store the cube. A machine holds only one trit state at a time. The cube appears from the fixed relations among the eight possible states.
+A single machine never needs to store that cube. It holds only one trit state at a time. The cube appears only when the possible states are relationally superimposed.
 
-***The machine sees three bits. The relation sees a cube.***
+***A single machine sees three bits. The superposition sees a cube.***
 
 ## Tesseract
 
