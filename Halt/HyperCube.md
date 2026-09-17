@@ -2,64 +2,113 @@
 
 ## Hexagram
 
-A binary distinction has two positions. One observer may hold $0$ or $1$; nothing more is required. Place several independently maintained binary distinctions beside one another and the same two-position primitive acquires geometry. For $n$ observers, the relational configuration may be written as a point in the Boolean hypercube $Q_n$. The notation describes the configuration; no observer is required to contain the whole point as an authoritative global state.
+Start with three binary cells. Each cell can be either `0` or `1`.
 
-$\large b_i\in\{0,1\}\qquad Q_n=\{0,1\}^n\qquad |Q_n|=2^n$
+Here, **trit** means a bundle of three binary cells, not a base-three digit.
 
-The two maximally symmetric positions sit at opposite poles of the space. One pole contains only zeros, the other only ones. Every mixed configuration lies between them. The smallest visually useful case is three binary distinctions: eight possible configurations arranged as the vertices of an ordinary cube. The cube is not added to the computation. It appears when independent binary positions are considered together.
+That gives exactly eight possible trit states:
 
-$\large 0^n=(0,0,\ldots,0)\qquad 1^n=(1,1,\ldots,1)\qquad Q_3=\{0,1\}^3$
+\[
+000 \quad 001 \quad 010 \quad 011 \quad 100 \quad 101 \quad 110 \quad 111
+\]
 
-A local rule can remain almost embarrassingly small. From its present position, an observer may treat the state it already holds as idempotent and admit a projected state lying one edge farther in the permitted direction. If the active pole is $\tau\in\{0,1\}$, Hamming distance gives the direction without supplying a route.
+Nothing strange has happened yet. Three cells simply have eight possible arrangements.
 
-$\large D_\tau(q)=\sum_{i=1}^{n}(q_i\oplus\tau)\qquad A_\tau(q,x)=1\ \text{if}\ x=q\ \text{or}\ D_\tau(x)=D_\tau(q)-1$
+The two outside positions are exact opposites:
 
-Different executions may walk different edges. The rule does not choose a path through the cube; it gives the cube an orientation.
+\[
+0 \equiv 000
+\qquad\qquad
+1 \equiv 111
+\]
 
-***A bit has two positions. A population of bits has somewhere to go.***
+They are antipodal. One is all zero. The other is all one.
+
+The six states between them are not extra logical values. They are just the possible positions a three-cell state can occupy between the two poles.
+
+***Three binary cells. Eight positions. Two opposite ends.***
 
 ## Metatron
 
-Once admitted state is reprojected, the geometry begins to move. An observer encounters a projection, determines whether it belongs from its present position, admits it when permitted, and may project the resulting state again. One observer may change one binary distinction; another may encounter that new position and continue from there. No participant needs the route by which the state arrived. The current position is sufficient to determine the next admissible edge.
+Now sort the same eight states by how many bits must change to reach `000`.
 
-For three binary distinctions oriented toward $000$, one execution may descend:
+\[
+000
+\quad | \quad
+001,\ 010,\ 100
+\quad | \quad
+011,\ 101,\ 110
+\quad | \quad
+111
+\]
 
-$\large 111\rightarrow110\rightarrow100\rightarrow000\qquad D_0:3\rightarrow2\rightarrow1\rightarrow0$
+Those bars are Hamming shells.
 
-Another execution may take a different route through exactly the same geometry:
+The first shell is zero steps from `000`.
+The next shell is one step away.
+The next is two steps away.
+The last is three steps away.
 
-$\large 111\rightarrow011\rightarrow001\rightarrow000\qquad D_0:3\rightarrow2\rightarrow1\rightarrow0$
+Read the same trit from the other direction and the order reverses:
 
-The intermediate states form a Boolean cloud. There may be many paths, many projections, and many transient configurations, but the orientation remains simple. Toward the zero pole, healthy motion removes a $1$. Toward the one pole, healthy motion removes a $0$. The two computations are mirror images over the same state space.
+\[
+111
+\quad | \quad
+011,\ 101,\ 110
+\quad | \quad
+001,\ 010,\ 100
+\quad | \quad
+000
+\]
 
-$\large 1^n\longrightarrow\cdots\longrightarrow0^n\qquad\qquad 0^n\longrightarrow\cdots\longrightarrow1^n$
+A single-bit change moves the state one shell at a time.
 
-Now invert the operator. Nothing about the hypercube changes. The observer still moves one edge at a time, but its local orientation reverses. At a settled pole, ordinary progression has no farther edge toward coherence. An inverted move necessarily leaves that pole and enters the first Hamming shell.
+\[
+111 \rightarrow 110 \rightarrow 100 \rightarrow 000
+\]
 
-$\large D_\tau=0\quad\longrightarrow\quad D_\tau=1$
+Another walk can take a different route:
 
-For the three-dimensional case, $000$ may be left only through $001$, $010$, or $100$. These are different vertices but the same relational displacement from the pole. Inversion has become geometry: it is no longer merely the opposite bit, but motion against the prevailing orientation of the field.
+\[
+111 \rightarrow 011 \rightarrow 001 \rightarrow 000
+\]
 
-If terminal projections are treated as immediately admissible by observers operating under the same orientation, a population may migrate through the cloud and then snap to the first terminal pole it reaches. A later reversal of the active orientation releases the population and sends it through the same geometry toward the opposite pole.
+The route does not matter. Every legal one-bit move travels along one edge of the same cube.
 
-***The cloud remembers no path. It only has a direction, a distance, and a place to settle.***
+That cube does not need to be stored anywhere. No cell contains it. A machine only holds one trit state at a time.
+
+The cube appears because the eight possible trit states have a fixed one-bit relationship to one another.
+
+***The machine sees three bits. The relation sees a cube.***
 
 ## Tesseract
 
-Nothing in the construction depends on the cube remaining three-dimensional. Three binary distinctions produce eight vertices. Four produce the sixteen vertices of a tesseract. In general, $n$ independently maintained binary distinctions produce an $n$-dimensional Boolean hypercube containing $2^n$ possible configurations.
+Add one more binary cell.
 
-$\large Q_3=\{0,1\}^3\qquad Q_4=\{0,1\}^4\qquad Q_n=\{0,1\}^n$
+Three cells have:
 
-The raw configuration space grows exponentially, but the simplest relational description need not. Relative to a selected pole, every vertex belongs to one of only $n+1$ Hamming shells. An enormous cloud may therefore be organized by a very small quantity: how many binary distinctions still disagree with the active symmetry.
+\[
+2^3=8
+\]
 
-$\large S_k=\{q\in Q_n:D_\tau(q)=k\}\qquad k\in\{0,1,\ldots,n\}$
+possible states.
 
-A million binary distinctions induce $2^{1,000,000}$ possible vertices, yet their distance from a selected pole is still an integer between $0$ and $1,000,000$. The microscopic route may be combinatorially enormous while the macroscopic orientation remains unchanged.
+Four cells have:
 
-The same idea can also be composed rather than flattened. A small group may resolve to a relationally coherent result; several such resolved groups may then participate as positions in another group, and the same local primitive may be applied again. Scale need not require a new rule. It may arise by repeating the same relation at a higher order.
+\[
+2^4=16
+\]
 
-$\large 3\rightarrow3^2\rightarrow3^3\rightarrow\cdots$
+possible states.
 
-The hypercube therefore supplies both a finite geometry and a route to arbitrary scale. Local observers retain binary distinctions. Their relations supply the dimensions. Their admissible motion supplies the orientation. Their settled symmetry supplies the pole.
+The same rule still works: two states are neighbors when they differ by one bit.
 
-***The rule stays small. The space does not.***
+The ordinary cube has become a four-dimensional Boolean cube: a tesseract.
+
+Nothing new had to be invented. The state simply gained another binary position.
+
+The same idea continues for any number of binary cells. More cells do not change the rule. They only create more possible positions and more possible walks.
+
+A classical machine may walk those positions one at a time. A quantum walk can place amplitude across many positions of the same Boolean geometry before measurement. The geometry is the same; the way the machine occupies it is different.
+
+***The rule stays small. The space unfolds.***
