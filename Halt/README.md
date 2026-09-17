@@ -28,6 +28,8 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 [**BlackBox**](BlackBox.md) asks what changes when computation no longer takes place **inside a black box**, but ***inside an oblivious medium*** among independently maintained states.
 
+[**HyperCube**](./HyperCube.md) asks what happens when the simplest possible binary states are allowed to move through an oblivious medium.
+
 > *The box receives state. The box executes. The box projects state.*
 >
 > ***Then the computation begins.***
