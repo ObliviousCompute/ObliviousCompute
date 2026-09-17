@@ -24,7 +24,7 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 ## 🧠 Inside Out 🧠
 
-***Read the companion paper. Run the machine. Maybe read it again.***
+***Read the companion papers. Run the machine. Maybe read em again.***
 
 [**BlackBox**](BlackBox.md) asks what changes when computation no longer takes place **inside a black box**, but ***inside an oblivious medium*** among independently maintained states.
 
