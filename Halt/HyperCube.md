@@ -33,3 +33,16 @@ $\Large 1|3|3|1 \qquad 1|4|6|4|1$
 The cube has **four Hamming shells**. The tesseract has **five**. The gradient has grown by only one step, yet its middle has opened from **three positions** to **six**. The rule is still a **single-bit change**, but the number of positions and possible routes inside that rule has begun to expand. Increasing the number of cells increases the **nebulosity** of the geometry without changing the rule that generates it.
 
 A classical machine **walks the geometry one position at a time**. A **quantum walk** may let amplitudes occupy and evolve across many positions of that same geometry simultaneously.
+
+---
+
+**Go back to [**`Halt`**](./README.md)...**
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
+
