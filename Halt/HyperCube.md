@@ -37,6 +37,7 @@ If an oblivious machine is a **Boolean cloud**, its natural relational language 
 A classical machine **walks the geometry one position at a time**. A **quantum walk** may let amplitudes occupy and evolve across many positions of that same geometry simultaneously.
 
 ***The oblivious medium allows binary potentiality to unfold into relational geometry.***
+
 ---
 
 **Go back to [**`Halt`**](./README.md)...**
