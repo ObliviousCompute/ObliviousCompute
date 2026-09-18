@@ -29,31 +29,11 @@ $\Large \Omega\rightarrow\Omega^3\rightarrow\Omega$
 
 ## Tesseract
 
-Now we can talk.
+Now that we can talk freely. A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language**. **Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.** The machine needs no privileged orientation because only **relational position** matters. *I am here. Something arrives. Does it belong?* Even an inverter can speak the same language. Its local interpretation may reverse, but the medium does not need to reverse with it. The machine still occupies a position, evaluates what arrives, and projects what belongs next.
 
-A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language**.
+The boxes themselves do not need to be alike. One may be an observer, another an inverter, another a Raspberry Pi, a server, a cluster, or something stranger. The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one Boolean cloud to become a cell inside another. The machine becomes a **scale rather than a boundary**. A relational space settles, simplifies into $\Omega$, and that settled state may become a new point of relation inside something larger.
 
-**Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.**
-
-The machine does not need a privileged orientation. **Orientation does not matter. Only relational position matters.** An observer asks only: *I am here. Something arrives. Does it belong?*
-
-That remains true even when the machine is inverted. An inverter may reverse its local interpretation without requiring an inverted medium. It still occupies a position, receives a projection, evaluates admissibility, and projects another state.
-
-The boxes themselves may be different as well. One may be an observer. Another may be an inverter. One may run on a transistor array, a Raspberry Pi, a server, or an entire cluster. The relational language does not require every box to share the same internal architecture.
-
-A resolved machine may itself become a state at another scale. A Boolean cloud may collapse into one settled distinction, and that distinction may become a cell inside another Boolean cloud. The machine becomes a **scale rather than a boundary**.
-
-This is the doorway hiding inside $\Omega$. A relational space settles, simplifies, and becomes available to another relational space. The same language can therefore recurse through machines built from machines without requiring the larger machine to contain the internal history of the smaller one.
-
-And nothing in that language says the box must be classical.
-
-A classical machine may **spacewalk** the Boolean geometry by realizing one admissible position at a time. A quantum implementation may instead support a **quantum walk**, allowing amplitudes to evolve across many positions of that same Boolean geometry before measurement resolves an outcome. The details of coherence, control, and measurement remain inside the box. The surrounding relational language need only understand what the box ultimately projects.
-
-Observer or inverter. Classical or quantum. Small machine or constellation.
-
-The boxes may change.
-
-The language remains relational.
+Nothing in that language requires the box to be classical. A classical machine may **spacewalk** the Boolean geometry by realizing one admissible position at a time. A quantum implementation may instead support a **quantum walk**, allowing amplitudes to evolve across many positions of that same Boolean geometry before measurement resolves an outcome. The machinery inside the box may change completely while the relational interface remains recognizable to the medium. Observer or inverter. Classical or quantum. Small machine or constellation. **The boxes may change. The language remains relational.**
 
 ***The oblivious medium allows binary potentiality to unfold into relational geometry.***
 
