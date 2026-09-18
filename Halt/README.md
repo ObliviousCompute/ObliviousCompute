@@ -30,11 +30,11 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 ***Two companion papers. Read them in order.***
 
-[**BlackBox**](./BlackBox.md) turns the machine **inside out**. It asks what happens when computation no longer belongs to the box, but appears in **relation among independently maintained states**.
+[**BlackBox**](./BlackBox.md) moves computation **outside the box** and into **relation among independently maintained states**.
 
-[**HyperCube**](./Hypercube.md) gives that relation a **Boolean shape**. It walks the state space, collapses it through **symmetry**, and asks what happens when **relational geometry becomes a language**.
+[**HyperCube**](./Hypercube.md) gives that relation a **Boolean language**.
 
-> ***First move the computation outside the box. Then learn the language it speaks.***
+> ***See the computation first. Then learn how it speaks.***
 
 ---
 
