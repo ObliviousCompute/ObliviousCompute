@@ -30,9 +30,9 @@ The inverter can **keep running while the surrounding field remains halted.** It
 
 ***Two companion papers. Read them in order.***
 
-[**BlackBox**](./BlackBox.md) moves computation **outside the box** and into **relation among independently maintained states**.
+[**BlackBox**](./BlackBox.md) moves computation **outside the box.** 
 
-[**HyperCube**](./HyperCube.md) gives that relation a **Boolean language**.
+[**HyperCube**](./HyperCube.md) gives the relation a **Boolean language.**
 
 > ***See the computation first. Then learn how it speaks.***
 
