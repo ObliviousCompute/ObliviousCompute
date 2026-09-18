@@ -14,23 +14,15 @@ These groups are **Hamming shells**. The first shell is zero changes from **000*
 
 ## Metatron
 
-The two antipodal positions are also the two perfectly uniform Boolean states. Strip away the walk and they simplify immediately:
+The two antipodal positions are also the two perfectly uniform Boolean states. Strip away the walk and the poles simplify immediately. **000** resolves to **0**, **111** resolves to **1**, and together those two values form the Boolean state space $\Omega$. Nothing new has appeared. We are only looking more closely at the object already walked in **Hexagram**.
 
 $\Large 000\leftrightarrow0 \qquad 111\leftrightarrow1 \qquad \Omega=\{0,1\}$
 
-This is the same old trick.
-
-The three-cell Boolean state space is the cube just walked in **Hexagram**, while perfect symmetry lies on the diagonal already established by the Oblivious Compute Kernel:
+This is the same old trick from the **Kernel**. The three-cell Boolean state space is the cube, while perfect symmetry lies on the diagonal and reduces back to the original state space. No observer contains the cube. Each contains only its own state, while the larger geometry appears through relation among those states. The hypercube is therefore not additional state stored somewhere else. It is the relational shape of the Boolean product space.
 
 $\Large \Delta_3(\Omega)\cong\Omega \qquad Q_3=\Omega^3$
 
-Nothing new has been added to the machine. The hypercube is simply what the Boolean product space looks like once its positions are related by one-bit admissibility.
-
-No observer contains the cube. Each observer contains only its own state. The larger geometry appears through the relations among those states, just as the computational field appears through relations among independently maintained observers.
-
-The effect is almost **holographic**: a small local state participates in a larger object that exists nowhere locally in full. At perfect symmetry, that larger relational structure collapses back onto the diagonal and reduces again to the same state space from which it came.
-
-A settled state need not be a permanent ending. Once reduced, it may itself become a point of relation inside something larger.
+At perfect symmetry, the expanded relational structure settles back into the same state space from which it came. That settled state need not be a permanent ending. It may itself become a point of relation inside something larger. The cube opens from $\Omega$, resolves through symmetry, and returns to $\Omega$ as another doorway.
 
 $\Large \Omega\rightarrow\Omega^3\rightarrow\Omega$
 
