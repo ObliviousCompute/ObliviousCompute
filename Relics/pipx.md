@@ -15,8 +15,6 @@ On most systems, installing pipx will also install Python automatically if it’
 brew install pipx && pipx ensurepath
 ```
 
-*Reopen Terminal after installing pipx.*
-
 ---
 
 ## Debian/Ubuntu
