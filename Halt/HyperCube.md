@@ -18,7 +18,7 @@ Inside the geometry, the two antipodal positions are also the two **perfectly un
 
 $\Large 000\leftrightarrow0 \qquad 111\leftrightarrow1 \qquad \Omega=\{0,1\}$
 
-This is the **same old trick** from the **Kernel**. The three-cell Boolean state space is the cube, while perfect symmetry lies on the diagonal and reduces back to the original state space. **No observer contains the cube.** Each contains only its own state, while the larger geometry appears through relation among those states. The hypercube is therefore not additional state stored somewhere else. It is the **relational shape of the Boolean product space**.
+This is the **same old trick** from the **Kernel**. The three-cell Boolean state space is the cube, while perfect symmetry lies on the diagonal and reduces back to the original state space. No observer contains the cube. **The superposition is analogous to a hologram.** The whole geometry appears in the relation even though no observer contains it. Each contains only its own state, while the larger geometry appears through relation among those states. The hypercube is therefore not additional state stored somewhere else. It is the **relational shape of the Boolean product space**.
 
 $\Large \Delta_3(\Omega)\cong\Omega \qquad Q_3=\Omega^3$
 
