@@ -32,8 +32,11 @@ $\Large 1|3|3|1 \qquad 1|4|6|4|1$
 
 The cube has **four Hamming shells**. The tesseract has **five**. The gradient has grown by only one step, yet its middle has opened from **three positions** to **six**. The rule is still a **single-bit change**, but the number of positions and possible routes inside that rule has begun to expand. Increasing the number of cells increases the **nebulosity** of the geometry without changing the rule that generates it.
 
+If an oblivious machine is a **Boolean cloud**, its natural relational language is Boolean as well—but now the Booleans have position. A projected state does not merely say **zero** or **one**; it occupies a place, has neighbors, and may walk toward another position. **Bits provide the symbols. Geometry gives them relation.**
+
 A classical machine **walks the geometry one position at a time**. A **quantum walk** may let amplitudes occupy and evolve across many positions of that same geometry simultaneously.
 
+***The oblivious medium allows binary potentiality to unfold into relational geometry.***
 ---
 
 **Go back to [**`Halt`**](./README.md)...**
