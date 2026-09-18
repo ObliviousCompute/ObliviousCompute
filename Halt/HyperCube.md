@@ -2,39 +2,79 @@
 
 ## Hexagram
 
-Start with **three binary cells**. Here, a **trit** means those three cells considered together. Each arrangement is one **complete state**, and that complete three-bit state is what a machine projects into the medium. With three cells there are only **eight possible positions**.
+Start with **three binary cells**. Here, a **trit** means those three cells considered together. Each arrangement is one complete state projected into the medium. With three cells there are only **eight possible positions**, and movement between them follows one simple rule: a neighboring state differs by exactly **one bit**.
 
-$\Large 000\quad001\quad010\quad011\quad100\quad101\quad110\quad111$
+A walk from one antipodal position to the other can therefore be counted by distance and written as an actual sequence of states.
 
-A receiving machine admits the **whole state**, changes one cell, and projects another whole state. Pick any route between the two fully uniform positions and the trit **walks one binary step at a time**.
+$\Large 0\rightarrow1\rightarrow2\rightarrow3 \qquad 000\rightarrow001\rightarrow011\rightarrow111$
 
-$\Large 000 \rightarrow 001 \rightarrow 011 \rightarrow 111 \qquad 0 \rightarrow 1 \rightarrow 2 \rightarrow 3$
+Every arrow in that walk is **admissible** because exactly one cell changes. Another route may pass through different intermediate states, but no state may simply jump across the space. From any present position, a projected state either belongs next or it does not.
 
-***Three binary cells. Eight positions. Two opposite ends.***
+A **spacewalk** is an admissibility walk through neighboring states, one position at a time.
+
+The complete state space can be grouped by distance from **000**:
+
+$\Large 000 \quad|\quad 001\ 010\ 100 \quad|\quad 011\ 101\ 110 \quad|\quad 111$
+
+These are **Hamming shells**. The first shell is zero changes from **000**. The next three positions are one change away. The next three are two changes away. **111** is three changes away and sits antipodal to **000**.
+
+The shells show which positions exist at each distance. **Admissibility determines which neighboring position may actually follow which.** The route may change. The rule does not.
+
+Add another binary cell and the same rule produces more positions, more shells, more routes, and more **nebulosity**. Nothing fundamental changes.
+
+***We will stay with the cube.***
+
 
 ## Metatron
 
-Now take those same **eight positions** and sort them only by how many bits differ from **000**. Nothing has been added to the trit. **No new state has been created.** We are only changing how we look at the positions it already had.
+The two antipodal positions are also the two perfectly uniform Boolean states. Strip away the walk and they simplify immediately:
 
-$\Large 000 \|\ 001\ 010\ 100 \|\ 011\ 101\ 110 \|\ 111$
+$\Large 000\leftrightarrow0 \qquad 111\leftrightarrow1 \qquad \Omega=\{0,1\}$
 
-These groups are **Hamming shells**. **000** and **111** are **antipodal poles**. The first shell sits zero steps from **000**; the next three states sit one step away; the next three sit two steps away; and **111** sits three steps away. Change a single bit and the state moves between neighboring shells. Those one-bit relationships are not merely a sequence—they are exactly the **edges of a three-dimensional Boolean cube**.
+This is the same old trick.
 
-A single machine never needs to store that cube. It holds only **one trit state at a time**. The cube appears only when the possible states are **relationally superimposed**.
+The three-cell Boolean state space is the cube just walked in **Hexagram**, while perfect symmetry lies on the diagonal already established by the Oblivious Compute Kernel:
 
-***A single machine sees three bits. The superposition sees a cube.***
+$\Large \Delta_3(\Omega)\cong\Omega \qquad Q_3=\Omega^3$
+
+Nothing new has been added to the machine. The hypercube is simply what the Boolean product space looks like once its positions are related by one-bit admissibility.
+
+No observer contains the cube. Each observer contains only its own state. The larger geometry appears through the relations among those states, just as the computational field appears through relations among independently maintained observers.
+
+The effect is almost **holographic**: a small local state participates in a larger object that exists nowhere locally in full. At perfect symmetry, that larger relational structure collapses back onto the diagonal and reduces again to the same state space from which it came.
+
+A settled state need not be a permanent ending. Once reduced, it may itself become a point of relation inside something larger.
+
+$\Large \Omega\rightarrow\Omega^3\rightarrow\Omega$
+
 
 ## Tesseract
 
-The **rule stays small**, but the **space unfolds**. Two positions are still neighbors when they differ by only one bit. Add one more binary cell and nothing about the walk changes; only the number of positions hiding inside it does.
+Now we can talk.
 
-$\Large 1|3|3|1 \qquad 1|4|6|4|1$
+A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language**.
 
-The cube has **four Hamming shells**. The tesseract has **five**. The gradient has grown by only one step, yet its middle has opened from **three positions** to **six**. The rule is still a **single-bit change**, but the number of positions and possible routes inside that rule has begun to expand. Increasing the number of cells increases the **nebulosity** of the geometry without changing the rule that generates it.
+**Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.**
 
-If an oblivious machine is a **Boolean cloud**, its natural relational language is Boolean as well—but now the Booleans have position. A projected state does not merely say **zero** or **one**; it occupies a place, has neighbors, and may walk toward another position. **Bits provide the symbols. Geometry gives them relation.**
+The machine does not need a privileged orientation. **Orientation does not matter. Only relational position matters.** An observer asks only: *I am here. Something arrives. Does it belong?*
 
-A classical machine **walks the geometry one position at a time**. A **quantum walk** may let amplitudes occupy and evolve across many positions of that same geometry simultaneously.
+That remains true even when the machine is inverted. An inverter may reverse its local interpretation without requiring an inverted medium. It still occupies a position, receives a projection, evaluates admissibility, and projects another state.
+
+The boxes themselves may be different as well. One may be an observer. Another may be an inverter. One may run on a transistor array, a Raspberry Pi, a server, or an entire cluster. The relational language does not require every box to share the same internal architecture.
+
+A resolved machine may itself become a state at another scale. A Boolean cloud may collapse into one settled distinction, and that distinction may become a cell inside another Boolean cloud. The machine becomes a **scale rather than a boundary**.
+
+This is the doorway hiding inside $\Omega$. A relational space settles, simplifies, and becomes available to another relational space. The same language can therefore recurse through machines built from machines without requiring the larger machine to contain the internal history of the smaller one.
+
+And nothing in that language says the box must be classical.
+
+A classical machine may **spacewalk** the Boolean geometry by realizing one admissible position at a time. A quantum implementation may instead support a **quantum walk**, allowing amplitudes to evolve across many positions of that same Boolean geometry before measurement resolves an outcome. The details of coherence, control, and measurement remain inside the box. The surrounding relational language need only understand what the box ultimately projects.
+
+Observer or inverter. Classical or quantum. Small machine or constellation.
+
+The boxes may change.
+
+The language remains relational.
 
 ***The oblivious medium allows binary potentiality to unfold into relational geometry.***
 
