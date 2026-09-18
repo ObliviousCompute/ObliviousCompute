@@ -14,7 +14,7 @@ These groups are **Hamming shells**. The first shell is zero changes from **000*
 
 ## Metatron
 
-The two antipodal positions are also the two perfectly uniform Boolean states. Strip away the walk and the poles simplify immediately. **000** resolves to **0**, **111** resolves to **1**, and together those two values form the Boolean state space $\Omega$. Nothing new has appeared. We are only looking more closely at the object already walked in **Hexagram**.
+Inside the geomertry the two antipodal positions are also two perfectly uniform Boolean states. Strip away the walk and the poles simplify immediately. **000** resolves to **0**, **111** resolves to **1**, and together those two values form the Boolean state space $\Omega$. Nothing new has appeared. We are only looking more closely at the object already walked in **Hexagram**.
 
 $\Large 000\leftrightarrow0 \qquad 111\leftrightarrow1 \qquad \Omega=\{0,1\}$
 
@@ -33,7 +33,7 @@ Now that we can talk freely. A Boolean hypercube is more than a picture of possi
 
 ***I am here. Something arrives. Does it belong?***
 
-The boxes themselves do not need to be alike. One may be an observer, another an inverter, another a Raspberry Pi, a server, a cluster, or something stranger. The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one Boolean cloud to become a cell inside another. The machine becomes a **scale rather than a boundary**. At settlement, the relational structure simplifies back to $\Omega$, and that settled state may become a new point of relation inside something larger.
+The boxes themselves do not need to be alike. One may be an observer, another an inverter, another single board computer, a server, a cluster, or something stranger. The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one Boolean cloud to become a cell inside another. The machine becomes a **scale rather than a boundary**. At settlement, the relational structure simplifies back to $\Omega$, and that settled state may become a new point of relation inside something larger.
 
 ***Everything settles to $\Omega$. Then $\Omega$ becomes a word.***
 
