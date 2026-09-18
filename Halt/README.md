@@ -10,15 +10,7 @@
 
 ## 🪞 The Inverter 🪞
 
-**HaltingMachine** is a tiny executable specimen of **Oblivious Compute**.
-
-Each terminal is an **independent observer** holding its own state. Normal observers move through ***Rock → Paper → Scissors.*** The inverter moves through the same state space ***in reverse.***
-
-A projection does not become state merely because it was projected. Each observer admits only what belongs from its own **present position**.
-
-The inverter can **keep running while the surrounding field remains halted.** It can also **stop while the field continues to move it.**
-
-***Local execution does not decide the computation.***
+**HaltingMachine** is a tiny executable specimen of **Oblivious Compute**. Each terminal is an **independent observer** holding its own state. Normal observers move through *Rock → Paper → Scissors*, while the inverter moves through the **same state space in reverse**. A projection does not become state merely because it was projected. Each observer admits only what belongs from its own **present position**, so the inverter may keep running while the surrounding field remains halted, or stop while the field continues to move it. **Local execution does not decide the computation. The relation among independently maintained states does.**
 
 ### ⚙️ Gear Ratio
 
