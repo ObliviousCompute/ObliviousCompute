@@ -2,28 +2,15 @@
 
 ## Hexagram
 
-Start with **three binary cells**. Here, a **trit** means those three cells considered together. Each arrangement is one complete state projected into the medium. With three cells there are only **eight possible positions**, and movement between them follows one simple rule: a neighboring state differs by exactly **one bit**.
-
-A walk from one antipodal position to the other can therefore be counted by distance and written as an actual sequence of states.
+Start with **three binary cells**. Here, a **trit** means those three cells considered together, with each arrangement forming one complete state projected into the medium. With three cells there are only **eight possible positions**. Movement between them follows one simple rule. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
 
 $\Large 0\rightarrow1\rightarrow2\rightarrow3 \qquad 000\rightarrow001\rightarrow011\rightarrow111$
 
-Every arrow in that walk is **admissible** because exactly one cell changes. Another route may pass through different intermediate states, but no state may simply jump across the space. From any present position, a projected state either belongs next or it does not.
-
-A **spacewalk** is an admissibility walk through neighboring states, one position at a time.
-
-The complete state space can be grouped by distance from **000**:
+Every arrow in that walk is **admissible** because exactly one cell changes. Another route may pass through different intermediate states, but no state may simply jump across the space. From any present position, a projected state either belongs next or it does not. A **spacewalk** is therefore an admissibility walk through neighboring states, one position at a time. The complete state space can be grouped by distance from **000**, showing every position available at each step of the walk.
 
 $\Large 000 \quad|\quad 001\ 010\ 100 \quad|\quad 011\ 101\ 110 \quad|\quad 111$
 
-These are **Hamming shells**. The first shell is zero changes from **000**. The next three positions are one change away. The next three are two changes away. **111** is three changes away and sits antipodal to **000**.
-
-The shells show which positions exist at each distance. **Admissibility determines which neighboring position may actually follow which.** The route may change. The rule does not.
-
-Add another binary cell and the same rule produces more positions, more shells, more routes, and more **nebulosity**. Nothing fundamental changes.
-
-***We will stay with the cube.***
-
+These groups are **Hamming shells**. The first shell is zero changes from **000**, the next three positions are one change away, the next three are two changes away, and **111** is three changes away at the opposite pole. The shells show which positions exist at each distance, while **admissibility determines which neighboring position may actually follow which**. The route may change, but the rule does not. Adding another binary cell produces more positions, more shells, more routes, and more **nebulosity** without changing the rule that generates them, though we will stay with the cube for now.
 
 ## Metatron
 
