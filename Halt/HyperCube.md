@@ -12,7 +12,6 @@ $\Large 000 \quad|\quad 001\ 010\ 100 \quad|\quad 011\ 101\ 110 \quad|\quad 111$
 
 These groups are **Hamming shells**. The first shell is zero changes from **000**, the next three positions are one change away, the next three are two changes away, and **111** is three changes away at the opposite pole. The shells show which positions exist at each distance, while **admissibility determines which neighboring position may actually follow which**. The route may change, but **the rule does not**. Adding another binary cell produces more positions, more shells, more routes, and more **nebulosity** without changing the rule that generates them, though we will stay with the cube for now.
 
-
 ## Metatron
 
 Inside the geometry, the two antipodal positions are also the two **perfectly uniform Boolean states**. Strip away the walk and the poles simplify immediately. **000** resolves to **0**, **111** resolves to **1**, and together those two values form the Boolean state space $\Omega$. Nothing new has appeared. We are only looking more closely at the object already walked in **Hexagram**.
@@ -27,14 +26,13 @@ At perfect symmetry, the expanded relational structure **settles back into the s
 
 $\Large \Omega\rightarrow\Omega^3\rightarrow\Omega$
 
-
 ## Tesseract
 
-Now that we can talk freely. A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language**. **Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.** The machine needs no privileged orientation because only **relational position** matters. Even an inverter can speak the same language. Its local interpretation may reverse, but the medium does not need to reverse with it. The machine still occupies a position, evaluates what arrives, and projects what belongs next.
+Now that we can talk freely. A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language. Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.** The machine needs no privileged orientation because only **relational position** matters. Even an inverter can speak the same language. Its local interpretation may reverse, but the medium does not need to reverse with it. The machine still occupies a position, evaluates what arrives, and projects what belongs next.
 
 ***I am here. Something arrives. Does it belong?***
 
-The boxes themselves do not need to be alike. One may be an observer, another an inverter, another a **single-board computer**, a server, a cluster, or something stranger. The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one **Boolean cloud to become a cell inside another**. The machine becomes a **scale rather than a boundary**. At settlement, the relational structure simplifies back to $\Omega$, and that settled state may become a new point of relation inside something larger.
+The boxes themselves do not need to be alike. ***One may be an observer, another an inverter, another a single-board computer, a server, a cluster, or something stranger.*** The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one **Boolean cloud to become a cell inside another**. The machine becomes a **scale rather than a boundary**. At settlement, the relational structure simplifies back to $\Omega$, and that settled state may become a new point of relation inside something larger.
 
 ***Everything settles to $\Omega$. Then $\Omega$ becomes a word.***
 
