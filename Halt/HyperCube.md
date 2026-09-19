@@ -10,7 +10,9 @@ Every arrow in that walk is **admissible** because exactly one cell changes. Ano
 
 $\Large 000 \quad|\quad 001\ 010\ 100 \quad|\quad 011\ 101\ 110 \quad|\quad 111$
 
-Connect every pair of positions that differs by **one bit** and the eight positions form a **Boolean cube**. These groups are **Hamming shells**. The first shell is zero changes from **000**, the next three positions are one change away, the next three are two changes away, and **111** is three changes away at the opposite pole. The shells show which positions exist at each distance, while **admissibility determines which neighboring position may actually follow which**. The route may change, but **the rule does not**. Adding another binary cell produces more positions, more shells, more routes, and more **nebulosity** without changing the rule that generates them, though ***we will stay with the cube for now.***
+Connect every pair of positions that differs by **one bit** and the eight positions form a **Boolean cube**. These groups are **Hamming shells**. The first shell is zero changes from **000**, the next three positions are one change away, the next three are two changes away, and **111** is three changes away at the opposite pole. The shells show which positions exist at each distance, while **admissibility determines which neighboring position may actually follow which**. The route may change, but **the rule does not**. 
+
+Adding another binary cell produces more positions, more shells, more routes, and more **nebulosity** without changing the rule that generates them, though ***we will stay with the cube for now.***
 
 ## Metatron
 
