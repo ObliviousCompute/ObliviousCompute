@@ -2,7 +2,7 @@
 
 ## Hexagram
 
-Instead of observers moving through a three-state RPS cycle, consider **three binary cells within a state**. Those three cells taken together form a complete state called a **trit**. Each arrangement forms a single position projected into the medium. Within a trit there are only **eight possible positions**. Movement between them follows **one simple rule**. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
+A little complexity buys a lot of structure. Consider **three binary cells within a state**. Those three cells ***taken together*** form **one complete state** called a **trit**. Each arrangement forms a **single position projected into the medium**. Within a trit there are only **eight possible positions**. Movement between them follows **one simple rule**. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
 
 $\Large 0\rightarrow1\rightarrow2\rightarrow3 \qquad 000\rightarrow001\rightarrow011\rightarrow111$
 
