@@ -24,9 +24,9 @@ A projection does not become state merely because it was projected. Each observe
 
 ***Two companion papers. Read them in order.***
 
-[**BlackBox**](./BlackBox.md) moves computation **outside the box.** 
+[**`BlackBox`**](./BlackBox.md) moves computation **outside the box.** 
 
-[**HyperCube**](./HyperCube.md) gives the relation a **Boolean language.**
+[**`HyperCube`**](./HyperCube.md) gives the relation a **Boolean language.**
 
 > ***See the computation first. Then learn how it speaks.***
 
