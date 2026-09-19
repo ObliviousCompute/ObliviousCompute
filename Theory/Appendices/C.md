@@ -83,3 +83,15 @@ The purpose of these terms is not to decide whether Oblivious Compute is novel, 
 They exist so that those questions can be asked against a clearly identified machine.
 
 **A counterexample should break the primitive, not quietly replace it.**
+
+---
+
+**Go back to [**`Theory`**](../README.md)...**
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
