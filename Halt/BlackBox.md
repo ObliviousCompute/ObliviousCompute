@@ -4,25 +4,21 @@
 
 A computer computes. State enters the machine, the machine executes, and something happens next. Conventionally, whatever happens inside that box is treated as the computation, while whatever emerges is treated as its result. The machine may be simple or arbitrarily complex, but the **computational question remains pointed inward.**
 
-Oblivious Compute moves the distributed computation **outside of the box.** Give independent machines **the identical state** $x$ and allow each machine $i$ to produce a state $F_i(x)$. No individual result is authoritative; ***the computation appears in the relation*** $\Sigma$ among those independently produced states.
+Oblivious Compute moves the distributed computation **outside of the box.** Give independent observers the **same starting state** and allow each to maintain and project its own state. No individual result is authoritative. ***The computation appears in the relation among independently maintained states.***
 
-$\large x\rightarrow F_1(x),F_2(x),\ldots,F_n(x)\qquad \Sigma(F_1(x),F_2(x),\ldots,F_n(x))$
-
-When independently maintained states resolve to the same position, their relational configuration lies on the diagonal. Many machines remain physically independent while the distributed state resolves to **one computational position.**
+When independently maintained states resolve to the same position, many machines remain physically independent while the distributed configuration resolves to **one computational position.**
 
 ## House of Mirrors
 
-Now the fun begins with a simple example. Give several independent machines **the identical state: Rock.** Healthy machines move through the state space in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
+Now the fun begins with a simple example. Give several independent observers the **same state, Rock, drawn from a three-state RPS cycle.** Each observer occupies only one position at a time. Healthy observers move through the cycle in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
 
-$\large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock}
-\qquad
-(\mathrm{I})\ \text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
+$\Large \text{Rock}\rightarrow\text{Paper}\rightarrow\text{Scissors}\rightarrow\text{Rock} \qquad (\mathrm{I})\ \text{Rock}\rightarrow\text{Scissors}\rightarrow\text{Paper}\rightarrow\text{Rock}$
 
 Place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** and the healthy machines stop producing fresh continuation while the inverter continues. Invert the experiment and give every machine **REPEAT**. The healthy machines continue through the cycle while the inverter halts, yet admissible projections from the field may still move it.
 
 A projected state does not become authoritative merely because a machine produced it. Each observer **retains its own state** and admits only the continuation available from that position. ***The machine determines what it projects. The relation determines whether that projection becomes state.***
 
-> ***The inverter can reflect forever. The field reflects the reflection.***
+> *The inverter can reflect forever. The field reflects the reflection.*
 
 ## Raise the Anti
 
