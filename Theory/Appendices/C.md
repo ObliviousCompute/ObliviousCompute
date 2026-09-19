@@ -2,7 +2,7 @@
 
 > **For criticism**
 >
-> Oblivious Compute can be examined through a small set of participant roles. These terms are not intended to restrict how the system may be interpreted. They are simply handles for constructing experiments, describing privilege, and making clear what kind of machine is actually being tested.
+> Oblivious Compute can be examined through a small set of participant roles. These terms are not intended to restrict how the system may be interpreted. They are simply handles for constructing experiments, describing privilege, and making clear what kind of machine is actually being tested. 
 >
 > When criticizing an execution, identify **what each participant can observe, what information it may trust, and what causal authority it possesses**. A counterexample is most useful when the machinery introduced to produce it is named explicitly.
 
