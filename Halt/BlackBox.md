@@ -18,7 +18,7 @@ Place **HALT** and **REPEAT** on top of that cycle. Give every machine **HALT** 
 
 A projected state does not become authoritative merely because a machine produced it. Each observer **retains its own state** and admits only the continuation available from that position. ***The machine determines what it projects. The relation determines whether that projection becomes state.***
 
-> *The inverter can reflect forever. The field reflects the reflection.*
+***The inverter can reflect forever. The field reflects the reflection.***
 
 ## Raise the Anti
 
