@@ -2,7 +2,7 @@
 
 ## Hexagram
 
-Start with **three binary cells**. Here, a **trit** means those three cells considered together, with each arrangement forming one complete state projected into the medium. With three cells there are only **eight possible positions**. Movement between them follows **one simple rule**. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
+Instead of one observer moving through a three-state RPS cycle, consider a complete state made of **three binary cells**. Each cell may occupy **0 or 1**. A **trit** here is those three cells taken together as one complete state. Each arrangement forms a single position projected into the medium. With three cells there are only **eight possible positions**. Movement between them follows **one simple rule**. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
 
 $\Large 0\rightarrow1\rightarrow2\rightarrow3 \qquad 000\rightarrow001\rightarrow011\rightarrow111$
 
