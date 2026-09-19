@@ -72,7 +72,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 **[**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute**
 
-> ***Will the state survive betrayal?***
+> ***The state survives betrayal.***
 
 ---
 
