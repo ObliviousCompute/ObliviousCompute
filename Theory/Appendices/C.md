@@ -1,6 +1,6 @@
-# Appendix C — Criticism
+# Appendix C — Criticisms
 
-> **For criticism**
+### For criticism
 >
 > Oblivious Compute can be examined through a small set of participant roles. These terms are not intended to restrict how the system may be interpreted. They are simply handles for constructing experiments, describing privilege, and making clear what kind of machine is actually being tested. 
 >
@@ -14,7 +14,7 @@ The field is not contained by any observer. It arises from the **relation among 
 
 ### Inverted Observer
 
-An **inverted observer** is an observer whose local behavior intentionally opposes, reverses, frustrates, or otherwise tests the relation being formed.
+An **inverted observer** is an observer whose local rule **is constructed to oppose, reverse, or frustrate the relation being formed.**
 
 An inverted observer is **not informationally privileged**. It remains bound by the same local informational position as an ordinary observer. Its importance comes from what it does with the information available to it, not from access to information unavailable to the other observers.
 
@@ -56,7 +56,7 @@ An **active Godhead** possesses globally privileged information and uses that pr
 
 It may implement, emulate, schedule, route, suppress, modify, or otherwise mediate the communication medium. If a globally informed component determines which projections occur, where they are exposed, when they become available, or how the execution progresses, that component is no longer merely observing the medium.
 
-It has become part of the mechanism producing the execution.
+Removing an active Godhead changes the execution or the set of executions the construction can produce. **It has become part of the mechanism producing the execution.**
 
 An active Godhead may reproduce the visible behavior of an oblivious medium, but the construction now depends upon **globally privileged causal authority** that the original observer geometry does not require.
 
