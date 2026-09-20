@@ -52,13 +52,13 @@ Across independently maintained observer states, relational symmetry Σ constitu
 
 $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-***No observer contains the field. The field contains no state of its own. It exists only through relation among independently maintained states.***
+***No observer contains the field. The field contains no state of its own. It exists only through the relation among independently maintained states.***
 
 ---
 
 ## Resolution
 
-As observer states resolve toward perfect relational symmetry, their independently maintained positions coincide on the diagonal.
+When observer states resolve to perfect relational symmetry, their independently maintained positions coincide on the diagonal.
 
 ### Mathematical Form
 
