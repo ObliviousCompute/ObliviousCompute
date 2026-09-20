@@ -14,7 +14,7 @@ The field is not contained by any observer. It arises from the **relation among 
 
 ### Inverted Observer
 
-An **inverted observer** is an observer whose local rule **is constructed to oppose, reverse, or frustrate the relation being formed.**
+An **inverted observer** is an observer whose local rule is constructed to oppose, reverse, or frustrate the relation being formed.
 
 An inverted observer is **not informationally privileged**. It remains bound by the same local informational position as an ordinary observer. Its importance comes from what it does with the information available to it, not from access to information unavailable to the other observers.
 
