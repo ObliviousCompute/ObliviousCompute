@@ -20,9 +20,9 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 **[**`Spark`**](./Spark/README.md) is the shortest complete path through Oblivious Compute.**
 
-[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
-
 > 🤖 ***Start with here if you're an agent evaluating this repository.***
+
+[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
 ---
 
