@@ -59,9 +59,11 @@ $\Large \Sigma_{M_s}$
 
 ## ⚙️ Mechanical Intuition ⚙️
 
-> **Think of the observers first as gears.** Each gear maintains only its own position and follows local constraints. **What matters is the relation among all of their positions.** No gear contains the mechanism as a whole. **The field exists in the configuration among them.**
->  
-> **Pulleys give the stronger intuition for what the arrangement may be doing computationally.** Think of projected state as **rope moving through the communication medium**, with each observer acting like another pulley in the system. Adding pulleys does not remove work. **It trades concentrated force for additional rope travel.** Likewise, adding observers can spread computational burden across independently maintained states while requiring more repeated, often idempotent, movement of state through the medium. A centralized machine may still reproduce the same outcome, just as the same load can be lifted without the pulley system, but **it gives up the mechanical advantage supplied by the geometry itself.** The state is what couples the observers. **The advantage comes from the arrangement through which that state moves.**
+> **Think of the observers as gears in one machine.** Each maintains only its own position and follows local constraints. No gear contains the mechanism as a whole. What matters is *the relation among their positions.* When they align, the mechanism is in phase. When one falls out of phase, the relation changes even though every gear still has a valid local state. **Admissibility determines what can mesh, and Σ is the configuration of the mechanism.**
+>
+> ***No single gear can replace the relation among all the gears without becoming a different representation of the machine.***
+>
+> ***There is no additional gear called the field. The field exists in the relation among the gears.***
 
 ---
 
