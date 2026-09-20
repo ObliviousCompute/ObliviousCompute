@@ -6,8 +6,6 @@
 
 ### *Example*
 
-### *Example*
-
 *A classical Turing machine advances through successive configurations. Modern systems may contain many such progressions at once. Parallel and concurrent systems compose multiple sequences, while distributed systems maintain sequences independently across participants. Parallelism changes the number and relationship of sequences. It does not eliminate sequence.*
 
 ## History
