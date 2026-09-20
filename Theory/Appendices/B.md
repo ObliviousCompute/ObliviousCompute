@@ -38,7 +38,7 @@
 
 ---
 
-**Go back to [**`Theory`**](../README.md)...**
+**Continue to [**`Criticisms`**](./C.md) in Appendix C...**
 
 ---
 
