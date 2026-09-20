@@ -6,9 +6,9 @@
 
 ### *Example*
 
-*A classical Turing machine advances through successive configurations. The same sequential structure appears throughout classical computation: processors, cores, threads, pipelines, caches, memory systems, finite-state machines, GPUs, FPGAs, and ASICs all progress through ordered states or events.*
+### *Example*
 
-*Parallel and concurrent systems compose multiple such sequences at once, while distributed systems maintain sequences independently across participants. Parallelism changes the number and relationship of sequences; it does not eliminate sequence.*
+*A classical Turing machine advances through successive configurations. Modern systems may contain many such progressions at once. Parallel and concurrent systems compose multiple sequences, while distributed systems maintain sequences independently across participants. Parallelism changes the number and relationship of sequences. It does not eliminate sequence.*
 
 ## History
 
@@ -28,7 +28,7 @@
 
 *Two fans watch the same basketball game from opposite sides of the court. They may disagree about who had the ball, who touched it, or exactly how a play unfolded. There is no referee reconciling their accounts. A point is counted only when the ball goes through the hoop.*
 
-*The fans can retain different accounts of the game. Their perspectives have not been brought into consensus, but they can still agree that the score is correct.*
+*The fans can retain different accounts of the game while observing the same score. Their accounts have not been reconciled into a common account. The shared outcome does not require consensus over the history that produced the score.*
 
 ## Computation
 
