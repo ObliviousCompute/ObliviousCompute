@@ -55,13 +55,13 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-$\Sigma$ ***is the field.*** $\Phi_s$ ***denotes the projection behavior exposed to observer geometry*** $s$***. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box, and the realized Oblivious Machine may itself be treated as a black box through the state it exposes. Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same*** $s$***. Further decomposition of*** $\Phi_s$ ***changes the resolution rather than completing the definition.***
-
----
-
 ## ⚙️ Mechanical Intuition ⚙️
 
 > ***Imagine several gears suspended in an Oblivious Medium. Each gear knows only its own position and what may mesh from there. No gear contains the mechanism. The mechanism exists in the relation among them. The medium is not another gear. It only allows their positions to be exposed.***
+
+---
+
+> $\Sigma$ ***is the field.*** $\Phi_s$ ***denotes the projection behavior exposed to observer geometry*** $s$***. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box, and the realized Oblivious Machine may itself be treated as a black box through the state it exposes. Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same*** $s$***. Further decomposition of*** $\Phi_s$ ***changes the resolution rather than completing the definition.***
 
 ---
 
