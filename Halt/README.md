@@ -18,9 +18,7 @@ A projection does not become state merely because it was projected. Each observe
 
 ## ⚙️ Mechanical Intuition ⚙️
 
-> ***Imagine several gears suspended in an Oblivious Medium. Each gear knows only its own position and what may mesh from there. No gear contains the mechanism. The mechanism exists in the relation among them. The medium is not another gear. It only allows their positions to be exposed.***
->   
-> HaltingMachine turns the same three-state cycle in opposite directions, like gears rotating **against one another**. ***The observers can move differently and still return to a shared alignment because the computation is in the relation among their states, not in any one observer.***
+> ***Imagine several gears suspended in an Oblivious Medium. Each gear knows only its own position and what may mesh from there. No gear contains the mechanism. The mechanism exists in the relation among them, while the medium merely exposes their positions. HaltingMachine makes this visible by turning the same three-state cycle in opposite directions. The observers may move differently and still return to shared alignment because the computation is in the relation among their states, not in any one observer.***
 
 ---
 
