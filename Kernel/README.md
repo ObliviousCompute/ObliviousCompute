@@ -9,7 +9,7 @@
 | 𝓕 | Computational field |
 | Δ | Diagonal |
 
-> *Relational symmetry **Σ** constitutes the computational field **𝓕**. Perfect symmetry **Δ** is a realizable settled condition of that field, not its definition. The equations below describe the observer geometry at one fixed resolution. **Diamond Tip** later assembles that geometry with its physical and causal medium into the realized machine.*
+> *Relational symmetry* $\Sigma$ *constitutes the computational field* 𝓕. *Perfect symmetry* $\Delta$ *is a realizable settled condition of that field, not its definition. The equations below describe the observer geometry at one fixed resolution. **Diamond Tip** later assembles that geometry with its physical and causal medium into the realized machine.*
 
 ---
 
@@ -27,7 +27,7 @@ Therefore, the same presented state may be admissible from one observer position
 
 $\Large s_i\neq s_j \qquad \ 𝓐(s_i,x)=1\qquad 𝓐(s_j,x)=0$
 
-Across **$n$** observers, independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let Σ denote the relational symmetry among those states induced by 𝓐. The computational field 𝓕 is that relational structure, not any individual observer state.
+Across **$n$** observers, independently maintained states form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote the relational symmetry among those states induced by 𝓐. The computational field 𝓕 is that relational structure, not any individual observer state.
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
