@@ -9,12 +9,6 @@
 | 𝓕 | Computational field |
 | Δ | Diagonal |
 
----
-
-> *Relational symmetry* $\Sigma$ *constitutes the computational field* $\mathcal{F}$*. Perfect symmetry* $\Delta$ *is a realizable settled condition of that field, not its definition.*
-
----
-
 $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Omega\times\Omega\leftarrow\Omega\cdots$
 
 Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$.
