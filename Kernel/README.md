@@ -13,6 +13,8 @@
 
 > *Relational symmetry* $\Sigma$ *constitutes the computational field* $\mathcal{F}$*. Perfect symmetry* $\Delta$ *is a realizable settled condition of that field, not its definition.*
 
+---
+
 $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Omega\times\Omega\leftarrow\Omega\cdots$
 
 Oblivious Compute distributes a single admissibility function 𝓐 across a set of independently state-maintaining observers within a state space $\Omega$.
@@ -52,6 +54,8 @@ $\Large M_s=(s,\Phi_s)$
 ***Its relational symmetry is an Oblivious Computation.***
 
 $\Large \Sigma_{M_s}$
+
+---
 
 > $\Sigma$ ***is the field.*** $\Phi_s$ ***denotes the projection behavior exposed to observer geometry*** $s$***. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box, and the realized Oblivious Machine may itself be treated as a black box through the state it exposes. Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same*** $s$***. Further decomposition of*** $\Phi_s$ ***changes the resolution rather than completing the definition.***
 
