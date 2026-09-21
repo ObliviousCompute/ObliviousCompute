@@ -7,7 +7,9 @@
 | 𝑆 | Observer Geometry |
 | Σ | Relational symmetry |
 | 𝓕 | Computational field |
-| Δ | Diagonal |
+| Δ | Diagonal |  
+
+  
 
 $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Omega\times\Omega\leftarrow\Omega\cdots$
 
