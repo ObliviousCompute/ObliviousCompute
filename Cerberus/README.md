@@ -61,7 +61,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-## 🕸️ Networking
+## ☁️ Networking
 
 Cerberus runs locally over sockets as a **Sandbox Smoketest**.
 
