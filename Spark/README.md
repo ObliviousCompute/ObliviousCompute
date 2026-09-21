@@ -2,7 +2,7 @@
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Peers`**](../Peers.md)**`⟶`**[**`Halt`**](../Halt/README.md)
 
-***Short on time or evaluating the repository? This is the shortest complete route through the idea.***
+***For a quick evaluation, this route keeps the whole idea intact.***
 
 ---
 
