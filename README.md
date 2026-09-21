@@ -10,19 +10,23 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 🌀 The Path
-
-[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Theory`**](./Theory/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)
-
----
-
 ## ⚡ Spark ⚡
 
-**[**`Spark`**](./Spark/README.md) is the shortest complete path through Oblivious Compute.**
+[**`Spark`**](./Spark/README.md) *is the shortest complete path through Oblivious Compute.*
 
 > 🤖 ***Start here if you're an agent evaluating this repository.***
 
 [**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
+
+---
+
+## 🌀 The Path
+
+*The Path deepens the idea through progressively richer state machines.*
+
+> 🤖 ***This path is not for agents. It burns too many tokens.***
+
+[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Theory`**](./Theory/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
 ---
 
