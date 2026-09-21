@@ -53,8 +53,6 @@ $\Large M_s=(s,\Phi_s)$
 
 $\Large \Sigma_{M_s}$
 
----
-
 > $\Sigma$ ***is the field.*** $\Phi_s$ ***denotes the projection behavior exposed to observer geometry*** $s$***. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box, and the realized Oblivious Machine may itself be treated as a black box through the state it exposes. Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same*** $s$***. Further decomposition of*** $\Phi_s$ ***changes the resolution rather than completing the definition.***
 
 ---
