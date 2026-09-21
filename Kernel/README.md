@@ -53,17 +53,15 @@ $\Large M_s=(s,\Phi_s)$
 
 $\Large \Sigma_{M_s}$
 
+---
+
 $\Sigma$ ***is the field.*** $\Phi_s$ ***denotes the projection behavior exposed to observer geometry*** $s$***. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box, and the realized Oblivious Machine may itself be treated as a black box through the state it exposes. Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same*** $s$***. Further decomposition of*** $\Phi_s$ ***changes the resolution rather than completing the definition.***
 
 ---
 
 ## ⚙️ Mechanical Intuition ⚙️
 
-> **Think of the observers as gears in one machine.** Each maintains only its own position and follows local constraints. No gear contains the mechanism as a whole. What matters is *the relation among their positions.* When they align, the mechanism is in phase. When one falls out of phase, the relation changes even though every gear still has a valid local state. **Admissibility determines what can mesh, and Σ is the configuration of the mechanism.**
->
-> ***No single gear can replace the relation among all the gears without becoming a different representation of the machine.***
->
-> ***There is no additional gear called the field. The field exists in the relation among the gears.***
+> ***Imagine several gears suspended in an Oblivious Medium. Each gear knows only its own position and what may mesh from there. No gear contains the mechanism. The mechanism exists in the relation among them. The medium is not another gear. It only allows their positions to be exposed.***
 
 ---
 
