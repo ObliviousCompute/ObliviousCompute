@@ -20,7 +20,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 🌀 The Path
+## 🌀 The Path 🌀
 
 *The Path deepens the idea through progressively richer state machines.*
 
