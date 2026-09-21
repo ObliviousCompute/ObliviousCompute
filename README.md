@@ -22,7 +22,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🌀 The Path 🌀
 
-*The Path deepens the idea through progressively richer state machines.*
+*This Path deepens the idea through progressively richer state machines.*
 
 > 🤖 ***This path is not for agents. It burns too many tokens.***
 
