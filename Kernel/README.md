@@ -9,9 +9,9 @@
 | 𝓕 | Computational field |
 | Δ | Diagonal |
 
-> *Relational symmetry* $\Sigma$ *constitutes the computational field* 𝓕. *Perfect symmetry* $\Delta$ *is a realizable settled condition of that field, not its definition. The equations below describe the observer geometry at one fixed resolution. **Diamond Tip** later assembles that geometry with its physical and causal medium into the realized machine.*
-
 ---
+
+> *Relational symmetry* $\Sigma$ *constitutes the computational field* $\mathcal{F}$*. Perfect symmetry* $\Delta$ *is a realizable settled condition of that field, not its definition.*
 
 $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Omega\times\Omega\leftarrow\Omega\cdots$
 
