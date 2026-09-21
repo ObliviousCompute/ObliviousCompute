@@ -16,12 +16,6 @@ A projection does not become state merely because it was projected. Each observe
 
 ---
 
-## ⚙️ Mechanical Intuition ⚙️
-
-> ***Imagine several gears suspended in an Oblivious Medium. Each gear knows only its own position and what may mesh from there. No gear contains the mechanism. The mechanism exists in the relation among them, while the medium merely exposes their positions. HaltingMachine makes this visible by turning the same three-state cycle in opposite directions. The observers may move differently and still return to shared alignment because the computation is in the relation among their states, not in any one observer.***
-
----
-
 ## 🧠 Inside Out 🧠
 
 ***Two companion papers. Read them in order.***
@@ -31,6 +25,13 @@ A projection does not become state merely because it was projected. Each observe
 [**`HyperCube`**](./HyperCube.md) gives the relation a **Boolean language.**
 
 > ***See the computation first. Then learn how it speaks.***
+
+---
+
+## ⚙️ Mechanical Intuition ⚙️
+
+> ***Imagine several gears suspended in an Oblivious Medium. Each gear knows only its own position and what may mesh from there. No gear contains the mechanism. The mechanism exists in the relation among them, while the medium merely exposes their positions. HaltingMachine makes this visible by turning the same three-state cycle in opposite directions. The observers may move differently and still return to shared alignment because the computation is in the relation among their states, not in any one observer.***
+
 
 ---
 
