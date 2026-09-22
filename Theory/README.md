@@ -1,4 +1,4 @@
-# 🪶 Theory 🪶
+# 🌀 Theory 🌀
 
 [**`Geometry`**](./Geometry.md)**`⟶`**[**`Holography`**](./Holography.md)**`⟶`**[**`Admissibility`**](./Admissibility.md)**`⟶`**[**`Symmetry`**](./Symmetry.md)**`⟶`**[**`Singularity`**](./Singularity.md)
 
