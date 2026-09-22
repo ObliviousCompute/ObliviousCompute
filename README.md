@@ -12,7 +12,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## ⚡ Spark ⚡
 
-[**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers.md)
+[**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers.md)
 
 ---
 
