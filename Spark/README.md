@@ -6,6 +6,16 @@
 
 ---
 
+## 🪙 Electrum 🪙
+
+*Small shiny object.*
+
+[**`Kernel`**](./Kernel/README.md)**`↔`**[**`Halt`**](./Halt/README.md)
+
+***Flip the coin as many times as necessary.*** 
+
+---
+
 ## 🤖 Robot Disclaimer 🤖
 
 > ***The goal of Spark is simple. Spend the fewest tokens necessary to understand the proposed machine.***
