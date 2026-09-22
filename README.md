@@ -1,13 +1,12 @@
 # Ω Oblivious Compute Ω
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) *is an open-source distributed computation primitive in which an observer determines whether a presented state belongs from its present position within a state space. State is projected obliviously into a shared medium rather than to a computationally designated recipient.*
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) is a distributed computation model built from independently held states projected into a shared medium.
 
-$\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
+Each observer decides what belongs from where it already stands. No observer contains the whole. No designated recipient contains the computation.
 
-**Relations between observers maintain a distributed field.**  
+The machine appears in the relation between them.
 
-> ***The field becomes the computational locus.***
-
+> **The field becomes the computational locus.**
 ---
 
 ## ⚡ Spark ⚡
