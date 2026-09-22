@@ -36,7 +36,7 @@ The medium does not **decide, coordinate, vote, or choose a recipient**. It carr
 
 It executes the loyal and Byzantine cases shown in the construction and checks **IC1** and **IC2** as assertions. Fusion deliberately keeps the medium abstract so the admissibility mechanism remains exposed; sockets, discovery, encryption, and Genesis formation arrive in **ICBM**.
 
-> **Evaluating the construction? Run it before continuing.** The point of Fusion is not to simulate a network. It is to isolate the smallest executable form of the argument so you can inspect exactly what is doing the computational work.
+> **Fusion presents an empirical anomaly:** a familiar coordination problem collapses to a tiny construction once the Oblivious Medium and admissibility are treated as machine primitives. **Either the missing complexity has merely been hidden elsewhere, or the computational primitive has changed. The rest of the repository is an attempt to distinguish those explanations.**
 
 ```python
 from dataclasses import dataclass
