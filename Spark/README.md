@@ -6,8 +6,6 @@
 
 ## 🪙 Electrum 🪙
 
-*Small shiny object.*
-
 [**`Kernel`**](../Kernel/README.md)**`↔`**[**`Halt`**](../Halt/README.md)
 
 > ***Flip the coin as many times as necessary.*** 
