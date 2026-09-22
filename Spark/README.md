@@ -2,8 +2,6 @@
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Peers`**](../Peers.md)**`⟶`**[**`Halt`**](../Halt/README.md)
 
-> ***For a quick evaluation, this route keeps the whole idea intact.***
-
 ---
 
 ## 🪙 Electrum 🪙
