@@ -2,17 +2,13 @@
 
 AfterHours begins where **Spark** ends.
 
-[**Spark**](../Spark/README.md) is the complete first-pass path through Oblivious Compute. It contains everything needed to identify the proposed machine, observe its executable behavior, and form a first technical evaluation.
-
 AfterHours contains the extended constructions and theory that come afterward.
-
-Nothing here is required to complete Spark.
 
 ---
 
 ## 🌀 The Path 🌀
 
-[**Skeleton**](./Skeleton/README.md)** → **[**Hydra**](./Hydra/README.md)** → **[**Cerberus**](./Cerberus/README.md)** → **[**Byzantium**](./Byzantium/README.md)** → **[**Theory**](./Theory/README.md)
+[**Skeleton**](./Skeleton/README.md)**`→`**[**Hydra**](./Hydra/README.md)**`→`**[**Cerberus**](./Cerberus/README.md)**`→`**[**Byzantium**](./Byzantium/README.md)**`→`**[**Theory**](./Theory/README.md)
 
 ---
 
