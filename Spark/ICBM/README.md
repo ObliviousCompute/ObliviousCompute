@@ -66,7 +66,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-🧭 **Continue to [**`Halt`**](../../Spark/Halt/README.md)
+🧭 **Continue to [**`Halt`**](../../Spark/Halt/README.md)...**
 
 ---
 
