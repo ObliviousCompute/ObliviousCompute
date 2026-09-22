@@ -10,7 +10,7 @@ Fusion places Interactive Consistency under the ***Kernel primitive***. Instead 
 
 The commander begins with an order committed into the **Genesis state**. A candidate reveal does not become computational state merely because it was projected. Each observer independently determines whether it is ***admissible from the state already held***. If it matches the commitment, **it survives**. If it does not, it contributes nothing.
 
-The medium does not **decide, coordinate, vote, or choose a recipient**. It carries the projection. The observers perform the computation, and agreement appears through the relation among their independently maintained states. ***What survives the same rule becomes the same state.***
+The medium does not **decide, coordinate, vote, or choose a recipient**. It carries the projection. Each observer performs only its own ***local admissibility test***. The computation exists in the **relation among their independently maintained states**, not inside any observer. ***What survives the same rule becomes the same state.***
 
 ---
 
@@ -22,7 +22,7 @@ The medium does not **decide, coordinate, vote, or choose a recipient**. It carr
 
 It executes the loyal and Byzantine cases shown in the construction and checks **IC1** and **IC2** as assertions. Fusion deliberately keeps the medium abstract so the admissibility mechanism remains exposed; sockets, discovery, encryption, and Genesis formation arrive in **ICBM**.
 
-> **Fusion presents an empirical anomaly:** a familiar coordination problem collapses to a tiny construction once the Oblivious Medium and admissibility are treated as machine primitives. **Either the missing complexity has merely been hidden elsewhere, or the computational primitive has changed. The rest of the repository is an attempt to distinguish those explanations.**
+> **Fusion presents an empirical anomaly:** this construction is **59 lines**, while the smallest Lamport reference implementation we found is ***more than 3× larger*** by physical line count. A familiar coordination problem collapses once the **Oblivious Medium** and ***admissibility*** are treated as machine primitives. ***Either the missing complexity has merely been hidden elsewhere, or the computational primitive has changed.*** The rest of the repository is an attempt to distinguish those explanations.
 
 ```python
 from dataclasses import dataclass
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     print("Byzantine silent:", Trial("ATTACK", loyal=False, reveal=False))
 ```
 
-> *59 lines total. **Our smallest Lamport reference is over 3× the size** by physical line count.*
+> ***This specimen fixes one particular*** \(\Phi_s\). ***Every loyal observer is exposed to the same projection. Lamport's oral-message model does not make that assumption. Fusion is not a reproduction of that machine. It is a specimen of admission under the Oblivious Compute machine.***
 
 ---
 
