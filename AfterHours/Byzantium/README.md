@@ -86,12 +86,12 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-🧭 **Go Back to [**`Cerberus`**](../Cerberus/README.md) or [**`EXIT`**](https://github.com/ObliviousCompute)...**
+🧭 **[**`EXIT`**](https://github.com/ObliviousCompute)...**
 
 ---
 
 ## 📜 License
 
-See the [**`NOTICE`**](../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
 Use it, study it, modify it—just respect the terms outlined there.
