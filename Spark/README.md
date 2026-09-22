@@ -4,6 +4,10 @@
 
 ---
 
+> *Spark is the shortest complete path through the idea. A sharp reader may already find the whole object in the coin. The rest of the path makes explicit what sits between Kernel and Halt.*
+
+---
+
 ## 🪙 Electrum 🪙
 
 [**`Kernel`**](../Spark/Kernel/README.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
