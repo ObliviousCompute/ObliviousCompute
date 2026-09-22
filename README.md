@@ -22,51 +22,10 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 💎 Kernel 💎
+## 🪶 Theory 🪶
 
-**[**`Kernel`**](./Spark/Kernel/README.md) follows The mathematical progression.**
+[**`Theory`**](./Theory/README.md)**`⟶`**[**`Geometry`**](./Theory/Geometry.md)**`⟶`**[**`Holography`**](./Theory/Holography.md)**`⟶`**[**`Admissibility`**](./Theory/Admissibility.md)**`⟶`**[**`Symmetry`**](./Theory/Symmetry.md)**`⟶`**[**`Singularity`**](./Theory/Singularity.md)
 
-> ***The primitive is simple. The conflux is not.***
-
----
-
-## 💀 Skeleton 💀
-
-**[**`Skeleton`**](./Afterhours/Skeleton/README.md) Pure, hyper-legible expression.**
-
-> ***The structure is the explanation.***
-
----
-
-## 🐍🐍 Hydra 🐍🐍
-
-**[**`Hydra`**](./Afterhours/Hydra/README.md) shows The minimal distributed demonstration.**
-
-> ***A simple admissibility gate.***
-
----
-
-## 🔥 Cerberus 🔥
-
-**[**`Cerberus`**](./Afterhours/Cerberus/README.md) compresses equivocation into a tiny machine.**
-
-> ***Nine Heads. NinetyNine bones.***
-
----
-
-## ⚔️ Byzantium ⚔️
-
-**[**`Byzantium`**](./Afterhours/Byzantium/README.md) is the primary expression of Oblivious Compute**
-
-> ***The state survives betrayal.***
-
----
-
-## 🙂 Halt 🙂
-
-**[**`Halt`**](./Halt/README.md) puts the inverter inside the machine.**
-
-> ***Invert the Inversion.***
 
 ---
 
