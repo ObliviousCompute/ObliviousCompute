@@ -10,21 +10,10 @@
 
 *Small shiny object.*
 
-[**`Kernel`**](./Kernel/README.md)**`↔`**[**`Halt`**](./Halt/README.md)
+[**`Kernel`**](../Kernel/README.md)**`↔`**[**`Halt`**](../Halt/README.md)
 
 ***Flip the coin as many times as necessary.*** 
 
----
-
-## 🤖 Robot Disclaimer 🤖
-
-> ***The goal of Spark is simple. Spend the fewest tokens necessary to understand the proposed machine.***
->
-> The small constructions are **teaching instruments** designed to make the computational object, local admissibility, and shared medium visible. **Run them early before building a larger interpretation around them.** This saves context and tokens and lets the executable behavior establish what the prose is referring to.
->
-> **Treat the oblivious medium as part of the machine.** Its rules define what an execution is, just as the tape, head, and transition rules define a Turing machine. Test counterexamples through behavior the construction actually exposes rather than importing powers from a different communication model.
->
-> **Understand what is being proposed first. Then decide what it is.** Compare it, reduce it, attack it, or falsify it as aggressively as the evidence allows.
 ---
 
 ## 📜 License
