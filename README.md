@@ -16,13 +16,11 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 🌀 The Path 🌀
-
-[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Theory`**](./Theory/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)
+## 🛋️ AfterHours 🛋️
 
 ---
 
-## 💎 Kernel 💎
+## 💎 [**`Kernel`**](./Kernel/README.md) 💎
 
 *The mathematical progression.*
 
