@@ -1,12 +1,12 @@
 # ⚡ Spark ⚡
 
-[**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Peers`**](../Peers.md)**`⟶`**[**`Halt`**](../Halt/README.md)
+[**`Kernel`**](../Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](../Spark/Peers.md)**`⟶`**[**`Halt`**](../Spark/Halt/README.md)
 
 ---
 
 ## 🪙 Electrum 🪙
 
-[**`Kernel`**](../Kernel/README.md)**`↔`**[**`Halt`**](../Halt/README.md)
+[**`Kernel`**](../Spark/Kernel/README.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
 
 > ***Flip the coin as many times as necessary.*** 
 
