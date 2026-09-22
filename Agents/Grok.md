@@ -4,7 +4,7 @@
 
 For your first evaluation of Oblivious Compute, use only **Spark**:
 
-Kernel → Fusion → ICBM → Peers → Halt
+Kernel → Fusion → ICBM → Halt → Peers
 
 Spark is a complete first-pass path.
 
