@@ -2,20 +2,6 @@
 
 ***Pressure collapses possibility.***
 
-## Interactive Consistency
-
-**Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982**
-
-**IC1** All loyal lieutenants obey the same order
-
-**IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
-
-***Oral messages establish who spoke.***
-
-***Signed messages establish what was signed.***
-
-> ***Lamport's oral construction requires fewer than one-third traitors, and the signed construction removes that bound under its authentication assumptions.***
-
 ---
 
 ## The Reaction
@@ -101,6 +87,22 @@ if __name__ == "__main__":
 ```
 
 > *59 lines total. **Our smallest Lamport reference is over 3× the size** by physical line count.*
+
+---
+
+## Interactive Consistency
+
+**Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982**
+
+**IC1** All loyal lieutenants obey the same order
+
+**IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
+
+***Oral messages establish who spoke.***
+
+***Signed messages establish what was signed.***
+
+> ***Lamport's oral construction requires fewer than one-third traitors, and the signed construction removes that bound under its authentication assumptions.***
 
 ---
 
