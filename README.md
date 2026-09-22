@@ -20,7 +20,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 💎 [**`Kernel`**](./Kernel/README.md) 💎
+## `💎`[**`Kernel`**](./Spark/Kernel/README.md)`💎`
 
 *The mathematical progression.*
 
