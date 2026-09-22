@@ -10,7 +10,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 🪙 The Coin 🪙
+## 🪙 Coin 🪙
 
 *The smallest pedagogical object.*
 
@@ -18,9 +18,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 > ***Flip the Coin as many times as necessary.***
 >
-> Kernel defines the computational object. Halt exposes where it lives.
->
-> ***If you still locate the computation inside any individual machine, stop here.*** The rest of the repository assumes this distinction is already clear. Everything that follows only instantiates, stresses, and deepens the same object.
+> **If you still locate the computation inside any individual machine, stop here. The rest of the repository assumes this distinction is already clear. Everything that follows only instantiates, stresses, and deepens the same object.**
 
 ---
 
