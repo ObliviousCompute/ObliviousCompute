@@ -86,7 +86,7 @@ if __name__ == "__main__":
     print("Byzantine silent:", Trial("ATTACK", loyal=False, reveal=False))
 ```
 
-> ***This specimen fixes one particular*** \(\Phi_s\). ***Every loyal observer is exposed to the same projection. Lamport's oral-message model does not make that assumption. Fusion is not a reproduction of that machine. It is a specimen of admission under the Oblivious Compute machine.***
+> ***This specimen fixes one particular*** $\Phi_s$. ***Every loyal observer is exposed to the same projection. Lamport's oral-message model does not make that assumption. Fusion is not a reproduction of that machine. It is a specimen of admission under the Oblivious Compute machine.***
 
 ---
 
