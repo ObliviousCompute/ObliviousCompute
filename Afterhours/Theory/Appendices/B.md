@@ -38,7 +38,7 @@
 
 ---
 
-**Continue to [**`Criticisms`**](./C.md) in Appendix C...**
+**Go back to [**`Afterhours`**](../Afterhours/README.md)...**
 
 ---
 
