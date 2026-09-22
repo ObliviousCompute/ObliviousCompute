@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../../Relics/ICBM.png" width="600"/>
+<img src="../../AfterHours/Relics/ICBM.png" width="600"/>
 
 > ***Fission is 777 lines total. Fewer than 400 lines of distributed machinery.***
 
@@ -66,7 +66,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-🧭 **Continue the** [**`Spark`**](../../Spark/README.md)**`⟶`**[**`Peers`**](../Spark/Peers.md)
+🧭 **Continue the** [**`Spark`**](../../Spark/README.md)**`⟶`**[**`Peers`**](../../Spark/Peers.md)
 
 ---
 
