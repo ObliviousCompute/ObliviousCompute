@@ -8,8 +8,6 @@
 
 [**`Kernel`**](../Spark/Kernel/README.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
 
-> ***Flip the coin as many times as necessary.*** 
-
 ---
 
 🧭 **[**`EXIT`**](https://github.com/ObliviousCompute)...**
