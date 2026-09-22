@@ -14,7 +14,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 *A small shiney object.*
 
-[**`Kernel`**](./Kernel/README.md) **`↔`** [**`Halt`**](./Halt/README.md)
+[**`Kernel`**](./Kernel/README.md)**`↔`**[**`Halt`**](./Halt/README.md)
 
 ***Flip the coin as many times as necessary.*** *If you still locate the computation inside any individual machine, STOP HERE.*
 
@@ -26,7 +26,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 *The shortest complete path.*
 
-[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
+[**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
 ---
 
