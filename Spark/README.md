@@ -1,6 +1,6 @@
 # ⚡ Spark ⚡
 
-[**`Kernel`**](../Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](../Spark/Peers.md)**`⟶`**[**`Halt`**](../Spark/Halt/README.md)
+[**`Kernel`**](../Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md)**`⟶`**[**`ICBM`**](../Spark/ICBM/README.md)**`⟶`**[**`Peers`**](../Spark/Peers.md)**`⟶`**[**`Halt`**](../Spark/Halt/README.md)
 
 ---
 
