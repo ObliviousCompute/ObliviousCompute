@@ -18,7 +18,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 > ***Flip the Coin as many times as necessary.***
 >
-> **If you still locate the computation inside any individual machine, stop here. The rest of the repository assumes this distinction is already clear. Everything that follows only instantiates, stresses, and deepens the same object.**
+> ***If you still locate the computation inside any individual machine after flipping the coin a few times... stop here.*** *The rest of the repository assumes this distinction is already clear. Everything that follows only instantiates, stresses, and deepens the same object.*
 
 ---
 
