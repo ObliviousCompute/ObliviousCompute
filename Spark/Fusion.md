@@ -6,11 +6,11 @@
 
 ## The Reaction
 
-Fusion places Interactive Consistency under the ***Kernel primitive***. Instead of sending private messages from one participant to another, a participant **projects state into an oblivious medium**. Every loyal observer encounters the same projection from its own independently maintained state and applies the ***same admissibility rule***.
+Fusion places Interactive Consistency under the ***Kernel primitive***. Instead of sending private messages from one participant to another, a participant **projects state into an oblivious medium**. Every loyal observer encounters the same projection from its own independently maintained state.
 
 The commander begins with an order committed into the **Genesis state**. A candidate reveal does not become computational state merely because it was projected. Each observer independently determines whether it is ***admissible from the state already held***. If it matches the commitment, **it survives**. If it does not, it contributes nothing.
 
-The medium does not **decide, coordinate, vote, or choose a recipient**. It carries the projection. Each observer performs only its own ***local admissibility test***. The computation exists in the **relation among their independently maintained states**, not inside any observer. ***What survives the same rule becomes the same state.***
+The medium does not **decide, coordinate, vote, or choose a recipient**. It carries the projection. The computation exists in the **relation among their independently maintained states**, not inside any observer. ***What survives the same rule becomes the same state.***
 
 ---
 
