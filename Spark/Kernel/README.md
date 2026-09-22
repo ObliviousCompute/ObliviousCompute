@@ -57,7 +57,7 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-🧭 **Continue the [**`Spark`**](../../Spark/README.md)**`⟶`**[**`Fusion`**](../../Spark/Fusion.md)...**
+🧭 **Continue to [**`Fusion`**](../../Spark/Fusion.md)...**
 
 > 🪙 [**`Halt`**](../../Spark/Halt/README.md)***...***
 
