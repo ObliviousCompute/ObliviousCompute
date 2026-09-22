@@ -2,7 +2,7 @@
 
 [**`Kernel`**](../Kernel/README.md)**`⟶`**[**`Fusion`**](./Fusion.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)**`⟶`**[**`Peers`**](../Peers.md)**`⟶`**[**`Halt`**](../Halt/README.md)
 
-***For a quick evaluation, this route keeps the whole idea intact.***
+> ***For a quick evaluation, this route keeps the whole idea intact.***
 
 ---
 
@@ -12,7 +12,7 @@
 
 [**`Kernel`**](../Kernel/README.md)**`↔`**[**`Halt`**](../Halt/README.md)
 
-***Flip the coin as many times as necessary.*** 
+> ***Flip the coin as many times as necessary.*** 
 
 ---
 
