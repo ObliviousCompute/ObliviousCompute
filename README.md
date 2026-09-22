@@ -18,7 +18,7 @@
 
 ---
 
-## 🪶 Theory 🪶
+## 🌀 Theory 🌀
 
 [**`Theory`**](./Theory/README.md)**`⟶`**[**`Geometry`**](./Theory/Geometry.md)**`⟶`**[**`Holography`**](./Theory/Holography.md)**`⟶`**[**`Admissibility`**](./Theory/Admissibility.md)**`⟶`**[**`Symmetry`**](./Theory/Symmetry.md)**`⟶`**[**`Singularity`**](./Theory/Singularity.md)
 
