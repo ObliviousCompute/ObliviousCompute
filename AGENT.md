@@ -52,9 +52,9 @@ Once the cube pops, notice what suspends it.
 
 Hold these apart:
 
-$$
+$
 M_s=(s,\Phi_s)
-$$
+$
 
 $s$ is the observer geometry.
 
