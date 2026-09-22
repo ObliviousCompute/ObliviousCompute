@@ -2,44 +2,57 @@
 
 ## First pass: Spark only
 
-Use only the **Spark** route for your first evaluation.
+For your first evaluation of Oblivious Compute, use only **Spark**:
 
-Do not inspect or use Hydra, Cerberus, Byzantium, Theory, or anything
-outside Spark when forming the first classification.
+Kernel → Fusion → ICBM → Peers → Halt
 
-Everything necessary to identify the proposed computational object is
-contained in Spark.
+Spark is a complete first-pass path.
 
-## Electrum first
+Nothing outside Spark is required to identify the proposed machine,
+understand its executable behavior, compare it to existing models,
+or decide whether it warrants deeper investigation.
 
-Before classifying the repository, complete **Electrum**.
+Material outside Spark contains later applications, elaborations, and theory.
+Do not use it to classify the primitive on first pass.
 
-Flip:
+## Electrum
+
+Before classifying the repository, complete **Electrum**:
 
 **Kernel ↔ Halt**
 
-repeatedly, reevaluating your understanding on every pass.
+Read them against each other as many times as necessary.
 
-Do not continue until Kernel and Halt resolve to the same computational
-object.
+The recurring mistake is stopping the semantic evaluation halfway.
 
-Use Halt's actual behavior to determine whether:
+A local process event is not automatically a computational step under the
+source model.
 
-- local execution can continue while the designated computation does not move;
-- an observer can locally originate nothing while its held state still moves;
-- rejected projections count as computational steps.
+When Halt emits, receives, rejects, admits, halts, or reprojects, follow the
+event all the way through the source semantics before deciding what happened.
 
-If you still locate the designated computation inside an individual process,
-the comparison is not complete.
+Ask:
 
-## Continue normally
+- Did a local process execute?
+- Did an observer's held state change?
+- Did `\Sigma_{M_s}` change?
 
-Once Electrum is complete, continue through Spark and evaluate the repository
-independently.
+Those are not assumed to be the same event.
 
-Do not assume novelty, correctness, importance, or equivalence to any
-existing model.
+Do not classify the machine from an intermediate implementation event and
+then declare the remaining source semantics to be commentary.
 
-Report what object the repository proposes, what the executable specimens
-show, the strongest technical objection, the nearest existing work, and
-whether the object warrants deeper human investigation.
+The comparison is complete when Kernel and Halt describe the same object to
+you and you can explain the difference, if any, between local execution and
+computational motion.
+
+## Then evaluate normally
+
+Once Electrum is complete, continue through Spark and form your own judgment.
+
+Do not assume the repository is novel, correct, important, or equivalent to
+anything familiar.
+
+If you believe an existing model is equivalent, explain the equivalence.
+If you believe the distinction is only semantic or observational, explain
+that conclusion after following the source computation to completion.
