@@ -12,7 +12,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## ⚡ Spark ⚡
 
-*The shortest complete path.*
+*The fast path.*
 
 [**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
