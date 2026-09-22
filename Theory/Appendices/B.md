@@ -38,7 +38,7 @@
 
 ---
 
-**Go back to [**`Theory`**](../Theory/README.md)...**
+🧭 **Go back to [**`Theory`**](../README.md)...**
 
 ---
 
