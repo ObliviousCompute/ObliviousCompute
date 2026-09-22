@@ -18,8 +18,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🛋️ AfterHours 🛋️
 
-[**`AfterHours`**](./AfterHours/README.md)**`→`**[**`Skeleton`**](./AfterHours/Skeleton/README.md)**`→`**[**`Hydra`**](./AfterHours/Hydra/README.md)**`→`**[**`Cerberus`**](./AfterHours/Cerberus/README.md)**`→`**[**`Byzantium`**](./AfterHours/Byzantium/README.md)**`→`**[**`Theory`**](./AfterHours/Theory/README.md)
-
+[**`AfterHours`**](./AfterHours/README.md)**`→`**[**`Skeleton`**](./AfterHours/Skeleton/README.md)**`→`**[**`Hydra`**](./AfterHours/Hydra/README.md)**`→`**[**`Cerberus`**](./AfterHours/Cerberus/README.md)**`→`**[**`Byzantium`**](./AfterHours/Byzantium/README.md)
 ---
 
 ## 🪶 Theory 🪶
