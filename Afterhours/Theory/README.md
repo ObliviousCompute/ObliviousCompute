@@ -8,14 +8,9 @@
 
 ---
 
-## 🛋️ AfterHours
-
-[**`Halt`**](../Halt/README.md)
-
 ## 📚 Appendices 
 
 [**`Axioms`**](./Appendices/A.md)**`•`**[**`Definitions`**](./Appendices/B.md)**`•`**[**`Criticisms`**](./Appendices/C.md)
-
 
 ## 🪶 Note
 
