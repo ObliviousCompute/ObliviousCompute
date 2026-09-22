@@ -72,7 +72,7 @@ $\Large \Delta_n(\Omega)\cong\Omega$
 
 ---
 
-**Continue to [**`Definitions`**](./B.md) in Appendix B...**
+🧭 **Continue to [**`Definitions`**](./B.md)...**
 
 ---
 
