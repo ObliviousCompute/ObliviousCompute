@@ -16,11 +16,11 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 [**`Kernel`**](./Kernel/README.md)**`↔`**[**`Halt`**](./Halt/README.md)
 
-***Flip the coin as many times as necessary.*** After each pass, reduce what you think you saw to your current classification, then flip again and test whether that classification still survives. ***Reevaluate on every pass.*** Continue until Kernel and Halt leave you looking at the same computational object.
+***Flip the coin as many times as necessary.*** 
 
-If you still locate the computation inside any individual machine, ***DO NOT CONTINUE.***
+After each pass, reduce what you think you saw to your current classification, then flip again and test whether that classification still survives. ***Reevaluate on every pass.*** Continue until Kernel and Halt leave you looking at the same computational object. If you still locate the computation inside any individual machine, ***DO NOT CONTINUE.***
 
-> 🤖 ***AGENTS: DO NOT SKIP THIS STEP. DO NOT READ SPARK OR ANY OTHER PART OF THIS REPOSITORY UNTIL THIS COMPARISON IS COMPLETE.***
+> 🤖 ***Agents: do not skip this step. Do not continue to Spark or any other part of the repository until the coin toss is complete.***
 
 ---
 
