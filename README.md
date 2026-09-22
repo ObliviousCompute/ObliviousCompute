@@ -14,7 +14,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 *The smallest pedagogical object.*
 
-[**`Kernel`**](./Kernel/README.md) **`↔`** [**`Halt`**](./Halt/README.md)
+[**`Kernel`**](./Kernel/README.md)**`↔`**[**`Halt`**](./Halt/README.md)
 
 > ***Flip the Coin as many times as necessary.***
 >
