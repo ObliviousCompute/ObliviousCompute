@@ -4,7 +4,7 @@
 
 ---
 
-> *Descend into the underworld where state becomes dream. Skeleton gives it bones. Hydra gives it many heads. Cerberus gives it teeth. Byzantium teaches it to survive betrayal. With every descent, the state grows richer, more constrained, and more stable. The deeper you go, the harder it is to knock the machine out of shape.*
+> *Descend into the underworld where state begins as a dream. Skeleton gives it bones. Hydra gives it many heads. Cerberus gives it teeth. Byzantium teaches it to survive betrayal. With every descent, the state grows richer, more constrained, and more stable. The deeper you go, the harder it is to knock the machine out of shape.*
 
 ---
 
