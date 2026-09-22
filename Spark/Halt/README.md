@@ -2,7 +2,7 @@
 
 ***...Rock. Paper. Scissors. Rock. Paper. Scissors...***
 
-<img src="../AfterHours/Relics/HaltingMachine.gif" width="350"/>
+<img src="../../AfterHours/Relics/HaltingMachine.gif" width="350"/>
 
 > ***...Forever...and ever...*** 
 
