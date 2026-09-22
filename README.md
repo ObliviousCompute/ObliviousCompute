@@ -1,6 +1,6 @@
 # Ω Oblivious Compute Ω
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) is a distributed computation model built from independently held states projected into a shared medium, where each observer decides what belongs from where it already stands and no observer contains the whole.
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) is a distributed computation model in which independently held states are projected into a shared medium and evaluated locally for admissibility. Each observer changes only from what it can admit from its present state, while the larger computational object emerges from the relation among those independently maintained states rather than from any single process, coordinator, or stored global state.
 
 > **The field becomes the computational locus.**
 > 
