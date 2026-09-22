@@ -98,10 +98,6 @@ if __name__ == "__main__":
 
 **IC2** If the commanding general is loyal, then every loyal lieutenant obeys the order he sends
 
-***Oral messages establish who spoke. Signed messages establish what was signed.***
-
-> ***Lamport's oral construction requires fewer than one-third traitors, and the signed construction removes that bound under its authentication assumptions.***
-
 ---
 
 🧭 **Continue the [**`Spark`**](../Spark/README.md)**`⟶`**[**`ICBM`**](./ICBM/README.md)...**
