@@ -38,7 +38,7 @@
 
 ---
 
-**Go back to [**`Afterhours`**](../Afterhours/README.md)...**
+**Go back to [**`AfterHours`**](../AfterHours/README.md)...**
 
 ---
 
