@@ -53,7 +53,7 @@ pipx install HaltingMachine && HaltingMachine
 
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [**`Here`**](../AfterHours/Relics/pipx.md).
+> Don't have **pipx**? See how to install it [**`Here`**](../../AfterHours/Relics/pipx.md).
 
 ---
 
