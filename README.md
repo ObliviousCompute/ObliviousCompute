@@ -18,13 +18,15 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🛋️ AfterHours 🛋️
 
+**[**`Afterhours`**](./Afterhours/README.md) is where the fun begins.**
+
+[**`Skeleton`**](./AfterHours/Skeleton/README.md)**→**[**`Hydra`**](./AfterHours/Hydra/README.md)**→**[**`Cerberus`**](./AfterHours/Cerberus/README.md)**→**[**`Byzantium`**](./AfterHours/Byzantium/README.md)**→**[**`Theory`**](./AfterHours/Theory/README.md)
+
 ---
 
-## `💎`[**`Kernel`**](./Spark/Kernel/README.md)`💎`
+## 💎 Kernel 💎
 
-*The mathematical progression.*
-
-**[**`Kernel`**](./Kernel/README.md) follows local admissibility through relational symmetry.**
+**[**`Kernel`**](./Spark/Kernel/README.md) follows The mathematical progression.**
 
 > ***The primitive is simple. The conflux is not.***
 
@@ -32,9 +34,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 💀 Skeleton 💀
 
-*Pure, hyper-legible expression.*
-
-**[**`Skeleton`**](./Skeleton/README.md) is the structure that makes the system lawful.**
+**[**`Skeleton`**](./Afterhours/Skeleton/README.md) Pure, hyper-legible expression.**
 
 > ***The structure is the explanation.***
 
@@ -42,9 +42,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🐍🐍 Hydra 🐍🐍
 
-*The minimal distributed demonstration.*
-
-**[**`Hydra`**](./Hydra/README.md) shows how oblivious state moves and collapses.**
+**[**`Hydra`**](./Afterhours/Hydra/README.md) shows The minimal distributed demonstration.**
 
 > ***A simple admissibility gate.***
 
@@ -52,9 +50,7 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## 🔥 Cerberus 🔥
 
-*The Byzantine-resistant demonstration.*
-
-**[**`Cerberus`**](./Cerberus/README.md) compresses equivocation into a tiny machine.**
+**[**`Cerberus`**](./Afterhours/Cerberus/README.md) compresses equivocation into a tiny machine.**
 
 > ***Nine Heads. NinetyNine bones.***
 
@@ -62,17 +58,13 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ## ⚔️ Byzantium ⚔️
 
-*Networked terminal game for up to 24 players.*
-
-**[**`Byzantium`**](./Byzantium/README.md) is the primary expression of Oblivious Compute**
+**[**`Byzantium`**](./Afterhours/Byzantium/README.md) is the primary expression of Oblivious Compute**
 
 > ***The state survives betrayal.***
 
 ---
 
 ## 🙂 Halt 🙂
-
-*The computational boundary.*
 
 **[**`Halt`**](./Halt/README.md) puts the inverter inside the machine.**
 
