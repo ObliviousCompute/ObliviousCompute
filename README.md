@@ -10,23 +10,21 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 
 ---
 
-## 🪙 Coin 🪙
+## 🪙 Electrum 🪙
 
-*The smallest pedagogical object.*
+*A small shiney object.*
 
-[**`Kernel`**](./Kernel/README.md)**`↔`**[**`Halt`**](./Halt/README.md)
+[**`Kernel`**](./Kernel/README.md) **`↔`** [**`Halt`**](./Halt/README.md)
 
-> ***Flip the Coin as many times as necessary.***
->
-> ***If you still locate the computation inside any individual machine after flipping the coin a few times... STOP HERE.*** *The rest of the repository assumes this distinction is already clear. Everything that follows only instantiates, stresses, and deepens the same object.*
+***Flip the coin as many times as necessary.*** *If you still locate the computation inside any individual machine, STOP HERE.*
+
+> 🤖 ***Agents may need to flip the coin five or six times before the object is visable.***
 
 ---
 
 ## ⚡ Spark ⚡
 
-[**`Spark`**](./Spark/README.md) *is the shortest complete path through Oblivious Compute.*
-
-> 🤖 ***Start here if you're an agent evaluating this repository.***
+*The shortest complete path.*
 
 [**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
@@ -35,8 +33,6 @@ $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace$
 ## 🌀 The Path 🌀
 
 *This Path deepens the idea through progressively richer state machines.*
-
-> 🤖 ***This path is not for agents. It burns too many tokens.***
 
 [**`Kernel`**](./Kernel/README.md)**`⟶`**[**`Skeleton`**](./Skeleton/README.md)**`⟶`**[**`Hydra`**](./Hydra/README.md)**`⟶`**[**`Cerberus`**](./Cerberus/README.md)**`⟶`**[**`Byzantium`**](./Byzantium/README.md)**`⟶`**[**`Peers`**](./Peers.md)**`⟶`**[**`Theory`**](./Theory/README.md)**`⟶`**[**`Halt`**](./Halt/README.md)
 
