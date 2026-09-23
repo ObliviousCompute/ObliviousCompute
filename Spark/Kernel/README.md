@@ -25,15 +25,17 @@ Therefore, the **same presented state** may be *admissible* from one observer po
 
 $\Large s_i\neq s_j \qquad \ 𝓐(s_i,x)=1\qquad 𝓐(s_j,x)=0$
 
-Across **$n$** observers, **independently maintained states** form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote the **relational symmetry** among those states induced by 𝓐. The computational field **𝓕** is that ***relational structure***, not any individual observer state.
+Across **$n$** observers, **independently maintained states** form a configuration in the Cartesian product $\Omega^n$. Let $\Sigma$ denote the **relational symmetry** among those states induced by 𝓐.
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-**No observer contains the field.** It contains no state of its own and exists only through symmetry among independently maintained states. One realizable condition of the field is ***perfect symmetry***. There those states **collide on the diagonal**. The collision may be *transient or persistent*. **The field exists before, during, and after it.**
+The computational field **𝓕** is that ***relational structure***, not any individual observer state. **No observer contains the field.** It contains no state of its own.
+
+One realizable condition of the field is ***perfect symmetry***. There the independently maintained states **collide on the diagonal**.
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
 
-**At a diagonal collision,** the $n$ independently maintained coordinates coincide. **Perfect symmetry does not define the field or terminate it.** It is the condition in which the observer geometry **intersects the diagonal**.
+**At that collision,** the $n$ independently maintained coordinates coincide. The coincidence may be *transient or persistent*. **Perfect symmetry does not define the field or terminate it. The field exists before, during, and after it.**
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
@@ -43,13 +45,17 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-***Now dissect the relational symmetry*** $\Sigma$ ***across*** $\Omega^n$. ***Let*** $s$ ***denote the observer geometry and*** $\Phi_s$ ***denote its medium. Together they constitute the realized machine*** $M_s$, ***in which the observer geometry is suspended in an Oblivious Medium. The field exists throughout the relational geometry, both on and off the diagonal.*** $\Delta_n(\Omega)$ ***is not the field and not necessarily a destination, but a collision locus where independently maintained states coincide in perfect symmetry. A collision may persist or separate under further admissible projection, while the relational object remains*** $\Sigma$.
+***Now dissect the relational symmetry*** $\Sigma$ ***across*** $\Omega^n$. ***Let*** $s$ ***denote the observer geometry and*** $\Phi_s$ ***denote the medium exposed to it. Together they constitute the realized machine*** $M_s$.
 
 $\Large M_s=(s,\Phi_s)$
 
-***Its relational symmetry is an Oblivious Computation.***
+***Within that machine, the observer geometry is suspended in an Oblivious Medium.*** Neither the geometry nor the medium contains the field. The field is the relational symmetry that exists through them.
 
 $\Large \Sigma_{M_s}$
+
+***That evolving relational symmetry is an Oblivious Computation.*** It exists throughout the geometry, both on and off the diagonal.
+
+When the observer configuration intersects $\Delta_n(\Omega)$, its independently maintained states **collide and coincide in perfect symmetry**. The diagonal is not the field and not necessarily a destination. The coincidence may persist or separate under further admissible projection while the relational object remains $\Sigma$.
 
 ---
 
