@@ -6,7 +6,7 @@ A computer computes. State enters the machine, the machine executes, and somethi
 
 Oblivious Compute moves the distributed computation **outside of the box.** Give independent observers the **same starting state** and allow each to maintain and project its own state. No individual result is authoritative. ***The computation appears in the relation among independently maintained states.***
 
-When independently maintained states resolve to the same position, many machines remain physically independent while the distributed configuration resolves to **one computational position.**
+**When independently maintained states collide at the same position,** many machines remain physically independent while the distributed configuration **intersects one computational position in perfect symmetry.** The collision may *persist or separate* under further projection.
 
 ## House of Mirrors
 
