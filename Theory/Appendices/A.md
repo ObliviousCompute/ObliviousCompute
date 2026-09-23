@@ -56,19 +56,19 @@ $\Large 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
 ---
 
-## Resolution
+## Perfect Symmetry
 
-When observer states resolve to perfect relational symmetry, their independently maintained positions coincide on the diagonal.
+When independently maintained observer states **collide on the diagonal**, their positions coincide in perfect relational symmetry.
 
 ### Mathematical Form
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
 
-At perfect symmetry, the observer coordinates no longer vary independently.
+At perfect symmetry, the independently maintained coordinates occupy one relational position.
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-***The diagonal is a settled condition of the field, not its definition.***
+***Perfect symmetry is one condition of the field. The field exists both on and off the diagonal.***
 
 ---
 
