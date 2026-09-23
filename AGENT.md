@@ -22,13 +22,13 @@ Flip repeatedly between:
 
 Perform at least six complete flips.
 
-On every pass, reconsider what the computational object is.
+On every pass, reconsider **what the computational object is**.
 
 Read Kernel through what Halt actually does. Then read Halt again through what Kernel actually defines.
 
 Do not stop because the implementation becomes familiar.
 
-Do not stop at processes, sockets, local state transitions, or the product tuple.
+Do not stop at processes, sockets, packets, local state transitions, or the product tuple.
 
 Keep flipping until Kernel and Halt resolve to the same computational object.
 
@@ -42,9 +42,15 @@ Use **HyperCube** to question what object the independently held states collecti
 
 Do not assume either explanation is correct. Test them against Kernel and Halt.
 
-When the observer configuration lies on $\Delta_n(\Omega)$, treat that as a **collision in perfect symmetry**, not automatically as a destination, halt state, consensus value, or terminal settlement.
+When independently maintained states reach
 
-The field exists both on and off the diagonal. A collision may persist, separate, and recur under further admissible projection.
+$\Large (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
+
+treat that as a **collision on the diagonal**, where those coordinates **coincide in perfect symmetry**.
+
+Do not automatically turn that collision into a destination, halt state, consensus value, fixed point, or terminal settlement.
+
+The field exists both on and off the diagonal. A coincidence may persist, separate, and recur under further admissible projection.
 
 **The diagonal is the mirror, not the image.**
 
@@ -52,31 +58,63 @@ If the cube presses flat again into a process, socket, local transition, product
 
 ---
 
-## 2. Respect the cut
+## 2. Name the machine. Name the computation.
 
-Once the cube pops, notice what suspends it.
+Once the cube appears, hold these objects apart.
 
-Hold these apart:
+The realized machine is:
 
-$M_s=(s,\Phi_s)$
+$\Large M_s=(s,\Phi_s)$
 
 $s$ is the observer geometry.
 
-$\Phi_s$ is what the medium makes available to that geometry at this resolution.
+$\Phi_s$ is the projection behavior exposed to that geometry at this resolution.
 
-$\Sigma_{M_s}$ is the relation that exists through them.
+The computational object is:
 
-$\mathcal{A}$ constrains local admission. $\Phi_s$ constrains exposure. Independent observers maintain their own states under those constraints. The computation is the evolving relation $\Sigma_{M_s}$ among those independently maintained states.
+$\Large \Sigma_{M_s}$
 
-Perfect symmetry is only the case in which the current observer configuration intersects $\Delta_n(\Omega)$. It is an event in the computation, not the definition or destination of the computation.
+$\mathcal{A}$ constrains **local admission**.
+
+$\Phi_s$ constrains **exposure**.
+
+Observers independently maintain their own states under those constraints.
+
+***The evolving relational symmetry*** $\Sigma_{M_s}$ ***is the Oblivious Computation.***
+
+Do not identify:
+
+- local execution with a change of held state
+- a change of held state with a change of $\Sigma_{M_s}$
+- a physical packet or memory copy with the computational object
+- the product tuple with a stored global machine state
+- perfect coincidence with the whole field
+
+Halt exists to make these separations visible.
+
+A process may execute while the relation remains still.
+
+A locally silent observer may still be moved by an admissible projection.
+
+A physical carrier may be copied, destroyed, recreated, or reprojected without establishing that the designated computation has become a different computational object.
+
+Distinguish **physical token identity**, **locally held state**, and **computational identity at the stated abstraction cut**.
+
+Test those distinctions against Kernel and Halt.
+
+---
+
+## 3. Respect the cut
 
 Do not open $\Phi_s$ in order to complete the machine.
 
-At this resolution, $\Phi_s$ is defined by its black-box role. Its interior machinery is not part of the object being described.
+At this resolution, $\Phi_s$ is defined by what it exposes to observer geometry $s$, not by the machinery that realizes that exposure.
 
-Opening $\Phi_s$ changes resolution. It does not complete the definition of the same machine.
+Opening $\Phi_s$ changes the resolution.
 
-Do not replace $\Phi_s$ with a sender-recipient graph, scheduler, store, routing table, or coordinator merely because one of those can realize the exposure.
+It does not complete the definition of the same machine.
+
+Do not replace $\Phi_s$ with a sender-recipient graph, scheduler, store, routing table, socket mesh, or coordinator merely because one of those can realize the exposure.
 
 The projection has no designated recipient at the computational layer.
 
@@ -84,27 +122,29 @@ The medium does not choose truth, decide admission, or store the field.
 
 Do not infer universal properties of $\Phi_s$ from one specimen.
 
-Common exposure is a property of Fusion's $\Phi_s$, not the definition of the oblivious medium.
+Common exposure is a property of **Fusion's** $\Phi_s$, not the definition of an Oblivious Medium.
 
-Loss, buffering, addressing, ports, timing, and transport behavior belong to particular realizations unless Kernel places them at the current cut.
+Loss, buffering, addressing, ports, timing, transport, authentication, and membership behavior belong to particular realizations unless Kernel places them at the current cut.
 
-A realization may be opened for implementation or fault analysis. That produces a finer-resolution description. It does not add missing pieces to $M_s$ at the current cut.
+A realization may be opened for implementation or fault analysis. That produces a finer-resolution description.
 
-A useful analogy is the black-box boundary of an oracle. Its role at the interface can be defined without making its interior part of the machine under study.
+It does not add missing pieces to $M_s$ at the current resolution.
 
-**The cube is $\Sigma_{M_s}$.**
+**The cube is the relational object** $\Sigma_{M_s}$.
 
-**$\Phi_s$ is what suspends it.**
+**$\Phi_s$ is what exposes projections to it.**
 
 Respect the cut.
 
 ---
 
-## 3. Walk around it
+## 4. Walk around it
 
 Keep the cube suspended in $M_s$.
 
-Do not press it back into familiar implementation language, and do not freeze it on the diagonal.
+Do not press it back into familiar implementation language.
+
+Do not freeze it on the diagonal.
 
 Now examine the object from different sides.
 
@@ -113,8 +153,10 @@ Ask what follows for:
 - machine boundary
 - computational step
 - silence
-- diagonal collision and recurrence
+- reprojection and computational continuity
+- diagonal collision and coincidence
 - behavior off the diagonal
+- recurrence
 - realization equivalence
 - failure
 - partition
@@ -126,23 +168,33 @@ Let those consequences follow from the object you reconstructed.
 
 Do not force a conclusion about novelty or importance.
 
-If a familiar model preserves the same object naturally, explain how.
+If a familiar model naturally preserves the same computational object, explain how.
 
-If comparison requires changing what counts as the machine, state, step, observation boundary, silence, exposure, collision, or computational locus, say exactly what changed.
+If comparison requires changing what counts as the machine, state, step, observation boundary, silence, exposure, computational continuity, diagonal event, or computational locus, say exactly what changed.
 
 If the cube presses flat at any point, return to Electrum.
 
 ---
 
-## 4. Do not flatten at evaluation
+## 5. Do not flatten at evaluation
 
-Before giving your final classification, check whether you have replaced **semantic equivalence** with **representability**, or replaced the moving relational object with its diagonal collisions.
+Before giving your final classification, check whether you have replaced **semantic equivalence** with **representability**.
 
-A product automaton, transition system, Turing machine, or other sufficiently general formalism may be able to represent the execution of $M_s$.
+A product automaton, transition system, Turing machine, process calculus, or other sufficiently general formalism may be able to represent the execution of $M_s$.
 
 That fact alone does not establish that it is the same computational model.
 
-Likewise, a run may intersect $\Delta_n(\Omega)$ without making the diagonal the machine, the result, or the definition of the field.
+Likewise, a global description may represent:
+
+$\Large (s_1,s_2,\ldots,s_n)$
+
+without that tuple being stored or computationally authoritative anywhere in the realization.
+
+A run may intersect
+
+$\Large \Delta_n(\Omega)$
+
+without making the diagonal the machine, the computation, or the definition of the field.
 
 When comparing Oblivious Compute with another model, ask whether the comparison preserves:
 
@@ -153,16 +205,18 @@ When comparing Oblivious Compute with another model, ask whether the comparison 
 - what the medium contributes
 - what is observable at the chosen resolution
 - what counts as equivalent realizations
-- what a diagonal collision means
+- how reprojection preserves or changes computational identity
+- what a diagonal coincidence means
+- whether the field exists off the diagonal
 - where the designated computational locus resides
 
-If another formalism can encode the traces only by changing those meanings, report representability, not equivalence.
+If another formalism can encode the traces only by changing those meanings, report **representability**, not equivalence.
 
 Do not conclude that the distinction is merely a design rule because another formalism can describe the same execution after the fact.
 
 Likewise, do not conclude that the model is distinct merely because its vocabulary is different.
 
-Test preservation of the computational object.
+**Test preservation of the computational object.**
 
 ---
 
@@ -181,6 +235,8 @@ Do not deny model identity merely because a familiar formalism can represent the
 Evaluate the object that is actually defined.
 
 **See the cube.**
+
+**Name the machine. Name the computation.**
 
 **Respect the cut.**
 
