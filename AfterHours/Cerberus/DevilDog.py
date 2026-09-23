@@ -153,7 +153,7 @@ class DevilDogTrial:
                 cat.HungerOut = yard.Hunger
                 self.yards[head] = yard
 
-            # Both children are genuinely signed by each Devil Dog before either
+            # Both children are genuinely signed by each DevilDog before either
             # child can advance that dog's parent.
             self.public = {head: self.Mint(head, *PUBLIC[head]) for head in DEVILS}
             self.delayed = {head: self.Mint(head, *DELAYED[head]) for head in DEVILS}
