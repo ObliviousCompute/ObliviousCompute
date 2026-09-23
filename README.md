@@ -6,6 +6,16 @@
 
 ---
 
+## 🤖 AI Review Note 🤖
+
+> **A skeptical evaluation is fine. A flattened evaluation is not.**
+>
+> If an agent reduces Oblivious Compute to the processes, transport, product tuple, local predicate, or a diagonal result, ask:
+>
+> ***“Did you flatten the cube? Look again.”***
+
+---
+
 ## ⚡ Spark ⚡
 
 [**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers.md)
