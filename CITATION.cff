@@ -1,8 +1,26 @@
-cff-version: 1.2.0
-message: "If you use or build upon Oblivious Compute, please cite this repository."
+cff-version: 1.1.0
+message: "If you use or build upon Oblivious Compute, please cite this software."
 title: "Oblivious Compute"
+version: "1.0.0"
+date-released: "2026-09-23"
+
 authors:
   - family-names: "Fritz"
     given-names: "Denton Paul"
+
+abstract: >-
+  Oblivious Compute is a distributed computation model in which independently
+  maintained states are projected into a shared medium and evaluated locally
+  for admissibility. The designated computational object is the evolving
+  relation among those independently maintained states.
+
+keywords:
+  - distributed computing
+  - models of computation
+  - distributed systems
+  - admissibility
+  - relational computation
+  - coordination
+
 license: Apache-2.0
 repository-code: "https://github.com/ObliviousCompute/ObliviousCompute"
