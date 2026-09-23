@@ -6,9 +6,11 @@
 
 ### Dijkstra-1974
 
-In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed how finite-state machines can act from local relationships between their own state and neighboring states while driving a distributed system toward a legitimate global condition.
+In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed that local actions taken from only locally available state can drive a distributed system as a whole into a **globally legitimate condition**, even when no commonly accessible store contains the total system state.
 
-Oblivious Compute retains the local relational principle but removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position.
+What is striking in the language of Oblivious Compute is that the **global relation already exists across independently maintained local states**. Dijkstra treats that relation as the condition the distributed algorithm must eventually satisfy. Oblivious Compute takes the further step of placing the **computational locus in the relation itself**.
+
+Dijkstra's machines remain connected through explicit neighbor relations. Oblivious Compute removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position.
 
 ### Pereira-2013
 
