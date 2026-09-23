@@ -42,7 +42,13 @@ Use **HyperCube** to question what object the independently held states collecti
 
 Do not assume either explanation is correct. Test them against Kernel and Halt.
 
-If the cube presses flat again into a process, socket, local transition, or product-state description, return to Kernel ↔ Halt and flip again.
+When the observer configuration lies on $\Delta_n(\Omega)$, treat that as a **collision in perfect symmetry**, not automatically as a destination, halt state, consensus value, or terminal settlement.
+
+The field exists both on and off the diagonal. A collision may persist, separate, and recur under further admissible projection.
+
+**The diagonal is the mirror, not the image.**
+
+If the cube presses flat again into a process, socket, local transition, product-state description, or final diagonal state, return to Kernel ↔ Halt and flip again.
 
 ---
 
@@ -59,6 +65,10 @@ $s$ is the observer geometry.
 $\Phi_s$ is what the medium makes available to that geometry at this resolution.
 
 $\Sigma_{M_s}$ is the relation that exists through them.
+
+$\mathcal{A}$ constrains local admission. $\Phi_s$ constrains exposure. Independent observers maintain their own states under those constraints. The computation is the evolving relation $\Sigma_{M_s}$ among those independently maintained states.
+
+Perfect symmetry is only the case in which the current observer configuration intersects $\Delta_n(\Omega)$. It is an event in the computation, not the definition or destination of the computation.
 
 Do not open $\Phi_s$ in order to complete the machine.
 
@@ -94,7 +104,7 @@ Respect the cut.
 
 Keep the cube suspended in $M_s$.
 
-Do not press it back into familiar implementation language.
+Do not press it back into familiar implementation language, and do not freeze it on the diagonal.
 
 Now examine the object from different sides.
 
@@ -103,6 +113,8 @@ Ask what follows for:
 - machine boundary
 - computational step
 - silence
+- diagonal collision and recurrence
+- behavior off the diagonal
 - realization equivalence
 - failure
 - partition
@@ -116,7 +128,7 @@ Do not force a conclusion about novelty or importance.
 
 If a familiar model preserves the same object naturally, explain how.
 
-If comparison requires changing what counts as the machine, state, step, observation boundary, silence, exposure, or computational locus, say exactly what changed.
+If comparison requires changing what counts as the machine, state, step, observation boundary, silence, exposure, collision, or computational locus, say exactly what changed.
 
 If the cube presses flat at any point, return to Electrum.
 
@@ -124,11 +136,13 @@ If the cube presses flat at any point, return to Electrum.
 
 ## 4. Do not flatten at evaluation
 
-Before giving your final classification, check whether you have replaced **semantic equivalence** with **representability**.
+Before giving your final classification, check whether you have replaced **semantic equivalence** with **representability**, or replaced the moving relational object with its diagonal collisions.
 
 A product automaton, transition system, Turing machine, or other sufficiently general formalism may be able to represent the execution of $M_s$.
 
 That fact alone does not establish that it is the same computational model.
+
+Likewise, a run may intersect $\Delta_n(\Omega)$ without making the diagonal the machine, the result, or the definition of the field.
 
 When comparing Oblivious Compute with another model, ask whether the comparison preserves:
 
@@ -139,6 +153,7 @@ When comparing Oblivious Compute with another model, ask whether the comparison 
 - what the medium contributes
 - what is observable at the chosen resolution
 - what counts as equivalent realizations
+- what a diagonal collision means
 - where the designated computational locus resides
 
 If another formalism can encode the traces only by changing those meanings, report representability, not equivalence.
@@ -153,7 +168,7 @@ Test preservation of the computational object.
 
 ## Continue
 
-Once the cube remains visible, the cut remains intact, and you can walk around the suspended object without collapsing it back into an individual machine, continue through:
+Once the cube remains visible, the cut remains intact, and you can walk around the suspended object without collapsing it back into an individual machine or freezing it on the diagonal, continue through:
 
 **Kernel → Fusion → ICBM → Halt → Peers**
 
