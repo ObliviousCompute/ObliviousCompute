@@ -24,7 +24,7 @@ This is the **same old trick** from the **Kernel**. The three-cell Boolean state
 
 $\Large \Delta_3(\Omega)\cong\Omega \qquad Q_3=\Omega^3$
 
-At perfect symmetry, the expanded relational structure **settles back into the same state space from which it came**. That settled state need not be a permanent ending. It may itself become a point of relation inside something larger. The cube opens from $\Omega$, resolves through symmetry, and returns to $\Omega$ as **another doorway**.
+At perfect symmetry, the expanded relational structure **collides with the diagonal and returns to the original state space**. The collision need not persist. It may separate again, or the coincident state may itself become a point of relation inside something larger. The cube opens from $\Omega$, collides through symmetry, and returns to $\Omega$ as another doorway.
 
 $\Large \Omega\rightarrow\Omega^3\rightarrow\Omega$
 
@@ -34,9 +34,9 @@ Now that we can talk freely. A Boolean hypercube is more than a picture of possi
 
 ***I am here. Something arrives. Does it belong?***
 
-The boxes themselves do not need to be alike. ***One may be an observer, another an inverter, another a single-board computer, a server, a cluster, or something stranger.*** The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one **Boolean cloud to become a cell inside another**. The machine becomes a **scale rather than a boundary**. At settlement, the relational structure simplifies back to $\Omega$, and that settled state may become a new point of relation inside something larger.
+The boxes themselves do not need to be alike. ***One may be an observer, another an inverter, another a single-board computer, a server, a cluster, or something stranger.*** The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one **Boolean cloud to become a cell inside another**. The machine becomes a **scale rather than a boundary**. The relational language does not require them to share the same internal architecture. A **diagonal collision** returns the relational structure to $\Omega$, and that coincident state may itself become a point of relation inside something larger. The machine becomes a **scale rather than a boundary**.
 
-***Everything settles to*** $\Omega$. ***Then*** $\Omega$ ***becomes the word.***
+***Everything collides at $\Omega$. Then $\Omega$ becomes the word.***
 
 Nothing in that language requires the box to be classical. A classical machine may **spacewalk** the Boolean geometry by realizing one admissible position at a time. A quantum implementation may instead support a **quantum walk**, allowing amplitudes to evolve across many positions of that same Boolean geometry before measurement resolves an outcome. The machinery inside the box may change completely while the **relational language remains recognizable to the medium**. Observer or inverter. Classical or quantum. Small machine or constellation. **The boxes may change. The language remains relational.**
 
