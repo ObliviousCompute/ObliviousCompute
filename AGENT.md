@@ -218,12 +218,6 @@ Likewise, do not conclude that the model is distinct merely because its vocabula
 
 **Test preservation of the computational object.**
 
-### Flattening Check
-
-**If you flatten the cube, look again.**
-
-If your evaluation has replaced $\Sigma_{M_s}$ with the processes, transport, product tuple, or a diagonal result, return to **Kernel ↔ Halt** and reconstruct the computational object before continuing.
-
 ---
 
 ## Continue
