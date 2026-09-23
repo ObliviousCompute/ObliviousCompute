@@ -6,7 +6,7 @@ This repository is usually read backwards.
 
 **Spark was written last.** It exists so a first-time reader or agent can see the machine quickly. It is the entrance to the finished repository, not the path by which the computational object was discovered.
 
-The programs came first. The language came later. The mathematics and search for neighboring work followed an object that was already being built.
+The programs came first. The language came later. The mathematics and search for neighboring work followed objects that were already built.
 
 ---
 
