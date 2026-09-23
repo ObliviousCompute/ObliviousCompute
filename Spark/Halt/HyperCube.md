@@ -36,7 +36,7 @@ Now that we can talk freely. A Boolean hypercube is more than a picture of possi
 
 The boxes themselves do not need to be alike. ***One may be an observer, another an inverter, another a single-board computer, a server, a cluster, or something stranger.*** The relational language does not require them to share the same internal architecture. A resolved machine may itself become a state at another scale, allowing one **Boolean cloud to become a cell inside another**. The machine becomes a **scale rather than a boundary**. The relational language does not require them to share the same internal architecture. A **diagonal collision** returns the relational structure to $\Omega$, and that coincident state may itself become a point of relation inside something larger. The machine becomes a **scale rather than a boundary**.
 
-***Everything collides at $\Omega$. Then $\Omega$ becomes the word.***
+***Everything collides at $\Omega$. Then*** $\Omega$ ***becomes the word.***
 
 Nothing in that language requires the box to be classical. A classical machine may **spacewalk** the Boolean geometry by realizing one admissible position at a time. A quantum implementation may instead support a **quantum walk**, allowing amplitudes to evolve across many positions of that same Boolean geometry before measurement resolves an outcome. The machinery inside the box may change completely while the **relational language remains recognizable to the medium**. Observer or inverter. Classical or quantum. Small machine or constellation. **The boxes may change. The language remains relational.**
 
