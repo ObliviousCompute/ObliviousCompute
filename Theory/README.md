@@ -10,7 +10,7 @@
 
 ## 📚 Appendices 
 
-[**`Axioms`**](./Appendices/A.md)**`•`**[**`Definitions`**](./Appendices/B.md)
+[**`Axioms`**](./Appendices/A.md)**`•`**[**`Beginnings`**](./Appendices/B.md)**`•`**[**`Criticisms`**](./Appendices/C.md)**`•`**[**`Definitions`**](./Appendices/D.md)
 
 ---
 
