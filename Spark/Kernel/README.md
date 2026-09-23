@@ -29,11 +29,11 @@ Across **$n$** observers, independently maintained states form a configuration i
 
 $\Large (s_1,s_2,\ldots,s_n)\in\Omega^n \qquad 𝓕\equiv\Sigma(s_1,s_2,\ldots,s_n)$
 
-**No observer contains the field.** It contains no state of its own and exists only through symmetry among independently maintained states. One realizable condition of the field is perfect symmetry. There those states coincide and the observer geometry lies on the diagonal.
+**No observer contains the field.** It contains no state of its own and exists only through symmetry among independently maintained states. One realizable condition of the field is perfect symmetry. There those states collide on the diagonal. The collision may be transient or persistent. The field exists before, during, and after it.
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
 
-At perfect symmetry, the $n$ observer coordinates no longer vary independently. The diagonal is canonically isomorphic to the original state space.
+At a diagonal collision, the $n$ independently maintained coordinates coincide. Perfect symmetry does not define the field or terminate it. It is the condition in which the observer geometry intersects the diagonal.
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
@@ -43,7 +43,7 @@ $\Large \Omega$
 
 ## 💎 Diamond Tip 💎
 
-***Now dissect the relational symmetry*** $\Sigma$ ***across*** $\Omega^n$. ***Let*** $s$ ***denote the observer geometry and*** $\Phi_s$ ***denote its medium. Together they constitute the realized machine*** $M_s$ ***in which the observer geometry is suspended in an Oblivious Medium.***
+***Now dissect the relational symmetry*** $\Sigma$ ***across*** $\Omega^n$. ***Let*** $s$ ***denote the observer geometry and*** $\Phi_s$ ***denote its medium. Together they constitute the realized machine*** $M_s$, ***in which the observer geometry is suspended in an Oblivious Medium. The field exists throughout the relational geometry, both on and off the diagonal.*** $\Delta_n(\Omega)$ ***is not the field and not necessarily a destination, but a collision locus where independently maintained states coincide in perfect symmetry. A collision may persist or separate under further admissible projection, while the relational object remains*** $\Sigma$.
 
 $\Large M_s=(s,\Phi_s)$
 
@@ -53,8 +53,8 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-> $\Sigma$ ***is the field.*** $\Phi_s$ ***denotes the projection behavior exposed to observer geometry*** $s$***. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box, and the realized Oblivious Machine may itself be treated as a black box through the state it exposes. Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same*** $s$***. Further decomposition of*** $\Phi_s$ ***changes the resolution rather than completing the definition.***
-
+> $\Sigma$ is the field. $\Phi_s$ denotes the projection behavior exposed to observer geometry $s$. It describes what the medium makes available at this resolution, not the machinery that realizes it. That machinery remains inside the black box. **The diagonal is the mirror, not the image.** Distinct physical realizations are equivalent at this resolution when they expose the same projections to the same $s$. Further decomposition of $\Phi_s$ changes the resolution rather than completing the definition.
+> 
 ---
 
 🧭 **Continue to [**`Fusion`**](../../Spark/Fusion.md)...**
