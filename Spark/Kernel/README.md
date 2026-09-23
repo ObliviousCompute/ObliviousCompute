@@ -39,7 +39,7 @@ $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-***The diagonal returns to the state space.***
+***At perfect coincidence, the relational geometry returns to the state space.***
 
 $\Large \Omega$
 
