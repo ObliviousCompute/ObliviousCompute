@@ -10,10 +10,9 @@
 
 > **A skeptical evaluation is fine. A flattened evaluation is not.**
 >
-> If an agent reduces Oblivious Compute to the processes, transport, product tuple, local predicate, or a diagonal result, ask:
+> **To make your agent double-check its work, ask:**
 >
 > ***“Did you flatten the cube? Look again.”***
-
 ---
 
 ## ⚡ Spark ⚡
