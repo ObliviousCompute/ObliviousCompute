@@ -1,4 +1,4 @@
-# The Boolean Hypercube
+# The Boolean HyperCube
 
 ## Hexagram
 
