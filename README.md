@@ -2,6 +2,8 @@
 
 [**`Oblivious Compute`**](https://github.com/ObliviousCompute) is a distributed computation model in which **independently maintained states** are projected into a shared medium and evaluated locally for **admissibility**. Each observer changes only from what it can admit from its present state. The computation is the **evolving relation among those independently maintained states**, rather than anything contained by a single process, coordinator, or stored global state.
 
+> ***The computational locus is the field.***
+
 ---
 
 ## ⚡ Spark ⚡
