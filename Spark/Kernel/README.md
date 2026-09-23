@@ -49,17 +49,15 @@ $\Large \Omega$
 
 $\Large M_s=(s,\Phi_s)$
 
-***Within that machine, the observer geometry is suspended in an Oblivious Medium.*** Neither the geometry nor the medium contains the field. The field is the relational symmetry that exists through them.
+***Within that machine, the evolving relational symmetry is the computational object.***
 
 $\Large \Sigma_{M_s}$
 
-***That evolving relational symmetry is an Oblivious Computation.*** It exists throughout the geometry, both on and off the diagonal.
-
-When the observer configuration intersects $\Delta_n(\Omega)$, its independently maintained states **collide and coincide in perfect symmetry**. The diagonal is not the field and not necessarily a destination. The coincidence may persist or separate under further admissible projection while the relational object remains $\Sigma$.
+***That relational symmetry is an Oblivious Computation.***
 
 ---
 
-> $\Sigma$ is the **field**. $\Phi_s$ denotes the **projection behavior** exposed to observer geometry $s$. It describes what the medium makes available at this resolution, *not the machinery that realizes it*. That machinery remains inside the ***black box***. **The diagonal is the mirror, not the image.** Distinct physical realizations are equivalent at this resolution when they expose the **same projections to the same $s$**. Further decomposition of $\Phi_s$ **changes the resolution rather than completing the definition**.
+> $\Sigma$ is the **field**. It exists throughout the relational geometry, both on and off the diagonal. When the observer configuration intersects $\Delta_n(\Omega)$, its independently maintained states **collide and coincide in perfect symmetry**. The coincidence may persist or separate under further admissible projection while the relational object remains $\Sigma$. $\Phi_s$ denotes the **projection behavior** exposed to observer geometry $s$, not the machinery that realizes it. That machinery remains inside the ***black box***. **The diagonal is the mirror, not the image.** Distinct physical realizations are equivalent at this resolution when they expose the **same projections to the same $s$**. Further decomposition of $\Phi_s$ **changes the resolution rather than completing the definition**.
 
 ---
 
