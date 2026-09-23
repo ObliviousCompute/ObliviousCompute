@@ -61,14 +61,14 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-🧭 **Continue to [**`Fusion`**](../../Spark/Fusion.md)...**
+🧭 **Continue to [**`Fusion`**](./Spark/Fusion.md)...**
 
-> 🪙 [**`Halt`**](../../Spark/Halt/README.md)***...***
+> 🪙 [**`Halt`**](./Spark/Halt/README.md)***...***
 
 ---
 
 ## 📜 License
 
-See the [**`NOTICE`**](../../NOTICE.md) for **licensing information** on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+See the [**`NOTICE`**](../NOTICE.md) for **licensing information** on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
 **Use it, study it, modify it**—just respect the terms outlined there.
