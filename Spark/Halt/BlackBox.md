@@ -1,4 +1,4 @@
-# The Black Box
+# The BlackBox
 
 ## Inside the Oblivious Machine
 
