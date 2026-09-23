@@ -1,6 +1,6 @@
 # ⚡ Spark ⚡
 
-[**`Kernel`**](../Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md)**`⟶`**[**`ICBM`**](../Spark/ICBM/README.md)**`⟶`**[**`Halt`**](../Spark/Halt/README.md)**`⟶`**[**`Peers`**](../Spark/Peers.md)
+[**`Kernel`**](../Spark/Kernel.md)**`⟶`**[**`Fusion`**](../Spark/Fusion.md)**`⟶`**[**`ICBM`**](../Spark/ICBM/README.md)**`⟶`**[**`Halt`**](../Spark/Halt/README.md)**`⟶`**[**`Peers`**](../Spark/Peers.md)
 
 ---
 
@@ -10,7 +10,7 @@
 
 ## 🪙 Electrum
 
-[**`Kernel`**](../Spark/Kernel/README.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
+[**`Kernel`**](../Spark/Kernel.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
 
 ---
 
