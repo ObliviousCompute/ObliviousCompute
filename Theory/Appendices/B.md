@@ -155,6 +155,12 @@ If you begin with **AfterHours**, you are closer to the order of discovery, but 
 
 The finished repository is organized for comprehension, not chronology.
 
+This appendix records the chronology.
+
+It is not a claim of novelty by itself.
+
+***The object came first. The language followed.***
+
 ---
 
 🧭 **Continue to [**`Criticisms`**](./C.md)...**
@@ -166,9 +172,3 @@ The finished repository is organized for comprehension, not chronology.
 See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
 Use it, study it, modify it—just respect the terms outlined there.
-
-This appendix records the chronology.
-
-It is not a claim of novelty by itself.
-
-***The object came first. The language followed.***
