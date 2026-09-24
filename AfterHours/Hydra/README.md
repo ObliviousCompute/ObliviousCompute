@@ -69,7 +69,7 @@ pipx install Hydra-Game && Hydra
 ```
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [**`Here`**](../pipx.md).
+> Don't have **pipx**? See how to install it [**`Here`**](../../pipx.md).
 
 ---
 
