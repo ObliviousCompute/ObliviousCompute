@@ -38,7 +38,7 @@
 
 ## 📡 Contact
 
-> [**`ObliviousCompute@yahoo.com`**](mailto:ObliviousCompute@yahoo.com)**
+> **[**`ObliviousCompute@yahoo.com`**](mailto:ObliviousCompute@yahoo.com)**
 
 ---
 
