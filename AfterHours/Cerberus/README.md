@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../../Relics/DogBoard.png" width="400"/>
+<img src="../../Relics/DogBoard.png" width="500"/>
 
 > ***Bare-Bones Oblivious State***
 
