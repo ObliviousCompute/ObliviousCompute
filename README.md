@@ -19,7 +19,7 @@
 
 ## ⚡ Spark ⚡
 
-[**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Spark/Kernel.md)**`⟶`**[**`Fusion`**](./Spark/Fusion.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers.md)
+[**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion/README.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers/README.md)
 
 ---
 
@@ -38,7 +38,7 @@
 
 ## 📡 Contact
 
-> **If you see this and want to talk, reach out — [**`ObliviousCompute@yahoo`**](mailto:ObliviousCompute@yahoo.com)**
+> **If you see this and want to talk, reach out — [**`ObliviousCompute@yahoo.com`**](mailto:ObliviousCompute@yahoo.com)**
 
 ---
 
