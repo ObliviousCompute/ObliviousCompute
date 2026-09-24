@@ -4,7 +4,7 @@
 
 ---
 
-## The Reaction
+## 🧪 The Reaction 🧪
 
 Fusion places Interactive Consistency under the ***Kernel primitive***. Instead of sending private messages from one participant to another, a participant **projects state into an oblivious medium**. Every loyal observer encounters the same projection from its own independently maintained state.
 
@@ -14,7 +14,7 @@ The medium does not **decide, coordinate, vote, or choose a recipient**. It carr
 
 ---
 
-## Critical Mass
+## 🧊 Critical Mass 🧊
 
 ***This is executable Python, not pseudocode.*** Save the implementation below as `Fusion.py` and run it directly:
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
 ---
 
-## Interactive Consistency
+## 🎖️ Interactive Consistency 🎖️
 
 **Lamport, Shostak & Pease — The Byzantine Generals Problem, 1982**
 
