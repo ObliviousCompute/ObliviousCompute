@@ -59,7 +59,7 @@ def main():
         index = random.randrange(total)
         for i in range(total):
             if i != index:
-                spawn("machine.inverter" if i >= first else "machine.observer", i, total)
+                spawn("Machine.inverter" if i >= first else "Machine.observer", i, total)
         if index >= first:
             from .inverter import run
         else:

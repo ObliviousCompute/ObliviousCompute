@@ -1,4 +1,4 @@
-from machine.field import main
+from Machine.field import main
 
 if __name__ == "__main__":
     main()

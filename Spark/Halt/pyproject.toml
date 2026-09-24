@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "HaltingMachine"
-version = "0.1"
+version = "1.2"
 description = "A tiny Oblivious Compute halting-machine specimen"
 requires-python = ">=3.10"
 dependencies = ["wcwidth>=0.2"]
@@ -14,4 +14,4 @@ HaltingMachine = "HaltingMachine:main"
 
 [tool.setuptools]
 py-modules = ["HaltingMachine"]
-packages = ["machine"]
+packages = ["Machine"]
