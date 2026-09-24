@@ -42,7 +42,7 @@
 
 ---
 
-<h2><img src="./AfterHours/Relics/BTC.png" width="25"/> Support</h2>
+<h2><img src="./Relics/BTC.png" width="25"/> Support</h2>
 
 > **`bc1qxycjy7fk29q4acaguglfz502rwpmvl3q43lu26`**
 
