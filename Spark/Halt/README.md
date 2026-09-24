@@ -2,7 +2,7 @@
 
 ***...Rock. Paper. Scissors. Rock. Paper. Scissors...***
 
-<img src="../../AfterHours/Relics/HaltingMachine.gif" width="350"/>
+<img src="../../Relics/HaltingMachine.gif" width="350"/>
 
 > ***...Forever...and ever...*** 
 
@@ -53,7 +53,7 @@ pipx install HaltingMachine && HaltingMachine
 
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [**`Here`**](../../AfterHours/Relics/pipx.md).
+> Don't have **pipx**? See how to install it [**`Here`**](../../pipx.md).
 
 ---
 
@@ -63,9 +63,9 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-🧭 **Continue to [**`Peers`**](../../Spark/Peers.md)...**
+🧭 **Continue to [**`Peers`**](../../Spark/Peers/README.md)...**
 
-> 🪙 [**`Kernel`**](../Kernel.md)***...***
+> 🪙 [**`Kernel`**](../Kernel/README.md)***...***
 
 ---
 
