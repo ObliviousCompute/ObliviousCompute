@@ -82,7 +82,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ## 🏛️ Architecture
 
-<img src="../../Relics/DogTree.png" width="600"/>
+<img src="../../Relics/DogTree.png" width="500"/>
 
 > *How Bones shape the BonePile*
 
