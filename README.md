@@ -38,7 +38,7 @@
 
 ## 📡 Contact
 
-> **If you see this and want to talk, reach out — [**`ObliviousCompute@yahoo.com`**](mailto:ObliviousCompute@yahoo.com)**
+> [**`ObliviousCompute@yahoo.com`**](mailto:ObliviousCompute@yahoo.com)**
 
 ---
 
