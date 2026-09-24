@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../Relics/Awake.gif" width="300"/>
+<img src="../../Relics/Awake.gif" width="300"/>
 
 ---
 
@@ -40,7 +40,7 @@ Suppose the field already represents nearly **1,000,000 points of computed state
 
 ***MacAttack*** is a race. Pick a ***Thousand*** or ***Hundred Thousand*** tails and try to ***chomp the last bite.***
 
-<img src="../Relics/Chomp.gif"/>
+<img src="../../Relics/Chomp.gif"/>
 
 ***After installation:***
 
@@ -69,7 +69,7 @@ pipx install Hydra-Game && Hydra
 ```
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
+> Don't have **pipx**? See how to install it [**`Here`**](../pipx.md).
 
 ---
 
@@ -94,9 +94,9 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-<img src="../Relics/Alpha.png" width="400"/>
+<img src="../../Relics/Alpha.png" width="400"/>
 
-<img src="../Relics/Bye.gif" width="400"/>
+<img src="../../Relics/Bye.gif" width="400"/>
 
 ---
 
