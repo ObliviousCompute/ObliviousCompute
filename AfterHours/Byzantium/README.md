@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../Relics/BringTheChips.gif"/>
+<img src="../../Relics/BringTheChips.gif"/>
 
 > *What you’re seeing isn’t a representation of the system, it **is** the system.*
 
@@ -38,7 +38,7 @@ pipx install Byzantium-Game && Byzantium
 
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
+> Don't have **pipx**? See how to install it [**`Here`**](../../pipx.md).
 
 ---
 
@@ -62,7 +62,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-<img src="../Relics/DoubleTrouble.gif"/>
+<img src="../../Relics/DoubleTrouble.gif"/>
 
 > *This GIF is over 4x the size of the Byzantium runtime.*
 
@@ -70,7 +70,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ## 🏛️ Architecture
 
-<img src="../Relics/TreeGlyph.png" width="600"/>
+<img src="../../Relics/TreeGlyph.png" width="600"/>
 
 > *The upper part of the stack runs on State, and the lower stack runs on Glyphs*
 
@@ -82,7 +82,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ---
 
-<img src="../Relics/CollectingSouls.gif" width="450"/>
+<img src="../../Relics/CollectingSouls.gif" width="450"/>
 
 ---
 
