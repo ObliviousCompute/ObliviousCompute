@@ -4,7 +4,7 @@
 
 ---
 
-<img src="../Relics/DogBoard.png" width="600"/>
+<img src="../../Relics/DogBoard.png" width="600"/>
 
 > ***Bare-Bones Oblivious State***
 
@@ -57,7 +57,7 @@ pipx install Cerberus-Game && Cerberus
 
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
-> Don't have **pipx**? See how to install it [**`Here`**](../Relics/pipx.md).
+> Don't have **pipx**? See how to install it [**`Here`**](../../pipx.md).
 
 ---
 
@@ -82,7 +82,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 ## 🏛️ Architecture
 
-<img src="../Relics/DogTree.png" width="600"/>
+<img src="../../Relics/DogTree.png" width="600"/>
 
 > *How Bones shape the BonePile*
 
