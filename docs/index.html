@@ -129,6 +129,27 @@ h1 {
       font-size: 0.72rem;
     }
 
+
+    .bitcoin-footer {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+
+      color: #555;
+      font-size: 0.72rem;
+      text-decoration: none;
+      white-space: nowrap;
+
+      transition: color 120ms ease;
+    }
+
+    .bitcoin-footer:hover,
+    .bitcoin-footer:focus-visible {
+      color: #777;
+      outline: none;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 24px 16px;
@@ -149,6 +170,11 @@ h1 {
 
       footer {
         gap: 10px;
+        font-size: 0.66rem;
+      }
+
+      .bitcoin-footer {
+        bottom: 16px;
         font-size: 0.66rem;
       }
     }
@@ -182,5 +208,14 @@ h1 {
     </footer>
 
   </main>
+  <a
+    class="bitcoin-footer"
+    href="bitcoin:bc1qxycjy7fk29q4acaguglfz502rwpmvl3q43lu26"
+    aria-label="Send Bitcoin to Oblivious Compute at bc1qxycjy7fk29q4acaguglfz502rwpmvl3q43lu26"
+    title="Open in Bitcoin wallet"
+  >
+    ₿itcoin · bc1qxycjy7fk29q4acaguglfz502rwpmvl3q43lu26
+  </a>
+
 </body>
 </html>
