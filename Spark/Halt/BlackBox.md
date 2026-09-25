@@ -8,6 +8,8 @@ Oblivious Compute moves the distributed computation **outside of the box.** Give
 
 **When independently maintained states coincide,** many machines remain physically independent while the distributed configuration **occupies one computational position in perfect symmetry.** The coincidence may *persist or separate* under further projection.
 
+***Imagine a constellation of independently maintained states suspended within an Oblivious Medium. No observer contains the constellation. The computation exists in the evolving geometry of their relationships.***
+
 ## House of Mirrors
 
 Now the fun begins with a simple example. Give several independent observers the **same state, Rock, drawn from a three-state RPS cycle.** Each observer occupies only one position at a time. Healthy observers move through the cycle in one direction. Place an inverter among them and it moves through the ***same state space in the opposite direction.*** Nothing inside the inverter needs to be inspected. Its inversion becomes visible in what it projects.
