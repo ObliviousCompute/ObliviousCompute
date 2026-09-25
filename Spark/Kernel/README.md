@@ -35,11 +35,11 @@ One realizable condition of the field is ***perfect symmetry***. There the indep
 
 $\Large s_1=s_2=\cdots=s_n=s \qquad (s_1,s_2,\ldots,s_n)\in\Delta_n(\Omega)$
 
-**At that collision,** the $n$ independently maintained coordinates coincide. The coincidence may be *transient or persistent*. **Perfect symmetry does not define the field or terminate it. The field exists before, during, and after it.**
+**At that intersection,** the $n$ independently maintained coordinates coincide. ***Their alignment may be transient or persistent***. **Perfect symmetry does not define the field or terminate it. The field exists before, during, and after it.**
 
 $\Large \Delta_n(\Omega)\cong\Omega$
 
-***At perfect coincidence, the relational geometry returns to the state space.***
+***On the diagonal, the relational geometry is isomorphic to the original state space***
 
 $\Large \Omega$
 
