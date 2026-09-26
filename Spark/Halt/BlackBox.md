@@ -32,7 +32,7 @@ No observer needs to know what another was dealt. **Each state is held in confid
 
 ***The machine reveals its hand. Its state is the ante. The field calls.***
 
-> **Turing's halting question concerns a defined machine, not the electricity that realizes it.** Oblivious Compute poses a complementary question. Observers are suspended within an Oblivious Medium that exposes projections without requiring its internal machinery to be opened. Each observer admits from its own geometry. **An observer may stop while the field continues to evolve, or continue executing while the field remains still.** Open any box and you find local execution. **The computation remains in the evolving relation among them.**
+> Electricity enables a conventional computer without the flow of current itself constituting its computation. **The Oblivious Medium is part of the Oblivious Machine.** Within it, independently maintained observers encounter projections, each admitting from its own geometry. **The medium exposes these projections without containing the field.** Open any observer and you find local state and admission. **The computation remains in the evolving relation among them.**
 
 ---
 
