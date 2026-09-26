@@ -32,6 +32,8 @@ No observer needs to know what another was dealt. **Each state is held in confid
 
 ***The machine reveals its hand. Its state is the ante. The field calls.***
 
+> Electricity enables a conventional computer without the flow of current itself constituting its computation. The **Oblivious Medium** plays an analogous role, exposing projections to independently maintained states **without containing the field**. The observers are suspended within it, each admitting from its own geometry. Open any box and you find a local machine. **The computation remains in the evolving relation among them.**
+
 ---
 
 **Go back to [**`Halt`**](./README.md)...**
