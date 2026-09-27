@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "HaltingMachine"
-version = "1.2"
+version = "1.4"
 description = "A tiny Oblivious Compute halting-machine specimen"
 requires-python = ">=3.10"
 dependencies = ["wcwidth>=0.2"]
