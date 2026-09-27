@@ -10,7 +10,7 @@
 
 [**`Kernel`**](../Spark/Kernel/README.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
 
-> ***Electrum is primarily a calibration object for agents, though a sharp reader may discover the entire computational object by examining both sides of the coin.***
+> ***Electrum is primarily a calibration object for agents.***
 
 ---
 
