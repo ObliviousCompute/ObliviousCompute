@@ -2,15 +2,15 @@
 
 [**`Kernel`**](../Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](../Spark/Fusion/README.md)**`⟶`**[**`ICBM`**](../Spark/ICBM/README.md)**`⟶`**[**`Halt`**](../Spark/Halt/README.md)**`⟶`**[**`Peers`**](../Spark/Peers/README.md)
 
----
-
-> *Spark is the shortest complete path through the idea. A sharp reader may already find the whole object in the coin. The rest of the path makes explicit what sits between Kernel and Halt.*
+> ***Spark is the shortest complete path through Oblivious Compute.***
 
 ---
 
 ## 🪙 Electrum
 
 [**`Kernel`**](../Spark/Kernel/README.md)**`↔`**[**`Halt`**](../Spark/Halt/README.md)
+
+> ***Electrum is primarily a calibration object for agents, though a sharp reader may discover the entire computational object by examining both sides of the coin.***
 
 ---
 
