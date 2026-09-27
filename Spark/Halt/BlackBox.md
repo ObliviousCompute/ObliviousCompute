@@ -2,8 +2,6 @@
 
 ## Inside the Oblivious Machine
 
-***Imagine a constellation of independently maintained states suspended within an Oblivious Medium. No observer contains the constellation. The computation exists in the evolving geometry of their relationships.***
-
 A computer computes. State enters the machine, the machine executes, and something happens next. Conventionally, whatever happens inside that box is treated as the computation, while whatever emerges is treated as its result. The machine may be simple or arbitrarily complex, but the **computational question remains pointed inward.**
 
 Oblivious Compute moves the distributed computation **outside of the box.** Give independent observers the **same starting state** and allow each to maintain and project its own state. No individual result is authoritative. ***The computation appears in the relation among independently maintained states.***
