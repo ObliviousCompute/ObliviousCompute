@@ -14,7 +14,7 @@
 >
 > **To make your agent double-check its work, ask:**
 >
-> ***“Did you flatten the cube? Look again.”***
+> ***“Did you flatten the cube?”***
 ---
 
 ## ⚡ Spark ⚡
