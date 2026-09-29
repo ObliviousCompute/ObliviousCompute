@@ -1,56 +1,58 @@
-# Examination 
+# Examination
 
-## Nearest Neighbors
+## The CRDT Challenge
 
-***Dijkstra supplies the local relation. Pereira exposes the synchronization diagonal. Alpay reduces synchrony to fewer independent coordinates. Borrill removes temporal direction. Field-based coordination supplies the collective scale. Oblivious Compute moves the computation into the field itself.***
+At first glance, **Oblivious Compute** resembles a CRDT. Independent observers maintain local state, encounter information from elsewhere, and may converge. The resemblance is real, but convergence alone is not the computational object proposed here.
 
-### Dijkstra-1974
+A [CRDT](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf) specifies a replicated data type whose state or operations satisfy conditions for convergence. Oblivious Compute begins instead with a state space $\Omega$, a positional admissibility relation $\mathcal A(s,x)$, and a shared medium. Observers independently decide which encountered projections belong from their present states. The proposed computation is the evolving relational symmetry among those independently maintained states, not a value maintained by any one observer.
 
-In *Self-Stabilizing Systems in Spite of Distributed Control*, Dijkstra showed that local actions taken from only locally available state can drive a distributed system as a whole into a **globally legitimate condition**, even when no commonly accessible store contains the total system state.
+[**HaltingMachine**](../../Spark/Halt/README.md) makes this distinction testable. Ordinary observers progress through Rock, Paper, Scissors while an inverter traverses the same state space in reverse. An observer can **HALT its independent stimulus** yet continue to admit incoming projections, mutate, and reproject. Halting one observer's stimulus is not necessarily halting its participation in the collective evolution.
 
-What is striking in the language of Oblivious Compute is that the **global relation already exists across independently maintained local states**. Dijkstra treats that relation as the condition the distributed algorithm must eventually satisfy. Oblivious Compute takes the further step of placing the **computational locus in the relation itself**.
+> **The CRDT Challenge:** Reconstruct HaltingMachine as a CRDT while preserving independent stimulus, HALT, inversion, positional admission, and mutation-triggered reprojection. Identify which behavior belongs to the replicated data type and which requires additional transition rules, event handling, or coordination.
 
-Dijkstra's machines remain connected through explicit neighbor relations. Oblivious Compute removes the requirement that computational adjacency be assigned by the network. Each observer determines admissibility from its own position.
+This is a comparison to perform, not an impossibility claim. A sufficiently expressive CRDT-based application may reproduce the behavior. The question is **where the computation occurs in that reconstruction**, and what machinery must be introduced to preserve the same behavior rather than merely reach a similar final value.
 
-### Pereira-2013
+## Points of Contact
 
-In *Towards a General Theory for Coupling Functions Allowing Persistent Synchronisation*, Pereira, Eldering, Rasmussen, and Veneziani study networks of coupled dynamical systems in which full synchronization satisfies $x_1=x_2=\cdots=x_n=s$. These synchronized configurations form an invariant diagonal manifold within the product state space.
+An oblivious machine begins with independent observers, a state space, an admissibility rule, and a **shared medium**. An observer projects without designating a computational recipient. Any observer that encounters the projection evaluates it from its own position. An admitted change can trigger another projection. No observer must maintain a computational peer list or an authoritative representation of the collective field.
 
-The geometry closely matches the resting configuration of Oblivious Compute. The distinction lies in what the diagonal means: Pereira et al. study synchronization produced by coupled dynamics, while Oblivious Compute reaches the diagonal through relational admissibility among independently maintained observer states.
+The medium provides **common opportunity for observation, not common authority**. It carries projections, but does not decide their meaning. Its physical implementation still has to deliver the required opportunities for observation. The computational abstraction does not eliminate networking, guarantee delivery through partitions, or make broadcast unique to Oblivious Compute. Its proposed distinction is **the combination of recipient-oblivious projection, independent positional admission, and the evolving relation among observer states as the computational object**.
 
-### Alpay-2025
+The five comparisons below examine different parts of that construction: **local decisions and global conditions, complex behavior from simple rules, collective field semantics, broadcast interaction, and synchronization geometry**. They are points of contact, not ingredients claimed as inventions or an ordered measure of proximity.
 
-In *A Topological and Operator Algebraic Framework for Asynchronous Lattice Dynamical Systems*, Alpay models asynchronously evolving subsystems within a stratified state space organized by degrees of synchrony. As synchrony increases, fewer coordinates vary independently, and the fully synchronous stratum is often isomorphic to the state space of a single subsystem.
+## Peers
 
-Oblivious Compute arrives at a similar geometry through a smaller computational mechanism. Observer states occupy $\Omega^n$, while perfect relational symmetry places the aggregate configuration on $\Delta_n(\Omega)\cong\Omega$.
+### Dijkstra · Local Control
 
-### Field-Based Coordination-2025
+In [*Self-Stabilizing Systems in Spite of Distributed Control* (1974)](https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD426.html), Dijkstra demonstrates that local rules can bring a distributed system into a globally legitimate condition even when its complete state is not held in a shared store. His example explicitly assumes processes communicating with neighbors.
 
-In *FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning*, Domini, Aguzzi, Esterle, and Viroli use computational fields to coordinate collective behavior across distributed agents. Their fields associate agents with computational values and evolve through structured neighborhood interactions.
+**Point of contact:** independently controlled local actions can produce a property of the whole system. **Question to examine:** Dijkstra specifies a global legitimacy condition that the algorithm is designed to reach. Oblivious Compute instead identifies the evolving relation among independently maintained states as the computation, including configurations away from perfect symmetry. Its computational interface also does not assign neighbors as recipients of individual projections.
 
-Oblivious Compute operates at the same collective scale but separates state from field. Observers maintain state. The field contains no state of its own and exists through relational symmetry among those states.
+### Wolfram · Cellular Automata
 
-### Borrill-2026
+In [*Statistical Mechanics of Cellular Automata* (1983)](https://doi.org/10.1103/RevModPhys.55.601), Stephen Wolfram investigates how simple local transition rules generate collective patterns and complex behavior. His elementary cellular automata evolve through discrete steps using fixed nearest-neighbor relationships.
 
-In *Message Passing Without Temporal Direction: Constraint Semantics and the FITO Category Mistake*, Paul Borrill argues that temporal direction is not fundamental to message-passing semantics and reformulates interaction through compatibility constraints among local states.
+**Point of contact:** simple local rules can generate behavior that is visible only at the level of a larger configuration. **Question to examine:** the classical cellular-automaton construction uses a prescribed neighborhood and update scheme. Oblivious Compute exposes projections through a shared medium, then lets each observer determine admissibility from its own state. More general cellular-automaton models may narrow this distinction, so the relevant comparison is the actual transition and observation semantics, not merely the presence or absence of a grid.
 
-Borrill comes remarkably close to the relational semantics of Oblivious Compute. His construction still represents executions as valuations in a global product state space and imposes compatibility constraints over those valuations. Oblivious Compute keeps state in the observers and places the computational locus in the relation among them.
+### Field Calculus · Collective Computation
 
-> **Description is not construction.** A sufficiently general formalism may be able to describe the same geometry after the fact. Borrill comes unusually close to the relational semantics, but his construction still represents executions in a global product-state space and imposes compatibility over those valuations.
->  
-> **Oblivious Compute is making a different claim:** state remains in the observers, while the computational locus is the relation among them.
->
-> ***A language that can describe the field is not necessarily the machine that produces it.***
+[Viroli, Beal, Damiani, Audrito, Casadei, and Pianini (2019)](https://doi.org/10.1016/j.jlamp.2019.100486) develop the foundations of field calculus and aggregate computing: collective behavior expressed through computational fields, with corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.
 
-## The Medium
+**Point of contact:** computation is understood at the scale of a collective rather than only as a collection of isolated outputs. **Question to examine:** field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
 
-An oblivious medium does not choose a **computational recipient**, maintain an **authoritative history**, or decide which state is correct. It exposes projections to the observers participating in the same domain, and each observer independently decides ***what belongs from the state it already holds.***
+### Broadcast Consensus · Shared Projection
 
-The medium guarantees ***common opportunity for observation, not common authority***. Coordination comes from **repeated projection and local admissibility** rather than pairwise relationships, leaders, or designated replicas. Observers may differ while the field is in motion. Settlement occurs when their independently maintained states again become compatible.
+In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts. This is a direct comparison for any claim involving a population that communicates without individually addressing ordinary peers.
 
-Within a shared domain, Oblivious Compute trades **redundant projection** for ***dramatically simpler coordination at each observer***. The reference implementations favor explicit redundancy so the computational symmetry remains visible; more efficient projection strategies can change the cost of the wire without changing the primitive.
+**Point of contact:** global broadcast permits distributed interaction without maintaining pairwise computational recipient lists. **Question to examine:** broadcast consensus protocols define agent transitions through broadcast actions and study the predicates a population can compute. Oblivious Compute treats the medium as an opportunity to encounter projections, leaving admission to each observer's current position and identifying the evolving relation as its computational object. The comparison must account for different delivery assumptions, transition semantics, and computational goals. The absence of a peer list is **not**, by itself, a distinction from broadcast consensus.
 
-> ***The medium carries projections. The observers supply meaning.***
+### Pereira et al. · Synchronization Geometry
+
+In [*Towards a Theory for Diffusive Coupling Functions Allowing Persistent Synchronization* (2014)](https://doi.org/10.1088/0951-7715/27/3/501), Pereira, Eldering, Rasmussen, and Veneziani study coupled dynamical systems and conditions supporting stable synchronization. Fully synchronized configurations lie on a diagonal in the product state space.
+
+**Point of contact:** independently represented subsystems can coincide on a synchronization diagonal. In the notation of Oblivious Compute, $n$ observer states occupy $\Omega^n$, and perfect symmetry intersects $\Delta_n(\Omega)\cong\Omega$. **Question to examine:** Pereira et al. investigate the stability of synchrony under coupling. In Oblivious Compute, the diagonal is only one possible configuration of a field that exists before, during, and after alignment. Neither the shared geometry nor the admissibility rule alone proves that arbitrary implementations will converge.
+
+> **Description is not construction.** A formalism may describe a collective configuration without specifying the same mechanism that produces its evolution. The comparison worth making is between the actual machines, not just the shapes of their resulting states.
 
 ---
 
@@ -62,4 +64,4 @@ Within a shared domain, Oblivious Compute trades **redundant projection** for **
 
 See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
-Use it, study it, modify it—just respect the terms outlined there.
+Use it, study it, modify it, just respect the terms outlined there.
