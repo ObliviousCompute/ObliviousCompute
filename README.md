@@ -32,7 +32,7 @@
 ## 🌀 Theory 🌀
 
 [**`Theory`**](./Theory/README.md) ***traces the reasoning that shaped the programs and was later formalized in papers.***  
-*It is a record of that process, not a manifesto.*
+> ***This is a record of that process, not a manifesto.***
 
 ---
 
