@@ -23,7 +23,7 @@
 
 ---
 
-## 🪙 The River Styx 🪙
+## 🛋️ AfterHours 🛋️
 
 [**`Skeleton`**](./AfterHours/Skeleton/README.md)**`⟶`**[**`Hydra`**](./AfterHours/Hydra/README.md)**`⟶`**[**`Cerberus`**](./AfterHours/Cerberus/README.md)**`⟶`**[**`Byzantium`**](./AfterHours/Byzantium/README.md)
 
