@@ -40,17 +40,17 @@ In [*Statistical Mechanics of Cellular Automata* (1983)](https://doi.org/10.1103
 
 **Point of contact:** computation is understood at the scale of a collective rather than only as a collection of isolated outputs. **Question to examine:** field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
 
-### Broadcast Consensus · Shared Projection
-
-In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts. This is a direct comparison for any claim involving a population that communicates without individually addressing ordinary peers.
-
-**Point of contact:** global broadcast permits distributed interaction without maintaining pairwise computational recipient lists. **Question to examine:** broadcast consensus protocols define agent transitions through broadcast actions and study the predicates a population can compute. Oblivious Compute treats the medium as an opportunity to encounter projections, leaving admission to each observer's current position and identifying the evolving relation as its computational object. The comparison must account for different delivery assumptions, transition semantics, and computational goals. The absence of a peer list is **not**, by itself, a distinction from broadcast consensus.
-
 ### Pereira et al. · Synchronization Geometry
 
 In [*Towards a Theory for Diffusive Coupling Functions Allowing Persistent Synchronization* (2014)](https://doi.org/10.1088/0951-7715/27/3/501), Pereira, Eldering, Rasmussen, and Veneziani study coupled dynamical systems and conditions supporting stable synchronization. Fully synchronized configurations lie on a diagonal in the product state space.
 
 **Point of contact:** independently represented subsystems can coincide on a synchronization diagonal. In the notation of Oblivious Compute, $n$ observer states occupy $\Omega^n$, and perfect symmetry intersects $\Delta_n(\Omega)\cong\Omega$. **Question to examine:** Pereira et al. investigate the stability of synchrony under coupling. In Oblivious Compute, the diagonal is only one possible configuration of a field that exists before, during, and after alignment. Neither the shared geometry nor the admissibility rule alone proves that arbitrary implementations will converge.
+
+### Broadcast Consensus · Shared Projection
+
+In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts. This is a direct comparison for any claim involving a population that communicates without individually addressing ordinary peers.
+
+**Point of contact:** global broadcast permits distributed interaction without maintaining pairwise computational recipient lists. **Question to examine:** broadcast consensus protocols define agent transitions through broadcast actions and study the predicates a population can compute. Oblivious Compute treats the medium as an opportunity to encounter projections, leaving admission to each observer's current position and identifying the evolving relation as its computational object. The comparison must account for different delivery assumptions, transition semantics, and computational goals. The absence of a peer list is **not**, by itself, a distinction from broadcast consensus.
 
 > **Description is not construction.** A formalism may describe a collective configuration without specifying the same mechanism that produces its evolution. The comparison worth making is between the actual machines, not just the shapes of their resulting states.
 
