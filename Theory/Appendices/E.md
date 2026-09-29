@@ -1,8 +1,19 @@
 # Examination
 
+## Computational Advantage
+
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) explores whether a computational advantage can be gained by trading inexpensive communication for simpler local computation. The hypothesis is that a single recurring rule, distributed across independently maintained states, can produce collective behavior without requiring any observer to coordinate the machine as a whole.
+
+The proposed leverage comes from the arrangement of those states and their interactions. Additional communication through the shared medium may reduce the computational work required elsewhere. Whether this trade produces a net advantage remains to be measured.
+
+## Mechanical Advantage
+
+> Think about how pulleys work. By arranging them together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. The medium provides the rope, and the observers supply the arrangement. By spending more of one resource, we may gain leverage over another.
+
+
 ## The CRDT Challenge
 
-At first glance, **Oblivious Compute** resembles a CRDT. Independent observers maintain local state, encounter information from elsewhere, and may converge. The resemblance is real, but convergence alone is not the computational object proposed here.
+At first glance, this construction resembles a CRDT. Independent observers maintain local state, encounter information from elsewhere, and may converge. The resemblance is real, but convergence alone is not the computational object proposed here.
 
 A [CRDT](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf) specifies a replicated data type whose state or operations satisfy conditions for convergence. Oblivious Compute begins instead with a state space $\Omega$, a positional admissibility relation $\mathcal A(s,x)$, and a shared medium. Observers independently decide which encountered projections belong from their present states. The proposed computation is the evolving relational symmetry among those independently maintained states, not a value maintained by any one observer.
 
