@@ -27,7 +27,9 @@
 
 ## 🌀 Theory 🌀
 
-[**`Theory`**](./Theory/README.md) **is not a manifesto. The programs came first.** These papers trace the reasoning that followed, gradually crystallizing the ideas that lead the framework.
+[**`Theory`**](./Theory/README.md) **traces the ideas that crystallized into the current mathematical framework.** ***It is a record of that thought process, not a manifesto.***
+
+> ***The ideas shaped the programs before they were formalized in papers.***
 
 ---
 
