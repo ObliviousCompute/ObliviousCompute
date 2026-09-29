@@ -8,7 +8,7 @@
 
 ---
 
-## 🤖 Agents 🤖
+## 🤖 Agent Review 🤖
 
 > **A skeptical evaluation is fine. A flattened evaluation is not.**  
 > **To make your agent double-check its work, ask:**
