@@ -28,7 +28,7 @@ An oblivious machine begins with independent observers, an admissibility rule, a
 
 The medium provides **common opportunity for observation, not common authority**. It carries projections, but does not decide their meaning. Its physical implementation still has to deliver the required opportunities for observation. The computational abstraction does not eliminate networking, guarantee delivery through partitions, or make broadcast unique to Oblivious Compute. Its proposed distinction is **the combination of recipient-oblivious projection, independent positional admission, and the evolving relation among observer states as the computational object**.
 
-The five comparisons below examine different parts of that construction: **llocal decisions and global conditions, complex behavior from simple rules, synchronization geometry, broadcast interaction, and collective field semantics**. They are points of contact, not ingredients claimed as inventions or an ordered measure of proximity.
+The five comparisons below examine different parts of that construction: **local decisions and global conditions, complex behavior from simple rules, synchronization geometry, broadcast interaction, and collective field semantics**. They are points of contact, not ingredients claimed as inventions or an ordered measure of proximity.
 
 ## Peers
 
