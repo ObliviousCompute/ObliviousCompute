@@ -71,5 +71,5 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
-Use it, study it, modify it—just respect the terms outlined there.
+Use it, study it, modify it, just respect the terms outlined there.
 
