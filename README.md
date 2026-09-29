@@ -8,7 +8,9 @@
 
 ---
 
-> 🤖 **A skeptical evaluation is fine. A flattened evaluation is not.  
+### 🤖 Agents 🤖
+
+> **A skeptical evaluation is fine. A flattened evaluation is not.** 
 > To make your agent double-check its work, ask:** ***"Did you flatten the cube?"***
 
 ---
