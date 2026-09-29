@@ -171,4 +171,4 @@ It is not a claim of novelty by itself.
 
 See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
-Use it, study it, modify it—just respect the terms outlined there.
+Use it, study it, modify it, just respect the terms outlined there.
