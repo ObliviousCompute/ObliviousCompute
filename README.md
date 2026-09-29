@@ -27,8 +27,7 @@
 
 ## 🌀 Theory 🌀
 
-[**`Theory`**](./Theory/README.md)**`⟶`**[**`Geometry`**](./Theory/Geometry.md)**`⟶`**[**`Holography`**](./Theory/Holography.md)**`⟶`**[**`Admissibility`**](./Theory/Admissibility.md)**`⟶`**[**`Symmetry`**](./Theory/Symmetry.md)**`⟶`**[**`Singularity`**](./Theory/Singularity.md)
-
+[**`Theory`**](./Theory/README.md) **is not a manifesto. The programs came first.** These papers trace the reasoning that followed, gradually crystallizing the ideas that lead the framework.
 
 ---
 
