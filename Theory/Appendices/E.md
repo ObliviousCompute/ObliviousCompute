@@ -2,14 +2,13 @@
 
 ## Computational Advantage
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) explores whether a computational advantage can be gained by trading inexpensive communication for simpler local computation. The hypothesis is that a single recurring rule, distributed across independently maintained states, can produce collective behavior without requiring any observer to coordinate the machine as a whole.
+[**Oblivious Compute**](https://github.com/ObliviousCompute) explores whether a computational advantage can be gained by **trading inexpensive communication for simpler local computation**. The hypothesis is that **a single recurring rule**, distributed across independently maintained states, can produce collective behavior without requiring any observer to coordinate the machine as a whole.
 
-The proposed leverage comes from the arrangement of those states and their interactions. Additional communication through the shared medium may reduce the computational work required elsewhere. Whether this trade produces a net advantage remains to be measured.
+The proposed leverage comes from **the arrangement of those states and their interactions**. Additional communication through the shared medium may reduce the computational work required elsewhere. Whether this trade produces a net advantage remains to be measured.
 
 ## Mechanical Advantage
 
-> Think about how pulleys work. By arranging pulleys together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. The medium provides the rope, and the observers supply the arrangement. By spending more of one resource, we may gain leverage over another.
-
+> Think about how pulleys work. By arranging pulleys together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. **The medium provides the rope, and the observers supply the arrangement.** By spending more of one resource, we may gain leverage over another.
 
 ## The CRDT Challenge
 
