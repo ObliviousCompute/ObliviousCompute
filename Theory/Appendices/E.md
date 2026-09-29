@@ -8,7 +8,7 @@ The proposed leverage comes from the arrangement of those states and their inter
 
 ## Mechanical Advantage
 
-> Think about how pulleys work. By arranging them together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. The medium provides the rope, and the observers supply the arrangement. By spending more of one resource, we may gain leverage over another.
+> Think about how pulleys work. By arranging pulleys together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. The medium provides the rope, and the observers supply the arrangement. By spending more of one resource, we may gain leverage over another.
 
 
 ## The CRDT Challenge
