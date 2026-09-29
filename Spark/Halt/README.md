@@ -63,7 +63,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-⚡ [**`Kernel`**](../Kernel/README.md)***...***
+⚡ [**`Kernel`**](../Prime/README.md)***...***
 
 ---
 
