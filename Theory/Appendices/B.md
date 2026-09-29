@@ -1,95 +1,94 @@
-# Appendix B — Beginnings
+
+# Appendix B · Beginnings
 
 ## Order of Conception
 
-This repository is usually read backwards.
+This repository is organized for comprehension, not chronology.
 
-**Spark was written last.** It exists so a first-time reader or agent can see the machine quickly. It is the entrance to the finished repository, not the path by which the computational object was discovered.
+**Spark was written last.** It provides a short entrance for readers encountering the finished construction. It is not the path by which the computational object was originally discovered.
 
-The programs came first. The language came later. The mathematics and search for neighboring work followed objects that were already built.
+The ideas shaped the programs before they were formalized in papers.
 
 ---
 
-## Picture
+## The Picture
 
-The computational object existed first as a **picture**.
+The computational object began as a **picture**.
 
-There were no symbols for it yet. There was no $\Sigma$, no $\Phi_s$, no diagonal, and no formal distinction between the machine and the computation.
+There was no $\Sigma$, no $\Phi_s$, no diagonal, and no formal distinction between the machine and the computation.
 
 There was only the intuition that independently maintained states could form something together that was not contained by any one of them.
 
-That picture came first.
+**The picture came first.**
 
 ---
 
-## AfterHours
+## The First Programs
 
-**Skeleton, Hydra, and Byzantium** were built from that picture.
-
-They were running before Kernel existed and before the relational geometry had been given mathematical names.
+**Skeleton, Hydra, and Byzantium** were built from that picture, before the mathematical construction had been formally expressed.
 
 Skeleton exposed the basic motion.
 
 Hydra made the collective object harder to ignore. Independently maintained states could move through configurations that no individual observer contained or controlled, while conservation remained visible across the whole.
 
-Byzantium pushed the same picture into thicker state. The surface itself could rearrange. Conflict, consequence, and repair became part of the present object rather than something referred outward to a separate history.
+Byzantium extended the same construction into more elaborate state. Its surface could rearrange, allowing conflict, consequence, and repair to become part of the evolving machine.
 
-The programs were not implementations of Kernel.
+These programs were not implementations derived from a finished mathematical paper.
 
-**Kernel did not exist yet.**
+**The programs preceded the formalization.**
 
 ---
 
 ## Theory
 
-Theory was written to think through the picture that had already produced the programs.
+Theory was written to examine the picture that had already shaped the programs.
 
-Its pages are therefore closer to a **notebook** than a specification. Geometry, Holography, Admissibility, and Symmetry record attempts to understand an object that was already visible operationally.
+Geometry, Holography, Admissibility, and Symmetry document the reasoning behind an object that was already visible operationally. These papers are closer to a **notebook** than a specification from which the programs were derived.
 
-They should not be read as premises from which the programs were derived.
+Singularity followed later, after the mathematical language had begun to settle. It explores the same underlying intuition through scale, resolution, and computational boundaries.
 
-**The programs came first.**
-
-Singularity came later than the other Theory pages, after the mathematical language had begun to settle. It still describes the same intuition already present in the earlier work: the computational boundary is a matter of scale and resolution rather than enclosure.
+The papers preserve the development of the ideas rather than establishing an artificial sequence of premises from which the original programs supposedly followed.
 
 ---
 
-## Kernel
+## Prime
 
-Eventually the picture needed mathematics.
+Eventually, the picture needed a compact mathematical expression.
 
-Kernel introduced the language required to state the object directly:
+What was originally called **Kernel**, now [**Prime**](../../Spark/Prime/README.md), introduced the language needed to state the construction directly.
 
-- state space $\Omega$
-- admissibility $\mathcal{A}$
+Its principal objects include
+
+- the state space $\Omega$
+- positional admissibility $\mathcal{A}$
 - independently maintained observer states
 - relational symmetry $\Sigma$
-- computational field $\mathcal{F}$
+- the computational field $\mathcal{F}$
 - the diagonal $\Delta_n(\Omega)$
 - the realized machine $M_s=(s,\Phi_s)$
-- the computational object $\Sigma_{M_s}$
+- the evolving computational object $\Sigma_{M_s}$
 
-The diagonal did not create the picture.
+The diagonal did not create the original picture. It gave a geometric name to one condition that the independently maintained states could occupy.
 
-It gave a geometric name to one condition that the picture had already been passing through.
+Prime is therefore not where the object began.
 
-Kernel is therefore not where the object began.
-
-It is where the object became **sayable**.
+**It is where the object became sayable.**
 
 ---
 
-## Peers
+## Examination
 
-Once the object had mathematical language, that language supplied search terms.
+Once the construction had mathematical language, that language supplied terms for investigating existing research.
 
 The search for neighboring work followed.
 
-Self-stabilization, synchronization manifolds, field-based coordination, constraint semantics, and related models provided increasingly close points of comparison.
+Self-stabilization, cellular automata, synchronization geometry, field calculus, broadcast consensus, and related models provide points of comparison.
 
-Those neighbors matter. They constrain what can responsibly be claimed, expose familiar structure, and provide alternative ways to describe parts of the machine.
+That research is now discussed in [**Examination**](./E.md), which also investigates the proposed computational distinctions and the CRDT comparison.
 
-But they were not the recipe from which the object was assembled.
+The comparisons matter. They identify established mechanisms, expose overlapping ideas, and clarify what must be demonstrated before claims of distinctness or advantage can be established.
+
+But these papers were not the original recipe from which the programs were assembled.
 
 **The object produced the search. The search did not produce the object.**
 
@@ -97,21 +96,17 @@ But they were not the recipe from which the object was assembled.
 
 ## Cerberus
 
-Cerberus came after Kernel and Peers.
+Cerberus came after the initial mathematical formulation and the search for neighboring research.
 
-It was a smaller and more rigid window onto machinery already explored in Byzantium.
+It revisited machinery already explored in Byzantium through a smaller, more rigid construction.
 
-The surface was locked.
+The surface was locked. Files and ranks no longer moved. Nine heads held ninety-nine bones.
 
-Files and ranks no longer moved.
+This reduction made conflict easier to isolate. Equivocation, consequence, clawback, and repair could be examined without Byzantium's larger moving surface.
 
-Nine heads held ninety-nine bones.
+Cerberus did not begin a different computational object.
 
-That reduction made conflict easier to isolate. Equivocation, consequence, clawback, and repair could be examined without the larger moving surface of Byzantium.
-
-Cerberus did not begin a new object.
-
-It hardened one that already existed.
+It provided a more constrained environment in which to examine the existing construction.
 
 ---
 
@@ -119,45 +114,35 @@ It hardened one that already existed.
 
 Spark came last.
 
-By then the machine had been built, explored, named, compared, and reduced.
+By then, the machine had been built, explored, named, compared, and reduced. What remained difficult was **first contact**.
 
-What remained difficult was **first contact**.
+The earlier material could contain the computational object without reliably making it visible to someone encountering the repository for the first time.
 
-The earlier material could contain the object without reliably making the object visible to someone encountering the repository for the first time.
+Spark was assembled to address that problem.
 
-Spark was built to solve that problem.
+[**Prime**](../../Spark/Prime/README.md) expresses the mathematical construction. [**Repeat**](../../Spark/Halt/README.md) presents HaltingMachine and its executable behavior, accompanied by BlackBox and HyperCube.
 
-Kernel states the machine.
+Together, they provide a short reading cycle.
 
-Fusion and ICBM provide compact specimens.
+**Prime ↔ Repeat**
 
-Halt separates local execution from relational computation.
+The reader moves between the mathematical construction and its executable expression, reconsidering each through the other.
 
-Peers places the object beside its nearest known neighbors.
-
-Spark is therefore the shortest path through work that was discovered in almost the opposite direction.
+This is the entrance to the finished repository, not a reconstruction of its development history.
 
 ---
 
 ## How to Read This
 
-If you begin with **Spark**, you are entering through the door built for you.
+Begin with **Spark** if you want the shortest introduction to the computational construction.
 
-That is correct.
+Explore **AfterHours** for the extended implementations. Their current reading order is organized for understanding rather than the order in which every program was originally developed.
 
-If you begin with **Theory**, you are reading the notebook before seeing the object that produced it.
+Read **Theory** to follow the reasoning behind the mathematical presentation.
 
-If you begin with **Peers**, the repository may look like a literature review followed by a variation on familiar models.
+Use **Examination** to investigate the proposed distinctions and their relationship to existing research.
 
-That reverses the chronology.
-
-If you begin with **AfterHours**, you are closer to the order of discovery, but farther from the language eventually developed to explain what the programs were doing.
-
-The finished repository is organized for comprehension, not chronology.
-
-This appendix records the chronology.
-
-It is not a claim of novelty by itself.
+This appendix records how the work developed. It does not establish novelty simply by documenting the order of conception.
 
 ***The object came first. The language followed.***
 
