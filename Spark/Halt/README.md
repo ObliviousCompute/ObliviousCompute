@@ -63,9 +63,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-🧭 **Continue to [**`Peers`**](../../Spark/Peers/README.md)...**
-
-> 🪙 [**`Kernel`**](../Kernel/README.md)***...***
+⚡ [**`Kernel`**](../Kernel/README.md)***...***
 
 ---
 
