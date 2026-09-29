@@ -34,17 +34,17 @@ In [*Statistical Mechanics of Cellular Automata* (1983)](https://doi.org/10.1103
 
 **Point of contact:** simple local rules can generate behavior that is visible only at the level of a larger configuration. **Question to examine:** the classical cellular-automaton construction uses a prescribed neighborhood and update scheme. Oblivious Compute exposes projections through a shared medium, then lets each observer determine admissibility from its own state. More general cellular-automaton models may narrow this distinction, so the relevant comparison is the actual transition and observation semantics, not merely the presence or absence of a grid.
 
-### Field Calculus · Collective Computation
-
-[Viroli, Beal, Damiani, Audrito, Casadei, and Pianini (2019)](https://doi.org/10.1016/j.jlamp.2019.100486) develop the foundations of field calculus and aggregate computing: collective behavior expressed through computational fields, with corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.
-
-**Point of contact:** computation is understood at the scale of a collective rather than only as a collection of isolated outputs. **Question to examine:** field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
-
 ### Pereira et al. · Synchronization Geometry
 
 In [*Towards a Theory for Diffusive Coupling Functions Allowing Persistent Synchronization* (2014)](https://doi.org/10.1088/0951-7715/27/3/501), Pereira, Eldering, Rasmussen, and Veneziani study coupled dynamical systems and conditions supporting stable synchronization. Fully synchronized configurations lie on a diagonal in the product state space.
 
 **Point of contact:** independently represented subsystems can coincide on a synchronization diagonal. In the notation of Oblivious Compute, $n$ observer states occupy $\Omega^n$, and perfect symmetry intersects $\Delta_n(\Omega)\cong\Omega$. **Question to examine:** Pereira et al. investigate the stability of synchrony under coupling. In Oblivious Compute, the diagonal is only one possible configuration of a field that exists before, during, and after alignment. Neither the shared geometry nor the admissibility rule alone proves that arbitrary implementations will converge.
+
+### Field Calculus · Collective Computation
+
+[Viroli, Beal, Damiani, Audrito, Casadei, and Pianini (2019)](https://doi.org/10.1016/j.jlamp.2019.100486) develop the foundations of field calculus and aggregate computing: collective behavior expressed through computational fields, with corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.
+
+**Point of contact:** computation is understood at the scale of a collective rather than only as a collection of isolated outputs. **Question to examine:** field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
 
 ### Broadcast Consensus · Shared Projection
 
