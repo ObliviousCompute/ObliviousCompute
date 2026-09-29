@@ -29,7 +29,7 @@
 
 [**`Theory`**](./Theory/README.md) **traces the development of the current mathematical framework.** 
 
-> *This is not a manifesto. These papers document the thinking that shaped the programs before it was formalized in writing.*
+> *This is not a manifesto. These papers preserve the thought process that shaped the programs.*
 
 ---
 
