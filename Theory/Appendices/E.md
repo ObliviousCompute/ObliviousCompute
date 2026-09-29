@@ -49,9 +49,8 @@ In [*Towards a Theory for Diffusive Coupling Functions Allowing Persistent Synch
 ### Field Calculus · Collective Computation
 
 
-In [*From Distributed Coordination to Field Calculus and Aggregate Computing* (2019)](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. trace the development of field calculus and aggregate computing, examining how collective behavior can be expressed through computational fields and corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.
- develop the foundations of field calculus and aggregate computing: collective behavior expressed through computational fields, with corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.
-
+In [*From Distributed Coordination to Field Calculus and Aggregate Computing* (2019)](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. trace the development of field calculus and aggregate computing, examining how collective behavior can be expressed through computational fields and corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.  
+ 
 **Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
 
 **Distinction to examine:** Field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
