@@ -27,9 +27,9 @@
 
 ## 🌀 Theory 🌀
 
-[**`Theory`**](./Theory/README.md) **traces the ideas that crystallized into the current mathematical framework.** ***It is a record of that thought process, not a manifesto.***
+[**`Theory`**](./Theory/README.md) **traces the development of the current mathematical framework.** 
 
-> ***The ideas shaped the programs before they were formalized in papers.***
+> *This is not a manifesto. These papers document the thinking that shaped the programs before it was formalized in writing.*
 
 ---
 
