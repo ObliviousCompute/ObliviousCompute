@@ -27,4 +27,4 @@ The definitions are intentionally withheld here. Introduced too early, the compo
 
 See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
 
-Use it, study it, modify it—just respect the terms outlined there.
+Use it, study it, modify it, just respect the terms outlined there.
