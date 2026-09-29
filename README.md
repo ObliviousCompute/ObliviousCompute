@@ -15,13 +15,13 @@
 
 ## ⚡ Spark ⚡
 
-[**`Spark`**](./Spark/README.md)**`⟶`**[**`Kernel`**](./Spark/Kernel/README.md)**`⟶`**[**`Fusion`**](./Spark/Fusion/README.md)**`⟶`**[**`ICBM`**](./Spark/ICBM/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers/README.md)
+[**`Kernel`**](./Spark/Kernel/README.md)**`⟷`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers/README.md)
 
 ---
 
-## 🛋️ AfterHours 🛋️
+## 🪙 Electrum 🪙
 
-[**`AfterHours`**](./AfterHours/README.md)**`⟶`**[**`Skeleton`**](./AfterHours/Skeleton/README.md)**`⟶`**[**`Hydra`**](./AfterHours/Hydra/README.md)**`⟶`**[**`Cerberus`**](./AfterHours/Cerberus/README.md)**`⟶`**[**`Byzantium`**](./AfterHours/Byzantium/README.md)
+[**`Skeleton`**](./AfterHours/Skeleton/README.md)**`⟶`**[**`Hydra`**](./AfterHours/Hydra/README.md)**`⟶`**[**`Cerberus`**](./AfterHours/Cerberus/README.md)**`⟶`**[**`Byzantium`**](./AfterHours/Byzantium/README.md)
 
 ---
 
