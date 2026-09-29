@@ -14,7 +14,7 @@ This is a comparison to perform, not an impossibility claim. A sufficiently expr
 
 ## Points of Contact
 
-An oblivious machine begins with independent observers, a state space, an admissibility rule, and a **shared medium**. An observer projects without designating a computational recipient. Any observer that encounters the projection evaluates it from its own position. An admitted change can trigger another projection. No observer must maintain a computational peer list or an authoritative representation of the collective field.
+An oblivious machine begins with independent observers, an admissibility rule, and a **shared medium**. An observer projects without designating a computational recipient. Any observer that encounters the projection evaluates it from its own position. An admitted change can trigger another projection. No observer must maintain a computational peer list or an authoritative representation of the collective field.
 
 The medium provides **common opportunity for observation, not common authority**. It carries projections, but does not decide their meaning. Its physical implementation still has to deliver the required opportunities for observation. The computational abstraction does not eliminate networking, guarantee delivery through partitions, or make broadcast unique to Oblivious Compute. Its proposed distinction is **the combination of recipient-oblivious projection, independent positional admission, and the evolving relation among observer states as the computational object**.
 
