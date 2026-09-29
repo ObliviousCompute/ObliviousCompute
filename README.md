@@ -15,7 +15,7 @@
 
 ## ⚡ Spark ⚡
 
-[**`Kernel`**](./Spark/Kernel/README.md)**`⟷`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Peers`**](./Spark/Peers/README.md)
+[**`Kernel`**](./Spark/Kernel/README.md)**`⟷`**[**`Halt`**](./Spark/Halt/README.md)
 
 ---
 
