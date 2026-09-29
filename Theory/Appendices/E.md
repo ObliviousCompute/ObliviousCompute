@@ -56,15 +56,6 @@ In [*Towards a Theory for Diffusive Coupling Functions Allowing Persistent Synch
 
 **Distinction to examine:** Pereira et al. investigate the stability of synchrony under coupling. In Oblivious Compute, the diagonal is only one possible configuration of a field that exists before, during, and after alignment. Neither the shared geometry nor the admissibility rule alone proves that arbitrary implementations will converge.
 
-### Field Calculus · Collective Computation
-
-
-In [*From Distributed Coordination to Field Calculus and Aggregate Computing* (2019)](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. trace the development of field calculus and aggregate computing, examining how collective behavior can be expressed through computational fields and corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.  
- 
-**Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
-
-**Distinction to examine:** Field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
-
 ### Broadcast Consensus · Shared Projection
 
 In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts. This is a direct comparison for any claim involving a population that communicates without individually addressing ordinary peers.
@@ -74,6 +65,14 @@ In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/
 **Distinction to examine:** Broadcast consensus protocols define agent transitions through broadcast actions and study the predicates a population can compute. Oblivious Compute treats the medium as an opportunity to encounter projections, leaving admission to each observer's current position and identifying the evolving relation as its computational object. The comparison must account for different delivery assumptions, transition semantics, and computational goals. The absence of a peer list is **not**, by itself, a distinction from broadcast consensus.
 
 > **Description is not construction.** A formalism may describe a collective configuration without specifying the same mechanism that produces its evolution. The comparison worth making is between the actual machines, not just the shapes of their resulting states.
+
+### Field Calculus · Collective Computation
+
+In [*From Distributed Coordination to Field Calculus and Aggregate Computing* (2019)](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. trace the development of field calculus and aggregate computing, examining how collective behavior can be expressed through computational fields and corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.  
+ 
+**Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
+
+**Distinction to examine:** Field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
 
 ---
 
