@@ -1,4 +1,4 @@
-# 💎 Prime 💎
+# 💎 Prime 💎  
 
 | Symbol | Meaning |
 |--------|---------|
@@ -61,7 +61,7 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-⚡ [**`Halt`**](../../Spark/Halt/README.md)***...***
+⚡ [**`Repeat`**](../../Spark/Halt/README.md)***...***
 
 ---
 
