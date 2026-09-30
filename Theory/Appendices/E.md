@@ -2,7 +2,7 @@
 
 ## Computational Advantage
 
-[**Oblivious Compute**](https://github.com/ObliviousCompute) explores whether a computational advantage can be gained by **trading inexpensive communication for simpler local computation**. The hypothesis is that **a single recurring rule**, distributed across independently maintained states, can produce collective behavior without requiring any observer to coordinate the machine as a whole.
+[**Oblivious Compute**](https://github.com/ObliviousCompute) explores whether a computational advantage can be gained by **trading inexpensive communication for simpler local computation**. A single recurring rule, distributed across independently maintained states, may produce collective behavior without requiring any observer to coordinate the machine as a whole.
 
 The proposed leverage comes from **the arrangement of those states and their interactions**. Additional communication through the shared medium may reduce the computational work required elsewhere. Whether this trade produces a net advantage remains to be measured.
 
@@ -10,76 +10,50 @@ The proposed leverage comes from **the arrangement of those states and their int
 
 > Think about how pulleys work. By arranging pulleys together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. **The medium provides the rope, and the observers supply the arrangement.** By spending more of one resource, we may gain leverage over another.
 
-## The CRDT Challenge
+## The Inversion Challenge
 
-At first glance, this construction resembles a CRDT. Independent observers maintain local state, encounter information from elsewhere, and may converge. The resemblance is real, but convergence alone is not the computational object proposed here.
+The central examination is not whether another formalism can reproduce the observable behavior of HaltingMachine. A sufficiently expressive system may be able to reproduce the same sequence of states or outputs through a different construction.
 
-A [CRDT](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf) specifies a replicated data type whose state or operations satisfy conditions for convergence. Oblivious Compute begins instead with a state space $\Omega$, a positional admissibility relation $\mathcal A(s,x)$, and a shared medium. Observers independently decide which encountered projections belong from their present states. The proposed computation is the evolving relational symmetry among those independently maintained states, not a value maintained by any one observer.
+The question is whether that reconstruction instantiates **the same computational object**. HaltingMachine provides a compact test because independently maintained observers progress through a shared state space while an inverter traverses that space in the opposite direction. An observer may halt its independent stimulus while continuing to participate in collective evolution through admitted projections and reprojection.
 
-[**HaltingMachine**](../../Spark/Halt/README.md) makes this distinction testable. Ordinary observers progress through Rock, Paper, Scissors while an inverter traverses the same state space in reverse. An observer can **HALT its independent stimulus** yet continue to admit incoming projections, mutate, and reproject. Halting one observer's stimulus is not necessarily halting its participation in the collective evolution.
+The challenge is therefore to reconstruct the machine within another formalism without quietly replacing its computational object with a different one. A reconstruction that produces equivalent outputs is informative, but it is not sufficient by itself. The examination asks what the formalism actually has to represent, transmit, merge, construct, or coordinate in order to produce those outputs.
 
-> **The CRDT Challenge:** Reconstruct HaltingMachine as a state-based CRDT while preserving its complete relational behavior, including HALT, inversion, positional admission, and mutation-triggered reprojection. Demonstrate mathematical equivalence without introducing additional state, machinery, or coordination. Account explicitly for every mathematical requirement.
+**Computational Object**
 
-## Points of Contact
-
-An oblivious machine begins with independent observers, an admissibility rule, and a **shared medium**. An observer projects without designating a computational recipient. Any observer that encounters the projection evaluates it from its own position. An admitted change can trigger another projection. No observer must maintain a computational peer list or an authoritative representation of the collective field.
-
-The medium provides **common opportunity for observation, not common authority**. It carries projections, but does not decide their meaning. Its physical implementation still has to deliver the required opportunities for observation. The computational abstraction does not eliminate networking, guarantee delivery through partitions, or make broadcast unique to Oblivious Compute. Its proposed distinction is **the combination of recipient-oblivious projection, independent positional admission, and the evolving relation among observer states as the computational object**.
-
-The five comparisons below examine different parts of that construction: **local decisions and global conditions, complex behavior from simple rules, synchronization geometry, broadcast interaction, and collective field semantics**. They are points of contact, not ingredients claimed as inventions or an ordered measure of proximity.
+> The computational object proposed here is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. No observer contains the complete object, and the medium need not define or maintain a separate representation of it. A projection is a view of that evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers.
+>
+> The examination therefore distinguishes **reproducing the behavior of a computation** from **instantiating the computational object that performs the computation**.
 
 ## Peers
 
-### Dijkstra · Local Control
+### State-based CRDTs
 
-In [*Self-Stabilizing Systems in Spite of Distributed Control* (1974)](https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD426.html), Dijkstra demonstrates that local rules can bring a distributed system into a globally legitimate condition even when its complete state is not held in a shared store. His example explicitly assumes processes communicating with neighbors.
+In [*A Comprehensive Study of Convergent and Commutative Replicated Data Types*](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf), Shapiro, Preguiça, Baquero, and Zawirski formalize replicated objects whose independently modified replicas converge under state-based or operation-based conditions. State-based CRDTs provide the closest direct comparison because their formal object is replicated state.
 
-**Point of contact:** Independently controlled local actions can produce a property of the whole system.
+**Point of contact:** Independent replicas maintain state and exchange state without foreground synchronization.
 
-**Distinction to examine:** Dijkstra specifies a global legitimacy condition that the algorithm is designed to reach. Oblivious Compute instead identifies the evolving relation among independently maintained states as the computation, including configurations away from perfect symmetry. Its computational interface also does not assign neighbors as recipients of individual projections.
+**Examination:** Can a state-based CRDT reconstruct HaltingMachine while preserving the same evolving relational computational object, rather than encoding its behavior into a replicated data structure? Account explicitly for every additional state, merge rule, ordering requirement, or other mathematical machinery required by the reconstruction.
 
-### Wolfram · Cellular Automata
+### Tuples On The Air
 
-In [*Statistical Mechanics of Cellular Automata* (1983)](https://doi.org/10.1103/RevModPhys.55.601), Stephen Wolfram investigates how simple local transition rules generate collective patterns and complex behavior. His elementary cellular automata evolve through discrete steps using fixed nearest-neighbor relationships.
+In [*Tuples On The Air: A Middleware for Context-Aware Computing in Dynamic Networks*](https://iris.unimore.it/handle/11380/18833), Mamei, Zambonelli, and Leonardi use spatially distributed tuples to represent contextual information and support uncoupled interactions. Tuples propagate according to application-specific patterns and can form distributed computational fields.
 
-**Point of contact:** Simple local rules can generate behavior that is visible only at the level of a larger configuration.
+**Point of contact:** A projected object can move through a distributed environment and be encountered by independently operating components.
 
-**Distinction to examine:** The classical cellular-automaton construction uses a prescribed neighborhood and update scheme. Oblivious Compute exposes projections through a shared medium, then lets each observer determine admissibility from its own state. More general cellular-automaton models may narrow this distinction, so the relevant comparison is the actual transition and observation semantics, not merely the presence or absence of a grid.
+**Examination:** Can Tuples On The Air reconstruct HaltingMachine while treating the projected state itself as the continuing computational object, rather than as a tuple that is subsequently interpreted by a separate mechanism? Account explicitly for every propagation, storage, reaction, or coordination mechanism required.
 
-### Pereira et al. · Synchronization Geometry
+### Field Calculus
 
-In [*Towards a Theory for Diffusive Coupling Functions Allowing Persistent Synchronization* (2014)](https://doi.org/10.1088/0951-7715/27/3/501), Pereira, Eldering, Rasmussen, and Veneziani study coupled dynamical systems and conditions supporting stable synchronization. Fully synchronized configurations lie on a diagonal in the product state space.
+In [*From Distributed Coordination to Field Calculus and Aggregate Computing*](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. develop the field-calculus lineage as a formal model for specifying and composing collective behavior. The later [*The eXchange Calculus*](https://doi.org/10.1016/j.jss.2024.111976) extends this lineage with a single exchange construct combining computation, communication, and state over time.
 
-**Point of contact:** Independently represented subsystems can coincide on a synchronization diagonal. In the notation of Oblivious Compute, $n$ observer states occupy $\Omega^n$, and perfect symmetry intersects $\Delta_n(\Omega)\cong\Omega$.
+**Point of contact:** Computation is represented at the scale of a collective rather than only as isolated device computation.
 
-**Distinction to examine:** Pereira et al. investigate the stability of synchrony under coupling. In Oblivious Compute, the diagonal is only one possible configuration of a field that exists before, during, and after alignment. Neither the shared geometry nor the admissibility rule alone proves that arbitrary implementations will converge.
+**Examination:** Can Field Calculus, including the exchange mechanism of the eXchange Calculus, instantiate the same computational object $\Sigma_{M_s}$ without introducing a separately constructed field representation whose semantics supply the collective computation? Account explicitly for every neighborhood, communication, state, alignment, or execution mechanism required.
 
-### Broadcast Consensus · Shared Projection
+### Broadcast Consensus Protocols
 
-In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts. This is a direct comparison for any claim involving a population that communicates without individually addressing ordinary peers.
+In [*Expressive Power of Broadcast Consensus Protocols*](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts and characterize the computational power of the resulting population.
 
-**Point of contact:** Global broadcast permits distributed interaction without maintaining pairwise computational recipient lists.
+**Point of contact:** Agents can participate in collective computation through a shared communication mechanism without requiring individually addressed recipients.
 
-**Distinction to examine:** Broadcast consensus protocols define agent transitions through broadcast actions and study the predicates a population can compute. Oblivious Compute treats the medium as an opportunity to encounter projections, leaving admission to each observer's current position and identifying the evolving relation as its computational object. The comparison must account for different delivery assumptions, transition semantics, and computational goals. The absence of a peer list is **not**, by itself, a distinction from broadcast consensus.
-
-### Field Calculus · Collective Computation
-
-In [*From Distributed Coordination to Field Calculus and Aggregate Computing* (2019)](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. trace the development of field calculus and aggregate computing, examining how collective behavior can be expressed through computational fields and corresponding local execution semantics. A computational field is a mathematical description, not necessarily a separately stored global object.  
- 
-**Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
-
-**Distinction to examine:** Field calculus expresses and executes collective computations through its language and device interactions. Oblivious Compute proposes positional admission and reprojection as the primitive, with the field defined as relational symmetry among observer states. Can one faithfully express the other, and if so, which semantics and mechanisms must be supplied?
-
-> **Description is not construction.** A formalism may describe a collective configuration without specifying the same mechanism that produces its evolution. The comparison worth making is between the actual machines, not just the shapes of their resulting states.
-
----
-
-🧭 **[**`EXIT`**](https://github.com/ObliviousCompute)...**
-
----
-
-## 📜 License
-
-See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
-
-Use it, study it, modify it, just respect the terms outlined there.
+**Examination:** Can Broadcast Consensus Protocols reconstruct the same computational object under an undefined medium, where the medium supplies only an opportunity for observation and does not itself define the collective computation? Account explicitly for every broadcast, transition, delivery, population, or coordination assumption required.
