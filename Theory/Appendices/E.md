@@ -18,9 +18,7 @@ A [CRDT](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf) specifies a repl
 
 [**HaltingMachine**](../../Spark/Halt/README.md) makes this distinction testable. Ordinary observers progress through Rock, Paper, Scissors while an inverter traverses the same state space in reverse. An observer can **HALT its independent stimulus** yet continue to admit incoming projections, mutate, and reproject. Halting one observer's stimulus is not necessarily halting its participation in the collective evolution.
 
-> **The CRDT Challenge:** Reconstruct HaltingMachine as a CRDT while preserving independent stimulus, HALT, inversion, positional admission, and mutation-triggered reprojection. Identify which behavior belongs to the replicated data type and which requires additional transition rules, event handling, or coordination.
-
-This is a comparison to perform, not an impossibility claim. A sufficiently expressive CRDT-based application may reproduce the behavior. The question is **where the computation occurs in that reconstruction**, and what machinery must be introduced to preserve the same behavior rather than merely reach a similar final value.
+> **The CRDT Challenge:** Reconstruct HaltingMachine as a state-based CRDT while preserving its complete relational behavior, including HALT, inversion, positional admission, and mutation-triggered reprojection. Demonstrate mathematical equivalence without introducing additional state, machinery, or coordination. Account explicitly for every mathematical requirement.
 
 ## Points of Contact
 
