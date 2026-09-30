@@ -16,11 +16,11 @@ The challenge is not simply to reproduce the observable behavior of HaltingMachi
 
 Instead, construct an **oblivious computation within the formalism itself**. HaltingMachine provides the test case. Reproduce its inversion, halting, positional admission, mutation, and reprojection using the native mathematical objects and operations of the system under examination. Do not wrap an Oblivious Compute implementation inside the competing formalism or merely reproduce its outputs externally.
 
-Then reduce the construction. Identify what the formalism must surrender before its separately represented states, messages, tuples, replicas, field structures, topology, or medium cease to be separate computational objects. Show the resulting mathematics. If the reduced construction instantiates the same evolving relational object, then the formalism has reached an oblivious computation. If additional machinery remains necessary, identify precisely what that machinery contributes.
+Then reduce the construction. Strip away the formalism's separate representations until the irreducible construction remains. Show the resulting mathematics. If that reduced construction instantiates the same evolving relational object defined below, the formalism has reached an oblivious computation. If additional machinery remains necessary, identify precisely what that machinery contributes.
 
 ***The question is, what must be removed from the formalism before its separately represented components cease to be separate and the evolving relation among states becomes the computation itself?***
 
-> **The Computational Object** is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. All observer states and admissible projections are expressed within the common state space $\Omega$. No observer contains the complete object, and the medium need not define or maintain a separate representation of the field. A projection is a manifestation of the evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers. At the level of the computation, the state, projection, message, tuple, replica, field, topology, and medium are not required to remain separate computational objects. They are manifestations and conditions of the same evolving relational object.
+> **The Computational Object** is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. All observer states and admissible projections are expressed within the common state space $\Omega$. No observer contains the complete object, and the medium need not define or maintain a separate representation of the field. A projection is a manifestation of the evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers. **No second computational object is introduced between these manifestations. What appears as a state, projection, message, tuple, replica, or field in another formalism is, in this construction, a manifestation of the same evolving relational object. The medium and topology provide conditions for those manifestations to encounter one another, but they do not constitute separate computational objects.**
 
 ## Peers
 
@@ -30,7 +30,7 @@ In [*A Comprehensive Study of Convergent and Commutative Replicated Data Types*]
 
 **Point of contact:** Independent replicas maintain state and exchange state without foreground synchronization.
 
-**Examination:** Construct an oblivious computation within the state-based CRDT formalism using HaltingMachine as the test case. Express the construction using native CRDT mathematics. Then identify what must be removed before replicated state, merge, and any other CRDT-specific machinery cease to be separate computational objects and the evolving relation among states becomes the computation.
+**Examination:** Construct an oblivious computation within the state-based CRDT formalism using HaltingMachine as the test case. Express the construction using native CRDT mathematics. Then identify what must be removed before replicated state, merge, and any other CRDT-specific machinery cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ### Tuples On The Air
 
@@ -38,7 +38,7 @@ In [*Tuples On The Air: A Middleware for Context-Aware Computing in Dynamic Netw
 
 **Point of contact:** Information can be projected into a distributed environment and encountered by independently operating components.
 
-**Examination:** Construct an oblivious computation within the tuple formalism using HaltingMachine as the test case. Express the construction using native tuple mathematics. Then identify what must be removed before the tuple, propagation rule, local tuple space, neighborhood structure, or middleware cease to be separate computational objects and the evolving relation among states becomes the computation.
+**Examination:** Construct an oblivious computation within the tuple formalism using HaltingMachine as the test case. Express the construction using native tuple mathematics. Then identify what must be removed before the tuple, propagation rule, local tuple space, neighborhood structure, or middleware cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ### Field Calculus
 
@@ -46,7 +46,7 @@ In [*From Distributed Coordination to Field Calculus and Aggregate Computing*](h
 
 **Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
 
-**Examination:** Construct an oblivious computation within Field Calculus using HaltingMachine as the test case, including the exchange mechanism described by the eXchange Calculus where appropriate. Then identify what must be removed before the separately represented field, neighborhood, communication, state, or execution semantics cease to be separate computational objects and the evolving relation among states becomes the computation.
+**Examination:** Construct an oblivious computation within Field Calculus using HaltingMachine as the test case, including the exchange mechanism described by the eXchange Calculus where appropriate. Then identify what must be removed before the separately represented field, neighborhood, communication, state, or execution semantics cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ### Broadcast Consensus
 
@@ -54,7 +54,7 @@ In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/
 
 **Point of contact:** Agents can participate in collective computation through a shared broadcast mechanism without requiring individually addressed ordinary recipients.
 
-**Examination:** Construct an oblivious computation within the Broadcast Consensus formalism using HaltingMachine as the test case. Express the construction using native broadcast-consensus mathematics. Then identify what must be removed before broadcast actions, agent transitions, population structure, or other separately represented machinery cease to be separate computational objects and the evolving relation among states becomes the computation.
+**Examination:** Construct an oblivious computation within the Broadcast Consensus formalism using HaltingMachine as the test case. Express the construction using native broadcast-consensus mathematics. Then identify what must be removed before broadcast actions, agent transitions, population structure, or other separately represented machinery cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ---
 
