@@ -18,9 +18,9 @@ Instead, construct an **oblivious computation within the formalism itself**. Hal
 
 Then reduce the construction. Identify what the formalism must surrender before its separately represented states, messages, tuples, replicas, field structures, topology, or medium cease to be separate computational objects. Show the resulting mathematics. If the reduced construction instantiates the same evolving relational object, then the formalism has reached an oblivious computation. If additional machinery remains necessary, identify precisely what that machinery contributes.
 
-***The question is: what must be removed from the formalism before its separately represented components cease to be separate and the evolving relation among states becomes the computation itself?***
+***The question is, what must be removed from the formalism before its separately represented components cease to be separate and the evolving relation among states becomes the computation itself?***
 
-> **Computational Object:** The computational object is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. All observer states and admissible projections are expressed within the common state space $\Omega$. No observer contains the complete object, and the medium need not define or maintain a separate representation of the field. A projection is a manifestation of the evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers. At the level of the computation, the state, projection, message, tuple, replica, field, topology, and medium are not required to remain separate computational objects. They are manifestations and conditions of the same evolving relational object.
+> **The Computational Object** is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. All observer states and admissible projections are expressed within the common state space $\Omega$. No observer contains the complete object, and the medium need not define or maintain a separate representation of the field. A projection is a manifestation of the evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers. At the level of the computation, the state, projection, message, tuple, replica, field, topology, and medium are not required to remain separate computational objects. They are manifestations and conditions of the same evolving relational object.
 
 ## Peers
 
@@ -58,7 +58,7 @@ In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/
 
 ---
 
-🧭 **[**`EXIT`**](https://github.com/ObliviousCompute)...
+🧭 **[**`EXIT`**](https://github.com/ObliviousCompute)...**
 
 ---
 
