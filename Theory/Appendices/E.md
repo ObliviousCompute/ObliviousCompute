@@ -18,9 +18,7 @@ The question is whether that reconstruction instantiates **the same computationa
 
 The challenge is therefore to reconstruct the machine within another formalism without quietly replacing its computational object with a different one. A reconstruction that produces equivalent outputs is informative, but it is not sufficient by itself. The examination asks what the formalism actually has to represent, transmit, merge, construct, or coordinate in order to produce those outputs.
 
-**Computational Object**
-
-> The computational object proposed here is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. No observer contains the complete object, and the medium need not define or maintain a separate representation of it. A projection is a view of that evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers.
+> **The Computational Object** proposed here is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. No observer contains the complete object, and the medium need not define or maintain a separate representation of it. A projection is a view of that evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers.
 >
 > The examination therefore distinguishes **reproducing the behavior of a computation** from **instantiating the computational object that performs the computation**.
 
