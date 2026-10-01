@@ -10,7 +10,7 @@ The proposed leverage comes from **the arrangement of those states and their int
 
 > Think about how pulleys work. By arranging pulleys together, you can lift the same weight with less force at the cost of pulling more rope. An oblivious machine explores a similar possibility. **The medium provides the rope, and the observers supply the arrangement.** By spending more of one resource, we may gain leverage over another.
 
-## The Inversion Challenge
+## The Inverter Challenge
 
 The challenge here is not simply to reproduce the observable behavior of the [**`HaltingMachine`**](../../Spark/Halt/README.md). Because of course, another sufficiently expressive formalism may be able to reproduce the behavior.
 
