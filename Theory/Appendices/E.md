@@ -12,7 +12,7 @@ The proposed leverage comes from **the arrangement of those states and their int
 
 ## The Inversion Challenge
 
-The challenge is not simply to reproduce the observable behavior of HaltingMachine. A sufficiently expressive formalism may be able to reproduce the same sequence of states or outputs while retaining a different computational structure.
+The challenge is not simply to reproduce the observable behavior of [**`HaltingMachine`**](../../Spark/Halt/README.md). A sufficiently expressive formalism may be able to reproduce the same sequence of states or outputs while retaining a different computational structure.
 
 Instead, construct an **oblivious computation within the formalism itself**. HaltingMachine provides the test case. Reproduce its inversion, halting, positional admission, mutation, and reprojection using the native mathematical objects and operations of the system under examination. Do not wrap an Oblivious Compute implementation inside the competing formalism or merely reproduce its outputs externally.
 
