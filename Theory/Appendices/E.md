@@ -12,13 +12,13 @@ The proposed leverage comes from **the arrangement of those states and their int
 
 ## The Inversion Challenge
 
-The challenge is not simply to reproduce the observable behavior of [**`HaltingMachine`**](../../Spark/Halt/README.md). A sufficiently expressive formalism may be able to reproduce the same sequence of states or outputs while retaining a different computational structure.
+The challenge is not simply to reproduce the observable behavior of [**`HaltingMachine`**](../../Spark/Halt/README.md). Another sufficiently expressive formalism may be able to reproduce the same sequence of states or outputs while retaining a different computational structure.
 
-Instead, construct an **oblivious computation within the formalism itself**. HaltingMachine provides the test case. Reproduce its inversion, halting, positional admission, mutation, and reprojection using the native mathematical objects and operations of the system under examination. Do not wrap an Oblivious Compute implementation inside the competing formalism or merely reproduce its outputs externally.
+Instead, construct an **oblivious computation within another formalism itself**. HaltingMachine provides the test case. Reproduce its inversion, halting, positional admission, mutation, and reprojection using the native mathematical objects and operations of the system under examination. Do not wrap an Oblivious Compute implementation inside an existing formalism or merely reproduce its outputs externally.
 
-Then reduce the construction. Strip away the formalism's separate representations until the irreducible construction remains. Show the resulting mathematics. If that reduced construction instantiates the same evolving relational object defined below, the formalism has reached an oblivious computation. If additional machinery remains necessary, identify precisely what that machinery contributes.
+Then reduce the construction. Strip away that formalism's separate representations until the irreducible construction remains. Show the resulting mathematics. If that reduced construction instantiates the same evolving relational object defined below, then the formalism has reached an oblivious computation. If additional machinery remains necessary, identify precisely what that machinery contributes.
 
-***The question is, what must be removed from the formalism before its separately represented components cease to be separate and the evolving relation among states becomes the computation itself?***
+***The question is, what must be removed from another formalism before its separately represented components cease to be separate and the evolving relation among states becomes the computation itself?***
 
 > **The Computational Object** is the evolving relation represented by $\Sigma_{M_s}$, manifested through independently maintained observer states. All observer states and admissible projections are expressed within the common state space $\Omega$. No observer contains the complete object, and the medium need not define or maintain a separate representation of the field. A projection is a manifestation of the evolving object from an observer's state. When an admitted projection mutates an observer's state, the resulting state may itself be reprojected, allowing the same evolving object to continue across observers.
 >
