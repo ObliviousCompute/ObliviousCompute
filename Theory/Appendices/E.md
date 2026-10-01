@@ -24,6 +24,8 @@ Then reduce the construction. Strip away that formalism's separate representatio
 >
 > **No second computational object is introduced between these manifestations.** What appears as a state, projection, message, tuple, replica, or field in another formalism is, in this construction, a manifestation of the same evolving relational object. The medium and topology provide conditions for those manifestations to encounter one another, but they do not constitute separate computational objects.
 
+***Our wager is that, once the machinery is stripped away, something very, very similar in shape remains.***
+
 ## Peers
 
 ### State-based CRDTs
