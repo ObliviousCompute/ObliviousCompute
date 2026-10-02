@@ -54,7 +54,7 @@ In [*`From Distributed Coordination to Field Calculus and Aggregate Computing`*]
 
 ### Broadcast Consensus
 
-In [*`Expressive Power of Broadcast Consensus Protocols`*](../../Relics/Peers/), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts.
+In [*`Expressive Power of Broadcast Consensus Protocols`*](../../Relics/Peers/2019-BroadConsensus.pdf), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts.
 
 **Point of contact:** Agents can participate in collective computation through a shared broadcast mechanism without requiring individually addressed ordinary recipients.
 
