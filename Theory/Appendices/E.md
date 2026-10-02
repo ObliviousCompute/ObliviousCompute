@@ -38,7 +38,7 @@ In [*`A Comprehensive Study of Convergent and Commutative Replicated Data Types`
 
 ### Tuples On The Air
 
-In [*Tuples On The Air: A Middleware for Context-Aware Computing in Dynamic Networks*](https://iris.unimore.it/handle/11380/18833), Mamei, Zambonelli, and Leonardi use spatially distributed tuples to represent contextual information and support uncoupled interactions between distributed components.
+In [*`Tuples On The Air: A Middleware for Context-Aware Computing in Dynamic Networks`*](../../Relics/Peers/2003-Tuples.pdf), Mamei, Zambonelli, and Leonardi use spatially distributed tuples to represent contextual information and support uncoupled interactions between distributed components.
 
 **Point of contact:** Information can be projected into a distributed environment and encountered by independently operating components.
 
@@ -46,7 +46,7 @@ In [*Tuples On The Air: A Middleware for Context-Aware Computing in Dynamic Netw
 
 ### Field Calculus
 
-In [*From Distributed Coordination to Field Calculus and Aggregate Computing*](https://doi.org/10.1016/j.jlamp.2019.100486), Viroli et al. develop the Field Calculus lineage as a formal model for specifying and composing collective behavior. The later [*The eXchange Calculus*](https://doi.org/10.1016/j.jss.2024.111976) develops this lineage further by combining computation, communication, and state over time within a single exchange construct.
+In [*`From Distributed Coordination to Field Calculus and Aggregate Computing`*](../../Relics/Peers/2019-FieldCalculus.pdf), Viroli et al. develop the Field Calculus lineage as a formal model for specifying and composing collective behavior. The later [*`The eXchange Calculus`*](../../Relics/Peers/2024-eXchange.pdf) develops this lineage further by combining computation, communication, and state over time within a single exchange construct.
 
 **Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
 
@@ -54,7 +54,7 @@ In [*From Distributed Coordination to Field Calculus and Aggregate Computing*](h
 
 ### Broadcast Consensus
 
-In [*Expressive Power of Broadcast Consensus Protocols* (2019)](https://doi.org/10.4230/LIPIcs.CONCUR.2019.31), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts.
+In [*`Expressive Power of Broadcast Consensus Protocols`*](../../Relics/Peers/), Blondin, Esparza, and Jaax study anonymous finite-state agents extended with reliable global broadcasts.
 
 **Point of contact:** Agents can participate in collective computation through a shared broadcast mechanism without requiring individually addressed ordinary recipients.
 
