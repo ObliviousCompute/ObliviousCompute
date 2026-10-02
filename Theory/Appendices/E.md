@@ -30,7 +30,7 @@ If need be, **strip away that formalism's separate representations until an irre
 
 ### State-based CRDTs
 
-In [*A Comprehensive Study of Convergent and Commutative Replicated Data Types*](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf), Shapiro, Preguiça, Baquero, and Zawirski formalize replicated objects whose independently modified replicas converge under state-based or operation-based conditions. State-based CRDTs provide a close comparison because their formal object is replicated state.
+In [*`A Comprehensive Study of Convergent and Commutative Replicated Data Types`*](../../Relics/Peers/2011-CRDT.pdf), Shapiro, Preguiça, Baquero, and Zawirski formalize replicated objects whose independently modified replicas converge under state-based or operation-based conditions. State-based CRDTs provide a close comparison because their formal object is replicated state.
 
 **Point of contact:** Independent replicas maintain state and exchange state without foreground synchronization.
 
