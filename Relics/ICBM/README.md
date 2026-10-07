@@ -66,7 +66,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-🧭 **[**`EXIT`**](https://ObliviousCompute.com)...**
+🧭 **[**`EXIT`**](https://BipX39.com)...**
 
 ---
 
