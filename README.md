@@ -2,7 +2,7 @@
 
 [![DOI](./Relics/DOI.svg)](https://doi.org/10.5281/zenodo.22925882)
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) is a distributed computation model in which **independently maintained states** are projected into a shared medium and evaluated locally for **admissibility**. Each observer changes only from what it can admit from its present state. The computation is the **evolving relation among those independently maintained states**, rather than anything contained by a single process, coordinator, or stored global state.
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) asks **what remains of computation after time, history, global ordering, and centralized coordination are removed**, with each observer maintaining only its own state and reacting locally to what it encounters through an oblivious medium, no observer containing the whole system, no global tape recording its past, and no external structure defining the field, yet the observers can still converge because their relations organize around symmetry, making the computation not something stored in any participant or constructed by middleware, but the **evolving relational symmetry of the whole**: ***the field is not produced by the machine, the field is the machine.***
 
 > **Check out the** [**`Examination`**](./Theory/Appendices/E.md) **section for a formal comparison.**
 
