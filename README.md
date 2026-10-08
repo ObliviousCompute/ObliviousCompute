@@ -1,4 +1,4 @@
-# Ω Oblivious Compute Ω
+# $\Omega$ Oblivious Compute $\Omega$
 
 [![DOI](./Relics/DOI.svg)](https://doi.org/10.5281/zenodo.22925882)
 
