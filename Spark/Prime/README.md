@@ -17,6 +17,8 @@ $\Large \cdots\Omega\rightarrow\Omega\times\Omega\rightarrow\Omega\leftarrow\Ome
 
 ***State is projected into a shared medium without selecting, or requiring knowledge of, a computationally designated recipient. Any observer that encounters a projection evaluates it from its own position.*** 
 
+$\large \𝓐(s,x)$
+
 Together, these **local determinations** form a ***matrix of relations*** across the observer set.
 
 $\Large 𝓐:\Omega\times\Omega\rightarrow\lbrace 0,1\rbrace \qquad 𝓐(s,x)\in\lbrace 0,1\rbrace$
