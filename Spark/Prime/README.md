@@ -59,7 +59,7 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-> $\Sigma$ is the **field**. It exists throughout the relational geometry, both on and off the diagonal. When the observer configuration intersects $\Delta_n(\Omega)$, its independently maintained states **collide and coincide in perfect symmetry**. The states may remain coincident or diverge under further admissible projection while the relational object remains $\Sigma$. $\Phi_s$ denotes the **projection behavior** exposed to observer geometry $s$, not the machinery that realizes it. That machinery remains inside the ***black box***. **The diagonal is the mirror, not the image.** Distinct physical realizations are equivalent at this resolution when they expose the **same projections to the same $s$**. Further decomposition of $\Phi_s$ **changes the resolution rather than completing the definition**.
+> **The field is not the diagonal, a projection, or any observer state.** Oblivious Medium $\Phi_s$ exposes projections while independently maintained states across $s$ give those projections relational form. Within $M_s$ neither half constitutes the computation alone. **Through their conjunction, relational symmetry $\Sigma$ becomes manifest as the evolving computational object of the whole.**
 
 ---
 
