@@ -34,7 +34,7 @@ In [*`A Comprehensive Study of Convergent and Commutative Replicated Data Types`
 
 **Point of contact:** Independent replicas maintain state and exchange state without foreground synchronization.
 
-**Examination:** Construct an oblivious computation within the state-based CRDT formalism using HaltingMachine as the test case. Express the construction using native CRDT mathematics. Then identify what must be removed before replicated state, merge, and any other CRDT-specific machinery cease to be separate computational objects and the evolving relation itself becomes the computation.
+> **Examination:** Construct an oblivious computation within the state-based CRDT formalism using HaltingMachine as the test case. Express the construction using native CRDT mathematics. Then identify what must be removed before replicated state, merge, and any other CRDT-specific machinery cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ### Tuples On The Air
 
@@ -42,7 +42,7 @@ In [*`Tuples On The Air: A Middleware for Context-Aware Computing in Dynamic Net
 
 **Point of contact:** Information can be projected into a distributed environment and encountered by independently operating components.
 
-**Examination:** Construct an oblivious computation within the tuple formalism using HaltingMachine as the test case. Express the construction using native tuple mathematics. Then identify what must be removed before the tuple, propagation rule, local tuple space, neighborhood structure, or middleware cease to be separate computational objects and the evolving relation itself becomes the computation.
+> **Examination:** Construct an oblivious computation within the tuple formalism using HaltingMachine as the test case. Express the construction using native tuple mathematics. Then identify what must be removed before the tuple, propagation rule, local tuple space, neighborhood structure, or middleware cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ### Field Calculus
 
@@ -50,7 +50,7 @@ In [*`From Distributed Coordination to Field Calculus and Aggregate Computing`*]
 
 **Point of contact:** Computation is understood at the scale of a collective rather than only as a collection of isolated outputs.
 
-**Examination:** Construct an oblivious computation within Field Calculus using HaltingMachine as the test case, including the exchange mechanism described by the eXchange Calculus where appropriate. Then identify what must be removed before the separately represented field, neighborhood, communication, state, or execution semantics cease to be separate computational objects and the evolving relation itself becomes the computation.
+> **Examination:** Construct an oblivious computation within Field Calculus using HaltingMachine as the test case, including the exchange mechanism described by the eXchange Calculus where appropriate. Then identify what must be removed before the separately represented field, neighborhood, communication, state, or execution semantics cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ### Broadcast Consensus
 
@@ -58,7 +58,7 @@ In [*`Expressive Power of Broadcast Consensus Protocols`*](../../Relics/Peers/20
 
 **Point of contact:** Agents can participate in collective computation through a shared broadcast mechanism without requiring individually addressed ordinary recipients.
 
-**Examination:** Construct an oblivious computation within the Broadcast Consensus formalism using HaltingMachine as the test case. Express the construction using native broadcast-consensus mathematics. Then identify what must be removed before broadcast actions, agent transitions, population structure, or other separately represented machinery cease to be separate computational objects and the evolving relation itself becomes the computation.
+> **Examination:** Construct an oblivious computation within the Broadcast Consensus formalism using HaltingMachine as the test case. Express the construction using native broadcast-consensus mathematics. Then identify what must be removed before broadcast actions, agent transitions, population structure, or other separately represented machinery cease to be separate computational objects and the evolving relation itself becomes the computation.
 
 ---
 
