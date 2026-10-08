@@ -2,7 +2,7 @@
 
 [![DOI](./Relics/DOI.svg)](https://doi.org/10.5281/zenodo.22925882)
 
-[**`Oblivious Compute`**](https://github.com/ObliviousCompute) asks **what remains of computation after global coordination and history are removed.** Each observer maintains only its own state and reacts locally to what it encounters through an oblivious medium. No observer contains the whole system, and no middleware constructs the field. Observers still converge because their relations organize around symmetry. The computation is the evolving relational symmetry of the whole. ***The field is not produced by the machine. The field is the machine.***
+[**`Oblivious Compute`**](https://github.com/ObliviousCompute) **Reduces the machinery required for distributed computation by removing history and global coordination.** Each observer maintains only its own state and reacts locally to projections through an oblivious medium. No observer contains the field, and no middleware constructs it. ***The field is not produced by the machine. The field is the machine.***
 
 > **Check out the** [**`Examination`**](./Theory/Appendices/E.md) **section for a formal comparison.**
 
