@@ -51,11 +51,9 @@ $\Large \Omega$
 
 $\Large M_s=(s,\Phi_s)$
 
-***Within that machine, the evolving relational symmetry is the computational object.***
+***The evolving relational symmetry within $M_s$ is an Oblivious Computation.***
 
 $\Large \Sigma_{M_s}$
-
-***That relational symmetry is an Oblivious Computation.***
 
 ---
 
