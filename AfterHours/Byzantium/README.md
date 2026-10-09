@@ -64,7 +64,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 <img src="../../Relics/TreeGlyph.png" width="600"/>
 
-> *Glyphs are propagated to mutate the state*
+> *Glyphs are propagated to mutate the state.*
 
 ---
 
