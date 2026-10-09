@@ -54,14 +54,6 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-## 🧩 Continuity
-
-Leave and return *microseconds or millennia later*. As long as one participant still holds the state, the projection persists.
-
-**You do not reconnect to the past. You reconnect to what is.**
-
----
-
 <img src="../../Relics/DoubleTrouble.gif"/>
 
 > *This GIF is over 4x the size of the Byzantium runtime.*
@@ -72,13 +64,7 @@ Leave and return *microseconds or millennia later*. As long as one participant s
 
 <img src="../../Relics/TreeGlyph.png" width="600"/>
 
-> *The upper part of the stack runs on State, and the lower stack runs on Glyphs*
-
----
-
-## 🗝️ Security Notice
-
-> Oblivious Compute does not depend on any particular encryption scheme. Some reference implementations use simple XOR obfuscation for projection separation, which is not secure encryption and is not intended to be. Add whatever transport security you want; it does not change the primitive.
+> *Glyphs are propagated to mutate the state*
 
 ---
 
