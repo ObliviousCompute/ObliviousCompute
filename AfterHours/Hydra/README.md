@@ -86,14 +86,6 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-## 🧩 Continuity
-
-Leave and return *microseconds or millennia later*. As long as one participant still holds the state, the projection persists.
-
-**You do not reconnect to the past. You reconnect to what is.**
-
----
-
 <img src="../../Relics/Alpha.png" width="400"/>
 
 <img src="../../Relics/Bye.gif" width="400"/>
