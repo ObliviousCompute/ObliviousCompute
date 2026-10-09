@@ -72,14 +72,6 @@ Cerberus runs locally over sockets as a **Sandbox Smoketest**.
 
 ---
 
-## 🧩 Continuity
-
-Leave and return *microseconds or millennia later*. As long as one participant still holds the state, the projection persists.
-
-**You do not reconnect to the past. You reconnect to what is.**
-
----
-
 ## 🏛️ Architecture
 
 <img src="../../Relics/DogTree.png" width="500"/>
