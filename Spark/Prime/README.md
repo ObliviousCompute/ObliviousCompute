@@ -51,7 +51,7 @@ $\Large \Omega$
 
 $\Large M_s=(s,\Phi_s)$
 
-***The evolving relational symmetry within $M_s$ is an Oblivious Computation.***
+***The evolving relational symmetry within*** $M_s$ ***is an Oblivious Computation.***
 
 $\Large \Sigma_{M_s}$
 
