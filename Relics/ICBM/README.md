@@ -39,7 +39,7 @@ Every admitted Key changes the computation itself. One abort is a state. Two abo
 ***To run ICBM, install it with:***
 
 ```bash
-pipx install ICBM-Game && ICBM
+pipx install ICBM && ICBM
 ```
 
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
