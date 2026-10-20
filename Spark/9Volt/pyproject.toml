@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "9Volt"
+version = "1.0"
+description = "NineVolt distributed three-socket geometric circuit"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+
+[project.scripts]
+9volt = "Circuit.Scan:Run"
+
+[project.urls]
+Source = "https://github.com/ObliviousCompute/ObliviousCompute"
+
+[tool.setuptools]
+packages = ["Circuit"]
