@@ -63,7 +63,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
-⚡ [**`Prime`**](../Prime/README.md)***...***
+⚡ [**`9Volt`**](../9Volt/README.md)***...***
 
 ---
 
