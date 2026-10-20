@@ -2,7 +2,7 @@
 
 ***It keeps going, and going, and going…***  
 
-<img src="../../Relics/9volt.gif" width="450"/>
+<img src="../../Relics/9volt.gif" width="500"/>
 
 > ***Still Going!*** 
 
