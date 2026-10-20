@@ -61,7 +61,7 @@ $\Large \Sigma_{M_s}$
 
 ---
 
-⚡ [**`Repeat`**](../../Spark/Halt/README.md)***...***
+⚡ [**`Halt`**](../../Spark/Halt/README.md)***...***
 
 ---
 
