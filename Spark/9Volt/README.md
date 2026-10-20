@@ -45,10 +45,10 @@ A projection does not become state merely because it was projected. Each observe
 
 ## 🍄 Install
 
-***To run HaltingMachine, install it with:***
+***To run 9Volt, install it with:***
 
 ```bash
-pipx install HaltingMachine && HaltingMachine
+pipx install 9Volt && 9Volt
 ```
 
 You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
