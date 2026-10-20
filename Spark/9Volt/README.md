@@ -1,10 +1,10 @@
-# 🙂 HaltingMachine 🙂
+# 🔋 NineVolt 🔋
 
-***...Rock. Paper. Scissors. Rock. Paper. Scissors...***  
+***It keeps going, and going, and going…***  
 
 <img src="../../Relics/HaltingMachine.gif" width="350"/>
 
-> ***...Forever...and ever...*** 
+> ***Still Going!*** 
 
 ---
 
