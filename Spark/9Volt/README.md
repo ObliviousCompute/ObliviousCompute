@@ -20,9 +20,7 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ## 🐈‍⬛ Inside 🐈‍⬛
 
-[**`HyperCube`**](./HyperCube.md) gives the relation a **Boolean language.**
-
-> ***See the computation first. Then learn how it speaks.***
+The two companion papers here explore the geometric foundations of **NineVolt** and what they might become. [**`HyperCube`**](./HyperCube.md) establishes the relational Boolean geometry, while [**`Potentiality`**](./Potentiality.md) explores how small oblivious fields might compose into a larger distributed computational language.
 
 ---
 
