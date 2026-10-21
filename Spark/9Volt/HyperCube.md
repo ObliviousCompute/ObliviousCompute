@@ -44,7 +44,7 @@ Nothing in that language requires the box to be classical. A classical machine m
 
 ---
 
-**Go back to [**`Halt`**](./README.md)...**
+**Go back to [**`9Volt`**](./README.md)...**
 
 ---
 
