@@ -18,7 +18,7 @@ A projection does not become state merely because it was projected. Each observe
 
 ## 📦 Outside 📦
 
-[**`BlackBox`**](./BlackBox.md) revisits **Turing's halting problem** as a thought experiment. Turing's diagonal argument establishes a limit on what a machine can decide. But what if the diagonal were expressed as **relational geometry among independent observers**, rather than represented within any single machine?
+The companion paper [**`BlackBox`**](./BlackBox.md) revisits **Turing's halting problem** as a thought experiment. Turing's diagonal argument establishes a limit on what a machine can decide. But what if the diagonal were expressed as **relational geometry among independent observers**, rather than represented within any single machine?
 
 > ***If the computation exists between observers, what exactly is inside the box?***
 
