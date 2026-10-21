@@ -16,7 +16,7 @@ A projection does not become state merely because it arrives. Each observer admi
 
 ---
 
-## 🎛️ Eleven 🎛️
+## 🐈‍⬛ Inside 🐈‍⬛
 
 [**`HyperCube`**](./HyperCube.md) gives the relation a **Boolean language.**
 
