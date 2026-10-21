@@ -19,7 +19,7 @@
 
 ## ⚡ Spark ⚡
 
-[**`Prime`**](./Spark/Prime/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`Repeat`**](./Spark/9Volt/README.md)
+[**`Prime`**](./Spark/Prime/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`9Volt`**](./Spark/9Volt/README.md)
 
 ---
 
