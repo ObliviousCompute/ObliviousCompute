@@ -16,7 +16,7 @@ A projection does not become state merely because it was projected. Each observe
 
 ---
 
-## 🧠 Inside Out 🧠
+## 📦 Outside 📦
 
 ***Two companion papers. Read them in order.***
 
