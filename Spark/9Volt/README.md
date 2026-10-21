@@ -1,6 +1,10 @@
 # 🔋 NineVolt 🔋
 
+***Distributed Boolean Circuit***
+
 <img src="../../Relics/NineVolt.gif" width="250"/>
+
+> ***Oh...Was I XNORing???*** 😴
 
 ---
 
