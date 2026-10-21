@@ -1,7 +1,5 @@
 # 🔋 NineVolt 🔋
 
-⚡👅⚡
-
 <img src="../../Relics/NineVolt.gif" width="300"/>
 
 ---
