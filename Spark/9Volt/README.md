@@ -1,10 +1,8 @@
 # 🔋 NineVolt 🔋
 
-***It keeps going, and going, and going…***  
+⚡👅⚡
 
 <img src="../../Relics/NineVolt.gif" width="300"/>
-
-> ***Still Going!*** 
 
 ---
 
