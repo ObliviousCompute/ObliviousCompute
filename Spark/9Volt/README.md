@@ -11,7 +11,7 @@
 ## 🪫 Recharge 🪫
 
 
-**NineVolt** is a small executable specimen of **Oblivious Compute**. Three **independent, headless observers** exchange positive and negative charges, forming **three distinct sockets** through different **Receive**r and **Helix** arrangements. Each socket creates a tiny **oblivious field**, where local admissibility drives a **VOLT** through the **three-bit hypercube**.
+**NineVolt** is a small executable specimen of **Oblivious Compute**. Three **independent, headless observers** exchange positive and negative charges, forming **three distinct sockets** through different **Receiver** and **Helix** arrangements. Each socket creates a tiny **oblivious field**, where local admissibility drives a **VOLT** through the **three-bit hypercube**.
 
 Every vertex has **three possible outcomes**, determined by the charges composing the socket. No observer represents the whole, and no fixed order of Helix contributions is required. **The admissible geometry of the cube determines the result.**
 
