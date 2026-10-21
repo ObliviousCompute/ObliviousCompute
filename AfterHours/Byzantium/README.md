@@ -20,6 +20,12 @@ When someone spends twice, the contradiction does not fracture the machine or di
 
 ---
 
+<img src="../../Relics/DoubleTrouble.gif"/>
+
+> *This GIF is over 4x the size of the Byzantium runtime.*
+
+---
+
 ## 🐧 Operating System Support
 
 - ✅ Linux  
@@ -51,12 +57,6 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 >  *All nodes must use the same gateway (port), skeleton key, and number of souls to join the same projection. Default gateway: 9000*.  
 >  *Tip: just spam Enter to drop straight into a board*.
-
----
-
-<img src="../../Relics/DoubleTrouble.gif"/>
-
-> *This GIF is over 4x the size of the Byzantium runtime.*
 
 ---
 
