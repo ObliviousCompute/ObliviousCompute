@@ -18,13 +18,9 @@ A projection does not become state merely because it was projected. Each observe
 
 ## 📦 Outside 📦
 
-***Two companion papers. Read them in order.***
+[**`BlackBox`**](./BlackBox.md) revisits **Turing's halting problem** as a thought experiment. Turing's diagonal argument establishes a limit on what a machine can decide. But what if the diagonal were expressed as **relational geometry among independent observers**, rather than represented within any single machine?
 
-[**`BlackBox`**](./BlackBox.md) moves computation **outside the box.** 
-
-[**`HyperCube`**](./HyperCube.md) gives the relation a **Boolean language.**
-
-> ***See the computation first. Then learn how it speaks.***
+> ***If the computation exists between observers, what exactly is inside the box?***
 
 ---
 
