@@ -35,3 +35,15 @@ This is also where the machinery inside each box becomes less important. A serve
 The experiment to build next is modest: **connect two fields through an admissible Gate continuation**. Show that the first can supply the second, that the second can resolve independently, and that the result can become an input again.
 
 ***A small field can finish a computation. A composition of fields might become a language of machines.***
+
+---
+
+**Go back to [**`9Volt`**](./README.md)...**
+
+---
+
+## 📜 License
+
+See the [**`NOTICE`**](../../NOTICE.md) for licensing information on the [**`Oblivious Compute`**](https://github.com/ObliviousCompute) project.
+
+Use it, study it, modify it—just respect the terms outlined there.
