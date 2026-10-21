@@ -8,7 +8,7 @@
 
 ---
 
-## 🪞 The Inverter 🪞
+## 🙃 Inverter 🙃
 
 **HaltingMachine** is a tiny executable specimen of **Oblivious Compute**. Each terminal is an **independent observer** holding its own state. Normal observers move through **Rock → Paper → Scissors**, while the inverter moves through the **same state space in reverse**.
 
