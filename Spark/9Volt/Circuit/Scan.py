@@ -44,7 +44,7 @@ def SocketLine(w, y, cx, name, spec, selected, editing, col, charge, output):
     Paint(w, y, labelX, socketLabel, labelAttr)
     Paint(w, y, labelX+len(socketLabel)+1, '→', Ink(Faint))
     Paint(w, y+1, right_x+2, '←', Ink(Faint))
-    Paint(w, y+1, right_x+4, 'Cohort', labelAttr)
+    Paint(w, y+1, right_x+4, f'{name} Cohort', labelAttr)
     for index, x, token, observer in (
         (0, left_x, spec.leftCharge, spec.left),
         (1, mid_x, f'( {charge if charge is not None else " "} )', spec.receiver),
