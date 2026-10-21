@@ -22,7 +22,7 @@ An electron cloud is a useful analogy for *potentiality*, but NineVolt is not as
 
 A completed VOLT need not be the end of an expression. It might also be the next projection.
 
-## Diamond Lattice
+## Carbon Lattice
 
 Carbon atoms in diamond form four covalent bonds in a repeating tetrahedral network. No single carbon atom contains the whole crystal. Its structure arises from the local bonds repeated across the lattice.
 
