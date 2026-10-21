@@ -2,7 +2,7 @@
 
 ***...Distributed Boolean Circuit...***
 
-<img src="../../Relics/NineVolt.gif" width="250"/>
+<img src="../../Relics/9V.gif" width="250"/>
 
 > ***Oh...Was I XNORing???*** 😴
 
