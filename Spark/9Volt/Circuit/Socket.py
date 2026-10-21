@@ -275,7 +275,7 @@ class Circuit:
         else:
             destination = self.stagedLines if len(self.configuredEntries) < 3 else self.log
             destination.append(line)
-            if kind == 'observed':
+            if kind == 'observed' or (kind == 'send' and WordOf(payload)):
                 destination.append(TraceRow(stage, actor, 'Quiet...'))
         if kind == 'initial' and eventData['actor'] == Actors.index(self.board[stage].receiver):
             self.injected[stage] = eventData['charge']
