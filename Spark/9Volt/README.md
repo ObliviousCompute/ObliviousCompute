@@ -4,7 +4,7 @@
 
 ---
 
-## 👅 Zap 👅
+## 👅 Zzzaap 👅
 
 **NineVolt** is a tiny executable specimen of **Oblivious Compute**. Three **independent observers** exchange positive and negative projections while maintaining their own states within a **three-bit hypercube**. Through the geometry of **Apex, Loop, Hook, and Gate**, local admissibility allows observers to walk, jump laterally, and capture charge. Together, they resolve a **⚡VOLT⚡** without any observer representing the entire configuration.
 
