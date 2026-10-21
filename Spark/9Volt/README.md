@@ -1,6 +1,6 @@
 # 🔋 NineVolt 🔋
 
-<img src="../../Relics/NineVolt.gif" width="300"/>
+<img src="../../Relics/NineVolt.gif" width="250"/>
 
 ---
 
