@@ -4,7 +4,7 @@
 
 <img src="../../Relics/9V.gif" width="250"/>
 
-> 😴 ***¿¿Oh...Was I XNORing??*** 😴
+> 😴 ***¿¿Oh...Was I XNORing...??*** 😴
 
 ---
 
