@@ -2,7 +2,7 @@
 
 ## Double Slit
 
-Run the same **NineVolt** configuration three times and check the log. Three executions may produce **three different histories**, yet resolve to the **same Volt**. Two spectators watching the same execution might record different accounts. The log in the demonstration exists solely to illustrate the computation.
+Run the same **NineVolt** configuration three times and check the log. Three executions may produce **three different histories**, yet resolve to the object. Two spectators watching the same execution might record different accounts. The log in the demonstration exists solely to illustrate the computation.
 
 Therefore, **an execution and its computation are not necessarily the same thing**. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The Helix **contributions can arrive in different admissible orders while producing the same result.**
 
@@ -14,13 +14,13 @@ The **double-slit experiment** raises questions about potential paths and what o
 
 ## Electron Cloud
 
-The three-bit Boolean cube has **eight vertices**, but NineVolt does not need any one observer to hold the entire cube. Three independent observers exchange positive and negative projections. Their arrangement into receiver and Helix roles defines a small **oblivious field**. Across the charge configurations, each input vertex has **three distinct possible resolved outcomes**.
+An incoming **computational object** excites a socket whose observers already occupy a configuration. Each observer responds from its own position as **positive and negative packets** circulate through the field. Their encounters expose a **Boolean cloud** of potential formations without requiring any observer to represent the whole.
 
-The cloud is the set of relational possibilities, not a bag of stored alternatives. Each observer occupies its own position. What becomes admissible depends on the charges and geometry present at an encounter. Different socket arrangements expose different continuations, even when the underlying observers and vocabulary remain the same.
+The **Hamming shells** organize these possibilities, while admissibility governs movement through the geometry. Different excitations can produce different arrangements and computational outcomes within the same underlying structure. The positions may change, but every admitted transition must respect the geometry.
 
-An electron cloud is a useful analogy for *potentiality*, but NineVolt is not assigning a quantum probability to each vertex. The useful resemblance is structural: **the present configuration constrains what can happen next**. In this language, the **Gate** is especially suggestive. Rather than treating a captured Gate only as an intermediate position, a future rule could let its exposed polarity become an interface to another field.
+A hydrogen atom offers a fascinating parallel. When excited, its electron may occupy a different orbital, changing the shape of its probability cloud. Similarly, the **Boolean cloud** can assume different computational configurations as its observers respond to incoming packets. The geometry constrains the possibilities, while excitation determines which relationships become active.
 
-A completed VOLT need not be the end of an expression. It might also be the next projection.
+A resolved configuration may itself become the next excitation, extending the computation into another field.
 
 ## Carbon Lattice
 
