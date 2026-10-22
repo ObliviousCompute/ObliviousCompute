@@ -20,7 +20,11 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ## 🧠 HeadSpace 🧠
 
-9Volt is best examined after reading its two companion papers. [**`HyperCube`**](./HyperCube.md) establishes the relational Boolean geometry, while [**`Potentiality`**](./Potentiality.md) explores its theoretical implications and possibilities for larger computations.
+[**`HyperCube`**](./HyperCube.md) explores how independent observers express Boolean computation through relational geometry and local admissibility.
+
+[**`Potentiality`**](./Potentiality.md) examines how these small computational fields might compose into larger distributed machines.
+
+> ***What if a computational language emerged from relational geometry and admissible relationships rather than predefined logic gates?***
 
 ---
 
