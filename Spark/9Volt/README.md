@@ -26,7 +26,7 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 [**`Potentiality`**](./Potentiality.md) *asks whether these fields might connect and compose into larger distributed machines.*
 
-> ***Does organizing computation this way offer new possibilities, simplify the machinery, or merely move the complexity elsewhere?***
+> ***Does organizing computation this way offer new possibilities, or merely move the complexity elsewhere?***
 
 ---
 
