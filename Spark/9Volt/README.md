@@ -22,9 +22,9 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ***This section explores the consequences of organizing Boolean computation through geometric relationships.***
 
-[**`HyperCube`**](./HyperCube.md) describes how independent observers compute within a small geometric state space.
+[**`HyperCube`**](./HyperCube.md) *describes how independent observers compute within a small geometric state space.*
 
-[**`Potentiality`**](./Potentiality.md) asks whether these fields might connect and compose into larger distributed machines.
+[**`Potentiality`**](./Potentiality.md) *asks whether these fields might connect and compose into larger distributed machines.*
 
 > ***Does organizing computation this way offer new possibilities, simplify the machinery, or merely move the complexity elsewhere?***
 
