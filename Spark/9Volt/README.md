@@ -20,9 +20,9 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ## 🧠 HeadSpace 🧠
 
-There are many ways to organize Boolean computation. These papers explore what happens when geometric relationships become part of the machinery, rather than simply a representation of it.
+What is the best way to organize Boolean computation? These papers explore what happens when geometric relationships become part of the machinery.
 
-[**`HyperCube`**](./HyperCube.md) shows how independent observers compute within a small geometric state space.
+[**`HyperCube`**](./HyperCube.md) describes how independent observers compute within a small geometric state space.
 
 [**`Potentiality`**](./Potentiality.md) asks whether these fields might connect and compose into larger distributed machines.
 
