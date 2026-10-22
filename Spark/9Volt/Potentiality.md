@@ -14,11 +14,11 @@ The **double-slit experiment** raises questions about potential paths and what o
 
 ## Electron Cloud
 
-An incoming **computational object** excites a socket whose observers already occupy a configuration. Each observer responds from its own position as **positive and negative packets** circulate through the field. Their encounters expose a **Boolean cloud** of potential formations without requiring any observer to represent the whole.
+An incoming **computational object** excites a socket whose observers already occupy a configuration. Each observer responds from its own position as **positive and negative packets** circulate through the field. **Their encounters expose a Boolean cloud of potential formations** without requiring any observer to represent the whole.
 
 The **Hamming shells** organize these possibilities, while admissibility governs movement through the geometry. Different excitations can produce different arrangements and computational outcomes within the same underlying structure. The positions may change, but every admitted transition must respect the geometry.
 
-A hydrogen atom offers a fascinating parallel. When excited, its electron may occupy a different orbital, changing the shape of its probability cloud. Similarly, the **Boolean cloud** can assume different computational configurations as its observers respond to incoming packets. The geometry constrains the possibilities, while excitation determines which relationships become active.
+A hydrogen atom offers a fascinating parallel. When excited, its electron may occupy a different orbital, changing the shape of its probability cloud. Similarly, the **Boolean cloud** can assume different computational configurations as its observers respond to incoming packets. **The geometry constrains the possibilities, while excitation determines which relationships become active.**
 
 ***A resolved configuration may itself become the next excitation, extending the computation into another field.***
 
