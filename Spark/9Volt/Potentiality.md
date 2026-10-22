@@ -2,7 +2,7 @@
 
 ## Double Slit
 
-Run the same **NineVolt** configuration three times and check the log. Three executions may produce **three different histories**, yet resolve to the object. Two spectators watching the same execution might record different accounts. The log in the demonstration exists solely to illustrate the computation.
+Run the same **NineVolt** configuration three times and check the log. Three executions may produce **three different histories**, yet resolve to the same object. Two spectators watching the same execution might record different accounts. The log in the demonstration exists solely to illustrate the computation.
 
 Therefore, **an execution and its computation are not necessarily the same thing**. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The Helix **contributions can arrive in different admissible orders while producing the same result.**
 
