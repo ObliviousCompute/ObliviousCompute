@@ -16,7 +16,7 @@ A projection does not become state merely because it was projected. Each observe
 
 ---
 
-## 📦 Outside 📦
+## 🧠 HeadSpace 🧠
 
 The companion paper [**`BlackBox`**](./BlackBox.md) revisits **Turing's halting problem** as a thought experiment. Turing's diagonal argument establishes a limit on what a machine can decide. But what if the diagonal was expressed entirely as **relational geometry among independent observers**?
 
