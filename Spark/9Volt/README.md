@@ -20,11 +20,13 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ## 🧠 HeadSpace 🧠
 
-[**`HyperCube`**](./HyperCube.md) explores how independent observers express Boolean computation through relational geometry and local admissibility.
+There are many ways to organize Boolean computation. These papers explore what happens when geometric relationships become part of the machinery, rather than simply a representation of it.
 
-[**`Potentiality`**](./Potentiality.md) examines how these small computational fields might compose into larger distributed machines.
+[**`HyperCube`**](./HyperCube.md) examines how independent observers compute within a small geometric state space through local admissibility.
 
-> ***What if a computational language emerged from relational geometry and admissible relationships rather than predefined logic gates?***
+[**`Potentiality`**](./Potentiality.md) explores how these small computational fields might connect and compose into larger distributed machines.
+
+> ***Does organizing computation this way offer new possibilities, simplify the machinery, or merely move the complexity elsewhere?***
 
 ---
 
