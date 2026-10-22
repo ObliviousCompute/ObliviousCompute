@@ -18,7 +18,7 @@ A projection does not become state merely because it was projected. Each observe
 
 ## 🧠 HeadSpace 🧠
 
-[**`BlackBox`**](./BlackBox.md) revisits **Turing's halting problem** as a thought experiment. Turing's diagonal argument establishes a limit on what a single machine can decide. ***What if the diagonal was expressed entirely as relational geometry?***
+[**`BlackBox`**](./BlackBox.md) revisits **Turing's halting problem** as a thought experiment. Turing's diagonal argument establishes a limit on what any single machine can decide. ***What if the diagonal was expressed entirely as relational geometry?***
 
 > ***If the computation exists between observers, does it even matter what's inside the box?***
 
