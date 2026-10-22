@@ -20,7 +20,7 @@ The **Hamming shells** organize these possibilities, while admissibility governs
 
 A hydrogen atom offers a fascinating parallel. When excited, its electron may occupy a different orbital, changing the shape of its probability cloud. Similarly, the **Boolean cloud** can assume different computational configurations as its observers respond to incoming packets. The geometry constrains the possibilities, while excitation determines which relationships become active.
 
-A resolved configuration may itself become the next excitation, extending the computation into another field.
+***A resolved configuration may itself become the next excitation, extending the computation into another field.***
 
 ## Carbon Lattice
 
