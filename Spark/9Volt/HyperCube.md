@@ -2,11 +2,11 @@
 
 ## Hexagram
 
-A little complexity buys a lot of structure. Consider **three binary cells within a state**. Those three cells ***taken together*** form **one complete state** called a **trit**. Each arrangement forms a **single position projected into the medium**. Within a trit there are only **eight possible positions**. Movement between them follows **one simple rule**. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
+A little complexity buys a lot of structure. Consider **three binary cells within a state**. Those three cells ***taken together*** form **one complete state** called a **trinity or a volt**. Each arrangement forms a **single position projected into the medium**. Within a trinity there are only **eight possible positions**. Movement between them follows **one simple rule**. A neighboring state differs by exactly **one bit**, so a walk from one antipodal position to the other can be counted by distance while also being written as an actual sequence of states.
 
 $\Large 0\rightarrow1\rightarrow2\rightarrow3 \qquad 000\rightarrow001\rightarrow011\rightarrow111$
 
-Every arrow in that walk is **admissible** because exactly one cell changes. Another route may pass through different intermediate states, but no state may simply jump across the space. From any present position, a projected state either **belongs next or it does not**. A **spacewalk** is therefore an admissibility walk through neighboring states, one position at a time. The complete state space can be grouped by distance from **000**, showing every position available at each step of the walk.
+Every arrow in that walk is **admissible** because exactly one cell changes. Another route may pass through different intermediate states, but no state may simply jump across the space. From any present position, a projected state either **belongs next or it does not**. A **spacewalk** is an admissibility walk through neighboring states, one position at a time. The complete state space can be grouped by distance from **000**, showing every position available at each step of the walk.
 
 $\Large 000 \quad|\quad 001\ 010\ 100 \quad|\quad 011\ 101\ 110 \quad|\quad 111$
 
@@ -20,7 +20,7 @@ Inside the geometry, the two antipodal positions are also the two **perfectly un
 
 $\Large 000\leftrightarrow0 \qquad 111\leftrightarrow1 \qquad \Omega=\{0,1\}$
 
-This is the **same old trick** from **Prime**. The three-cell Boolean state space is the cube, while perfect symmetry lies on the diagonal and reduces back to the original state space. **No observer contains the cube. The superposition is analogous to a hologram.** The whole geometry appears in the relation even though no observer contains it. Each contains only its own state, while the larger geometry appears through relation among those states. The hypercube is therefore not additional state stored somewhere else. It is the **relational shape of the Boolean product space**.
+This is the **same old trick** from **Prime**. The three-cell Boolean state space is the cube, while perfect symmetry lies on the diagonal and reduces back to the original state space. **No observer contains the cube. The superposition is analogous to a hologram.** The whole geometry appears in the relation even though no observer contains it. Each contains only its own state, while the larger geometry appears through relation among those states. The hypercube is not an additional state stored somewhere else. It is the **relational shape of the Boolean product space**.
 
 $\Large \Delta_3(\Omega)\cong\Omega \qquad Q_3=\Omega^3$
 
