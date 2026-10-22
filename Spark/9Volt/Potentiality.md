@@ -6,7 +6,7 @@ Run the same **NineVolt** configuration three times and check the log. Three exe
 
 An execution and its computation are not necessarily the same thing. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The Helix contributions can arrive in different admissible orders while producing the same result.
 
-The **double-slit experiment** raises questions about possible paths and what observation can reveal about them. If two spectators can record different histories of the same computation, which account describes what actually happened?
+The **double-slit experiment** raises questions about potential paths and what observation may reveal about them. When two spectators record different histories of the same computation, which account describes what actually happened?
 
 ***If geometry determines the result, what does the order of events actually prove?***
 
