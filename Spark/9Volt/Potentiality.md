@@ -1,16 +1,14 @@
 # Potentiality
 
-*The field is small. What it may become is not.*
-
 ## Double Slit
 
-Run the same NineVolt configuration three times. The spectator may record three different histories: one Helix moves before the other, a Gate captures before or after a projection, and packets arrive in different orders. Yet the executions can resolve to the same **VOLT**. The log remembers every encounter. The observers need only their present states.
+Run the same **NineVolt** configuration three times and then check the log. The spectator may record **three different histories**. One Helix moves before the other, a Gate locks at different points in the sequence, and packets arrive in different orders. Yet the executions can resolve to the **same VOLT**. The log records their encounters. The observers need only their present states.
 
-This is the first distinction between an execution and its computation. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The receiver establishes the input; the Helix contributions can then take different admissible orders while producing the same result, as the NineVolt traces illustrate.
+This is the first distinction between **an execution and its computation**. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The receiver establishes the input. The Helix contributions can then arrive in different admissible orders while producing the same result.
 
-The double-slit experiment offers an evocative comparison between possible paths and observable outcomes, but not a physical equivalence. NineVolt exchanges classical messages. Its paths do not carry quantum amplitudes, and its deterministic resolutions are not interference patterns. What the demonstration makes visible is a simpler question: **how much of the history must the computation know?**
+In the **double-slit experiment**, possible paths through two slits contribute to an interference pattern, while each particle is detected at a single point on the screen. The observation does not provide a unique history of its passage. Similarly, NineVolt can reach the **same resolved configuration** through different sequences of encounters.
 
-***The spectator remembers the path. The field does not require a script.***
+***If the geometry determines the result, why must the computation remember the route?***
 
 ## Electron Cloud
 
