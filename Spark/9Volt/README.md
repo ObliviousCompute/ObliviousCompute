@@ -20,7 +20,7 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ## 🧠 HeadSpace 🧠
 
-What is the best way to organize Boolean computation? These papers explore what happens when geometric relationships become part of the machinery.
+***This section explores the consequences of organizing Boolean computation through geometric relationships.***
 
 [**`HyperCube`**](./HyperCube.md) describes how independent observers compute within a small geometric state space.
 
