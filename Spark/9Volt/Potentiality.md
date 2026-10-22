@@ -2,13 +2,13 @@
 
 ## Double Slit
 
-Run the same **NineVolt** configuration three times and then check the log. The spectator may record **three different histories**. One Helix moves before the other, a Gate locks at different points in the sequence, and packets arrive in different orders. Yet the executions can resolve to the **same VOLT**. The log records their encounters. The observers need only their present states.
+Run the same **NineVolt** configuration three times and check the log. Three executions may produce **three different histories**, yet resolve to the **same Volt**. Two spectators watching the same execution might record different accounts. The log exists solely as an illustration.
 
-This is the first distinction between **an execution and its computation**. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The receiver establishes the input. The Helix contributions can then arrive in different admissible orders while producing the same result.
+An execution and its computation are not necessarily the same thing. A trace describes **one route** through the field, not a required itinerary. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. The Helix contributions can arrive in different admissible orders while producing the same result.
 
-In the **double-slit experiment**, possible paths through two slits contribute to an interference pattern, while each particle is detected at a single point on the screen. The observation does not provide a unique history of its passage. Similarly, NineVolt can reach the **same resolved configuration** through different sequences of encounters.
+The **double-slit experiment** raises questions about possible paths and what observation can reveal about them. If two spectators can record different histories of the same computation, which account describes what actually happened? An **observer's paradox**?
 
-***If the geometry determines the result, why must the computation remember the route?***
+***If geometry determines the result, what does the order of events actually prove?***
 
 ## Electron Cloud
 
