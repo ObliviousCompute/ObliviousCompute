@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use or build upon Oblivious Compute, please cite this software."
 title: "Oblivious Compute"
 version: "1.0.7"
-date-released: "2026-10-01"
+date-released: "2026-10-23"
 
 authors:
   - family-names: "Fritz"
