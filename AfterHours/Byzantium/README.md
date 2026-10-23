@@ -52,7 +52,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ***Byzantium runs in two modes.***
 
-**Siege** runs locally over UDP loopback sockets. *(sandbox)* 
+**Siege** runs locally over UDP loopback sockets. *(sandbox)*  
 **Campaign** runs across a LAN, allowing multiple machines to share the same field.
 
 >  *All nodes must use the same gateway (port), skeleton key, and number of souls to join the same projection. Default gateway: 9000*.  
