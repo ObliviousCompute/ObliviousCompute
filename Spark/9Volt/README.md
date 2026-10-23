@@ -30,7 +30,7 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 ---
 
-<img src="../../Relics/HyperCube.svg" width="600"/>
+<img src="../../Relics/Hypercube.svg" width="600"/>
 
 ---
 
