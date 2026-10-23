@@ -11,7 +11,7 @@ The **double-slit experiment** raises questions about potential paths and what o
 
 ***If geometry determines the result, what does the order of events actually prove?***
 
-> *Observer's paradox...anyone..? No..? Okay, moving on.*
+> *Observer's paradox...anyone..? No..? Okay, moving on...*
 
 ## Electron Cloud
 
