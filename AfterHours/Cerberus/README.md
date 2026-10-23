@@ -63,7 +63,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ## ☁️ Networking
 
-Cerberus runs locally over sockets as a **Sandbox Smoketest**.
+**Cerberus Runs locally over UDP loopback sockets.**
 
 > *All nodes must ***use the same Cerberus name and Head Count*** to join the same projection.*  
 > ***Each node chooses its own DogTag and BonePile.***
