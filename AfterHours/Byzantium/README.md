@@ -52,8 +52,8 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ***Byzantium runs in two modes.***
 
-**Siege** is local and uses multiple terminals on the same machine. *(sandbox)*  
-**Campaign** runs across a LAN, allowing multiple machines to share the same **projection.**
+**Siege** runs locally over UDP loopback sockets. *(sandbox)* 
+**Campaign** runs across a LAN, allowing multiple machines to share the same field.
 
 >  *All nodes must use the same gateway (port), skeleton key, and number of souls to join the same projection. Default gateway: 9000*.  
 >  *Tip: just spam Enter to drop straight into a board*.
