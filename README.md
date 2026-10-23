@@ -22,7 +22,7 @@
 
 ## 🌀 Theory 🌀
 
-[**`Theory`**](./Theory/README.md) ***traces the reasoning behind this project***  
+[**`Theory`**](./Theory/README.md) ***traces the reasoning behind this project.***  
 > ***This is a record of the process, not a manifesto.***
 
 ---
