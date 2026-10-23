@@ -50,11 +50,11 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ## ☁️ Networking
 
-**ICBM runs in two modes**
+***ICBM runs in two modes***
 
 **Simulation** runs locally over UDP loopback sockets.
 
-**Live** runs across a LAN with multiple machines.
+**Live** runs across a LAN, allowing multiple machines to share the same field.
 
 > *All nodes must ***enter the same Doomsday Scenario*** to join the same genesis.*  
 
