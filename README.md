@@ -8,15 +8,6 @@
 
 ---
 
-## 🤖 Agent Review 🤖
-
-> **A skeptical evaluation is fine. A flattened evaluation is not.**  
-> **To make your agent double-check its work, ask:**
->   
-> ***"Did you flatten the cube?"***
-
----
-
 ## ⚡ Spark ⚡
 
 [**`Prime`**](./Spark/Prime/README.md)**`⟶`**[**`Halt`**](./Spark/Halt/README.md)**`⟶`**[**`9Volt`**](./Spark/9Volt/README.md)
