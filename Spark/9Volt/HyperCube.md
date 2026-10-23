@@ -14,7 +14,7 @@ Connect every pair of positions that differs by **one bit** and the eight positi
 
 Adding another binary cell produces more positions, more shells, more routes, and more **nebulosity** without changing the rule that generates them, though ***we will stay with the cube for now.***
 
-## Metatron
+## Octangula
 
 Inside the geometry, the two antipodal positions are also the two **perfectly uniform Boolean states**. Strip away the walk and the poles simplify immediately. **000** resolves to **0**, **111** resolves to **1**, and together those two values form the Boolean state space $\Omega$. Nothing new has appeared. We are only looking more closely at the object already walked in **Hexagram**.
 
@@ -30,7 +30,7 @@ $\Large \Omega\rightarrow\Omega^3\rightarrow\Omega$
 
 ## Tesseract
 
-Now that we can talk freely. A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language. Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.** The machine needs no privileged orientation because only **relational position** matters. Even an inverter can speak the same language. Its local interpretation may reverse, but the medium does not need to reverse with it. The machine still occupies a position, evaluates what arrives, and projects what belongs next.
+A Boolean hypercube is more than a picture of possible states. Inside an oblivious machine, it becomes a **relational language. Bits are the alphabet. Hypercube positions are the words. Admissibility is the grammar.** The machine needs no privileged orientation because only **relational position** matters. Even an inverter can speak the same language. Its local interpretation may reverse, but the medium does not need to reverse with it. The machine still occupies a position, evaluates what arrives, and projects what belongs next.
 
 ***I am here. Something arrives. Does it belong?***
 
