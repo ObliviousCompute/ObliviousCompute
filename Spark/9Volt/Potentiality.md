@@ -22,19 +22,16 @@ A hydrogen atom offers a fascinating parallel. When excited, its electron may oc
 
 ***A resolved configuration may itself become the next excitation, extending the computation into another field.***
 
+
 ## Carbon Lattice
 
-Carbon atoms in diamond form four covalent bonds in a repeating tetrahedral network. No single carbon atom contains the whole crystal. Its structure arises from the local bonds repeated across the lattice.
+In diamond, each carbon atom forms **four covalent bonds** with neighboring atoms, creating a repeating tetrahedral lattice. No individual atom represents the entire crystal. Its structure emerges from the relationships among them.
 
-Now consider the computational possibility. One small NineVolt field receives a projection, admits what belongs, resolves a VOLT, and exposes a continuation. Another field receives that projection and applies its own admissibility. A **hanging Gate** could join them without requiring either field to represent the larger expression.
+The Boolean cube also contains **two interlocking tetrahedra**, suggesting how small computational fields might compose into larger geometric structures. One resolved object could expose a continuation into another, with **charge, orientation, and admissibility** determining whether the connection belongs. Fields might extend, rotate, mirror, or fold back upon themselves.
 
-The same three-observer machinery might be reused to carry a computation through many successive fields. More observer groups could operate **laterally**, admitting and resolving different parts of an expression at once. Specialized sockets might implement familiar Boolean operations, while richer geometric admission rules could describe relationships that would otherwise require several conventional gates. Those compositions remain proposals to construct and test, not capabilities already established by the current three-observer specimen.
+A chain extends computation from one field to the next. A lattice introduces ***constraints from multiple directions***. As the structure grows, each new object may have to satisfy **more than one neighboring face**. Compatible configurations allow the structure to continue, while incompatible relationships prevent its continuation. The resulting geometry might reduce the need for explicit coordination, allowing increasingly complex computations to emerge through local admissibility.
 
-This is also where the machinery inside each box becomes less important. A server, embedded device, or quantum processor could supply a compatible classical `+` or `−` projection. Its interior need not resemble NineVolt. A quantum interface would still have to translate measurement or control information into those classical projections; doing so would not, by itself, make the field quantum.
-
-The experiment to build next is modest: **connect two fields through an admissible Gate continuation**. Show that the first can supply the second, that the second can resolve independently, and that the result can become an input again.
-
-***A small field can finish a computation. A composition of fields might become a language of machines.***
+***A chain extends computation. A lattice constrains it.***
 
 ---
 
