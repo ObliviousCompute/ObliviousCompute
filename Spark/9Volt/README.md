@@ -62,6 +62,10 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ---
 
+<img src="../../Relics/Octangula.svg" width="200"/>
+
+---
+
 ⚡ [**`Prime`**](../Prime/README.md)***...***
 
 ---
