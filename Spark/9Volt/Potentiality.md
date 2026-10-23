@@ -29,7 +29,7 @@ In diamond, each carbon atom forms **four covalent bonds** with neighboring atom
 
 The Boolean cube also contains **two interlocking tetrahedra**, suggesting how small computational fields might compose into larger geometric structures. One resolved object could expose a continuation into another, with **charge, orientation, and admissibility** determining whether the connection belongs. Fields might extend, rotate, mirror, or fold back upon themselves.
 
-A chain extends computation from one field to the next. A lattice introduces ***constraints from multiple directions***. As the structure grows, each new object may have to satisfy **more than one neighboring face**. Compatible configurations allow the structure to continue, while incompatible relationships prevent its continuation. The resulting geometry might reduce the need for explicit coordination, allowing increasingly complex computations to emerge through local admissibility.
+**A chain extends computation from one field to the next. A lattice introduces constraints from multiple directions.** As the structure grows, each new object may have to satisfy **more than one neighboring face**. Compatible configurations allow the structure to continue, while incompatible relationships prevent its continuation. The resulting geometry might reduce the need for explicit coordination, allowing increasingly complex computations to emerge through local admissibility.
 
 ***A chain extends computation. A lattice constrains it.***
 
