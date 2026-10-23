@@ -19,13 +19,13 @@ An incoming **computational object** excites a socket whose observers already oc
 
 The **Hamming shells** organize these possibilities, while admissibility governs movement through the geometry. Different excitations can produce distinct arrangements and computational outcomes within the same underlying structure. The positions may change, but **every admitted transition must respect the geometry**.
 
-A hydrogen atom offers a fascinating parallel. When excited, its electron may occupy a different orbital, changing the shape of its probability cloud. Similarly, the **Boolean cloud** can assume new formations as its observers respond to incoming packets. **The geometry constrains the possibilities, while excitation determines which relationships become active.**
+A hydrogen atom offers a structural parallel. When excited, its electron may occupy a different orbital, changing the shape of its probability cloud. Similarly, the **Boolean cloud** can assume new formations as its observers respond to incoming packets. **The geometry constrains the possibilities, while excitation determines which relationships become active.**
 
 ***A resolved configuration may itself become the next excitation, extending the computation into another field.***
 
 ## Carbon Lattice
 
-In diamond, each carbon atom forms **four covalent bonds** with neighboring atoms, creating a **repeating tetrahedral lattice**. No individual atom represents the entire crystal. Its structure emerges from the relationships among them.
+In diamonds, each carbon atom forms **four covalent bonds** with neighboring atoms, creating a **repeating tetrahedral lattice**. No individual atom represents the entire crystal. Its structure emerges from the relationships among them.
 
 The Boolean cube also contains **two interlocking tetrahedra**, suggesting how small computational fields might compose into larger geometric structures. One resolved object could expose a continuation into another, with **charge, orientation, and admissibility** determining whether the connection belongs. Fields might extend, rotate, mirror, or fold back upon themselves.
 
