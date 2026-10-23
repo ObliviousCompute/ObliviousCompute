@@ -58,7 +58,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ## ☁️ Networking
 
-**9Volt runs locally** over sockets as a **Smoketest**.
+**9Volt Runs locally over UDP loopback sockets.**
 
 ---
 
