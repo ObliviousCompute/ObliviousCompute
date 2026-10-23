@@ -52,7 +52,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 **ICBM runs in two modes**
 
-**Simulation** is a local five-terminal smoke test over loopback sockets.
+**Simulation** runs locally over UDP loopback sockets.
 
 **Live** runs across a LAN with multiple machines.
 
