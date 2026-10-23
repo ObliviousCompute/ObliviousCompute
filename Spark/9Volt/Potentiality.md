@@ -31,7 +31,7 @@ The Boolean cube also contains **two interlocking tetrahedra**, suggesting how s
 
 **A chain extends computation from one field to the next. A lattice introduces constraints from multiple directions.** As the structure grows, each new object may have to satisfy **more than one neighboring face**. Compatible configurations allow the structure to continue, while incompatible relationships prevent its continuation. The resulting geometry might reduce the need for explicit coordination, allowing increasingly complex computations to emerge through local admissibility.
 
-***A chain extends computation. A lattice constrains it.***
+***And still, the question remains the same. What if the structure of a computation determines how it proceeds?***
 
 ---
 
