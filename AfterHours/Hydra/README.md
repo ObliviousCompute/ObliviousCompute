@@ -77,7 +77,7 @@ You’ll need **Python 3.10+** and an **80x24 UNIX-like terminal environment.**
 
 ***Hydra runs in two modes.***
 
-**Den** is local—multiple terminals on the same machine. *(sandbox)*  
+**Den** is local and uses multiple terminals on the same machine. *(sandbox)*  
 **Swamp** runs across a LAN, allowing multiple machines to share the same field.
 
 *All nodes must use the same depth (port), and the same number of mutated heads.*  
