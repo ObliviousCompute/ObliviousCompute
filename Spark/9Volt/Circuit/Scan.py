@@ -24,7 +24,7 @@ def Battery(w, y, x, ready):
     Paint(w, y, x, '🔋' if ready else '🪫', Ink(Lit if ready else Faint, ready))
 def TitleLine(w, y, cx, ready):
     Battery(w, y, cx-6, ready)
-    Paint(w, y, cx-4, 'Nine-Volt', Ink(Lit, True))
+    Paint(w, y, cx-4, 'NineVolt', Ink(Lit, True))
     Battery(w, y, cx+5, ready)
 def WordLine(w, y, cx, word, ready=False, activeBit=None):
     Battery(w, y, cx-6, ready)

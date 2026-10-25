@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import multiprocessing as mp
 import queue
 import re
@@ -10,111 +9,155 @@ import time
 from dataclasses import dataclass
 from typing import Any
 
-from .Vertex import (Words, Poles, Ordinary, Terminal, Lateral, Role,
-                       Polarity, Jump, WordOf, Admission)
-Valid = set('+-_')
-def ValidProjection(payload: str) -> bool:
-    return ((len(payload) == 1 and payload in '+-') or
-            (len(payload) == 3 and set(payload) <= Valid and payload != '___'))
+from .Vertex import Words, Role, Polarity, WordOf, Projection
+from .Geometry import Pair, Prime, Vertex, Tessellate
 
-def RunObserver(index: int, word: str, load: str, pipe, events) -> None:
+
+def RunObserver(index: int, pipe, events) -> None:
     signal.signal(signal.SIGINT, signal.SIG_IGN)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(('127.0.0.1', 0))
     sock.settimeout(.009)
     pipe.send(sock.getsockname()[1])
     peers = pipe.recv()
-    isReceiver = index == 0
-    wireStage = ""
+
+    stage = ''
     genesis = {}
-    q = word if isReceiver else Poles[load]
-    charge = Polarity(word) if isReceiver else load
-    projection = charge
-    phase = ('terminal' if q in Terminal else 'prime_lateral' if q in Lateral
-             else 'walking') if isReceiver else 'helix'
-    def Event(kind: str, **kw) -> None:
-        events.put(dict(actor=index, kind=kind, q=q, charge=charge,
-                        phase=phase, projection=projection, stage=wireStage, **kw))
-    def Emit(payload: str, reason: str) -> None:
-        assert ValidProjection(payload), payload
-        wire = f'{wireStage}/{payload}' if wireStage else payload
+    receiver = False
+    prime = None
+    charge = ''
+    q = None
+    projection = ''
+    pair = None
+    confirmed = False
+    conflict = False
+    challenged = None
+    canOverride = False
+    pending = None
+    lastPulse = 0.0
+    echoes = 0
+
+    def Event(kind, **details):
+        events.put(dict(actor=index, kind=kind, stage=stage, q=q, charge=charge,
+                        phase='complete' if WordOf(projection) else 'prime' if receiver else 'helix',
+                        projection=projection, **details))
+
+    def Emit(value, reason):
         for port in peers:
-            sock.sendto(wire.encode('utf-8'), ('127.0.0.1', port))
-        Event('send', payload=payload, reason=reason)
-    def Reproject(reason: str, *, new: bool = False) -> None:
-        if WordOf(projection):
-            if new:
-                Emit(projection, reason)
-            return
-        Emit(projection, reason)
-        if phase == 'terminal' and projection == charge + '_' + charge:
-            Emit(charge, 'Apex Charge')
-    def SetProjection(newProjection: str, reason: str) -> None:
-        nonlocal projection
-        assert ValidProjection(newProjection), newProjection
-        if newProjection == projection:
-            return
-        before = projection
-        projection = newProjection
-        w = WordOf(projection)
-        if w:
-            Event('candidate', word=w, before=before, after=projection, reason=reason)
+            sock.sendto(f'{stage}/{value}'.encode(), ('127.0.0.1', port))
+        Event('send', payload=value, reason=reason)
+
+    def Complete(word, kind):
+        nonlocal q, projection, confirmed, challenged, echoes, canOverride
+        before = q
+        q = word
+        projection = Projection(word)
+        confirmed = False
+        challenged = None
+        canOverride = False
+        echoes = 0
+        if kind == 'candidate':
+            Event(kind, word=word, origin=Vertex(prime), before=before,
+                  after=projection, reason='Tessellate Prime and Helix evidence')
         else:
-            Event('append', before=before, after=projection, reason=reason)
-        Reproject(reason, new=bool(w))
-    def LockTerminal() -> None:
-        nonlocal phase
-        phase = 'terminal'
-        Event('lock', role='terminal')
-        SetProjection(charge + '_' + charge, 'ordinary rail reached terminal')
-    def Capture(reason: str) -> None:
-        nonlocal q, phase
-        old = q
-        q = Jump(q)
-        phase = 'captured'
-        Event('jump', before=old, after=q, reason=reason,
-              doorway='invert cube then one shell; original charge retained')
-    def Walk(reason: str) -> None:
-        nonlocal q, phase
-        lane = Ordinary[charge]
-        if q not in lane or lane.index(q) == len(lane)-1:
+            Event(kind, word=word, before=before)
+        Emit(projection, 'completed Volt broadcast' if receiver else 'received Volt echo')
+
+    def Confirm(word):
+        nonlocal confirmed, echoes
+        if not confirmed and not conflict:
+            confirmed = True
+            echoes = 4
+            Event('confirmed', word=word)
+
+    def HearVolt(word):
+        nonlocal pending, confirmed, challenged
+        if receiver and WordOf(projection) is None:
             return
-        old = q
-        q = lane[lane.index(q)+1]
-        phase = 'walking'
-        Event('walk', before=old, after=q, reason=reason)
-        if q in Terminal:
-            LockTerminal()
-        else:
-            Reproject('one-shell ordinary walk')
-    def Start() -> None:
-        nonlocal projection
-        projection = (charge + '_' + charge if phase == 'terminal' else
-                      '_' + charge + '_' if phase == 'prime_lateral' else charge)
-        Event('initial', role=Role(q))
-        Reproject('incoming exposure')
-    def Adopt(stage: str, incomingWord: str, assignedPosition: str, assignedCharge: str) -> None:
-        nonlocal wireStage, isReceiver, word, load, q, charge, projection, phase
-        wireStage = stage
-        isReceiver = assignedPosition == 'receiver'
-        word = incomingWord
-        load = assignedCharge
-        q = word if isReceiver else Poles[load]
-        charge = Polarity(word) if isReceiver else load
-        projection = charge
-        phase = (('terminal' if q in Terminal else
-                  'prime_lateral' if q in Lateral else 'walking')
-                 if isReceiver else 'helix')
-        Event('configured', receiver=isReceiver, role=Role(q))
-    Event('ready', role=Role(q))
+        if not receiver and pair is None:
+            pending = word
+            return
+        if not receiver and (WordOf(projection) is None or canOverride):
+            Complete(word, 'observed')
+        elif WordOf(projection) == word:
+            Confirm(word)
+        elif challenged != word:
+            confirmed = False
+            challenged = word
+            Event('conflict', local=q, other=word,
+                  reason='conflicting completed Volt without opposing evidence')
+            Emit(projection, 'conflicting Volt reply')
+
+    def HearPair(evidence):
+        nonlocal pair, conflict, confirmed, canOverride, pending
+        evidence = Pair(*evidence)
+        if pair == evidence:
+            return
+        if receiver:
+            if pair is None or evidence == '+-':
+                if pair is not None:
+                    Event('override', before=pair, after=evidence,
+                          reason='opposing evidence trumps')
+                pair = evidence
+                conflict = False
+                # ================= LINCHPIN ================= #
+                Complete(WordOf(Tessellate(prime, evidence)), 'candidate')
+                # ============================================ #
+            elif pair != '+-':
+                conflict = True
+                confirmed = False
+                Event('conflict', local=q, other=WordOf(Tessellate(prime, evidence)),
+                      reason='incompatible equal-rank Helix evidence')
+        elif evidence == '+-' and pair != '+-':
+            pair = evidence
+            canOverride = True
+            confirmed = False
+            Event('override', before=projection, after=evidence,
+                  reason='opposing evidence trumps')
+            if challenged is not None:
+                HearVolt(challenged)
+
+    def Adopt(newStage, incomingPrime, role, helix):
+        nonlocal stage, receiver, prime, charge, q, projection, pair
+        nonlocal confirmed, conflict, challenged, canOverride, pending, lastPulse, echoes
+        stage = newStage
+        receiver = role == 'receiver'
+        prime = incomingPrime if receiver else None
+        charge = Polarity(Vertex(prime)) if receiver else helix
+        q = Vertex(prime) if receiver else None
+        projection = prime if receiver else charge
+        pair = None
+        confirmed = conflict = canOverride = False
+        challenged = pending = None
+        echoes = 0
+        lastPulse = time.monotonic()
+        Event('configured', receiver=receiver, role=Role(q) if receiver else 'helix')
+        Event('initial', role=Role(q) if receiver else 'helix')
+        Emit(projection, 'Prime exposure' if receiver else 'bare Helix charge')
+
+    def Retry():
+        nonlocal echoes, lastPulse
+        if not stage or time.monotonic() - lastPulse < .035:
+            return
+        lastPulse = time.monotonic()
+        if confirmed:
+            if not echoes:
+                return
+            echoes -= 1
+        if not receiver:
+            Emit(charge, 'bare Helix exposure')
+            if pair:
+                Emit(pair, 'paired Helix evidence')
+        Emit(projection, 'completed Volt echo' if WordOf(projection) else 'projection retry')
+
+    Event('ready', role='observer')
     while True:
-        if pipe.poll():
-            command = pipe.recv()
-            if command == 'stop':
-                break
+        if pipe.poll() and pipe.recv() == 'stop':
+            break
         try:
-            data, _addr = sock.recvfrom(128)
+            data, _ = sock.recvfrom(128)
         except socket.timeout:
+            Retry()
             continue
         try:
             payload = data.decode('utf-8')
@@ -122,78 +165,56 @@ def RunObserver(index: int, word: str, load: str, pipe, events) -> None:
             Event('reject', reason='invalid UTF-8 projection')
             continue
         if payload.startswith('G/'):
-            parts = payload[2:].split('|')
             parsed = {}
-            ok = len(parts) >= 1
-            for section in parts:
+            for section in payload[2:].split('|'):
                 match = re.fullmatch(r'([ΔΘΣ])/([+-])([ABC])\(([ABC])\)([ABC])([+-])', section)
                 if not match:
-                    ok = False
                     break
-                stage, lc, left, receiverName, right, rc = match.groups()
-                if set((left, receiverName, right)) != set('ABC'):
-                    ok = False
+                step, lc, left, middle, right, rc = match.groups()
+                if set((left, middle, right)) != set('ABC'):
                     break
                 who = 'ABC'[index]
-                if who == receiverName:
-                    parsed[stage] = ('receiver', '')
-                elif who == left:
-                    parsed[stage] = ('helix', lc)
-                elif who == right:
-                    parsed[stage] = ('helix', rc)
-            if ok and len(parsed) == len(parts):
+                parsed[step] = ('receiver', '') if who == middle else (
+                    ('helix', lc) if who == left else ('helix', rc))
+            if len(parsed) == 3:
                 genesis = parsed
-                wireStage = ''
                 Event('genesis', board=payload, sockets=''.join(sorted(parsed)))
             else:
-                Event('reject', payload=payload, reason='invalid complete Genesis')
+                Event('reject', payload=payload, reason='invalid Genesis')
             continue
-        if genesis or wireStage:
-            prefix, sep, content = payload.partition('/')
-            if not sep or (prefix not in genesis if genesis else prefix != wireStage):
-                continue
-            if genesis and content in Words and prefix != wireStage:
-                position, helixCharge = genesis[prefix]
-                Adopt(prefix, content, position, helixCharge)
-            if prefix != wireStage:
-                continue
-            if content in Words:
-                if isReceiver:
-                    Event('input', payload=payload, word=content)
-                    if content == word:
-                        Start()
-                continue
-            payload = content
-        if not ValidProjection(payload):
-            Event('reject', payload=payload, reason='invalid projection')
+        prefix, separator, content = payload.partition('/')
+        if not separator or prefix not in genesis:
             continue
-        time.sleep(.00035)
-        Event('receive', payload=payload)
-        done = WordOf(projection)
-        if done:
-            if WordOf(payload) and WordOf(payload) != done:
-                Event('conflict', other=WordOf(payload), local=done)
+        if prefix != stage:
+            role, helix = genesis[prefix]
+            if role == 'receiver' and content in PrimeShapes:
+                Adopt(prefix, content, role, helix)
+            elif role == 'helix' and content == '?':
+                Adopt(prefix, None, role, helix)
             continue
-        if WordOf(payload):
-            projection = payload
-            Event('observed', word=WordOf(payload))
-            continue
-        # ================= LINCHPIN ================= #
-        decisions = Admission(phase, charge, projection, isReceiver, payload)
-        # ================= LINCHPIN ================= #
-        for instruction, value, reason in decisions:
-            if instruction == 'walk':
-                Walk(reason)
-            elif instruction == 'capture':
-                Capture(reason)
-            elif instruction == 'set':
-                SetProjection(value, reason)
-            elif instruction == 'reproject':
-                Reproject(reason)
-            elif instruction == 'open':
-                Event('open', payload=value, reason=reason)
+        Event('receive', payload=content)
+        if len(content) == 1 and content in '+-' and not receiver:
+            evidence = Pair(charge, content)
+            if pair is None:
+                pair = evidence
+                Emit(pair, 'Helixes compose double-charge evidence')
+                if pending is not None:
+                    word, pending = pending, None
+                    HearVolt(word)
+            elif pair != evidence:
+                Event('conflict', local=q, other=None,
+                      reason='incompatible bare Helix evidence')
+        elif content in ('++', '--', '+-', '-+'):
+            HearPair(content)
+        elif (word := WordOf(content)) is not None:
+            HearVolt(word)
+        elif content not in (prime, charge, '?', '+', '-') and content not in PrimeShapes:
+            Event('open', payload=content, reason='unrecognized packet shape')
     sock.close()
     pipe.close()
+
+PrimeShapes = frozenset(Prime(q) for q in Words)
+
 
 @dataclass
 class Session:
@@ -210,56 +231,64 @@ class Session:
         self.pipes = []
         self.procs = []
         self.running = False
+        self.board = None
 
     def Start(self) -> None:
         if self.running:
             return
         for index in range(3):
             parent, child = self.ctx.Pipe()
-            p = self.ctx.Process(target=RunObserver,
-                                 args=(index,self.word,self.loads[index-1] if index else '',
-                                       child,self.events), daemon=True)
+            p = self.ctx.Process(target=RunObserver, args=(index, child, self.events), daemon=True)
             p.start()
             child.close()
             self.pipes.append(parent)
             self.procs.append(p)
-        ports = [pipe.recv() for pipe in self.pipes]
-        self.ports = ports
+        self.ports = [pipe.recv() for pipe in self.pipes]
         for i, pipe in enumerate(self.pipes):
-            pipe.send([port for j,port in enumerate(ports) if j != i])
+            pipe.send([port for j, port in enumerate(self.ports) if j != i])
         self.running = True
+
     def PublishGenesis(self, board: dict) -> None:
         if not self.running:
             raise RuntimeError('session not started')
+        self.board = board
         payload = 'G/' + '|'.join(board[stage].Serialize(stage) for stage in sorted(board))
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as injector:
             for port in self.ports:
                 injector.sendto(payload.encode('utf-8'), ('127.0.0.1', port))
+
     def InjectWord(self, stage: str, word: str) -> None:
-        if not self.running:
-            raise RuntimeError('session not started')
+        if not self.running or self.board is None:
+            raise RuntimeError('Genesis must configure the socket first')
+        receiver = self.board[stage].receiver
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as injector:
-            for port in self.ports:
-                injector.sendto(f'{stage}/{word}'.encode('utf-8'), ('127.0.0.1', port))
-    def Poll(self) -> list[dict[str,Any]]:
+            for i, port in enumerate(self.ports):
+                shape = Prime(word) if 'ABC'[i] == receiver else '?'
+                injector.sendto(f'{stage}/{shape}'.encode('utf-8'), ('127.0.0.1', port))
+
+    def Poll(self) -> list[dict[str, Any]]:
         out = []
         while True:
             try:
                 out.append(self.events.get_nowait())
             except queue.Empty:
                 return out
+
     def Stop(self) -> None:
         if not self.running:
             return
         for pipe in self.pipes:
-            try: pipe.send('stop')
-            except (OSError,BrokenPipeError): pass
+            try:
+                pipe.send('stop')
+            except (OSError, BrokenPipeError):
+                pass
         for p in self.procs:
             p.join(.07)
             if p.is_alive():
                 p.terminate()
                 p.join(.07)
-        for pipe in self.pipes: pipe.close()
+        for pipe in self.pipes:
+            pipe.close()
         self.events.cancel_join_thread()
         self.events.close()
         self.running = False

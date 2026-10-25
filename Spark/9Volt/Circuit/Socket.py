@@ -7,36 +7,8 @@ import unicodedata
 from .Observer import Session
 from .Vertex import Words, WordOf, RoleLabel, VertexLabel, LogGlyphCells
 
-VOLT = '⚡VOLT⚡'
+VOLT = '⚡Volt⚡'
 SPARK = '✨'
-
-RuleText = {
-    'matching bare charge': 'Matching {own} Charge walks',
-    'opposing charge, unchanged': 'Opposing {other} Charge leaves state unchanged',
-    'opposing lateral, capture': '{Other} lateral locks {own} Gate',
-    'opposing bare charge': '{Other} Charge locks {own} Gate',
-    'matching lateral, append': 'Matching {own} lateral walks',
-    'Helix admits lateral': 'Helix admits {lateral} lateral',
-    'walk admits lateral': 'Helix admits {lateral} lateral',
-    'capture holds Helix charge': SPARK,
-    'two matching laterals': 'Matching {own} laterals form pair',
-    'terminal admits other lateral': '{Own} Apex admits {other} lateral',
-    'terminal pair needs third': 'Matching {own} primes await lateral',
-    'ordinary rail reached terminal': 'Matching {own} primes await lateral',
-    'unknown shaped projection': 'Unrecognized projection',
-    'terminal pings lateral': 'Captured Gate reprojects',
-}
-
-def DescriptionForRule(reason: str, charge: str, projection: str) -> str:
-    template = RuleText.get(reason)
-    if template is None:
-        return reason
-    own = 'positive' if charge == '+' else 'negative' if charge == '-' else ''
-    other = 'negative' if charge == '+' else 'positive' if charge == '-' else ''
-    middle = projection[1] if len(projection) == 3 and projection[1] in '+-' else charge
-    lateral = 'positive' if middle == '+' else 'negative' if middle == '-' else own
-    return template.format(own=own, other=other, Own=own.capitalize(),
-                           Other=other.capitalize(), lateral=lateral)
 
 def Describe(event: dict) -> str:
     kind = event.get('kind', '')
@@ -46,21 +18,23 @@ def Describe(event: dict) -> str:
     if kind == 'configured': return event.get('q', '')
     if kind in ('ready', 'genesis', 'input'): return ''
     if kind == 'candidate':
-        phase = event.get('phase', '')
-        who = ('Captured Gate' if phase == 'captured' else
-               ('Positive' if charge == '+' else 'Negative' if charge == '-' else '') + ' Apex'
-               if phase == 'terminal' else 'Walking Helix')
-        return f'{who} completes {VOLT}'
+        if event.get('origin') in Words:
+            origin_role = RoleLabel(event['origin'])
+            origin_role = origin_role.replace('⚜️', '⚜️ ').replace('🎗️', '🎗️ ')
+            return f'{origin_role} completes {VOLT}'
+        return f'Observer completes {VOLT}'
     if kind == 'observed': return f'Received {VOLT}'
+    if kind == 'confirmed': return f'Confirmed {VOLT}'
+    if kind == 'override': return 'Opposing evidence overrides' 
     if kind == 'send': return f'Broadcast {VOLT}' if WordOf(payload) else SPARK
     if kind == 'receive': return '' if WordOf(payload) else SPARK
     if kind == 'initial': return SPARK
     if kind == 'lock':
         return f'{"Positive" if charge == "+" else "Negative" if charge == "-" else ""} Apex locks'
     if kind == 'reject': return reason
-    if kind == 'conflict': return 'Conflicting completed VOLT'
-    if kind in ('append', 'jump', 'walk', 'open') or reason:
-        return DescriptionForRule(reason, charge, event.get('projection', ''))
+    if kind == 'conflict': return 'Conflicting completed Volt'
+    if kind == 'open' or reason:
+        return reason
     return ''
 
 Actors = 'ABC'
@@ -180,11 +154,10 @@ class Circuit:
         self.injected = dict.fromkeys(Stages)
         self.stageEvents: list[dict] = []
         self.log = deque(maxlen=1500)
-        self.candidates = set()
-        self.completions = set()
         self.runStartedAt = None
         self.runFinishedAt = None
-        self.confirmed = set()
+        self.confirmed = {}
+        self.latest = {}
         self.configuredEntries = {}
         self.stagedLines = []
         self.dirty = False
@@ -230,10 +203,9 @@ class Circuit:
             return
         stage = Stages[self.stageIndex]
         cfg = self.board[stage]
-        self.candidates = set()
-        self.completions = set()
         self.stageEvents = []
-        self.confirmed = set()
+        self.confirmed = {}
+        self.latest = {}
         self.configuredEntries = {}
         self.stagedLines = []
         self.mode = 'running'
@@ -251,10 +223,10 @@ class Circuit:
         info = Describe(eventData)
         payload = eventData.get('payload') or ''
         if kind == 'configured':
-            detail = RoleLabel(eventData['q'])
-            info = eventData['q']
+            detail = RoleLabel(eventData['q']) if eventData['q'] in Words else ''
+            info = eventData['q'] if eventData['q'] in Words else 'Helix'
         elif kind in ('initial', 'lock'):
-            detail = VertexLabel(eventData['q'])
+            detail = VertexLabel(eventData['q']) if eventData['q'] in Words else eventData.get('charge', '')
         elif kind == 'input':
             detail = VertexLabel(eventData['word'])
         else:
@@ -280,12 +252,14 @@ class Circuit:
         if kind == 'initial' and eventData['actor'] == Actors.index(self.board[stage].receiver):
             self.injected[stage] = eventData['charge']
         if kind in ('candidate', 'observed'):
-            if kind == 'candidate':
-                self.candidates.add(eventData['word'])
-            self.completions.add(eventData['word'])
-            self.confirmed.add(eventData['actor'])
-        if kind == 'conflict':
-            self.completions.update((eventData['local'], eventData['other']))
+            self.latest[eventData['actor']] = eventData['word']
+            self.confirmed.pop(eventData['actor'], None)
+        elif kind == 'confirmed':
+            if self.latest.get(eventData['actor']) == eventData['word']:
+                self.confirmed[eventData['actor']] = eventData['word']
+        elif kind == 'conflict':
+            self.confirmed.pop(eventData['actor'], None)
+            self.latest[eventData['actor']] = eventData['local']
 
     def CompleteStage(self, word: str):
         stage = Stages[self.stageIndex]
@@ -325,12 +299,10 @@ class Circuit:
             return
         for eventData in newEvents:
             self.Ingest(eventData)
-        if len(self.completions) > 1:
-            self.mode = 'conflict'
-            self.log.append(f'CONFLICT at {Stages[self.stageIndex]}: {", ".join(sorted(self.completions))}')
-            return
-        if self.candidates and len(self.confirmed) == 3:
-            self.CompleteStage(next(iter(self.candidates)))
+        if len(self.confirmed) == 3 and len(self.latest) == 3:
+            agreed = set(self.confirmed.values())
+            if len(agreed) == 1 and set(self.latest.values()) == agreed:
+                self.CompleteStage(next(iter(agreed)))
     def Elapsed(self) -> float | None:
         if self.runStartedAt is None:
             return None
