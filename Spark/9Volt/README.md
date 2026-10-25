@@ -32,6 +32,8 @@ Every vertex has **three possible outcomes**, determined by the charges composin
 
 <img src="../../Relics/HyperCube.svg" width="600"/>
 
+> *The cube conceals two interlocking tetrahedra, each with a charged apex opposite its base.*
+
 ---
 
 ## 🐧 Operating System Support
