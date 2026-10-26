@@ -1,10 +1,11 @@
+
 # Appendix B · Beginnings
 
 ## Order of Conception
 
 This repository is organized for comprehension, not chronology.
 
-**Spark came later.** It provides a short entrance for readers encountering the finished construction. It is not the path by which the computational object was originally discovered.
+**Spark came later.** It provides a short entrance for readers encountering the finished construction. Its reading order is not the order in which the work was conceived.
 
 The ideas shaped the programs before they were formalized in papers.
 
@@ -50,106 +51,79 @@ The papers preserve the development of the ideas rather than establishing an art
 
 ## Prime
 
-Eventually, the picture needed a compact mathematical expression.
+A professor at Stanford suggested that the mathematics needed work. It was good advice.
 
-What was originally called **Kernel**, now [**Prime**](../../Spark/Prime/README.md), introduced the language needed to state the construction directly.
+That prompted what was originally called **Kernel**, now [**Prime**](../../Spark/Prime/README.md). Giving the picture a mathematical expression made the computational object much clearer.
 
-Its principal objects include
+Prime was not where the object began.
 
-- the state space $\Omega$
-- positional admissibility $\mathcal{A}$
-- independently maintained observer states
-- relational symmetry $\Sigma$
-- the computational field $\mathcal{F}$
-- the diagonal $\Delta_n(\Omega)$
-- the realized machine $M_s=(s,\Phi_s)$
-- the evolving computational object $\Sigma_{M_s}$
-
-The diagonal did not create the original picture. It gave a geometric name to one condition that the independently maintained states could occupy.
-
-Prime is therefore not where the object began.
-
-**It is where the object became sayable.**
-
----
-
-## Examination
-
-Once the construction had mathematical language, that language supplied terms for investigating existing research.
-
-The search for neighboring work followed.
-
-Self-stabilization, cellular automata, synchronization geometry, field calculus, broadcast consensus, and related models provide points of comparison.
-
-That research is now discussed in [**Examination**](./E.md), which also investigates the proposed computational distinctions and the CRDT comparison.
-
-The comparisons matter. They identify established mechanisms, expose overlapping ideas, and clarify what must be demonstrated before claims of distinctness or advantage can be established.
-
-But these papers were not the original recipe from which the programs were assembled.
-
-**The object produced the search. The search did not produce the object.**
+**It was where the object became sayable.**
 
 ---
 
 ## Cerberus
 
-Cerberus came after the initial mathematical formulation and the search for neighboring research.
-
-It revisited machinery already explored in Byzantium through a smaller, more rigid construction.
+Cerberus followed Prime. It revisited machinery already explored in Byzantium through a smaller, more rigid construction.
 
 The surface was locked. Files and ranks no longer moved. Nine heads held ninety-nine bones.
 
 This reduction made conflict easier to isolate. Equivocation, consequence, clawback, and repair could be examined without Byzantium's larger moving surface.
 
-Cerberus did not begin a different computational object.
+Cerberus did not begin a different computational object. It provided a more constrained environment in which to examine the existing construction.
 
-It provided a more constrained environment in which to examine the existing construction.
+---
+
+## ICBM
+
+ICBM followed Cerberus. As the odd man out, five independent observers evaluate authorizations through local admissibility within a shared Genesis.
+
+It put the same construction to work in a compact consistency problem, without a leader or a shared execution log.
+
+---
+
+## Examination
+
+The formal language and the running specimens made it possible to compare the construction with neighboring research.
+
+Self-stabilization, cellular automata, synchronization geometry, field calculus, broadcast consensus, and related models provided points of comparison.
+
+That work is gathered in [**Examination**](./E.md), including the proposed computational distinctions and the CRDT comparison.
+
+The comparisons matter. They identify established mechanisms, expose overlapping ideas, and clarify what still needs to be demonstrated.
+
+But those papers were not the original recipe from which the programs were assembled.
+
+**The object produced the search. The search did not produce the object.**
 
 ---
 
 ## Spark
 
-Spark was assembled later.
+Spark was assembled later to make the construction easier to encounter.
 
-By then, the machine had been built, explored, named, compared, and reduced. What remained difficult was **first contact**.
-
-The earlier material could contain the computational object without reliably making it visible to someone encountering the repository for the first time.
-
-Spark was assembled to address that problem.
-
-[**Prime**](../../Spark/Prime/README.md) expresses the mathematical construction. [**HaltingMachine**](../../Spark/Halt/README.md) demonstrates admission and reprojection in a minimal executable cycle, accompanied by BlackBox. [**NineVolt**](../../Spark/9Volt/README.md) carries the same principle into a three-dimensional state space, accompanied by HyperCube and Potentiality.
-
-Together, they provide a short reading path.
-
-**Prime → HaltingMachine → NineVolt**
-
-The reader moves from the mathematical expression, to a minimal machine, to an explicit geometric specimen. Each makes the same underlying construction visible in a different way.
-
-This is the entrance to the finished repository, not a reconstruction of its development history.
+[**Prime**](../../Spark/Prime/README.md) states the mathematics. [**HaltingMachine**](../../Spark/Halt/README.md), accompanied by BlackBox, gives it a minimal executable cycle. [**NineVolt**](../../Spark/9Volt/README.md), accompanied by HyperCube and Potentiality, gives the same principle a rigid geometric frame.
 
 ---
 
 ## NineVolt
 
-NineVolt brought the construction back to Hydra, where the work began.
+NineVolt attempts to give the relational computation a rigid geometric frame. Three independent observers compute within a Boolean cube, with admissible transitions constrained to its edges.
 
-Hydra is the **nebulous** expression of the field. Independent states rearrange while a conserved relationship persists across them.
-
-NineVolt gives the same principle an explicit geometry. Three observers compute through the eight vertices of a Boolean cube, admitting local transitions without retaining a path through it.
+Hydra had made the field visible through conservation among fluid states. NineVolt makes it visible through a discrete geometry.
 
 **Hydra was the nebula. NineVolt gave it a frame.**
+
+*What else might the field become?*
 
 ---
 
 ## How to Read This
 
-Begin with **Spark** for the shortest introduction. Prime states the construction, HaltingMachine demonstrates it in a minimal cycle, and NineVolt gives it an explicit geometric frame.
+Begin with **Spark** for the shortest introduction. Read Prime, HaltingMachine, and NineVolt with its companion papers, then turn to Examination for the comparisons.
 
-Explore **AfterHours** for the extended implementations. Their current reading order is organized for understanding rather than the order in which every program was originally developed.
+Explore **AfterHours** for the extended implementations, and **ICBM** in Relics for another compact specimen. Their placement is organized for understanding, not chronology.
 
 Read **Theory** to follow the reasoning behind the mathematical presentation.
-
-Use **Examination** to investigate the proposed distinctions and their relationship to existing research.
 
 This appendix records how the work developed. It does not establish novelty simply by documenting the order of conception.
 
