@@ -75,9 +75,9 @@ Cerberus did not begin a different computational object. It provided a more cons
 
 ## ICBM
 
-ICBM followed Cerberus. As the odd man out, five independent observers evaluate authorizations through local admissibility within a shared Genesis.
+ICBM followed Cerberus, taking the same construction in a different direction. Five independent observers evaluate authorizations through local admissibility within a shared Genesis.
 
-It put the same construction to work in a compact consistency problem, without a leader or a shared execution log.
+As the odd man out, ICBM applies oblivious computation to a compact consistency problem without requiring a leader or shared execution history.
 
 ---
 
