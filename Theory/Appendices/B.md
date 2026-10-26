@@ -1,11 +1,10 @@
-
 # Appendix B · Beginnings
 
 ## Order of Conception
 
 This repository is organized for comprehension, not chronology.
 
-**Spark was written last.** It provides a short entrance for readers encountering the finished construction. It is not the path by which the computational object was originally discovered.
+**Spark came later.** It provides a short entrance for readers encountering the finished construction. It is not the path by which the computational object was originally discovered.
 
 The ideas shaped the programs before they were formalized in papers.
 
@@ -25,11 +24,9 @@ There was only the intuition that independently maintained states could form som
 
 ## The First Programs
 
-**Skeleton, Hydra, and Byzantium** were built from that picture, before the mathematical construction had been formally expressed.
+**Hydra came first.** It was built from the picture before there was a formal mathematical construction. Independently maintained states could move through configurations that no individual observer contained or controlled, while conservation remained visible across the whole.
 
-Skeleton exposed the basic motion.
-
-Hydra made the collective object harder to ignore. Independently maintained states could move through configurations that no individual observer contained or controlled, while conservation remained visible across the whole.
+Skeleton stripped the basic motion down to a small admission rule.
 
 Byzantium extended the same construction into more elaborate state. Its surface could rearrange, allowing conflict, consequence, and repair to become part of the evolving machine.
 
@@ -112,7 +109,7 @@ It provided a more constrained environment in which to examine the existing cons
 
 ## Spark
 
-Spark came last.
+Spark was assembled later.
 
 By then, the machine had been built, explored, named, compared, and reduced. What remained difficult was **first contact**.
 
@@ -120,21 +117,33 @@ The earlier material could contain the computational object without reliably mak
 
 Spark was assembled to address that problem.
 
-[**Prime**](../../Spark/Prime/README.md) expresses the mathematical construction. [**Repeat**](../../Spark/Halt/README.md) presents HaltingMachine and its executable behavior, accompanied by BlackBox and HyperCube.
+[**Prime**](../../Spark/Prime/README.md) expresses the mathematical construction. [**HaltingMachine**](../../Spark/Halt/README.md) demonstrates admission and reprojection in a minimal executable cycle, accompanied by BlackBox. [**NineVolt**](../../Spark/9Volt/README.md) carries the same principle into a three-dimensional state space, accompanied by HyperCube and Potentiality.
 
-Together, they provide a short reading cycle.
+Together, they provide a short reading path.
 
-**Prime ↔ Repeat**
+**Prime → HaltingMachine → NineVolt**
 
-The reader moves between the mathematical construction and its executable expression, reconsidering each through the other.
+The reader moves from the mathematical expression, to a minimal machine, to an explicit geometric specimen. Each makes the same underlying construction visible in a different way.
 
 This is the entrance to the finished repository, not a reconstruction of its development history.
 
 ---
 
+## NineVolt
+
+NineVolt brought the construction back to Hydra, where the work began.
+
+Hydra is the **nebulous** expression of the field. Independent states rearrange while a conserved relationship persists across them.
+
+NineVolt gives the same principle an explicit geometry. Three observers compute through the eight vertices of a Boolean cube, admitting local transitions without retaining a path through it.
+
+**Hydra was the nebula. NineVolt gave it a frame.**
+
+---
+
 ## How to Read This
 
-Begin with **Spark** if you want the shortest introduction to the computational construction.
+Begin with **Spark** for the shortest introduction. Prime states the construction, HaltingMachine demonstrates it in a minimal cycle, and NineVolt gives it an explicit geometric frame.
 
 Explore **AfterHours** for the extended implementations. Their current reading order is organized for understanding rather than the order in which every program was originally developed.
 
