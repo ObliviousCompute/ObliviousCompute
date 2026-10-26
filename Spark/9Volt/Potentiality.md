@@ -5,7 +5,7 @@
 
 Run the same **NineVolt** configuration three times and check the log. Three executions may produce **three different histories**, yet resolve to the **same object**. Two spectators watching the same execution may record different accounts. Hence, **a trace through the field follows only one route of many.** The log in the demonstration therefore exists solely to illustrate the computation.
 
-Fundamentally, an execution and its computation are not necessarily the same thing. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. **The Helix contributions can arrive in different admissible orders while producing the same result.**
+As defined here, an execution and its computation are not necessarily the same thing. An observer encounters a projection, evaluates its local admissibility, and acts. The rule does not consult a clock or reconstruct how the projection arrived. **The relational field is the computation, not the sequence of events unfolding within it.**
 
 The **double-slit experiment** raises questions about potential paths and what observation may reveal about them. When two spectators record different histories of the same computation, which account describes what actually happened?
 
