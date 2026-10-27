@@ -5,13 +5,10 @@ import re
 import signal
 import socket
 import sys
-import time
 from dataclasses import dataclass
 from typing import Any
 
-from .Vertex import Words, Role, Polarity, WordOf, Projection
-from .Geometry import Pair, Prime, Vertex, Tessellate
-
+from .Vertex import Words, Role, Polarity, WordOf, Projection, Pair, Prime as PrimeShape, Vertex, Tessellate
 
 def RunObserver(index: int, pipe, events) -> None:
     signal.signal(signal.SIGINT, signal.SIG_IGN)
@@ -23,141 +20,122 @@ def RunObserver(index: int, pipe, events) -> None:
 
     stage = ''
     genesis = {}
-    receiver = False
+    isReceiver = False
     prime = None
     charge = ''
     q = None
+    phase = ''
     projection = ''
     pair = None
-    confirmed = False
-    conflict = False
-    challenged = None
-    canOverride = False
-    pending = None
-    lastPulse = 0.0
-    echoes = 0
+    primeSeen = 0
+    voltSeen = 0
 
-    def Event(kind, **details):
-        events.put(dict(actor=index, kind=kind, stage=stage, q=q, charge=charge,
-                        phase='complete' if WordOf(projection) else 'prime' if receiver else 'helix',
-                        projection=projection, **details))
+    def Event(kind: str, **kw) -> None:
+        events.put(dict(actor=index, kind=kind, q=q, charge=charge,
+                        phase=phase, projection=projection, stage=stage, **kw))
 
-    def Emit(value, reason):
+    def Emit(payload: str, reason: str) -> None:
         for port in peers:
-            sock.sendto(f'{stage}/{value}'.encode(), ('127.0.0.1', port))
-        Event('send', payload=value, reason=reason)
+            sock.sendto(f'{stage}/{payload}'.encode(), ('127.0.0.1', port))
+        Event('send', payload=payload, reason=reason)
 
-    def Complete(word, kind):
-        nonlocal q, projection, confirmed, challenged, echoes, canOverride
-        before = q
-        q = word
-        projection = Projection(word)
-        confirmed = False
-        challenged = None
-        canOverride = False
-        echoes = 0
-        if kind == 'candidate':
-            Event(kind, word=word, origin=Vertex(prime), before=before,
-                  after=projection, reason='Tessellate Prime and Helix evidence')
-        else:
-            Event(kind, word=word, before=before)
-        Emit(projection, 'completed Volt broadcast' if receiver else 'received Volt echo')
+    def Trigger(kind: str) -> bool:
+        nonlocal primeSeen, voltSeen
+        if kind == 'prime':
+            primeSeen = min(2, primeSeen + 1)
+            return primeSeen == 2
+        voltSeen = min(2, voltSeen + 1)
+        return voltSeen == 2
 
-    def Confirm(word):
-        nonlocal confirmed, echoes
-        if not confirmed and not conflict:
-            confirmed = True
-            echoes = 4
-            Event('confirmed', word=word)
-
-    def HearVolt(word):
-        nonlocal pending, confirmed, challenged
-        if receiver and WordOf(projection) is None:
-            return
-        if not receiver and pair is None:
-            pending = word
-            return
-        if not receiver and (WordOf(projection) is None or canOverride):
-            Complete(word, 'observed')
-        elif WordOf(projection) == word:
-            Confirm(word)
-        elif challenged != word:
-            confirmed = False
-            challenged = word
-            Event('conflict', local=q, other=word,
-                  reason='conflicting completed Volt without opposing evidence')
-            Emit(projection, 'conflicting Volt reply')
-
-    def HearPair(evidence):
-        nonlocal pair, conflict, confirmed, canOverride, pending
-        evidence = Pair(*evidence)
-        if pair == evidence:
-            return
-        if receiver:
-            if pair is None or evidence == '+-':
-                if pair is not None:
-                    Event('override', before=pair, after=evidence,
-                          reason='opposing evidence trumps')
-                pair = evidence
-                conflict = False
-                # ================= LINCHPIN ================= #
-                Complete(WordOf(Tessellate(prime, evidence)), 'candidate')
-                # ============================================ #
-            elif pair != '+-':
-                conflict = True
-                confirmed = False
-                Event('conflict', local=q, other=WordOf(Tessellate(prime, evidence)),
-                      reason='incompatible equal-rank Helix evidence')
-        elif evidence == '+-' and pair != '+-':
-            pair = evidence
-            canOverride = True
-            confirmed = False
-            Event('override', before=projection, after=evidence,
-                  reason='opposing evidence trumps')
-            if challenged is not None:
-                HearVolt(challenged)
-
-    def Adopt(newStage, incomingPrime, role, helix):
-        nonlocal stage, receiver, prime, charge, q, projection, pair
-        nonlocal confirmed, conflict, challenged, canOverride, pending, lastPulse, echoes
+    def Prime(newStage: str, word: str) -> None:
+        nonlocal stage, isReceiver, prime, charge, q, phase, projection
+        nonlocal pair, primeSeen, voltSeen
+        assert genesis[newStage][0] == 'receiver'
         stage = newStage
-        receiver = role == 'receiver'
-        prime = incomingPrime if receiver else None
-        charge = Polarity(Vertex(prime)) if receiver else helix
-        q = Vertex(prime) if receiver else None
-        projection = prime if receiver else charge
+        isReceiver = True
+        prime = PrimeShape(word)
+        charge = Polarity(word)
+        q = word
+        phase = 'prime'
+        projection = prime
         pair = None
-        confirmed = conflict = canOverride = False
-        challenged = pending = None
-        echoes = 0
-        lastPulse = time.monotonic()
-        Event('configured', receiver=receiver, role=Role(q) if receiver else 'helix')
-        Event('initial', role=Role(q) if receiver else 'helix')
-        Emit(projection, 'Prime exposure' if receiver else 'bare Helix charge')
+        primeSeen = voltSeen = 0
+        Event('configured', receiver=True, role=Role(word))
+        Event('initial', role=Role(word))
+        Emit(prime, 'Prime exposure')
 
-    def Retry():
-        nonlocal echoes, lastPulse
-        if not stage or time.monotonic() - lastPulse < .035:
+    def Helix(newStage: str, incomingPrime: str) -> None:
+        nonlocal stage, isReceiver, prime, charge, q, phase, projection
+        nonlocal pair, primeSeen, voltSeen
+        assert genesis[newStage][0] == 'helix'
+        stage = newStage
+        isReceiver = False
+        prime = None
+        charge = genesis[newStage][1]
+        q = None
+        phase = 'prime'
+        projection = incomingPrime
+        pair = None
+        primeSeen = voltSeen = 0
+        Event('configured', receiver=False, role='helix')
+        Event('initial', role='helix')
+        Trigger('prime')
+        Emit(incomingPrime, 'Prime relay')
+
+    # ================= LINCHPIN ================= #
+    def Transist(word: str) -> None:
+        current = stage
+        step = Stages.index(current)
+        Event('transist', word=word, next=Stages[step + 1] if step + 1 < 3 else 'Ω')
+        if step + 1 < 3:
+            Prime(Stages[step + 1], word)
+    # ============================================ #
+
+    def Completed(evidence: str) -> None:
+        nonlocal q, projection, phase
+        assert isReceiver and prime is not None
+        resolved = Tessellate(prime, evidence)
+        if projection == resolved:
             return
-        lastPulse = time.monotonic()
-        if confirmed:
-            if not echoes:
-                return
-            echoes -= 1
-        if not receiver:
-            Emit(charge, 'bare Helix exposure')
-            if pair:
-                Emit(pair, 'paired Helix evidence')
-        Emit(projection, 'completed Volt echo' if WordOf(projection) else 'projection retry')
+        before = q
+        q = WordOf(resolved)
+        phase = 'complete'
+        projection = resolved
+        Event('candidate', word=q, origin=Vertex(prime), before=before,
+              after=projection, reason='Tessellate Prime and Helix evidence')
+        Trigger('volt')
+        Emit(resolved, 'completed Volt broadcast')
+
+    def SeeVolt(word: str) -> None:
+        nonlocal q, projection, phase
+        resolved = Projection(word)
+        if WordOf(projection) is None:
+            before = q
+            q = word
+            phase = 'complete'
+            projection = resolved
+            Trigger('volt')
+            Event('observed', word=word, before=before)
+            Emit(resolved, 'received Volt echo')
+            return
+        if projection != resolved:
+            Event('conflict', local=q, other=word, reason='distinct completed Volt')
+            return
+        if voltSeen < 2 and Trigger('volt'):
+            step = Stages.index(stage)
+            nextReceiver = (step + 1 < 3 and genesis[Stages[step + 1]][0] == 'receiver')
+            if nextReceiver or (step == 2 and isReceiver):
+                Transist(word)
+            else:
+                Event('confirmed', word=word)
 
     Event('ready', role='observer')
     while True:
         if pipe.poll() and pipe.recv() == 'stop':
             break
         try:
-            data, _ = sock.recvfrom(128)
+            data = sock.recvfrom(128)[0]
         except socket.timeout:
-            Retry()
             continue
         try:
             payload = data.decode('utf-8')
@@ -170,51 +148,55 @@ def RunObserver(index: int, pipe, events) -> None:
                 match = re.fullmatch(r'([ΔΘΣ])/([+-])([ABC])\(([ABC])\)([ABC])([+-])', section)
                 if not match:
                     break
-                step, lc, left, middle, right, rc = match.groups()
-                if set((left, middle, right)) != set('ABC'):
+                step, lc, left, receiver, right, rc = match.groups()
+                if set((left, receiver, right)) != set('ABC'):
                     break
                 who = 'ABC'[index]
-                parsed[step] = ('receiver', '') if who == middle else (
+                parsed[step] = ('receiver', '') if who == receiver else (
                     ('helix', lc) if who == left else ('helix', rc))
-            if len(parsed) == 3:
+            if set(parsed) == set(Stages):
                 genesis = parsed
-                Event('genesis', board=payload, sockets=''.join(sorted(parsed)))
+                stage = ''
+                Event('genesis', board=payload, sockets=Stages)
             else:
-                Event('reject', payload=payload, reason='invalid Genesis')
+                Event('reject', payload=payload, reason='invalid complete Genesis')
             continue
-        prefix, separator, content = payload.partition('/')
-        if not separator or prefix not in genesis:
+        incomingStage, sep, content = payload.partition('/')
+        if not sep or incomingStage not in genesis:
             continue
-        if prefix != stage:
-            role, helix = genesis[prefix]
-            if role == 'receiver' and content in PrimeShapes:
-                Adopt(prefix, content, role, helix)
-            elif role == 'helix' and content == '?':
-                Adopt(prefix, None, role, helix)
+        if incomingStage != stage:
+            expected = 'Δ' if not stage else (
+                Stages[Stages.index(stage) + 1] if stage in Stages[:2] else '')
+            if incomingStage != expected or content not in PrimeShapes:
+                continue
+            if genesis[incomingStage][0] == 'receiver':
+                if not stage:
+                    Prime(incomingStage, Vertex(content))
+            else:
+                Helix(incomingStage, content)
             continue
         Event('receive', payload=content)
-        if len(content) == 1 and content in '+-' and not receiver:
-            evidence = Pair(charge, content)
-            if pair is None:
-                pair = evidence
-                Emit(pair, 'Helixes compose double-charge evidence')
-                if pending is not None:
-                    word, pending = pending, None
-                    HearVolt(word)
-            elif pair != evidence:
-                Event('conflict', local=q, other=None,
-                      reason='incompatible bare Helix evidence')
-        elif content in ('++', '--', '+-', '-+'):
-            HearPair(content)
-        elif (word := WordOf(content)) is not None:
-            HearVolt(word)
-        elif content not in (prime, charge, '?', '+', '-') and content not in PrimeShapes:
-            Event('open', payload=content, reason='unrecognized packet shape')
+        if content in PrimeShapes:
+            if not isReceiver and primeSeen < 2 and Trigger('prime'):
+                phase = 'helix'
+                projection = charge
+                Emit(charge, 'bare Helix charge')
+            continue
+        if len(content) == 1 and content in '+-' and not isReceiver and pair is None:
+            pair = Pair(charge, content)
+            Emit(pair, 'Helixes compose double-charge evidence')
+            continue
+        if content in ('++', '--', '+-', '-+') and isReceiver and phase == 'prime':
+            Completed('+-' if content in ('+-', '-+') else content)
+            continue
+        word = WordOf(content)
+        if word is not None:
+            SeeVolt(word)
     sock.close()
     pipe.close()
 
-PrimeShapes = frozenset(Prime(q) for q in Words)
-
+Stages = 'ΔΘΣ'
+PrimeShapes = frozenset(PrimeShape(q) for q in Words)
 
 @dataclass
 class Session:
@@ -263,8 +245,8 @@ class Session:
         receiver = self.board[stage].receiver
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as injector:
             for i, port in enumerate(self.ports):
-                shape = Prime(word) if 'ABC'[i] == receiver else '?'
-                injector.sendto(f'{stage}/{shape}'.encode('utf-8'), ('127.0.0.1', port))
+                if 'ABC'[i] == receiver:
+                    injector.sendto(f'{stage}/{PrimeShape(word)}'.encode(), ('127.0.0.1', port))
 
     def Poll(self) -> list[dict[str, Any]]:
         out = []
