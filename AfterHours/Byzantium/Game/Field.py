@@ -528,7 +528,9 @@ def VerifyLock(key: str, lock: Lock, sign: Optional[str]=None, *, allownull: boo
         raise ValueError('lock child does not reconstruct from receipt core')
     digest = LockHash(lock)
     if actualsign == NullSignHex:
-        return bool(allownull)
+        if not allownull:
+            raise ValueError('missing lock signature')
+        return True
     if not VerifySign(key, digest, actualsign, allownull=False):
         raise ValueError('lock sign failed verification')
     return True

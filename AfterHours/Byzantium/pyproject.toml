@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Byzantium-Game"
-version = "3.2"
+version = "3.3"
 description = "Collecting Souls"
 dependencies = [
     "cryptography",
