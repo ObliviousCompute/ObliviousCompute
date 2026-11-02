@@ -147,7 +147,7 @@ class LuckyDogTrial:
                     HEADS,
                     head,
                     CatacombIn=cat.ReceiveBone,
-                    BonePileIn=cat.FetchBonePile,
+                    BonePileIn=cat.Fetch,
                     BonePileOut=lambda cat=cat: cat.BonePile,
                 )
                 cat.BoneYardOut = yard.Catacomb

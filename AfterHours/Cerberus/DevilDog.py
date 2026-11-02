@@ -145,7 +145,7 @@ class DevilDogTrial:
                     HEADS,
                     head,
                     CatacombIn=cat.ReceiveBone,
-                    BonePileIn=cat.FetchBonePile,
+                    BonePileIn=cat.Fetch,
                     BonePileOut=lambda cat=cat: cat.BonePile,
                 )
                 cat.BoneYardOut = yard.Catacomb
@@ -383,7 +383,7 @@ class DevilDogTrial:
             lines.append(
                 f"{head}->{bone.target} bones={bone.bones:>2} "
                 f"parent={bone.tag.parent[:12]} child={bone.tag.child[:12]} "
-                f"receipt={ReceiptHash(bone)[:12]} sign={bone.sign[:12]}"
+                f"receipt={ReceiptHash(bone)[:12]} locksign={bone.locksign[:12]}"
             )
         lines += ["", "OBSERVED GAMEPLAY"]
         for event in self.events:

@@ -61,7 +61,6 @@ class Bone:
     bones: int
     tag: Tag
     locksign: str
-    sign: str
     def __post_init__(self) -> None:
         if not isinstance(self.head, str) or len(self.head) != 1 or self.head not in Uppercase:
             raise ValueError("bone.head must be A-Z")
@@ -77,8 +76,6 @@ class Bone:
             raise TypeError("bone.tag must be Tag")
         if not ValidSign(self.locksign):
             raise ValueError("bone.locksign must be a 64-byte Ed25519 signature")
-        if not ValidSign(self.sign):
-            raise ValueError("bone.sign must be a 64-byte Ed25519 signature")
 @dataclass(frozen=True)
 class Head:
     head: str
@@ -160,7 +157,6 @@ def VerifyBoneProof(bone: Bone) -> Bone:
     if bone.tag.child != expectedchild:
         raise ValueError("Bone child hash does not match its contents")
     VerifyDigest(bone.key, LockHash(bone.tag), bone.locksign)
-    VerifyDigest(bone.key, ReceiptHash(bone), bone.sign)
     return bone
 def CanonicalReceipts(*receipts: Bone) -> tuple[Bone, ...]:
     unique: dict[str, Bone] = {}
@@ -755,7 +751,7 @@ class Catacomb:
                 return Result(status="HUNGRY", bone=bone)
             return self.Bury(maul, status="MAULED")
         return self.Bury(maul, status="BURIED")
-    def FetchBonePile(self, pile: BonePile) -> Result:
+    def Fetch(self, pile: BonePile) -> Result:
         maul, result = self.Seek(pile)
         if maul is None:
             return result

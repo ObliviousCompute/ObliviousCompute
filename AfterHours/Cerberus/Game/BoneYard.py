@@ -18,7 +18,7 @@ BonePilePort = 9000
 Burst = 3
 CacheLimit = 4096
 def BoneKey(bone: Bone) -> tuple[object, ...]:
-    return (bone.head, bone.key, bone.target, bone.bones, bone.tag.parent, bone.tag.child, bone.locksign, bone.sign)
+    return (bone.head, bone.key, bone.target, bone.bones, bone.tag.parent, bone.tag.child, bone.locksign)
 def BoneToWire(bone: Bone) -> dict[str, object]:
     return asdict(bone)
 def BoneFromWire(value: object) -> Bone:
@@ -32,7 +32,6 @@ def BoneFromWire(value: object) -> Bone:
         bones=int(value.get("bones", 0)),
         tag=Tag(str(tag.get("parent", "")), str(tag.get("child", ""))),
         locksign=str(value.get("locksign", "")),
-        sign=str(value.get("sign", "")),
     )
 def HeadToWire(cell: Head) -> dict[str, object]:
     return asdict(cell)

@@ -7,7 +7,6 @@ import sys
 import termios
 import tty
 from contextlib import contextmanager
-from dataclasses import replace
 from typing import Callable
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
@@ -20,7 +19,6 @@ from .Catacomb import (
     GenesisChild,
     Head,
     LockHash,
-    ReceiptHash,
     Result,
     Tag,
     ValidHash,
@@ -74,8 +72,7 @@ def MintBone(privatekey: Ed25519PrivateKey, head: str, key: str, current: Head, 
         raise ValueError("local Head does not match signing key")
     tag = Tag(current.tag.child, ChildHash(head, key, current.tag.child, target, bones))
     locksign = SignDigest(privatekey, LockHash(tag))
-    proto = Bone(head, key, target, bones, tag, locksign, ZeroSign)
-    return replace(proto, sign=SignDigest(privatekey, ReceiptHash(proto)))
+    return Bone(head, key, target, bones, tag, locksign)
 def Canvas() -> list[str]:
     return [" " * Width] * Height
 def Put(card: list[str], row: int, text: str, col: int = 0) -> None:
@@ -402,7 +399,7 @@ class Guardian:
             self.heads,
             self.head,
             CatacombIn=self.catacomb.ReceiveBone,
-            BonePileIn=self.catacomb.FetchBonePile,
+            BonePileIn=self.catacomb.Fetch,
             BonePileOut=lambda: self.catacomb.BonePile,
         )
         self.catacomb.BoneYardOut = self.boneyard.Catacomb
